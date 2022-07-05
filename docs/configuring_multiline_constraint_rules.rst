@@ -4,7 +4,7 @@
 Configuring Multiline Constraint Rules
 --------------------------------------
 
-There are rules which will check indent and formatting of constraints as part of a subtype_indication:
+There are rules which will check indent and formatting of constraints as part of a :code:`subtype_indication`:
 
 .. code-block:: text
 
@@ -22,13 +22,13 @@ Both rules are required to ensure proper formatting of multiline constraints.
 There are several options to the structure rules:
 
 .. |values| replace::
-   add_new_line, remove_new_line, ignore
+   :code:`add_new_line`, :code:`remove_new_line`, :code:`ignore`
 
 .. |values2| replace::
-   remove_new_line, ignore
+   :code:`remove_new_line`, :code:`ignore`
 
 .. |values3| replace::
-   all_in_one_line, one_line_per_dimension, ignore
+   :code:`all_in_one_line`, :code:`one_line_per_dimension`, :code:`ignore`
 
 .. |green_diamond| image:: img/green_diamond.png
 
@@ -41,19 +41,19 @@ There are several options to the structure rules:
 .. |grey_box| image:: img/grey_box.png
 
 .. |add_new_line| replace::
-   The setting "add_new_line" enforces a carriage return (alias "new line") [and, consequently by indentation rules kicking in, also (indirectly) enforces the indentation of the new line]
+   The setting :code:`add_new_line` enforces a carriage return (alias "new line") [and, consequently by indentation rules kicking in, also (indirectly) enforces the indentation of the new line]
 
 .. |remove_new_line| replace::
-   The setting "remove_new_line" enforces the removal of any potential space and carriage return
+   The setting :code:`remove_new_line` enforces the removal of any potential space and carriage return
 
 .. |ignore| replace::
-   The setting "ignore" disables the option and hence no formatting check is done at all: spaces and new lines can be anything
+   The setting :code:`ignore` disables the option and hence no formatting check is done at all: spaces and new lines can be anything
 
 .. |all_in_one_line| replace::
-   The setting "all_in_one_line" will combine array_constraints into a single line
+   The setting :code:`all_in_one_line` will combine :code:`array_constraints` into a single line
 
 .. |one_line_per_dimension| replace::
-   The setting "one_line_per_dimension" will place each dimension on it's own line
+   The setting :code:`one_line_per_dimension` will place each dimension on it's own line
 
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+
 | Option                                | Symbol             | Values    | Structural Element     | Description                |
@@ -71,11 +71,13 @@ There are several options to the structure rules:
 |                                       |                    |           |                        | * |ignore|                 |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+
 
-The following figure illustrates a multiline constraint and where the options will be applied.
+The following figure illustrates a multiline constraint in a signal declaration and where the options will be applied.
+The same structure applies for constraints in constant and variable declarations.
 
 .. image:: img/constraints_code.png
 
-The following configuration replicates the above code snippet.
+The following configuration for signals replicates the above code snippet.
+The corresponding configuration for constants and variables can be identical or different.
 
 .. code-block:: yaml
 
@@ -204,7 +206,7 @@ Exceptions to the above rules exist to allow formatting of specific structures.
 These exceptions can be enabled by adding them to the :code:`exceptions` option.
 The following exceptions are defined:
 
-* keep_record_constraint_with_single_element_on_one_line
+* :code:`keep_record_constraint_with_single_element_on_one_line`
 
 keep_record_constraint_with_single_element_on_one_line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
