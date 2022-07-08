@@ -3,6 +3,16 @@ from vsg import parser
 
 from vsg.vhdlFile import utils
 
+from vsg.vhdlFile.classify import range
+
+
+def detect(iToken, lObjects):
+    '''
+    discrete_range ::=
+        *discrete*_subtype_indication | range
+    '''
+    return range.detect(iToken, lObjects)
+
 
 def classify(iToken, lObjects):
     '''

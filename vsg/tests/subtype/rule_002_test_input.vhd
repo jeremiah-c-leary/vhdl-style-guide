@@ -1,8 +1,8 @@
 
 architecture RTL of ENTITY1 is
 
-  subtype read_size is range 0 to 9;
-  subtype write_size is range 0 to 9;
+  subtype read_size is integer range 0 to 9;
+  subtype write_size is integer range 0 to 9;
 
   signal read  : READ_SIZE;
   signal write : write_size;

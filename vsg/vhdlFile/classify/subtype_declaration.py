@@ -28,7 +28,7 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent,lObjects)
 
-    iCurrent = subtype_indication.classify_until([';'], iCurrent, lObjects)
+    iCurrent = subtype_indication.classify(iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 

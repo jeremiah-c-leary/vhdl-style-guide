@@ -30,7 +30,7 @@ def classify(iToken, lObjects):
 
     iCurrent = mode.classify(iCurrent, lObjects)
 
-    iCurrent = subtype_indication.classify_until([';', ':=', ')'], iCurrent, lObjects, token.subtype_indication)
+    iCurrent = subtype_indication.classify(iCurrent, lObjects)
 
     if utils.is_next_token(':=', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required(':=', token.assignment, iCurrent, lObjects)

@@ -18,7 +18,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>
@@ -30,7 +30,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.character_literal'>
 <class 'vsg.token.constant_declaration.semicolon'>
@@ -56,7 +56,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -69,7 +69,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.multiplying_operator.star'>
@@ -83,7 +83,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>
@@ -112,11 +112,11 @@
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
-<class 'vsg.token.constant_declaration.subtype_indication'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>

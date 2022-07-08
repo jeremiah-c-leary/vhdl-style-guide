@@ -16,7 +16,7 @@
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
 <class 'vsg.token.ieee.std_logic_1164.types.integer'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.range_constraint.range_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
@@ -31,7 +31,7 @@
 <class 'vsg.token.variable_declaration.variable_keyword'>
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
 6 |
@@ -41,16 +41,16 @@
 <class 'vsg.token.variable_declaration.variable_keyword'>
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.direction.to'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.comma'>
+<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.index_constraint.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
 8 |
@@ -61,7 +61,7 @@
 <class 'vsg.token.variable_declaration.variable_keyword'>
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
 10 |
@@ -76,7 +76,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
 12 |
@@ -86,7 +86,7 @@
 <class 'vsg.token.variable_declaration.variable_keyword'>
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.subtype_indication.type_mark'>
 <class 'vsg.token.variable_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.variable_declaration.semicolon'>

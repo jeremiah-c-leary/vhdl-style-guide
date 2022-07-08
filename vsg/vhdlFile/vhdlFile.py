@@ -11,7 +11,9 @@ from vsg.token import logical_operator
 from vsg.token import miscellaneous_operator
 from vsg.token import multiplying_operator
 from vsg.token import relational_operator
+from vsg.token import resolution_indication
 from vsg.token import sign
+from vsg.token import subtype_indication
 from vsg.token import unary_logical_operator
 
 from vsg.token.ieee.std_logic_1164 import types
@@ -322,6 +324,8 @@ def split_on_carriage_return(lObjects):
 
 def post_token_assignments(lTokens):
     oCodeTags = code_tags.New()
+    iParenId = 0
+    lParenId = []
     for iToken, oToken in enumerate(lTokens):
         if code_tags.token_has_vsg_on_code_tag(oToken):
             oToken.set_code_tags(oCodeTags.get_tags())
@@ -335,7 +339,28 @@ def post_token_assignments(lTokens):
         else:
             oToken.set_code_tags(oCodeTags.get_tags())
             oCodeTags.update(oToken)
-        if isinstance(oToken, parser.todo):
+        if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name):
+            sValue = oToken.get_value()
+            ### IEEE values
+            if sValue.lower() == 'std_logic_vector':
+                lTokens[iToken] = types.std_logic_vector(sValue)
+
+            if sValue.lower() == 'std_ulogic_vector':
+                lTokens[iToken] = types.std_ulogic_vector(sValue)
+
+            if sValue.lower() == 'std_ulogic':
+                lTokens[iToken] = types.std_ulogic(sValue)
+
+            if sValue.lower() == 'std_logic':
+                lTokens[iToken] = types.std_logic(sValue)
+
+            if sValue.lower() == 'integer':
+                lTokens[iToken] = types.integer(sValue)
+
+            if sValue.lower() == 'signed':
+                lTokens[iToken] = types.signed(sValue)
+
+        elif isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
             if sValue == '&':
                 lTokens[iToken] = adding_operator.concat()
@@ -366,9 +391,13 @@ def post_token_assignments(lTokens):
                 continue
             if sValue == '(':
                 lTokens[iToken] = parser.open_parenthesis()
+                iParenId += 1
+                lParenId.append(iParenId)
+                lTokens[iToken].iId = iParenId
                 continue
             if sValue == ')':
                 lTokens[iToken] = parser.close_parenthesis()
+                lTokens[iToken].iId = lParenId.pop()
                 continue
             if sValue == ',':
                 lTokens[iToken] = parser.comma()
@@ -518,6 +547,12 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = adding_operator.minus()
                 continue
+            if sValue == '(':
+                iParenId += 1
+                lParenId.append(iParenId)
+                oToken.iId = iParenId
+            if sValue == ')':
+                oToken.iId = lParenId.pop()
 
 
 def set_token_hierarchy_value(lTokens):

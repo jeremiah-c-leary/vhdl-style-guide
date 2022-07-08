@@ -17,7 +17,7 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
 
-    iCurrent = element_subtype_definition.classify_until([';'], iCurrent, lObjects)
+    iCurrent = element_subtype_definition.classify(iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 

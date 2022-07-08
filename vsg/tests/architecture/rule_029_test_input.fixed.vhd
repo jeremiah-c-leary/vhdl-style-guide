@@ -7,7 +7,7 @@ architecture RTL of ENTITY1 is
   constant c_cons1 : std_logic;
   file     f_fil1 : load_file_type open read_mode is load_file_name;
   type     t_typ1 is (idle, write, read);
-  subtype  s_sub1 is range 0 to 9;
+  subtype  s_sub1 is integer range 0 to 9;
   alias    a_alias1 is name;
 
   -- These should pass
@@ -16,7 +16,7 @@ architecture RTL of ENTITY1 is
   constant c_cons1 : std_logic;
   file     f_fil1 : load_file_type open read_mode is load_file_name;
   type     t_typ1 is (idle, write, read);
-  subtype  s_sub1 is range 0 to 9;
+  subtype  s_sub1 is integer range 0 to 9;
   alias    a_alias1 is name;
 
   -- Test with different spacing
@@ -25,7 +25,7 @@ architecture RTL of ENTITY1 is
   constant c_cons1 : std_logic;
   file     f_fil1 : load_file_type open read_mode is load_file_name;
   type     t_typ1 is (idle, write, read);
-  subtype  s_sub1 is range 0 to 9;
+  subtype  s_sub1 is integer range 0 to 9;
   alias    a_alias1 is name;
 
   -- Test with shorter combinations
@@ -42,7 +42,7 @@ architecture RTL of ENTITY1 is
   file     f_fil1 : load_file_type open read_mode is load_file_name;
   -- some comment
   type    t_typ1 is (idle, write, read);
-  subtype s_sub1 is range 0 to 9;
+  subtype s_sub1 is integer range 0 to 9;
 
   -- Test multiline declarations
   type   state_type is (

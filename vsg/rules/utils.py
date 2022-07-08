@@ -185,6 +185,12 @@ def token_is_close_paren(oToken):
     return False
 
 
+def token_is_parenthesis(oToken):
+    if token_is_open_paren(oToken) or token_is_close_paren(oToken):
+        return True
+    return False
+
+
 def token_is_whitespace(oToken):
     if isinstance(oToken, parser.whitespace):
         return True
@@ -210,6 +216,14 @@ def token_at_the_beginning_of_a_line(oToken, lTokens):
     if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], oToken):
         return True
     if isinstance(lTokens[0], oToken):
+        return True
+    return False
+
+
+def token_at_beginning_of_line_in_token_list(iToken, lTokens):
+    if isinstance(lTokens[iToken - 1], parser.carriage_return):
+        return True
+    if isinstance(lTokens[iToken - 1], parser.whitespace) and isinstance(lTokens[iToken - 2], parser.carriage_return):
         return True
     return False
 
@@ -283,9 +297,32 @@ def extract_identifiers_with_mode(lToi, oTokenType):
     return lReturn
 
 
+def remove_leading_whitespace_tokens(lTokens):
+    if len(lTokens) > 1 and isinstance(lTokens[0], parser.whitespace):
+        lTokens.pop(0)
+
+
+def change_all_whitespace_to_single_character(lTokens):
+    for oToken in lTokens:
+        if isinstance(oToken, parser.whitespace):
+            oToken.set_value(' ')
+
+
 def token_is_at_beginning_of_line(lTokens):
     if isinstance(lTokens[0], parser.carriage_return):
         return True
     if isinstance(lTokens[1], parser.carriage_return):
         return True
     return False
+
+
+def update_open_paren_counter(oToken, iOpenParen):
+    if token_is_open_paren(oToken):
+        return iOpenParen + 1
+    return iOpenParen
+
+
+def update_close_paren_counter(oToken, iCloseParen):
+    if token_is_close_paren(oToken):
+        return iCloseParen + 1
+    return iCloseParen

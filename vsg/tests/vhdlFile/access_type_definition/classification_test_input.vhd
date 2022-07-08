@@ -5,7 +5,7 @@ begin
 
   block_label : block is
 
-    type type1 is access subtype_indication more other;
+    type type1 is access subtype_indication;
 
   begin
 

@@ -74,6 +74,17 @@ def assign_next_token_required(sToken, token, iToken, lObjects):
     return iToken
 
 
+def assign_tokens_until_matching_closing_paren(token, iToken, lObjects):
+    iCounter = 1
+    iCurrent = iToken
+    while iCurrent < len(lObjects):
+        iCurrent = find_next_token(iCurrent, lObjects)
+        iCounter = update_paren_counter(iCurrent, lObjects, iCounter)
+        if token_is_close_parenthesis(iCurrent, lObjects) and iCounter == 0:
+            return iCurrent
+        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+
+
 def object_value_is(lAllObjects, iToken, sString):
     if lAllObjects[iToken].get_value().lower() == sString.lower():
         return True

@@ -352,6 +352,30 @@ This rule checks the structure of multiline constants that contain arrays.
      32768
    );
 
+constant_017
+############
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of constant constraints.
+
+|configuring_multiline_constraint_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant con_a : my_record(element1(7 downto 0), element2(3 downto 0));
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant con_a : my_record(
+       element1(7 downto 0),
+       element2(3 downto 0)
+     );
+
 constant_100
 ############
 
