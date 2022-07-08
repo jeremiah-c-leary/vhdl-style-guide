@@ -32,7 +32,7 @@ begin
   process (CLK) is
   begin
 
-    if (CLK'event and CLK = '1') then
+    if (rising_edge(CLK)) then
       counter       <= ncounter;
       buttonhistory <= nbuttonhistory;
     end if;

@@ -51,7 +51,7 @@ begin
   process (CLK) is
   begin
 
-    if (CLK'event and CLK = '1') then
+    if (rising_edge(CLK)) then
       if (BUFFERWRITE = '1') then
         mybuffer(conv_integer(addresswrite)) <= INCOLOR;
       end if;

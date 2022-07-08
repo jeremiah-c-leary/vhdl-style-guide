@@ -43,6 +43,7 @@ Rules Disabled by Default
 * `package_body_601 <package_body_rules.html#package-body-601>`_
 * `port_011 <port_rules.html#port-011>`_
 * `port_025 <port_rules.html#port-025>`_
+* `process_029 <process_rules.html#process-029>`_
 * `process_036 <process_rules.html#process-036>`_
 * `signal_008 <signal_rules.html#signal-008>`_
 * `subtype_004 <subtype_rules.html#subtype-004>`_

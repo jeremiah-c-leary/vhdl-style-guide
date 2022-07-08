@@ -215,7 +215,7 @@ begin
   REGS : process (CLK_I) is
   begin
 
-    if (CLK_I'event and CLK_I = '1') then
+    if (rising_edge(CLK_I)) then
       if (CLR = '1') then
         rr <= X"0000";
         ll <= X"0000";
