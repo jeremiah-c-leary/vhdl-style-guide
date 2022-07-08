@@ -5,6 +5,7 @@ from vsg import token
 from vsg import tokens
 
 from vsg.token import adding_operator
+from vsg.token import aggregate
 from vsg.token import direction
 from vsg.token import exponent
 from vsg.token import logical_operator
