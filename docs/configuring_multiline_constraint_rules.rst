@@ -65,7 +65,7 @@ There are several options to the structure rules:
    :code:`all_in_one_line`
 
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
-| Option                                | Symbol             | Values    | Structural Element     | Default value              | Description                |
+| Option                                | Symbol             | Values    | Structural Element     | Default Value              | Description                |
 +=======================================+====================+===========+========================+============================+============================+
 | :code:`record_constraint_open_paren`  | |green_diamond|    | |values|  | opening parenthesis    | |default_remove_new_line|  | * |add_new_line|           |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+ * |remove_new_line|        |
@@ -219,8 +219,8 @@ The following exceptions are defined:
 
 * :code:`keep_record_constraint_with_single_element_on_one_line`
 
-keep_record_constraint_with_single_element_on_one_line
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:code:`keep_record_constraint_with_single_element_on_one_line`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This exception will force a record constraint with a single element to a single line.
 
