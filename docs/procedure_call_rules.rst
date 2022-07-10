@@ -160,6 +160,35 @@ This rule checks the alignment of multiline procedure calls.
                  port_4, port_5,
                  port_6, port_7);
 
+procedure_call_401
+##################
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of :code:`=>` keywords in procedure calls.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1=> data,
+     port_2 => enable,
+     port_3    => overflow,
+     port_4  => underflow
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1 => data,
+     port_2 => enable,
+     port_3 => overflow,
+     port_4 => underflow
+   );
+
 procedure_call_500
 ##################
 
