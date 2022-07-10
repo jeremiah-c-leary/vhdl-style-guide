@@ -13,6 +13,7 @@ Configuring
    configuring_disabled_rules.rst
    configuring_identifier_alignment_rules.rst
    configuring_indentation.rst
+   configuring_indent_rules.rst
    configuring_keyword_alignment_rules.rst
    configuring_length_rules.rst
    configuring_move_token_rules.rst
