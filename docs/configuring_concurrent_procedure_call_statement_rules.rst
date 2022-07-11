@@ -96,7 +96,7 @@ The following configuration replicates the above code snippet.
         last_close_paren : 'add_new_line'
         association_list_comma : 'remove_new_line'
         semicolon: 'remove_new_line'
-        array_constraint : 'one_line_per_element'
+        association_list : 'one_line_per_element'
 
 .. NOTE:: All examples use the above configuration.
 
