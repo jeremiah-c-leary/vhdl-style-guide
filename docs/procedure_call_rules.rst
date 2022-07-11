@@ -47,6 +47,30 @@ Labels on procedure calls are optional and do not provide additional information
 
    WR_EN(parameter);
 
+procedure_call_003
+##################
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of concurrent procedure calls.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   connect_ports(port_1 => data, port_2 => enable, port_3 => overflow, port_4 => underflow);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1 => data,
+     port_2 => enable,
+     port_3 => overflow,
+     port_4 => underflow
+   );
+
 .. _procedure_call_whitespacing_rules:
 
 procedure_call_100
