@@ -7,6 +7,7 @@ lTokens = []
 lTokens.append(token.signal_assignment_statement.label)
 lTokens.append(token.simple_force_assignment.target)
 lTokens.append(token.simple_waveform_assignment.target)
+lTokens.append(token.conditional_waveform_assignment.target)
 
 
 class rule_001(token_indent):

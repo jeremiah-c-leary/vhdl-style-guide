@@ -23,6 +23,7 @@ begin
       when 0 =>
         sig5 <= sig6;
         sig6 <= sig7;
+        sig8 <= '0' when b = '1';
 
     end case;
 
@@ -50,6 +51,7 @@ begin
       when 0 =>
         sig5 <= sig6;
         sig6 <= sig7;
+        sig8 <= '0' when b = '1';
 
     end case;
 
