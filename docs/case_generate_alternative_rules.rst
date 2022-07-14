@@ -51,3 +51,24 @@ This rule checks the *when* keyword has proper case.
 
    when choices =>
 
+case_generate_alternative_501
+#############################
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the *others* keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   when OTHERS =>
+
+**Fix**
+
+.. code-block:: vhdl
+
+   when others =>
+
