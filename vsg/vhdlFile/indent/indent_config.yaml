@@ -126,6 +126,10 @@ indent:
             target:
                 token : current
                 after : current
+        conditional_waveform_assignment:
+            target:
+                token : current
+                after : current
         conditional_variable_assignment:
             target:
                 token : current
