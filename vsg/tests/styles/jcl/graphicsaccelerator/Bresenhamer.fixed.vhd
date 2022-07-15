@@ -120,7 +120,7 @@ begin
   process (CLK) is
   begin
 
-    if (CLK'event and CLK = '1') then
+    if (rising_edge(CLK)) then
       if (state = idle) then
         if (RESET = '1') then
           state    <= clear;

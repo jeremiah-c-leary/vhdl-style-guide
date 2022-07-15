@@ -191,7 +191,7 @@ begin
   process (CLK40) is
   begin
 
-    if (CLK40'event and CLK40 = '1') then
+    if (rising_edge(CLK40)) then
       lclk <= not lclk;
     end if;
 

@@ -49,7 +49,7 @@ begin
   PROC2_LABEL : process is
   begin
 
-    if (some_clk'event and some_clk = '1') then
+    if rising_edge(some_clk) then
       a <= b;
     end if;
 

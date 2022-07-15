@@ -80,7 +80,7 @@ begin
 
     if (RST_I = '1') then
       next_s <= reset_s;
-    elsif (CLK_I'event and CLK_I = '1') then
+    elsif (rising_edge(CLK_I)) then
       flag <= INTA_I;
 
       case next_s is
