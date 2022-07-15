@@ -547,6 +547,15 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = adding_operator.minus()
                 continue
+            if sValue.lower() == '*':
+                lTokens[iToken] = multiplying_operator.star(sValue)
+                continue
+            if sValue.lower() == '/':
+                lTokens[iToken] = multiplying_operator.slash(sValue)
+                continue
+            if sValue.lower() == '**':
+                lTokens[iToken] = miscellaneous_operator.double_star(sValue)
+                continue
             if sValue == '(':
                 iParenId += 1
                 lParenId.append(iParenId)

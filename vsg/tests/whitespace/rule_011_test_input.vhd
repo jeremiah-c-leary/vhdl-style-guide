@@ -86,3 +86,33 @@ architecture RTL of FIFO is
 begin
 
 end architecture RTL;
+
+architecture RTL of FIFO is
+
+begin
+
+  a(c + d) <= '0';
+  a(c - d) <= '0';
+  a(c / d) <= '0';
+  a(c * d) <= '0';
+  a(c ** d) <= '0';
+
+  a(c+ d) <= '0';
+  a(c- d) <= '0';
+  a(c/ d) <= '0';
+  a(c* d) <= '0';
+  a(c** d) <= '0';
+
+  a(c +d) <= '0';
+  a(c -d) <= '0';
+  a(c /d) <= '0';
+  a(c *d) <= '0';
+  a(c **d) <= '0';
+
+  a(c+d) <= '0';
+  a(c-d) <= '0';
+  a(c/d) <= '0';
+  a(c*d) <= '0';
+  a(c**d) <= '0';
+
+end architecture RTL;
