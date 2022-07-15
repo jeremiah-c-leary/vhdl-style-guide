@@ -322,6 +322,30 @@ Rule Specific Keyword Alignment Configuration
       end loop;
       data_valid_after      <= '1';
 
+#. :code:`no_alignment` - if set to :code:`True` the keyword will be forced to the left.
+   By default set to :code:`False`.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      signal wr_en : std_logic;
+      signal rd_en   : std_logic;
+
+      constant c_short_period : time;
+      constant c_long_period : time;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      signal wr_en : std_logic;
+      signal rd_en   : std_logic;
+
+      constant c_short_period : time;
+      constant c_long_period : time;
+
+
 .. NOTE:: If given keyword alignment rule has any of the above keyword alignment specific configuration, then it is explicitly noted in the documentation of this rule.
 
 The default value for each of these case rules can be overridden using a configuration.
