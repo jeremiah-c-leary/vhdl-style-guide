@@ -26,8 +26,6 @@ class multiline_procedure_call_structure(structure.Rule):
         self.configuration.append('association_list_comma')
         self.association_element = 'ignore'
         self.configuration.append('association_element')
-        self.exceptions = []
-        self.configuration.append('exceptions')
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -38,9 +36,6 @@ class multiline_procedure_call_structure(structure.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-
-            if exception_applied(self, oToi):
-                continue
 
             _check_first_open_paren(self, oToi)
             _check_last_close_paren(self, oToi)
@@ -193,36 +188,6 @@ def _create_action_dictionary(sAction):
     return dReturn
 
 
-def exception_applied(self, oToi):
-    if _check_for_exception_one(self, oToi):
-        return True
-    return False
-
-
-def _check_for_exception_one(self, oToi):
-    if not exception_enabled(self):
-        return False
-    if not token_pattern_match(oToi):
-        return False
-    analyze_exception_one(self, oToi)
-    return True
-
-
-def exception_enabled(self):
-    if 'keep_record_constraint_with_single_element_on_one_line' in self.exceptions:
-        return True
-    return False
-
-
-def analyze_exception_one(self, oToi):
-    iLine, lTokens = rules_utils.get_toi_parameters(oToi)
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        oToi.set_meta_data('iToken', iToken)
-        first_open_paren_detected(oToi, iLine, oToken)
-        last_close_paren_detected(self, oToi, oToken)
-
-
 def first_open_paren_detected(oToi, iLine, oToken):
     if isinstance(oToken, token.record_constraint.open_parenthesis):
         oToi.set_meta_data('iStart', oToi.get_meta_data('iToken'))
@@ -237,26 +202,6 @@ def last_close_paren_detected(self, oToi, oToken):
         if rules_utils.number_of_carriage_returns(lTokens[iStart:iToken]) > 0:
             oViolation = create_array_constraint_remove_carriage_return_violation(oToi)
             self.add_violation(oViolation)
-
-
-def token_pattern_match(oToi):
-    lActual = filter_tokens(oToi)
-    lExpected = create_expected_token_pattern()
-    if len(lExpected) != len(lActual):
-        return False
-    for iIndex in range(0, len(lExpected)):
-        if not isinstance(lActual[iIndex], lExpected[iIndex]):
-            return False
-    return True
-
-
-def create_expected_token_pattern():
-    lCheckType = []
-    lCheckType.append(token.record_constraint.open_parenthesis)
-    lCheckType.append(token.index_constraint.open_parenthesis)
-    lCheckType.append(token.index_constraint.close_parenthesis)
-    lCheckType.append(token.record_constraint.close_parenthesis)
-    return lCheckType
 
 
 def filter_tokens(oToi):
