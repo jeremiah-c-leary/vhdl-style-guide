@@ -32,9 +32,6 @@ There are several options to the structure rules:
 .. |values2| replace::
    :code:`remove_new_line`, :code:`ignore`
 
-.. |values3| replace::
-   :code:`all_in_one_line`, :code:`one_line_per_element`, :code:`ignore`
-
 .. |green_diamond| image:: img/green_diamond.png
 
 .. |red_penta_star| image:: img/red_penta_star.png
@@ -54,17 +51,8 @@ There are several options to the structure rules:
 .. |ignore| replace::
    The setting :code:`ignore` disables the option and hence no formatting check is done at all: spaces and new lines can be anything
 
-.. |all_in_one_line| replace::
-   The setting :code:`all_in_one_line` will combine :code:`association_element` into a single line
-
-.. |one_line_per_element| replace::
-   The setting :code:`one_line_per_element` will place each element on it's own line
-
 .. |default_remove_new_line| replace::
    :code:`remove_new_line`
-
-.. |default_association_list| replace::
-   :code:`all_in_one_line`
 
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
 | Option                                | Symbol             | Values    | Structural Element     | Default Value              | Description                |
@@ -73,13 +61,9 @@ There are several options to the structure rules:
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+ * |remove_new_line|        |
 | :code:`last_open_paren`               | |red_penta_star|   | |values|  | closing parenthesis    | |default_remove_new_line|  | * |ignore|                 |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+                            |
-| :code:`association_list_comma`        | |purple_hexa_star| | |values2| | comma                  | |default_remove_new_line|  |                            |
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+                            |
-| :code:`semicolon`                     | |orange_triangle|  | |values2| | semicolon              | |default_remove_new_line|  |                            |
+| :code:`association_element`           | |orange_triangle|  | |values|  | association element    | |default_remove_new_line|  |                            |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
-| :code:`association_list`              | |grey_box|         | |values3| | association_list       | |default_association_list| | * |all_in_one_line|        |
-|                                       |                    |           |                        |                            | * |one_line_per_element|   |
-|                                       |                    |           |                        |                            | * |ignore|                 |
+| :code:`association_list_comma`        | |purple_hexa_star| | |values2| | comma                  | |default_remove_new_line|  |                            |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
 
 The following figure illustrates where the options will be applied in an concurrent procedure call.
@@ -95,8 +79,7 @@ The following configuration replicates the above code snippet.
         first_open_paren : 'remove_new_line'
         last_close_paren : 'add_new_line'
         association_list_comma : 'remove_new_line'
-        semicolon: 'remove_new_line'
-        association_list : 'one_line_per_element'
+        association_element: 'add_new_line'
 
 .. NOTE:: All examples use the above configuration.
 
@@ -126,10 +109,10 @@ Setting the :code:`last_close_paren` option to :code:`remove_new_line` will resu
        sequence => "test_001",
        logging => "full");
 
-Example: :code:`association_list` set to :code:`all_in_one_line`
-################################################################
+Example: :code:`association_element` set to :code:`remove_new_line`
+###################################################################
 
-Setting the :code:`association_list` option to :code:`all_in_one_line` will result in the following formatting:
+Setting the :code:`association_element` option to :code:`remove_new_line` will result in the following formatting:
 
 .. code-block:: vhdl
 
