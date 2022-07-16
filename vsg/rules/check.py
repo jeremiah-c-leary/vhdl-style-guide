@@ -26,4 +26,3 @@ def analyze_remove_new_line(self, oToi):
     if rules_utils.token_at_beginning_of_line_in_token_list(iToken, lTokens):
         oViolation = create_violation.remove_new_line(self, oToi)
         self.add_violation(oViolation)
-

@@ -122,7 +122,6 @@ def analyze_for_array_constraint_one_line_per_dimension(self, oToi):
 
 def create_array_constraint_one_line_violation(oToi):
     iStart = oToi.get_meta_data('iStart')
-    iStartLine = oToi.get_meta_data('iStartLine')
     lTokens = oToi.get_tokens()
     oToi.set_meta_data('sSolution', 'Move open parenthesis to next line and remove carriage returns in array constraint.')
     oToi.set_meta_data('sAction', 'add_new_line_and_remove_carraige_returns')
@@ -133,9 +132,6 @@ def create_array_constraint_one_line_violation(oToi):
 
 
 def create_array_constraint_remove_carriage_return_violation(oToi):
-    iStart = oToi.get_meta_data('iStart')
-    iStartLine = oToi.get_meta_data('iStartLine')
-    iToken = oToi.get_meta_data('iToken')
     oToi.set_meta_data('sSolution', 'Remove carriage returns in array constraint.')
     oToi.set_meta_data('sAction', 'remove_new_line')
     oViolation = create_violation._create_violation(oToi)
