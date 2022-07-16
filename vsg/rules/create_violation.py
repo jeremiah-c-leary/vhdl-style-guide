@@ -2,6 +2,8 @@
 from vsg import parser
 from vsg import violation
 
+from vsg.rules import tokens_of_interest as toi
+
 from vsg.vhdlFile import utils
 
 
@@ -14,8 +16,7 @@ def add_new_line(oToi):
     oToi.set_meta_data('iStart', iToken)
     oToi.set_meta_data('sSolution', 'Move parenthesis to next line.')
     oToi.set_meta_data('sAction', 'add_new_line')
-    if isinstance(lTokens[iToken - 1], parser.whitespace):
-        oToi.set_meta_data('iStart', iToken - 1)
+    toi.adjust_start_index_based_on_whitespace(oToi, -1)
     oViolation = _create_violation(oToi)
     return oViolation
 
