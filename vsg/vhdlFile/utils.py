@@ -181,7 +181,6 @@ def are_previous_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lOb
     try:
         while iTokenCount != iMinTokenCount:
             iCurrent = find_previous_non_whitespace_token(iCurrent, lObjects)
-#            print(f'{lObjects[iCurrent].get_value()} | {lObjects[iCurrent]} | {lTypes[iTokenCount - 1]}')
             if not lTypes[iTokenCount - 1] is None:
                 if not isinstance(lObjects[iCurrent], lTypes[iTokenCount - 1]):
                     return False
@@ -237,7 +236,7 @@ def find_next_non_whitespace_token(iToken, lObjects):
 
 def find_previous_non_whitespace_token(iToken, lObjects):
     iCurrent = iToken
-    for iIndex in range(iToken, 0, -1):
+    for iIndex in range(iToken, -1, -1):
         oToken = lObjects[iIndex]
         if token_is_whitespace_or_comment(oToken):
             continue

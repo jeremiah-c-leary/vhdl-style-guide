@@ -3,15 +3,18 @@ architecture rtl of fifo is
 
 begin
 
-  connect_ports(port_1 => data, port_2 => enable, port_3 => overflow, port_4 => underflow);
+  connect_ports(port_1 => data, port_2 => enable, port_3 => overflow, port_4 => underflow
+ );
 
   connect_ports(
- port_1 => data, port_2 => enable, port_3 => overflow, port_4 => underflow);
+ port_1 => data, port_2 => enable, port_3 => overflow, port_4 => underflow
+ );
 
   connect_ports(port_1 => data,
  port_2 => enable,
  port_3 => overflow,
- port_4 => underflow);
+ port_4 => underflow
+ );
 
   connect_ports(port_1 => data, port_2 => enable, port_3 => overflow, port_4 => underflow
  );
@@ -25,14 +28,14 @@ begin
 
   connect_ports
   (
-    port_1 => data,
+    port_1 => data
+    ,
     port_2 => enable,
-    port_3 => overflow,
+    port_3 => overflow
+,
     port_4 => underflow
   );
 
-
-  -- Invalid formatting
 
   process
   begin

@@ -32,8 +32,6 @@ begin
   );
 
 
-  -- Invalid formatting
-
   process
   begin
 
