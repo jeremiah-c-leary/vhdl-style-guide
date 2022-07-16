@@ -4,6 +4,16 @@ from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
 
 
+def fix_violation(oViolation):
+    dAction = oViolation.get_action()
+    if dAction['action'] == 'add_new_line':
+        add_new_line(oViolation)
+    elif dAction['action'] == 'remove_new_line':
+        remove_new_line(oViolation)
+    elif dAction['action'] == 'add_new_line_and_remove_carraige_returns':
+        add_new_line_and_remove_carraige_returns(oViolation)
+
+
 def add_new_line(oViolation):
     lTokens = oViolation.get_tokens()
     rules_utils.remove_leading_whitespace_tokens(lTokens)

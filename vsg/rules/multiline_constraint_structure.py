@@ -6,6 +6,7 @@ from vsg import violation
 from vsg.rules import utils as rules_utils
 from vsg.rules import create_violation
 from vsg.rules import fix
+from vsg.rules import tokens_of_interest as toi
 
 from vsg.rule_group import structure
 
@@ -36,11 +37,7 @@ class multiline_constraint_structure(structure.Rule):
         self.configuration.append('exceptions')
 
     def _get_tokens_of_interest(self, oFile):
-        lToi = []
-        for lTokenPair in self.lTokenPairs:
-            aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
-            lToi = utils.combine_two_token_class_lists(lToi, aToi)
-        return lToi
+        return toi.get_tokens_bounded_by(self.lTokenPairs, oFile)
 
     def _analyze(self, lToi):
         for oToi in lToi:
@@ -57,13 +54,7 @@ class multiline_constraint_structure(structure.Rule):
         self._sort_violations()
 
     def _fix_violation(self, oViolation):
-        dAction = oViolation.get_action()
-        if dAction['action'] == 'add_new_line':
-            fix.add_new_line(oViolation)
-        elif dAction['action'] == 'remove_new_line':
-            fix.remove_new_line(oViolation)
-        elif dAction['action'] == 'add_new_line_and_remove_carraige_returns':
-            fix.add_new_line_and_remove_carraige_returns(oViolation)
+        fix.fix_violation(oViolation)
 
 
 def _check_array_constraint(self, oToi):
