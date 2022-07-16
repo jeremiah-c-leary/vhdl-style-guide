@@ -5,7 +5,10 @@ from vsg import violation
 
 from vsg.rules import utils as rules_utils
 from vsg.rules import create_violation
+from vsg.rules import fix
+
 from vsg.rule_group import structure
+
 from vsg.vhdlFile import utils
 
 
@@ -56,41 +59,11 @@ class multiline_constraint_structure(structure.Rule):
     def _fix_violation(self, oViolation):
         dAction = oViolation.get_action()
         if dAction['action'] == 'add_new_line':
-            _fix_add_new_line(oViolation)
+            fix.add_new_line(oViolation)
         elif dAction['action'] == 'remove_new_line':
-            _fix_remove_new_line(oViolation)
+            fix.remove_new_line(oViolation)
         elif dAction['action'] == 'add_new_line_and_remove_carraige_returns':
-            _fix_add_new_line_and_remove_carraige_returns(oViolation)
-
-
-def _fix_add_new_line(oViolation):
-    lTokens = oViolation.get_tokens()
-    rules_utils.remove_leading_whitespace_tokens(lTokens)
-    rules_utils.insert_whitespace(lTokens, 0)
-    rules_utils.insert_carriage_return(lTokens, 0)
-    oViolation.set_tokens(lTokens)
-
-
-def _fix_add_new_line_and_remove_carraige_returns(oViolation):
-    lTokens = oViolation.get_tokens()
-    lTokens = utils.remove_carriage_returns_from_token_list(lTokens)
-    rules_utils.remove_leading_whitespace_tokens(lTokens)
-    rules_utils.insert_whitespace(lTokens, 0)
-    rules_utils.insert_carriage_return(lTokens, 0)
-    rules_utils.change_all_whitespace_to_single_character(lTokens)
-    utils.fix_blank_lines(lTokens)
-    oViolation.set_tokens(lTokens)
-
-
-def _fix_remove_new_line(oViolation):
-    lTokens = oViolation.get_tokens()
-    lTokens = utils.remove_carriage_returns_from_token_list(lTokens)
-    utils.remove_consecutive_whitespace_tokens(lTokens)
-    rules_utils.remove_leading_whitespace_tokens(lTokens)
-    rules_utils.change_all_whitespace_to_single_character(lTokens)
-    lNewTokens = utils.remove_trailing_whitespace(lTokens)
-    utils.fix_blank_lines(lNewTokens)
-    oViolation.set_tokens(lNewTokens)
+            fix.add_new_line_and_remove_carraige_returns(oViolation)
 
 
 def _check_array_constraint(self, oToi):
@@ -201,21 +174,9 @@ def _check_add_new_line_and_remove_new_line(self, oToi, sOption, oTokenType):
     if sOption == 'ignore':
         return
     elif sOption == 'add_new_line':
-        analyze_with_function(self, oToi, oTokenType, analyze_add_new_line)
+        rules_utils.analyze_with_function(self, oToi, oTokenType, analyze_add_new_line)
     elif sOption == 'remove_new_line':
-        analyze_with_function(self, oToi, oTokenType, analyze_remove_new_line)
-
-
-def analyze_with_function(self, oToi, oTokenType, fFunction):
-    iLine, lTokens = rules_utils.get_toi_parameters(oToi)
-
-    for iToken, oToken in enumerate(lTokens):
-        iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, oTokenType):
-            oToi.set_meta_data('iStartLine', iLine)
-            oToi.set_meta_data('iStart', iToken)
-            oToi.set_meta_data('iToken', iToken)
-            fFunction(self, oToi)
+        rules_utils.analyze_with_function(self, oToi, oTokenType, analyze_remove_new_line)
 
 
 def analyze_add_new_line(self, oToi):
