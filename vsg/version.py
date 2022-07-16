@@ -2,8 +2,8 @@
 import subprocess
 import os
 
-
 sVersion = '3.12.0'
+
 
 def print_version(oCommandLineArguments):
 

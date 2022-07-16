@@ -32,7 +32,6 @@ def remove_new_line(self, oToi):
     return oViolation
 
 
-
 def _create_violation(oToi):
     iStartIndex = oToi.get_meta_data('iStart')
     iStartLine = oToi.get_meta_data('iStartLine')
