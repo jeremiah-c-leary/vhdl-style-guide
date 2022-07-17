@@ -53,6 +53,9 @@
 .. |configuring_previous_line_rules_link| replace::
    Refer to :ref:`configuring-previous-line-rules` for more information.
 
+.. |configuring_tabs_vs_spaces_link| replace::
+   Refer to :ref:`configuring-tabs-vs-spaces` for more information.
+
 .. |configuring_type_of_instantiations_link| replace::
    Refer to :ref:`configuring-type-of-instantiations` for more information.
 
