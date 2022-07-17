@@ -7,23 +7,23 @@ Configuring Indent Rules
 There are rules which will check indent of lines.
 The method of indenting can be configured using one of the following options:
 
-.. |spaces_description| replaces::
+.. |spaces_description| replace::
    Indentation will be perfomed using spaces.
 
-.. |tabs_description| replaces::
+.. |tabs_description| replace::
    Indentation will be perfomed using tabs.
 
-.. |smart_tabs_description| replaces::
+.. |smart_tabs_description| replace::
    Indentation will be performed using tabs and spaces.
 
 +----------------------+--------------------+----------------------------+
 | Option               | Value              | Description                |
 +======================+====================+============================+
-| :code:`indent_style` | :code:`spaces`     | * |spaces_description|     |
+| :code:`indent_style` | :code:`spaces`     | |spaces_description|       |
 |                      +--------------------+----------------------------+
-|                      | :code:`tabs`       | * |tabs_description|       |
+|                      | :code:`tabs`       | |tabs_description|         |
 |                      +--------------------+----------------------------+
-|                      | :code:`smart_tabs` | * |smart_tabs_description| |
+|                      | :code:`smart_tabs` | |smart_tabs_description|   |
 +----------------------+--------------------+----------------------------+
 
 The default value for :code:`indent_style` is :code:`spaces`.
@@ -50,11 +50,117 @@ The :code:`indent_styule` option can be set globally for all rules and locally f
 :code:`spaces` Example
 #######################
 
+Setting the :code:`indent_style` option to :code:`spaces` will result in leading whitespace to be converted into spaces.
 
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+   \tsignal wr_en : std_logic;
+
+   begin
+
+   \tb <= "1000" when a = "00" else 
+   \t\t"0100" when a = "01" else 
+   \t\t"0010" when a = "10" else 
+   \t\t"0001" when a = "11";
+
+   end architecture rtl;
+
+**Fix**
+
+.. code-block:: text
+
+   architecture rtl of fifo is
+
+     signal wr_en : std_logic;
+
+   begin
+
+     b <= "1000" when a = "00" else 
+          "0100" when a = "01" else 
+          "0010" when a = "10" else 
+          "0001" when a = "11";
+
+   end architecture rtl;
+   
 :code:`tabs` Example
 ####################
 
+Setting the :code:`indent_style` option to :code:`tabs` will result in leading whitespace to be converted into tabs.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+     signal wr_en : std_logic;
+
+   begin
+
+     b <= "1000" when a = "00" else 
+          "0100" when a = "01" else 
+          "0010" when a = "10" else 
+          "0001" when a = "11";
+
+   end architecture rtl;
+
+**Fix**
+
+.. code-block:: text
+
+   architecture rtl of fifo is
+
+   \tsignal wr_en : std_logic;
+
+   begin
+
+   \tb <= "1000" when a = "00" else 
+   \t\t"0100" when a = "01" else 
+   \t\t"0010" when a = "10" else 
+   \t\t"0001" when a = "11";
+
+   end architecture rtl;
 
 :code:`smart_tabs` Example
 ##########################
+
+Setting the :code:`indent_style` option to :code:`tabs` will result in leading whitespace to be converted into tabs and spaces.  Tabs set the indent and spaces are used for alignment.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+     signal wr_en : std_logic;
+
+   begin
+
+     b <= "1000" when a = "00" else 
+          "0100" when a = "01" else 
+          "0010" when a = "10" else 
+          "0001" when a = "11";
+
+   end architecture rtl;
+   
+**Fix**
+
+.. code-block:: text
+
+   architecture rtl of fifo is
+
+   \tsignal wr_en : std_logic;
+
+   begin
+
+   \tb <= "1000" when a = "00" else 
+   \t     "0100" when a = "01" else 
+   \t     "0010" when a = "10" else 
+   \t     "0001" when a = "11";
+
+   end architecture rtl;
 
