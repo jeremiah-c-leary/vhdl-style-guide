@@ -1,5 +1,4 @@
 
-from vsg import parser
 from vsg import violation
 
 from vsg.rules import tokens_of_interest as toi
@@ -8,10 +7,7 @@ from vsg.vhdlFile import utils
 
 
 def add_new_line(oToi):
-    iStart = oToi.get_meta_data('iStart')
-    iStartLine = oToi.get_meta_data('iStartLine')
     iToken = oToi.get_meta_data('iToken')
-    lTokens = oToi.get_tokens()
 
     oToi.set_meta_data('iStart', iToken)
     oToi.set_meta_data('sSolution', 'Move parenthesis to next line.')
@@ -22,10 +18,9 @@ def add_new_line(oToi):
 
 
 def remove_new_line(self, oToi):
-    iStart = oToi.get_meta_data('iStart')
-    iStartLine = oToi.get_meta_data('iStartLine')
     iToken = oToi.get_meta_data('iToken')
     lTokens = oToi.get_tokens()
+
     oToi.set_meta_data('sSolution', 'Move parenthesis to previous line.')
     oToi.set_meta_data('sAction', 'remove_new_line')
     oToi.set_meta_data('iStart', utils.find_previous_non_whitespace_token(iToken - 1, lTokens) + 1)

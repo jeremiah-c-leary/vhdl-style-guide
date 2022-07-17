@@ -1,11 +1,7 @@
 
-from vsg import parser
 from vsg import token
-from vsg import violation
 
-from vsg.rules import utils as rules_utils
 from vsg.rules import check
-from vsg.rules import create_violation
 from vsg.rules import fix
 from vsg.rules import tokens_of_interest as toi
 
