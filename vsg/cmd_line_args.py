@@ -65,7 +65,7 @@ def parse_command_line_arguments():
     parser.add_argument('-ap', '--all_phases', default=False, action='store_true',
                         help='Do not stop when a violation is detected.')
     parser.add_argument('--fix_only', action='store', help='Restrict fixing via JSON file.')
-    parser.add_argument('--quality_report', action='store', help='Create code quality report for Git Lab')
+    add_quality_report_argument(parser)
     parser.add_argument(
         "-p",
         "--jobs",
@@ -127,3 +127,11 @@ def validate_ap_argument(args_):
     if args_.all_phases and args_.fix:
         print('ERROR:  -ap argument is invalid with the --fix argument')
         sys.exit(1)
+
+
+def add_quality_report_argument(parser):
+    parser.add_argument(
+        '--quality_report',
+        action='store',
+        help='Create code quality report for GitLab'
+    )
