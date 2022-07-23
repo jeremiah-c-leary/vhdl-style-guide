@@ -22,14 +22,38 @@ def classify(lTokens, lObjects, oOptions):
     if len(lObjects) == 0 and oOptions.inside_delimited_comment():
         lObjects.append(token.text(''))
 
+    merge_text_tokens(lObjects)
+
+
+def merge_text_tokens(lObjects):
+
+    iStartIndex, iEndIndex = find_start_and_end_index_of_text_tokens(lObjects)
+    merge_tokens(iStartIndex, iEndIndex, lObjects)
+
+
+def find_start_and_end_index_of_text_tokens(lObjects):
     iStartIndex = -1
     iEndIndex = -1
-    for iToken, sToken in enumerate(lObjects):
-        if isinstance(lObjects[iToken], token.text):
-            if iStartIndex == -1:
-                iStartIndex = iToken
-            iEndIndex = iToken
+    for iToken, oToken in enumerate(lObjects):
+        iStartIndex = set_start_index(oToken, iToken, iStartIndex)
+        iEndIndex = set_end_index(oToken, iToken, iEndIndex)
+    return iStartIndex, iEndIndex
 
+
+def set_start_index(oToken, iToken, iStartIndex):
+    if isinstance(oToken, token.text):
+        if iStartIndex == -1:
+            iStartIndex = iToken
+    return iStartIndex
+
+
+def set_end_index(oToken, iToken, iEndIndex):
+    if isinstance(oToken, token.text):
+        iEndIndex = iToken
+    return iEndIndex
+
+
+def merge_tokens(iStartIndex, iEndIndex, lObjects):
     if iStartIndex < iEndIndex:
         sNewValue = ''
         for iIndex in range(iStartIndex, iEndIndex + 1):

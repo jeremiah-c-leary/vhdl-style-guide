@@ -15,6 +15,8 @@ comment
 
 /*/* This is a /* delimited comment */
 
+-- Comment /* Not a delimied comment */
+
 architecture RTL of FIFO is
 
   signal fifo_wr : std_logic; /* This is
