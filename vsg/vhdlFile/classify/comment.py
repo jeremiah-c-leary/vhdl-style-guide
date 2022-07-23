@@ -5,24 +5,49 @@ from vsg.token import delimited_comment as token
 
 def classify(lTokens, lObjects, oOptions):
 
-    for iToken, sToken in enumerate(lTokens):
-        if not oOptions.inside_delimited_comment():
-            if sToken.startswith('--'):
-                lObjects[iToken] = parser.comment(sToken)
-            if sToken == '/*':
-                lObjects[iToken] = token.beginning(sToken)
-                oOptions.set_inside_delimited_comment()
-        else:
-            if sToken == '*/':
-                lObjects[iToken] = token.ending(sToken)
-                oOptions.clear_inside_delimited_comment()
-            else:
-                lObjects[iToken] = token.text(sToken)
-
     if len(lObjects) == 0 and oOptions.inside_delimited_comment():
         lObjects.append(token.text(''))
 
+    for iToken, sToken in enumerate(lTokens):
+        classify_delimited_comment_text(iToken, lObjects, oOptions)
+        classify_opening_comment_delimiters(iToken, lObjects, oOptions)
+        classify_closing_comment_delimiters(iToken, lObjects, oOptions)
+
     merge_text_tokens(lObjects)
+
+
+def classify_closing_comment_delimiters(iToken, lObjects, oOptions):
+    sToken = lObjects[iToken].get_value()
+    if oOptions.inside_delimited_comment():
+        if sToken == '*/':
+            lObjects[iToken] = token.ending(sToken)
+            oOptions.clear_inside_delimited_comment()
+
+
+def classify_opening_comment_delimiters(iToken, lObjects, oOptions):
+    classify_single_line_comment(iToken, lObjects, oOptions)
+    classify_delimited_comment_open_keyword(iToken, lObjects, oOptions)
+
+
+def classify_single_line_comment(iToken, lObjects, oOptions):
+    sToken = lObjects[iToken].get_value()
+    if not oOptions.inside_delimited_comment():
+        if sToken.startswith('--'):
+            lObjects[iToken] = parser.comment(sToken)
+
+
+def classify_delimited_comment_open_keyword(iToken, lObjects, oOptions):
+    sToken = lObjects[iToken].get_value()
+    if not oOptions.inside_delimited_comment():
+        if sToken == '/*':
+            lObjects[iToken] = token.beginning(sToken)
+            oOptions.set_inside_delimited_comment()
+
+
+def classify_delimited_comment_text(iToken, lObjects, oOptions):
+    sToken = lObjects[iToken].get_value()
+    if oOptions.inside_delimited_comment():
+        lObjects[iToken] = token.text(sToken)
 
 
 def merge_text_tokens(lObjects):
@@ -41,8 +66,7 @@ def find_start_and_end_index_of_text_tokens(lObjects):
 
 
 def set_start_index(oToken, iToken, iStartIndex):
-    if isinstance(oToken, token.text):
-        if iStartIndex == -1:
+    if isinstance(oToken, token.text) and iStartIndex == -1:
             iStartIndex = iToken
     return iStartIndex
 
