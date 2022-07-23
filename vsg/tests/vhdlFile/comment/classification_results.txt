@@ -1,0 +1,101 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | -- This is a single-line comment
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | /* This is a delimited comment */
+<class 'vsg.token.delimited_comment.beginning'>
+<class 'vsg.token.delimited_comment.text'>
+<class 'vsg.token.delimited_comment.ending'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | /*
+<class 'vsg.token.delimited_comment.beginning'>
+--------------------------------------------------------------------------------
+7 | This
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+8 | is
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+9 |
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+10 | a
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+11 | delimited -- something
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+12 |
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+13 | comment
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+14 | */
+<class 'vsg.token.delimited_comment.ending'>
+--------------------------------------------------------------------------------
+15 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 | /*/* This is a /* delimited comment */
+<class 'vsg.token.delimited_comment.beginning'>
+<class 'vsg.token.delimited_comment.text'>
+<class 'vsg.token.delimited_comment.ending'>
+--------------------------------------------------------------------------------
+17 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+19 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 |   signal fifo_wr : std_logic; /* This is
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.signal_declaration.semicolon'>
+<class 'vsg.token.delimited_comment.beginning'>
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+21 |    a delimited
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+22 |   comment
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+23 |   */
+<class 'vsg.token.delimited_comment.text'>
+<class 'vsg.token.delimited_comment.ending'>
+--------------------------------------------------------------------------------
+24 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+25 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+26 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
