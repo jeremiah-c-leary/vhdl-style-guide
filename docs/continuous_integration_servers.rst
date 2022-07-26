@@ -2,7 +2,7 @@ Continuous Integration Servers
 ------------------------------
 
 VSG supports options to facilitate integration with continuous integration severs such as Bamboo and GitLab.
-Support is provided using one of the following command line arguments.
+The following command line options are available.
 
 +-------------------------------+-------------------------------------------------+
 | Command Line Option           | Comment                                         |
@@ -33,20 +33,7 @@ An example JUnit XML file is shown below:
      <testcase name="original.vhd" time="0" classname="failure">
        <failure type="Failure">
          architecture_010: 847 : Add *architecture* keyword.
-         case_012: 740 : Move code after the =&gt; to the next line.
          concurrent_007: 298 : move code after else to next line.
-         entity_015: 121 : Add *entity* keyword
-         generic_map_003: 555 : Move the ( to the same line as the *generic map* keywords.
-         if_024: 764 : Move code after *then* keyword to the next line.
-         instantiation_034: 554 : Change to component instantiation
-         port_013: 17 : Move multiple ports to their own lines.
-         port_map_003: 580 : Move the ( to the same line as the *port map* keywords.
-         process_012: 804 : Add *is* keyword
-         process_016: 804 : Add label for process statement
-         process_018: 845 : Add a label for the &quot;end process&quot;.
-         process_029: 731 : Change rising_edge to event format.
-         sequential_007: 785 : Move code after the ; to the next line.
-         when_001: 631 : Move &quot;else&quot; to the right of &quot;)&quot; on line 630
        </failure>
      </testcase>
      <system-out>
@@ -90,6 +77,9 @@ The following items in the spec are populated.
 +----------------------+------------------------+
 | location.lines.begin | |location_lines_begin| |
 +----------------------+------------------------+
+
+This report can be used in most CI server applications to create a test report.
+Refer to the documentation of your CI server application for how to integrate the Code Quality Report.
 
 An example of a code quality report is shown below:
 
