@@ -67,17 +67,17 @@ class vhdlFile():
 
     def _processFile(self):
 
+        oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
             lTokens = tokens.create(sLine.replace('\t', '  ').rstrip('\n').rstrip('\r'))
-#            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip())
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
 
-            blank.classify(lObjects)
+            blank.classify(lObjects, oOptions)
             whitespace.classify(lTokens, lObjects)
-            comment.classify(lTokens, lObjects)
+            comment.classify(lTokens, lObjects, oOptions)
             preprocessor.classify(lTokens, lObjects)
             pragma.classify(lTokens, lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars)
 
@@ -596,3 +596,18 @@ def remove_beginning_of_file_tokens(lTokens):
         if not isinstance(oToken, parser.beginning_of_file):
             lReturn.append(oToken)
     return lReturn
+
+
+class options():
+
+    def __init__(self):
+        self.bInsideDelimitedComment = False
+
+    def set_inside_delimited_comment(self):
+        self.bInsideDelimitedComment = True
+
+    def clear_inside_delimited_comment(self):
+        self.bInsideDelimitedComment = False
+
+    def inside_delimited_comment(self):
+        return self.bInsideDelimitedComment
