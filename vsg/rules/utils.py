@@ -326,3 +326,15 @@ def update_close_paren_counter(oToken, iCloseParen):
     if token_is_close_paren(oToken):
         return iCloseParen + 1
     return iCloseParen
+
+
+def analyze_with_function(self, oToi, oTokenType, fFunction):
+    iLine, lTokens = get_toi_parameters(oToi)
+
+    for iToken, oToken in enumerate(lTokens):
+        iLine = utils.increment_line_number(iLine, oToken)
+        if isinstance(oToken, oTokenType):
+            oToi.set_meta_data('iStartLine', iLine)
+            oToi.set_meta_data('iStart', iToken)
+            oToi.set_meta_data('iToken', iToken)
+            fFunction(self, oToi)
