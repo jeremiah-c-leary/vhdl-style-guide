@@ -4,13 +4,13 @@ Continuous Integration Servers
 VSG supports options to facilitate integration with continuous integration severs such as Bamboo and GitLab.
 The following command line options are available.
 
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| Command Line Option           | Comment                                                                                    |
-+===============================+============================================================================================+
-| :code:`--junit`               | Generate `JUnit report <continuous_integration_servers.html#JUnit-report>`_                |
-+-------------------------------+--------------------------------------------------------------------------------------------+
-| :code:`--quality_report`      | Generate `code quality report <continuous_integration_servers.html#Code-Quality-Report>`_  |
-+-------------------------------+--------------------------------------------------------------------------------------------+
++-------------------------------+-----------------------------------------------------------+
+| Command Line Option           | Comment                                                   |
++===============================+===========================================================+
+| :code:`--junit`               | Generate :ref:`JUnit report <JUnit Report>`               |
++-------------------------------+-----------------------------------------------------------+
+| :code:`--quality_report`      | Generate :ref:`code quality report <Code Quality Report>` |
++-------------------------------+-----------------------------------------------------------+
 
 JUnit Report
 ############
