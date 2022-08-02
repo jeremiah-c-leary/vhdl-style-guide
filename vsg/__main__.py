@@ -19,6 +19,8 @@ from . import severity
 from . import version
 from . import vhdlFile
 
+from vsg.report import quality_report
+
 
 def generate_output_configuration(commandLineArguments, oConfig):
     '''
@@ -150,7 +152,7 @@ def main():
         if commandLineArguments.junit:
             oJunitTestsuite.add_testcase(testCase)
 
-        if commandLineArguments.json:
+        if commandLineArguments.json or commandLineArguments.quality_report:
             dJson['files'].append(dJsonEntry)
 
     if commandLineArguments.junit:
@@ -160,6 +162,9 @@ def main():
     if commandLineArguments.json:
         with open(commandLineArguments.json, 'w') as oFile:
             oFile.write(json.dumps(dJson, indent=2))
+
+    if commandLineArguments.quality_report:
+        quality_report.write(commandLineArguments, dJson)
 
     sys.exit(fExitStatus)
 

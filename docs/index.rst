@@ -18,6 +18,7 @@ Welcome to vhdl-style-guide's documentation!
    styles
    configuring
    code_tags
+   continuous_integration_servers
    editor_integration/editor_integration
    tool_integration
    pragmas
