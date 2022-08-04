@@ -29,6 +29,15 @@ class end_for_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
+class unspecified(parser.name):
+    '''
+    unique_id = block_configuration : unspecified
+    '''
+
+    def __init__(self, sString):
+        parser.name.__init__(self, sString)
+
+
 class semicolon(parser.semicolon):
     '''
     unique_id = block_configuration : semicolon

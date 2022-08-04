@@ -4,7 +4,7 @@ end blah;
 
 configuration blah of blah is
   for beh
-  end for;
+  end for beh;
 end blah;
 
 configuration blah of blah is

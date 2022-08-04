@@ -30,9 +30,10 @@
 <class 'vsg.token.block_configuration.for_keyword'>
 <class 'vsg.token.block_specification.architecture_name'>
 --------------------------------------------------------------------------------
-7 |   end for;
+7 |   end for beh;
 <class 'vsg.token.block_configuration.end_keyword'>
 <class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.unspecified'>
 <class 'vsg.token.block_configuration.semicolon'>
 --------------------------------------------------------------------------------
 8 | end blah;

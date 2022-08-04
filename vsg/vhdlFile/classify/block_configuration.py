@@ -44,6 +44,7 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('end', token.end_keyword, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required('for', token.end_for_keyword, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_if_not(';', token.unspecified, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 
     return iCurrent
