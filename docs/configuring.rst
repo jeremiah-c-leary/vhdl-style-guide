@@ -26,7 +26,6 @@ Configuring
    configuring_prefix_and_suffix_rules.rst
    configuring_previous_line_rules.rst
    configuring_rule_groups.rst
-   configuring_tabs_vs_spaces.rst
    configuring_type_of_instantiations.rst
    configuring_uppercase_and_lowercase_rules.rst
    configuring_whitespace_rules.rst

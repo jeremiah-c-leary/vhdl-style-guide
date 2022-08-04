@@ -27,7 +27,7 @@ Where periods indicate spaces:
 whitespace_002
 ##############
 
-This rule will check for the existence of tabs.
+This rule will check for the existence of tabs in the middle of a line.
 
 |configuring_tabs_vs_spaces_link|
 
@@ -41,7 +41,7 @@ This rule will check for the existence of tabs.
 
 .. code-block:: text
 
-     signal wr_en : std_logic;  -- Write Enable
+   \t\tsignal wr_en : std_logic;  -- Write Enable
 
 whitespace_003
 ##############
@@ -281,25 +281,6 @@ This rule checks for at least a single space before and after logical operators.
 
   if (a = '1') and (b = '0')
   if (a = '0') or (b = '1')
-
-whitespace_014
-##############
-
-|phase_2| |error| |whitespace|
-
-This rule checks for spaces before a tab character.
-
-**Violation**
-
-.. code-block:: text
-
-  \t\t  \tsignal wr_en : std_logic;
-
-**Fix**
-
-.. code-block:: text
-
-  \t\t\tsignal wr_en : std_logic;
 
 whitespace_200
 ##############

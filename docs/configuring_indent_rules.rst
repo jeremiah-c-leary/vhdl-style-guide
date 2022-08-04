@@ -21,8 +21,6 @@ The method of indenting can be configured using one of the following options:
 +======================+====================+============================+
 | :code:`indent_style` | :code:`spaces`     | |spaces_description|       |
 |                      +--------------------+----------------------------+
-|                      | :code:`tabs`       | |tabs_description|         |
-|                      +--------------------+----------------------------+
 |                      | :code:`smart_tabs` | |smart_tabs_description|   |
 +----------------------+--------------------+----------------------------+
 
@@ -83,45 +81,6 @@ Setting the :code:`indent_style` option to :code:`spaces` will result in leading
           "0100" when a = "01" else 
           "0010" when a = "10" else 
           "0001" when a = "11";
-
-   end architecture rtl;
-   
-:code:`tabs` Example
-####################
-
-Setting the :code:`indent_style` option to :code:`tabs` will result in leading whitespace to be converted into tabs.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   architecture rtl of fifo is
-
-     signal wr_en : std_logic;
-
-   begin
-
-     b <= "1000" when a = "00" else 
-          "0100" when a = "01" else 
-          "0010" when a = "10" else 
-          "0001" when a = "11";
-
-   end architecture rtl;
-
-**Fix**
-
-.. code-block:: text
-
-   architecture rtl of fifo is
-
-   \tsignal wr_en : std_logic;
-
-   begin
-
-   \tb <= "1000" when a = "00" else 
-   \t\t"0100" when a = "01" else 
-   \t\t"0010" when a = "10" else 
-   \t\t"0001" when a = "11";
 
    end architecture rtl;
 
