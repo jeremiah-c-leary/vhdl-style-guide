@@ -69,8 +69,11 @@ class vhdlFile():
 
         self.lAllObjects = []
         for sLine in self.filecontent:
-            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip('\n').rstrip('\r'))
-#            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip())
+            sMyLine = sLine.rstrip('\n').rstrip('\r')
+#            print('='*100)
+#            print(f'{sMyLine}|<===')
+            lTokens = tokens.create(sLine.rstrip('\n').rstrip('\r'))
+#            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip('\n').rstrip('\r'))
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
@@ -95,6 +98,7 @@ class vhdlFile():
 
         set_token_hierarchy_value(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
+#        print(f'self.lAllObjects => {self.lAllObjects}')
 
     def update(self, lUpdates):
 
@@ -128,10 +132,14 @@ class vhdlFile():
         return lReturn
 
     def get_lines(self):
+#        print('--> get_lines <==') 
         lReturn = []
         lReturn.append('')
+#        print(f'self.lAllObjects => {self.lAllObjects}')
         for lLine in split_on_carriage_return(self.lAllObjects):
             lReturn.append(utils.convert_token_list_to_string(lLine))
+#        print(lReturn)
+#        print('<== self.lAllObjects <==')
         return lReturn
 
     def get_line_count(self):
@@ -166,6 +174,9 @@ class vhdlFile():
 
     def get_tokens_matching(self, lTokens):
         return extract.get_tokens_matching(lTokens, self.lAllObjects, self.oTokenMap)
+
+    def get_tokens_matching_not_at_beginning_or_ending_of_line(self, lTokens):
+        return extract.get_tokens_matching_not_at_beginning_or_ending_of_line(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_n_token_after_tokens(self, iToken, lTokens):
         return extract.get_n_token_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)

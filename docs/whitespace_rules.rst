@@ -27,6 +27,8 @@ Where periods indicate spaces:
 whitespace_002
 ##############
 
+|phase_1| |error| |whitespace|
+
 This rule will check for the existence of tabs in the middle of a line.
 
 |configuring_tabs_vs_spaces_link|

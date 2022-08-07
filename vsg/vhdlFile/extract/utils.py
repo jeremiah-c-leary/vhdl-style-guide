@@ -1,5 +1,6 @@
 
 from vsg import parser
+from vsg import token
 
 from vsg.vhdlFile.extract import tokens
 
@@ -7,7 +8,7 @@ from vsg.vhdlFile.extract import tokens
 def is_token_at_start_of_line(iIndex, oTokenMap):
     if oTokenMap.is_token_at_index(parser.carriage_return, iIndex - 1):
         return True
-    if oTokenMap.is_token_at_index(parser.carriage_return, iIndex - 2) and oTokenMap.is_token_at_index(parser.whitespace, iIndex - 1):
+    if oTokenMap.is_token_at_index(parser.carriage_return, iIndex - 2) and is_token_at_index_whitespace(oTokenMap, iIndex - 1):
         return True
     return False
 
@@ -151,3 +152,15 @@ def get_all_blank_lines_above_indexes(lIndexes, lAllTokens, oTokenMap):
             lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart:iEnd]))
 
     return lReturn
+
+
+def is_token_at_index_whitespace(oTokenMap, iIndex):
+    if oTokenMap.is_token_at_index(parser.whitespace, iIndex):
+        return True
+    return False
+
+
+def is_token_at_index_carriage_return(oTokenMap, iIndex):
+    if oTokenMap.is_token_at_index(parser.carriage_return, iIndex):
+        return True
+    return False

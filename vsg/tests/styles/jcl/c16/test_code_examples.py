@@ -44,6 +44,8 @@ class testCodeExample(unittest.TestCase):
 
         utils.read_file(os.path.join(os.path.dirname(__file__),'BaudGen.fixed.vhd'), lExpected)
 
+        print(oBaudGen.get_lines())
+
         self.assertEqual(lExpected, oBaudGen.get_lines())
 
     def test_board_cpu(self):

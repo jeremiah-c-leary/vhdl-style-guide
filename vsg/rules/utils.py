@@ -75,8 +75,13 @@ def update_code_tags(oToken1, oToken2):
     return oToken2
 
 
-def insert_whitespace(lTokens, index, num=1):
-    insert_token(lTokens, index, parser.whitespace(' '*num))
+def insert_whitespace(lTokens, index, num=1, sString=' '):
+    if sString == ' ':
+        insert_token(lTokens, index, parser.whitespace(' '*num))
+    else:
+        oToken = parser.whitespace('\t'*num)
+        oToken.has_tabs = True
+        insert_token(lTokens, index, oToken)
 
 
 def insert_carriage_return(lTokens, index):
@@ -326,3 +331,15 @@ def update_close_paren_counter(oToken, iCloseParen):
     if token_is_close_paren(oToken):
         return iCloseParen + 1
     return iCloseParen
+
+
+def token_is_whitespace(oToken):
+    if isinstance(oToken, parser.whitespace):
+        return True
+    return False
+
+
+def token_is_comment(oToken):
+    if isinstance(oToken, parser.comment):
+        return True
+    return False

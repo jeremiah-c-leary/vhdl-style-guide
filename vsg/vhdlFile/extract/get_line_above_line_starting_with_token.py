@@ -9,7 +9,6 @@ def get_line_above_line_starting_with_token(lTokens, lAllTokens, oTokenMap, bInc
     lReturn = []
 
     lTokenIndexes = utils.get_indexes_of_token_list(lTokens, oTokenMap)
-
     lIndexes = []
     for iIndex in lTokenIndexes:
         if utils.is_token_at_start_of_line(iIndex, oTokenMap):

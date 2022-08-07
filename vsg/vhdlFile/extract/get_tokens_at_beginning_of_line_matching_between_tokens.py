@@ -1,5 +1,6 @@
 
 from vsg import parser
+from vsg import token
 
 from vsg.vhdlFile.extract import tokens
 from vsg.vhdlFile.extract import utils
@@ -17,7 +18,7 @@ def get_tokens_at_beginning_of_line_matching_between_tokens(lTokens, oStart, oEn
             if oTokenMap.is_token_at_index(parser.carriage_return, iIndex - 1):
                 iLine = oTokenMap.get_line_number_of_index(iIndex)
                 lReturn.append(tokens.New(iIndex, iLine, [lAllTokens[iIndex]]))
-            elif oTokenMap.is_token_at_index(parser.carriage_return, iIndex - 2) and oTokenMap.is_token_at_index(parser.whitespace, iIndex - 1):
+            elif oTokenMap.is_token_at_index(parser.carriage_return, iIndex - 2) and utils.is_token_at_index_whitespace(oTokenMap, iIndex - 1):
                 iLine = oTokenMap.get_line_number_of_index(iIndex)
                 lReturn.append(tokens.New(iIndex - 1, iLine, lAllTokens[iIndex - 1: iIndex + 1]))
 

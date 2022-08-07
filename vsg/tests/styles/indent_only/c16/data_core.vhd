@@ -69,7 +69,7 @@ architecture Behavioral of data_core is
       IMM     : IN  std_logic_vector(15 downto 0);
       QUICK   : IN  std_logic_vector( 3 downto 0);
       RDAT    : IN  std_logic_vector( 7 downto 0);
-      RR      : IN  std_logic_vector(15 downto 0);          
+      RR      : IN  std_logic_vector(15 downto 0);
       YY      : OUT std_logic_vector(15 downto 0)
     );
   END COMPONENT;

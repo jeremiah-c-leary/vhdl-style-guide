@@ -67,8 +67,8 @@ architecture behavioral of board_cpu is
       XM_WDAT      : out STD_LOGIC_VECTOR( 7 downto 0);
       XM_WE      : out STD_LOGIC;
       XM_CE      : out STD_LOGIC
-    ); 
-  END COMPONENT; 
+    );
+  END COMPONENT;
 
   signal XM_WDAT  : std_logic_vector( 7 downto 0);
   signal XM_RDAT  : std_logic_vector( 7 downto 0);

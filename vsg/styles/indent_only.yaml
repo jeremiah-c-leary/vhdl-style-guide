@@ -1,7 +1,29 @@
 # The name must be a single word
 name : indent_only
 # We only want to fix the indent level
-skip_phase: [1, 2, 3, 5, 6, 7]
+#skip_phase: [1, 2, 3, 5, 6, 7]
+skip_phase: []
 rule :
+  global:
+    disable: true
+  group:
+    indent:
+      disable: false
+  concurrent_003 :
+    disable : false
+  constant_012 :
+    disable : false
+  constant_014 :
+    disable : false
+  if_004 :
+    disable : false
   process_020 :
     disable : true
+  sequential_004 :
+    disable : false
+  variable_assignment_004 :
+    disable : false
+  whitespace_001:
+    disable : true
+  whitespace_002 :
+    disable : false

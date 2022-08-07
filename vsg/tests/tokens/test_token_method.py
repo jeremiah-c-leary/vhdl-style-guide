@@ -854,3 +854,20 @@ class testTokenMethod(unittest.TestCase):
         lActual = tokens.create(sLine)
   
         self.assertEqual(lTokens, lActual)
+
+    def test_tabs(self):
+        sLine = 'a\tb \t c\t \td \t'
+        lTokens = []
+        lTokens.append('a')
+        lTokens.append('\t')
+        lTokens.append('b')
+        lTokens.append(' \t ')
+        lTokens.append('c')
+        lTokens.append('\t \t')
+        lTokens.append('d')
+        lTokens.append(' \t')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+

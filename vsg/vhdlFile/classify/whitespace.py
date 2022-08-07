@@ -15,10 +15,21 @@ def classify(lTokens, lObjects):
                 pass
             else:
                 lObjects[iToken] = parser.whitespace(sToken)
+                if string_contains_tab(sToken):
+                    lObjects[iToken].has_tab = True
+        elif string_contains_tab(sToken):
+            lObjects[iToken] = parser.whitespace(sToken)
+            lObjects[iToken].has_tab = True
 
 
 def string_contains_space(sToken):
     if ' ' in sToken:
+        return True
+    return False
+
+
+def string_contains_tab(sToken):
+    if '\t' in sToken:
         return True
     return False
 
