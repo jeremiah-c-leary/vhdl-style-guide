@@ -8,6 +8,16 @@ from vsg.vhdlFile.classify import generic_map_aspect
 from vsg.vhdlFile.classify import port_map_aspect
 
 
+def detect(iToken, lObjects):
+    if utils.is_next_token('use', iToken, lObjects):
+        return classify(iToken, lObjects)
+    if utils.is_next_token('generic', iToken, lObjects):
+        return classify(iToken, lObjects)
+    if utils.is_next_token('port', iToken, lObjects):
+        return classify(iToken, lObjects)
+    return iToken
+
+
 def classify(iToken, lObjects):
     '''
     binding_indication ::=

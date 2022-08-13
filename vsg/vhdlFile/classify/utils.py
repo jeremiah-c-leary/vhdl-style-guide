@@ -69,3 +69,14 @@ def is_use_clause_selected_name(token):
     if token.__name__ == 'vsg.token.use_clause':
         return True
     return False
+
+
+def classify_production(production, iToken, lObjects):
+    iCurrent = iToken
+    iStop = len(lObjects)
+    while iCurrent < iStop:
+        iPrevious = iCurrent
+        iCurrent = production.detect(iCurrent, lObjects)
+        if iPrevious == iCurrent:
+            break
+    return iCurrent

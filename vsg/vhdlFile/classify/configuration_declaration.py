@@ -4,7 +4,7 @@ from vsg.token import configuration_declaration as token
 from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify import configuration_declarative_part
-#from vsg.vhdlFile.classify import architecture_statement_part
+from vsg.vhdlFile.classify import block_configuration
 
 
 def detect(iToken, lObjects):
@@ -27,8 +27,8 @@ def classify(iToken, lObjects):
     iCurrent = classify_opening_declaration(iToken, lObjects)
 
     iCurrent = configuration_declarative_part.detect(iCurrent, lObjects)
-#
-#    iCurrent = architecture_statement_part.classify_until(['end'], iCurrent, lObjects)
+
+    iCurrent = block_configuration.detect(iCurrent, lObjects)
 
     iCurrent = classify_closing_declaration(iToken, lObjects)
 
