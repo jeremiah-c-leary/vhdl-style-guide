@@ -78,17 +78,19 @@ class rule_400(alignment.Rule):
             iLine, lTokens = utils.get_toi_parameters(oToi)
 
             iSpaces = self._calculate_column(oFile, oToi, lTokens)
+            sWhitespace = self._expected_whitespace(oFile, oToi, lTokens)
 
             for iToken, oToken in enumerate(lTokens):
                 if isinstance(oToken, parser.carriage_return):
                     iLine += 1
                     if isinstance(lTokens[iToken + 1], parser.whitespace):
-                        if len(lTokens[iToken + 1].get_value()) != iSpaces:
-                            self._create_violation(iLine, iSpaces, 'adjust', oToi.extract_tokens(iToken + 1, iToken + 1))
+                        if lTokens[iToken + 1].get_value() != sWhitespace:
+#                        if len(lTokens[iToken + 1].get_value()) != iSpaces:
+                            self._create_violation(iLine, iSpaces, 'adjust', oToi.extract_tokens(iToken + 1, iToken + 1), sWhitespace)
                     elif isinstance(lTokens[iToken + 1], parser.blank_line):
                             continue
                     else:
-                        self._create_violation(iLine, iSpaces, 'insert', oToi.extract_tokens(iToken + 1, iToken + 1))
+                        self._create_violation(iLine, iSpaces, 'insert', oToi.extract_tokens(iToken + 1, iToken + 1), sWhitespace)
 
     def fix(self, oFile, dFixOnly=None):
         '''
@@ -108,18 +110,20 @@ class rule_400(alignment.Rule):
         dAction = oViolation.get_action()
 
         if dAction['action'] == 'adjust':
-            lTokens[0].set_value(' '*dAction['column'])
+            lTokens[0].set_value(dAction['whitespace'])
         else:
-            rules_utils.insert_whitespace(lTokens, 0, dAction['column'])
+            rules_utils.insert_new_whitespace(lTokens, 0, dAction['whitespace'])
+#            rules_utils.insert_whitespace(lTokens, 0, dAction['column'])
 
         oViolation.set_tokens(lTokens)
 
-    def _create_violation(self, iLine, iSpaces, sAction, lTokens):
+    def _create_violation(self, iLine, iSpaces, sAction, lTokens, sWhitespace):
         sSolution = 'Indent line to column ' + str(iSpaces)
         oViolation = violation.New(iLine, lTokens, sSolution)
         dAction = {}
         dAction['action'] = sAction
         dAction['column'] = iSpaces
+        dAction['whitespace'] = sWhitespace
         oViolation.set_action(dAction)
         self.add_violation(oViolation)
 
@@ -129,3 +133,18 @@ class rule_400(alignment.Rule):
         else:
             iSpaces = (lTokens[0].indent + 1) * self.indentSize
         return iSpaces
+
+    def _expected_whitespace(self, oFile, oToi, lTokens):
+        if self.indentStyle == 'smart_tabs':
+            if self.alignment == 'report':
+                return (lTokens[0].indent) * '\t' + ' ' * len('report ')
+            else:
+                return (lTokens[0].indent + 1) * '\t'
+        else:
+            if self.alignment == 'report':
+                iSpaces = oFile.get_column_of_token_index(oToi.get_start_index()) + 7
+            else:
+                iSpaces = (lTokens[0].indent + 1) * self.indentSize
+            return iSpaces * ' '
+
+
