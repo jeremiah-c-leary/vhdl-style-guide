@@ -40,18 +40,26 @@ class multiline_alignment_between_tokens(alignment.Rule):
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
+
+        for oToi in lToi:
+            iLine = oToi.get_line_number()
+            iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
+            iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
+            oToi.set_meta_data('iFirstLine', iFirstLine)
+            oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
+            oToi.set_meta_data('iAssignColumn', iAssignColumn)
+
         return lToi
 
-    def analyze(self, oFile):
-        lToi = self._get_tokens_of_interest(oFile)
+    def _analyze(self, lToi):
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
-#            print('='*5 + str(iLine) + '='*70)
 
-            iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
+            iFirstLine = oToi.get_meta_data('iFirstLine')
+            iFirstLineIndent = oToi.get_meta_data('iFirstLineIndent')
+            iAssignColumn = oToi.get_meta_data('iAssignColumn')
 
-            iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             iColumn = iAssignColumn
 
             dActualIndent = {}
