@@ -1,34 +1,11 @@
 
-from vsg.rules import align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token as Rule
-
-from vsg.token import case_generate_alternative as token
+from vsg import deprecated_rule
 
 
-class rule_300(Rule):
+class rule_300(deprecated_rule.Rule):
     '''
-    This rule aligns consecutive comment only lines above a **when** keyword in a case generate statement with the **when** keyword.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-           -- comment 1
-     -- comment 2
-        -- comment 3
-       when wr_en =>
-         rd_en <= '0';
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       -- comment 1
-       -- comment 2
-       -- comment 3
-       when wr_en =>
-         rd_en <= '0';
+    The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
     '''
-
     def __init__(self):
-        Rule.__init__(self, 'case_generate_alternative', '300', token.when_keyword)
-        self.solution = 'Align comment with *when* keyword.'
+        deprecated_rule.Rule.__init__(self, 'case_generate_alternative', '300')
+        self.message.append('The function of rule ' + self.unique_id + ' is covered by rule comment_010.')
