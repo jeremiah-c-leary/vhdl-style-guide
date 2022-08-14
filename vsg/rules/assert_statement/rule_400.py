@@ -67,41 +67,35 @@ class rule_400(alignment.Rule):
         self.phase = 4
 
     def _get_tokens_of_interest(self, oFile):
-        lReturn = oFile.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens([assertion.report_keyword], [assertion.severity_keyword, assertion_statement.semicolon, concurrent_assertion_statement.semicolon], True, False, True)
-        for oToi in lReturn:
+        lReturn = []
+        lToi = oFile.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens([assertion.report_keyword], [assertion.severity_keyword, assertion_statement.semicolon, concurrent_assertion_statement.semicolon], True, False, True)
+        for oToi in lToi:
             lTokens = oToi.get_tokens()
-            oToi.set_meta_data('iSpaces', self._calculate_column(oFile, oToi, lTokens))
-            oToi.set_meta_data('sWhitespace', self._expected_whitespace(oFile, oToi, lTokens))
+            iSpaces = self._calculate_column(oFile, oToi, lTokens)
+            sWhitespace = self._expected_whitespace(oFile, oToi, lTokens)
+
+            lIndexes = get_index_after_carriage_return(lTokens)
+
+            for iIndex in lIndexes:
+                myToi = oToi.extract_tokens(iIndex, iIndex)
+                myToi.set_meta_data('iSpaces', self._calculate_column(oFile, oToi, lTokens))
+                myToi.set_meta_data('sWhitespace', self._expected_whitespace(oFile, oToi, lTokens))
+                lReturn.append(myToi)
+
         return lReturn
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            self._something(oToi)
-
-    def _something(self, oToi):
-            iLine, lTokens = utils.get_toi_parameters(oToi)
-
-            for iToken, oToken in enumerate(lTokens):
-                if isinstance(oToken, parser.carriage_return):
-                    iLine += 1
-                    if isinstance(lTokens[iToken + 1], parser.blank_line):
-                        continue
-                    oToi.set_meta_data('iLine', iLine)
-                    oToi.set_meta_data('iToken', iToken)
-                    self._check_leading_whitespace(oToi)
+            self._check_leading_whitespace(oToi)
 
     def _check_leading_whitespace(self, oToi):
-                    sWhitespace = oToi.get_meta_data('sWhitespace')
-                    iSpaces = oToi.get_meta_data('iSpaces')
-                    iToken = oToi.get_meta_data('iToken')
-                    iLine = oToi.get_meta_data('iLine')
-                    lTokens = oToi.get_tokens()
-                    if isinstance(lTokens[iToken + 1], parser.whitespace):
-                        if lTokens[iToken + 1].get_value() != sWhitespace:
-                            self._create_violation(oToi, 'adjust', oToi.extract_tokens(iToken + 1, iToken + 1))
-                    else:
-                        self._create_violation(oToi, 'insert', oToi.extract_tokens(iToken + 1, iToken + 1))
-
+        sWhitespace = oToi.get_meta_data('sWhitespace')
+        oToken = oToi.get_tokens()[0]
+        if isinstance(oToken, parser.whitespace):
+            if oToken.get_value() != sWhitespace:
+                self._create_violation(oToi, 'adjust')
+        else:
+            self._create_violation(oToi, 'insert')
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -114,9 +108,9 @@ class rule_400(alignment.Rule):
 
         oViolation.set_tokens(lTokens)
 
-    def _create_violation(self, oToi, sAction, lTokens):
+    def _create_violation(self, oToi, sAction):
         sSolution = 'Indent line to column ' + str(oToi.get_meta_data('iSpaces'))
-        oViolation = violation.New(oToi.get_meta_data('iLine'), lTokens, sSolution)
+        oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
         dAction = {}
         dAction['action'] = sAction
         dAction['column'] = oToi.get_meta_data('iSpaces')
@@ -144,4 +138,9 @@ class rule_400(alignment.Rule):
                 iSpaces = (lTokens[0].indent + 1) * self.indentSize
             return iSpaces * ' '
 
-
+def get_index_after_carriage_return(lTokens):
+    lReturn = []
+    for iToken, oToken in enumerate(lTokens):
+        if isinstance(oToken, parser.carriage_return):
+            lReturn.append(iToken + 1)
+    return lReturn
