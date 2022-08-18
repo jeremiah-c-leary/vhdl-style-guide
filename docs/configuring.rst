@@ -17,6 +17,7 @@ Configuring
    configuring_keyword_alignment_rules.rst
    configuring_length_rules.rst
    configuring_move_token_rules.rst
+   configuring_multiline_assert_rule.rst
    configuring_multiline_constraint_rules.rst
    configuring_multiline_indent_rules.rst
    configuring_multiline_structure_rules.rst

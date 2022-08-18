@@ -16,17 +16,17 @@ The method of indenting can be configured using one of the following options:
 .. |smart_tabs_description| replace::
    Indentation will be performed using tabs and spaces.
 
-+----------------------+--------------------+----------------------------+
-| Option               | Value              | Description                |
-+======================+====================+============================+
-| :code:`indent_style` | :code:`spaces`     | |spaces_description|       |
-|                      +--------------------+----------------------------+
-|                      | :code:`smart_tabs` | |smart_tabs_description|   |
-+----------------------+--------------------+----------------------------+
+.. |values| replace::
+   :code:`spaces`, :code:`smart-tabs`
 
-The default value for :code:`indent_style` is :code:`spaces`.
++----------------------+----------+-----------------+----------------------------+
+| Option               | Values   | Default Value   | Description                |
++======================+==========+==============--=+============================+
+| :code:`indent_style` | |values| | |default_value| | * |spaces_description|     |
+|                      |          |                 | * |smart_tabs_description| |
++----------------------+----------+-----------------+----------------------------+
 
-The :code:`indent_styule` option can be set globally for all rules and locally for a single file using a configuration:
+The :code:`indent_style` option can be set globally for all rules and locally for a single file using a configuration:
 
 .. code-block:: yaml
 
