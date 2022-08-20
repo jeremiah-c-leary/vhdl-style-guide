@@ -112,6 +112,14 @@ def get_index_of_token_in_list(oToken, lTokens):
     return None
 
 
+def get_indexes_of_token_in_list(oToken, lTokens):
+    lReturn = []
+    for iToken, token in enumerate(lTokens):
+        if isinstance(token, oToken):
+            lReturn.append(iToken)
+    return lReturn
+
+
 def get_number_of_carriage_returns_before_token(oStopToken, lTokens):
     iReturn = 0
     for oToken in lTokens:

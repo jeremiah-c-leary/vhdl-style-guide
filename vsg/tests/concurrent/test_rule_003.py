@@ -10,6 +10,8 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_003_test_input.vhd'))
 
+dIndentMap = utils.read_indent_file()
+
 lExpected_align_left_no_align_paren_yes = []
 lExpected_align_left_no_align_paren_yes.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_align_left_no_align_paren_yes.vhd'), lExpected_align_left_no_align_paren_yes)
@@ -22,12 +24,25 @@ lExpected_align_left_yes_align_paren_yes = []
 lExpected_align_left_yes_align_paren_yes.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_align_left_yes_align_paren_yes.vhd'), lExpected_align_left_yes_align_paren_yes)
 
+lExpected_align_left_no_align_paren_yes__smart_tabs = []
+lExpected_align_left_no_align_paren_yes__smart_tabs.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_align_left_no_align_paren_yes__smart_tabs.vhd'), lExpected_align_left_no_align_paren_yes__smart_tabs)
 
-class test_concurrent_rule(unittest.TestCase):
+lExpected_align_left_yes_align_paren_no__smart_tabs = []
+lExpected_align_left_yes_align_paren_no__smart_tabs.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_align_left_yes_align_paren_no__smart_tabs.vhd'), lExpected_align_left_yes_align_paren_no__smart_tabs)
+
+lExpected_align_left_yes_align_paren_yes__smart_tabs = []
+lExpected_align_left_yes_align_paren_yes__smart_tabs.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_align_left_yes_align_paren_yes.vhd'), lExpected_align_left_yes_align_paren_yes__smart_tabs)
+
+
+class test_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
+        self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_003_align_left_no_align_paren_yes(self):
         oRule = concurrent.rule_003()
@@ -100,6 +115,85 @@ class test_concurrent_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected_align_left_yes_align_paren_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_003_align_left_no_align_paren_yes__smart_tabs(self):
+        oRule = concurrent.rule_003()
+        oRule.indentStyle = 'smart_tabs'
+        oRule.align_left = 'no'
+        oRule.align_paren = 'yes'
+
+        lExpected = [8, 11, 14, 17, 20, 21, 22, 23, 24]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_003_align_left_no_align_paren_yes__smart_tabs(self):
+        oRule = concurrent.rule_003()
+        oRule.indentStyle = 'smart_tabs'
+        oRule.align_left = 'no'
+        oRule.align_paren = 'yes'
+        self.maxDiff = None
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_no_align_paren_yes__smart_tabs, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_003_align_left_yes_align_paren_no__smart_tabs(self):
+        oRule = concurrent.rule_003()
+        oRule.indentStyle = 'smart_tabs'
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'no'
+
+        lExpected = [8, 11, 14, 17, 20, 21, 22, 23, 24]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_003_align_left_yes_align_paren_no__smart_tabs(self):
+        oRule = concurrent.rule_003()
+        oRule.indentStyle = 'smart_tabs'
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_no__smart_tabs, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_003_align_left_yes_align_paren_yes__smart_tabs(self):
+        oRule = concurrent.rule_003()
+        oRule.indentStyle = 'smart_tabs'
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'yes'
+
+        lExpected = [8, 11, 14, 17, 20, 21, 22, 23, 24]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_003_align_left_yes_align_paren_yes__smart_tabs(self):
+        oRule = concurrent.rule_003()
+        oRule.indentStyle = 'smart_tabs'
+        oRule.align_left = 'yes'
+        oRule.align_paren = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_yes_align_paren_yes__smart_tabs, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
