@@ -41,6 +41,18 @@ architecture RTL of FIFO is
     );
   end component COMP;
 
+  -- test with range in generic
+  component COMP is
+    generic (
+      G_GEN1 : integer := 1;
+      G_GEN2 : integer range 0 to 3
+    );
+    port (
+      I_PORT : in integer := 1;
+      O_PORT : out integer := 0
+    );
+  end component COMP;
+
 begin
 
 end architecture RTL;
