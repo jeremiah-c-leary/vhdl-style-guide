@@ -209,13 +209,80 @@
 43 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-44 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+44 |   -- test with range in generic
+<class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-45 |
+45 |   component COMP is
+<class 'vsg.token.component_declaration.component_keyword'>
+<class 'vsg.token.component_declaration.identifier'>
+<class 'vsg.token.component_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+46 |     generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+47 |       G_GEN1 : integer := 1;
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+48 |       G_GEN2 : integer range 0 to 3
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+49 |     );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+50 |     port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+51 |       I_PORT : in integer := 1;
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+52 |       O_PORT : out integer := 0
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+53 |     );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+54 |   end component COMP;
+<class 'vsg.token.component_declaration.end_keyword'>
+<class 'vsg.token.component_declaration.end_component_keyword'>
+<class 'vsg.token.component_declaration.component_simple_name'>
+<class 'vsg.token.component_declaration.semicolon'>
+--------------------------------------------------------------------------------
+55 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-46 | end architecture RTL;
+56 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+57 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+58 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
