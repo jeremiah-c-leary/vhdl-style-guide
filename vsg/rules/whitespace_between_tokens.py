@@ -50,8 +50,9 @@ class Rule(whitespace.Rule):
                 self.analyze_no_whitespace_token(oToi)
 
     def analyze_no_whitespace_token(self, oToi):
-        iSpaces = self.extract_expected_number_of_spaces()
-        self.create_violation(oToi, iSpaces)
+        if self.number_of_spaces != 0:
+            iSpaces = self.extract_expected_number_of_spaces()
+            self.create_violation(oToi, iSpaces)
 
     def extract_expected_number_of_spaces(self):
         if self.number_of_spaces_is_an_integer():
@@ -125,10 +126,13 @@ class Rule(whitespace.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        if isinstance(lTokens[1], parser.whitespace):
-            lTokens[1].set_value(' '*dAction['spaces'])
+        if self.number_of_spaces == 0:
+            lTokens = [lTokens[0], lTokens[2]]
         else:
-            rules_utils.insert_whitespace(lTokens, dAction['spaces'])
+            if isinstance(lTokens[1], parser.whitespace):
+                lTokens[1].set_value(' '*dAction['spaces'])
+            else:
+                rules_utils.insert_whitespace(lTokens, dAction['spaces'])
         oViolation.set_tokens(lTokens)
 
 
