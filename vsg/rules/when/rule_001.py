@@ -66,7 +66,7 @@ class rule_001(structure.Rule):
                 iLine = utils.increment_line_number(iLine, oToken)
                 for oMoveToken in self.lMoveTokens:
                     if isinstance(oToken, oMoveToken):
-                        if lTokens[iToken - 2] is not oAnchorToken or \
+                        if (lTokens[iToken - 2] is not oAnchorToken and lTokens[iToken - 1] is not oAnchorToken) or \
                            lTokens[iToken - 2] is oAnchorToken and isinstance(lTokens[iToken - 1], parser.carriage_return):
                             self.solution = 'Move "' + oToken.get_value() + '" to the right of "' + oAnchorToken.get_value() + '" on line ' + str(iMoveToLine)
                             if isinstance(lTokens[iToken + 1], parser.whitespace):
