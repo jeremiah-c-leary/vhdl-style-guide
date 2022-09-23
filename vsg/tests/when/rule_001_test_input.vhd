@@ -33,4 +33,7 @@ else sig2 when c = '0'  -- This is a comment
 
   end process;
 
+  a <= b when (c = '1')else d;
+  a <= b when (c = '1'else d;
+
 end architecture ARCH;
