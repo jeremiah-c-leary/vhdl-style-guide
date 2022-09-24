@@ -25,5 +25,25 @@ begin
   begin
   end process;
 
+  -- Smart Tabs
+  process (a, b
+          )
+  begin
+  end process;
+
+  process (a, b
+          )
+  begin
+  end process;
+
+  process (a, b
+          )
+  begin
+  end process;
+
+  process (a, b
+          )
+  begin
+  end process;
 
 end architecture RTL;
