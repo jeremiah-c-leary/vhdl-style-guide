@@ -47,6 +47,30 @@ Labels on procedure calls are optional and do not provide additional information
 
    WR_EN(parameter);
 
+procedure_call_003
+##################
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of concurrent procedure calls.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   connect_ports(port_1 => data, port_2 => enable, port_3 => overflow, port_4 => underflow);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1 => data,
+     port_2 => enable,
+     port_3 => overflow,
+     port_4 => underflow
+   );
+
 .. _procedure_call_whitespacing_rules:
 
 procedure_call_100
@@ -159,6 +183,35 @@ This rule checks the alignment of multiline procedure calls.
    connect_ports(port_1, port_2, port_3,
                  port_4, port_5,
                  port_6, port_7);
+
+procedure_call_401
+##################
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of :code:`=>` keywords in procedure calls.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1=> data,
+     port_2 => enable,
+     port_3    => overflow,
+     port_4  => underflow
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1 => data,
+     port_2 => enable,
+     port_3 => overflow,
+     port_4 => underflow
+   );
 
 procedure_call_500
 ##################

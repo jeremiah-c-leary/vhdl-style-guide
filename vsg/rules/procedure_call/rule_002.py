@@ -20,8 +20,6 @@ class rule_002(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     .. code-block:: vhdl
 
        WR_EN(parameter);
-
-    .. _procedure_call_whitespacing_rules:
     '''
 
     def __init__(self):

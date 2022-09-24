@@ -4,7 +4,7 @@ from vsg.rules import multiline_alignment_between_tokens as Rule
 from vsg import token
 
 lTokenPairs = []
-lTokenPairs.append([token.procedure_call.open_parenthesis, token.procedure_call.close_parenthesis])
+lTokenPairs.append([token.procedure_call.procedure_name, token.procedure_call.close_parenthesis])
 
 
 class rule_400(Rule):

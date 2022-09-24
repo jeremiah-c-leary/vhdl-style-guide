@@ -67,6 +67,7 @@ class vhdlFile():
 
     def _processFile(self):
 
+        oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
             sMyLine = sLine.rstrip('\n').rstrip('\r')
@@ -78,9 +79,9 @@ class vhdlFile():
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
 
-            blank.classify(lObjects)
+            blank.classify(lObjects, oOptions)
             whitespace.classify(lTokens, lObjects)
-            comment.classify(lTokens, lObjects)
+            comment.classify(lTokens, lObjects, oOptions)
             preprocessor.classify(lTokens, lObjects)
             pragma.classify(lTokens, lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars)
 
@@ -558,6 +559,15 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = adding_operator.minus()
                 continue
+            if sValue.lower() == '*':
+                lTokens[iToken] = multiplying_operator.star(sValue)
+                continue
+            if sValue.lower() == '/':
+                lTokens[iToken] = multiplying_operator.slash(sValue)
+                continue
+            if sValue.lower() == '**':
+                lTokens[iToken] = miscellaneous_operator.double_star(sValue)
+                continue
             if sValue == '(':
                 iParenId += 1
                 lParenId.append(iParenId)
@@ -598,3 +608,18 @@ def remove_beginning_of_file_tokens(lTokens):
         if not isinstance(oToken, parser.beginning_of_file):
             lReturn.append(oToken)
     return lReturn
+
+
+class options():
+
+    def __init__(self):
+        self.bInsideDelimitedComment = False
+
+    def set_inside_delimited_comment(self):
+        self.bInsideDelimitedComment = True
+
+    def clear_inside_delimited_comment(self):
+        self.bInsideDelimitedComment = False
+
+    def inside_delimited_comment(self):
+        return self.bInsideDelimitedComment

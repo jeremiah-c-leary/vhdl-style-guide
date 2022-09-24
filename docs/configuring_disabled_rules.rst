@@ -31,6 +31,7 @@ Rules Disabled by Default
 * `block_comment_001 <block_comment_rules.html#block-comment-001>`_
 * `block_comment_002 <block_comment_rules.html#block-comment-002>`_
 * `block_comment_003 <block_comment_rules.html#block-comment-003>`_
+* `case_generate_statement_300 <case_generate_statement.html#case-statement-generate-400>`_
 * `comment_011 <comment_rules.html#comment-011>`_
 * `constant_015 <constant_rules.html#constant-015>`_
 * `generate_017 <generate_rules.html#generate-017>`_
@@ -43,6 +44,7 @@ Rules Disabled by Default
 * `package_body_601 <package_body_rules.html#package-body-601>`_
 * `port_011 <port_rules.html#port-011>`_
 * `port_025 <port_rules.html#port-025>`_
+* `process_029 <process_rules.html#process-029>`_
 * `process_036 <process_rules.html#process-036>`_
 * `signal_008 <signal_rules.html#signal-008>`_
 * `subtype_004 <subtype_rules.html#subtype-004>`_

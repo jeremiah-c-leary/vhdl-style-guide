@@ -50,7 +50,7 @@ begin
   process (CLK_I) is
   begin
 
-    if (CLK_I'event and CLK_I = '1') then
+    if (rising_edge(CLK_I)) then
       CE_16 <= '0';    -- make CE_16 stay on for (at most) one cycle
 
       if (RST_I = '1') then

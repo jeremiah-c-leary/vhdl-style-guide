@@ -14,6 +14,10 @@ lExpected = []
 lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_002_test_input.fixed.vhd'), lExpected)
 
+lExpected_w_0_spaces = []
+lExpected_w_0_spaces.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_002_test_input.fixed_w_0_spaces.vhd'), lExpected_w_0_spaces)
+
 
 class test_generate_rule(unittest.TestCase):
 
@@ -43,3 +47,26 @@ class test_generate_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_rule_002_with_0_spaces(self):
+        oRule = generate.rule_002()
+        oRule.number_of_spaces = 0
+
+        lExpected = [6, 10, 14, 24, 28]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_002_with_0_spaces(self):
+        oRule = generate.rule_002()
+        oRule.number_of_spaces = 0
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_w_0_spaces, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+

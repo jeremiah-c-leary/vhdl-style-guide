@@ -762,7 +762,7 @@ Parenthesis on multiple lines should be in the same column.
 process_029
 ###########
 
-|phase_1| |error| |structure|
+|phase_1| |disabled| |error| |structure|
 
 This rule checks for the format of clock definitions in clock processes.
 The rule can be set to enforce **event** definition:

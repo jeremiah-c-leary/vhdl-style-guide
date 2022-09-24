@@ -330,13 +330,33 @@
 43 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-44 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+44 |   signal sig9 : integer range (0) to (31) := 20;
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.signal_declaration.assignment_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
 45 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-46 | end architecture rtl;
+46 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+47 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+48 | end architecture rtl;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

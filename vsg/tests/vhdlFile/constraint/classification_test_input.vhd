@@ -41,6 +41,8 @@ signal sig8 : record_type_3(
 
   signal sig9 : integer range 0 to 31 := 20;
 
+  signal sig9 : integer range (0) to (31) := 20;
+
 begin
 
 end architecture rtl;

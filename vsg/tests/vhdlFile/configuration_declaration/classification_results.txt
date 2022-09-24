@@ -4,71 +4,936 @@
 1 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-2 | configuration CFG of FIFO is
+2 | configuration blah of blah is
 <class 'vsg.token.configuration_declaration.configuration_keyword'>
 <class 'vsg.token.configuration_declaration.identifier'>
 <class 'vsg.token.configuration_declaration.of_keyword'>
 <class 'vsg.token.configuration_declaration.entity_name'>
 <class 'vsg.token.configuration_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-3 | end configuration CFG;
+3 | end blah;
 <class 'vsg.token.configuration_declaration.end_keyword'>
-<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
 <class 'vsg.token.configuration_declaration.configuration_simple_name'>
 <class 'vsg.token.configuration_declaration.semicolon'>
 --------------------------------------------------------------------------------
 4 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-5 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-6 | configuration CFG of FIFO is
+5 | configuration blah of blah is
 <class 'vsg.token.configuration_declaration.configuration_keyword'>
 <class 'vsg.token.configuration_declaration.identifier'>
 <class 'vsg.token.configuration_declaration.of_keyword'>
 <class 'vsg.token.configuration_declaration.entity_name'>
 <class 'vsg.token.configuration_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-7 | end;
-<class 'vsg.token.configuration_declaration.end_keyword'>
-<class 'vsg.token.configuration_declaration.semicolon'>
+6 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
 --------------------------------------------------------------------------------
-8 |
-<class 'vsg.parser.blank_line'>
+7 |   end for beh;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.unspecified'>
+<class 'vsg.token.block_configuration.semicolon'>
 --------------------------------------------------------------------------------
-9 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-10 | configuration CFG of FIFO is
-<class 'vsg.token.configuration_declaration.configuration_keyword'>
-<class 'vsg.token.configuration_declaration.identifier'>
-<class 'vsg.token.configuration_declaration.of_keyword'>
-<class 'vsg.token.configuration_declaration.entity_name'>
-<class 'vsg.token.configuration_declaration.is_keyword'>
---------------------------------------------------------------------------------
-11 | end configuration;
-<class 'vsg.token.configuration_declaration.end_keyword'>
-<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
-<class 'vsg.token.configuration_declaration.semicolon'>
---------------------------------------------------------------------------------
-12 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-13 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-14 | configuration CFG of FIFO is
-<class 'vsg.token.configuration_declaration.configuration_keyword'>
-<class 'vsg.token.configuration_declaration.identifier'>
-<class 'vsg.token.configuration_declaration.of_keyword'>
-<class 'vsg.token.configuration_declaration.entity_name'>
-<class 'vsg.token.configuration_declaration.is_keyword'>
---------------------------------------------------------------------------------
-15 | end CFG;
+8 | end blah;
 <class 'vsg.token.configuration_declaration.end_keyword'>
 <class 'vsg.token.configuration_declaration.configuration_simple_name'>
 <class 'vsg.token.configuration_declaration.semicolon'>
 --------------------------------------------------------------------------------
-16 |
+9 |
 <class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+11 |   use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+12 | end blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+13 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+15 |   attribute attribute_designator of entity_designator : entity is 0;
+<class 'vsg.token.attribute_specification.attribute_keyword'>
+<class 'vsg.token.attribute_specification.attribute_designator'>
+<class 'vsg.token.attribute_specification.of_keyword'>
+<class 'vsg.token.entity_designator.entity_tag'>
+<class 'vsg.token.entity_specification.colon'>
+<class 'vsg.token.entity_specification.entity_class'>
+<class 'vsg.token.attribute_specification.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.attribute_specification.semicolon'>
+--------------------------------------------------------------------------------
+16 | end blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+17 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+19 |   group identifier : group_template_name ( group_constituent, group_constituent );
+<class 'vsg.token.group_declaration.group_keyword'>
+<class 'vsg.token.group_declaration.identifier'>
+<class 'vsg.token.group_declaration.colon'>
+<class 'vsg.token.group_declaration.group_template_name'>
+<class 'vsg.token.group_declaration.open_parenthesis'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_constituent_list.comma'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_declaration.close_parenthesis'>
+<class 'vsg.token.group_declaration.semicolon'>
+--------------------------------------------------------------------------------
+20 | end blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+21 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+23 |   use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+24 |   attribute attribute_designator of entity_designator : entity is 0;
+<class 'vsg.token.attribute_specification.attribute_keyword'>
+<class 'vsg.token.attribute_specification.attribute_designator'>
+<class 'vsg.token.attribute_specification.of_keyword'>
+<class 'vsg.token.entity_designator.entity_tag'>
+<class 'vsg.token.entity_specification.colon'>
+<class 'vsg.token.entity_specification.entity_class'>
+<class 'vsg.token.attribute_specification.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.attribute_specification.semicolon'>
+--------------------------------------------------------------------------------
+25 |   group identifier : group_template_name ( group_constituent, group_constituent );
+<class 'vsg.token.group_declaration.group_keyword'>
+<class 'vsg.token.group_declaration.identifier'>
+<class 'vsg.token.group_declaration.colon'>
+<class 'vsg.token.group_declaration.group_template_name'>
+<class 'vsg.token.group_declaration.open_parenthesis'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_constituent_list.comma'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_declaration.close_parenthesis'>
+<class 'vsg.token.group_declaration.semicolon'>
+--------------------------------------------------------------------------------
+26 |   use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+27 |   group identifier : group_template_name ( group_constituent, group_constituent );
+<class 'vsg.token.group_declaration.group_keyword'>
+<class 'vsg.token.group_declaration.identifier'>
+<class 'vsg.token.group_declaration.colon'>
+<class 'vsg.token.group_declaration.group_template_name'>
+<class 'vsg.token.group_declaration.open_parenthesis'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_constituent_list.comma'>
+<class 'vsg.token.group_constituent_list.group_constituent'>
+<class 'vsg.token.group_declaration.close_parenthesis'>
+<class 'vsg.token.group_declaration.semicolon'>
+--------------------------------------------------------------------------------
+28 |   attribute attribute_designator of entity_designator : entity is 0;
+<class 'vsg.token.attribute_specification.attribute_keyword'>
+<class 'vsg.token.attribute_specification.attribute_designator'>
+<class 'vsg.token.attribute_specification.of_keyword'>
+<class 'vsg.token.entity_designator.entity_tag'>
+<class 'vsg.token.entity_specification.colon'>
+<class 'vsg.token.entity_specification.entity_class'>
+<class 'vsg.token.attribute_specification.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.attribute_specification.semicolon'>
+--------------------------------------------------------------------------------
+29 | end blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+30 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+31 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+32 |   for generate_statement_label ( generate_specification )
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.generate_statement_label'>
+<class 'vsg.token.block_specification.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.block_specification.close_parenthesis'>
+--------------------------------------------------------------------------------
+33 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+34 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+35 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+37 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+38 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+39 |       use my.my.my;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+40 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+41 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+42 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+43 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+44 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+45 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+46 |       for beh2
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+47 |       end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+48 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+49 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+50 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+51 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+52 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+53 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+54 |       for all : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.all_keyword'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+55 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+56 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+57 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+58 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+59 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+60 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+61 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+62 |       for others : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.others_keyword'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+63 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+64 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+65 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+66 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+67 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+68 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+69 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+70 |       for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+71 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+72 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+73 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+74 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+75 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+76 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+77 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+78 |       for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+79 |          use open;
+<class 'vsg.token.binding_indication.use_keyword'>
+<class 'vsg.token.entity_aspect.open_keyword'>
+<class 'vsg.token.component_configuration.binding_indication_semicolon'>
+--------------------------------------------------------------------------------
+80 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+81 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+82 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+83 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+84 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+85 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+86 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+87 |       for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+88 |          use configuration configuration_name;
+<class 'vsg.token.binding_indication.use_keyword'>
+<class 'vsg.token.entity_aspect.configuration_keyword'>
+<class 'vsg.token.entity_aspect.configuration_name'>
+<class 'vsg.token.component_configuration.binding_indication_semicolon'>
+--------------------------------------------------------------------------------
+89 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+90 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+91 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+92 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+93 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+94 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+95 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+96 |       for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+97 |          use entity entity_name;
+<class 'vsg.token.binding_indication.use_keyword'>
+<class 'vsg.token.entity_aspect.entity_keyword'>
+<class 'vsg.token.entity_aspect.entity_name'>
+<class 'vsg.token.component_configuration.binding_indication_semicolon'>
+--------------------------------------------------------------------------------
+98 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+99 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+100 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+101 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+102 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+103 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+104 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+105 |       for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+106 |          use entity entity_name(architecture_name);
+<class 'vsg.token.binding_indication.use_keyword'>
+<class 'vsg.token.entity_aspect.entity_keyword'>
+<class 'vsg.token.entity_aspect.entity_name'>
+<class 'vsg.token.entity_aspect.open_parenthesis'>
+<class 'vsg.token.entity_aspect.architecture_identifier'>
+<class 'vsg.token.entity_aspect.close_parenthesis'>
+<class 'vsg.token.component_configuration.binding_indication_semicolon'>
+--------------------------------------------------------------------------------
+107 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+108 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+109 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+110 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+111 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+112 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+113 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+114 |       for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+115 |           generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+116 |              formal_part => actual_part,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+117 |              actual_part
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+118 |           );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_configuration.binding_indication_semicolon'>
+--------------------------------------------------------------------------------
+119 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+120 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+121 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+122 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+123 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+124 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+125 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+126 |       for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+127 |           port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+128 |              formal_part => actual_part,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+129 |              actual_part
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+130 |           );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_configuration.binding_indication_semicolon'>
+--------------------------------------------------------------------------------
+131 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+132 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+133 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>
+--------------------------------------------------------------------------------
+134 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+135 | configuration blah of blah is
+<class 'vsg.token.configuration_declaration.configuration_keyword'>
+<class 'vsg.token.configuration_declaration.identifier'>
+<class 'vsg.token.configuration_declaration.of_keyword'>
+<class 'vsg.token.configuration_declaration.entity_name'>
+<class 'vsg.token.configuration_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+136 |   for beh
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+137 |       use blah.blah.blah;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+138 |       for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+139 |          use entity entity_name(architecture_name)
+<class 'vsg.token.binding_indication.use_keyword'>
+<class 'vsg.token.entity_aspect.entity_keyword'>
+<class 'vsg.token.entity_aspect.entity_name'>
+<class 'vsg.token.entity_aspect.open_parenthesis'>
+<class 'vsg.token.entity_aspect.architecture_identifier'>
+<class 'vsg.token.entity_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+140 |           generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+141 |              formal_part => actual_part,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+142 |              actual_part
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+143 |           )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+144 |           port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+145 |              formal_part => actual_part,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+146 |              actual_part
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+147 |           );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_configuration.binding_indication_semicolon'>
+--------------------------------------------------------------------------------
+148 |           for beh2
+<class 'vsg.token.block_configuration.for_keyword'>
+<class 'vsg.token.block_specification.architecture_name'>
+--------------------------------------------------------------------------------
+149 |               use blah2.blah2.blah2;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.item_name'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+150 |               for instantiation_label : component_name
+<class 'vsg.token.component_configuration.for_keyword'>
+<class 'vsg.token.instantiation_list.instantiation_label'>
+<class 'vsg.token.component_specification.colon'>
+<class 'vsg.token.component_specification.component_name'>
+--------------------------------------------------------------------------------
+151 |                  use entity entity_name2(architecture_name2)
+<class 'vsg.token.binding_indication.use_keyword'>
+<class 'vsg.token.entity_aspect.entity_keyword'>
+<class 'vsg.token.entity_aspect.entity_name'>
+<class 'vsg.token.entity_aspect.open_parenthesis'>
+<class 'vsg.token.entity_aspect.architecture_identifier'>
+<class 'vsg.token.entity_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+152 |                   generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+153 |                      formal_part2 => actual_part2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+154 |                      actual_part2
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+155 |                   )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+156 |                   port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+157 |                      formal_part2 => actual_part2,
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.association_list.comma'>
+--------------------------------------------------------------------------------
+158 |                      actual_part2
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+159 |                   );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_configuration.binding_indication_semicolon'>
+--------------------------------------------------------------------------------
+160 |               end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+161 |           end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+162 |       end for;
+<class 'vsg.token.component_configuration.end_keyword'>
+<class 'vsg.token.component_configuration.end_for_keyword'>
+<class 'vsg.token.component_configuration.semicolon'>
+--------------------------------------------------------------------------------
+163 |   end for;
+<class 'vsg.token.block_configuration.end_keyword'>
+<class 'vsg.token.block_configuration.end_for_keyword'>
+<class 'vsg.token.block_configuration.semicolon'>
+--------------------------------------------------------------------------------
+164 | end configuration blah;
+<class 'vsg.token.configuration_declaration.end_keyword'>
+<class 'vsg.token.configuration_declaration.end_configuration_keyword'>
+<class 'vsg.token.configuration_declaration.configuration_simple_name'>
+<class 'vsg.token.configuration_declaration.semicolon'>

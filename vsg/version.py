@@ -2,6 +2,8 @@
 import subprocess
 import os
 
+sVersion = '3.12.2'
+
 
 def print_version(oCommandLineArguments):
 
@@ -18,7 +20,7 @@ def print_version(oCommandLineArguments):
 
 def get_version_info():
 
-    sVersion = '3.0.0'
+    sVersion = '3.12.2'
 
     if reporting_from_zip_file():
         return sVersion + '+zip.file', 'Unknown.  Installed via zip file.'
