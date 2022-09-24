@@ -6,11 +6,11 @@ library ieee;
   use ieee.numeric_std.all;
 
 library ieee;
--- Comment
+  -- Comment
   use ieee.std_logic_1164.all;
-	-- Comment
+  -- Comment
   -- Comment 2
--- Comment 3
+  -- Comment 3
   use ieee.numeric_std.all;
-   -- Comment
+  -- Comment
   use ieee.std_logic_arith.all;
