@@ -18,6 +18,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
         self.phase = 4
         self.lStartTokens = []
         self.lEndTokens = []
+        self.indentAdjust = 1
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []
@@ -75,7 +76,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
         if self.alignment == 'report':
             iSpaces = oFile.get_column_of_token_index(oToi.get_start_index()) + 7
         else:
-            iSpaces = (lTokens[0].indent + 1) * self.indentSize
+            iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indentSize
         return iSpaces
 
     def _expected_whitespace(self, oFile, oToi, lTokens):
@@ -83,12 +84,12 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
             if self.alignment == 'report':
                 return (lTokens[0].indent) * '\t' + ' ' * (len(lTokens[0].get_value()) + 1)
             else:
-                return (lTokens[0].indent + 1) * '\t'
+                return (lTokens[0].indent + self.indentAdjust) * '\t'
         else:
             if self.alignment == 'report':
                 iSpaces = oFile.get_column_of_token_index(oToi.get_start_index()) + (len(lTokens[0].get_value()) + 1)
             else:
-                iSpaces = (lTokens[0].indent + 1) * self.indentSize
+                iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indentSize
             return iSpaces * ' '
 
 def get_index_after_carriage_return(lTokens):
