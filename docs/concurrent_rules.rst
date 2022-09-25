@@ -319,3 +319,32 @@ This rule checks the structure of simple and conditional concurrent statements.
                         (I_CRUFT = '1')) else
             '0';
 
+concurrent_400
+##############
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment the => operator in record aggregates.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   interface <= (
+                 write_words => 12,
+                 read_words => 32
+                 address => 57
+                );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   interface <= (
+                 write_words => 12,
+                 read_words  => 32
+                 address     => 57
+                );
+

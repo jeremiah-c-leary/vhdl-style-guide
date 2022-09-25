@@ -138,7 +138,7 @@
 31 |   a <= (others => func(and b, or b, nand b, or b, nor b, xnor b));
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
@@ -161,13 +161,13 @@
 <class 'vsg.token.unary_logical_operator.xnor_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 32 |   a <= (others => func(nand b));
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
@@ -175,13 +175,13 @@
 <class 'vsg.token.unary_logical_operator.nand_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 33 |   a <= (others => func(or b));
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
@@ -189,13 +189,13 @@
 <class 'vsg.token.unary_logical_operator.or_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 34 |   a <= (others => func(nor b));
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
@@ -203,13 +203,13 @@
 <class 'vsg.token.unary_logical_operator.nor_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 35 |   a <= (others => func(xor b));
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
@@ -217,13 +217,13 @@
 <class 'vsg.token.unary_logical_operator.xor_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 36 |   a <= (others => func(xnor b));
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
 <class 'vsg.parser.todo'>
@@ -231,7 +231,7 @@
 <class 'vsg.token.unary_logical_operator.xnor_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 37 |

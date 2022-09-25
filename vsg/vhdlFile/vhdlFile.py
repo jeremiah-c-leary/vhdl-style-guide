@@ -5,6 +5,7 @@ from vsg import token
 from vsg import tokens
 
 from vsg.token import adding_operator
+from vsg.token import aggregate
 from vsg.token import direction
 from vsg.token import exponent
 from vsg.token import logical_operator
@@ -94,6 +95,7 @@ class vhdlFile():
         self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
         set_token_hierarchy_value(self.lAllObjects)
+        set_aggregate_tokens(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
 
     def update(self, lUpdates):
@@ -577,6 +579,19 @@ def set_token_hierarchy_value(lTokens):
         if isinstance(oToken, token.if_statement.semicolon):
             iIfHierarchy -= 1
             oToken.set_hierarchy(iIfHierarchy)
+
+
+def set_aggregate_tokens(lTokens):
+    lOpenParens = []
+    for iToken, oToken in enumerate(lTokens):
+        if isinstance(oToken, parser.open_parenthesis):
+            lOpenParens.append(iToken)
+        if isinstance(oToken, parser.close_parenthesis):
+            iIndex = lOpenParens.pop()
+            if isinstance(lTokens[iIndex], token.aggregate.open_parenthesis):
+                lTokens[iToken] = token.aggregate.close_parenthesis()
+        if isinstance(oToken, token.element_association.assignment):
+            lTokens[lOpenParens[-1]] = token.aggregate.open_parenthesis()
 
 
 def combine_use_clause_selected_name(lTokens):

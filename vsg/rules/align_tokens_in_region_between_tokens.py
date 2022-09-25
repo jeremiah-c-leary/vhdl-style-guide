@@ -48,9 +48,10 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.configuration.append('comment_line_ends_group')
         self.separate_generic_port_alignment = True
         self.configuration.append('separate_generic_port_alignment')
+        self.bIncludeTillBeginningOfLine = False
 
     def analyze(self, oFile):
-        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
+        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
