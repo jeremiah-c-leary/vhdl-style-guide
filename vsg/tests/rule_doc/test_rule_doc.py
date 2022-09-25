@@ -120,6 +120,18 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_conditional_expressions_rules_doc(self):
+
+        lExpected, lActual = compare_files('conditional_expressions')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_conditional_waveforms_rules_doc(self):
+
+        lExpected, lActual = compare_files('conditional_waveforms')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_constant_rules_doc(self):
 
         lExpected, lActual = compare_files('constant')
