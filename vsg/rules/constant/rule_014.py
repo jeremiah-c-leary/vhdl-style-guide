@@ -40,6 +40,17 @@ class rule_014(Rule):
         for lTokenPair in self.lTokenPairs:
             lToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
             lToi = remove_arrays(lToi)
+
+        for oToi in lToi:
+            iLine = oToi.get_line_number()
+            iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
+            iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
+            oToi.set_meta_data('iIndent', _get_indent_of_line(iLine, oFile))
+            oToi.set_meta_data('iFirstLine', iFirstLine)
+            oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
+            oToi.set_meta_data('iAssignColumn', iAssignColumn)
+            oToi.set_meta_data('indentSize', self.indentSize)
+
         return lToi
 
 
@@ -50,3 +61,21 @@ def remove_arrays(lToi):
         if not rules_utils.token_list_starts_with_paren(lTokens, 1):
             lReturn.append(oToi)
     return lReturn
+
+
+def _get_first_line_info(iLine, oFile):
+    lTemp = oFile.get_tokens_from_line(iLine)
+    iIndent = len(lTemp.get_tokens()[0].get_value())
+    return iLine, iIndent
+
+
+def _get_indent_of_line(iLine, oFile):
+    lTemp = oFile.get_tokens_from_line(iLine)
+    oToken = lTemp.get_tokens()[0]
+
+    if isinstance(oToken, parser.whitespace): 
+        oToken = lTemp.get_tokens()[1]
+        return oToken.indent
+    else:
+        oToken = lTemp.get_tokens()[0]
+        return oToken.indent
