@@ -231,16 +231,38 @@ def set_last_line_number(oToi):
 
 def populate_toi_parameters(aToi, oFile):
     for oToi in aToi:
-        oToi.iFirstLine, oToi.iFirstLineIndent = _get_first_line_info(oToi.iLine, oFile)
+#        oToi.iFirstLine, oToi.iFirstLineIndent = _get_first_line_info(oToi.iLine, oFile)
+        oToi.iFirstLine = oToi.iLine
+        lTemp = oFile.get_tokens_from_line(oToi.iLine)
+        iIndent = len(lTemp.get_tokens()[0].get_value())
+        oToi.iFirstLineIndent = iIndent
+
+        oToi.iFirstLineIndentIndex = oFile.get_indent_of_line_at_index(oToi.get_start_index())
+
         oToi.iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
         set_last_line_number(oToi)
 
 
 def check_indents(self, oToi, oLines):
-    for oLine in oLines.lLines:
-        if oLine.actual_indent != oLine.iExpectedIndent:
+#    print('=' * 80)
+#    print(oLines.get_first_line_indent())
+    for oLine in oLines.lLines[1:]:
+        sExpectedIndent = convert_column_index_to_whitespace(self, oLine.get_expected_indent(), oLines.get_first_line_indent(), oToi.iFirstLineIndentIndex)
+        oLine.expectedIndent = sExpectedIndent
+#        print('-[' + str(oLine.number) + ']' + '-' * 80)
+#        print(f'|E|{oLine.iExpectedIndent}|{sExpectedIndent}|<---')
+#        print(f'|A|{oLine.actual_indent}|{oLine.actual_leading_whitespace}|<---') 
+        if sExpectedIndent != oLine.actual_leading_whitespace:
             oViolation = create_violation(oToi, oLine)
             self.add_violation(oViolation)
+
+
+def convert_column_index_to_whitespace(self, iColumn, iFirstLineIndent, iFirstLineIndentIndex):
+#    print(f'{iColumn}|{iFirstLineIndent}|{iFirstLineIndentIndex}')
+    sIndent = ' ' * self.indentSize * iFirstLineIndentIndex
+    sAlignment = ' ' * (iColumn - len(sIndent))
+    sLeadingWhitespace = sIndent + sAlignment
+    return sLeadingWhitespace
 
 
 def create_violation(oToi, oLine):
@@ -321,6 +343,7 @@ class line():
         self.parens = []
         self.populate_paren_list(iIndent)
         self.set_actual_indent()
+        self.set_actual_leading_whitespace()
         self.token_index = iToken
         self.isFirst = False
         self.isLast = False
@@ -343,6 +366,12 @@ class line():
         if rules_utils.token_is_whitespace(oToken):
             self.actual_indent = len(oToken.get_value())
 
+    def set_actual_leading_whitespace(self):
+        oToken = self.tokens[0]
+        self.actual_leading_whitespace = ''
+        if rules_utils.token_is_whitespace(oToken):
+            self.actual_leading_whitespace = oToken.get_value()
+
     def get_delta_parens(self):
         iReturn = 0
         for oParen in self.parens:
@@ -354,6 +383,9 @@ class line():
 
     def set_expected_indent(self, iIndent):
         self.iExpectedIndent = iIndent
+
+    def get_expected_indent(self):
+        return self.iExpectedIndent
 
     def starts_with_close_paren(self):
         return rules_utils.token_list_begins_with_close_paren(self.tokens)
