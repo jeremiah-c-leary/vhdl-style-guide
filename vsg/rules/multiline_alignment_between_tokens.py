@@ -749,6 +749,7 @@ def _get_first_line_info(iLine, oFile):
     iIndent = len(lTemp.get_tokens()[0].get_value())
     return iLine, iIndent
 
+
 def _get_indent_of_line(iLine, oFile):
     lTemp = oFile.get_tokens_from_line(iLine)
     oToken = lTemp.get_tokens()[0]
