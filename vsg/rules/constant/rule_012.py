@@ -72,9 +72,9 @@ class rule_012(alignment.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         if dAction['action'] == 'adjust':
-            lTokens[0].set_value(' '*dAction['column'])
+            lTokens[0].set_value(dAction['whitespace'])
         else:
-            rules_utils.insert_whitespace(lTokens, 0, dAction['column'])
+            rules_utils.insert_new_whitespace(lTokens, 0, dAction['whitespace'])
 
         oViolation.set_tokens(lTokens)
 
@@ -248,7 +248,7 @@ def check_indents(self, oToi, oLines):
 #    print(oLines.get_first_line_indent())
     for oLine in oLines.lLines[1:]:
         sExpectedIndent = convert_column_index_to_whitespace(self, oLine.get_expected_indent(), oLines.get_first_line_indent(), oToi.iFirstLineIndentIndex)
-        oLine.expectedIndent = sExpectedIndent
+        oLine.sExpectedIndent = sExpectedIndent
 #        print('-[' + str(oLine.number) + ']' + '-' * 80)
 #        print(f'|E|{oLine.iExpectedIndent}|{sExpectedIndent}|<---')
 #        print(f'|A|{oLine.actual_indent}|{oLine.actual_leading_whitespace}|<---') 
@@ -259,8 +259,13 @@ def check_indents(self, oToi, oLines):
 
 def convert_column_index_to_whitespace(self, iColumn, iFirstLineIndent, iFirstLineIndentIndex):
 #    print(f'{iColumn}|{iFirstLineIndent}|{iFirstLineIndentIndex}')
-    sIndent = ' ' * self.indentSize * iFirstLineIndentIndex
-    sAlignment = ' ' * (iColumn - len(sIndent))
+    if self.indentStyle == 'smart-tabs':
+        sIndent = '\t' * iFirstLineIndentIndex
+#        sAlignment = ' ' * (iColumn - len(sIndent))
+        sAlignment = ' ' * (iColumn - iFirstLineIndent)
+    else:
+        sIndent = ' ' * self.indentSize * iFirstLineIndentIndex
+        sAlignment = ' ' * (iColumn - len(sIndent))
     sLeadingWhitespace = sIndent + sAlignment
     return sLeadingWhitespace
 
@@ -281,6 +286,7 @@ def create_action_dict(oLine):
     dAction = {}
     dAction['line'] = oLine.number
     dAction['column'] = oLine.iExpectedIndent
+    dAction['whitespace'] = oLine.sExpectedIndent
 
     if isinstance(oLine.tokens[0], parser.whitespace):
         dAction['action'] = 'adjust'
