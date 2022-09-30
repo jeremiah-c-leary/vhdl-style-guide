@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from cgi import test
 import sys
 import os
 import json
@@ -150,12 +149,11 @@ def main():
         fStatus, testCase, dJsonEntry = tValue
         fExitStatus = fExitStatus or fStatus
 
-        if commandLineArguments.junit:
+        if commandLineArguments.junit and testCase is not None:
             # a file which can not be parsed ('Error: Unexpected token detected...') creates a None-value for testcase,
             # which would lead to an error when generating junit results ('AttributeError: 'NoneType' object has no attribute 'failures')
             # workaround: do not add None, so junit result file can still be created
-            if testCase is not None:
-                oJunitTestsuite.add_testcase(testCase)
+            oJunitTestsuite.add_testcase(testCase)
 
         if commandLineArguments.json or commandLineArguments.quality_report:
             dJson['files'].append(dJsonEntry)
