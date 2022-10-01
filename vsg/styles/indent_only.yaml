@@ -11,6 +11,11 @@ rule :
       disable: false
   concurrent_003 :
     disable : false
+  concurrent_009 :
+    disable : false
+    wrap_at_when: 'no'
+    align_when_keywords: 'no'
+    align_else_keywords: 'no'
   constant_012 :
     disable : false
   constant_014 :
