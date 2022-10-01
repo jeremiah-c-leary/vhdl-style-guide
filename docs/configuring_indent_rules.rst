@@ -10,14 +10,11 @@ The method of indenting can be configured using one of the following options:
 .. |spaces_description| replace::
    Indentation will be perfomed using spaces.
 
-.. |tabs_description| replace::
-   Indentation will be perfomed using tabs.
-
 .. |smart_tabs_description| replace::
    Indentation will be performed using tabs and spaces.
 
 .. |values| replace::
-   :code:`spaces`, :code:`smart-tabs`
+   :code:`spaces`, :code:`smart_tabs`
 
 +----------------------+----------+-----------------+----------------------------+
 | Option               | Values   | Default Value   | Description                |
@@ -35,10 +32,6 @@ The :code:`indent_style` option can be set globally for all rules and locally fo
          indent_style: `smart_tabs`
          indent_size: 2
    file_list:
-       - fifo.vhd:
-          rule:
-            global:
-              indent_style: `tabs`
        - ram.vhd:
           rule:
             global:
@@ -87,7 +80,7 @@ Setting the :code:`indent_style` option to :code:`spaces` will result in leading
 :code:`smart_tabs` Example
 ##########################
 
-Setting the :code:`indent_style` option to :code:`tabs` will result in leading whitespace to be converted into tabs and spaces.  Tabs set the indent and spaces are used for alignment.
+Setting the :code:`indent_style` option to :code:`smart_tabs` will result in leading whitespace to be converted into tabs and spaces.  Tabs set the indent and spaces are used for alignment.
 
 **Violation**
 
