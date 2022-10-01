@@ -19,8 +19,7 @@ class rule_400(Rule):
 
     .. NOTE:: There is a configuration option **alignment** which changes the indent location of multiple lines.
 
-    alignment set to 'report' (Default)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |configuring_multiline_report_rule_link|
 
     **Violation**
 
@@ -38,27 +37,6 @@ class rule_400(Rule):
        assert WIDTH > 16
          report "FIFO width is limited" &
                 " to 16 bits."
-         severity FAILURE;
-
-    alignment set to 'left'
-    ^^^^^^^^^^^^^^^^^^^^^^^
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       assert WIDTH > 16
-         report "FIFO width is limited" &
-       " to 16 bits."
-         severity FAILURE;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       assert WIDTH > 16
-         report "FIFO width is limited" &
-           " to 16 bits."
          severity FAILURE;
     '''
 
