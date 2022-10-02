@@ -485,7 +485,13 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
 #        print(f'indent = {iIndent} | iPerens = {iParens}')
         dExpectedIndent[iLine + 1] = iIndent
 
-    return dExpectedIndent
+    dReturn = {}
+    dReturn[iFirstLine] = dExpectedIndent[iFirstLine]
+    for iLine in range(iFirstLine + 1, iLastLine + 1):
+
+        dReturn[iLine] = dExpectedIndent[iLine] * ' '
+
+    return dReturn
 
 
 def _starts_with_paren(lTokens):

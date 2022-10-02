@@ -42,7 +42,7 @@ class rule_014(Rule):
             lToi = remove_arrays(lToi)
 
         for oToi in lToi:
-            iLine = oToi.get_line_number()
+            iLine, lTokens = utils.get_toi_parameters(oToi)
             iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             oToi.set_meta_data('iIndent', _get_indent_of_line(iLine, oFile))
@@ -50,6 +50,7 @@ class rule_014(Rule):
             oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
             oToi.set_meta_data('iAssignColumn', iAssignColumn)
             oToi.set_meta_data('indentSize', self.indentSize)
+            oToi.set_meta_data('bStartsWithParen', _starts_with_paren(lTokens))
 
         return lToi
 
@@ -79,3 +80,14 @@ def _get_indent_of_line(iLine, oFile):
     else:
         oToken = lTemp.get_tokens()[0]
         return oToken.indent
+
+
+def _starts_with_paren(lTokens):
+    iToken = utils.find_next_non_whitespace_token(1, lTokens)
+    try:
+        if isinstance(lTokens[iToken], parser.open_parenthesis):
+            return True
+    except IndexError:
+        if isinstance(lTokens[0], parser.open_parenthesis):
+            return True
+    return False
