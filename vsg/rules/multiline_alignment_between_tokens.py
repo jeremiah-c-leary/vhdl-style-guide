@@ -131,6 +131,9 @@ class multiline_alignment_between_tokens(alignment.Rule):
 #            print(f'Expect = {dExpectedIndent}')
 #            print(f'Index  = {dIndex}')
 
+            if self.indentStyle == 'smart_tabs':
+                _convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
+
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] is None:
                     continue
@@ -505,8 +508,30 @@ def _starts_with_paren(lTokens):
     return False
 
 
+def _get_first_line(dActualIndent):
+    lLines = list(dActualIndent.keys())
+    lLines.sort()
+    iLine = lLines[0]
+    return iLine
+
+
+def _get_last_line(dActualIndent):
+    lLines = list(dActualIndent.keys())
+    lLines.sort()
+    iLine = lLines[-1]
+    return iLine
+
+
 def _get_first_line_info(iLine, oFile):
     lTemp = oFile.get_tokens_from_line(iLine)
     iIndent = len(lTemp.get_tokens()[0].get_value())
     return iLine, iIndent
 
+
+def _convert_expected_indent_to_smart_tab(dExpectedIndent, indentSize, iFirstLineIndent):
+    iFirstLine = _get_first_line(dExpectedIndent)
+    iLastLine = _get_last_line(dExpectedIndent)
+    iColumn = iFirstLineIndent
+    for iLine in range(iFirstLine + 1, iLastLine + 1):
+#        dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iColumn:]
+        dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iFirstLineIndent:]
