@@ -13,3 +13,7 @@
 
 --¨
 
+-- pragmas should be ignored
+--vhdl_comp_off
+--vhdl_comp_on
+
