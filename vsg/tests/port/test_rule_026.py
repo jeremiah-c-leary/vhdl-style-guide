@@ -44,3 +44,7 @@ class test_port_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+        lAllTokens = self.oFile.get_all_tokens().get_tokens()
+        for oToken in lAllTokens:
+            self.assertEqual(lAllTokens.count(oToken), 1)

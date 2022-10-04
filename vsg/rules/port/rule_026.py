@@ -1,4 +1,6 @@
 
+import copy
+
 from vsg import parser
 from vsg import violation
 
@@ -76,10 +78,18 @@ class rule_026(structure.Rule):
         lNewTokens = []
         dAction = oViolation.get_action()
         for iIndex in dAction['identifier_indexes']:
-            lNewTokens.append(lTokens[iIndex])
+            lCopyTokens = duplicate_tokens(lTokens)
+            lNewTokens.append(lCopyTokens[iIndex])
 
-            lNewTokens.extend(lTokens[dAction['split_index']:])
+            lNewTokens.extend(lCopyTokens[dAction['split_index']:])
             if iIndex != dAction['identifier_indexes'][-1]:
                 lNewTokens.append(interface_list.semicolon())
                 lNewTokens.append(parser.carriage_return())
         oViolation.set_tokens(lNewTokens)
+
+
+def duplicate_tokens(lTokens):
+    lReturn = []
+    for oToken in lTokens:
+        lReturn.append(copy.deepcopy(oToken))
+    return lReturn
