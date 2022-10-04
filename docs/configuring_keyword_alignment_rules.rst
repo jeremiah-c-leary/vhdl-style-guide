@@ -287,7 +287,7 @@ Rule Specific Keyword Alignment Configuration
       data_valid_after <= '1';
 
 #. :code:`generate_statements_ends_group` - if set to :code:`True` any line with generate statement keywords ends the group of lines that should be aligned and starts new group.
-   By default set to :code:`True`.
+   By default set to :code:`False`.
 
     **Violation**
 
