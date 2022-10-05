@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" hostname="Rimmer" failures="1" timestamp="2018-12-07T03:10:28" tests="1" time="0" name="vhdl-style-guide">
+  <properties>
+  </properties>
+  <testcase name="vsg/tests/vsg/junit/parse_error.vhd" time="0" classname="failure">
+    <failure type="Failure">
+
+Error: Unexpected token detected while parsing architecture_body @ Line 4, Column 1 in file vsg/tests/vsg/junit/parse_error.vhd
+       Expecting : begin
+       Found     : end
+
+    </failure>
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

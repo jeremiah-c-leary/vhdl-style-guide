@@ -2,6 +2,7 @@
 import shutil
 
 from . import config
+from . import junit
 from . import rule_list
 from . import utils
 from . import vhdlFile
@@ -64,7 +65,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
     except ClassifyError as e:
         fExitStatus = True
-        testCase = None
+        testCase = create_junit_testcase(sFileName, e)
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = []
         sOutputStd = ''
@@ -135,3 +136,19 @@ def write_vhdl_file(oVhdlFile):
         print (err, "Could not write fixes back to file.")
 
 
+def create_junit_testcase(sVhdlFileName, oException):
+    '''
+    Creates JUnit XML file listing all violations found.
+
+    Parameters:
+
+      sVhdlFileName (string)
+
+    Returns: (junit testcase object)
+    '''
+    oTestcase = junit.testcase(sVhdlFileName, str(0), 'failure')
+    oFailure = junit.failure('Failure')
+    oFailure.add_text(oException.message)
+    oTestcase.add_failure(oFailure)
+
+    return oTestcase
