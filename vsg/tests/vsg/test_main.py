@@ -162,6 +162,44 @@ class testMain(unittest.TestCase):
         # Clean up
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
 
+    @mock.patch('sys.stderr')
+    def test_junit_with_file_that_fails_to_parse(self, mock_stderr):
+#    def test_invalid_configuration(self):
+        utils.remove_file('vsg/tests/vsg/junit/parse_error.actual.xml')
+        lStdErr = []
+        lStdErr.append('Error: Unexpected token detected while parsing architecture_body @ Line 4, Column 1 in file vsg/tests/vsg/junit/parse_error.vhd')
+        lStdErr.append('       Expecting : begin')
+        lStdErr.append('       Found     : end')
+
+        lExpected = []
+        lExpected.append(mock.call('\n' + '\n'.join(lStdErr) + '\n'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['-f', 'vsg/tests/vsg/junit/parse_error.vhd'])
+        sys.argv.extend(['--junit', 'vsg/tests/vsg/junit/parse_error.actual.xml'])
+        sys.argv.extend(['-p 1'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stderr.write.assert_has_calls(lExpected)
+
+        # Read in the expected JUnit XML file for comparison
+        lExpected = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','parse_error.expected.xml'), lExpected)
+        # Read in the actual JUnit XML file for comparison
+        lActual = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','parse_error.actual.xml'), lActual)
+        # Compare the two files, but skip the line with the timestamp (as it will never match)
+        for iLineNumber, sLine in enumerate(lExpected):
+            if iLineNumber != 1:
+                self.assertEqual(sLine, lActual[iLineNumber])
+        # Clean up
+        utils.remove_file('vsg/tests/vsg/junit/parse_error.actual.xml')
+
     @mock.patch('sys.stdout')
     def test_local_rules(self,mock_stdout):
         lExpected = []
