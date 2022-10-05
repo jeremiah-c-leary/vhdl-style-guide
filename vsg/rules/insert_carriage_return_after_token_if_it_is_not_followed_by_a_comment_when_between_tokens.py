@@ -48,6 +48,8 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when
                continue
            if utils.are_next_consecutive_token_types([parser.comment, parser.carriage_return], 1, lTokens):
                continue
+           if utils.are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], 1, lTokens):
+               continue
            else:
                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
