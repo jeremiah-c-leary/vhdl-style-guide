@@ -81,7 +81,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                                dAnalysis[iLine]['left_column'] = iColumn
                            break
 
-                   iColumn += len(oToken.get_value())
+                   iColumn += update_column_width(self, oToken)
 
                if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
                    add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
@@ -184,3 +184,13 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
     else:
         for iKey in list(dAnalysis.keys()):
             dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
+
+
+def update_column_width(self, oToken):
+    sToken = oToken.get_value()
+    if isinstance(oToken, parser.whitespace):
+        iTabs = sToken.count('\t')
+        iLength = len(sToken) + (iTabs * self.indentSize) - iTabs
+        return iLength
+
+    return len(oToken.get_value())

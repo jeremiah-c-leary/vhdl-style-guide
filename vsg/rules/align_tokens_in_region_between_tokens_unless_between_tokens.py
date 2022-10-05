@@ -91,7 +91,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
                                dAnalysis[iLine]['left_column'] = iColumn
                            break
 
-                   iColumn += len(oToken.get_value())
+                   iColumn += update_column_width(self, oToken)
 
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1
@@ -316,3 +316,13 @@ def is_case_keyword(config, iIndex, lTokens):
 
 def get_tokens_of_interest(self, oFile):
     return oFile.get_tokens_bounded_by_unless_between(self.left_token, self.right_token, self.lUnless)
+
+
+def update_column_width(self, oToken):
+    sToken = oToken.get_value()
+    if isinstance(oToken, parser.whitespace):
+        iTabs = sToken.count('\t')
+        iLength = len(sToken) + (iTabs * self.indentSize) - iTabs
+        return iLength
+
+    return len(oToken.get_value())
