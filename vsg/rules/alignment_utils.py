@@ -41,3 +41,13 @@ def set_indent(iToken, lTokens):
     else:
         iReturn = ''
     return iReturn
+
+
+def update_column_width(self, oToken):
+    sToken = oToken.get_value()
+    if isinstance(oToken, parser.whitespace):
+        iTabs = sToken.count('\t')
+        iLength = len(sToken) + (iTabs * self.indentSize) - iTabs
+        return iLength
+
+    return len(oToken.get_value())

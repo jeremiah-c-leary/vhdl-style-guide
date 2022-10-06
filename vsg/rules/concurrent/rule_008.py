@@ -3,6 +3,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -126,8 +127,8 @@ class rule_008(alignment.Rule):
                    iColumn = 0
                    iToken = -1
                else:
-                   iColumn += update_column_width(self, oToken)
-                   iLeftColumn += update_column_width(self, oToken)
+                   iColumn += alignment_utils.update_column_width(self, oToken)
+                   iLeftColumn += alignment_utils.update_column_width(self, oToken)
 
                if bEndFound:
                    for oStartToken in self.lStart:
@@ -194,13 +195,3 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_wit
     else:
         for iKey in list(dAnalysis.keys()):
             dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
-
-
-def update_column_width(self, oToken):
-    sToken = oToken.get_value()
-    if isinstance(oToken, parser.whitespace):
-        iTabs = sToken.count('\t')
-        iLength = len(sToken) + (iTabs * self.indentSize) - iTabs
-        return iLength
-
-    return len(oToken.get_value())
