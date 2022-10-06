@@ -88,6 +88,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
                 iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indentSize
             return iSpaces * ' '
 
+
 def get_index_after_carriage_return(lTokens):
     lReturn = []
     for iToken, oToken in enumerate(lTokens):
@@ -105,5 +106,3 @@ def build_solution(sIndent):
     elif ' ' in sIndent:
         sSolution += str(sIndent.count(' ')) + ' space(s)'
     return sSolution
-
-

@@ -51,11 +51,11 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
             for iToken, oToken in enumerate(lTokens):
                 iLine = utils.increment_line_number(iLine, oToken)
                 if comment_at_beginning_of_line(iToken, lTokens):
-                    sActualWhitespace = actual_whitespace(iToken -1, lTokens)
+                    sActualWhitespace = actual_whitespace(iToken - 1, lTokens)
                     if sExpectedWhitespace != sActualWhitespace:
-                         oMyToi = extract_toi(iToken, oToi)
-                         oViolation = create_violation(oMyToi, sActualWhitespace, sExpectedWhitespace, lTokens[-1])
-                         self.add_violation(oViolation)
+                        oMyToi = extract_toi(iToken, oToi)
+                        oViolation = create_violation(oMyToi, sActualWhitespace, sExpectedWhitespace, lTokens[-1])
+                        self.add_violation(oViolation)
                     self._adjust_token_indent(lTokens[iToken], iTargetIndent)
 
     def _fix_violation(self, oViolation):

@@ -70,10 +70,7 @@ class vhdlFile():
         oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
-#            print('='*100)
-#            print(f'{sMyLine}|<===')
             lTokens = tokens.create(sLine.rstrip('\n').rstrip('\r'))
-#            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip('\n').rstrip('\r'))
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))

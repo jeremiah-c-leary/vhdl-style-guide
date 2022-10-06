@@ -83,11 +83,13 @@ def insert_whitespace(lTokens, index, num=1, sString=' '):
         oToken.has_tabs = True
         insert_token(lTokens, index, oToken)
 
+
 def insert_new_whitespace(lTokens, index, sWhitespace):
-        oToken = parser.whitespace(sWhitespace)
-        if '\t' in sWhitespace:
-            oToken.has_tabs = True
-        insert_token(lTokens, index, oToken)
+    oToken = parser.whitespace(sWhitespace)
+    if '\t' in sWhitespace:
+        oToken.has_tabs = True
+    insert_token(lTokens, index, oToken)
+
 
 def insert_carriage_return(lTokens, index):
     insert_token(lTokens, index, parser.carriage_return())

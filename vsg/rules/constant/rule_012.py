@@ -142,14 +142,12 @@ def check_first_line(oLine, oLines, oToi, iIndentStep):
     oLine.set_expected_indent(iIndent)
 
     iAdjust = oToi.iAssignColumn
-#    print(f'iAdjust = {iAdjust}')
     oLines.update_parens(oLine, iIndentStep, iAdjust)
 
     if oLines.no_parens():
         oLines.iNextIndent = iIndent
     else:
         oLines.iNextIndent = oLines.lParens[-1].iExpectedColumn
-#    print(f'iNextIndent = {oLines.iNextIndent}')
 
 
 def check_last_line(oLine, oLines, iIndentStep):
@@ -175,18 +173,15 @@ def check_my_first_line(oLine, oLines, oToi, iIndentStep):
     oLine.set_expected_indent(iIndent)
 
     iAdjust = oToi.iAssignColumn
-#    print(f'iAdjust = {iAdjust}')
     oLines.update_parens(oLine, iIndentStep, iAdjust)
 
     if oLines.no_parens():
         oLines.iNextIndent = iIndent
     else:
         oLines.iNextIndent = len(oLines.lParens)*iIndentStep + iIndent
-#        print(f'iNextIndent = {oLines.iNextIndent}')
 
     for iParen, oParen in enumerate(oLine.parens):
         oParen.iExpectedColumn = iParen*iIndentStep + iIndent + iIndentStep
-#        print(f'{oParen.iExpectedColumn}')
 
 
 def starts_with_paren(lTokens):
@@ -231,7 +226,6 @@ def set_last_line_number(oToi):
 
 def populate_toi_parameters(aToi, oFile):
     for oToi in aToi:
-#        oToi.iFirstLine, oToi.iFirstLineIndent = _get_first_line_info(oToi.iLine, oFile)
         oToi.iFirstLine = oToi.iLine
         lTemp = oFile.get_tokens_from_line(oToi.iLine)
         iIndent = len(lTemp.get_tokens()[0].get_value())
@@ -244,24 +238,17 @@ def populate_toi_parameters(aToi, oFile):
 
 
 def check_indents(self, oToi, oLines):
-#    print('=' * 80)
-#    print(oLines.get_first_line_indent())
     for oLine in oLines.lLines[1:]:
         sExpectedIndent = convert_column_index_to_whitespace(self, oLine.get_expected_indent(), oLines.get_first_line_indent(), oToi.iFirstLineIndentIndex)
         oLine.sExpectedIndent = sExpectedIndent
-#        print('-[' + str(oLine.number) + ']' + '-' * 80)
-#        print(f'|E|{oLine.iExpectedIndent}|{sExpectedIndent}|<---')
-#        print(f'|A|{oLine.actual_indent}|{oLine.actual_leading_whitespace}|<---')
         if sExpectedIndent != oLine.actual_leading_whitespace:
             oViolation = create_violation(oToi, oLine)
             self.add_violation(oViolation)
 
 
 def convert_column_index_to_whitespace(self, iColumn, iFirstLineIndent, iFirstLineIndentIndex):
-#    print(f'{iColumn}|{iFirstLineIndent}|{iFirstLineIndentIndex}')
     if self.indentStyle == 'smart_tabs':
         sIndent = '\t' * iFirstLineIndentIndex
-#        sAlignment = ' ' * (iColumn - len(sIndent))
         sAlignment = ' ' * (iColumn - iFirstLineIndent)
     else:
         sIndent = ' ' * self.indentSize * iFirstLineIndentIndex

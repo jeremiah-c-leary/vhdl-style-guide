@@ -130,4 +130,3 @@ def create_indent_solution(self, oToken):
     elif self.indentStyle == 'smart_tabs':
         sSolution = 'Use ' + str(iIndentLevel) + ' tab(s) for indent'
     return sSolution
-

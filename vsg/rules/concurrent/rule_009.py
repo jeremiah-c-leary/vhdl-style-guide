@@ -702,6 +702,7 @@ def _find_first_indent(sConfig, dActualIndent, iIndentStep, iAssignColumn):
         iFirstIndent = iAssignColumn + 2 + 1
     return iFirstIndent
 
+
 def _convert_expected_indent_to_smart_tab(dExpectedIndent, indentSize, iFirstLineIndent):
     iFirstLine = _get_first_line(dExpectedIndent)
     iLastLine = _get_last_line(dExpectedIndent)

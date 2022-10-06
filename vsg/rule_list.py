@@ -140,8 +140,6 @@ class rule_list():
         if lSkipPhase is None:
             lSkipPhase = []
         for phase in range(1, int(iFixPhase) + 1):
-#            print(f'phase => {phase}')
-#            print(f'objects => {self.oVhdlFile.get_lines()}')
             if phase in lSkipPhase:
                 if phase == 1:
                     self.oVhdlFile.set_token_indent()
@@ -155,7 +153,6 @@ class rule_list():
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
-#                print(lRules)
                 for oRule in lRules:
                     if oRule.severity.type == severity.error_type:
                         oRule.fix(self.oVhdlFile, dFixOnly)
@@ -245,7 +242,6 @@ class rule_list():
 
           sOutputFormat (string)
         '''
-#        print('--> report_violations')
         dRunInfo = {}
         dRunInfo['filename'] = self.oVhdlFile.filename
         dRunInfo['stopPhase'] = 7
@@ -254,7 +250,6 @@ class rule_list():
         for oRule in self.rules:
             if oRule.has_violations():
                 lViolations = oRule.get_violations()
-#                    print(f'{oRule.name}_{oRule.identifier} | {iLineNumber} | {len(lViolations)}')
                 dRunInfo['violations'].extend(lViolations)
         dRunInfo['violations'] = sorted(dRunInfo['violations'], key=lambda x: int(x['lineNumber']))
         dRunInfo['stopPhase'] = self.lastPhaseRan
@@ -269,7 +264,6 @@ class rule_list():
             name = dViolation['severity']['name']
             dRunInfo['severities'][name] = dRunInfo['severities'][name] + 1
 
-#        print(dRunInfo)
         if sOutputFormat == 'vsg':
             sOutputStd, sOutputErr = report.vsg_stdout.print_output(dRunInfo)
         elif sOutputFormat == 'syntastic':

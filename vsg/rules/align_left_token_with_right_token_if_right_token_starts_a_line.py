@@ -50,7 +50,6 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(alignment.R
 
         return lReturn
 
-
     def _analyze(self, lToi):
 
         for oToi in lToi:
