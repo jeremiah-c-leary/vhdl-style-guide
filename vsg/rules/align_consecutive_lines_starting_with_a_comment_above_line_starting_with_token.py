@@ -117,7 +117,7 @@ def extract_toi(iToken, oToi):
     lTokens = oToi.get_tokens()
     if iToken == 0:
         return oToi.extract_tokens(iToken, iToken)
-    elif rules_utils.token_is_whitespace(lTokens[iToken -1]):
+    elif rules_utils.token_is_whitespace(lTokens[iToken - 1]):
         return oToi.extract_tokens(iToken - 1, iToken - 1)
     else:
         return oToi.extract_tokens(iToken, iToken)

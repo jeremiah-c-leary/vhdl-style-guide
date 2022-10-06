@@ -95,7 +95,6 @@ class vhdlFile():
 
         set_token_hierarchy_value(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
-#        print(f'self.lAllObjects => {self.lAllObjects}')
 
     def update(self, lUpdates):
 
@@ -129,14 +128,10 @@ class vhdlFile():
         return lReturn
 
     def get_lines(self):
-#        print('--> get_lines <==')
         lReturn = []
         lReturn.append('')
-#        print(f'self.lAllObjects => {self.lAllObjects}')
         for lLine in split_on_carriage_return(self.lAllObjects):
             lReturn.append(utils.convert_token_list_to_string(lLine))
-#        print(lReturn)
-#        print('<== self.lAllObjects <==')
         return lReturn
 
     def get_line_count(self):
