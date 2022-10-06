@@ -346,18 +346,6 @@ def update_close_paren_counter(oToken, iCloseParen):
     return iCloseParen
 
 
-def token_is_whitespace(oToken):
-    if isinstance(oToken, parser.whitespace):
-        return True
-    return False
-
-
-def token_is_comment(oToken):
-    if isinstance(oToken, parser.comment):
-        return True
-    return False
-
-
 def analyze_with_function(self, oToi, oTokenType, fFunction):
     iLine, lTokens = get_toi_parameters(oToi)
 

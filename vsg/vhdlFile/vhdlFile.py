@@ -70,7 +70,6 @@ class vhdlFile():
         oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
-            sMyLine = sLine.rstrip('\n').rstrip('\r')
 #            print('='*100)
 #            print(f'{sMyLine}|<===')
             lTokens = tokens.create(sLine.rstrip('\n').rstrip('\r'))
@@ -133,7 +132,7 @@ class vhdlFile():
         return lReturn
 
     def get_lines(self):
-#        print('--> get_lines <==') 
+#        print('--> get_lines <==')
         lReturn = []
         lReturn.append('')
 #        print(f'self.lAllObjects => {self.lAllObjects}')

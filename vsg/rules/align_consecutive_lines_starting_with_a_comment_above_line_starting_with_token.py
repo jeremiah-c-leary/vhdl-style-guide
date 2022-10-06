@@ -36,7 +36,6 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
         lToi = oFile.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(parser.comment, self.token)
         lReturn = []
         for oToi in lToi:
-            lTokens = oToi.get_tokens()
             oToi.set_meta_data('indentLevel', oFile.get_indent_of_line_at_index(oToi.get_end_index()))
             lReturn.append(oToi)
 
@@ -80,13 +79,12 @@ def expected_whitespace(self, oToi):
 
 
 def actual_whitespace(iToken, lTokens):
-    oToken = lTokens[iToken]
     if iToken == -1:
         return ''
     elif rules_utils.token_is_whitespace(lTokens[iToken]):
         return lTokens[iToken].get_value()
     else:
-        return '' 
+        return ''
 
 
 def comment_at_beginning_of_line(iToken, lTokens):
@@ -102,7 +100,7 @@ def comment_at_beginning_of_line(iToken, lTokens):
 
 
 def create_violation(oToi, sActualWhitespace, sExpectedWhitespace, oToken):
-    iLine, lTokens = utils.get_toi_parameters(oToi)
+    iLine = oToi.get_line_number()
     sSolution = 'Align comment with ' + oToken.get_value()
     dAction = {}
     if sActualWhitespace == '':
@@ -123,4 +121,3 @@ def extract_toi(iToken, oToi):
         return oToi.extract_tokens(iToken - 1, iToken - 1)
     else:
         return oToi.extract_tokens(iToken, iToken)
-        

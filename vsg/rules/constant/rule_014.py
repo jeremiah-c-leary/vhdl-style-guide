@@ -74,7 +74,7 @@ def _get_indent_of_line(iLine, oFile):
     lTemp = oFile.get_tokens_from_line(iLine)
     oToken = lTemp.get_tokens()[0]
 
-    if isinstance(oToken, parser.whitespace): 
+    if isinstance(oToken, parser.whitespace):
         oToken = lTemp.get_tokens()[1]
         return oToken.indent
     else:

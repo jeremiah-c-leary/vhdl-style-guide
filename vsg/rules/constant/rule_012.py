@@ -251,7 +251,7 @@ def check_indents(self, oToi, oLines):
         oLine.sExpectedIndent = sExpectedIndent
 #        print('-[' + str(oLine.number) + ']' + '-' * 80)
 #        print(f'|E|{oLine.iExpectedIndent}|{sExpectedIndent}|<---')
-#        print(f'|A|{oLine.actual_indent}|{oLine.actual_leading_whitespace}|<---') 
+#        print(f'|A|{oLine.actual_indent}|{oLine.actual_leading_whitespace}|<---')
         if sExpectedIndent != oLine.actual_leading_whitespace:
             oViolation = create_violation(oToi, oLine)
             self.add_violation(oViolation)

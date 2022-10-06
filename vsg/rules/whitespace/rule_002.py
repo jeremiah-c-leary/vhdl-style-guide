@@ -1,7 +1,6 @@
 
 from vsg import parser
 from vsg import violation
-from vsg import token
 
 from vsg.rule_group import whitespace as ws_group
 
@@ -40,7 +39,7 @@ class rule_002(ws_group.Rule):
             lTokens = oToi.get_tokens()
             if lTokens[0].has_tab:
                 lToia.append(oToi)
-       
+
         lTemp = oFile.get_tokens_matching([parser.comment])
         lToib = []
         for oToi in lTemp:

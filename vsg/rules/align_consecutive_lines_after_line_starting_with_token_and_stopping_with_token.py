@@ -4,7 +4,6 @@ from vsg import violation
 
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
-from vsg.vhdlFile import utils
 
 
 class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token(alignment.Rule):
@@ -25,9 +24,6 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
         lToi = oFile.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self.lStartTokens, self.lEndTokens, True, False, True)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            iSpaces = self._calculate_column(oFile, oToi, lTokens)
-            sWhitespace = self._expected_whitespace(oFile, oToi, lTokens)
-
             lIndexes = get_index_after_carriage_return(lTokens)
 
             for iIndex in lIndexes:
