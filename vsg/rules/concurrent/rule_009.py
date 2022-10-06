@@ -66,7 +66,7 @@ class rule_009(alignment.Rule):
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
-            iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
+            iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
             oToi.set_meta_data('iFirstLine', iFirstLine)
             oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
             oToi.set_meta_data('iAssignColumn', oFile.get_column_of_token_index(oToi.get_start_index()))
@@ -543,12 +543,6 @@ def _starts_with_paren(lTokens):
     if isinstance(lTokens[iToken], parser.open_parenthesis):
         return True
     return False
-
-
-def _get_first_line_info(iLine, oFile):
-    lTemp = oFile.get_tokens_from_line(iLine)
-    iIndent = len(lTemp.get_tokens()[0].get_value())
-    return iLine, iIndent
 
 
 def _build_actual_indent_dict(iLine, lTokens, iFirstLineIndent):

@@ -44,12 +44,12 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
-            iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
+            iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             oToi.set_meta_data('iFirstLine', iFirstLine)
             oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
             oToi.set_meta_data('iAssignColumn', iAssignColumn)
-            oToi.set_meta_data('bStartsWithParen', _starts_with_paren(lTokens))
+            oToi.set_meta_data('bStartsWithParen', alignment_utils.starts_with_paren(lTokens))
 
         return lToi
 
@@ -488,20 +488,3 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
         dReturn[iLine] = dExpectedIndent[iLine] * ' '
 
     return dReturn
-
-
-def _starts_with_paren(lTokens):
-    iToken = utils.find_next_non_whitespace_token(1, lTokens)
-    try:
-        if isinstance(lTokens[iToken], parser.open_parenthesis):
-            return True
-    except IndexError:
-        if isinstance(lTokens[0], parser.open_parenthesis):
-            return True
-    return False
-
-
-def _get_first_line_info(iLine, oFile):
-    lTemp = oFile.get_tokens_from_line(iLine)
-    iIndent = len(lTemp.get_tokens()[0].get_value())
-    return iLine, iIndent

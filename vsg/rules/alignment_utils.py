@@ -1,5 +1,6 @@
 
 from vsg import parser
+from vsg.vhdlFile import utils
 
 
 def build_solution(sIndent):
@@ -27,6 +28,12 @@ def get_first_line(dActualIndent):
     return iLine
 
 
+def get_first_line_info(iLine, oFile):
+    lTemp = oFile.get_tokens_from_line(iLine)
+    iIndent = len(lTemp.get_tokens()[0].get_value())
+    return iLine, iIndent
+
+
 def get_last_line(dActualIndent):
     lLines = list(dActualIndent.keys())
     lLines.sort()
@@ -41,6 +48,17 @@ def set_indent(iToken, lTokens):
     else:
         iReturn = ''
     return iReturn
+
+
+def starts_with_paren(lTokens):
+    iToken = utils.find_next_non_whitespace_token(1, lTokens)
+    try:
+        if isinstance(lTokens[iToken], parser.open_parenthesis):
+            return True
+    except IndexError:
+        if isinstance(lTokens[0], parser.open_parenthesis):
+            return True
+    return False
 
 
 def update_column_width(self, oToken):

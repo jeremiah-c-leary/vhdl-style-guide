@@ -186,17 +186,10 @@ def check_my_first_line(oLine, oLines, oToi, iIndentStep):
 
 
 def starts_with_paren(lTokens):
-
     iToken = utils.find_next_non_whitespace_token(1, lTokens)
     if isinstance(lTokens[iToken], parser.open_parenthesis):
         return True
     return False
-
-
-def _get_first_line_info(iLine, oFile):
-    lTemp = oFile.get_tokens_from_line(iLine)
-    iIndent = len(lTemp.get_tokens()[0].get_value())
-    return iLine, iIndent
 
 
 def remove_non_arrays(lToi):

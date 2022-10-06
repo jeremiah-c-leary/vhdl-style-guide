@@ -4,6 +4,7 @@ from vsg.rules import multiline_alignment_between_tokens as Rule
 from vsg import parser
 from vsg import token
 from vsg.vhdlFile import utils
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 
 lTokenPairs = []
@@ -43,14 +44,14 @@ class rule_014(Rule):
 
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
-            iFirstLine, iFirstLineIndent = _get_first_line_info(iLine, oFile)
+            iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
             oToi.set_meta_data('iIndent', _get_indent_of_line(iLine, oFile))
             oToi.set_meta_data('iFirstLine', iFirstLine)
             oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
             oToi.set_meta_data('iAssignColumn', iAssignColumn)
             oToi.set_meta_data('indentSize', self.indentSize)
-            oToi.set_meta_data('bStartsWithParen', _starts_with_paren(lTokens))
+            oToi.set_meta_data('bStartsWithParen', alignment_utils.starts_with_paren(lTokens))
 
         return lToi
 
@@ -64,12 +65,6 @@ def remove_arrays(lToi):
     return lReturn
 
 
-def _get_first_line_info(iLine, oFile):
-    lTemp = oFile.get_tokens_from_line(iLine)
-    iIndent = len(lTemp.get_tokens()[0].get_value())
-    return iLine, iIndent
-
-
 def _get_indent_of_line(iLine, oFile):
     lTemp = oFile.get_tokens_from_line(iLine)
     oToken = lTemp.get_tokens()[0]
@@ -80,14 +75,3 @@ def _get_indent_of_line(iLine, oFile):
     else:
         oToken = lTemp.get_tokens()[0]
         return oToken.indent
-
-
-def _starts_with_paren(lTokens):
-    iToken = utils.find_next_non_whitespace_token(1, lTokens)
-    try:
-        if isinstance(lTokens[iToken], parser.open_parenthesis):
-            return True
-    except IndexError:
-        if isinstance(lTokens[0], parser.open_parenthesis):
-            return True
-    return False
