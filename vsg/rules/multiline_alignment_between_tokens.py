@@ -543,7 +543,6 @@ def _get_first_line_info(iLine, oFile):
 def _convert_expected_indent_to_smart_tab(dExpectedIndent, indentSize, iFirstLineIndent):
     iFirstLine = _get_first_line(dExpectedIndent)
     iLastLine = _get_last_line(dExpectedIndent)
-    iColumn = iFirstLineIndent
     for iLine in range(iFirstLine + 1, iLastLine + 1):
 #        dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iColumn:]
         dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iFirstLineIndent:]

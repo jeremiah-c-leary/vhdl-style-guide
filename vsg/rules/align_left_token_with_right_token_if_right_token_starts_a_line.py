@@ -90,7 +90,7 @@ def create_violation(oToi, sActualWhitespace, sExpectedWhitespace):
 def extract_whitespace_before_last_token(oToi):
     lTokens = oToi.get_tokens()
     iWhitespaceIndex = len(lTokens) - 2
-    if rules_utils.token_is_whitespace(lTokens[iWhitespaceIndex]): 
+    if rules_utils.token_is_whitespace(lTokens[iWhitespaceIndex]):
         return lTokens[iWhitespaceIndex].get_value()
     return ''
 
@@ -109,7 +109,6 @@ def indent_whitespace(self, oToi):
 
 
 def aligning_whitespace(self, oToi):
-    iIndentLevel = oToi.get_meta_data('indentLevel')
     iIndentLength = len(indent_whitespace(self, oToi))
     iRightColumn = oToi.get_meta_data('iRightColumn')
     return ' ' * (iRightColumn - iIndentLength)

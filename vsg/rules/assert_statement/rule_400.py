@@ -3,8 +3,6 @@ from vsg.token import assertion
 from vsg.token import assertion_statement
 from vsg.token import concurrent_assertion_statement
 
-from vsg.vhdlFile import utils
-
 from vsg.rules import align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token as Rule
 
 
