@@ -83,8 +83,7 @@ def actual_whitespace(iToken, lTokens):
         return ''
     elif rules_utils.token_is_whitespace(lTokens[iToken]):
         return lTokens[iToken].get_value()
-    else:
-        return ''
+    return ''
 
 
 def comment_at_beginning_of_line(iToken, lTokens):
@@ -119,5 +118,4 @@ def extract_toi(iToken, oToi):
         return oToi.extract_tokens(iToken, iToken)
     elif rules_utils.token_is_whitespace(lTokens[iToken - 1]):
         return oToi.extract_tokens(iToken - 1, iToken - 1)
-    else:
-        return oToi.extract_tokens(iToken, iToken)
+    return oToi.extract_tokens(iToken, iToken)

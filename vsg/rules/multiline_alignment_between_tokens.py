@@ -158,7 +158,6 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
 
 def build_violation(iLine, oToi, iToken, dExpectedIndent, dIndex, dActualIndent):
-#    sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
     sSolution = alignment_utils.build_solution(dExpectedIndent[iLine])
     dAction = build_action_dictionary(iLine, dActualIndent, dExpectedIndent)
     iToken = dIndex[iLine]
@@ -327,13 +326,7 @@ def _analyze_align_paren_yes_align_left_no(iFirstLine, iLastLine, lParens, dActu
 
 
         if len(lTemp) == 0:
-            if bStartsWithParen:
-                dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
-            else:
-                if iParens == 0:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
-                else:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
+            dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
 
 #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
 
