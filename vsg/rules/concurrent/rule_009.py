@@ -5,6 +5,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -115,7 +116,7 @@ class rule_009(alignment.Rule):
 #            print(f'dIndex = {dIndex}')
 
             if self.indentStyle == 'smart_tabs':
-                _convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
+                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
 
             for iLine in range(iFirstLine + 1, iLastLine + 1):
                 if dActualIndent[iLine] == dExpectedIndent[iLine]:
@@ -131,7 +132,7 @@ class rule_009(alignment.Rule):
                 else:
                     dAction['action'] = 'insert'
 
-                sSolution = build_solution(dExpectedIndent[iLine])
+                sSolution = alignment_utils.build_solution(dExpectedIndent[iLine])
                 iToken = dIndex[iLine]
                 oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                 oViolation.set_action(dAction)
@@ -207,15 +208,6 @@ def is_token_before_carriage_return(tToken, lTokens):
         if isinstance(oToken, parser.carriage_return):
             return False
     return False
-
-
-def _set_indent(iToken, lTokens):
-    iReturn = 0
-    if isinstance(lTokens[iToken + 1], parser.whitespace):
-        iReturn = lTokens[iToken + 1].get_value()
-    else:
-        iReturn = ''
-    return iReturn
 
 
 def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
@@ -335,13 +327,7 @@ def _apply_align_paren_option(sConfig, lStructure, dActualIndent, bStartsWithPar
 
 
         if len(lTemp) == 0:
-            if bStartsWithParen:
-                dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
-            else:
-                if iParens == 0:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
-                else:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
+            dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
 
 #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
 
@@ -509,13 +495,7 @@ def _apply_align_paren_after_when(lStructure, dActualIndent, bStartsWithParen, i
 
 
         if len(lTemp) == 0:
-            if bStartsWithParen:
-                dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
-            else:
-                if iParens == 0:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
-                else:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
+            dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
 
 #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
 
@@ -583,7 +563,7 @@ def _build_actual_indent_dict(iLine, lTokens, iFirstLineIndent):
             continue
 
         if isinstance(oToken, parser.carriage_return):
-            dReturn[iLine] = _set_indent(iToken, lTokens)
+            dReturn[iLine] = alignment_utils.set_indent(iToken, lTokens)
             continue
 
     return dReturn
@@ -701,21 +681,3 @@ def _find_first_indent(sConfig, dActualIndent, iIndentStep, iAssignColumn):
     else:
         iFirstIndent = iAssignColumn + 2 + 1
     return iFirstIndent
-
-
-def _convert_expected_indent_to_smart_tab(dExpectedIndent, indentSize, iFirstLineIndent):
-    iFirstLine = _get_first_line(dExpectedIndent)
-    iLastLine = _get_last_line(dExpectedIndent)
-    for iLine in range(iFirstLine + 1, iLastLine + 1):
-        dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iFirstLineIndent:]
-
-
-def build_solution(sIndent):
-    sSolution = 'Indent with '
-    if '\t' in sIndent and ' ' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s) followed by ' + str(sIndent.count(' ')) + ' space(s)'
-    elif '\t' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s)'
-    elif ' ' in sIndent:
-        sSolution += str(sIndent.count(' ')) + ' space(s)'
-    return sSolution

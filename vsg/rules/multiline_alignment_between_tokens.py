@@ -2,6 +2,7 @@
 from vsg import parser
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -89,7 +90,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
                     if bSkipCommentLine:
                         dActualIndent[iLine] = None
                     else:
-                        dActualIndent[iLine] = _set_indent(iToken, lTokens)
+                        dActualIndent[iLine] = alignment_utils.set_indent(iToken, lTokens)
                         dIndex[iLine] = iToken + 1
                     continue
 
@@ -132,7 +133,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
 #            print(f'Index  = {dIndex}')
 
             if self.indentStyle == 'smart_tabs':
-                _convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
+                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
 
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] is None:
@@ -158,23 +159,12 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
 def build_violation(iLine, oToi, iToken, dExpectedIndent, dIndex, dActualIndent):
 #    sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
-    sSolution = build_solution(dExpectedIndent[iLine])
+    sSolution = alignment_utils.build_solution(dExpectedIndent[iLine])
     dAction = build_action_dictionary(iLine, dActualIndent, dExpectedIndent)
     iToken = dIndex[iLine]
     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
     oViolation.set_action(dAction)
     return oViolation
-
-
-def build_solution(sIndent):
-    sSolution = 'Indent with '
-    if '\t' in sIndent and ' ' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s) followed by ' + str(sIndent.count(' ')) + ' space(s)'
-    elif '\t' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s)'
-    elif ' ' in sIndent:
-        sSolution += str(sIndent.count(' ')) + ' space(s)'
-    return sSolution
 
 
 def build_action_dictionary(iLine, dActualIndent, dExpectedIndent):
@@ -226,15 +216,6 @@ def _set_column_adjustment(iToken, lTokens):
     else:
         if isinstance(lTokens[iToken + 1], parser.close_parenthesis):
             iReturn = -1
-    return iReturn
-
-
-def _set_indent(iToken, lTokens):
-    iReturn = 0
-    if isinstance(lTokens[iToken + 1], parser.whitespace):
-        iReturn = lTokens[iToken + 1].get_value()
-    else:
-        iReturn = ''
     return iReturn
 
 
@@ -520,29 +501,7 @@ def _starts_with_paren(lTokens):
     return False
 
 
-def _get_first_line(dActualIndent):
-    lLines = list(dActualIndent.keys())
-    lLines.sort()
-    iLine = lLines[0]
-    return iLine
-
-
-def _get_last_line(dActualIndent):
-    lLines = list(dActualIndent.keys())
-    lLines.sort()
-    iLine = lLines[-1]
-    return iLine
-
-
 def _get_first_line_info(iLine, oFile):
     lTemp = oFile.get_tokens_from_line(iLine)
     iIndent = len(lTemp.get_tokens()[0].get_value())
     return iLine, iIndent
-
-
-def _convert_expected_indent_to_smart_tab(dExpectedIndent, indentSize, iFirstLineIndent):
-    iFirstLine = _get_first_line(dExpectedIndent)
-    iLastLine = _get_last_line(dExpectedIndent)
-    for iLine in range(iFirstLine + 1, iLastLine + 1):
-#        dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iColumn:]
-        dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iFirstLineIndent:]

@@ -2,6 +2,7 @@
 from vsg import parser
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 
@@ -59,7 +60,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
         oViolation.set_tokens(lTokens)
 
     def _create_violation(self, oToi, sAction):
-        sSolution = build_solution(oToi.get_meta_data('sWhitespace'))
+        sSolution = alignment_utils.build_solution(oToi.get_meta_data('sWhitespace'))
         oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
         dAction = {}
         dAction['action'] = sAction
@@ -95,14 +96,3 @@ def get_index_after_carriage_return(lTokens):
         if isinstance(oToken, parser.carriage_return):
             lReturn.append(iToken + 1)
     return lReturn
-
-
-def build_solution(sIndent):
-    sSolution = 'Indent with '
-    if '\t' in sIndent and ' ' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s) followed by ' + str(sIndent.count(' ')) + ' space(s)'
-    elif '\t' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s)'
-    elif ' ' in sIndent:
-        sSolution += str(sIndent.count(' ')) + ' space(s)'
-    return sSolution

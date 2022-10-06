@@ -3,6 +3,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -261,7 +262,7 @@ def create_violation(oToi, oLine):
     iToken = oLine.token_index
     iLine = oLine.number
     lTokens = oToi.extract_tokens(iToken, iToken)
-    sSolution = build_solution(oLine.sExpectedIndent)
+    sSolution = alignment_utils.build_solution(oLine.sExpectedIndent)
 
     oViolation = violation.New(iLine, lTokens, sSolution)
     oViolation.set_action(create_action_dict(oLine))
@@ -434,14 +435,3 @@ def align_paren(self):
     if self.align_paren == 'yes':
         return True
     return False
-
-
-def build_solution(sIndent):
-    sSolution = 'Indent with '
-    if '\t' in sIndent and ' ' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s) followed by ' + str(sIndent.count(' ')) + ' space(s)'
-    elif '\t' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s)'
-    elif ' ' in sIndent:
-        sSolution += str(sIndent.count(' ')) + ' space(s)'
-    return sSolution
