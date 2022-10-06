@@ -54,7 +54,7 @@ class test_process_rule(unittest.TestCase):
 
     def test_rule_028_smart_tabs(self):
         oRule = process.rule_028()
-        oRule.indentStyle = 'smart-tabs'
+        oRule.indentStyle = 'smart_tabs'
 
         lExpected = [12, 19, 24, 30, 40, 45]
 
@@ -63,7 +63,7 @@ class test_process_rule(unittest.TestCase):
 
     def test_fix_rule_028_smart_tabs(self):
         oRule = process.rule_028()
-        oRule.indentStyle = 'smart-tabs'
+        oRule.indentStyle = 'smart_tabs'
 
         oRule.fix(self.oFile)
 

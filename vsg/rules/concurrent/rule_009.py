@@ -131,7 +131,7 @@ class rule_009(alignment.Rule):
                 else:
                     dAction['action'] = 'insert'
 
-                sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
+                sSolution = build_solution(dExpectedIndent[iLine])
                 iToken = dIndex[iLine]
                 oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
                 oViolation.set_action(dAction)
@@ -710,3 +710,13 @@ def _convert_expected_indent_to_smart_tab(dExpectedIndent, indentSize, iFirstLin
 #        dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iColumn:]
         dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iFirstLineIndent:]
 
+
+def build_solution(sIndent):
+    sSolution = 'Indent with '
+    if '\t' in sIndent and ' ' in sIndent:
+        sSolution += str(sIndent.count('\t')) + ' tab(s) followed by ' + str(sIndent.count(' ')) + ' space(s)'
+    elif '\t' in sIndent:
+        sSolution += str(sIndent.count('\t')) + ' tab(s)'
+    elif ' ' in sIndent:
+        sSolution += str(sIndent.count(' ')) + ' space(s)'
+    return sSolution

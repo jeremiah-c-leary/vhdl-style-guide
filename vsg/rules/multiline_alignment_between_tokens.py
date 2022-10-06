@@ -157,12 +157,24 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
 
 def build_violation(iLine, oToi, iToken, dExpectedIndent, dIndex, dActualIndent):
-    sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
+#    sSolution = 'Adjust indent to column ' + str(dExpectedIndent[iLine])
+    sSolution = build_solution(dExpectedIndent[iLine])
     dAction = build_action_dictionary(iLine, dActualIndent, dExpectedIndent)
     iToken = dIndex[iLine]
     oViolation = violation.New(iLine, oToi.extract_tokens(iToken, iToken), sSolution)
     oViolation.set_action(dAction)
     return oViolation
+
+
+def build_solution(sIndent):
+    sSolution = 'Indent with '
+    if '\t' in sIndent and ' ' in sIndent:
+        sSolution += str(sIndent.count('\t')) + ' tab(s) followed by ' + str(sIndent.count(' ')) + ' space(s)'
+    elif '\t' in sIndent:
+        sSolution += str(sIndent.count('\t')) + ' tab(s)'
+    elif ' ' in sIndent:
+        sSolution += str(sIndent.count(' ')) + ' space(s)'
+    return sSolution
 
 
 def build_action_dictionary(iLine, dActualIndent, dExpectedIndent):

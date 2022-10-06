@@ -259,7 +259,7 @@ def check_indents(self, oToi, oLines):
 
 def convert_column_index_to_whitespace(self, iColumn, iFirstLineIndent, iFirstLineIndentIndex):
 #    print(f'{iColumn}|{iFirstLineIndent}|{iFirstLineIndentIndex}')
-    if self.indentStyle == 'smart-tabs':
+    if self.indentStyle == 'smart_tabs':
         sIndent = '\t' * iFirstLineIndentIndex
 #        sAlignment = ' ' * (iColumn - len(sIndent))
         sAlignment = ' ' * (iColumn - iFirstLineIndent)
@@ -274,7 +274,7 @@ def create_violation(oToi, oLine):
     iToken = oLine.token_index
     iLine = oLine.number
     lTokens = oToi.extract_tokens(iToken, iToken)
-    sSolution = 'Adjust indent to column ' + str(oLine.iExpectedIndent)
+    sSolution = build_solution(oLine.sExpectedIndent)
 
     oViolation = violation.New(iLine, lTokens, sSolution)
     oViolation.set_action(create_action_dict(oLine))
@@ -447,3 +447,14 @@ def align_paren(self):
     if self.align_paren == 'yes':
         return True
     return False
+
+
+def build_solution(sIndent):
+    sSolution = 'Indent with '
+    if '\t' in sIndent and ' ' in sIndent:
+        sSolution += str(sIndent.count('\t')) + ' tab(s) followed by ' + str(sIndent.count(' ')) + ' space(s)'
+    elif '\t' in sIndent:
+        sSolution += str(sIndent.count('\t')) + ' tab(s)'
+    elif ' ' in sIndent:
+        sSolution += str(sIndent.count(' ')) + ' space(s)'
+    return sSolution

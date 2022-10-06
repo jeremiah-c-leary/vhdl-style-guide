@@ -14,3 +14,8 @@ library ieee;
   use ieee.numeric_std.all;
 	-- Comment
   use ieee.std_logic_arith.all;
+
+library ieee;
+	-- Comment
+	use ieee.std_logic_1164.all;
+

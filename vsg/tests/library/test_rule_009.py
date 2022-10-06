@@ -34,7 +34,7 @@ class test_library_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '009')
 
-        lExpected = [9, 11, 13, 15]
+        lExpected = [9, 11, 13, 15, 19]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -53,7 +53,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_rule_009_smart_tabs(self):
         oRule = library.rule_009()
-        oRule.indentStyle = 'smart-tabs'
+        oRule.indentStyle = 'smart_tabs'
 
         lExpected = [3, 5, 9, 12, 13, 15]
 
@@ -62,7 +62,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_fix_rule_009_smart_tabs(self):
         oRule = library.rule_009()
-        oRule.indentStyle = 'smart-tabs'
+        oRule.indentStyle = 'smart_tabs'
 
         oRule.fix(self.oFile)
 
