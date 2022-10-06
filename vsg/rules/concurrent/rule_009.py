@@ -212,7 +212,7 @@ def is_token_before_carriage_return(tToken, lTokens):
 
 def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_align_left_option  <-' + '-'*70)
-    iFirstLine = _get_first_line(dActualIndent)
+    iFirstLine = alignment_utils.get_first_line(dActualIndent)
 
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
@@ -258,8 +258,8 @@ def _apply_align_paren_option(sConfig, lStructure, dActualIndent, bStartsWithPar
 #    print('--> _apply_align_paren_option <-' + '-'*70)
     if sConfig == 'no':
         return dActualIndent, lStructure
-    iFirstLine = _get_first_line(dActualIndent)
-    iLastLine = _get_last_line(dActualIndent)
+    iFirstLine = alignment_utils.get_first_line(dActualIndent)
+    iLastLine = alignment_utils.get_last_line(dActualIndent)
 
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
@@ -371,8 +371,8 @@ def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithPa
 #    print('--> _apply_wrap_at_when_option <-' + '-'*70)
     if sConfig == 'no':
         return dActualIndent, lStructure
-    iFirstLine = _get_first_line(dActualIndent)
-    iLastLine = _get_last_line(dActualIndent)
+    iFirstLine = alignment_utils.get_first_line(dActualIndent)
+    iLastLine = alignment_utils.get_last_line(dActualIndent)
 
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
@@ -426,8 +426,8 @@ def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithPa
 
 def _apply_align_paren_after_when(lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_align_paren_option <-' + '-'*70)
-    iFirstLine = _get_first_line(dActualIndent)
-    iLastLine = _get_last_line(dActualIndent)
+    iFirstLine = alignment_utils.get_first_line(dActualIndent)
+    iLastLine = alignment_utils.get_last_line(dActualIndent)
 
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
@@ -635,24 +635,10 @@ def _build_structure_list(iLine, iColumn, lTokens):
     return lStructure, iLine
 
 
-def _get_first_line(dActualIndent):
-    lLines = list(dActualIndent.keys())
-    lLines.sort()
-    iLine = lLines[0]
-    return iLine
-
-
-def _get_last_line(dActualIndent):
-    lLines = list(dActualIndent.keys())
-    lLines.sort()
-    iLine = lLines[-1]
-    return iLine
-
-
 def _update_structure(dExpectedIndent, dActualIndent, lStructure):
 #    print('--> _update_structure <' + '-'*80)
-    iFirstLine = _get_first_line(dActualIndent)
-    iLastLine = _get_last_line(dActualIndent)
+    iFirstLine = alignment_utils.get_first_line(dActualIndent)
+    iLastLine = alignment_utils.get_last_line(dActualIndent)
     lReturn = []
 #    print(f'dActaulIndent = {dActualIndent}')
 #    print(f'dExpectedIndent = {dExpectedIndent}')
@@ -669,7 +655,7 @@ def _update_structure(dExpectedIndent, dActualIndent, lStructure):
 
 
 def _find_first_indent(sConfig, dActualIndent, iIndentStep, iAssignColumn):
-    iFirstLine = _get_first_line(dActualIndent)
+    iFirstLine = alignment_utils.get_first_line(dActualIndent)
     if sConfig == 'yes':
         iFirstIndent = len(dActualIndent[iFirstLine]) + iIndentStep
     else:
