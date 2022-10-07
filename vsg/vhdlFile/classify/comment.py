@@ -32,6 +32,8 @@ def classify_single_line_comment(iToken, lObjects, oOptions):
     sToken = lObjects[iToken].get_value()
     if not oOptions.inside_delimited_comment() and sToken.startswith('--'):
         lObjects[iToken] = parser.comment(sToken)
+        if '\t' in sToken:
+            lObjects[iToken].has_tab = True
 
 
 def classify_delimited_comment_open_keyword(iToken, lObjects, oOptions):
@@ -45,6 +47,8 @@ def classify_delimited_comment_text(iToken, lObjects, oOptions):
     sToken = lObjects[iToken].get_value()
     if oOptions.inside_delimited_comment():
         lObjects[iToken] = token.text(sToken)
+        if '\t' in sToken:
+            lObjects[iToken].has_tab = True
 
 
 def merge_text_tokens(lObjects):

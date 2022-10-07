@@ -27,9 +27,23 @@ Where periods indicate spaces:
 whitespace_002
 ##############
 
-This rule has been deprecated.
+|phase_1| |error| |whitespace|
 
-VSG changes tabs to spaces when a file is read in.
+This rule will check for the existence of tabs in the middle of a line.
+
+|configuring_tabs_vs_spaces_link|
+
+**Violation**
+
+.. code-block:: text
+
+   \t\tsignal wr_en\t:\tstd_logic;  --\tWrite Enable
+
+**Fix**
+
+.. code-block:: text
+
+   \t\tsignal wr_en : std_logic;  -- Write Enable
 
 whitespace_003
 ##############

@@ -73,6 +73,7 @@ class testCodeExample(unittest.TestCase):
         self.assertEqual(lExpected, oTimestamp.get_lines())
 
     def test_spi_slave(self):
+        self.maxDiff = None
         oRuleList = rule_list.rule_list(oSpiSlave, oSeverityList)
         oRuleList.configure(oConfig)
         oRuleList.fix()

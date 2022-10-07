@@ -12,7 +12,7 @@ lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_009_test
 
 lExpected = []
 lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed.vhd'), lExpected)
+utils.read_file(os.path.join(sTestDir, 'rule_009_test_input.fixed.vhd'), lExpected, False)
 
 
 class test_port_map_rule(unittest.TestCase):

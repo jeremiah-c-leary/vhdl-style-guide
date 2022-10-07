@@ -110,7 +110,7 @@ This rule checks indent of multiline report statements.
 report_statement_400
 ####################
 
-|phase_5| |error| |alignment|
+|phase_4| |error| |alignment|
 
 This rule checks the alignment of the report expressions.
 

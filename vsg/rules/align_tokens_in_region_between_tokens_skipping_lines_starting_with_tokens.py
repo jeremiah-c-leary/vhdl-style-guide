@@ -4,6 +4,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -90,7 +91,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                                dAnalysis[iLine]['left_column'] = iColumn
                            break
 
-                   iColumn += len(oToken.get_value())
+                   iColumn += alignment_utils.update_column_width(self, oToken)
 
                if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
                    add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
@@ -174,7 +175,6 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
 
 
             add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment, self.include_lines_without_comments, iMaxColumn)
-
 
             for iKey in list(dAnalysis.keys()):
                 if dAnalysis[iKey]['adjust'] != 0:

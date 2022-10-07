@@ -10,6 +10,8 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_003_test_input.vhd'))
 
+dIndentMap = utils.read_indent_file()
+
 lExpected_align_left_no_align_paren_yes = []
 lExpected_align_left_no_align_paren_yes.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_align_left_no_align_paren_yes.vhd'), lExpected_align_left_no_align_paren_yes)
@@ -23,11 +25,12 @@ lExpected_align_left_yes_align_paren_yes.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_align_left_yes_align_paren_yes.vhd'), lExpected_align_left_yes_align_paren_yes)
 
 
-class test_concurrent_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
+        self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_003_align_left_no_align_paren_yes(self):
         oRule = concurrent.rule_003()

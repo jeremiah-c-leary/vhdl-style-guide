@@ -38,6 +38,9 @@
 .. |configuring_multiline_constraint_rules_link| replace::
    Refer to :ref:`configuring-multiline-constraint-rules` for more information.
 
+.. |configuring_multiline_report_rule_link| replace::
+   Refer to :ref:`configuring-multiline-report-rule` for more information.
+
 .. |configuring_number_of_signals_in_signal_declaration_link| replace::
    Refer to :ref:`configuring-number-of-signals-in-signal-declaration` for more information.
 
@@ -52,6 +55,9 @@
 
 .. |configuring_previous_line_rules_link| replace::
    Refer to :ref:`configuring-previous-line-rules` for more information.
+
+.. |configuring_tabs_vs_spaces_link| replace::
+   Refer to :ref:`configuring-tabs-vs-spaces` for more information.
 
 .. |configuring_type_of_instantiations_link| replace::
    Refer to :ref:`configuring-type-of-instantiations` for more information.

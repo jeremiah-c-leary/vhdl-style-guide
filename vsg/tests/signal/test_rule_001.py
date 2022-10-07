@@ -12,9 +12,13 @@ lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test
 
 dIndentMap = utils.read_indent_file()
 
-lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed.vhd'), lExpected)
+lExpected_spaces = []
+lExpected_spaces.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed_spaces.vhd'), lExpected_spaces)
+
+lExpected_smart_tabs = []
+lExpected_smart_tabs.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed_smart_tabs.vhd'), lExpected_smart_tabs)
 
 
 class test_signal_rule(unittest.TestCase):
@@ -24,25 +28,48 @@ class test_signal_rule(unittest.TestCase):
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
-    def test_rule_001(self):
+    def test_rule_001_spaces(self):
         oRule = signal.rule_001()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'signal')
         self.assertEqual(oRule.identifier, '001')
 
-        lExpected = [9, 10]
+        lExpected = [5, 9, 10, 13, 14]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_001(self):
+    def test_fix_rule_001_spaces(self):
         oRule = signal.rule_001()
+        oRule.indentStyle = 'spaces'
 
         oRule.fix(self.oFile)
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected, lActual)
+        self.assertEqual(lExpected_spaces, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_001_smart_tabs(self):
+        oRule = signal.rule_001()
+        oRule.indentStyle = 'smart_tabs'
+
+        lExpected = [4, 9, 10, 14]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_001_smart_tabs(self):
+        oRule = signal.rule_001()
+        oRule.indentStyle = 'smart_tabs'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_smart_tabs, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

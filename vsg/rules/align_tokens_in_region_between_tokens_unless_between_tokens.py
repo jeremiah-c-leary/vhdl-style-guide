@@ -4,9 +4,10 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
-from vsg.vhdlFile import utils
 from vsg.rule_group import alignment
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rule_utils
+from vsg.vhdlFile import utils
 
 
 class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule):
@@ -91,7 +92,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
                                dAnalysis[iLine]['left_column'] = iColumn
                            break
 
-                   iColumn += len(oToken.get_value())
+                   iColumn += alignment_utils.update_column_width(self, oToken)
 
                if isinstance(oToken, parser.carriage_return):
                    iLine += 1

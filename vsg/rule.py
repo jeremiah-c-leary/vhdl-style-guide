@@ -12,6 +12,7 @@ class Rule():
         self.unique_id = str(name) + '_' + str(identifier)
         self.solution = None
         self.violations = []
+        self.indentStyle = 'spaces'
         self.indentSize = 2
         self.phase = None
         self.subphase = 1
@@ -21,7 +22,7 @@ class Rule():
         self.debug = False
         self.dFix = {}
         self.dFix['violations'] = {}
-        self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
+        self.configuration = ['indentStyle', 'indentSize', 'phase', 'disable', 'fixable', 'severity']
         self.deprecated = False
         self.proposed = False
         self.groups = []

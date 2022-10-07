@@ -242,7 +242,6 @@ class rule_list():
 
           sOutputFormat (string)
         '''
-#        print('--> report_violations')
         dRunInfo = {}
         dRunInfo['filename'] = self.oVhdlFile.filename
         dRunInfo['stopPhase'] = 7
@@ -251,7 +250,6 @@ class rule_list():
         for oRule in self.rules:
             if oRule.has_violations():
                 lViolations = oRule.get_violations()
-#                    print(f'{oRule.name}_{oRule.identifier} | {iLineNumber} | {len(lViolations)}')
                 dRunInfo['violations'].extend(lViolations)
         dRunInfo['violations'] = sorted(dRunInfo['violations'], key=lambda x: int(x['lineNumber']))
         dRunInfo['stopPhase'] = self.lastPhaseRan
@@ -266,7 +264,6 @@ class rule_list():
             name = dViolation['severity']['name']
             dRunInfo['severities'][name] = dRunInfo['severities'][name] + 1
 
-#        print(dRunInfo)
         if sOutputFormat == 'vsg':
             sOutputStd, sOutputErr = report.vsg_stdout.print_output(dRunInfo)
         elif sOutputFormat == 'syntastic':

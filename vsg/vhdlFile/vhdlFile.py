@@ -71,7 +71,7 @@ class vhdlFile():
         oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
-            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip('\n').rstrip('\r'))
+            lTokens = tokens.create(sLine.rstrip('\n').rstrip('\r'))
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
@@ -168,6 +168,9 @@ class vhdlFile():
 
     def get_tokens_matching(self, lTokens):
         return extract.get_tokens_matching(lTokens, self.lAllObjects, self.oTokenMap)
+
+    def get_tokens_matching_not_at_beginning_or_ending_of_line(self, lTokens):
+        return extract.get_tokens_matching_not_at_beginning_or_ending_of_line(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_n_token_after_tokens(self, iToken, lTokens):
         return extract.get_n_token_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)

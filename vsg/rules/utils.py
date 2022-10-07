@@ -75,8 +75,20 @@ def update_code_tags(oToken1, oToken2):
     return oToken2
 
 
-def insert_whitespace(lTokens, index, num=1):
-    insert_token(lTokens, index, parser.whitespace(' '*num))
+def insert_whitespace(lTokens, index, num=1, sString=' '):
+    if sString == ' ':
+        insert_token(lTokens, index, parser.whitespace(' '*num))
+    else:
+        oToken = parser.whitespace('\t'*num)
+        oToken.has_tabs = True
+        insert_token(lTokens, index, oToken)
+
+
+def insert_new_whitespace(lTokens, index, sWhitespace):
+    oToken = parser.whitespace(sWhitespace)
+    if '\t' in sWhitespace:
+        oToken.has_tabs = True
+    insert_token(lTokens, index, oToken)
 
 
 def insert_carriage_return(lTokens, index):
@@ -100,6 +112,14 @@ def get_index_of_token_in_list(oToken, lTokens):
         if isinstance(token, oToken):
             return iToken
     return None
+
+
+def get_indexes_of_token_in_list(oToken, lTokens):
+    lReturn = []
+    for iToken, token in enumerate(lTokens):
+        if isinstance(token, oToken):
+            lReturn.append(iToken)
+    return lReturn
 
 
 def get_number_of_carriage_returns_before_token(oStopToken, lTokens):

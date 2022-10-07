@@ -3,6 +3,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -72,9 +73,9 @@ class rule_012(alignment.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
         if dAction['action'] == 'adjust':
-            lTokens[0].set_value(' '*dAction['column'])
+            lTokens[0].set_value(dAction['whitespace'])
         else:
-            rules_utils.insert_whitespace(lTokens, 0, dAction['column'])
+            rules_utils.insert_new_whitespace(lTokens, 0, dAction['whitespace'])
 
         oViolation.set_tokens(lTokens)
 
@@ -142,14 +143,12 @@ def check_first_line(oLine, oLines, oToi, iIndentStep):
     oLine.set_expected_indent(iIndent)
 
     iAdjust = oToi.iAssignColumn
-#    print(f'iAdjust = {iAdjust}')
     oLines.update_parens(oLine, iIndentStep, iAdjust)
 
     if oLines.no_parens():
         oLines.iNextIndent = iIndent
     else:
         oLines.iNextIndent = oLines.lParens[-1].iExpectedColumn
-#    print(f'iNextIndent = {oLines.iNextIndent}')
 
 
 def check_last_line(oLine, oLines, iIndentStep):
@@ -175,32 +174,22 @@ def check_my_first_line(oLine, oLines, oToi, iIndentStep):
     oLine.set_expected_indent(iIndent)
 
     iAdjust = oToi.iAssignColumn
-#    print(f'iAdjust = {iAdjust}')
     oLines.update_parens(oLine, iIndentStep, iAdjust)
 
     if oLines.no_parens():
         oLines.iNextIndent = iIndent
     else:
         oLines.iNextIndent = len(oLines.lParens)*iIndentStep + iIndent
-#        print(f'iNextIndent = {oLines.iNextIndent}')
 
     for iParen, oParen in enumerate(oLine.parens):
         oParen.iExpectedColumn = iParen*iIndentStep + iIndent + iIndentStep
-#        print(f'{oParen.iExpectedColumn}')
 
 
 def starts_with_paren(lTokens):
-
     iToken = utils.find_next_non_whitespace_token(1, lTokens)
     if isinstance(lTokens[iToken], parser.open_parenthesis):
         return True
     return False
-
-
-def _get_first_line_info(iLine, oFile):
-    lTemp = oFile.get_tokens_from_line(iLine)
-    iIndent = len(lTemp.get_tokens()[0].get_value())
-    return iLine, iIndent
 
 
 def remove_non_arrays(lToi):
@@ -231,23 +220,42 @@ def set_last_line_number(oToi):
 
 def populate_toi_parameters(aToi, oFile):
     for oToi in aToi:
-        oToi.iFirstLine, oToi.iFirstLineIndent = _get_first_line_info(oToi.iLine, oFile)
+        oToi.iFirstLine = oToi.iLine
+        lTemp = oFile.get_tokens_from_line(oToi.iLine)
+        iIndent = len(lTemp.get_tokens()[0].get_value())
+        oToi.iFirstLineIndent = iIndent
+
+        oToi.iFirstLineIndentIndex = oFile.get_indent_of_line_at_index(oToi.get_start_index())
+
         oToi.iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
         set_last_line_number(oToi)
 
 
 def check_indents(self, oToi, oLines):
-    for oLine in oLines.lLines:
-        if oLine.actual_indent != oLine.iExpectedIndent:
+    for oLine in oLines.lLines[1:]:
+        sExpectedIndent = convert_column_index_to_whitespace(self, oLine.get_expected_indent(), oLines.get_first_line_indent(), oToi.iFirstLineIndentIndex)
+        oLine.sExpectedIndent = sExpectedIndent
+        if sExpectedIndent != oLine.actual_leading_whitespace:
             oViolation = create_violation(oToi, oLine)
             self.add_violation(oViolation)
+
+
+def convert_column_index_to_whitespace(self, iColumn, iFirstLineIndent, iFirstLineIndentIndex):
+    if self.indentStyle == 'smart_tabs':
+        sIndent = '\t' * iFirstLineIndentIndex
+        sAlignment = ' ' * (iColumn - iFirstLineIndent)
+    else:
+        sIndent = ' ' * self.indentSize * iFirstLineIndentIndex
+        sAlignment = ' ' * (iColumn - len(sIndent))
+    sLeadingWhitespace = sIndent + sAlignment
+    return sLeadingWhitespace
 
 
 def create_violation(oToi, oLine):
     iToken = oLine.token_index
     iLine = oLine.number
     lTokens = oToi.extract_tokens(iToken, iToken)
-    sSolution = 'Adjust indent to column ' + str(oLine.iExpectedIndent)
+    sSolution = alignment_utils.build_solution(oLine.sExpectedIndent)
 
     oViolation = violation.New(iLine, lTokens, sSolution)
     oViolation.set_action(create_action_dict(oLine))
@@ -259,6 +267,7 @@ def create_action_dict(oLine):
     dAction = {}
     dAction['line'] = oLine.number
     dAction['column'] = oLine.iExpectedIndent
+    dAction['whitespace'] = oLine.sExpectedIndent
 
     if isinstance(oLine.tokens[0], parser.whitespace):
         dAction['action'] = 'adjust'
@@ -321,6 +330,7 @@ class line():
         self.parens = []
         self.populate_paren_list(iIndent)
         self.set_actual_indent()
+        self.set_actual_leading_whitespace()
         self.token_index = iToken
         self.isFirst = False
         self.isLast = False
@@ -343,6 +353,12 @@ class line():
         if rules_utils.token_is_whitespace(oToken):
             self.actual_indent = len(oToken.get_value())
 
+    def set_actual_leading_whitespace(self):
+        oToken = self.tokens[0]
+        self.actual_leading_whitespace = ''
+        if rules_utils.token_is_whitespace(oToken):
+            self.actual_leading_whitespace = oToken.get_value()
+
     def get_delta_parens(self):
         iReturn = 0
         for oParen in self.parens:
@@ -354,6 +370,9 @@ class line():
 
     def set_expected_indent(self, iIndent):
         self.iExpectedIndent = iIndent
+
+    def get_expected_indent(self):
+        return self.iExpectedIndent
 
     def starts_with_close_paren(self):
         return rules_utils.token_list_begins_with_close_paren(self.tokens)
