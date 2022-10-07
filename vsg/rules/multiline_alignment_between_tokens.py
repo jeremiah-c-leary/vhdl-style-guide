@@ -384,13 +384,7 @@ def _analyze_align_paren_yes_align_left_yes(iFirstLine, iLastLine, lParens, dAct
 #        print(f'iParens = {iParens}')
 
         if len(lTemp) == 0:
-            if bStartsWithParen:
-                dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
-            else:
-                if iParens == 0:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
-                else:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
+            dExpectedIndent[iLine + 1] = lColumn[-1] * ' '
 
         if iLine == iFirstLine:
             dExpectedIndent[iLine + 1] = (iParens * iIndentStep + dActualIndent[iFirstLine] + iIndentStep) * ' '
