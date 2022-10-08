@@ -1,8 +1,7 @@
-
 .. _configuring-multiline-structure-rules:
 
 Configuring Multiline Structure Rules
---------------------------------------
+-------------------------------------
 
 There are rules which will check indent and formatting of multiline expressions and conditions.
 
@@ -15,9 +14,9 @@ There are several options to these rules:
 +-----------------------+---------+---------+---------------------------------------------------------+
 | Method                |   Type  | Default | Description                                             |
 +=======================+=========+=========+=========================================================+
-| first_paren_new_line  | string  |   yes   | First opening parenthesis on its own line.             |
+| first_paren_new_line  | string  |   yes   | First opening parenthesis on its own line.              |
 +-----------------------+---------+---------+---------------------------------------------------------+
-| last_paren_new_line   | string  |   yes   | Last closing parenthesis on its own line.              |
+| last_paren_new_line   | string  |   yes   | Last closing parenthesis on its own line.               |
 +-----------------------+---------+---------+---------------------------------------------------------+
 | open_paren_new_line   | string  |   yes   | Insert new line after open parenthesis.                 |
 +-----------------------+---------+---------+---------------------------------------------------------+

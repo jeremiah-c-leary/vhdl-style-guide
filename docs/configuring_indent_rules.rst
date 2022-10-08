@@ -16,10 +16,16 @@ The method of indenting can be configured using one of the following options:
 .. |values| replace::
    :code:`spaces`, :code:`smart_tabs`
 
+.. |default_value| replace::
+   :code:`spaces`
+
+.. |option| replace::
+   :code:`indent_style`
+
 +----------------------+----------+-----------------+----------------------------+
 | Option               | Values   | Default Value   | Description                |
-+======================+==========+==============--=+============================+
-| :code:`indent_style` | |values| | |default_value| | * |spaces_description|     |
++======================+==========+=================+============================+
+| |option|             | |values| | |default_value| | * |spaces_description|     |
 |                      |          |                 | * |smart_tabs_description| |
 +----------------------+----------+-----------------+----------------------------+
 

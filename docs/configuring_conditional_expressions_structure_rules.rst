@@ -15,7 +15,7 @@ There are several options to these rules:
 +-----------------------+---------+---------+---------------------------------------------------------+
 | Method                |   Type  | Default | Description                                             |
 +=======================+=========+=========+=========================================================+
-| new_line_after_assign | string  |   no    | First opening parenthesis on its own line.             |
+| new_line_after_assign | string  |   no    | First opening parenthesis on its own line.              |
 +-----------------------+---------+---------+---------------------------------------------------------+
 | ignore_single_line    | string  |   yes   | Do not apply rules if expression/condition is contained |
 |                       |         |         | on a single line.                                       |
