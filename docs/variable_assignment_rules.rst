@@ -216,3 +216,34 @@ This rule checks alignment of multiline conditional variable assignments.
                         (I_CRUFT = '1')) else
             '0';
 
+variable_assignment_401
+#######################
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of multiline variable assignments that contain arrays.
+
+|configuring_multiline_indent_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data :=
+   (
+            0,
+        65535,
+        32768
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data :=
+   (
+     0,
+     65535,
+     32768
+   );
+
