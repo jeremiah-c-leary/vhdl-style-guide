@@ -22,6 +22,11 @@ class test_comment_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
+        self.oFile.lAllObjects[-2].is_block_comment = True
+        self.oFile.lAllObjects[-4].is_block_comment = True
+        self.oFile.lAllObjects[-6].is_block_comment = True
+        self.oFile.lAllObjects[-8].is_block_comment = True
+        self.oFile.lAllObjects[-10].is_block_comment = True
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
@@ -32,7 +37,7 @@ class test_comment_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '100')
         self.assertEqual(oRule.groups, ['whitespace'])
 
-        lExpected = [7, 8]
+        lExpected = [7, 14, 20]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

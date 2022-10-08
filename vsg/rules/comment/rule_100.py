@@ -10,6 +10,10 @@ class rule_100(whitespace.Rule):
     '''
     This rule checks for a single space after the **--**.
 
+    Default exceptions to this rule are defined.
+
+    |configuring_whitespace_after_comment_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -24,8 +28,8 @@ class rule_100(whitespace.Rule):
     .. code-block:: vhdl
 
        -- Comment 1
-       --| Comment 2
-       --- Comment
+       --|Comment 2
+       ---Comment
        ---------------------------
     '''
 
@@ -35,15 +39,23 @@ class rule_100(whitespace.Rule):
         self.phase = 2
         self.disable = False
         self.lTokens = [parser.comment]
+        self.exceptions = ['--!', '--=', '--+', '--|', '---']
+        self.configuration.append('exceptions')
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_matching(self.lTokens)
+        lReturn = []
+        lToi = oFile.get_tokens_matching(self.lTokens)
+        for oToi in lToi:
+            oToken = oToi.get_tokens()[0]
+            if oToken.is_block_comment:
+                continue
+            if not self.valid_comment(oToken):
+                lReturn.append(oToi)
+        return lReturn
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            dResults = analyze_comment(oToi)
-            if no_space_after_comment_keyword(dResults):
-                create_violation(self, oToi, dResults)
+            create_violation(self, oToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -54,53 +66,20 @@ class rule_100(whitespace.Rule):
         lTokens[0].set_value(sNewToken)
         oViolation.set_tokens(lTokens)
 
-
-def no_space_after_comment_keyword(dResults):
-    return dResults['violation']
-
-
-def analyze_comment(oToi):
-    sToken = get_comment_string(oToi)
-    dAction = create_passing_action_dict()
-
-    if not valid_comment(sToken):
-        dAction = check_for_invalid_comment(dAction, sToken)
-
-    return dAction
-
-
-def create_passing_action_dict():
-    dReturn = {}
-    dReturn['violation'] = False
-    return dReturn
-
-
-def get_comment_string(oToi):
-    lTokens = oToi.get_tokens()
-    oToken = lTokens[0]
-    return oToken.get_value()
-
-
-def check_for_invalid_comment(dAction, sToken):
-    if is_character_after_double_dash_a_letter_or_number(sToken):
-        dAction = create_violation_action_dict(sToken, 2)
-    elif is_a_header_candidate(sToken):
-        dAction = create_violation_action_dict(sToken, 3)
-    return dAction
-
-
-def is_a_header_candidate(sToken):
-    if len(sToken) < 4:
+    def valid_comment(self, oToken):
+        sToken = oToken.get_value()
+        if len(sToken) == 2:
+            return True
+        if sToken.startswith('-- '):
+            return True
+        if self.exception_found(sToken):
+            return True
         return False
-    if not sToken[3].isspace() and sToken[3].isalnum():
-        return True
-    return False
 
-
-def is_character_after_double_dash_a_letter_or_number(sToken):
-    if sToken[2].isalnum():
-        return True
-    return False
+    def exception_found(self, sToken):
+        if sToken[0:3] in self.exceptions:
+            return True
+        return False
 
 
 def create_violation_action_dict(sToken, iIndex):
@@ -111,17 +90,9 @@ def create_violation_action_dict(sToken, iIndex):
     return dReturn
 
 
-def valid_comment(sToken):
-    if len(sToken) == 2:
-        return True
-    if sToken.startswith('-- '):
-        return True
-    if sToken.startswith('---'):
-        return True
-    return False
 
-
-def create_violation(self, oToi, dResults):
+def create_violation(self, oToi):
+    dResults = create_violation_action_dict(oToi.get_tokens()[0].get_value(), 2)
     oViolation = violation.New(oToi.get_line_number(), oToi, dResults['solution'])
     oViolation.set_action(dResults)
     self.add_violation(oViolation)

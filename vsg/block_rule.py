@@ -46,11 +46,9 @@ class Rule(structure.Rule):
         self.analyze(oFile)
 
     def set_token_indent(self, oToken):
-        if self.allow_indenting:
-            oToken.is_block_comment = False
-        else:
+        oToken.is_block_comment = True
+        if not self.allow_indenting:
             oToken.set_indent(0)
-            oToken.is_block_comment = True
             oToken.block_comment_indent = 0
 
     def calculate_leading_whitespace(self, oToken):

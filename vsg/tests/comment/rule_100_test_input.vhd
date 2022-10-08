@@ -17,3 +17,12 @@
 --vhdl_comp_off
 --vhdl_comp_on
 
+--(2 * 4)
+
+--! ignore Doxygen comments
+
+--+--block comment Header
+--|
+--(
+--*
+--+--block comment footer
