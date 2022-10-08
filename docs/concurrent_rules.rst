@@ -374,3 +374,34 @@ This rule checks the alignment the => operator in record aggregates.
                  address     => 57
                 );
 
+concurrent_401
+##############
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of multiline concurrent simple signal assignments that contain arrays.
+
+|configuring_multiline_indent_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data <=
+   (
+            0,
+        65535,
+        32768
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data <=
+   (
+     0,
+     65535,
+     32768
+   );
+
