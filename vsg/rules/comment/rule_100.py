@@ -90,7 +90,6 @@ def create_violation_action_dict(sToken, iIndex):
     return dReturn
 
 
-
 def create_violation(self, oToi):
     dResults = create_violation_action_dict(oToi.get_tokens()[0].get_value(), 2)
     oViolation = violation.New(oToi.get_line_number(), oToi, dResults['solution'])
