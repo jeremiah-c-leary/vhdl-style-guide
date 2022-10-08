@@ -1,5 +1,5 @@
 
-.. _configuring-multiline-structure-rules:
+.. _configuring-use-clause-selected-names:
 
 Configuring Use Clause Selected Names
 -------------------------------------
