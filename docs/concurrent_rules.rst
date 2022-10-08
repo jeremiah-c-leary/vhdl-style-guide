@@ -319,6 +319,32 @@ This rule checks the structure of simple and conditional concurrent statements.
                         (I_CRUFT = '1')) else
             '0';
 
+concurrent_012
+##############
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of multiline concurrent simple signal assignments that contain arrays.
+
+|configuring_multiline_structure_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data <= (0, 65535, 32768);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data <=
+   (
+     0,
+     65535,
+     32768
+   );
+
 concurrent_400
 ##############
 
