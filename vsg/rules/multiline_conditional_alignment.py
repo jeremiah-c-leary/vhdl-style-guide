@@ -41,7 +41,7 @@ class multiline_conditional_alignment(alignment.Rule):
     '''
 
     def __init__(self, name, identifier, lTokenPairs):
-        alignment.Rule.__init__(self, 'concurrent', '009')
+        alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.align_left = 'no'
