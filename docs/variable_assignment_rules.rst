@@ -159,3 +159,29 @@ This rule checks the structure of simple and conditional variable assignments.
                         (I_CRUFT = '1')) else
             '0';
 
+variable_assignment_008
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of multiline variable assignments that contain arrays.
+
+|configuring_multiline_structure_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data := (0, 65535, 32768);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data :=
+   (
+     0,
+     65535,
+     32768
+   );
+
