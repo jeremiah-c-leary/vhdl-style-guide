@@ -126,3 +126,36 @@ This rule checks for comments in multiline variable assignments.
      counter := 1 + 4 + 10 + 25 +
                 30 + 35;
 
+variable_assignment_007
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of simple and conditional variable assignments.
+
+|configuring_multiline_structure_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_en :=
+     '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo :=
+     I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_en := '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo := I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
