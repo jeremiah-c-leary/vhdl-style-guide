@@ -176,6 +176,32 @@ This rule checks the structure of simple and conditional sequential signal assig
                         (I_CRUFT = '1')) else
             '0';
 
+sequential_009
+##############
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of multiline simple sequential signal assignments that contain arrays.
+
+|configuring_multiline_structure_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data <= (0, 65535, 32768);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data <=
+   (
+     0,
+     65535,
+     32768
+   );
+
 sequential_400
 ##############
 
