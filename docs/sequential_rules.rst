@@ -143,6 +143,39 @@ This rule checks for code after a sequential assignment.
     b <= '1';
     c <= '0'; -- comment
 
+sequential_008
+##############
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of simple and conditional sequential signal assignments.
+
+|configuring_multiline_structure_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_en <=
+     '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo <=
+     I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_en <= '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo <= I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
 sequential_400
 ##############
 
