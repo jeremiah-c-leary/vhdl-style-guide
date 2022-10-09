@@ -334,6 +334,29 @@ This rule checks the structure of signal constraints.
        element2(3 downto 0)
      );
 
+signal_100
+##########
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal    size : integer;
+   signal width : integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal size : integer;
+   signal width : integer;
+
 signal_400
 ##########
 
