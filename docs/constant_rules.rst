@@ -400,6 +400,29 @@ Having a space makes it clearer where the assignment occurs on the line.
    constant size : integer := 1;
    constant width : t_type := (
 
+constant_101
+############
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant    size : integer := 1;
+   constant width : integer := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant size : integer := 1;
+   constant width : integer := 32;
+
 constant_600
 ############
 
