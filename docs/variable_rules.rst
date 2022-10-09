@@ -266,6 +266,29 @@ This rule checks the structure of variable constraints.
        element2(3 downto 0)
      );
 
+variable_100
+############
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable    size : integer;
+   variable width : integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable size : integer;
+   variable width : integer;
+
 variable_400
 ############
 
