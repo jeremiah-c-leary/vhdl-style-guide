@@ -32,7 +32,7 @@
 9 |     FORCE_LABEL : sig1 := a + b - c after 10 ns, d + e after 25 ns;
 <class 'vsg.token.variable_assignment_statement.label'>
 <class 'vsg.token.variable_assignment_statement.label_colon'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
@@ -57,7 +57,7 @@
 11 |     FORCE_LABEL : sig1 := a + b - c after 10 ns, d + e after 25 ns;
 <class 'vsg.token.variable_assignment_statement.label'>
 <class 'vsg.token.variable_assignment_statement.label_colon'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
@@ -82,7 +82,7 @@
 13 |     FORCE_LABEL : sig1 := a + b - c after 10 ns, d + e after 25 ns;
 <class 'vsg.token.variable_assignment_statement.label'>
 <class 'vsg.token.variable_assignment_statement.label_colon'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
@@ -107,7 +107,7 @@
 15 |     FORCE_LABEL : sig1 := a + b - c, d + e;
 <class 'vsg.token.variable_assignment_statement.label'>
 <class 'vsg.token.variable_assignment_statement.label_colon'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
@@ -126,7 +126,7 @@
 17 |     FORCE_LABEL : sig1 := a + b - c;
 <class 'vsg.token.variable_assignment_statement.label'>
 <class 'vsg.token.variable_assignment_statement.label_colon'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
@@ -141,7 +141,7 @@
 19 |     FORCE_LABEL : sig2 := a;
 <class 'vsg.token.variable_assignment_statement.label'>
 <class 'vsg.token.variable_assignment_statement.label_colon'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -150,7 +150,7 @@
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 21 |     sig2 := a;
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>

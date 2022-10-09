@@ -31,9 +31,10 @@ class test_variable_assignment_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '001')
 
         lExpected = []
-        lExpected.extend(range(31,35))
-        lExpected.extend(range(36,40))
-        lExpected.extend(range(41,45))
+        lExpected.extend(range(32,38))
+        lExpected.extend(range(39,43))
+        lExpected.extend(range(44,48))
+        lExpected.extend(range(70,75))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

@@ -4,6 +4,7 @@ from vsg.token import simple_variable_assignment as token
 from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify import expression
+from vsg.vhdlFile.classify import target
 
 
 def detect(iToken, lObjects):
@@ -25,7 +26,8 @@ def detect(iToken, lObjects):
 
 def classify(iToken, lObjects):
 
-    iCurrent = utils.assign_tokens_until(':=', token.target, iToken, lObjects)
+    iCurrent = target.classify(iToken, lObjects, token)
+#    iCurrent = utils.assign_tokens_until(':=', token.target, iToken, lObjects)
     iCurrent = utils.assign_next_token_required(':=', token.assignment, iCurrent, lObjects)
 
     iCurrent = expression.classify_until([';'], iCurrent, lObjects)

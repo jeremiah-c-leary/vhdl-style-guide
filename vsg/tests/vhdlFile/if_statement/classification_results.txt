@@ -104,7 +104,7 @@
 --------------------------------------------------------------------------------
 20 |           then F := Operand_1 + Operand_2;
 <class 'vsg.token.if_statement.then_keyword'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
@@ -122,7 +122,7 @@
 --------------------------------------------------------------------------------
 22 |           then F := Operand_1 - Operand_2;
 <class 'vsg.token.if_statement.then_keyword'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.minus'>
@@ -131,7 +131,7 @@
 --------------------------------------------------------------------------------
 23 |           else F := "00000000";
 <class 'vsg.token.if_statement.else_keyword'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -164,7 +164,7 @@
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
 30 |             F := Operand_1 & Operand_2 ;
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.concat'>
@@ -175,7 +175,7 @@
 <class 'vsg.token.if_statement.else_keyword'>
 --------------------------------------------------------------------------------
 32 |             F := "00000000";
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>

@@ -5,7 +5,9 @@ from vsg import token
 
 lTokens = []
 lTokens.append(token.variable_assignment_statement.label)
-lTokens.append(token.simple_variable_assignment.target)
+lTokens.append(token.simple_variable_assignment.simple_name)
+lTokens.append(token.simple_variable_assignment.aggregate_open_parenthesis)
+lTokens.append(token.simple_variable_assignment.aggregate_close_parenthesis)
 lTokens.append(token.conditional_variable_assignment.target)
 lTokens.append(token.selected_variable_assignment.with_keyword)
 
