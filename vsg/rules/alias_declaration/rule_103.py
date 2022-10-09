@@ -6,8 +6,6 @@ from vsg.token import alias_declaration as token
 
 class rule_103(Rule):
     '''
-    |phase_2| |disabled| |error| |whitespace|
-
     This rule checks for a single space before the designator.
 
     |configuring_whitespace_rules_link|
