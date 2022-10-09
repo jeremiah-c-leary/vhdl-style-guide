@@ -18,6 +18,8 @@ from .rule_016 import rule_016
 from .rule_017 import rule_017
 from .rule_018 import rule_018
 
+from .rule_100 import rule_100
+
 from .rule_400 import rule_400
 
 from .rule_600 import rule_600

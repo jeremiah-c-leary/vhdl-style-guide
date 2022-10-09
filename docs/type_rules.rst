@@ -424,6 +424,27 @@ This rule checks the **is** keyword is on the same line as the identifier.
 
    type t_record is
 
+type_100
+########
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type          t_my_type is range -5 to 5;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_my_type is range -5 to 5;
+
 type_400
 ########
 
