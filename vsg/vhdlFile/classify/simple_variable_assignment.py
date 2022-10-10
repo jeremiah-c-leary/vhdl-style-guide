@@ -27,7 +27,6 @@ def detect(iToken, lObjects):
 def classify(iToken, lObjects):
 
     iCurrent = target.classify(iToken, lObjects, token)
-#    iCurrent = utils.assign_tokens_until(':=', token.target, iToken, lObjects)
     iCurrent = utils.assign_next_token_required(':=', token.assignment, iCurrent, lObjects)
 
     iCurrent = expression.classify_until([';'], iCurrent, lObjects)
