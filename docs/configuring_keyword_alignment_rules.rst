@@ -286,6 +286,42 @@ Rule Specific Keyword Alignment Configuration
       end case
       data_valid_after <= '1';
 
+#. :code:`generate_statements_ends_group` - if set to :code:`True` any line with generate statement keywords ends the group of lines that should be aligned and starts new group.
+   By default set to :code:`False`.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      data_valid_before    <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after       <= '1';
+
+    **Fix (generate_statements_ends_group = True)**
+
+    .. code-block:: vhdl
+
+      data_valid_before <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid        <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after <= '1';
+
+    **Fix (generate_statements_ends_group = False)**
+
+    .. code-block:: vhdl
+
+      data_valid_before     <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid        <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after      <= '1';
+
 #. :code:`loop_control_statements_ends_group` - if set to :code:`True` any line with loop control statement (including for and while loops) ends the group of lines that should be aligned and starts new group.
    By default set to :code:`False`.
 
