@@ -95,8 +95,6 @@ comment_100
 
 This rule checks for a single space after the **--**.
 
-Default exceptions to this rule are defined.
-
 |configuring_whitespace_after_comment_rules_link|
 
 **Violation**
@@ -116,27 +114,4 @@ Default exceptions to this rule are defined.
    --|Comment 2
    ---Comment
    ---------------------------
-
-comment_101
-###########
-
-|phase_2| |error| |whitespace|
-
-This rule checks for a single space after the a comment pattern.
-
-|configuring_whitespace_after_comment_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   --!Comment 1
-   --|Comment 2
-
-**Fix**
-
-.. code-block:: vhdl
-
-   --! Comment 1
-   --| Comment 2
 

@@ -5,7 +5,7 @@
 --==================
 
 -- This should fail
---|This should fail
+--| This should fail
 ----------This should pass
 --
 --==================
@@ -20,6 +20,7 @@
 -- (2 * 4)
 
 --! ignore Doxygen comments
+--! Space required after ! for doxygen comments
 
 --+--block comment Header
 --|

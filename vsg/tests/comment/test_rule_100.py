@@ -37,7 +37,7 @@ class test_comment_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '100')
         self.assertEqual(oRule.groups, ['whitespace'])
 
-        lExpected = [7, 14, 20]
+        lExpected = [7, 8, 14, 20, 23]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

@@ -11,10 +11,10 @@ This behavior can be disabled by using the **exceptions** option.
 +==========================+==========================================================+
 | exceptions               | A list of patterns to not insert whitespace.             |
 +--------------------------+----------------------------------------------------------+
-| patterns                 | A list of patterns to insert whitespace.                 |
+| patterns                 | A list of patterns to insert whitespace after.           |
 +--------------------------+----------------------------------------------------------+
 
-The default value of exceptions is: "--!", "--=", "--+", "--|", and '---'.
+The default value of exceptions is: "--!", "--|", "--=", "--+", and '---'.
 
 The default value of patterns is: "--!", "--|".
 
@@ -27,7 +27,6 @@ The options can be changed using a configuration:
        exceptions :
          - '--!'
          - '--*'
-     comment_101 :
        patterns :
          - '--!',
          - '--*'
@@ -40,4 +39,3 @@ Rules Enforcing Whitespace After Comment
 ########################################
 
 * `comment_100 <comment_rules.html#comment-100>`_
-* `comment_101 <comment_rules.html#comment-101>`_

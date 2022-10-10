@@ -10,8 +10,6 @@ class rule_100(whitespace.Rule):
     '''
     This rule checks for a single space after the **--**.
 
-    Default exceptions to this rule are defined.
-
     |configuring_whitespace_after_comment_rules_link|
 
     **Violation**
@@ -40,6 +38,7 @@ class rule_100(whitespace.Rule):
         self.disable = False
         self.lTokens = [parser.comment]
         self.exceptions = ['--!', '--=', '--+', '--|', '---']
+        self.patterns = ['--!', '--|']
         self.configuration.append('exceptions')
 
     def _get_tokens_of_interest(self, oFile):
@@ -49,7 +48,12 @@ class rule_100(whitespace.Rule):
             oToken = oToi.get_tokens()[0]
             if oToken.is_block_comment:
                 continue
-            if not self.valid_comment(oToken):
+            if self.pattern_found(oToken):
+                oToi.set_meta_data('type', 'pattern')
+                oToi.set_meta_data('pattern', self.get_matching_pattern(oToken))
+                lReturn.append(oToi)
+            elif not self.valid_comment(oToken):
+                oToi.set_meta_data('type', 'exception')
                 lReturn.append(oToi)
         return lReturn
 
@@ -81,6 +85,23 @@ class rule_100(whitespace.Rule):
             return True
         return False
 
+    def pattern_found(self, oToken):
+        sToken = oToken.get_value()
+        if len(sToken) < 4:
+            return False
+        for sPattern in self.patterns:
+            if sToken.startswith(sPattern):
+                if not sToken.startswith(sPattern + ' '):
+                    return True
+        return False
+
+    def get_matching_pattern(self, oToken):
+        sToken = oToken.get_value()
+        for sPattern in self.patterns:
+            if sToken.startswith(sPattern):
+                return sPattern
+        return None
+
 
 def create_violation_action_dict(sToken, iIndex):
     dReturn = {}
@@ -91,7 +112,11 @@ def create_violation_action_dict(sToken, iIndex):
 
 
 def create_violation(self, oToi):
-    dResults = create_violation_action_dict(oToi.get_tokens()[0].get_value(), 2)
+    if oToi.get_meta_data('type') == 'pattern':
+        iIndex = len(oToi.get_meta_data('pattern'))
+    else:
+        iIndex = 2
+    dResults = create_violation_action_dict(oToi.get_tokens()[0].get_value(), iIndex)
     oViolation = violation.New(oToi.get_line_number(), oToi, dResults['solution'])
     oViolation.set_action(dResults)
     self.add_violation(oViolation)
