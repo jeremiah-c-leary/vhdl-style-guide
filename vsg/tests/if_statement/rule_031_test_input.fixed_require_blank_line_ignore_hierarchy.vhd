@@ -11,8 +11,10 @@ begin
 
     if a then
       a <= b;
+
       if b then
         b <= c;
+
         if c then
         c <= d;
         end if;
@@ -22,8 +24,10 @@ begin
     -- Comment
     if a then
       a <= b;
+
       if b then
         b <= c;
+
         if c then
         c <= d;
         end if;
@@ -33,10 +37,13 @@ begin
     -- Violations below
 
     z <= a;
+
     if a then
       a <= b;
+
       if b then
         b <= c;
+
         if c then
         c <= d;
         end if;
@@ -46,6 +53,7 @@ begin
     -- Test exceptions
 
     z <= a;
+
     if a then
       if b then
         a <= b;
@@ -53,9 +61,11 @@ begin
     end if;
 
     z <= a;
+
     if a then
       if b then
         a <= b;
+
         if c then
           if d then
             a <= b;

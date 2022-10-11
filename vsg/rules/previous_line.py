@@ -27,6 +27,10 @@ class previous_line(blank_line.Rule):
         self.solution = 'Insert blank line above'
         self.lTokens = lTokens
         self.lHierarchyLimits = None
+        self.ignore_hierarchy = True
+        self.configuration.append('ignore_hierarchy')
+        self.except_if_statement = False
+        self.except_if_statement_token = None
         self.style = 'require_blank_line'
         self.configuration.append('style')
         if lAllowTokens is None:
@@ -38,7 +42,7 @@ class previous_line(blank_line.Rule):
         bIncludeComments = _include_comments(self.style)
 
         if self.style == 'require_comment':
-            if self.lHierarchyLimits is None:
+            if self.ignore_hierarchy:
                 lFirst = oFile.get_line_above_line_starting_with_token(self.lTokens, False)
                 lSecond = oFile.get_line_above_line_starting_with_token(self.lTokens, True)
                 return zip(lFirst, lSecond)
@@ -51,8 +55,20 @@ class previous_line(blank_line.Rule):
             return oFile.get_blank_lines_above_line_starting_with_token(self.lTokens)
         else:
 
-            if self.lHierarchyLimits is None:
-                return oFile.get_line_above_line_starting_with_token(self.lTokens, bIncludeComments)
+            if self.ignore_hierarchy:
+                lToi = oFile.get_line_above_line_starting_with_token(self.lTokens, bIncludeComments)
+                if self.except_if_statement:
+                    lReturn = []
+                    for oToi in lToi:
+                        for oToken in oToi.get_tokens():
+                            if isinstance(oToken, self.except_if_statement_token): 
+                                break
+                        else:
+                            lReturn.append(oToi)
+                    return lReturn
+                else:
+                    return lToi
+                    
             else:
                 return oFile.get_line_above_line_starting_with_token_with_hierarchy(self.lTokens, self.lHierarchyLimits, bIncludeComments)
 

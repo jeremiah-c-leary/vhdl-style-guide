@@ -44,6 +44,29 @@ begin
       end if;
     end if;
 
+    -- Test exceptions
+
+    z <= a;
+
+    if a then
+      if b then
+        a <= b;
+      end if;
+    end if;
+
+    z <= a;
+
+    if a then
+      if b then
+        a <= b;
+        if c then
+          if d then
+            a <= b;
+          end if;
+        end if;
+      end if;
+    end if;
+
   end process;
 
 end architecture RTL;

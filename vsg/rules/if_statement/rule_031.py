@@ -50,3 +50,7 @@ class rule_031(previous_line):
         previous_line.__init__(self, 'if', '031', lTokens)
         self.lHierarchyLimits = [0]
         self.style = 'no_code'
+        self.ignore_hierarchy = False
+        self.configuration.append('except_if_statement')
+        self.except_if_statement = False
+        self.except_if_statement_token = token.if_statement.if_keyword
