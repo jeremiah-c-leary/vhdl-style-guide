@@ -1,4 +1,5 @@
 
+from vsg import token
 from vsg import parser
 from vsg import violation
 
@@ -42,7 +43,10 @@ class multiline_alignment_between_tokens(alignment.Rule):
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
 
+        lReturn = []
         for oToi in lToi:
+            if toi_is_an_array(oToi):
+                continue
             iLine, lTokens = utils.get_toi_parameters(oToi)
             iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
@@ -50,8 +54,9 @@ class multiline_alignment_between_tokens(alignment.Rule):
             oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
             oToi.set_meta_data('iAssignColumn', iAssignColumn)
             oToi.set_meta_data('bStartsWithParen', alignment_utils.starts_with_paren(lTokens))
+            lReturn.append(oToi)
 
-        return lToi
+        return lReturn
 
     def _analyze(self, lToi):
 
@@ -475,3 +480,11 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
         dReturn[iLine] = dExpectedIndent[iLine] * ' '
 
     return dReturn
+
+
+def toi_is_an_array(oToi):
+    lTokens = oToi.get_tokens()
+    for oToken in lTokens:
+        if isinstance(oToken, token.aggregate.open_parenthesis):
+            return True
+    return False
