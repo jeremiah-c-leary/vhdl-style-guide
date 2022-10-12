@@ -53,7 +53,14 @@ class multiline_simple_structure(structure.Rule):
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
-        return lToi
+
+        lReturn = []
+        for oToi in lToi:
+            if toi_is_an_array(oToi):
+                continue
+            lReturn.append(oToi)
+
+        return lReturn
 
     def _analyze(self, lToi):
         for oToi in lToi:
@@ -121,3 +128,11 @@ def _create_action_dictionary(sType, sAction):
     dReturn['type'] = sType
     dReturn['action'] = sAction
     return dReturn
+
+
+def toi_is_an_array(oToi):
+    lTokens = oToi.get_tokens()
+    for oToken in lTokens:
+        if isinstance(oToken, token.aggregate.open_parenthesis):
+            return True
+    return False
