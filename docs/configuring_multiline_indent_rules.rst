@@ -148,10 +148,13 @@ Rules Enforcing Multiline Indent Rules
 ######################################
 
 * `concurrent_003 <concurrent_rules.html#concurrent-003>`_
+* `concurrent_401 <concurrent_rules.html#concurrent-401>`_
 * `constant_012 <constant_rules.html#constant-012>`_
 * `constant_014 <constant_rules.html#constant-014>`_
 * `if_004 <if_rules.html#if-004>`_
 * `process_020 <process_rules.html#process-020>`_
 * `sequential_004 <sequential_rules.html#sequential-004>`_
+* `sequential_402 <sequential_rules.html#sequential-402>`_
 * `signal_400 <signal_rules.html#signal-400>`_
 * `variable_assignment_004 <variable_assignment_rules.html#variable-assignment-004>`_
+* `variable_assignment_401 <variable_assignment_rules.html#variable-assignment-401>`_

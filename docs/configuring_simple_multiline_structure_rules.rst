@@ -81,4 +81,6 @@ Rules Enforcing Multiline Structure Rules
 #########################################
 
 * `concurrent_011 <concurrent_rules.html#concurrent-011>`_
+* `sequential_008 <sequential_rules.html#sequential-008>`_
 * `signal_016 <signal_rules.html#signal-016>`_
+* `variable_assignment_007 <variable_assignment_rules.html#variable-assignment-007>`_
