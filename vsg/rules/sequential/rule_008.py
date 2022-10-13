@@ -12,7 +12,7 @@ class rule_008(Rule):
     '''
     This rule checks the structure of simple and conditional sequential signal assignments.
 
-    |configuring_multiline_structure_rules_link|
+    |configuring_simple_multiline_structure_rules_link|
 
     **Violation**
 

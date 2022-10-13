@@ -11,7 +11,7 @@ class rule_400(Rule):
     '''
     This rule checks alignment of multiline conditional variable assignments.
 
-    |configuring_concurrent_alignment_rules_link|
+    |configuring_conditional_multiline_indent_rules_link|
 
     **Violation**
 

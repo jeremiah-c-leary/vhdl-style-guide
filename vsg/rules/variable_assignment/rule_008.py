@@ -11,7 +11,7 @@ class rule_008(Rule):
     '''
     This rule checks the structure of multiline variable assignments that contain arrays.
 
-    |configuring_multiline_structure_rules_link|
+    |configuring_array_multiline_structure_rules_link|
 
     **Violation**
 

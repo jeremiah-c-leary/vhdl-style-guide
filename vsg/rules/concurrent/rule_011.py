@@ -12,7 +12,7 @@ class rule_011(Rule):
     '''
     This rule checks the structure of simple and conditional concurrent statements.
 
-    |configuring_multiline_structure_rules_link|
+    |configuring_simple_multiline_structure_rules_link|
 
     **Violation**
 

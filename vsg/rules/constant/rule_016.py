@@ -11,7 +11,7 @@ class rule_016(Rule):
     '''
     This rule checks the structure of multiline constants that contain arrays.
 
-    |configuring_multiline_structure_rules_link|
+    |configuring_array_multiline_structure_rules_link|
 
     .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
 
