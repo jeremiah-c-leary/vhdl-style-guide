@@ -81,6 +81,8 @@ sequential_004
 
 This rule checks the alignment of multiline sequential statements.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -150,7 +152,7 @@ sequential_008
 
 This rule checks the structure of simple and conditional sequential signal assignments.
 
-|configuring_multiline_structure_rules_link|
+|configuring_simple_multiline_structure_rules_link|
 
 **Violation**
 
@@ -183,7 +185,7 @@ sequential_009
 
 This rule checks the structure of multiline simple sequential signal assignments that contain arrays.
 
-|configuring_multiline_structure_rules_link|
+|configuring_array_multiline_structure_rules_link|
 
 **Violation**
 
@@ -238,7 +240,7 @@ sequential_401
 
 This rule checks alignment of multiline sequential conditional signal assignments.
 
-|configuring_concurrent_alignment_rules_link|
+|configuring_conditional_multiline_indent_rules_link|
 
 **Violation**
 

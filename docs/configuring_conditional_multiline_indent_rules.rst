@@ -1,7 +1,7 @@
-.. _configuring-concurrent-alignment-rules:
+.. _configuring-conditional-multiline-indent-rules:
 
-Configuring Concurrent Alignment Rules
---------------------------------------
+Configuring Conditional Multiline Indent Rules
+----------------------------------------------
 
 There are rules which will check indent and alignment of multiline conditional expressions and conditional waveforms.
 

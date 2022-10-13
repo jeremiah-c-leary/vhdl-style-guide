@@ -1,7 +1,7 @@
-.. _configuring-multiline-structure-rules:
+.. _configuring-array-multiline-structure-rules:
 
-Configuring Multiline Structure Rules
--------------------------------------
+Configuring Array Multiline Structure Rules
+-------------------------------------------
 
 There are rules which will check indent and formatting of multiline expressions and conditions.
 
@@ -320,8 +320,11 @@ The following code would pass with this option:
       b => 1 -- Comment
     );
 
-Rules Enforcing Multiline Structure Rules
-#########################################
+Rules Enforcing Array Multiline Structure Rules
+###############################################
 
+* `constant_012 <constant_rules.html#constant-012>`_
 * `constant_016 <constant_rules.html#constant-016>`_
+* `sequential_009 <sequential_rules.html#sequential-009>`_
 * `signal_016 <signal_rules.html#signal-016>`_
+* `variable_assignment_008 <variable_assignment_rules.html#variable-assignment-008>`_

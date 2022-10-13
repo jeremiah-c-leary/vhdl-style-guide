@@ -42,9 +42,11 @@ Example: :code:`alignment` set to :code:'left'
 ##############################################
 
 Setting the :code:`alignment` option to :code:`left` will align report expressions an additional indent level form the report keyword.
+
 .. code-block:: vhdl
 
    assert WIDTH > 16
      report "FIFO width is limited" &
        " to 16 bits."
      severity FAILURE;
+

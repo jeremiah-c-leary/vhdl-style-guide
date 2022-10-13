@@ -226,7 +226,7 @@ Rule Specific Keyword Alignment Configuration
               c <= a;
           when others =>
             null;
-      end case
+      end case;
       data_valid_after       <= '1';
 
     **Fix (case_control_statements_ends_group = True)**
@@ -245,7 +245,7 @@ Rule Specific Keyword Alignment Configuration
               c  <= a;
           when others =>
               null;
-      end case
+      end case;
       data_valid_after <= '1';
 
     **Fix (case_control_statements_ends_group = False)**
@@ -264,7 +264,7 @@ Rule Specific Keyword Alignment Configuration
               c         <= a;
           when others =>
               null;
-      end case
+      end case;
       data_valid_after  <= '1';
 
     **Fix (case_control_statements_ends_group = break_on_case_or_end_case)**
@@ -283,7 +283,7 @@ Rule Specific Keyword Alignment Configuration
               c   <= a;
           when others =>
               null;
-      end case
+      end case;
       data_valid_after <= '1';
 
 #. :code:`loop_control_statements_ends_group` - if set to :code:`True` any line with loop control statement (including for and while loops) ends the group of lines that should be aligned and starts new group.

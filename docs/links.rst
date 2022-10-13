@@ -5,8 +5,8 @@
 .. |configuring_block_comments_link| replace::
    Refer to :ref:`configuring-block-comments` for more information.
 
-.. |configuring_concurrent_alignment_rules_link| replace::
-   Refer to :ref:`configuring-concurrent-alignment-rules` for more information.
+.. |configuring_conditional_multiline_indent_rules_link| replace::
+   Refer to :ref:`configuring-conditional-multiline-indent-rules` for more information.
 
 .. |configuring_conditional_expressions_structure_rules_link| replace::
    Refer to :ref:`configuring-conditional-expressions-structure-rules` for more information.
@@ -32,8 +32,11 @@
 .. |configuring_multiline_indent_rules_link| replace::
    Refer to :ref:`configuring-multiline-indent-rules` for more information.
 
-.. |configuring_multiline_structure_rules_link| replace::
-   Refer to :ref:`configuring-multiline-structure-rules` for more information.
+.. |configuring_simple_multiline_structure_rules_link| replace::
+   Refer to :ref:`configuring-simple-multiline-structure-rules` for more information.
+
+.. |configuring_array_multiline_structure_rules_link| replace::
+   Refer to :ref:`configuring-array-multiline-structure-rules` for more information.
 
 .. |configuring_multiline_constraint_rules_link| replace::
    Refer to :ref:`configuring-multiline-constraint-rules` for more information.

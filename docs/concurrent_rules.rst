@@ -64,6 +64,8 @@ However, there is a special case if there are parenthesis in the assignment.
 If the parenthesis are not closed on the same line, then the next line will be aligned to the parenthesis.
 Aligning to the parenthesis improves readability.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -230,7 +232,7 @@ concurrent_009
 
 This rule checks alignment of multiline concurrent conditional signal statements.
 
-|configuring_concurrent_alignment_rules_link|
+|configuring_conditional_multiline_indent_rules_link|
 
 **Violation**
 
@@ -293,7 +295,7 @@ concurrent_011
 
 This rule checks the structure of simple and conditional concurrent statements.
 
-|configuring_multiline_structure_rules_link|
+|configuring_simple_multiline_structure_rules_link|
 
 **Violation**
 
@@ -326,7 +328,7 @@ concurrent_012
 
 This rule checks the structure of multiline concurrent simple signal assignments that contain arrays.
 
-|configuring_multiline_structure_rules_link|
+|configuring_array_multiline_structure_rules_link|
 
 **Violation**
 

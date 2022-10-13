@@ -5,18 +5,18 @@ VSG can use a configuration file to alter it's behavior and/or include a list of
 This is accomplished by passing JSON and/or YAML file(s) through the **--configuration** command line argument.
 This is the basic form of a configuration file in JSON:
 
-.. code-block:: json
+.. code-block:: text
 
    {
      "file_list": [
        "fifo.vhd",
-       "$PATH_TO_FILE/spi_master.vhd",
-       "$OTHER_PATH/src/*.vhd",
        "source/spi.vhd": {
          "rule": {
-           "ruleId_ruleNumber":"blah"
+           "ruleId_ruleNumber": "blah"
          }
-       }
+       },
+       "$PATH_TO_FILE/spi_master.vhd",
+       "$OTHER_PATH/src/*.vhd"
      ],
      "local_rules":"$DIRECTORY_PATH",
      "rule": {
@@ -153,12 +153,12 @@ From least to highest priority are:
 
 If the same rule is defined in all four locations as in the example below, then the final setting will be equal to the highest priority.
 
-.. code-block:: json
+.. code-block:: text
 
    {
-     "file_list":[
-       "entity.vhd":{
-         "rule":{
+     "file_list": [
+       "entity.vhd": {
+         "rule": {
            "length_001":{
              "disable": true
            }
@@ -179,10 +179,10 @@ If the same rule is defined in all four locations as in the example below, then 
        "rule": {
          "length_001":{
            "disable": false
+         }
        }
      }
    }
-  }
 
 
 In this example configuration, all rules are disabled by the **global** configuration.
@@ -249,13 +249,13 @@ Configure the indent size for all rules by setting the **global** attribute.
 .. code-block:: json
 
    {
-       "rule":{
-           "global":{
-               "indentSize":4
+       "rule": {
+           "global": {
+               "indentSize": 4
            },
-           "group":{
-               "indent":{
-                   "disable":False
+           "group": {
+               "indent": {
+                   "disable": false
                }
            }
        }

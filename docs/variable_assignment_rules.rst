@@ -85,6 +85,8 @@ variable_assignment_004
 
 This rule checks the alignment of multiline variable assignments.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -133,7 +135,7 @@ variable_assignment_007
 
 This rule checks the structure of simple and conditional variable assignments.
 
-|configuring_multiline_structure_rules_link|
+|configuring_simple_multiline_structure_rules_link|
 
 **Violation**
 
@@ -166,7 +168,7 @@ variable_assignment_008
 
 This rule checks the structure of multiline variable assignments that contain arrays.
 
-|configuring_multiline_structure_rules_link|
+|configuring_array_multiline_structure_rules_link|
 
 **Violation**
 
@@ -192,7 +194,7 @@ variable_assignment_400
 
 This rule checks alignment of multiline conditional variable assignments.
 
-|configuring_concurrent_alignment_rules_link|
+|configuring_conditional_multiline_indent_rules_link|
 
 **Violation**
 
