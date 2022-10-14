@@ -4,7 +4,7 @@ from vsg import deprecated_rule
 
 class rule_016(deprecated_rule.Rule):
     '''
-    This rule was depricated and replaced with rule:
+    This rule was deprecated and replaced with rule:
 
     * `signal_017 <signal_rules.html#signal-017>`_
     '''

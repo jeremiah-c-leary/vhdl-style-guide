@@ -52,7 +52,7 @@ This rule checks the **constant** keyword has proper case.
 constant_003
 ############
 
-This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
+This rule was deprecated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
 constant_004
 ############
