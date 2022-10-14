@@ -3,8 +3,35 @@
 .. |new_line_after_assign| replace::
    :code:`new_line_after_assign`
 
+.. |new_line_after_assign__yes| replace::
+   :code:`yes` =  adds a carriage return (alias "new line") after the assigment operator.
+
+.. |new_line_after_assign__no| replace::
+   :code:`no` = removes a carriage return (alias "new line") after the assigment operator.
+
+.. |new_line_after_assign__ignore| replace::
+   :code:`ignore`  = will ignore any formatting after the assignment operator.
+
+.. |values1| replace::
+   :code:`yes`, :code:`no`, :code:`ignore`
+
+.. |values2| replace::
+   :code:`yes`, :code:`no` 
+
 .. |ignore_single_line| replace::
    :code:`ignore_single_line`
+
+.. |ignore_single_line__yes| replace::
+   :code:`yes` = ignore single line expressions.
+
+.. |ignore_single_line__no| replace::
+   :code:`no` =  apply rules to single line expressions.
+
+.. |default_yes| replace::
+   :code:`yes`
+
+.. |default_no| replace::
+   :code:`no`
 
 Configuring Simple Multiline Structure Rules
 --------------------------------------------
@@ -13,39 +40,16 @@ There are rules which will check the structure of simple multiline expressions a
 
 There are several options to these rules:
 
-+-------------------------+---------+---------+---------------------------------------------------------+
-| Method                  |   Type  | Default | Description                                             |
-+=========================+=========+=========+=========================================================+
-| |new_line_after_assign| | string  |   yes   | Insert new line after the assignment token.             |
-+-------------------------+---------+---------+---------------------------------------------------------+
-| |ignore_single_line|    | string  |   yes   | Do not apply rules if expression/condition is contained |
-|                         |         |         | on a single line.                                       |
-+-------------------------+---------+---------+---------------------------------------------------------+
-
-The options can be combined to format the output.
-
-The option |new_line_after_assign| allows one of three values:  yes, no and ignore.
-
-+----------------------+---------------------------------------------------------+
-| Option Value         | Action                                                  |
-+======================+=========================================================+
-| yes                  | Option will be enforced.                                |
-+----------------------+---------------------------------------------------------+
-| no                   | The inverse of the Option will be enforced.             |
-+----------------------+---------------------------------------------------------+
-| ignore               | The option will be ignored.                             |
-+----------------------+---------------------------------------------------------+
-
-The option |ignore_single_line| allows one of two values:  yes and no.
-
-+----------------------+---------------------------------------------------------+
-| Option Value         | Action                                                  |
-+======================+=========================================================+
-| yes                  | Ignore single line expressions.                         |
-+----------------------+---------------------------------------------------------+
-| no                   | Apply rules to single line expressions.                 |
-+----------------------+---------------------------------------------------------+
-
++-------------------------+-------------+---------------+-----------------------------------+
+| Method                  | Values      | Default       | Description                       |
++=========================+=============+===============+===================================+
+| |new_line_after_assign| | |values1|   | |default_yes| | * |new_line_after_assign__yes|    |
+|                         |             |               | * |new_line_after_assign__no|     |
+|                         |             |               | * |new_line_after_assign__ignore| |
++-------------------------+-------------+---------------+-----------------------------------+
+| |ignore_single_line|    | |values2|   | |default_yes| | * |ignore_single_line__yes|       |
+|                         |             |               | * |ignore_single_line__no|        |
++-------------------------+-------------+---------------+-----------------------------------+
 
 This is an example of how to configure these options.
 
@@ -56,31 +60,50 @@ This is an example of how to configure these options.
         new_line_after_assign : 'yes'
         ignore_single_line : 'no'
 
-.. NOTE:: All examples below are using the rule **constant_011** and the option ignore_single_line is False.
+The following code snippet will be used in the following examples:
 
-Example: |new_line_after_assign|
-################################
+.. code-block:: vhdl
 
-The following code would fail with this option set to 'yes':
+   wr_en <= '1' when fifo_full = '0' else
+            '0';
+
+   rd_en <=
+            '1' when fifo_empty = '0' else
+            '0';
+
+.. NOTE:: In the examples below, indenting is performed by a different rule.
+
+Example: |new_line_after_assign| set to |default_yes|
+#####################################################
+
+Code after the assignment operator **<=** will be moved to the next line.
+
+.. code-Block:: vhdl
+
+   wr_en <=
+            '1' when fifo_full = '0' else
+            '0';
+
+   rd_en <=
+            '1' when fifo_empty = '0' else
+            '0';
+
+Example: |new_line_after_assign| set to |default_no|
+####################################################
+
+Code after the assignment operator **<=** will be enforced.
 
 .. code-Block:: vhdl
 
    wr_en <= '1' when fifo_full = '0' else
             '0';
-    
 
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-   wr_en <=
-            '1' when fifo_full = '0' else
+   rd_en <= '1' when fifo_empty = '0' else
             '0';
-    
+
 Rules Enforcing Multiline Structure Rules
 #########################################
 
 * `concurrent_011 <concurrent_rules.html#concurrent-011>`_
 * `sequential_008 <sequential_rules.html#sequential-008>`_
-* `signal_016 <signal_rules.html#signal-016>`_
 * `variable_assignment_007 <variable_assignment_rules.html#variable-assignment-007>`_
