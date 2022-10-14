@@ -40,31 +40,45 @@ The corresponding rule will be noted in the rule documentation.
 
 There are several options to these rules:
 
-+---------------------------+---------+---------+---------------------------------------------------------+
-| Option                    |   Type  | Default | Description                                             |
-+===========================+=========+=========+=========================================================+
-| align_left                | string  |  'no'   | Align multilines to the left.                           |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| align_paren               | string  |  'yes'  | Indent lines based on parenthesis.                      |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| align_when_keywords       | string  |  'no'   | Each when keyword will be aligned.                      |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| wrap_at_when              | string  |  'yes'  | Indent multiline condition at 'when' keyword.           |
-+---------------------------+---------+---------+---------------------------------------------------------+
-| align_else_keywords       | string  |  'no'   | Each else keyword will be aligned.                      |
-+---------------------------+---------+---------+---------------------------------------------------------+
+.. |align_left| replace::
+   :code:`align_left`
+
+.. |align_paren| replace::
+   :code:`align_paren`
+
+.. |align_when_keywords| replace::
+   :code:`align_when_keywords`
+
+.. |wrap_at_when| replace::
+   :code:`wrap_at_when`
+
+.. |align_else_keywords| replace::
+   :code:`align_else_keywords`
+
+.. |values| replace::
+   :code:`yes`, :code:`no`
+
+.. |default_yes| replace::
+   :code:`yes`
+
+.. |default_no| replace::
+   :code:`no`   
+
++-----------------------+----------+---------------+---------------------------------------------------------+
+| Option                | Values   | Default       | Description                                             |
++=======================+==========+===============+=========================================================+
+| |align_left|          | |values| | |default_no|  | Align multilines to the left.                           |
++-----------------------+----------+---------------+---------------------------------------------------------+
+| |align_paren|         | |values| | |default_yes| | Indent lines based on parenthesis.                      |
++-----------------------+----------+---------------+---------------------------------------------------------+
+| |align_when_keywords| | |values| | |default_no|  | Each when keyword will be aligned.                      |
++-----------------------+----------+---------------+---------------------------------------------------------+
+| |wrap_at_when|        | |values| | |default_yes| | Indent multiline condition at 'when' keyword.           |
++-----------------------+----------+---------------+---------------------------------------------------------+
+| |align_else_keywords| | |values| | |default_no|  | Each else keyword will be aligned.                      |
++-----------------------+----------+---------------+---------------------------------------------------------+
 
 The options can be combined to format the conditional expression or conditional waveform.
-
-Each option allows one of two values:  'yes' and 'no'.
-
-+----------------------+---------------------------------------------------------+
-| Option Value         | Action                                                  |
-+======================+=========================================================+
-| 'yes'                | Option will be enforced.                                |
-+----------------------+---------------------------------------------------------+
-| 'no'                 | The inverse of the Option will be enforced.             |
-+----------------------+---------------------------------------------------------+
 
 This is an example of how to configure these options.
 
@@ -79,8 +93,8 @@ This is an example of how to configure these options.
 
 .. NOTE:: All examples below are using the rule **concurrent_009**.
 
-Example: indent_condition_at_when
-#################################
+Example: |wrap_at_when| set to |default_yes|
+############################################
 
 The following code would fail with this option:
 
@@ -106,8 +120,8 @@ The following code would pass with this option:
                             input = "1010" else
        '0';
 
-Example: align_when_keywords
-############################
+Example: |align_when_keywords| set to |default_yes|
+###################################################
 
 The following code would fail with this option:
 
@@ -127,8 +141,8 @@ The following code would pass with this option:
                sig_c and sig_d when input = "10" else
                '0';
 
-Example: align_when_keywords and align_else_keywords
-####################################################
+Example: |align_when_keywords| and |align_else_keywords| set to |default_yes|
+#############################################################################
 
 The following code would fail with this option:
 
@@ -148,8 +162,8 @@ The following code would pass with this option:
                sig_c          when input = "10"                      else
                '0';
 
-Example: align_left 'yes'
-#########################
+Example: |align_left| set to |default_yes|
+##########################################
 
 The following code would fail with this option:
 
@@ -169,8 +183,8 @@ The following code would pass with this option:
        sig_c when input = "10" else
        '0';
 
-Example: align_left 'no'
-########################
+Example: |align_left| set to |default_no|
+#########################################
 
 The following code would fail with this option:
 
@@ -190,8 +204,8 @@ The following code would pass with this option:
                sig_c when input = "10" else
                '0';
 
-Example: align_paren 'yes' and align_left 'no'
-##############################################
+Example: |align_paren| set to |default_yes| and |align_left| set to |default_no|
+################################################################################
 
 The following code would fail with this option:
 
@@ -213,8 +227,8 @@ The following code would pass with this option:
                            ) else
              '0';
 
-Rules Enforcing Conditional Expression
-######################################
+Rules Enforcing Conditional Expression Alignment
+################################################
 
 * `concurrent_009 <concurrent_rules.html#concurrent-009>`_
 * `sequential_401 <sequential_rules.html#sequential-401>`_
