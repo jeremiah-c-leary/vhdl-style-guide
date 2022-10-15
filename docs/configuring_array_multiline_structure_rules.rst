@@ -137,258 +137,465 @@ There are several options to these rules:
 | |ignore_single_line|    | |values_4| | |yes|    | * |ignore_single_line__yes|                  |
 |                         |            |          | * |ignore_single_line__no|                   |
 +-------------------------+------------+----------+----------------------------------------------+
-| |move_last_comment|     | |values_1| | |ignore| | * |move_last_comment__yes|                   |
+| |move_last_comment|     | |values_3| | |ignore| | * |move_last_comment__yes|                   |
 |                         |            |          | * |ignore_formatting|                        |
 +-------------------------+------------+----------+----------------------------------------------+
 
-The options can be combined to format the output.
+The options can be combined to format arrays.
 
 This is an example of how to configure these options.
 
 .. code-block:: yaml
 
    rule :
-     constant_012:
+     constant_016:
         first_paren_new_line : 'yes'
         last_paren_new_line : 'yes'
         open_paren_new_line : 'yes'
         close_paren_new_line : 'yes'
         new_line_after_comma : 'ignore'
+        assign_on_single_line : 'yes'
         ignore_single_line : 'no'
+        move_last_comment : 'ignore'
 
-Example: first_paren_new_line
-#############################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type := (a => 0, b => 1);
-
-The following code would pass with this option:
+The following code snippet is used in the following examples:
 
 .. code-block:: vhdl
 
-    constant c_const : t_type :=
-    (a => 0, b => 1);
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
-Example: last_paren_new_line
-############################
+   constant c_stimulus : t_stimulus_array :=
+   (
+     (
+       name => 
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
 
-The following code would fail with this option:
+.. NOTE::  The indenting in the following examples are performed by a different rule.
 
-.. code-Block:: vhdl
-
-    constant c_const : t_type := (a => 0, b => 1);
-
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-    constant c_const : t_type := (a => 0, b => 1
-    );
-
-Example: first_paren_new_line and last_paren_new_line
-#####################################################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type := (a => 0, b => 1);
-
-The following code would pass with this option:
+Example: |first_paren_new_line| set to |yes|
+############################################
 
 .. code-block:: vhdl
 
-    constant c_const : t_type :=
-    (
-      a => 0, b => 1
-    );
+   constant c_stimulus : t_stimulus_array := 
+   ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
-Example: new_line_after_comma
-#############################
+   constant c_stimulus : t_stimulus_array := 
+   (
+     (
+       name =>
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
 
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type := (a => 0, b => 1);
-
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-    constant c_const : t_type := (a => 0,
-    b => 1);
-
-Example: new_line_after_comma and first_paren_new_line and last_paren_new_line 
-##############################################################################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type := (a => 0, b => 1);
-
-The following code would pass with this option:
+Example: |first_paren_new_line| set to |no|
+###########################################
 
 .. code-block:: vhdl
 
-    constant c_const : t_type :=
-    (a => 0,
-     b => 1);
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
-Example: open_paren_new_line
-############################
+   constant c_stimulus : t_stimulus_array := (
+     (
+       name =>
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
 
-The following code would fail with this option:
 
-.. code-Block:: vhdl
-
-    constant c_const : t_type := ((a => 0, b => 1), (c => 0, d => 1));
-
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-    constant c_const : t_type := (
-    (
-      a => 0, b => 1), (
-    c => 0, d => 1));
-
-Example: close_paren_new_line
-#############################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type := ((a => 0, b => 1), (c => 0, d => 1));
-
-The following code would pass with this option:
+Example: |last_paren_new_line| set to |yes| and |move_last_comment| set to |yes|
+################################################################################
 
 .. code-block:: vhdl
 
-    constant c_const : t_type := ((a => 0, b => 1
-                                  ), (c => 0, d => 1
-                                  ));
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00") -- Define test vectors
+   ); -- Define test vectors
 
-Example: open_paren_new_line and close_paren_new_line
-#####################################################
+   constant c_stimulus : t_stimulus_array := 
+   (
+     (
+       name =>
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
 
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type := ((a => 0, b => 1), (c => 0, d => 1));
-
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-    constant c_const : t_type := (
-    (
-      a => 0, b => 1
-    ), (
-      c => 0, d => 1
-    ));
-
-Example: all options yes
-########################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type := ((a => 0, b => 1), (c => 0, d => 1));
-
-The following code would pass with this option:
+Example: |last_paren_new_line| set to |yes| and |move_last_comment| set to |no|
+###############################################################################
 
 .. code-block:: vhdl
 
-    constant c_const : t_type :=
-    (
-      (
-        a => 0,
-        b => 1
-      ),
-      (
-        c => 0,
-        d => 1
-      )
-    );
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")
+   ); -- Define test vectors
 
-Example: all options no
-#######################
+   constant c_stimulus : t_stimulus_array := 
+   (
+     (
+       name =>
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
 
-The following code would pass with this option:
-
-.. code-block:: vhdl
-
-    constant c_const : t_type :=
-    (
-      (
-        a => 0,
-        b => 1
-      ),
-      (
-        c => 0,
-        d => 1
-      )
-    );
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type := ((a => 0, b => 1), (c => 0, d => 1));
-
-Example: assign_on_single_line
-##############################
-
-The following code would pass with this option set to True:
+Example: |last_paren_new_line| set to |no|
+##########################################
 
 .. code-block:: vhdl
 
-    constant c_const : t_type :=
-    (
-      1 => func1(std_logic_vector(G_GEN), G_GEN2),
-      2 => func1(std_logic_vector(G_GEN), G_GEN2)
-    );
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
-The following code would fail with this option set to True:
+   constant c_stimulus : t_stimulus_array := (
+     (
+       name =>
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )); -- Define test vectors
 
-.. code-block:: vhdl
-
-    constant c_const : t_type :=
-    (
-      1 => func1(std_logic_vector(G_GEN), G_GEN2),
-      2 => func1(
-                 std_logic_vector(G_GEN), G_GEN2)
-    );
-
-Example: last_paren_new_line and move_last_comment
-##################################################
-
-The following code would fail with this option:
-
-.. code-Block:: vhdl
-
-    constant c_const : t_type :=
-    (
-      a => 0,
-      b => 1); -- Comment
-
-The following code would pass with this option:
+Example: |open_paren_new_line| set to |yes|
+###########################################
 
 .. code-block:: vhdl
 
-    constant c_const : t_type :=
-    (
-      a => 0,
-      b => 1 -- Comment
-    );
+   constant c_stimulus : t_stimulus_array := (
+     (
+      name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (
+      name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
+
+   constant c_stimulus : t_stimulus_array := 
+   (
+     (
+       name =>
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
+
+Example: |open_paren_new_line| set to |no|
+##########################################
+
+.. code-block:: vhdl
+
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+
+   constant c_stimulus : t_stimulus_array := ((name =>
+       "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (name =>
+              "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )); -- Define test vectors
+
+Example: |close_paren_new_line| set to |yes|
+############################################
+
+.. code-block:: vhdl
+
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"
+     ), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"
+     )
+   ); -- Define test vectors
+
+   constant c_stimulus : t_stimulus_array := 
+   (
+     (
+       name =>
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
+
+Example: |close_paren_new_line| set to |no|
+###########################################
+
+.. code-block:: vhdl
+
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+
+   constant c_stimulus : t_stimulus_array := ((name =>
+              "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"),
+     (name =>
+              "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00")); -- Define test vectors
+
+Example: |new_line_after_comma| set to |yes|
+############################################
+
+.. code-block:: vhdl
+
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"),
+     (name => "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00")); -- Define test vectors
+
+   constant c_stimulus : t_stimulus_array := 
+   (
+     (
+       name =>
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
+
+Example: |new_line_after_comma| set to |no|
+###########################################
+
+.. code-block:: vhdl
+
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+
+   constant c_stimulus : t_stimulus_array := ((name =>
+              "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name =>
+              "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
+
+Example: |assign_on_single_line| set to |yes|
+#############################################
+
+.. code-block:: vhdl
+
+   constant c_stimulus : t_stimulus_array := 
+   ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
+
+   constant c_stimulus : t_stimulus_array := 
+   (
+     (
+       name => "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name => "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
+
+Example: Keep all assignments on single line
+############################################
+
+Using the following configuration:
+
+.. code-block:: yaml
+
+   rule :
+     constant_016:
+        first_paren_new_line : 'no'
+        last_paren_new_line : 'yes'
+        open_paren_new_line : 'yes'
+        close_paren_new_line : 'yes'
+        new_line_after_comma : 'no'
+        assign_on_single_line : 'yes'
+        ignore_single_line : 'no'
+        move_last_comment : 'ignore'
+
+would result in the following formatting:
+
+.. code-block:: vhdl
+
+   constant c_stimulus : t_stimulus_array := (
+     (
+       name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"
+     ),
+     (
+       name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"
+     )); -- Define test vectors
+
+   constant c_stimulus : t_stimulus_array := (
+     (
+       name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"
+     ),
+     (
+       name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"
+     )
+   ); -- Define test vectors
+
+Example: Fully expand expression
+################################
+
+Using the following configuration:
+
+.. code-block:: yaml
+
+   rule :
+     constant_016:
+        first_paren_new_line : 'yes'
+        last_paren_new_line : 'yes'
+        open_paren_new_line : 'yes'
+        close_paren_new_line : 'yes'
+        new_line_after_comma : 'yes'
+        assign_on_single_line : 'yes'
+        ignore_single_line : 'no'
+        move_last_comment : 'ignore'
+
+would result in the following formatting:
+
+.. code-block:: vhdl
+
+   constant c_stimulus : t_stimulus_array := 
+   (
+     (
+       name => "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name => "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
+
+   constant c_stimulus : t_stimulus_array :=
+   (
+     (
+       name => 
+               "Hold in reset",
+       clk_in => "01",
+       rst_in => "11",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     ),
+     (
+       name =>
+               "Not enabled",
+       clk_in => "01",
+       rst_in => "00",
+       cnt_en_in => "00",
+       cnt_out => "00"
+     )
+   ); -- Define test vectors
+
 
 Rules Enforcing Array Multiline Structure Rules
 ###############################################
