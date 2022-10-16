@@ -84,6 +84,7 @@ class multiline_array_alignment(alignment.Rule):
             dExpectedIndent = self.analyze_align_left_false_align_paren_true(oToi, oLines)
         if align_paren(self) and align_left(self):
             dExpectedIndent = self.analyze_align_left_true_align_paren_true(oToi, oLines)
+
         return dExpectedIndent
 
     def analyze_align_left_true_align_paren_false(self, oToi, oLines):

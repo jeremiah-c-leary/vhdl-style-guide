@@ -36,6 +36,7 @@ class rule_014(Rule):
         Rule.__init__(self, 'constant', '014', lTokenPairs)
         self.subphase = 3
         self.phase = 5
+        self.iIndentAfterParen = 0
 
     def _get_tokens_of_interest(self, oFile):
         for lTokenPair in self.lTokenPairs:
