@@ -453,6 +453,27 @@ This rule checks the colons are in the same column for all elements in the block
      yet_another_element : natural;
    end record;
 
+type_500
+########
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks enumerate types have proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   TYPE state_machine is (IDLE, WRITE, READ, DONE);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type state_machine is (idle, write, read, done);
+
 type_600
 ########
 

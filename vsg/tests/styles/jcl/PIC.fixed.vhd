@@ -59,8 +59,8 @@ end entity PIC;
 architecture BEHAVIORAL of PIC is
 
   type state_type is (
-    reset_s, get_commands, jump_int_method, start_polling, tx_int_info_polling, ack_ISR_done,
-    ack_txinfo_rxd, start_priority_check, tx_int_info_priority, ack_txinfo_rxd_priority, ack_ISR_done_pt
+    RESET_S, GET_COMMANDS, JUMP_INT_METHOD, START_POLLING, TX_INT_INFO_POLLING, ACK_ISR_DONE,
+    ACK_TXINFO_RXD, START_PRIORITY_CHECK, TX_INT_INFO_PRIORITY, ACK_TXINFO_RXD_PRIORITY, ACK_ISR_DONE_PT
   );
 
   signal next_s               : state_type :=reset_s;
