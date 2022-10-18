@@ -35,6 +35,8 @@ rule :
     case : upper
   process_019 :
     case : upper
+  type_500 :
+    case : upper
   # Ignored rules
   library_500 :
     disable : True
