@@ -604,3 +604,47 @@ This rule checks the proper case of the end label on a loop statement.
      end loop label;
      end loop label;
 
+loop_statement_600
+##################
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on loop labels.
+The default prefix is *loop\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label : for index in 4 to 23 loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+   loop_label : for index in 4 to 23 loop
+
+loop_statement_601
+##################
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on loop labels.
+The default prefix is *\_loop*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label : for index in 4 to 23 loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label_loop : for index in 4 to 23 loop
+
