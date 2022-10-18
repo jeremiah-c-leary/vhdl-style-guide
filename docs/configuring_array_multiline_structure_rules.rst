@@ -21,7 +21,7 @@ There are several options to these rules:
    :code:`no` = Remove new line before first parenthesis.
 
 .. |ignore_formatting| replace::
-   :code:`ignore` = Ignore formatting
+   :code:`ignore` = Ignore formatting.
 
 .. |last_paren_new_line| replace::
    :code:`last_paren_new_line`
@@ -75,10 +75,10 @@ There are several options to these rules:
    :code:`ignore_single_line`
 
 .. |ignore_single_line__yes| replace::
-   :code:`yes` = ignore single line expressions.
+   :code:`yes` = Ignore single line expressions.
 
 .. |ignore_single_line__no| replace::
-   :code:`no` =  apply rules to single line expressions.
+   :code:`no` =  Apply rules to single line expressions.
 
 .. |move_last_comment| replace::
    :code:`move_last_comment`
@@ -551,7 +551,7 @@ Using the following configuration:
         new_line_after_comma : 'yes'
         assign_on_single_line : 'yes'
         ignore_single_line : 'no'
-        move_last_comment : 'ignore'
+        move_last_comment : 'yes'
 
 would result in the following formatting:
 
@@ -572,8 +572,8 @@ would result in the following formatting:
        rst_in => "00",
        cnt_en_in => "00",
        cnt_out => "00"
-     )
-   ); -- Define test vectors
+     ) -- Define test vectors
+   );
 
    constant c_stimulus : t_stimulus_array :=
    (

@@ -12,19 +12,19 @@ There are several options to these rules:
    :code:`align_left`
 
 .. |align_left__yes| replace::
-   :code:`yes` = new lines will be aligned left
+   :code:`yes` = Lines will be aligned left
 
 .. |align_left__no| replace::
-   :code:`no` = lines will be aligned to assignment operator
+   :code:`no` = Lines will be aligned to assignment operator
 
 .. |align_paren| replace::
    :code:`align_paren`
 
 .. |align_paren__yes| replace::
-   :code:`yes` = align to unbalanced open parenthesis
+   :code:`yes` = Align to unbalanced open parenthesis
 
 .. |align_paren__no| replace::
-   :code:`no` = each unbalanced open parenthesis will add an indent.
+   :code:`no` = Each unbalanced open parenthesis will add an indent.
 
 .. |values| replace::
    :code:`yes`, :code:`no`

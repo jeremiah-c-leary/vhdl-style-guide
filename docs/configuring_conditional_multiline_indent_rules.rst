@@ -11,46 +11,46 @@ There are several options to these rules:
    :code:`align_left`
 
 .. |align_left__yes| replace::
-   :code:`yes` = new lines will be aligned left
+   :code:`yes` = Lines will be aligned left.
 
 .. |align_left__no| replace::
-   :code:`no` = lines will be aligned to assignment operator
+   :code:`no` = Lines will be aligned to assignment operator.
 
 .. |align_paren| replace::
    :code:`align_paren`
 
 .. |align_paren__yes| replace::
-   :code:`yes` = align to unbalanced open parenthesis
+   :code:`yes` = Align to unbalanced open parenthesis.
 
 .. |align_paren__no| replace::
-   :code:'no` = each unbalanced open parenthesis will add an indent.
+   :code:`no` = Each unbalanced open parenthesis will add an indent.
 
 .. |align_when_keywords| replace::
    :code:`align_when_keywords`
 
 .. |align_when_keywords__yes| replace::
-   :code:`yes` = column align when keywords
+   :code:`yes` = Column align :code:`when` keywords.
 
 .. |align_when_keywords__no| replace::
-   :code:`no` = ignore when keywords
+   :code:`no` = Ignore alignment of :code:`when` keywords.
 
 .. |wrap_at_when| replace::
    :code:`wrap_at_when`
 
 .. |wrap_at_when__yes| replace::
-   :code:`yes` = indent multiline condition at when keyword
+   :code:`yes` = Indent multiline condition at :code:`when` keyword.
 
 .. |wrap_at_when__no| replace::
-   :code:`no` = disable wrapping at when keyword
+   :code:`no` = Disable wrapping at :code:`when` keyword.
 
 .. |align_else_keywords| replace::
    :code:`align_else_keywords`
 
 .. |align_else_keywords__yes| replace::
-   :code:`yes` = column align else keywords
+   :code:`yes` = Column align :code:`else` keywords.
 
 .. |align_else_keywords__no| replace::
-   :code:`no` = ignore else keywords
+   :code:`no` = Ignore alignment of :code:`else` keywords.
 
 .. |values| replace::
    :code:`yes`, :code:`no`

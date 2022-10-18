@@ -4,13 +4,13 @@
    :code:`new_line_after_assign`
 
 .. |new_line_after_assign__yes| replace::
-   :code:`yes` =  adds a carriage return (alias "new line") after the assigment operator.
+   :code:`yes` =  Adds a carriage return (alias "new line") after the assigment operator.
 
 .. |new_line_after_assign__no| replace::
-   :code:`no` = removes a carriage return (alias "new line") after the assigment operator.
+   :code:`no` = Removes a carriage return (alias "new line") after the assigment operator.
 
 .. |new_line_after_assign__ignore| replace::
-   :code:`ignore`  = will ignore any formatting after the assignment operator.
+   :code:`ignore` = Ignores any formatting after the assignment operator.
 
 .. |values1| replace::
    :code:`yes`, :code:`no`, :code:`ignore`
@@ -22,10 +22,10 @@
    :code:`ignore_single_line`
 
 .. |ignore_single_line__yes| replace::
-   :code:`yes` = ignore single line expressions.
+   :code:`yes` = Ignore single line expressions.
 
 .. |ignore_single_line__no| replace::
-   :code:`no` =  apply rules to single line expressions.
+   :code:`no` =  Apply rules to single line expressions.
 
 .. |default_yes| replace::
    :code:`yes`
