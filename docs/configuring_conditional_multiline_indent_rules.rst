@@ -3,40 +3,7 @@
 Configuring Conditional Multiline Indent Rules
 ----------------------------------------------
 
-There are rules which will check indent and alignment of multiline conditional expressions and conditional waveforms.
-
-Conditional expressions and conditional waveforms are defined as:
-
-.. code-block:: bash
-
-    conditional_expressions ::=
-      expression **when** condition
-      { **else** expression **when** condition }
-      [ **else** expression ]
-
-    conditional_waveforms ::=
-      waveform **when** condition
-      { **else** waveform **when** condition }
-      [ **else** waveform ]
-
-Below is an example of a conditional waveform:
-
-.. code-block:: vhdl
-
-   architecture rtl of fifo is
-
-   begin
-
-     output <= '1' when input = "00" else
-               sig_a or sig_b when input = "01" else
-               sig_c and sig_d when input = "10" else
-               '0';
-
-   end architecture rtl;
-
-The alignment of multiline rules is handled by a corresponding rule.
-Both rules are required to ensure proper formatting of multiline expressions and conditions.
-The corresponding rule will be noted in the rule documentation.
+There are rules which will check alignment of multiline conditional expressions and conditional waveforms.
 
 There are several options to these rules:
 
@@ -44,19 +11,19 @@ There are several options to these rules:
    :code:`align_left`
 
 .. |align_left__yes| replace::
-   :code:`yes` = align based on indent
+   :code:`yes` = new lines will be aligned left
 
 .. |align_left__no| replace::
-   :code:`no` = align to assignment operator
+   :code:`no` = lines will be aligned to assignment operator
 
 .. |align_paren| replace::
    :code:`align_paren`
 
 .. |align_paren__yes| replace::
-   :code:`yes` = align code within parenthesis
+   :code:`yes` = align to unbalanced open parenthesis
 
 .. |align_paren__no| replace::
-   :code:`no` = ignore parenthesis
+   :code:'no` = each unbalanced open parenthesis will add an indent.
 
 .. |align_when_keywords| replace::
    :code:`align_when_keywords`

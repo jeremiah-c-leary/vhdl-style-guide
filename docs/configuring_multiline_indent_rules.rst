@@ -21,10 +21,10 @@ There are several options to these rules:
    :code:`align_paren`
 
 .. |align_paren__yes| replace::
-   :code:`yes` = use open parenthesis for alignment
+   :code:`yes` = align to unbalanced open parenthesis
 
 .. |align_paren__no| replace::
-   :code:'no` = do not use open parenthesis for alignment
+   :code:`no` = each unbalanced open parenthesis will add an indent.
 
 .. |values| replace::
    :code:`yes`, :code:`no`
@@ -35,15 +35,15 @@ There are several options to these rules:
 .. |default_no| replace::
    :code:`no`   
 
-+---------------+----------+---------------+--------------------+
-| Option        | Values   | Default       | Description        |
-+===============+==========+===============+====================+
-| |align_left|  | |values| | |default_yes| | |align_left__yes|  |
-|               |          |               | |align_left__no|   |
-+---------------+----------+---------------+--------------------+
-| |align_paren| | |values| | |default_no|  | |align_paren__yes| |
-|               |          |               | |align_paren__no|  |
-+---------------+----------+---------------+--------------------+
++---------------+----------+---------------+----------------------+
+| Option        | Values   | Default       | Description          |
++===============+==========+===============+======================+
+| |align_left|  | |values| | |default_yes| | * |align_left__yes|  |
+|               |          |               | * |align_left__no|   |
++---------------+----------+---------------+----------------------+
+| |align_paren| | |values| | |default_no|  | * |align_paren__yes| |
+|               |          |               | * |align_paren__no|  |
++---------------+----------+---------------+----------------------+
 
 This is an example of how to configure the option.
 
@@ -54,18 +54,16 @@ This is an example of how to configure the option.
         align_left : "no"
         align_paren : "yes"
 
-.. NOTE:: All examples below are using the rule **constant_012**.
-
 All examples use the following code snippet:
 
 .. code-block:: vhdl
 
   wr_en <= resize(unsigned(I_FOO) +
-                  unsigned(I_BAR), q_foo'length);
+              unsigned(I_BAR), q_foo'length);
 
   wr_en <=
-           resize(unsigned(I_FOO) +
-                  unsigned(I_BAR), q_foo'length);
+      resize(unsigned(I_FOO) +
+                      unsigned(I_BAR), q_foo'length);
 
 Example: |align_left| set to |default_yes| and |align_paren| set to |default_no|
 ################################################################################
@@ -119,11 +117,11 @@ Rules Enforcing Multiline Indent Rules
 ######################################
 
 * `concurrent_003 <concurrent_rules.html#concurrent-003>`_
+* `concurrent_401 <concurrent_rules.html#concurrent-401>`_
+* `constant_012 <constant_rules.html#constant-012>`_
 * `constant_014 <constant_rules.html#constant-014>`_
 * `process_020 <process_rules.html#process-020>`_
 * `sequential_004 <sequential_rules.html#sequential-004>`_
+* `sequential_402 <sequential_rules.html#sequential-402>`_
 * `variable_assignment_004 <variable_assignment_rules.html#variable-assignment-004>`_
-.. * `sequential_402 <sequential_rules.html#sequential-402>`_
-.. * `concurrent_401 <concurrent_rules.html#concurrent-401>`_
-.. * `constant_012 <constant_rules.html#constant-012>`_
-.. * `variable_assignment_401 <variable_assignment_rules.html#variable-assignment-401>`_
+* `variable_assignment_401 <variable_assignment_rules.html#variable-assignment-401>`_

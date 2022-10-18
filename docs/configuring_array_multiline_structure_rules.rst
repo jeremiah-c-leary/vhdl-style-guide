@@ -75,16 +75,16 @@ There are several options to these rules:
    :code:`ignore_single_line`
 
 .. |ignore_single_line__yes| replace::
-   :code:`yes` = Apply formatting to single line expressions/conditions.
+   :code:`yes` = ignore single line expressions.
 
 .. |ignore_single_line__no| replace::
-   :code:`no` = Do not apply formatting to single line expressions/conditions.
+   :code:`no` =  apply rules to single line expressions.
 
 .. |move_last_comment| replace::
    :code:`move_last_comment`
 
 .. |move_last_comment__yes| replace::
-   :code:`yes` = If last_paren_new_line is :code:`yes`, then move any trailing comment to the previous line.
+   :code:`yes` = If :code:`last_paren_new_line` is :code:`yes`, then move any trailing comment to the previous line.
 
 .. |yes| replace::
    :code:`yes`
@@ -247,7 +247,7 @@ Example: |last_paren_new_line| set to |yes| and |move_last_comment| set to |yes|
 .. code-block:: vhdl
 
    constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00") -- Define test vectors
-   ); -- Define test vectors
+   );
 
    constant c_stimulus : t_stimulus_array := 
    (
@@ -522,16 +522,15 @@ would result in the following formatting:
    constant c_stimulus : t_stimulus_array := (
      (
        name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"
-     ),
-     (
+     ), (
        name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"
-     )); -- Define test vectors
+     )
+   ); -- Define test vectors
 
    constant c_stimulus : t_stimulus_array := (
      (
        name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"
-     ),
-     (
+     ), (
        name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"
      )
    ); -- Define test vectors
@@ -579,16 +578,14 @@ would result in the following formatting:
    constant c_stimulus : t_stimulus_array :=
    (
      (
-       name => 
-               "Hold in reset",
+       name => "Hold in reset",
        clk_in => "01",
        rst_in => "11",
        cnt_en_in => "00",
        cnt_out => "00"
      ),
      (
-       name =>
-               "Not enabled",
+       name => "Not enabled",
        clk_in => "01",
        rst_in => "00",
        cnt_en_in => "00",

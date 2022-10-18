@@ -76,7 +76,7 @@ The following code snippet will be used in the following examples:
 Example: |new_line_after_assign| set to |default_yes|
 #####################################################
 
-Code after the assignment operator **<=** will be moved to the next line.
+Code after the assignment operator :code:`<=` will be moved to the next line.
 
 .. code-Block:: vhdl
 
@@ -91,7 +91,7 @@ Code after the assignment operator **<=** will be moved to the next line.
 Example: |new_line_after_assign| set to |default_no|
 ####################################################
 
-Code after the assignment operator **<=** will be enforced.
+Code after the assignment operator :code:`<=` will be enforced.
 
 .. code-Block:: vhdl
 
