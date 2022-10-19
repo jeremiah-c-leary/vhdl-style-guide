@@ -56,7 +56,6 @@ class multiline_structure(structure.Rule):
         self.ignore_single_line = 'yes'
         self.configuration.append('ignore_single_line')
         self.move_last_comment = 'ignore'
-        self.configuration.append('move_last_comment')
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []

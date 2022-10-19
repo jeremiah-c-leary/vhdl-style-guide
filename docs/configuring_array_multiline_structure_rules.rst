@@ -137,9 +137,6 @@ There are several options to these rules:
 | |ignore_single_line|    | |values_4| | |yes|    | * |ignore_single_line__yes|                  |
 |                         |            |          | * |ignore_single_line__no|                   |
 +-------------------------+------------+----------+----------------------------------------------+
-| |move_last_comment|     | |values_3| | |ignore| | * |move_last_comment__yes|                   |
-|                         |            |          | * |ignore_formatting|                        |
-+-------------------------+------------+----------+----------------------------------------------+
 
 The options can be combined to format arrays.
 
@@ -156,7 +153,6 @@ This is an example of how to configure these options.
         new_line_after_comma : 'ignore'
         assign_on_single_line : 'yes'
         ignore_single_line : 'no'
-        move_last_comment : 'ignore'
 
 The following code snippet is used in the following examples:
 
@@ -241,36 +237,8 @@ Example: |first_paren_new_line| set to |no|
    ); -- Define test vectors
 
 
-Example: |last_paren_new_line| set to |yes| and |move_last_comment| set to |yes|
-################################################################################
-
-.. code-block:: vhdl
-
-   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00") -- Define test vectors
-   );
-
-   constant c_stimulus : t_stimulus_array := 
-   (
-     (
-       name =>
-               "Hold in reset",
-       clk_in => "01",
-       rst_in => "11",
-       cnt_en_in => "00",
-       cnt_out => "00"
-     ),
-     (
-       name =>
-               "Not enabled",
-       clk_in => "01",
-       rst_in => "00",
-       cnt_en_in => "00",
-       cnt_out => "00"
-     )
-   ); -- Define test vectors
-
-Example: |last_paren_new_line| set to |yes| and |move_last_comment| set to |no|
-###############################################################################
+Example: |last_paren_new_line| set to |yes|
+###########################################
 
 .. code-block:: vhdl
 
@@ -357,7 +325,7 @@ Example: |open_paren_new_line| set to |no|
 
 .. code-block:: vhdl
 
-   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
    constant c_stimulus : t_stimulus_array := ((name =>
        "Hold in reset",
@@ -409,7 +377,7 @@ Example: |close_paren_new_line| set to |no|
 
 .. code-block:: vhdl
 
-   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
    constant c_stimulus : t_stimulus_array := ((name =>
               "Hold in reset",
@@ -465,7 +433,7 @@ Example: |new_line_after_comma| set to |no|
 
 .. code-block:: vhdl
 
-   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00"));
+   constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
    constant c_stimulus : t_stimulus_array := ((name =>
               "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name =>
@@ -513,7 +481,6 @@ Using the following configuration:
         new_line_after_comma : 'no'
         assign_on_single_line : 'yes'
         ignore_single_line : 'no'
-        move_last_comment : 'ignore'
 
 would result in the following formatting:
 
@@ -551,7 +518,6 @@ Using the following configuration:
         new_line_after_comma : 'yes'
         assign_on_single_line : 'yes'
         ignore_single_line : 'no'
-        move_last_comment : 'yes'
 
 would result in the following formatting:
 
@@ -572,8 +538,8 @@ would result in the following formatting:
        rst_in => "00",
        cnt_en_in => "00",
        cnt_out => "00"
-     ) -- Define test vectors
-   );
+     )
+   ); -- Define test vectors
 
    constant c_stimulus : t_stimulus_array :=
    (
@@ -597,7 +563,7 @@ would result in the following formatting:
 Rules Enforcing Array Multiline Structure Rules
 ###############################################
 
-* `concurrent_401 <concurrent_rules.html#concurrent-401>`_
+* `concurrent_012 <concurrent_rules.html#concurrent-012>`_
 * `constant_016 <constant_rules.html#constant-016>`_
 * `sequential_009 <sequential_rules.html#sequential-009>`_
 * `variable_assignment_008 <variable_assignment_rules.html#variable-assignment-008>`_
