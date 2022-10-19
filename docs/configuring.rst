@@ -11,6 +11,7 @@ Configuring
    configuring_concurrent_alignment_rules.rst
    configuring_concurrent_procedure_call_statement_rules.rst
    configuring_conditional_expressions_structure_rules.rst
+   configuring_consecutive_blank_line_rules.rst
    configuring_disabled_rules.rst
    configuring_identifier_alignment_rules.rst
    configuring_indentation.rst
