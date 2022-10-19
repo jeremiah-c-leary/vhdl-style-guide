@@ -3,12 +3,14 @@ from vsg import parser
 from vsg import violation
 
 from vsg.rule_group.blank_line import Rule
-from vsg.rules import utils
+from vsg.vhdlFile import utils
 
 
 class rule_200(Rule):
     '''
-    This rule removes consecutive blank lines.
+    This rule enforces a maximum number of consecutive blank lines.
+
+    |configuring_consecutive_blank_line_rules|
 
     **Violation**
 
@@ -34,29 +36,36 @@ class rule_200(Rule):
         self.configuration.append('blank_lines_allowed')
 
     def _get_tokens_of_interest(self, oFile):
-        lToi = oFile.get_consecutive_lines_starting_with_token(parser.blank_line)
-        lReturn = []
-        for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            if len(lTokens) > ((self.blank_lines_allowed * 2) - 1):
-                lReturn.append(oToi)
-        return lReturn
+        return [oFile.get_all_tokens()]
 
     def _analyze(self, lToi):
-        for oToi in lToi:
-            lTokens = oToi.get_tokens()
-            iBlankLines = utils.number_of_tokens_in_token_list(parser.blank_line, lTokens)
+        oToi = lToi[0]
+        iLine, lTokens = utils.get_toi_parameters(oToi)
+        iCount = 0
+        for iToken, oToken in enumerate(lTokens[:len(lTokens) - 1]):
+            iLine = utils.increment_line_number(iLine, oToken)
 
-            if iBlankLines > self.blank_lines_allowed:
-                sSolution = f'Remove {iBlankLines - self.blank_lines_allowed}'
-                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                dAction = {}
-                dAction['remove_index'] = len(lTokens) - (iBlankLines - self.blank_lines_allowed) * 2
-                oViolation.set_action(dAction)
-                self.add_violation(oViolation)
+            if isinstance(oToken, parser.blank_line):
+                if iCount == 0:
+                    iLineNumber = iLine
+                    iStartToken = iToken
+                iCount += 1
+
+            if isinstance(oToken, parser.carriage_return):
+                if not isinstance(lTokens[iToken + 1], parser.blank_line):
+                    if iCount > self.blank_lines_allowed:
+                        sSolution = 'Remove ' + str(iCount - self.blank_lines_allowed) + ' blank line(s) below'
+                        lExtractedTokens = oToi.extract_tokens(iStartToken, iToken)
+                        oViolation = violation.New(iLineNumber, lExtractedTokens, sSolution)
+                        dAction = {}
+                        dAction['remove'] = iCount - self.blank_lines_allowed
+                        oViolation.set_action(dAction)
+                        self.add_violation(oViolation)
+
+                    iCount = 0
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lNewTokens = lTokens[0:dAction['remove_index']]
-        oViolation.set_tokens(lNewTokens)
+        lTokens = lTokens[2*dAction['remove']:]
+        oViolation.set_tokens(lTokens)
