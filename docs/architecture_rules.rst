@@ -793,6 +793,31 @@ This rule checks the colons are in the same column for all attribute specificati
      attribute mark_debug of almost_empty : signal is "true";
      attribute mark_debug of full         : signal is "true";
 
+architecture_401
+################
+
+|phase_5| |error| |alignment|
+
+This rule checks the default assignment operator := are in the same column.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal   wr_en    : std_logic := '1';
+   signal   rd_en    : std_logic     := '0';
+   constant c_period : integer  := 20;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal   wr_en    : std_logic := '1';
+   signal   rd_en    : std_logic := '0';
+   constant c_period : time      := 20;
+
 architecture_600
 ################
 

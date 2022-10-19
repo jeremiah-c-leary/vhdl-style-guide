@@ -403,6 +403,30 @@ This rule checks for a single space after the default assignment token.
    signal wr_en : std_logic := '0';
    signal rd_en : std_logic := '1';
 
+signal_200
+##########
+
+|phase_3| |disabled| |error| |blank_line|
+
+This rule checks for a blank line below a signal declaration unless there is another signal definition.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal   width  : integer := 32;
+   signal   height : integer := 4;
+   constant length : integer := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal   width  : integer := 32;
+   signal   height : integer := 4;
+
+   constant length : integer := 32;
+
 signal_400
 ##########
 

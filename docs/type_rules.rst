@@ -445,6 +445,30 @@ This rule checks for a single space before the identifier.
 
    type t_my_type is range -5 to 5;
 
+type_200
+########
+
+|phase_3| |disabled| |error| |blank_line|
+
+This rule checks for a blank line below a type declaration unless there is another type declaration.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type state_machine_t is (idle, write, read, done);
+   type state_machine is (idle, write, read, done);
+   constant width : integer := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type state_machine_t is (idle, write, read, done);
+   type state_machine is (idle, write, read, done);
+
+   constant width : integer := 32;
+
 type_400
 ########
 
