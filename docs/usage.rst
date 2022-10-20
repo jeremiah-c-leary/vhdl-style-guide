@@ -261,5 +261,5 @@ One of the following error codes will be returned after running VSG:
 |     1      |  VSG ran and detected a rule violation.         |
 +------------+-------------------------------------------------+
 |     2      |  An attempt was made to configure a rule which  |
-|            |  was depricated.                                |
+|            |  was deprecated.                                |
 +------------+-------------------------------------------------+

@@ -52,7 +52,7 @@ This rule checks the **constant** keyword has proper case.
 constant_003
 ############
 
-This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
+This rule was deprecated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
 constant_004
 ############
@@ -331,7 +331,7 @@ constant_016
 
 This rule checks the structure of multiline constants that contain arrays.
 
-|configuring_multiline_structure_rules_link|
+|configuring_array_multiline_structure_rules_link|
 
 .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
 

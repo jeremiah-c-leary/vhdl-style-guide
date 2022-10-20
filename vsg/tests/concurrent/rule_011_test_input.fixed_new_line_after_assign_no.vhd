@@ -21,4 +21,11 @@ begin
        '1' when d = '1' else
        'Z';
 
+  -- Arrays should be ignored
+
+  a <= (
+        b => 0,
+        c => 6
+       );
+
 end architecture RTL;

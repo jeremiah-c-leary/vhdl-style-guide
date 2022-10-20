@@ -15,6 +15,8 @@ class rule_003(multiline_alignment_between_tokens):
     If the parenthesis are not closed on the same line, then the next line will be aligned to the parenthesis.
     Aligning to the parenthesis improves readability.
 
+    |configuring_multiline_indent_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

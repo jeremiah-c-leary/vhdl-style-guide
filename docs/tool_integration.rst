@@ -31,7 +31,7 @@ This eases the transferring information from VSG to another tool.
 
 Below is the basic format of the JSON file:
 
-.. code-block:: json
+.. code-block:: text
 
    {
      "<filename>": {
@@ -65,7 +65,7 @@ This allows tools a finer granularity in instructing VSG how to fix a file.
 
 Below is the basic format of the JSON file:
 
-.. code-block:: json
+.. code-block:: text
 
    {
      "fix": {

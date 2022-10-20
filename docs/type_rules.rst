@@ -54,7 +54,7 @@ This rule checks the **type** keyword has proper case.
 type_003
 ########
 
-This rule was depricated and replaced with rules:
+This rule was deprecated and replaced with rules:
 
 * `function_015 <function_rules.html#function-015>`_
 * `package_019 <package_rules.html#package-019>`_

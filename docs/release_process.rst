@@ -1,4 +1,6 @@
 
+Current Method
+==============
 
 Follow these steps:
 
@@ -25,9 +27,8 @@ Follow these steps:
 
        python setup.py sdist upload -r pypi
 
-===============================================================================
-===============================================================================
-===============================================================================
+Reference Method
+================
 
 The download_url is a link to a hosted file with your repository's code.
 Github will host this for you, but only if you create a git tag.

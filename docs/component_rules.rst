@@ -326,7 +326,7 @@ This rule checks the **component** keyword in the **end component** line has pro
 component_015
 #############
 
-This rule has been depricated.
+This rule has been deprecated.
 The **component** keyword is required per the LRM.
 
 component_016

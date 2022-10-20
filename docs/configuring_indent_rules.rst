@@ -16,10 +16,16 @@ The method of indenting can be configured using one of the following options:
 .. |values| replace::
    :code:`spaces`, :code:`smart_tabs`
 
+.. |default_value| replace::
+   :code:`spaces`
+
+.. |option| replace::
+   :code:`indent_style`
+
 +----------------------+----------+-----------------+----------------------------+
 | Option               | Values   | Default Value   | Description                |
-+======================+==========+==============--=+============================+
-| :code:`indent_style` | |values| | |default_value| | * |spaces_description|     |
++======================+==========+=================+============================+
+| |option|             | |values| | |default_value| | * |spaces_description|     |
 |                      |          |                 | * |smart_tabs_description| |
 +----------------------+----------+-----------------+----------------------------+
 
@@ -29,13 +35,13 @@ The :code:`indent_style` option can be set globally for all rules and locally fo
 
    rules:
       global:
-         indent_style: `smart_tabs`
+         indent_style: 'smart_tabs'
          indent_size: 2
    file_list:
        - ram.vhd:
           rule:
             global:
-              indent_style: `spaces`
+              indent_style: 'spaces'
 
 
 :code:`spaces` Example
@@ -45,7 +51,7 @@ Setting the :code:`indent_style` option to :code:`spaces` will result in leading
 
 **Violation**
 
-.. code-block:: vhdl
+.. code-block:: text
 
    architecture rtl of fifo is
 

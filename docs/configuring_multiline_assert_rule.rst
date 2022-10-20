@@ -21,7 +21,7 @@ The method of indenting can be configured using one of the following options:
 
 +----------------------+----------+-----------------+----------------------------+
 | Option               | Values   | Default Value   | Description                |
-+======================+==========+==============--=+============================+
++======================+==========+=================+============================+
 | :code:`alignment`    | |values| | |default_value| | * |left_description|       |
 |                      |          |                 | * |report_description|     |
 +----------------------+----------+-----------------+----------------------------+
@@ -42,9 +42,11 @@ Example: :code:`alignment` set to :code:'left'
 ##############################################
 
 Setting the :code:`alignment` option to :code:`left` will align report expressions an additional indent level form the report keyword.
+
 .. code-block:: vhdl
 
    assert WIDTH > 16
      report "FIFO width is limited" &
        " to 16 bits."
      severity FAILURE;
+
