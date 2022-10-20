@@ -11,8 +11,6 @@ class rule_002(ws_group.Rule):
     '''
     This rule will check for the existence of tabs in the middle of a line.
 
-    |configuring_tabs_vs_spaces_link|
-
     **Violation**
 
     .. code-block:: text
