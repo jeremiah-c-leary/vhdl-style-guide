@@ -11,6 +11,9 @@
 .. |configuring_conditional_expressions_structure_rules_link| replace::
    Refer to :ref:`configuring-conditional-expressions-structure-rules` for more information.
 
+.. |configuring_consecutive_blank_line_rules| replace::
+   Refer to :ref:`configuring-consecutive-blank-line-rules` for more information.
+
 .. |configuring_disabled_rules_link| replace::
    Refer to :ref:`configuring-disabled-rules` for more information.
 
