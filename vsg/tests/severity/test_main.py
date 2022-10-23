@@ -131,6 +131,7 @@ class test_severity_using_main(unittest.TestCase):
 
         self.assertEqual(utils.replace_total_count(lActual), lExpected1 + lExpected2)
 
+    @unittest.skip('Update the test to actually check something.')
     def test_oc_option(self):
         lActual = subprocess.check_output(['bin/vsg', '-oc', 'blah.json']).decode('utf-8').split('\n')
         self.assertEqual(lActual, [''])
