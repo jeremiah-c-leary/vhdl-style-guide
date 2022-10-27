@@ -312,6 +312,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_selected_expressions_rules_doc(self):
+
+        lExpected, lActual = compare_files('selected_expressions')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_selected_force_assignment_rules_doc(self):
 
         lExpected, lActual = compare_files('selected_force_assignment')
