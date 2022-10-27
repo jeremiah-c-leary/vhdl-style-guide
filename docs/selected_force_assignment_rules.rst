@@ -64,7 +64,7 @@ selected_force_assignment_501
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the **with** keyword has proper case.
+This rule checks the **select** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
