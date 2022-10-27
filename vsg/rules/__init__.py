@@ -91,9 +91,13 @@ from vsg.rules import case_generate_statement
 from vsg.rules import comment
 from vsg.rules import component
 from vsg.rules import concurrent
+from vsg.rules import concurrent_selected_signal_assignment
+from vsg.rules import conditional_expressions
+from vsg.rules import conditional_waveforms
 from vsg.rules import constant
 from vsg.rules import context
 from vsg.rules import context_ref
+from vsg.rules import element_association
 from vsg.rules import entity
 from vsg.rules import entity_specification
 from vsg.rules import exit_statement
@@ -124,6 +128,9 @@ from vsg.rules import process
 from vsg.rules import ranges
 from vsg.rules import record_type_definition
 from vsg.rules import report_statement
+from vsg.rules import selected_force_assignment
+from vsg.rules import selected_variable_assignment
+from vsg.rules import selected_waveform_assignment
 from vsg.rules import sequential
 from vsg.rules import signal
 from vsg.rules import source_file

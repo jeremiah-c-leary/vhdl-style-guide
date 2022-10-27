@@ -412,7 +412,15 @@ indent:
             return_keyword:
                 token : current
                 after : current
+        selected_force_assignment:
+            with_keyword:
+                token : current
+                after : current
         selected_variable_assignment:
+            with_keyword:
+                token : current
+                after : current
+        selected_waveform_assignment:
             with_keyword:
                 token : current
                 after : current
