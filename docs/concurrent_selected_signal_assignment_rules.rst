@@ -82,6 +82,33 @@ This rule checks for a single space after the **select** keyword.
                                "0001" when 1,
                                "1111" when others;
 
+concurrent_selected_signal_assignment_103
+#########################################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **<=**.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with mux_sel select
+     addr<= "0000" when 0,
+             "0001" when 1,
+             "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with mux_sel select
+     addr <= "0000" when 0,
+             "0001" when 1,
+             "1111" when others;
+
 concurrent_selected_signal_assignment_300
 #########################################
 
