@@ -3,6 +3,33 @@
 Selected Force Assignment Rules
 -------------------------------
 
+selected_force_assignment_100
+#############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **with** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with    mux_sel select
+     addr <= force "0000" when 0,
+                   "0001" when 1,
+                   "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with mux_sel select
+     addr <= force "0000" when 0,
+                   "0001" when 1,
+                   "1111" when others;
+
 selected_force_assignment_300
 #############################
 
