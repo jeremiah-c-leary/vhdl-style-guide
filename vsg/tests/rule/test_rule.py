@@ -8,6 +8,7 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 from vsg.vhdlFile.extract import tokens
+from vsg.rules import option
 
 
 class command_line_args():
@@ -269,3 +270,7 @@ class testRuleMethods(unittest.TestCase):
         lActual = oRule.configure(oConfig)
 
         self.assertEqual(lExpected, lActual)
+
+    def test_option_object_can_be_created(self):
+        oOption = option.New('option_name')
+

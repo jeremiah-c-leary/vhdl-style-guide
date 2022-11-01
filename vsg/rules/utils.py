@@ -358,3 +358,10 @@ def analyze_with_function(self, oToi, oTokenType, fFunction):
             oToi.set_meta_data('iStart', iToken)
             oToi.set_meta_data('iToken', iToken)
             fFunction(self, oToi)
+
+
+def token_exists_in_token_type_list(oToken, lTypeTokens):
+    for oTokenType in lTypeTokens:
+        if isinstance(oToken, oTokenType):
+            return True
+    return False
