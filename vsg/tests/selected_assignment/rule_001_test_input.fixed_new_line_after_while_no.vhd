@@ -25,7 +25,7 @@ begin
   end process;
 
   with (mux_select or reset) select
-    addr <= "0000" when 0,
+    addr <= guarded "0000" when 0,
             "0001" when 1,
             "1111" when others;
 
@@ -42,7 +42,7 @@ begin
 
   end process;
 
-  with (mux_select or reset) select addr <= "0000" when 0, "0001" when 1, "1111" when others;
+  with (mux_select or reset) select addr <= guarded "0000" when 0, "0001" when 1, "1111" when others;
 
   -- splayed out formatting
 
@@ -117,6 +117,7 @@ reset)
  select
     addr 
 <=
+guarded
  "0000" 
 when 
 0

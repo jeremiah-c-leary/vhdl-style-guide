@@ -25,6 +25,12 @@ class rule_001(Rule):
         self.add_option(newLineBeforeSelectKeywordOption())
         self.add_option(newLineAfterSelectKeywordOption())
         self.add_option(newLineBeforeAssignmentOption())
+        self.add_option(newLineAfterAssignmentOption())
+        self.add_option(newLineBeforeWhenKeywordOption())
+        self.add_option(newLineAfterWhenKeywordOption())
+        self.add_option(newLineBeforeCommaOption())
+        self.add_option(newLineAfterCommaOption())
+        self.add_option(newLineBeforeSemicolonOption())
 
         self.add_option(singleLineWithExpressionOption())
 
@@ -88,6 +94,89 @@ def newLineBeforeAssignmentOption():
     lOptions.append(token.selected_force_assignment.assignment)
     lOptions.append(token.selected_variable_assignment.assignment)
     lOptions.append(token.selected_waveform_assignment.assignment)
+    
+    oOption.analysis_options = lOptions
+    return oOption
+
+
+def newLineAfterAssignmentOption():
+
+    oOption = option.New('new_line_after_assignment')
+    oOption.value = 'no'
+    oOption.analyze_function = analysis.check_for_carriage_return_after_token
+    
+    lOptions = []
+    lOptions.append(token.concurrent_selected_signal_assignment.assignment)
+    lOptions.append(token.selected_force_assignment.assignment)
+    lOptions.append(token.selected_variable_assignment.assignment)
+    lOptions.append(token.selected_waveform_assignment.assignment)
+    
+    oOption.analysis_options = lOptions
+    return oOption
+
+def newLineBeforeWhenKeywordOption():
+
+    oOption = option.New('new_line_before_when_keyword')
+    oOption.value = 'no'
+    oOption.analyze_function = analysis.check_for_carriage_return_before_token
+    
+    lOptions = []
+    lOptions.append(token.selected_expressions.when_keyword)
+    lOptions.append(token.selected_waveforms.when_keyword)
+    
+    oOption.analysis_options = lOptions
+    return oOption
+
+def newLineAfterWhenKeywordOption():
+
+    oOption = option.New('new_line_after_when_keyword')
+    oOption.value = 'no'
+    oOption.analyze_function = analysis.check_for_carriage_return_after_token
+    
+    lOptions = []
+    lOptions.append(token.selected_expressions.when_keyword)
+    lOptions.append(token.selected_waveforms.when_keyword)
+    
+    oOption.analysis_options = lOptions
+    return oOption
+
+def newLineBeforeCommaOption():
+
+    oOption = option.New('new_line_before_comma')
+    oOption.value = 'no'
+    oOption.analyze_function = analysis.check_for_carriage_return_before_token
+    
+    lOptions = []
+    lOptions.append(token.selected_expressions.comma)
+    lOptions.append(token.selected_waveforms.comma)
+    
+    oOption.analysis_options = lOptions
+    return oOption
+
+def newLineAfterCommaOption():
+
+    oOption = option.New('new_line_after_comma')
+    oOption.value = 'yes'
+    oOption.analyze_function = analysis.check_for_carriage_return_after_token
+    
+    lOptions = []
+    lOptions.append(token.selected_expressions.comma)
+    lOptions.append(token.selected_waveforms.comma)
+    
+    oOption.analysis_options = lOptions
+    return oOption
+
+def newLineBeforeSemicolonOption():
+
+    oOption = option.New('new_line_before_semicolon')
+    oOption.value = 'no'
+    oOption.analyze_function = analysis.check_for_carriage_return_before_token
+    
+    lOptions = []
+    lOptions.append(token.concurrent_selected_signal_assignment.semicolon)
+    lOptions.append(token.selected_force_assignment.semicolon)
+    lOptions.append(token.selected_variable_assignment.semicolon)
+    lOptions.append(token.selected_waveform_assignment.semicolon)
     
     oOption.analysis_options = lOptions
     return oOption

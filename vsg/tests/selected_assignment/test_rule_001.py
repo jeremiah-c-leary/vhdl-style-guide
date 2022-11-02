@@ -35,6 +35,10 @@ lExpected_new_line_before_select_keyword_yes = []
 lExpected_new_line_before_select_keyword_yes.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed_new_line_before_select_keyword_yes.vhd'), lExpected_new_line_before_select_keyword_yes, False)
 
+lExpected_new_line_before_when_keyword_yes = []
+lExpected_new_line_before_when_keyword_yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed_new_line_before_when_keyword_yes.vhd'), lExpected_new_line_before_when_keyword_yes, False)
+
 lExpected_single_line_with_expression_yes = []
 lExpected_single_line_with_expression_yes.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed_single_line_with_expression_yes.vhd'), lExpected_single_line_with_expression_yes, False)
@@ -54,6 +58,12 @@ class test_rule(unittest.TestCase):
         self.dConfig['rule']['selected_assignment_001']['new_line_before_select_keyword'] = 'ignore'
         self.dConfig['rule']['selected_assignment_001']['new_line_after_select_keyword'] = 'ignore'
         self.dConfig['rule']['selected_assignment_001']['new_line_before_assignment'] = 'ignore'
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_assignment'] = 'ignore'
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_when_keyword'] = 'ignore'
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_when_keyword'] = 'ignore'
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_comma'] = 'ignore'
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_comma'] = 'ignore'
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_semicolon'] = 'ignore'
 
         self.dConfig['rule']['selected_assignment_001']['single_line_with_expression'] = 'ignore'
 
@@ -287,6 +297,202 @@ class test_rule(unittest.TestCase):
 
         self.oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_after_assignment_no(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_assignment'] = 'no'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [58, 79, 101, 123]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_after_assignment_yes(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_assignment'] = 'yes'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [11, 16, 21, 28, 37, 39, 41, 45]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_before_when_keyword_no(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_when_keyword'] = 'no'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [60, 64, 68, 82, 86, 90, 103, 107, 111, 126, 130, 134]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_before_when_keyword_yes(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_when_keyword'] = 'yes'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [11, 12, 13, 16, 17, 18, 21, 22, 23, 28, 29, 30, 37, 37, 37, 39, 39, 39, 41, 41, 41, 45, 45, 45]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_after_when_keyword_no(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_when_keyword'] = 'no'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [60, 64, 68, 82, 86, 90, 103, 107, 111, 126, 130, 134]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_after_when_keyword_yes(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_when_keyword'] = 'yes'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [11, 12, 13, 16, 17, 18, 21, 22, 23, 28, 29, 30, 37, 37, 37, 39, 39, 39, 41, 41, 41, 45, 45, 45]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_before_comma_no(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_comma'] = 'no'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [62, 66, 84, 88, 105, 109, 128, 132]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_before_comma_yes(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_comma'] = 'yes'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [11, 12, 16, 17, 21, 22, 28, 29, 37, 37, 39, 39, 41, 41, 45, 45]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_after_comma_no(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_comma'] = 'no'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [11, 12, 16, 17, 21, 22, 28, 29, 62, 66, 84, 88, 105, 109, 128, 132]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_after_comma_yes(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_after_comma'] = 'yes'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [37, 37, 39, 39, 41, 41, 45, 45]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_before_semicolon_no(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_semicolon'] = 'no'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [70, 92, 113, 136]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+    def test_rule_001_new_line_before_semicolon_yes(self):
+
+        self.dConfig['rule']['selected_assignment_001']['new_line_before_semicolon'] = 'yes'
+
+        self.oConfig.dConfig = self.dConfig
+        self.oRule.configure(self.oConfig)
+
+        self.assertTrue(self.oRule)
+        self.assertEqual(self.oRule.name, 'selected_assignment')
+        self.assertEqual(self.oRule.identifier, '001')
+
+        lExpected = [13, 18, 23, 30, 37, 39, 41, 45]
+
+        self.oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(self.oRule.violations))
+
+
+
+
 
     def test_rule_001_single_line_with_expression_yes(self):
 
