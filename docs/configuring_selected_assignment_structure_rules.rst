@@ -50,14 +50,6 @@ There are several options to the structure rules:
 +----------------------------------------+           +---------------+                                    |
 | :code:`new_line_after_assignment`      |           | |default_no|  |                                    |
 +----------------------------------------+           +---------------+                                    |
-| :code:`new_line_after_guarded_keyword` |           | |default_no|  |                                    |
-+----------------------------------------+           +---------------+                                    |
-| :code:`new_line_after_force_keyword`   |           | |default_no|  |                                    |
-+----------------------------------------+           +---------------+                                    |
-| :code:`new_line_after_force_mode`      |           | |default_no|  |                                    |
-+----------------------------------------+           +---------------+                                    |
-| :code:`new_line_after_delay_machanism` |           | |default_no|  |                                    |
-+----------------------------------------+           +---------------+                                    |
 | :code:`new_line_before_when_keyword`   |           | |default_no|  |                                    |
 +----------------------------------------+           +---------------+                                    |
 | :code:`new_line_after_when_keyword`    |           | |default_no|  |                                    |
@@ -68,164 +60,547 @@ There are several options to the structure rules:
 +----------------------------------------+           +---------------+                                    |
 | :code:`new_line_before_semicolon`      |           | |default_no|  |                                    |
 +----------------------------------------+-----------+---------------+------------------------------------+
-| :code:`single_line_delay_mechanism`    | |values2| | |default_yes| | * |single_line_yes_description|    |
-+----------------------------------------+           +---------------+ * |single_line_ignore_description| |
-| :code:`single_line_with_expression`    |           | |default_yes| |                                    |
-+----------------------------------------+           +---------------+                                    |
-| :code:`single_line_when_expression`    |           | |default_yes| |                                    |
-+----------------------------------------+           +---------------+                                    |
-| :code:`single_line_when_choices`       |           | |default_yes| |                                    |
+| :code:`single_line_with_expression`    | |values2| | |default_yes| | * |single_line_yes_description|    |
+|                                        |           |               | * |single_line_ignore_description| |
 +----------------------------------------+-----------+---------------+------------------------------------+
 
-The following figure illustrates a multiline constraint in a signal declaration and where the options will be applied.
-The same structure applies for constraints in constant and variable declarations.
-
-.. image:: img/constraints_code.png
-
-The following configuration for signals replicates the above code snippet.
-The corresponding configuration for constants and variables can be identical or different.
+This is an example of how to configure these options.
 
 .. code-block:: yaml
 
    rule :
-     signal_016:
-        record_constraint_open_paren : 'add_new_line'
-        record_constraint_close_paren : 'add_new_line'
-        record_constraint_comma : 'remove_new_line'
-        record_constraint_element : 'add_new_line'
-        array_constraint : 'all_in_one_line'
+     selected_assignment_001:
+       new_line_after_with_keyword : 'no'
+       new_line_before_select_keyword : 'no'
+       new_line_after_select_keyword ; 'yes'
+       new_line_before_assignment: 'no'
+       new_line_after_assignment; 'no'
+       new_line_before_when_keyword : 'no'
+       new_line_after_when_keyword ; 'no'
+       new_line_before_comma: 'no'
+       new_line_after_comma; 'yes'
+       new_line_before_semicolon: 'no'
+       single_line_with_expression: 'yes'
 
-.. NOTE:: All examples use the above configuration.
-
-Example: :code:`record_constraint_open_paren` set to :code:`remove_new_line`
-############################################################################
-
-Setting the :code:`record_constraint_open_paren` option to :code:`remove_new_line` will result in the following formatting:
-
-.. code-block:: vhdl
-
-   signal sig8 : record_type_3(
-     element1(7 downto 0),
-     element2(4 downto 0)(7 downto 0)(
-       elementA(7 downto 0),
-       elementB(3 downto 0)
-     ),
-     element3(3 downto 0)(
-       elementC(4 downto 1),
-       elementD(1 downto 0)
-     ),
-     element5(
-       elementE(3 downto 0),
-       elementF(7 downto 0)
-     ),
-     element6(4 downto 0),
-     element7(7 downto 0)
-   );
-
-Example: :code:`record_constraint_close_paren` set to :code:`remove_new_line`
-#############################################################################
-
-Setting the :code:`record_constraint_close_paren` option to :code:`remove_new_line` will result in the following formatting:
+The following code snippet will be used in the following examples:
 
 .. code-block:: vhdl
 
-   signal sig8 : record_type_3
-   (
-     element1(7 downto 0),
-     element2(4 downto 0)(7 downto 0)
-     (
-       elementA(7 downto 0),
-       elementB(3 downto 0)),
-     element3(3 downto 0)
-     (
-       elementC(4 downto 1),
-       elementD(1 downto 0)),
-     element5
-     (
-       elementE(3 downto 0),
-       elementF(7 downto 0)),
-     element6(4 downto 0),
-     element7(7 downto 0));
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
 
-Example: :code:`record_constraint_element` set to :code:`remove_new_line`
-#########################################################################
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
 
-Setting the :code:`record_constraint_element` option to :code:`remove_new_line` will result in the following formatting:
+.. NOTE:: In the examples below, indenting is performed by a different rule.
 
-.. code-block:: vhdl
-
-   signal sig8 : record_type_3
-   (element1(7 downto 0), element2(4 downto 0)(7 downto 0)
-     (elementA(7 downto 0), elementB(3 downto 0)
-     ), element3(3 downto 0)
-     (elementC(4 downto 1), elementD(1 downto 0)
-     ), element5
-     (elementE(3 downto 0), elementF(7 downto 0)
-     ), element6(4 downto 0), element7(7 downto 0)
-   );
-
-Example: :code:`array_constraint` set to :code:`one_line_per_dimension`
-#######################################################################
-
-Setting the :code:`array_constraint` option to :code:`one_line_per_dimension` will result in the following formatting:
+Example: |new_line_after_with_keyword| set to |default_yes|
+###########################################################
 
 .. code-block:: vhdl
 
-   signal sig8 : record_type_3
-   (
-     element1
-       (7 downto 0),
-     element2
-       (4 downto 0)
-       (7 downto 0)
-     (
-       elementA
-         (7 downto 0),
-       elementB
-         (3 downto 0)
-     ),
-     element3
-       (3 downto 0)
-     (
-       elementC
-         (4 downto 1),
-       elementD
-         (1 downto 0)
-     ),
-     element5
-     (
-       elementE
-         (3 downto 0),
-       elementF
-         (7 downto 0)
-     ),
-     element6
-       (4 downto 0),
-     element7
-       (7 downto 0)
-   );
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
 
-Exceptions
-##########
+   with
+     (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
 
-Exceptions to the above rules exist to allow formatting of specific structures.
-These exceptions can be enabled by adding them to the :code:`exceptions` option.
-The following exceptions are defined:
-
-* :code:`keep_record_constraint_with_single_element_on_one_line`
-
-:code:`keep_record_constraint_with_single_element_on_one_line`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This exception will force a record constraint with a single element to a single line.
+Example: |new_line_after_with_keyword| set to |default_no|
+##########################################################
 
 .. code-block:: vhdl
 
-   signal my_sig : t_data_struct(data(7 downto 0));
+   with (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
 
-Rules Enforcing Multiline Constraint Rules
-##########################################
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
 
-* `constant_017 <constant_rules.html#constant-017>`_
-* `signal_017 <signal_rules.html#signal-017>`_
-* `variable_017 <variable_rules.html#variable-017>`_
+Example: |new_line_before_select_keyword| set to |default_yes|
+##############################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset)
+     select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_before_select_keyword| set to |default_no|
+#############################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset) select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_after_select_keyword| set to |default_yes|
+#############################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select
+     addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_after_select_keyword| set to |default_no|
+############################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_before_assignment| set to |default_yes|
+##########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr
+     <= "0000" when 0, "1111" when others;
+
+Example: |new_line_before_assignment| set to |default_no|
+#########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_after_assignment| set to |default_yes|
+#########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <=
+     "0000" when 0, "1111" when others;
+
+Example: |new_line_after_assignment| set to |default_no|
+########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <= "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_before_when_keyword| set to |default_yes|
+############################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000"
+     when 0, "1111"
+     when others;
+
+Example: |new_line_before_when_keyword| set to |default_no|
+###########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000" when
+     0
+     ,
+     "1111" when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_after_when_keyword| set to |default_yes|
+###########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when
+     0, "1111" when
+     others;
+
+Example: |new_line_after_when_keyword| set to |default_no|
+##########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when 0
+     ,
+     "1111"
+     when others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_before_comma| set to |default_yes|
+#####################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0
+     , "1111" when others;
+
+Example: |new_line_before_comma| set to |default_no|
+####################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_after_comma| set to |default_yes|
+####################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0,
+     "1111" when others;
+
+Example: |new_line_after_comma| set to |default_no|
+###################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     , "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |new_line_before_semicolon| set to |default_yes|
+#########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others
+     ;
+
+Example: |new_line_before_semicolon| set to |default_yes|
+#########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select
+       or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: |single_line_with_expression| set to |default_yes|
+###########################################################
+
+.. code-block:: vhdl
+
+   with
+     (mux_select or reset)
+     select
+     addr
+     <=
+     "0000"
+     when
+     0
+     ,
+     "1111"
+     when
+     others
+     ;
+
+   with (mux_select or reset) select addr <= "0000" when 0, "1111" when others;
+
+Example: Default Values
+#######################
+
+The following configuration are the default values for the rule selected_assignment_001.
+
+.. code-block:: yaml
+
+   rule :
+     selected_assignment_001:
+       new_line_after_with_keyword : 'no'
+       new_line_before_select_keyword : 'no'
+       new_line_after_select_keyword ; 'yes'
+       new_line_before_assignment: 'no'
+       new_line_after_assignment; 'no'
+       new_line_before_when_keyword : 'no'
+       new_line_after_when_keyword ; 'no'
+       new_line_before_comma: 'no'
+       new_line_after_comma; 'yes'
+       new_line_before_semicolon: 'no'
+       single_line_with_expression: 'yes'
+
+The above configuration when applied to the code snippet will result in the following format:
+
+.. code-block:: vhdl
+
+   with (mux_select or reset) select
+     addr <= "0000" when 0,
+             "1111" when others;
+
+   with (mux_select or reset) select
+     addr <= "0000" when 0,
+             "1111" when others;
+
+Rules Enforcing Selected Assignment Structure Rules
+###################################################
+
+* `selected_assignment_001 <selected_assingment_rules.html#selected-assignment-001>`_
