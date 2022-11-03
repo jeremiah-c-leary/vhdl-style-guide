@@ -9,6 +9,8 @@ architecture RTL of FIFO is
 
   signal fifo_wr, fifo_rd, fifo_empty : std_logic := '1';
 
+  signal fifo_rd : fifo_wr'subtype;
+
 begin
 
 end architecture RTL;
