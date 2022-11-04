@@ -318,36 +318,6 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-    def test_selected_expressions_rules_doc(self):
-
-        lExpected, lActual = compare_files('selected_expressions')
-
-        self.assertEqual(lExpected, lActual)
-
-    def test_selected_force_assignment_rules_doc(self):
-
-        lExpected, lActual = compare_files('selected_force_assignment')
-
-        self.assertEqual(lExpected, lActual)
-
-    def test_selected_variable_assignment_rules_doc(self):
-
-        lExpected, lActual = compare_files('selected_variable_assignment')
-
-        self.assertEqual(lExpected, lActual)
-
-    def test_selected_waveform_assignment_rules_doc(self):
-
-        lExpected, lActual = compare_files('selected_waveform_assignment')
-
-        self.assertEqual(lExpected, lActual)
-
-    def test_selected_waveforms_rules_doc(self):
-
-        lExpected, lActual = compare_files('selected_waveforms')
-
-        self.assertEqual(lExpected, lActual)
-
     def test_sequential_statement_rules_doc(self):
 
         lExpected, lActual = compare_files('sequential')
