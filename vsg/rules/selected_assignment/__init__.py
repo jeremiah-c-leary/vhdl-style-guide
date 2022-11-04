@@ -9,3 +9,5 @@ from .rule_104 import rule_104
 from .rule_105 import rule_105
 from .rule_106 import rule_106
 from .rule_107 import rule_107
+
+from .rule_500 import rule_500
