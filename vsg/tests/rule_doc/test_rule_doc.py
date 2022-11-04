@@ -3,6 +3,8 @@ import os
 import unittest
 
 from vsg import __rule_doc_gen__
+from vsg import vhdlFile
+from vsg import rule_list
 
 from vsg.tests import utils
 
@@ -23,6 +25,60 @@ class testDocGen(unittest.TestCase):
                 os.remove(sFilename)
             except:
                 pass
+
+    def test_documentation_links_in_docstrings(self):
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+        lExpected = []
+        lActual = []
+
+        for oRule in oRuleList.rules:
+            if oRule.configuration_documentation_link is None:
+                continue
+            lExpected.append(oRule.unique_id)
+            if '|' + oRule.configuration_documentation_link + '|' in oRule.__doc__:
+               lActual.append(oRule.unique_id)
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_rule_link_in_configuration_documentation(self):
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+        lExpected = []
+        lActual = []
+
+        dConfigurationFiles = {}
+        for oRule in oRuleList.rules:
+            if oRule.configuration_documentation_link is None:
+                continue
+            dConfigurationFiles[oRule.configuration_documentation_link] = []
+
+        for oRule in oRuleList.rules:
+            if oRule.configuration_documentation_link is None:
+                continue
+            dConfigurationFiles[oRule.configuration_documentation_link].append(oRule.unique_id)
+
+#        print(dConfigurationFiles)
+        for sKey in list(dConfigurationFiles.keys()):
+            if sKey.endswith('_link'):
+                 sFileName = sKey[:-len('_link')] + ".rst"
+                 sFullPathFileName = os.path.join(sResultsDir,'..','..','..','docs',sFileName)
+#            print(sFileName)
+#            print(sFullPathFileName)
+            lFile = []
+            utils.read_file(sFullPathFileName, lFile)
+            lActual = []
+            bStartProcessing = False
+            for sLine in lFile:
+                if bStartProcessing:
+                    if sLine.startswith('*'):
+                        lLine = sLine.split()
+                        lActual.append(lLine[1][1:])
+                if sLine.startswith('Rules Enforcing'):
+                    bStartProcessing = True
+#            print(lActual)
+            self.assertEqual(dConfigurationFiles[sKey], lActual)
+            
 
     def test_alias_declaration_rules_doc(self):
 

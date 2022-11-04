@@ -38,6 +38,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
         self.bIgnoreStartParen = False
         self.bConstraint = False
         self.iIndentAfterParen = 1
+        self.configuration_documentation_link = 'configuring_multiline_indent_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
