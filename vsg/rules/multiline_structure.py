@@ -73,7 +73,7 @@ class multiline_structure(structure.Rule):
 
             lReturn.append(oToi)
 
-        lMyReturn = remove_non_arrays(self, lReturn)
+        lMyReturn = remove_non_arrays(self.assignment_operator, lReturn)
 
         return lMyReturn
 
@@ -674,32 +674,9 @@ def _classify_others(iToken, lTokens):
     return iToken, False
 
 
-def remove_non_arrays(self, lToi):
+def remove_non_arrays(assignment_operator, lToi):
     lReturn = []
     for oToi in lToi:
-        lTokens = oToi.get_tokens()
-        if starts_with_paren(self, lTokens):
-            iParen = 0
-            bFirstTokenFound = False
-            for oToken in lTokens:
-                if bFirstTokenFound:
-                    if iParen == 0 and rules_utils.token_is_open_paren(oToken):
-                        break
-                iParen = rules_utils.update_paren_counter(oToken, iParen)
-                if not bFirstTokenFound:
-                    bFirstTokenFound = rules_utils.token_is_open_paren(oToken)
-#                print(f'{iParen}|{bFirstTokenFound}|{oToken}')
-            else:    
-                lReturn.append(oToi)
+        if rules_utils.array_detected_after_assignment_operator(assignment_operator, oToi):
+            lReturn.append(oToi)
     return lReturn
-
-
-def starts_with_paren(self, lTokens):
-    iToken = _find_assignment_operator(self, lTokens)
-#    iToken = utils.find_next_non_whitespace_token(1, lTokens)
-#    if isinstance(lTokens[iToken], self.assignment_operator
-    iToken = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
-    if isinstance(lTokens[iToken], parser.open_parenthesis):
-        return True
-    return False
-
