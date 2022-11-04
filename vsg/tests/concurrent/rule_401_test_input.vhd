@@ -19,7 +19,9 @@ rst_in => "00",
        cnt_out => "00")
      );
 
-
+  d <=
+       (d2 xor to_stdulogic(gen2)) &
+       (d1 xor to_stdulogic(gen1));
 
 end architecture rtl;
 

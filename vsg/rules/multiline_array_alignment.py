@@ -195,7 +195,17 @@ def remove_non_arrays(lToi):
     for oToi in lToi:
         lTokens = oToi.get_tokens()
         if starts_with_paren(lTokens):
-            lReturn.append(oToi)
+            iParen = 0
+            bFirstTokenFound = False
+            for oToken in lTokens:
+                if bFirstTokenFound:
+                    if iParen == 0 and rules_utils.token_is_open_paren(oToken):
+                        break
+                iParen = rules_utils.update_paren_counter(oToken, iParen)
+                if not bFirstTokenFound:
+                    bFirstTokenFound = rules_utils.token_is_open_paren(oToken)
+            else:    
+                lReturn.append(oToi)
     return lReturn
 
 

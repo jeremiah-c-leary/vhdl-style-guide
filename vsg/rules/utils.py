@@ -348,6 +348,14 @@ def update_close_paren_counter(oToken, iCloseParen):
     return iCloseParen
 
 
+def update_paren_counter(oToken, iParen):
+    if token_is_open_paren(oToken):
+        iParen += 1
+    elif token_is_close_paren(oToken):
+        iParen -= 1
+    return iParen
+
+
 def analyze_with_function(self, oToi, oTokenType, fFunction):
     iLine, lTokens = get_toi_parameters(oToi)
 
