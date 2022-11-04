@@ -25,7 +25,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 --------------------------------------------------------------------------------
 5 |     generic map (
@@ -104,7 +104,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -136,7 +136,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 --------------------------------------------------------------------------------
 24 |     generic map (
@@ -215,7 +215,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
 --------------------------------------------------------------------------------
