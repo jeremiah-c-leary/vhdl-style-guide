@@ -266,6 +266,31 @@ This rule checks the indent of the **with** keyword.
              "0001" when 1,
              "1111" when others;
 
+selected_assignment_400
+#######################
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of multiline selected assignment statements.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with (mux_select or reset) select addr :=
+   "0000" when 0,
+           "0001" when 1,
+        "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with (mux_select or reset) select addr :=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
 selected_assignment_500
 #######################
 
