@@ -609,15 +609,15 @@ The following configuration are the default values for the rule selected_assignm
 
    rule :
      selected_assignment_001:
-       new_line_after_with_keyword : 'no'
-       new_line_before_select_keyword : 'no'
-       new_line_after_select_keyword ; 'yes'
+       new_line_after_with_keyword: 'no'
+       new_line_before_select_keyword: 'no'
+       new_line_after_select_keyword: 'yes'
        new_line_before_assignment: 'no'
-       new_line_after_assignment; 'no'
+       new_line_after_assignment: 'no'
        new_line_before_when_keyword : 'no'
-       new_line_after_when_keyword ; 'no'
+       new_line_after_when_keyword: 'no'
        new_line_before_comma: 'no'
-       new_line_after_comma; 'yes'
+       new_line_after_comma: 'yes'
        new_line_before_semicolon: 'no'
        single_line_with_expression: 'yes'
 
