@@ -37,6 +37,39 @@ There are several options to the structure rules:
 .. |single_line_ignore_description| replace::
    :code:`ignore` = Keep existing formatting.
 
+.. |new_line_after_with_keyword| replace::
+   :code:`new_line_after_with_keyword`
+
+.. |new_line_before_select_keyword| replace::
+   :code:`new_line_before_select_keyword`
+
+.. |new_line_after_select_keyword| replace::
+   :code:`new_line_after_select_keyword`
+
+.. |new_line_before_assignment| replace::
+   :code:`new_line_before_assignment`
+
+.. |new_line_after_assignment| replace::
+   :code:`new_line_after_assignment`
+
+.. |new_line_before_when_keyword| replace::
+   :code:`new_line_before_when_keyword`
+
+.. |new_line_after_when_keyword| replace::
+   :code:`new_line_after_when_keyword`
+
+.. |new_line_before_comma| replace::
+   :code:`new_line_before_comma`
+
+.. |new_line_after_comma| replace::
+   :code:`new_line_after_comma`
+
+.. |new_line_before_semicolon| replace::
+   :code:`new_line_before_semicolon`
+
+.. |single_line_with_expression| replace::
+   :code:`single_line_with_expression`
+
 +----------------------------------------+-----------+---------------+------------------------------------+
 | Option                                 | Values    | Default Value | Description                        |
 +========================================+===========+===============+====================================+
