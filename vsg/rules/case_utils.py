@@ -7,6 +7,9 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False,
     iMyLine = get_violation_line(oToi, iLine)
     oViolation = None
 
+    if does_not_contain_any_alpha_characters(sObjectValue):
+       return None
+
     if is_lower_case_without_prefix_or_suffix_or_whole_exception(self.case, check_prefix, check_suffix, check_whole):
         oViolation = check_for_lower_case(sObjectValue, oToi, iIndex, iMyLine)
 
@@ -284,3 +287,9 @@ def check_for_upper_case_with_prefix_and_suffix_exceptions(sObjectValue, self, o
             return create_case_violation(sObjectValue, sExpected, oToi, iIndex, iLine)
     else:
         return check_for_upper_case(sObjectValue, oToi, iIndex, iLine)
+
+
+def does_not_contain_any_alpha_characters(sObjectValue):
+    if sObjectValue.startswith('"'):
+        return True
+    return False
