@@ -49,6 +49,7 @@ class multiline_array_alignment(alignment.Rule):
         self.align_paren = 'yes'
         self.configuration.append('align_paren')
         self.assignment_operator = None
+        self.configuration_documentation_link = 'configuring_multiline_indent_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []

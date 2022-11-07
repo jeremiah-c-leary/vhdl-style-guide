@@ -140,6 +140,15 @@ class tic(item):
         item.__init__(self, sString)
 
 
+class attribute(item):
+    '''
+    unique_id = parser : attribute
+    '''
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
 class event_keyword(item):
     '''
     unique_id = parser : event_keyword

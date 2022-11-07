@@ -21,7 +21,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.entity_name_list.comma'>
 <class 'vsg.token.entity_designator.entity_tag'>
@@ -30,7 +30,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.entity_name_list.comma'>
 <class 'vsg.token.entity_designator.entity_tag'>
@@ -39,7 +39,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.entity_specification.colon'>
 <class 'vsg.token.entity_specification.entity_class'>
@@ -60,7 +60,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.entity_specification.colon'>
 <class 'vsg.token.entity_specification.entity_class'>

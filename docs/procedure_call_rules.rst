@@ -168,6 +168,8 @@ procedure_call_400
 
 This rule checks the alignment of multiline procedure calls.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

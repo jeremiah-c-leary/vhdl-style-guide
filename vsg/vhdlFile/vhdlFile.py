@@ -15,6 +15,7 @@ from vsg.token import relational_operator
 from vsg.token import resolution_indication
 from vsg.token import sign
 from vsg.token import subtype_indication
+from vsg.token import type_mark
 from vsg.token import unary_logical_operator
 
 from vsg.token.ieee.std_logic_1164 import types
@@ -344,7 +345,7 @@ def post_token_assignments(lTokens):
         else:
             oToken.set_code_tags(oCodeTags.get_tags())
             oCodeTags.update(oToken)
-        if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name):
+        if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name):
             sValue = oToken.get_value()
             ### IEEE values
             if sValue.lower() == 'std_logic_vector':
