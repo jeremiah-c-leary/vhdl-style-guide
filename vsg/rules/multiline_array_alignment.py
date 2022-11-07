@@ -48,13 +48,14 @@ class multiline_array_alignment(alignment.Rule):
         self.configuration.append('align_left')
         self.align_paren = 'yes'
         self.configuration.append('align_paren')
+        self.assignment_operator = None
         self.configuration_documentation_link = 'configuring_multiline_indent_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
-            aToi = remove_non_arrays(aToi)
+            aToi = remove_non_arrays(self.assignment_operator, aToi)
             populate_toi_parameters(aToi, oFile)
             aToi = remove_single_line_assignments(aToi)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
@@ -184,18 +185,10 @@ def check_my_first_line(oLine, oLines, oToi, iIndentStep):
         oParen.iExpectedColumn = iParen*iIndentStep + iIndent + iIndentStep
 
 
-def starts_with_paren(lTokens):
-    iToken = utils.find_next_non_whitespace_token(1, lTokens)
-    if isinstance(lTokens[iToken], parser.open_parenthesis):
-        return True
-    return False
-
-
-def remove_non_arrays(lToi):
+def remove_non_arrays(assignment_operator, lToi):
     lReturn = []
     for oToi in lToi:
-        lTokens = oToi.get_tokens()
-        if starts_with_paren(lTokens):
+        if rules_utils.array_detected_after_assignment_operator(assignment_operator, oToi):
             lReturn.append(oToi)
     return lReturn
 
