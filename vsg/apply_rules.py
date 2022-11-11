@@ -49,6 +49,8 @@ def does_file_have_rule_configuration(configuration, iMyIndex, sFileName):
     except:
         return False
 
+bStopProcessingFiles = True
+bKeepProcessingFiles = False
 
 # This function is in a separate module from __main__ as a workaround for https://bugs.python.org/issue25053
 # see also https://stackoverflow.com/questions/41385708/multiprocessing-example-giving-attributeerror/42383397#42383397
@@ -70,7 +72,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["violations"] = []
         sOutputStd = ''
         sOutputErr = e.message
-        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles
 
     oVhdlFile.set_indent_map(dIndent)
     try:
@@ -84,7 +86,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
             + " when trying to open local rules file."
         )
         sOutputErr = None
-        return 1, None, dJsonEntry, sOutputStd, sOutputErr
+        return 1, None, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
 
     try:
         configure_rules(oConfig, oRules, configuration, iIndex, sFileName)
@@ -95,7 +97,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["violations"] = []
         sOutputStd = ''
         sOutputErr = e.message
-        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
 
     if commandLineArguments.fix:
         if commandLineArguments.backup:
@@ -124,7 +126,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = oRules.extract_violation_dictionary()["violations"]
 
-    return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+    return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles
 
 
 def write_vhdl_file(oVhdlFile):
