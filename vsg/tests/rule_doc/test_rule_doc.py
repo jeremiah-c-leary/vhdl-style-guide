@@ -61,6 +61,8 @@ class testDocGen(unittest.TestCase):
 
 #        print(dConfigurationFiles)
         for sKey in list(dConfigurationFiles.keys()):
+            if sKey == 'configuring_prefix_and_suffix_rules_link':
+                continue
             if sKey.endswith('_link'):
                  sFileName = sKey[:-len('_link')] + ".rst"
                  sFullPathFileName = os.path.join(sResultsDir,'..','..','..','docs',sFileName)
