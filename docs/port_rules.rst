@@ -10,6 +10,8 @@ port_001
 
 This rule checks for a blank line above the **port** keyword.
 
+|configuring_blank_lines_link|
+
 **Violation**
 
 .. code-block:: vhdl

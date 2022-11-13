@@ -336,6 +336,8 @@ component_016
 
 This rule checks for blank lines above the **end component** line.
 
+|configuring_blank_lines_link|
+
 **Violation**
 
 .. code-block:: vhdl

@@ -35,6 +35,7 @@ class previous_line(blank_line.Rule):
             self.lAllowTokens = []
         else:
             self.lAllowTokens = lAllowTokens
+        self.configuration_documentation_link = 'configuring_previous_line_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
         bIncludeComments = _include_comments(self.style)
