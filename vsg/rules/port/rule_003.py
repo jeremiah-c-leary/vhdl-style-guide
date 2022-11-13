@@ -11,6 +11,8 @@ class rule_003(Rule):
     '''
     This rule checks for a single space after the **port** keyword and (.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl
