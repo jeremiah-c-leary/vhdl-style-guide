@@ -24,3 +24,4 @@ class Rule(rule.Rule):
         self.groups.append('length')
         self.severity = severity.warning('Warning')
         self.configuration.append('length')
+        self.configuration_documentation_link = 'configuring_length_rules_link'
