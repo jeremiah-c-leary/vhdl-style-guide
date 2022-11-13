@@ -24,6 +24,8 @@ class rule_031(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
     This rule checks for alignment of identifiers in the process declarative region.
 
+    |configuring_keyword_alignment_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

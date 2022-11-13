@@ -870,6 +870,8 @@ process_031
 
 This rule checks for alignment of identifiers in the process declarative region.
 
+|configuring_keyword_alignment_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

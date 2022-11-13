@@ -43,6 +43,7 @@ class rule_012(alignment.Rule):
 
         self.compact_alignment = True
         self.configuration.append('compact_alignment')
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.left_token, self.right_token)

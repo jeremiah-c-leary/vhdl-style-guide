@@ -32,3 +32,4 @@ class rule_011(Rule):
         self.lStartTokens = [token.when_keyword]
         self.lEndTokens = [token.assignment]
         self.solution = 'Align one space after *when* keyword'
+        self.configuration_documentation_link = None

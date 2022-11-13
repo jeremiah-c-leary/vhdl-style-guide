@@ -34,6 +34,7 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(alignment.R
         alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.left_token = left_token
         self.right_token = right_token
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
