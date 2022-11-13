@@ -37,6 +37,7 @@ class split_line_at_token_when_between_tokens(structure.Rule):
         self.lTokens = lTokens
         self.oStart = oStart
         self.oEnd = oEnd
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_token_and_n_tokens_before_it_in_between_tokens(self.lTokens, 2, self.oStart, self.oEnd)

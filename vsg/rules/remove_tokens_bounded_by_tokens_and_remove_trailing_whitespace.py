@@ -28,6 +28,7 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(structure.R
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.left_token = left_token
         self.right_token = right_token
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.left_token, self.right_token, include_trailing_whitespace=True)

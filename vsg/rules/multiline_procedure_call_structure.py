@@ -19,6 +19,7 @@ class multiline_procedure_call_structure(structure.Rule):
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 1
         self.lTokenPairs = None
+        self.configuration_documentation_link = None
 
         self.first_open_paren = 'ignore'
         self.configuration.append('first_open_paren')

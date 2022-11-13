@@ -21,6 +21,7 @@ class multiline_constraint_structure(structure.Rule):
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 1
         self.lTokenPairs = None
+        self.configuration_documentation_link = 'configuring_multiline_constraint_rules_link'
 
         self.record_constraint_open_paren = 'ignore'
         self.configuration.append('record_constraint_open_paren')

@@ -40,6 +40,7 @@ class multiline_structure(structure.Rule):
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = True
         self.assignment_operator = None
+        self.configuration_documentation_link = 'configuring_array_multiline_structure_rules_link'
 
         self.first_paren_new_line = 'yes'
         self.configuration.append('first_paren_new_line')

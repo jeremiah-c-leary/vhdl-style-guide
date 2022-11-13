@@ -31,6 +31,7 @@ class remove_carriage_return_after_token(structure.Rule):
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.bInsertSpace = bInsertSpace
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_n_tokens_after_token(4, self.lTokens)

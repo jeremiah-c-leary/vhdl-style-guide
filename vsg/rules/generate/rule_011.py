@@ -43,6 +43,7 @@ class rule_011(structure.Rule):
         self.right_token = oRightTokens
         self.value_token = oValueTokens
         self.groups.append('structure::optional')
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.architecture_body.begin_keyword, token.architecture_body.end_keyword)

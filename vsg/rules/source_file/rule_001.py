@@ -23,6 +23,7 @@ class rule_001(structure.Rule):
         # These are filled out when creating a new rule
         self.fixable = False
         self.solution = 'File empty.'
+        self.configuration_documentation_link = None
 
     def analyze(self, oFile):
         oToi = oFile.get_all_tokens()

@@ -24,6 +24,7 @@ class rule_001(structure.Rule):
         structure.Rule.__init__(self, name='with', identifier='001')
         self.solution = "Rewrite with as a process"
         self.fixable = False
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching([token.concurrent_selected_signal_assignment.with_keyword])

@@ -49,9 +49,11 @@ Rules Enforcing Optional Items
 * `entity_015 <entity_rules.html#entity-015>`_
 * `entity_019 <entity_rules.html#entity-019>`_
 * `instantiation_033 <instantiation_rules.html#instantiation-033>`_
+* `loop_statement_007 <loop_statement_rules.html#loop-statement-007>`_
 * `package_007 <package_rules.html#package-007>`_
 * `package_014 <package_rules.html#package-014>`_
 * `package_body_002 <package_body_rules.html#package-body-002>`_
 * `package_body_003 <package_body_rules.html#package-body-003>`_
 * `process_012 <process_rules.html#process-012>`_
 * `process_018 <process_rules.html#process-018>`_
+* `record_type_definition_005 <record_type_definition_rules.html#record-type-definition-005>`_

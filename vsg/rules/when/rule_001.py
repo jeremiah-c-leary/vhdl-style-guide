@@ -46,6 +46,7 @@ class rule_001(structure.Rule):
         structure.Rule.__init__(self, 'when', '001')
         self.lMoveTokens = lMoveTokens
         self.lTokenPairs = lTokenPairs
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
