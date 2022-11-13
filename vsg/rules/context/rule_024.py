@@ -8,7 +8,7 @@ class rule_024(blank_line_above_line_starting_with_token):
     '''
     This rule checks for blank lines or comments above the **end** keyword.
 
-    |configuring_previous_line_rules_link|
+    |configuring_blank_lines_link|
 
     The default style is :code:`no_code`.
 

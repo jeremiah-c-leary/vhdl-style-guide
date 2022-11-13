@@ -29,3 +29,4 @@ class rule_009(align_consecutive_lines_starting_with_a_comment_above_line_starti
         align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token.__init__(self, 'library', '009', token.keyword, bIncrement=True)
         self.solution = 'Align comment with *use* keyword.'
         self.subphase = 2
+        self.configuration_documentation_link = None

@@ -28,6 +28,7 @@ class move_token_sequences_left_of_token(structure.Rule):
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.lSequences = lSequences
         self.oLeftToken = oLeftToken
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []

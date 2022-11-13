@@ -39,6 +39,7 @@ class rule_034(structure.Rule):
         self.method = 'component'
         self.configuration.append('method')
         self.fixable = False
+        self.configuration_documentation_link = 'configuring_type_of_instantiations_link'
 
     def _get_tokens_of_interest(self, oFile):
         if self.method == 'component':

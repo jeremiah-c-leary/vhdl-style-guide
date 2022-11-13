@@ -80,6 +80,8 @@ procedure_call_100
 
 This rule checks for a single space between the following block elements:  label, label colon, **postponed** keyword and the *procedure* name.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -192,6 +194,8 @@ procedure_call_401
 |phase_5| |error| |alignment|
 
 This rule checks the alignment of :code:`=>` keywords in procedure calls.
+
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 

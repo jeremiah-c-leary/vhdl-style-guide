@@ -61,8 +61,11 @@ The following code would pass with this option:
         A => B,
         B => C);
 
-Rules Using Move Token
-######################
+Rules Enforcing Move Token
+##########################
 
-* `port_map_004 <port_map_rules.html#port-map-004>`_
+* `generic_010 <generic_rules.html#generic-010>`_
 * `generic_map_004 <generic_map_rules.html#generic-map-004>`_
+* `port_014 <port_rules.html#port-014>`_
+* `port_map_004 <port_map_rules.html#port-map-004>`_
+* `record_type_definition_001 <record_type_definition_rules.html#record-type-definition-001>`_

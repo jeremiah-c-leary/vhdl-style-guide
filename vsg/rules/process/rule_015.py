@@ -12,7 +12,7 @@ class rule_015(previous_line):
     '''
     This rule checks for blank lines or comments above the **process** declaration.
 
-    |configuring_blank_lines_link|
+    |configuring_previous_line_rules_link|
 
     The default style is :code:`no_code`.
 

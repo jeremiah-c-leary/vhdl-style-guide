@@ -41,3 +41,4 @@ class rule_011(n_spaces_before_and_after_tokens):
     def __init__(self):
         n_spaces_before_and_after_tokens.__init__(self, 'whitespace', '011', 1, lTokens, bNIsMinimum=True)
         self.solution = 'Ensure at least a single space before and after math operator.'
+        self.configuration_documentation_link = None

@@ -8,7 +8,7 @@ There are rules which will check indent of lines.
 The method of indenting can be configured using one of the following options:
 
 .. |spaces_description| replace::
-   Indentation will be perfomed using spaces.
+   Indentation will be performed using spaces.
 
 .. |smart_tabs_description| replace::
    Indentation will be performed using tabs and spaces.

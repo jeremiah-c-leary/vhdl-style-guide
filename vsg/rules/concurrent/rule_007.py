@@ -67,6 +67,7 @@ class rule_007(structure.Rule):
         self.lTokenPairs = lTokenPairs
         self.allow_single_line = False
         self.configuration.append('allow_single_line')
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []

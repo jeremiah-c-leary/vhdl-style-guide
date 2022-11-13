@@ -41,7 +41,8 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-    def test_rule_link_in_configuration_documentation(self):
+    def test_rule_link_in_configuration_documentation_exists(self):
+        self.maxDiff = None
         oVhdlFile = vhdlFile.vhdlFile([''])
         oRuleList = rule_list.rule_list(oVhdlFile, None, None)
         lExpected = []
@@ -60,6 +61,8 @@ class testDocGen(unittest.TestCase):
 
 #        print(dConfigurationFiles)
         for sKey in list(dConfigurationFiles.keys()):
+            if sKey == 'configuring_prefix_and_suffix_rules_link':
+                continue
             if sKey.endswith('_link'):
                  sFileName = sKey[:-len('_link')] + ".rst"
                  sFullPathFileName = os.path.join(sResultsDir,'..','..','..','docs',sFileName)
@@ -78,7 +81,23 @@ class testDocGen(unittest.TestCase):
                     bStartProcessing = True
 #            print(lActual)
             self.assertEqual(dConfigurationFiles[sKey], lActual)
-            
+
+    def test_rule_link_in_configuration_documentation_for_underscores(self):
+        self.maxDiff = None
+        lExpected = []
+        lActual = []
+        for sFilename in glob.glob(os.path.join('docs', 'configuring_*.rst')):
+            lFile = []
+            utils.read_file(sFilename, lFile)
+            for sLine in lFile:
+                if 'html#' in sLine:
+                    iStartIndex = sLine.index('html#') + 5
+                    iEndIndex = sLine.index('>', iStartIndex)
+                    sLink = sLine[iStartIndex:iEndIndex]
+                    if '_' in sLink:
+                        lActual.append(f'{sFilename}::{sLink}')
+
+        self.assertEqual(lExpected, lActual)
 
     def test_alias_declaration_rules_doc(self):
 

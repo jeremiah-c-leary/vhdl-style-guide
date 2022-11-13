@@ -68,6 +68,7 @@ class rule_003(structure.Rule):
         self.magnitude = 1
         self.units = 'ns'
         self.configuration.extend(['magnitude', 'units'])
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)

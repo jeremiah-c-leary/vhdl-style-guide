@@ -42,6 +42,7 @@ class rule_026(structure.Rule):
     def __init__(self):
         structure.Rule.__init__(self, name='port', identifier='026')
         self.subphase = 2
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_interface_elements_between_tokens(token.open_parenthesis, token.close_parenthesis)

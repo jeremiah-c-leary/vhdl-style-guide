@@ -169,6 +169,7 @@ Rules Enforcing Previous Lines
 * `architecture_003 <architecture_rules.html#architecture-003>`_
 * `block_200 <block_rules.html#block-200>`_
 * `case_007 <case_rules.html#case-007>`_
+* `case_201 <case_rules.html#case-201>`_
 * `component_003 <component_rules.html#component-003>`_
 * `context_003 <context_rules.html#context-003>`_
 * `entity_003 <entity_rules.html#entity-003>`_
@@ -177,7 +178,12 @@ Rules Enforcing Previous Lines
 * `if_031 <if_rules.html#if-031>`_
 * `instantiation_004 <instantiation_rules.html#instantiation-004>`_
 * `library_003 <library_rules.html#library-003>`_
+* `library_007 <library_rules.html#library-007>`_
+* `loop_statement_200 <loop_statement_rules.html#loop-statement-200>`_
+* `loop_statement_202 <loop_statement_rules.html#loop-statement-202>`_
 * `package_003 <package_rules.html#package-003>`_
 * `package_body_200 <package_body_rules.html#package-body-200>`_
+* `procedure_200 <procedure_rules.html#procedure-200>`_
 * `process_015 <process_rules.html#process-015>`_
+* `record_type_definition_201 <record_type_definition_rules.html#record-type-definition-201>`_
 * `type_010 <type_rules.html#type-010>`_

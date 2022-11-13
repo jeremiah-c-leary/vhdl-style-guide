@@ -12,6 +12,8 @@ class rule_006(Rule):
     '''
     This rule checks for a single space between the **map** keyword and the (.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

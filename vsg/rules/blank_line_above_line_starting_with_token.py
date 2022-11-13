@@ -30,6 +30,7 @@ class blank_line_above_line_starting_with_token(blank_line.Rule):
             self.lAllowTokens = lAllowTokens
         self.style = 'require_blank_line'
         self.configuration.append('style')
+        self.configuration_documentation_link = 'configuring_blank_lines_link'
 
     def _get_tokens_of_interest(self, oFile):
         if self.style == 'require_blank_line':

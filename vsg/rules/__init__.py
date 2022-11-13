@@ -91,9 +91,12 @@ from vsg.rules import case_generate_statement
 from vsg.rules import comment
 from vsg.rules import component
 from vsg.rules import concurrent
+from vsg.rules import conditional_expressions
+from vsg.rules import conditional_waveforms
 from vsg.rules import constant
 from vsg.rules import context
 from vsg.rules import context_ref
+from vsg.rules import element_association
 from vsg.rules import entity
 from vsg.rules import entity_specification
 from vsg.rules import exit_statement

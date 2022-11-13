@@ -52,6 +52,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.generate_statement_ends_group = False
 #        self.configuration.append('generate_statement_ends_group')
         self.bIncludeTillBeginningOfLine = False
+        self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'
 
     def analyze(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)

@@ -20,3 +20,4 @@ class Rule(rule.Rule):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 3
         self.groups.append('blank_line')
+        self.configuration_documentation_link = 'configuring_blank_lines_link'

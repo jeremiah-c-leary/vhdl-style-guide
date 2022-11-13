@@ -41,3 +41,4 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
     def __init__(self):
         align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'block', '400', lAlign, token.block_statement.block_keyword, token.block_statement.begin_keyword, lUnless)
         self.solution = 'Align identifer.'
+        self.configuration_documentation_link = 'configuring_identifier_alignment_rules_link'

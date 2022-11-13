@@ -35,6 +35,7 @@ class rule_007(structure.Rule):
         structure.Rule.__init__(self, 'constant', '007')
         self.solution = 'move assignment to same line as constant declaration.'
         self.fixable = False  # Too complicated at the moment to fix.
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by_tokens_if_token_is_between_them(token.constant_keyword, token.semicolon, token.assignment_operator)

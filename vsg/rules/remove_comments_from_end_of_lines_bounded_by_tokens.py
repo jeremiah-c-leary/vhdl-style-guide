@@ -29,6 +29,7 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(structure.Rule):
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.oStart = oStart
         self.oEnd = oEnd
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.oStart, self.oEnd)

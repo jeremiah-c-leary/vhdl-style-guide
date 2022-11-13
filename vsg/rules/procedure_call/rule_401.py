@@ -14,6 +14,8 @@ class rule_401(Rule):
     '''
     This rule checks the alignment of :code:`=>` keywords in procedure calls.
 
+    |configuring_keyword_alignment_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

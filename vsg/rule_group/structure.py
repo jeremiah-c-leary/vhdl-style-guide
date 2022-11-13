@@ -20,3 +20,4 @@ class Rule(rule.Rule):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 1
         self.groups.append('structure')
+        self.configuration_documentation_link = 'configuring_simple_multiline_structure_rules_link'

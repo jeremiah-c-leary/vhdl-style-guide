@@ -11,6 +11,8 @@ class rule_016(blank_line_above_line_starting_with_token):
     '''
     This rule checks for blank lines above the **end component** line.
 
+    |configuring_blank_lines_link|
+
     **Violation**
 
     .. code-block:: vhdl
