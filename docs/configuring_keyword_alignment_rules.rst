@@ -415,5 +415,5 @@ Rules Enforcing Keyword Alignment
 * `process_034 <process_rules.html#process-034>`_
 * `process_035 <process_rules.html#process-035>`_
 * `process_400 <process_rules.html#process-400>`_
-* `subprogram_body_400 <subprogram_body_rules.html#subprogram_body-400>`_
+* `subprogram_body_400 <subprogram_body_rules.html#subprogram-body-400>`_
 * `type_400 <type_rules.html#type-400>`_

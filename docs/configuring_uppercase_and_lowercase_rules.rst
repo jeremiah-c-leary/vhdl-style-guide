@@ -163,8 +163,8 @@ Rules Enforcing Case
 
 * `file_002 <file_rules.html#file-002>`_
 
-* `for_generate_statement_500 <for_generate_statement_rules.html#for-for_generate_statement-500>`_
-* `for_generate_statement_501 <for_generate_statement_rules.html#for-for_generate_statement-501>`_
+* `for_generate_statement_500 <for_generate_statement_rules.html#for-generate-statement-500>`_
+* `for_generate_statement_501 <for_generate_statement_rules.html#for-generate-statement-501>`_
 
 * `function_004 <function_rules.html#function-004>`_
 * `function_005 <function_rules.html#function-005>`_
@@ -208,20 +208,20 @@ Rules Enforcing Case
 * `instantiation_028 <instantiation_rules.html#instantiation-028>`_
 * `instantiation_031 <instantiation_rules.html#instantiation-031>`_
 
-* `iteration_scheme_500 <iteration_scheme_rules.html#iteration_scheme-500>`_
-* `iteration_scheme_501 <iteration_scheme_rules.html#iteration_scheme-501>`_
+* `iteration_scheme_500 <iteration_scheme_rules.html#iteration-scheme-500>`_
+* `iteration_scheme_501 <iteration_scheme_rules.html#iteration-scheme-501>`_
 
 * `library_004 <library_rules.html#library-004>`_
 * `library_005 <library_rules.html#library-005>`_
 * `library_500 <library_rules.html#library-500>`_
 
-* `logical_operator_500 <logical_operator_rules.html#logical_operator-500>`_
+* `logical_operator_500 <logical_operator_rules.html#logical-operator-500>`_
 
-* `loop_statement_500 <loop_statement_rules.html#loop_statement-500>`_
-* `loop_statement_501 <loop_statement_rules.html#loop_statement-501>`_
-* `loop_statement_502 <loop_statement_rules.html#loop_statement-502>`_
-* `loop_statement_503 <loop_statement_rules.html#loop_statement-503>`_
-* `loop_statement_504 <loop_statement_rules.html#loop_statement-504>`_
+* `loop_statement_500 <loop_statement_rules.html#loop-statement-500>`_
+* `loop_statement_501 <loop_statement_rules.html#loop-statement-501>`_
+* `loop_statement_502 <loop_statement_rules.html#loop-statement-502>`_
+* `loop_statement_503 <loop_statement_rules.html#loop-statement-503>`_
+* `loop_statement_504 <loop_statement_rules.html#loop-statement-504>`_
 
 * `package_004 <package_rules.html#package-004>`_
 * `package_006 <package_rules.html#package-006>`_
@@ -271,12 +271,12 @@ Rules Enforcing Case
 * `range_001 <range_rules.html#range-001>`_
 * `range_002 <range_rules.html#range-002>`_
 
-* `record_type_definition_500 <record_type_definition_rules.html#record_type_definition-500>`_
-* `record_type_definition_501 <record_type_definition_rules.html#record_type_definition-501>`_
-* `record_type_definition_502 <record_type_definition_rules.html#record_type_definition-502>`_
+* `record_type_definition_500 <record_type_definition_rules.html#record-type-definition-500>`_
+* `record_type_definition_501 <record_type_definition_rules.html#record-type-definition-501>`_
+* `record_type_definition_502 <record_type_definition_rules.html#record-type-definition-502>`_
 
-* `report_statement_500 <report_statement_rules.html#report_statement-500>`_
-* `report_statement_501 <report_statement_rules.html#report_statement-501>`_
+* `report_statement_500 <report_statement_rules.html#report-statement-500>`_
+* `report_statement_501 <report_statement_rules.html#report-statement-501>`_
 
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_
@@ -286,10 +286,10 @@ Rules Enforcing Case
 * `type_013 <type_rules.html#type-013>`_
 * `type_500 <type_rules.html#type-500>`_
 
-* `use_clause_500 <use_clause_rules.html#use_clause-500>`_
-* `use_clause_501 <use_clause_rules.html#use_clause-501>`_
-* `use_clause_502 <use_clause_rules.html#use_clause-502>`_
-* `use_clause_503 <use_clause_rules.html#use_clause-503>`_
+* `use_clause_500 <use_clause_rules.html#use-clause-500>`_
+* `use_clause_501 <use_clause_rules.html#use-clause-501>`_
+* `use_clause_502 <use_clause_rules.html#use-clause-502>`_
+* `use_clause_503 <use_clause_rules.html#use-clause-503>`_
 
 * `variable_002 <variable_rules.html#variable-002>`_
 * `variable_004 <variable_rules.html#variable-004>`_
