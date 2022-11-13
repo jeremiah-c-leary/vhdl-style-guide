@@ -42,6 +42,7 @@ class testDocGen(unittest.TestCase):
         self.assertEqual(lExpected, lActual)
 
     def test_rule_link_in_configuration_documentation(self):
+        self.maxDiff = None
         oVhdlFile = vhdlFile.vhdlFile([''])
         oRuleList = rule_list.rule_list(oVhdlFile, None, None)
         lExpected = []

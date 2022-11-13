@@ -127,6 +127,12 @@ Rules Enforcing Case
 * `component_012 <component_rules.html#component-012>`_
 * `component_014 <component_rules.html#component-014>`_
 
+* `conditional_expressions_500 <conditional_expressions_rules.html#conditional-expressions-500>`_
+* `conditional_expressions_501 <conditional_expressions_rules.html#conditional-expressions-501>`_
+
+* `conditional_waveforms_500 <conditional_waveforms_rules.html#conditional-waveforms-500>`_
+* `conditional_waveforms_501 <conditional_waveforms_rules.html#conditional-waveforms-501>`_
+
 * `constant_002 <constant_rules.html#constant-002>`_
 * `constant_004 <constant_rules.html#constant-004>`_
 
