@@ -103,7 +103,7 @@ Rules Enforcing Blank Lines
 * `function_203 <function_rules.html#function-203>`_
 * `function_204 <function_rules.html#function-204>`_
 * `generate_003 <generate_rules.html#generate-003>`_
-* `if_030 <if_statement_rules.html#if_statement-030>`_
+* `if_030 <if_rules.html#if-030>`_
 * `instantiation_019 <instantiation_rules.html#instantiation-019>`_
 * `package_011 <package_rules.html#package-011>`_
 * `package_012 <package_rules.html#package-012>`_
