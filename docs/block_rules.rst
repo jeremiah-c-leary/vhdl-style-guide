@@ -437,7 +437,7 @@ This rule checks the identifiers for all declarations are aligned in the block d
 
 .. code-block:: vhdl
 
-   variable var1     : natural;
+   variable var1 : natural;
    constant c_period : time;
 
 block_401
