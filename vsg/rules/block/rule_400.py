@@ -34,7 +34,7 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
 
     .. code-block:: vhdl
 
-       variable var1     : natural;
+       variable var1 : natural;
        constant c_period : time;
     '''
 
