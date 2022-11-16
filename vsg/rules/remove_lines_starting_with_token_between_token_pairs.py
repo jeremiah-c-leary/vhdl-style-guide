@@ -29,6 +29,7 @@ class remove_lines_starting_with_token_between_token_pairs(structure.Rule):
         self.phase = 2
         self.oRemoveToken = oRemoveToken
         self.lTokens = lTokens
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []

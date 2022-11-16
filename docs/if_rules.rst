@@ -229,6 +229,8 @@ if_009
 
 This rule checks the alignment of multiline boolean expressions.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

@@ -67,6 +67,7 @@ class rule_601(case.Rule):
     def __init__(self):
         case.Rule.__init__(self, name="architecture", identifier="601")
         self.subphase = 2
+        self.configuration_documentation_link = None
 
     def analyze(self, oFile):
         lPorts = extract_port_names_from_entities(oFile)

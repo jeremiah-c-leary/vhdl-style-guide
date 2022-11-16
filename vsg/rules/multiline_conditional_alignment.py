@@ -44,6 +44,8 @@ class multiline_conditional_alignment(alignment.Rule):
         alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
+        self.configuration_documentation_link = 'configuring_conditional_multiline_indent_rules_link'
+
         self.align_left = 'no'
         self.configuration.append('align_left')
         self.align_paren = 'yes'

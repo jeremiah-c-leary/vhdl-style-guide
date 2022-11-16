@@ -47,3 +47,4 @@ class rule_404(align_tokens_in_region_between_tokens_when_between_tokens_unless_
     def __init__(self):
         align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens.__init__(self, 'generate', '404', lAlign, oStartToken, oEndToken, lBetweenTokens, lUnless)
         self.solution = 'Align identifer.'
+        self.configuration_documentation_link = 'configuring_identifier_alignment_rules_link'

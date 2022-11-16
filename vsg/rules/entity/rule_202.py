@@ -12,6 +12,8 @@ class rule_202(Rule):
     '''
     This rule checks for blank lines above the **port** keyword in entity specifications.
 
+    |configuring_blank_lines_link|
+
     **Violation**
 
     .. code-block:: vhdl

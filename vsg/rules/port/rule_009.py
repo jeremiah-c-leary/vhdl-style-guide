@@ -39,3 +39,4 @@ class rule_009(Rule):
         Rule.__init__(self, 'port', '009', lTokens, lBetween)
         self.spaces_before = 1
         self.spaces_after = 1
+        self.configuration_documentation_link = 'configuring_port_mode_alignment_link'

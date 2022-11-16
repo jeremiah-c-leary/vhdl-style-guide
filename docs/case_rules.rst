@@ -531,7 +531,7 @@ case_201
 
 This rule checks for blank lines or comments above the **when** keyword.
 
-Refer to `Configuring Previous Line Rules <configuring.html#configuring-previous-line-rules>`_ for options.
+|configuring_previous_line_rules_link|
 
 The default style is :code:`allow_comment`.
 

@@ -41,6 +41,7 @@ class rule_030(structure.Rule):
         structure.Rule.__init__(self, 'process', '030')
         self.solution = 'Compact sensitivity list to reduce the number of lines it uses.'
         self.fixable = False
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.process_statement.open_parenthesis, token.process_statement.close_parenthesis)

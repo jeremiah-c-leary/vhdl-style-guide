@@ -40,6 +40,7 @@ class multiline_structure(structure.Rule):
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = True
         self.assignment_operator = None
+        self.configuration_documentation_link = 'configuring_array_multiline_structure_rules_link'
 
         self.first_paren_new_line = 'yes'
         self.configuration.append('first_paren_new_line')
@@ -68,12 +69,14 @@ class multiline_structure(structure.Rule):
             if rules_utils.is_single_line(oToi) and self.ignore_single_line == 'yes':
                 continue
 
-            if not _is_open_paren_after_assignment(self, oToi):
-                continue
+#            if not _is_open_paren_after_assignment(self, oToi):
+#                continue
 
             lReturn.append(oToi)
 
-        return lReturn
+        lMyReturn = remove_non_arrays(self.assignment_operator, lReturn)
+
+        return lMyReturn
 
     def _analyze(self, lToi):
         for oToi in lToi:
@@ -670,3 +673,11 @@ def _classify_others(iToken, lTokens):
                 return iEnd, True
 
     return iToken, False
+
+
+def remove_non_arrays(assignment_operator, lToi):
+    lReturn = []
+    for oToi in lToi:
+        if rules_utils.array_detected_after_assignment_operator(assignment_operator, oToi):
+            lReturn.append(oToi)
+    return lReturn

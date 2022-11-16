@@ -43,7 +43,7 @@ def detect_resolution_function_name(iToken, lObjects):
     return True
 
 
-lEscapeValues = ['(', ')', ';', ':=', 'range', 'bus', 'is', 'open']
+lEscapeValues = ['(', ')', ';', ':=', 'range', 'bus', 'is', 'open', "'"]
 
 
 def detect_escape_value(iToken, lObjects):

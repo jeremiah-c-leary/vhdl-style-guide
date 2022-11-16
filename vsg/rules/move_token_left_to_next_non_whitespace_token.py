@@ -34,6 +34,7 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         self.token_to_move = token_to_move
         self.bInsertWhitespace = True
         self.bRemoveTrailingWhitespace = True
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_tokens_between_non_whitespace_token_and_token(self.token_to_move)

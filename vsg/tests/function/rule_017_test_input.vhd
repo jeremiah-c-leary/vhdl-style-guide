@@ -25,6 +25,10 @@ architecture RTL of FIFO is
   impure function FUNC1 return integer;
   impure function func1 return integer;
 
+  -- This should be ignored
+
+  function "=" return boolean;
+
 begin
 
 end architecture RTL;

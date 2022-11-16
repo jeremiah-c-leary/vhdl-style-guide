@@ -36,6 +36,7 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(structure.Ru
         self.end_token = end_token
         self.action = 'add'
         self.configuration.append('action')
+        self.configuration_documentation_link = 'configuring_optional_items_link'
 
     def _get_tokens_of_interest(self, oFile):
         if self.action == 'add':

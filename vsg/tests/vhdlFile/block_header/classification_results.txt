@@ -53,7 +53,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
 13 |     );
 <class 'vsg.token.generic_clause.close_parenthesis'>
@@ -115,7 +115,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
 25 |     );
 <class 'vsg.token.port_clause.close_parenthesis'>
@@ -239,7 +239,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
 51 |     );
 <class 'vsg.token.port_clause.close_parenthesis'>
@@ -328,7 +328,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
 70 |     );
 <class 'vsg.token.generic_clause.close_parenthesis'>
@@ -355,7 +355,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
 75 |     );
 <class 'vsg.token.port_clause.close_parenthesis'>
@@ -444,7 +444,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
 94 |     );
 <class 'vsg.token.generic_clause.close_parenthesis'>
@@ -568,7 +568,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
 120 |     );
 <class 'vsg.token.generic_clause.close_parenthesis'>
@@ -630,7 +630,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 --------------------------------------------------------------------------------
 132 |     );
 <class 'vsg.token.port_clause.close_parenthesis'>

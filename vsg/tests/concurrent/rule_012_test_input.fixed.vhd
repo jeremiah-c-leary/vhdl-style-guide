@@ -30,6 +30,10 @@ begin
  );
 
 
+  -- This is not an array and should not be "fixed"
 
+  d <=
+       (d2 xor to_stdulogic(gen2)) &
+       (d1 xor to_stdulogic(gen1));
 
 end architecture RTL;

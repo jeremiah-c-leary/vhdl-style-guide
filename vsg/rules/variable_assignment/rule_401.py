@@ -39,3 +39,4 @@ class rule_401(Rule):
 
     def __init__(self):
         Rule.__init__(self, 'variable_assignment', '401', lTokenPairs)
+        self.assignment_operator = token.simple_variable_assignment.assignment

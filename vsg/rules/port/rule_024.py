@@ -37,3 +37,4 @@ class rule_024(remove_excessive_blank_lines_above_line_starting_with_token):
     def __init__(self):
         remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, 'port', '024', lTokens, iAllow=0)
         self.solution = 'Remove blank lines above ).'
+        self.configuration_documentation_link = None

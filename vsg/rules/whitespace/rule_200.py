@@ -34,6 +34,7 @@ class rule_200(Rule):
         Rule.__init__(self, name='whitespace', identifier='200')
         self.blank_lines_allowed = 1
         self.configuration.append('blank_lines_allowed')
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return [oFile.get_all_tokens()]

@@ -165,7 +165,7 @@ library_007
 
 This rule checks for blank lines or comments above the **use** declaration.
 
-|configuring_blank_lines_link|
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_blank_line`.
 

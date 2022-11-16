@@ -20,3 +20,4 @@ class Rule(rule.Rule):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 2
         self.groups.append('whitespace')
+        self.configuration_documentation_link = 'configuring_whitespace_rules_link'

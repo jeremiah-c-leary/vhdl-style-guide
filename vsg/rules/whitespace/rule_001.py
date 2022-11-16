@@ -30,6 +30,7 @@ class rule_001(whitespace.Rule):
         self.phase = 1
         self.subphase = 0
         self.solution = 'Remove trailing whitespace'
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_n_tokens_before_token(2, [parser.carriage_return])

@@ -72,13 +72,25 @@
 11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-12 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+12 |   signal fifo_rd : fifo_wr'subtype;
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.type_mark.tic'>
+<class 'vsg.token.type_mark.attribute'>
+<class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
 13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-14 | end architecture RTL;
+14 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+15 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

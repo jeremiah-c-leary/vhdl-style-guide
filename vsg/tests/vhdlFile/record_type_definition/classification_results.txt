@@ -23,7 +23,7 @@
 5 |       Mnemonic : String (1 to 10);
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
@@ -34,7 +34,7 @@
 6 |       OpCode : Bit_Vector(3 downto 0);
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -49,7 +49,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 8 |   end record;
@@ -69,7 +69,7 @@
 11 |       Mnemonic : String (1 to 10);
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
@@ -80,7 +80,7 @@
 12 |       OpCode : Bit_Vector(3 downto 0);
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -95,7 +95,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.identifier_list.identifier'>
 <class 'vsg.token.element_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.element_declaration.semicolon'>
 --------------------------------------------------------------------------------
 14 |   end record Operation;
