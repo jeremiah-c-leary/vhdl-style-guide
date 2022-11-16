@@ -130,11 +130,6 @@ from vsg.rules import ranges
 from vsg.rules import record_type_definition
 from vsg.rules import report_statement
 from vsg.rules import selected_assignment
-from vsg.rules import selected_expressions
-from vsg.rules import selected_force_assignment
-from vsg.rules import selected_variable_assignment
-from vsg.rules import selected_waveform_assignment
-from vsg.rules import selected_waveforms
 from vsg.rules import sequential
 from vsg.rules import signal
 from vsg.rules import source_file
