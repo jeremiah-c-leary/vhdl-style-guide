@@ -14,6 +14,8 @@ class rule_400(multiline_alignment_between_tokens):
     '''
     This rule checks the alignment of multiline selected assignment statements.
 
+    |configuring_multiline_indent_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

@@ -249,6 +249,8 @@ selected_assignment_400
 
 This rule checks the alignment of multiline selected assignment statements.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
