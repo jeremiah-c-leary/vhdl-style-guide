@@ -20,7 +20,7 @@ class rule_400(multiline_alignment_between_tokens):
 
     .. code-block:: vhdl
 
-       with (mux_select or reset) select addr :=
+       with (mux_select or reset) select addr <=
        "0000" when 0,
                "0001" when 1,
             "1111" when others;
@@ -29,7 +29,7 @@ class rule_400(multiline_alignment_between_tokens):
 
     .. code-block:: vhdl
 
-       with (mux_select or reset) select addr :=
+       with (mux_select or reset) select addr <=
          "0000" when 0,
          "0001" when 1,
          "1111" when others;

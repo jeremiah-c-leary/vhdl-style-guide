@@ -18,19 +18,19 @@ class rule_503(Rule):
 
     .. code-block:: vhdl
 
-       with mux_sel select
-         addr <= "0000" WHEN 0,
-                 "0001" WHEN 1,
-                 "1111" WHEN others;
+       with mux_sel select addr <=
+         "0000" WHEN 0,
+         "0001" WHEN 1,
+         "1111" WHEN others;
 
     **Fix**
 
     .. code-block:: vhdl
 
-       with mux_sel select
-         addr <= "0000" when 0,
-                 "0001" when 1,
-                 "1111" when others;
+       with mux_sel select addr <=
+         "0000" when 0,
+         "0001" when 1,
+         "1111" when others;
     '''
 
     def __init__(self):

@@ -20,13 +20,19 @@ class rule_102(Rule):
 
     .. code-block:: vhdl
 
-       with mux_sel select    addr <= "0000" when 0,
+       with mux_sel select    addr <=
+         "0000" when 0,
+         "0001" when 1,
+         "1111" when others;
 
     **Fix**
 
     .. code-block:: vhdl
 
-       with mux_sel select addr <= "0000" when 0,
+       with mux_sel select addr <=
+         "0000" when 0,
+         "0001" when 1,
+         "1111" when others;
     '''
 
     def __init__(self):

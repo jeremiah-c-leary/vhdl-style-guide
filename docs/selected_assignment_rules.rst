@@ -3,6 +3,32 @@
 Selected Assignment Rules
 -------------------------
 
+selected_assignment_001
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks the **with** keyword is on the same line as the expression.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with
+     mux_sel select addr <
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
 selected_assignment_100
 #######################
 
@@ -16,19 +42,19 @@ This rule checks for a single space after the **with** keyword.
 
 .. code-block:: vhdl
 
-   with    mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with    mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_101
 #######################
@@ -43,19 +69,19 @@ This rule checks for a single space before the **select** keyword.
 
 .. code-block:: vhdl
 
-   with mux_sel     select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel     select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_102
 #######################
@@ -70,13 +96,19 @@ This rule checks for a single space after the **select** keyword.
 
 .. code-block:: vhdl
 
-   with mux_sel select    addr <= "0000" when 0,
+   with mux_sel select    addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select addr <= "0000" when 0,
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_103
 #######################
@@ -91,19 +123,19 @@ This rule checks for a single space before the assignment.
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr<= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr<=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_104
 #######################
@@ -118,19 +150,17 @@ This rule checks for a single space after the assignment.
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <=    "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=    "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <= "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_105
 #######################
@@ -145,19 +175,17 @@ This rule checks for a single space after the **force** keyword.
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= force   "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <= force   "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= force "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <= force "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_106
 #######################
@@ -172,19 +200,19 @@ This rule checks for a single space before the **when** keyword.
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000"    when 0,
-             "0001"when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000"    when 0,
+     "0001"when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_107
 #######################
@@ -199,19 +227,19 @@ This rule checks for a single space after the **when** keyword.
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when     0,
-             "0001" when  1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when     0,
+     "0001" when  1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_300
 #######################
@@ -226,10 +254,10 @@ This rule checks the indent of the **with** keyword.
 
    wr_en <= '1';
 
-       with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+       with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
@@ -237,10 +265,10 @@ This rule checks the indent of the **with** keyword.
 
    wr_en <= '1';
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_400
 #######################
@@ -255,7 +283,7 @@ This rule checks the alignment of multiline selected assignment statements.
 
 .. code-block:: vhdl
 
-   with (mux_select or reset) select addr :=
+   with (mux_select or reset) select addr <=
    "0000" when 0,
            "0001" when 1,
         "1111" when others;
@@ -264,7 +292,7 @@ This rule checks the alignment of multiline selected assignment statements.
 
 .. code-block:: vhdl
 
-   with (mux_select or reset) select addr :=
+   with (mux_select or reset) select addr <=
      "0000" when 0,
      "0001" when 1,
      "1111" when others;
@@ -282,19 +310,19 @@ This rule checks the **with** keyword has proper case.
 
 .. code-block:: vhdl
 
-   WITH mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   WITH mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_501
 #######################
@@ -309,19 +337,19 @@ This rule checks the **select** keyword has proper case.
 
 .. code-block:: vhdl
 
-   with mux_sel SELECT
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel SELECT addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_502
 #######################
@@ -336,19 +364,19 @@ This rule checks the **force** keyword has proper case.
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= FORCE "0000" when 0,
-                   "0001" when 1,
-                   "1111" when others;
+   with mux_sel select addr <= FORCE
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= force "0000" when 0,
-                   "0001" when 1,
-                   "1111" when others;
+   with mux_sel select addr <= force
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
 selected_assignment_503
 #######################
@@ -363,17 +391,17 @@ This rule checks the **when** keyword has proper case.
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" WHEN 0,
-             "0001" WHEN 1,
-             "1111" WHEN others;
+   with mux_sel select addr <=
+     "0000" WHEN 0,
+     "0001" WHEN 1,
+     "1111" WHEN others;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   with mux_sel select
-     addr <= "0000" when 0,
-             "0001" when 1,
-             "1111" when others;
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
 
