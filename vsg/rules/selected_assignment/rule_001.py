@@ -19,7 +19,7 @@ class rule_001(Rule):
     .. code-block:: vhdl
 
        with
-         mux_sel select addr <
+         mux_sel select addr <=
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
@@ -28,7 +28,7 @@ class rule_001(Rule):
 
     .. code-block:: vhdl
 
-       with mux_sel select addr <
+       with mux_sel select addr <=
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
