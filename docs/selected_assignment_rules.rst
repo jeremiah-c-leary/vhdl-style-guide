@@ -55,6 +55,32 @@ This rule checks the **select** keyword is on the same line as the expression.
      "0001" when 1,
      "1111" when others;
 
+selected_assignment_003
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks the **select** keyword is on the same line as the target.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with mux_sel select
+     addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
 selected_assignment_100
 #######################
 
