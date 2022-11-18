@@ -38,7 +38,11 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_token_and_n_tokens_after_it_when_between_tokens(self.lTokens, 2, self.oStart, self.oEnd)
+        lToi = []
+        for oToken in self.lTokens:
+            lToi_a = oFile.get_token_and_n_tokens_after_it_when_between_tokens([oToken], 2, self.oStart, self.oEnd)
+            lToi = utils.combine_two_token_class_lists(lToi, lToi_a)
+        return lToi
 
     def _analyze(self, lToi):
         for oToi in lToi:
