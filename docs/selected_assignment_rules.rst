@@ -155,6 +155,30 @@ This rule checks for code after the **force** keyword.
      "0001" when 1,
      "1111" when others;
 
+selected_assignment_007
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the force mode keywords **in** and **out**.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <= force in "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <= force in
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
 selected_assignment_100
 #######################
 
