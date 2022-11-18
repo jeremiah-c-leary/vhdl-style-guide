@@ -227,6 +227,32 @@ This rule checks for code after the delay mechanism keywords **transport** and *
      "0001" when 1,
      "1111" when others;
 
+selected_assignment_010
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks the **when** keyword is on the same line as the expression or waveform.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <=
+     "0000"
+     when 0,
+     "0001" when 1,
+     "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
 selected_assignment_100
 #######################
 
