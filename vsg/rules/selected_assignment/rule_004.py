@@ -36,4 +36,3 @@ class rule_004(Rule):
 
     def __init__(self):
         Rule.__init__(self, 'selected_assignment', '004', lTokens)
-        self.subphase = 4
