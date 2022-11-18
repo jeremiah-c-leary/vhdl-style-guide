@@ -1,10 +1,16 @@
 
-from vsg.rules import insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens
+from vsg.rules import insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens as Rule
 
 from vsg import token
 
+lTokens = []
+lTokens.append(token.interface_list.semicolon)
 
-class rule_013(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens):
+lTokenPairs = []
+lTokenPairs.append([token.port_clause.open_parenthesis, token.port_clause.close_parenthesis])
+
+
+class rule_013(Rule):
     '''
     This rule checks for multiple ports declared on a single line.
 
@@ -30,5 +36,5 @@ class rule_013(insert_carriage_return_after_token_if_it_is_not_followed_by_a_com
     '''
 
     def __init__(self):
-        insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when_between_tokens.__init__(self, 'port', '013', [token.interface_list.semicolon], token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
+        Rule.__init__(self, 'port', '013', lTokens, lTokenPairs)
         self.solution = 'Move multiple ports to their own lines.'
