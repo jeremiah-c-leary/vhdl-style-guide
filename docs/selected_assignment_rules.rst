@@ -107,6 +107,30 @@ This rule checks the assignment is on the same line as the target.
      "0001" when 1,
      "1111" when others;
 
+selected_assignment_005
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the assignment.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <= "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <=
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
 selected_assignment_100
 #######################
 
