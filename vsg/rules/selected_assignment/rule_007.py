@@ -7,8 +7,8 @@ lTokens = []
 lTokens.append(token.force_mode.out_keyword)
 lTokens.append(token.force_mode.in_keyword)
 
-oStartToken = token.selected_force_assignment.with_keyword
-oEndToken = token.selected_force_assignment.semicolon
+lTokenPairs = []
+lTokenPairs.append([token.selected_force_assignment.with_keyword, token.selected_force_assignment.semicolon])
 
 
 class rule_007(Rule):
@@ -34,5 +34,5 @@ class rule_007(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '007', lTokens, oStartToken, oEndToken)
+        Rule.__init__(self, 'selected_assignment', '007', lTokens, lTokenPairs)
         self.solution = 'Move code after the force mode keyword to the next line.'
