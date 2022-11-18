@@ -203,6 +203,30 @@ This rule checks for code after the **guarded** keyword.
      "0001" when 1,
      "1111" when others;
 
+selected_assignment_009
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the delay mechanism keywords **transport** and **inertial**.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <= transport "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   with mux_sel select addr <= transport
+     "0000" when 0,
+     "0001" when 1,
+     "1111" when others;
+
 selected_assignment_100
 #######################
 
