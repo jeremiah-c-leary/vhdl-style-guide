@@ -3,6 +3,8 @@ import unittest
 from unittest import mock
 import subprocess
 import os
+import sys
+import io
 
 from tempfile import TemporaryFile
 
@@ -299,7 +301,7 @@ class testVsg(unittest.TestCase):
 
     def test_missing_configuration_file(self):
         try:
-            subprocess.check_output(['bin/vsg', '-c', 'missing_configuration.yaml'])
+            subprocess.check_output(['bin/vsg', '-c', 'missing_configuration.yaml'], stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
             iExitStatus = e.returncode
 
