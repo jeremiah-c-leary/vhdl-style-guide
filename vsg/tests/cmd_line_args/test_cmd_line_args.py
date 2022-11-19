@@ -26,27 +26,51 @@ class test(unittest.TestCase):
         sys.argv = ['vsg']
         sys.argv.extend(['-f', sAFile])
 
+        lExpected = [sAFile]
+        lExpected.sort()
+
         oActual = cmd_line_args.parse_command_line_arguments()
-        self.assertEqual(oActual.filename, [sAFile])
+        lActual = oActual.filename
+        lActual.sort()
+
+        self.assertEqual(lActual, lExpected)
 
     def test_filename_w_two_files(self):
         sys.argv = ['vsg']
         sys.argv.extend(['-f', sAFile, sBFile])
 
+        lExpected = [sAFile, sBFile]
+        lExpected.sort()
+
         oActual = cmd_line_args.parse_command_line_arguments()
-        self.assertEqual(oActual.filename, [sAFile, sBFile])
+        lActual = oActual.filename
+        lActual.sort()
+
+        self.assertEqual(lActual, lExpected)
 
     def test_valid_glob(self):
         sys.argv = ['vsg']
         sys.argv.extend(['-f', sGlobFile])
 
+        lExpected = [sAFile, sBFile]
+        lExpected.sort()
+
         oActual = cmd_line_args.parse_command_line_arguments()
-        self.assertEqual(oActual.filename, [sAFile, sBFile])
+        lActual = oActual.filename
+        lActual.sort()
+
+        self.assertEqual(lActual, lExpected)
 
     def test_valid_glob_w_individual_files(self):
         sys.argv = ['vsg']
         sys.argv.extend(['-f', sGlobFile, sAFile, sGlobFile, sBFile])
 
+        lExpected = [sAFile, sBFile, sAFile, sAFile, sBFile, sBFile]
+        lExpected.sort()
+
         oActual = cmd_line_args.parse_command_line_arguments()
-        self.assertEqual(oActual.filename, [sAFile, sBFile, sAFile, sAFile, sBFile, sBFile])
+        lActual = oActual.filename
+        lActual.sort()
+
+        self.assertEqual(lActual, lExpected)
 
