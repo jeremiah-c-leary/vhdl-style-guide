@@ -290,15 +290,6 @@ class testVsg(unittest.TestCase):
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
-    @unittest.skip('Version is performing git commands and is impossible to predict the output.')
-    def test_version_command_line_argument(self):
-        lExpected = []
-        lExpected.append('VHDL Style Guide (VSG) version: ' + str(version.sVersion))
-
-        lActual = subprocess.check_output(['bin/vsg','--version'])
-        lActual = str(lActual.decode('utf-8')).split('\n')
-        self.assertEqual(lExpected[0], lActual[0])
-
     def test_missing_configuration_file(self):
         try:
             subprocess.check_output(['bin/vsg', '-c', 'missing_configuration.yaml'], stderr=subprocess.STDOUT)
@@ -490,18 +481,3 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
         self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
-
-
-    @unittest.skip('Version is performing git commands and is impossible to predict the output.')
-    @mock.patch('sys.stdout')
-    def test_version(self, mockStdout):
-        oCommandLineArguments = command_line_args(True)
-        try:
-            version.print_version(oCommandLineArguments)
-        except SystemExit:
-            pass
-
-        mockStdout.write.assert_has_calls([
-            mock.call('VHDL Style Guide (VSG) version: ' + str(version.sVersion)),
-            mock.call('\n')
-        ])

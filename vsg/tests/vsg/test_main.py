@@ -428,7 +428,6 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
-    @unittest.skip('disabling for the hotfix release only')
     def test_json_parameter(self):
         self.maxDiff = None
 
