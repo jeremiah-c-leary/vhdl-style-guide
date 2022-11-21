@@ -10,7 +10,7 @@ lTokens.append(token.selected_waveforms.when_keyword)
 
 class rule_011(Rule):
     '''
-    This rule checks the **when** keyword is on the same line as the choices.
+    This rule checks the choice is on the same line as the **when** keyword.
 
     **Violation**
 

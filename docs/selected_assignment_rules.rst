@@ -258,7 +258,7 @@ selected_assignment_011
 
 |phase_1| |error| |structure|
 
-This rule checks the **when** keyword is on the same line as the choices.
+This rule checks the choice is on the same line as the **when** keyword.
 
 **Violation**
 
