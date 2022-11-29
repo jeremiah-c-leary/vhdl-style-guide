@@ -94,6 +94,37 @@ This rule checks for a single space between the following block elements:  label
 
    procedure_label : postponed WR_EN(parameter);
 
+procedure_call_101
+##################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **=>** operator in procedure calls.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1 =>    data,
+     port_2 =>enable,
+     port_3 =>  overflow,
+     port_4 => underflow
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1 => data,
+     port_2 => enable,
+     port_3 => overflow,
+     port_4 => underflow
+   );
+
 procedure_call_300
 ##################
 
