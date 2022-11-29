@@ -39,6 +39,36 @@ architecture RTL of FIFO is
 
   procedure proc_3 (sig1: in std_logic_vector(3 downto 0));
 
+  -- Test default assignments
+  procedure proc_4 (
+    constant a : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+    variable b : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+    signal   c : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'))
+  ) is
+  begin
+    b <= a;
+  end procedure proc_4;
+
+  -- Test default assignments
+  procedure proc_4 (
+    variable b : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+    signal   c : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+    constant a : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'))
+  ) is
+  begin
+    b <= a;
+  end procedure proc_4;
+
+  -- Test default assignments
+  procedure proc_4 (
+    signal   c : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+    constant a : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+    variable b : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'))
+  ) is
+  begin
+    b <= a;
+  end procedure proc_4;
+
 begin
 
 
