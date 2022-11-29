@@ -1,14 +1,12 @@
 
-from vsg import parser
-from vsg import violation
+from vsg.rules import utils
 
 from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
-from vsg.rules import utils as rules_utils
 
 
 class Rule(WhitespaceRule):
     '''
-    Checks for at least a single space after a token.
+    Checks for a single space after a token
 
     Parameters
     ----------
@@ -19,14 +17,8 @@ class Rule(WhitespaceRule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    lTokens : list of token object types
-       reference token to check for a whitespace before
-
-    oStart : token object type
-       The beginning of the range
-
-    oEnd : token object type
-       The end of the range
+    lTokens : token type object list
+       A list of tokens to check for a single space after.
     '''
 
     def __init__(self, name, identifier, lTokens, oStart, oEnd):
@@ -36,17 +28,6 @@ class Rule(WhitespaceRule):
         self.oEnd = oEnd
 
     def _get_tokens_of_interest(self, oFile):
-        lReturn = []
         lToi = oFile.get_token_and_n_tokens_after_it_when_between_tokens(self.lTokens, 2, self.oStart, self.oEnd)
         lToi = utils.remove_toi_if_token_is_at_the_end_of_the_line(lToi)
-#        for oToi in lToi:
-#            lReturn.append(extract_toi(oToi))
-#        return lReturn
-#
-#
-#def extract_toi(oToi):
-#    lTokens = oToi.get_tokens()
-#    if isinstance(lTokens[1], parser.whitespace):
-#        return oToi
-#    else:
-#        return oToi.extract_tokens(1, 2)
+        return lToi
