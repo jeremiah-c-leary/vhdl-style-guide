@@ -19,6 +19,13 @@ begin
       cnt_out => "00")
   );
 
+    rd_data <=
+    (
+      others => '0'
+    )
+      after 4 ns
+      ;
+
   end process;
 
 end architecture rtl;
