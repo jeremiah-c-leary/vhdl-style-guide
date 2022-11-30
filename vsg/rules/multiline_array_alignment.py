@@ -159,14 +159,8 @@ def check_last_line(oLine, oLines, iIndentStep):
 def check_middle_line(oLine, oLines, iIndentStep):
     set_expected_indent_of_line(oLine, oLines, iIndentStep)
     oLines.update_parens(oLine, iIndentStep)
-    if not is_line_after_last_paren(oLines):
+    if not oLines.no_parens():
         oLines.iNextIndent = oLines.lParens[-1].iExpectedColumn
-
-
-def is_line_after_last_paren(oLines):
-    if len(oLines.lParens) == 0:
-        return True
-    return False
 
 
 def set_expected_indent_of_line(oLine, oLines, iIndentStep):
