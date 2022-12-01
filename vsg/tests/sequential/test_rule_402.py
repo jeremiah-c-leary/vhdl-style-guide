@@ -28,7 +28,7 @@ class test_sequential_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '402')
         self.assertEqual(oRule.groups, ['alignment'])
 
-        lExpected = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        lExpected = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
