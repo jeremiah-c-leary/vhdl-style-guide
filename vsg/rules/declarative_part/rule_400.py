@@ -11,8 +11,8 @@ lAlign.append(token.signal_declaration.assignment_operator)
 lAlign.append(token.variable_declaration.assignment_operator)
 
 lUnless = []
-lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
-lUnless.append([token.protected_type_body.body_keyword,token.protected_type_body.end_keyword])
+lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
+lUnless.append([token.protected_type_body.body_keyword, token.protected_type_body.end_keyword])
 
 
 class rule_400(Rule):

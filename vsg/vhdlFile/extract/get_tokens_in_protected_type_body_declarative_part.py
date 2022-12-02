@@ -17,4 +17,3 @@ def extract(lAllTokens, oTokenMap):
         iEnd = len(lTokens) - 1
         lReturn.append(oToi.extract_tokens(iStart, iEnd))
     return lReturn
-    

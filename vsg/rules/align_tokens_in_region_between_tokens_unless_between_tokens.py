@@ -317,4 +317,3 @@ def is_case_keyword(config, iIndex, lTokens):
         if config != 'break_on_case_or_end_case':
            return True
     return False
-

@@ -150,13 +150,13 @@ class rule_list():
                 self.oVhdlFile.set_token_indent()
 
             for subphase in range(0, 5):
-#                print(f'phase {phase}.{subphase} ' + '-'*80)
+                #print(f'phase {phase}.{subphase} ' + '-'*80)
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
                 lRules = enforce_prerequisites(lRules)
                 for oRule in lRules:
-#                    print(oRule.unique_id)
+                    #print(oRule.unique_id)
                     if oRule.severity.type == severity.error_type:
                         oRule.fix(self.oVhdlFile, dFixOnly)
                     else:

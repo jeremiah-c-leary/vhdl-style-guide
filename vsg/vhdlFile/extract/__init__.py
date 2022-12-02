@@ -52,4 +52,4 @@ from .get_line_count_between_tokens import get_line_count_between_tokens
 
 from .get_tokens_between_non_whitespace_token_and_token import get_tokens_between_non_whitespace_token_and_token
 
-from .get_tokens_in_declarative_parts import get_tokens_in_declarative_parts 
+from .get_tokens_in_declarative_parts import get_tokens_in_declarative_parts
