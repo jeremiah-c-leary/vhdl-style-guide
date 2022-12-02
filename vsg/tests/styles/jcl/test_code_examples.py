@@ -1,5 +1,6 @@
 import os
 import unittest
+import copy
 
 from vsg import config
 from vsg import vhdlFile
@@ -44,9 +45,13 @@ lTrailingWhitespace, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.joi
 oTrailingWhitespace = vhdlFile.vhdlFile(lTrailingWhitespace)
 oTrailingWhitespace.set_indent_map(dIndentMap)
 
-lComments, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'comments.vhd'))
+lComments, eCommentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'comments.vhd'))
 oComments = vhdlFile.vhdlFile(lComments)
 oComments.set_indent_map(dIndentMap)
+
+lDeclarativePart, eDeclarativePartError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'..','..','declarative_part','rule_400_test_input.vhd'))
+oDeclarativePart = vhdlFile.vhdlFile(lDeclarativePart)
+oDeclarativePart.set_indent_map(dIndentMap)
 
 oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
 
@@ -61,6 +66,8 @@ class testCodeExample(unittest.TestCase):
         self.assertIsNone(eGrpDebouncerError)
         self.assertIsNone(ePICError)
         self.assertIsNone(eLibraryStatementsError)
+        self.assertIsNone(eCommentsError)
+        self.assertIsNone(eDeclarativePartError)
 
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp, oSeverityList)
@@ -163,6 +170,33 @@ class testCodeExample(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'comments.fixed.vhd'), lExpected)
 
         self.assertEqual(lExpected, oComments.get_lines())
+
+        self.assertFalse(oRuleList.violations)
+        oRuleList.check_rules()
+        self.assertFalse(oRuleList.violations)
+
+    def test_declarative_part(self):
+        oRuleList = rule_list.rule_list(oDeclarativePart, oSeverityList)
+        oMyConfig = copy.deepcopy(oConfig)
+        oMyConfig.dConfig['rule']['architecture_601'] = {}
+        oMyConfig.dConfig['rule']['architecture_601']['disable'] = True
+        oMyConfig.dConfig['rule']['signal_007'] = {}
+        oMyConfig.dConfig['rule']['signal_007']['disable'] = True
+        oMyConfig.dConfig['rule']['variable_007'] = {}
+        oMyConfig.dConfig['rule']['variable_007']['disable'] = True
+        oMyConfig.dConfig['rule']['process_016'] = {}
+        oMyConfig.dConfig['rule']['process_016']['disable'] = True
+        oMyConfig.dConfig['rule']['process_018'] = {}
+        oMyConfig.dConfig['rule']['process_018']['disable'] = True
+        oMyConfig.dConfig['rule']['entity_016'] = {}
+        oMyConfig.dConfig['rule']['entity_016']['disable'] = True
+        oRuleList.configure(oMyConfig)
+        oRuleList.fix()
+
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'rule_400_test_input.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oDeclarativePart.get_lines())
 
         self.assertFalse(oRuleList.violations)
         oRuleList.check_rules()
