@@ -38,8 +38,9 @@ class rule_100(whitespace.Rule):
         self.disable = False
         self.lTokens = [parser.comment]
         self.exceptions = ['--!', '--=', '--+', '--|', '---']
-        self.patterns = ['--!', '--|']
         self.configuration.append('exceptions')
+        self.patterns = ['--!', '--|']
+        self.configuration.append('patterns')
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []
