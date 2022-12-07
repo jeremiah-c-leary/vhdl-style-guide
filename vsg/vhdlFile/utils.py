@@ -707,7 +707,7 @@ def is_whitespace(oObject):
 
 
 def read_vhdlfile(sFileName):
-    if sFileName is 'stdin':
+    if sFileName == 'stdin':
         lLines = []
         for line in sys.stdin:
             lLines.append(line[:-1])
