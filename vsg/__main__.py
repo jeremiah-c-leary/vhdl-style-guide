@@ -124,8 +124,7 @@ def main():
     f = functools.partial(apply_rules.apply_rules, commandLineArguments, oConfig)
     # It's easier to debug when not using multiprocessing.Pool()
     lReturn = []
-    bKeepProcessingFiles = True
-    if commandLineArguments.jobs == 1:
+    if commandLineArguments.jobs == 1 or commandLineArguments.stdin:
         validate_files_exist_to_analyze(commandLineArguments.filename, commandLineArguments.stdin)
         if commandLineArguments.stdin:
             fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles = f((0, 'stdin'))
@@ -135,7 +134,7 @@ def main():
             if sOutputErr:
                 print(sOutputErr, file=sys.stderr)
 
-        if bKeepProcessingFiles:
+        else:
             for iIndex, sFileName in enumerate(commandLineArguments.filename):
                 fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles = f((iIndex + int(commandLineArguments.stdin), sFileName))
                 lReturn.append((fStatus, testCase, dJsonEntry))
