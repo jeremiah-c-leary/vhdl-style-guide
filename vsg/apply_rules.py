@@ -130,16 +130,12 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
 
 
 def write_vhdl_file(oVhdlFile):
-    if oVhdlFile.stdin:
-        for sLine in oVhdlFile.get_lines()[1:]:
-            print(sLine)
-    else:
-        try:
-            with open(oVhdlFile.filename, 'w', encoding='utf-8') as oFile:
-                for sLine in oVhdlFile.get_lines()[1:]:
-                    oFile.write(sLine + '\n')
-        except PermissionError as err:
-            print (err, "Could not write fixes back to file.")
+    try:
+        with open(oVhdlFile.filename, 'w', encoding='utf-8') as oFile:
+            for sLine in oVhdlFile.get_lines()[1:]:
+                oFile.write(sLine + '\n')
+    except PermissionError as err:
+        print (err, "Could not write fixes back to file.")
 
 
 def create_junit_testcase(sVhdlFileName, oException):
