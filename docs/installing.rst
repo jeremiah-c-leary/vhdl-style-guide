@@ -11,7 +11,7 @@ It can be installed using **pip**.
 
 .. code-block:: bash
 
-  pip install vsg
+  pip install vsg --use-pep517
 
 This is the preferred method for installing VSG.
 
