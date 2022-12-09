@@ -44,6 +44,8 @@ This is an example of how to configure these options.
 
    Each pattern must start with :code:`--` and there are no restrictions on length.
 
+   Exceptions and patterns not starting with :code:`--` will be ignored.
+
 Example
 #######
 
