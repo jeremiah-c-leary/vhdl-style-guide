@@ -11,12 +11,16 @@ This behavior can be modified by using the :code:`exceptions` and :code:`pattern
 
 .. |exceptions_description| replace::
    A list of patterns to not insert whitespace after comment characters :code:`--`.
+   Each exception must start with :code:`--` and not more than three characters long.
+   Exceptions not starting with :code:`--` will be ignored.
 
 .. |patterns_defaults| replace::
    :code:`--!`, :code:`--|`
 
 .. |patterns_description| replace::
    A list of patterns to insert whitespace after comment characters :code:`--`.
+   each pattern must start with :code:`--` and there is not restriction on length.
+   Patterns not starting with :code:`--` will be ignored.
 
 +--------------------------+-----------------------+--------------------------+
 | Option                   | Default               |  Description             |
@@ -38,13 +42,6 @@ This is an example of how to configure these options.
        patterns :
          - '--!'
          - '--*'
-
-.. NOTE::
-   Each exception and pattern must start with :code:`--` and not more than three characters long.
-
-   Each pattern must start with :code:`--` and there are no restrictions on length.
-
-   Exceptions and patterns not starting with :code:`--` will be ignored.
 
 Example
 #######
