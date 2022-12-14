@@ -19,16 +19,19 @@ class testMain(unittest.TestCase):
         if os.path.isfile('deleteme.json'):
             os.remove('deleteme.json')
 
+        if os.path.isfile('actual.json'):
+            os.remove('actual.json')
+
     def tearDown(self):
         if os.path.isfile('deleteme.json'):
             os.remove('deleteme.json')
 
-    @mock.patch('sys.stdout')
-    def test_multiple_configuration_w_multiple_filelists(self, mock_stdout):
-
         if os.path.isfile('actual.json'):
             os.remove('actual.json')
 
+
+    @mock.patch('sys.stdout')
+    def test_multiple_configuration_w_multiple_filelists(self, mock_stdout):
 
         sExpected = 'ERROR: vsg/tests/tool_integration/quality_report/example.vhd(4)entity_015 -- Add *entity* keyword'
         sExpected += '\n'
@@ -55,7 +58,4 @@ class testMain(unittest.TestCase):
         mock_stdout.write.assert_has_calls(lExpected)
         self.assertTrue(os.path.isfile('actual.json'))
         self.assertTrue(filecmp.cmp('actual.json', os.path.join('vsg', 'tests', 'tool_integration', 'quality_report', 'expected.json')))
-
-#        if os.path.isfile('actual.json'):
-#            os.remove('actual.json')
 

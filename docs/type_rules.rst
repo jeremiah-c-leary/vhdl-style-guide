@@ -54,7 +54,7 @@ This rule checks the **type** keyword has proper case.
 type_003
 ########
 
-This rule was depricated and replaced with rules:
+This rule was deprecated and replaced with rules:
 
 * `function_015 <function_rules.html#function-015>`_
 * `package_019 <package_rules.html#package-019>`_
@@ -452,6 +452,27 @@ This rule checks the colons are in the same column for all elements in the block
      some_other_element  : natural;
      yet_another_element : natural;
    end record;
+
+type_500
+########
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks enumerate types have proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   TYPE state_machine is (IDLE, WRITE, READ, DONE);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type state_machine is (idle, write, read, done);
 
 type_600
 ########

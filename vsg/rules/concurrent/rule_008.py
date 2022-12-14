@@ -3,6 +3,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -126,8 +127,8 @@ class rule_008(alignment.Rule):
                    iColumn = 0
                    iToken = -1
                else:
-                   iLeftColumn += oToken.length()
-                   iColumn += oToken.length()
+                   iColumn += alignment_utils.update_column_width(self, oToken)
+                   iLeftColumn += alignment_utils.update_column_width(self, oToken)
 
                if bEndFound:
                    for oStartToken in self.lStart:

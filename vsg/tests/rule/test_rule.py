@@ -8,6 +8,7 @@ from vsg import parser
 from vsg import rule
 from vsg import violation
 from vsg.vhdlFile.extract import tokens
+from vsg.rules import option
 
 
 class command_line_args():
@@ -77,55 +78,6 @@ class testRuleMethods(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
-    @unittest.skip('Waiting for full refactor of configuration')
-    def test_rule_configure(self):
-        oRule = rule.Rule()
-        oRule.name = 'xyz'
-        oRule.identifier = '001'
-        oRule.solution = 'This is my solution'
-        self.assertEqual(oRule.name,'xyz')
-        self.assertEqual(oRule.identifier,'001')
-        self.assertEqual(oRule.solution,'This is my solution')
-        self.assertEqual(oRule.disable,False)
-        self.assertEqual(oRule.indentSize,2)
-
-        dConfiguration = {}
-        dConfiguration['rule'] = {}
-        dConfiguration['rule']['xyz_001'] = {}
-        dConfiguration['rule']['xyz_001']['disable'] = True
-
-        oRule.configure(dConfiguration)
-
-        self.assertEqual(oRule.disable,True)
-
-
-        dConfiguration['rule']['xyz_002'] = {}
-        dConfiguration['rule']['xyz_002']['disable'] = False
-
-        oRule.configure(dConfiguration)
-
-        self.assertEqual(oRule.disable,True)
-
-        dConfiguration['rule']['xyz_001']['solution'] = 'This is the new solution'
-
-        oRule.configure(dConfiguration)
-
-        self.assertEqual(oRule.solution,'This is the new solution')
-
-        dConfiguration['rule']['global'] = {}
-        dConfiguration['rule']['global']['indentSize'] = 4
-
-        oRule.configure(dConfiguration)
-
-        self.assertEqual(oRule.indentSize,4)
-
-        # Check for attributes that do not exist
-        dConfiguration['rule']['xyz_001']['invalidAttribute'] = False
-        oRule.configure(dConfiguration)
-        self.assertEqual(oRule.disable,True)
-        self.assertEqual(oRule.solution,'This is the new solution')
-        self.assertEqual(oRule.indentSize,4)
-
     def test_get_configuration(self):
         oRule = rule.Rule()
         oRule.name = 'xyz'
@@ -135,6 +87,7 @@ class testRuleMethods(unittest.TestCase):
         dExpected['disable'] = False
         dExpected['fixable'] = True
         dExpected['indentSize'] = 2
+        dExpected['indentStyle'] = 'spaces'
         dExpected['phase'] = 3
         dExpected['severity'] = 'Error'
         dActual = oRule.get_configuration()
@@ -156,54 +109,6 @@ class testRuleMethods(unittest.TestCase):
 
         self.assertEqual(oRule._get_solution(0), 'Solution Line 0')
         self.assertEqual(oRule._get_solution(1), 'Solution Line 1')
-
-    @unittest.skip('Waiting for full refactor of configuration')
-    def test_configure_rule_attributes_method(self):
-        oRule = rule.Rule()
-        oRule.name = 'xyz'
-        oRule.identifier = '001'
-        
-        oConfig = config.New(command_line_args())
-
-        oConfig.dConfig = {}
-
-        oRule.configure(oConfig)
-
-        self.assertEqual(oRule.indentSize, 2)
-        self.assertEqual(oRule.phase, None)
-        self.assertEqual(oRule.disable, False)
-        self.assertEqual(oRule.fixable, True)
-        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'severity'])
-
-        dConfiguration = {}
-        dConfiguration['rule'] = {}
-        dConfiguration['rule']['xyz_001'] = {}
-        dConfiguration['rule']['xyz_001']['indentSize'] = 4
-        dConfiguration['rule']['xyz_001']['phase'] = 10
-        dConfiguration['rule']['xyz_001']['disable'] = True
-        dConfiguration['rule']['xyz_001']['fixable'] = False
-        dConfiguration['rule']['xyz_001']['unknown'] = 'New'
-
-        oConfig.dConfig = dConfiguration
-
-        oRule.configure(oConfig)
-
-        self.assertEqual(oRule.indentSize, 4)
-        self.assertEqual(oRule.phase, 10)
-        self.assertEqual(oRule.disable, True)
-        self.assertEqual(oRule.fixable, False)
-        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'severity'])
-
-        oRule.configuration.append('unknown')
-        oRule.unknown = None
-        oRule.configure(oConfig)
-
-        self.assertEqual(oRule.indentSize, 4)
-        self.assertEqual(oRule.phase, 10)
-        self.assertEqual(oRule.disable, True)
-        self.assertEqual(oRule.fixable, False)
-        self.assertEqual(oRule.unknown, 'New')
-        self.assertEqual(oRule.configuration, ['indentSize', 'phase', 'disable', 'fixable', 'severity', 'unknown'])
 
     def test_get_violations_w_vsg_output_method(self):
         oRule = rule.Rule('xyz', '001')
@@ -268,3 +173,7 @@ class testRuleMethods(unittest.TestCase):
         lActual = oRule.configure(oConfig)
 
         self.assertEqual(lExpected, lActual)
+
+    def test_option_object_can_be_created(self):
+        oOption = option.New('option_name')
+

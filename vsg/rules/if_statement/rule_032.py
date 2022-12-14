@@ -1,35 +1,11 @@
 
-from vsg.rules import align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token
-
-from vsg.token import if_statement as token
+from vsg import deprecated_rule
 
 
-class rule_032(align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token):
+class rule_032(deprecated_rule.Rule):
     '''
-    This rule aligns consecutive comment only lines above the **elsif** keyword in if statements.
-    These comments are used to describe what the elsif code is going to do.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-           -- comment 1
-     -- comment 2
-        -- comment 3
-       elsif (a = '1')
-         rd_en <= '0';
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       -- comment 1
-       -- comment 2
-       -- comment 3
-       elsif (a = '1')
-         rd_en <= '0';
+    The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
     '''
-
     def __init__(self):
-        align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token.__init__(self, 'if', '032', token.elsif_keyword)
-        self.solution = 'Align comment with *elsif* keyword.'
+        deprecated_rule.Rule.__init__(self, 'if', '032')
+        self.message.append('The function of rule ' + self.unique_id + ' is covered by rule comment_010.')

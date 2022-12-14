@@ -24,46 +24,22 @@ VHDL Style Guide (VSG)
 
 Announcements
 -------------
+Update 10/20/2022
 
-Update 04/22/2022
+Release 3.13.0 is scheduled for 10/23/2022.
 
-The Release 3.11.0 will include a change to comment indenting.
-Prior to this release comments were indented at the current indent level.
-This would result in comment indents being enforced like this:
+I plan to take a month or two month long break after this release.
 
-.. code-block:: vhdl
+There are existing issues awaiting validation which will still be worked.
+These issues will result in addition releases.
 
-    architecture rtl of fifo is
+New issues will still be triaged, however the rate of response from me will be significantly reduced.
 
-      -- Define FIFO control signals
-      signal wr_en : std_logic;
-      signal rd_en : std_logic;
+Over the next two months I will be contemplating how much further I want to take VSG.
+There are currently issues I can not solve unless I update the underlying data structure.
+I need to decide if it is worth updating the data structure to address these issues.
 
-      -- Comment
-
-    begin
-
-
-Release 3.11.0 will employ a forward looking comment indent.
-The rationale being that comments are describing what comes next and therefore should be indented to match the code that comes next.
-The code snippet above will now be formatted as:
-
-.. code-block:: vhdl
-
-    architecture rtl of fifo is
-
-      -- Define FIFO control signals
-      signal wr_en : std_logic;
-      signal rd_en : std_logic;
-
-    -- Comment
-
-    begin
-
-With the comment **-- Comment** matching the indent of the **begin** keyword.
-
-There are existing rules in 3.10.0 which enforce this behavior, for example **case_021**.
-These will eventually be deprecated in a future release as they are no longer required.
+Regardless, I plan to take this back up in January 2023.
 
 Regards,
 

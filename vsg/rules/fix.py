@@ -19,13 +19,14 @@ def add_new_line(oViolation):
     rules_utils.remove_leading_whitespace_tokens(lTokens)
     rules_utils.insert_whitespace(lTokens, 0)
     rules_utils.insert_carriage_return(lTokens, 0)
+    lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
     oViolation.set_tokens(lTokens)
 
 
 def remove_new_line(oViolation):
     lTokens = oViolation.get_tokens()
     lTokens = utils.remove_carriage_returns_from_token_list(lTokens)
-    utils.remove_consecutive_whitespace_tokens(lTokens)
+    lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
     rules_utils.remove_leading_whitespace_tokens(lTokens)
     rules_utils.change_all_whitespace_to_single_character(lTokens)
     lNewTokens = utils.remove_trailing_whitespace(lTokens)

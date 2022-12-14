@@ -105,8 +105,8 @@ Component Instantiations
         Q           => tmp1
       );
 
-Concurrent Assignments
-######################
+Concurrent Signal Assignments
+#############################
 
 .. code-block:: vhdl
 

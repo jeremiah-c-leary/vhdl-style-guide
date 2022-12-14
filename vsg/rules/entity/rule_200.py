@@ -12,6 +12,8 @@ class rule_200(Rule):
     '''
     This rule checks for blank lines above the **generic** keyword in entity specifications.
 
+    |configuring_blank_lines_link|
+
     **Violation**
 
     .. code-block:: vhdl

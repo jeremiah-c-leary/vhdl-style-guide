@@ -17,6 +17,7 @@ class is_token_value_one_of(naming.Rule):
         self.disable = True
         self.configuration.append('names')
         self.token = token
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching([self.token])

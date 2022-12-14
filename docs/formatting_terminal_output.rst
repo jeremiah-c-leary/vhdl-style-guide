@@ -22,7 +22,7 @@ This is the default output format of VSG.
 It gives analysis statistics along with individual rule violations.
 This format is the most verbose of all output formats.
 
-Here is a sample output:
+Sample output using VSG option:
 
 .. code-block:: text
 
@@ -57,8 +57,8 @@ Here is a sample output:
    ----------------------------+------------+------------+--------------------------------------
    NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
 
-Synastic
-########
+Syntastic
+#########
 
 Using the syntastic format allows editors with understand that standard to use the output of VSG.
 
@@ -126,7 +126,7 @@ Where:
 
 .. NOTE:: The <severity> and <num_severity> will be repeated for each severity type.
 
-Here is a sample output using the **summary** option:
+Sample output using the **summary** option:
 
 .. code-block:: text
 
@@ -138,4 +138,5 @@ Here is a sample output using the **summary** option:
 
 
 Any line with an ERROR will be reported to stderr.
+
 Any line with an OK will be reported to stdout.

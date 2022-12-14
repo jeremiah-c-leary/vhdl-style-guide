@@ -15,6 +15,7 @@ from vsg.token import relational_operator
 from vsg.token import resolution_indication
 from vsg.token import sign
 from vsg.token import subtype_indication
+from vsg.token import type_mark
 from vsg.token import unary_logical_operator
 
 from vsg.token.ieee.std_logic_1164 import types
@@ -71,7 +72,7 @@ class vhdlFile():
         oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
-            lTokens = tokens.create(sLine.replace('\t', '  ').rstrip('\n').rstrip('\r'))
+            lTokens = tokens.create(sLine.rstrip('\n').rstrip('\r'))
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
@@ -168,6 +169,9 @@ class vhdlFile():
 
     def get_tokens_matching(self, lTokens):
         return extract.get_tokens_matching(lTokens, self.lAllObjects, self.oTokenMap)
+
+    def get_tokens_matching_not_at_beginning_or_ending_of_line(self, lTokens):
+        return extract.get_tokens_matching_not_at_beginning_or_ending_of_line(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_n_token_after_tokens(self, iToken, lTokens):
         return extract.get_n_token_after_tokens(iToken, lTokens, self.lAllObjects, self.oTokenMap)
@@ -308,6 +312,10 @@ class vhdlFile():
                 return oToken.get_indent()
         return 0
 
+    def get_tokens_in_declarative_parts(self):
+        return extract.get_tokens_in_declarative_parts(self.lAllObjects, self.oTokenMap)
+
+
 def split_on_carriage_return(lObjects):
     lReturn = []
     lMyObjects = []
@@ -341,7 +349,7 @@ def post_token_assignments(lTokens):
         else:
             oToken.set_code_tags(oCodeTags.get_tags())
             oCodeTags.update(oToken)
-        if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name):
+        if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name):
             sValue = oToken.get_value()
             ### IEEE values
             if sValue.lower() == 'std_logic_vector':

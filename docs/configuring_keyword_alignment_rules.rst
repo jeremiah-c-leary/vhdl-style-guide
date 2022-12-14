@@ -226,7 +226,7 @@ Rule Specific Keyword Alignment Configuration
               c <= a;
           when others =>
             null;
-      end case
+      end case;
       data_valid_after       <= '1';
 
     **Fix (case_control_statements_ends_group = True)**
@@ -245,7 +245,7 @@ Rule Specific Keyword Alignment Configuration
               c  <= a;
           when others =>
               null;
-      end case
+      end case;
       data_valid_after <= '1';
 
     **Fix (case_control_statements_ends_group = False)**
@@ -264,7 +264,7 @@ Rule Specific Keyword Alignment Configuration
               c         <= a;
           when others =>
               null;
-      end case
+      end case;
       data_valid_after  <= '1';
 
     **Fix (case_control_statements_ends_group = break_on_case_or_end_case)**
@@ -283,8 +283,44 @@ Rule Specific Keyword Alignment Configuration
               c   <= a;
           when others =>
               null;
-      end case
+      end case;
       data_valid_after <= '1';
+
+#. :code:`generate_statements_ends_group` - if set to :code:`True` any line with generate statement keywords ends the group of lines that should be aligned and starts new group.
+   By default set to :code:`False`.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      data_valid_before    <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after       <= '1';
+
+    **Fix (generate_statements_ends_group = True)**
+
+    .. code-block:: vhdl
+
+      data_valid_before <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid        <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after <= '1';
+
+    **Fix (generate_statements_ends_group = False)**
+
+    .. code-block:: vhdl
+
+      data_valid_before     <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid        <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after      <= '1';
 
 #. :code:`loop_control_statements_ends_group` - if set to :code:`True` any line with loop control statement (including for and while loops) ends the group of lines that should be aligned and starts new group.
    By default set to :code:`False`.
@@ -356,12 +392,16 @@ Rules Enforcing Keyword Alignment
 * `after_002 <after_rules.html#after-002>`_
 * `architecture_026 <architecture_rules.html#architecture-026>`_
 * `architecture_027 <architecture_rules.html#architecture-027>`_
+* `architecture_400 <architecture_rules.html#architecture-400>`_
 * `block_401 <block_rules.html#block-401>`_
+* `block_402 <block_rules.html#block-402>`_
+* `case_generate_statement_400 <case_generate_statement_rules.html#case-generate-statement-400>`_
 * `component_017 <component_rules.html#component-017>`_
 * `component_020 <component_rules.html#component-020>`_
 * `concurrent_006 <concurrent_rules.html#concurrent-006>`_
 * `concurrent_008 <concurrent_rules.html#concurrent-008>`_
-* `context_028 <context_rules.html#context-028>`_
+* `concurrent_400 <concurrent_rules.html#concurrent-400>`_
+* `declarative_part_400 <declarative_part_rules.html#declarative-part-400>`_
 * `entity_017 <entity_rules.html#entity-017>`_
 * `entity_018 <entity_rules.html#entity-018>`_
 * `entity_020 <entity_rules.html#entity-020>`_
@@ -371,13 +411,23 @@ Rules Enforcing Keyword Alignment
 * `generate_405 <generate_rules.html#generate-405>`_
 * `instantiation_010 <instantiation_rules.html#instantiation-010>`_
 * `instantiation_029 <instantiation_rules.html#instantiation-029>`_
+* `package_400 <package_rules.html#package-400>`_
+* `package_401 <package_rules.html#package-401>`_
+* `package_402 <package_rules.html#package-402>`_
+* `package_body_401 <package_body_rules.html#package-body-401>`_
+* `package_body_402 <package_body_rules.html#package-body-402>`_
 * `procedure_401 <procedure_rules.html#procedure-401>`_
 * `procedure_410 <procedure_rules.html#procedure-410>`_
 * `procedure_411 <procedure_rules.html#procedure-411>`_
 * `procedure_412 <procedure_rules.html#procedure-412>`_
+* `procedure_call_401 <procedure_call_rules.html#procedure-call-401>`_
+* `process_031 <process_rules.html#process-031>`_
 * `process_033 <process_rules.html#process-033>`_
 * `process_034 <process_rules.html#process-034>`_
 * `process_035 <process_rules.html#process-035>`_
 * `process_400 <process_rules.html#process-400>`_
-* `subprogram_body_400 <subprogram_body_rules.html#subprogram_body-400>`_
+* `process_401 <process_rules.html#process-401>`_
+* `sequential_400 <sequential_rules.html#sequential-400>`_
+* `subprogram_body_400 <subprogram_body_rules.html#subprogram-body-400>`_
+* `subprogram_body_401 <subprogram_body_rules.html#subprogram-body-401>`_
 * `type_400 <type_rules.html#type-400>`_

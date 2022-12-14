@@ -6,29 +6,7 @@ Case Generate Alternative Rules
 case_generate_alternative_300
 #############################
 
-|phase_4| |error| |alignment|
-
-This rule aligns consecutive comment only lines above a **when** keyword in a case generate statement with the **when** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-       -- comment 1
- -- comment 2
-    -- comment 3
-   when wr_en =>
-     rd_en <= '0';
-
-**Fix**
-
-.. code-block:: vhdl
-
-   -- comment 1
-   -- comment 2
-   -- comment 3
-   when wr_en =>
-     rd_en <= '0';
+The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
 
 case_generate_alternative_500
 #############################

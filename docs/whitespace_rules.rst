@@ -27,9 +27,21 @@ Where periods indicate spaces:
 whitespace_002
 ##############
 
-This rule has been deprecated.
+|phase_1| |error| |whitespace|
 
-VSG changes tabs to spaces when a file is read in.
+This rule will check for the existence of tabs in the middle of a line.
+
+**Violation**
+
+.. code-block:: text
+
+   \t\tsignal wr_en\t:\tstd_logic;  --\tWrite Enable
+
+**Fix**
+
+.. code-block:: text
+
+   \t\tsignal wr_en : std_logic;  -- Write Enable
 
 whitespace_003
 ##############
@@ -213,41 +225,7 @@ This rule checks for at least a single space before and after math operators +, 
 whitespace_012
 ##############
 
-|phase_3| |error| |blank_line|
-
-This rule enforces a maximum number of consecutive blank lines.
-
-**Violation**
-
-.. code-block:: vhdl
-
-  a <= b;
-
-
-  c <= d;
-
-**Fix**
-
-.. code-block:: vhdl
-
-  a <= b;
-
-  c <= d;
-
-.. NOTE::
-
-  The default is set to 1.
-  This can be changed by setting the *numBlankLines* attribute to another number.
-
-  .. code-block:: json
-
-     {
-         "rule":{
-             "whitespace_012":{
-                 "numBlankLines":3
-             }
-         }
-     }
+This rule was a duplicate of whitespace_200 and has been removed.
 
 whitespace_013
 ##############
@@ -275,7 +253,9 @@ whitespace_200
 
 |phase_3| |error| |blank_line|
 
-This rule removes consecutive blank lines.
+This rule enforces a maximum number of consecutive blank lines.
+
+|configuring_consecutive_blank_line_rules|
 
 **Violation**
 

@@ -162,6 +162,44 @@ class testMain(unittest.TestCase):
         # Clean up
         utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
 
+    @mock.patch('sys.stderr')
+    def test_junit_with_file_that_fails_to_parse(self, mock_stderr):
+#    def test_invalid_configuration(self):
+        utils.remove_file('vsg/tests/vsg/junit/parse_error.actual.xml')
+        lStdErr = []
+        lStdErr.append('Error: Unexpected token detected while parsing architecture_body @ Line 4, Column 1 in file vsg/tests/vsg/junit/parse_error.vhd')
+        lStdErr.append('       Expecting : begin')
+        lStdErr.append('       Found     : end')
+
+        lExpected = []
+        lExpected.append(mock.call('\n' + '\n'.join(lStdErr) + '\n'))
+        lExpected.append(mock.call('\n'))
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['-f', 'vsg/tests/vsg/junit/parse_error.vhd'])
+        sys.argv.extend(['--junit', 'vsg/tests/vsg/junit/parse_error.actual.xml'])
+        sys.argv.extend(['-p 1'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stderr.write.assert_has_calls(lExpected)
+
+        # Read in the expected JUnit XML file for comparison
+        lExpected = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','parse_error.expected.xml'), lExpected)
+        # Read in the actual JUnit XML file for comparison
+        lActual = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','parse_error.actual.xml'), lActual)
+        # Compare the two files, but skip the line with the timestamp (as it will never match)
+        for iLineNumber, sLine in enumerate(lExpected):
+            if iLineNumber != 1:
+                self.assertEqual(sLine, lActual[iLineNumber])
+        # Clean up
+        utils.remove_file('vsg/tests/vsg/junit/parse_error.actual.xml')
+
     @mock.patch('sys.stdout')
     def test_local_rules(self,mock_stdout):
         lExpected = []
@@ -390,7 +428,6 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
-    @unittest.skip('disabling for the hotfix release only')
     def test_json_parameter(self):
         self.maxDiff = None
 
@@ -441,6 +478,9 @@ class testMain(unittest.TestCase):
         # Read in another alternate expected JSON file for comparison
         lAlternateExpected7 = []
         utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate7.json'), lAlternateExpected7)
+        # Read in another alternate expected JSON file for comparison
+        lAlternateExpected8 = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate8.json'), lAlternateExpected8)
 
         # Read in the actual JSON file for comparison
         lActual = []
@@ -464,8 +504,10 @@ class testMain(unittest.TestCase):
             self.assertEqual(lActual, lAlternateExpected6)
         elif lActual == lAlternateExpected7:
             self.assertEqual(lActual, lAlternateExpected7)
+        elif lActual == lAlternateExpected8:
+            self.assertEqual(lActual, lAlternateExpected8)
         else:
-            self.assertEqual(lActual, lAlternateExpected6)
+            self.assertEqual(lActual, [])
 
 #        for sActual, sExpected in zip(lActual, lExpected):
 #            self.assertEqual(sActual, sExpected)

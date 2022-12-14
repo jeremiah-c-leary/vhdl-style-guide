@@ -40,6 +40,7 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
         self.value_token = value_token
         self.action = 'add'
         self.configuration.append('action')
+        self.configuration_documentation_link = 'configuring_optional_items_link'
 
     def _get_tokens_of_interest(self, oFile):
         if remove_keyword(self):

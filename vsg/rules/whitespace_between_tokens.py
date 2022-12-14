@@ -154,7 +154,7 @@ def whitespace_token_exists(oToi):
 def create_solution(oToi, iNumSpaces):
     lTokens = oToi.get_tokens()
     if whitespace_token_exists(oToi):
-        sSolution = f'Change the number of spaces between {lTokens[0].get_value()} and {lTokens[2].get_value()} to {str(iNumSpaces)}'
+        sSolution = f'Change the number of space(s) between {lTokens[0].get_value()} and {lTokens[2].get_value()} to {str(iNumSpaces)}'
     else:
-        sSolution = f'Add {str(iNumSpaces)} spaces between {lTokens[0].get_value()} and {lTokens[1].get_value()}'
+        sSolution = f'Add {str(iNumSpaces)} space(s) between {lTokens[0].get_value()} and {lTokens[1].get_value()}'
     return sSolution

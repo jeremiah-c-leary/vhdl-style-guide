@@ -41,6 +41,7 @@ class rule_100(whitespace.Rule):
         self.configuration.append('exceptions')
         self.patterns = ['--!', '--|']
         self.configuration.append('patterns')
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []

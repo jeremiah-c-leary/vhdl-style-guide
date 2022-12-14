@@ -2,6 +2,8 @@
 from vsg import parser
 from vsg import violation
 
+from vsg.rules.utils import token_is_whitespace, token_is_comment
+
 from vsg.rule_group import blank_line
 
 
@@ -33,6 +35,7 @@ class previous_line(blank_line.Rule):
             self.lAllowTokens = []
         else:
             self.lAllowTokens = lAllowTokens
+        self.configuration_documentation_link = 'configuring_previous_line_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
         bIncludeComments = _include_comments(self.style)
@@ -126,10 +129,10 @@ def _analyze_no_code(self, lToi, lAllowTokens):
             if _is_allowed_token(lAllowTokens, lTokens):
                 continue
             if len(lTokens) == 1:
-                if isinstance(lTokens[0], parser.blank_line) or isinstance(lTokens[0], parser.comment):
+                if isinstance(lTokens[0], parser.blank_line) or token_is_comment(lTokens[0]):
                     continue
             elif len(lTokens) == 2:
-                if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.comment):
+                if token_is_whitespace(lTokens[0]) and token_is_comment(lTokens[1]):
                     continue
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
             dAction = {}
@@ -160,7 +163,7 @@ def _analyze_require_comment(self, lToi, lAllowTokens):
                 if isinstance(lTokens[0], parser.blank_line):
                     continue
             elif len(lTokens) == 2:
-                if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.comment) and self.allow_comment:
+                if token_is_whitespace(lTokens[0]) and token_is_comment(lTokens[1]) and self.allow_comment:
                     continue
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
             dAction = {}
@@ -185,9 +188,9 @@ def _is_allowed_token(lAllowTokens, lTokens):
 
 def _comment_starts_line(lTokens):
     if len(lTokens) == 1:
-      if isinstance(lTokens[0], parser.comment):
+      if token_is_comment(lTokens[0]):
           return True
     elif len(lTokens) == 2:
-      if isinstance(lTokens[0], parser.whitespace) and isinstance(lTokens[1], parser.comment):
+      if token_is_whitespace(lTokens[0]) and token_is_comment(lTokens[1]):
           return True
     return False

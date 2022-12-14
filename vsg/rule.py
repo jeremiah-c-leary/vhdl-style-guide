@@ -12,6 +12,7 @@ class Rule():
         self.unique_id = str(name) + '_' + str(identifier)
         self.solution = None
         self.violations = []
+        self.indentStyle = 'spaces'
         self.indentSize = 2
         self.phase = None
         self.subphase = 1
@@ -21,10 +22,13 @@ class Rule():
         self.debug = False
         self.dFix = {}
         self.dFix['violations'] = {}
-        self.configuration = ['indentSize', 'phase', 'disable', 'fixable', 'severity']
+        self.configuration = ['indentStyle', 'indentSize', 'phase', 'disable', 'fixable', 'severity']
         self.deprecated = False
         self.proposed = False
         self.groups = []
+        self.options = []
+        self.configuration_documentation_link = None
+        self.prerequisites = []
 
     def configure(self, oConfig):
         '''Configures attributes on rules using a dictionary of the following form:
@@ -202,6 +206,11 @@ class Rule():
                 lNewViolations.append(oViolation)
         self.violations = lNewViolations
 
+    def add_option(self, oOption):
+        self.options.append(oOption)
+        self.configuration.append(oOption.name)
+        setattr(self, oOption.name, oOption.value)
+
 
 def configure_group_rule_attributes(self, oConfig):
     '''
@@ -250,5 +259,8 @@ def configure_rule_attributes(self, oConfig):
                 self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule'][self.get_unique_id()]['severity'])
             elif sAttributeName in self.__dict__:
                 self.__dict__[sAttributeName] = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
+            for oOption in self.options:
+                if sAttributeName == oOption.name:
+                    oOption.value = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
     except KeyError:
         pass

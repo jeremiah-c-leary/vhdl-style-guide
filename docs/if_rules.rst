@@ -229,6 +229,8 @@ if_009
 
 This rule checks the alignment of multiline boolean expressions.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -685,58 +687,12 @@ The default style is :code:`no_code`.
 if_032
 ######
 
-|phase_4| |error| |alignment|
-
-This rule aligns consecutive comment only lines above the **elsif** keyword in if statements.
-These comments are used to describe what the elsif code is going to do.
-
-**Violation**
-
-.. code-block:: vhdl
-
-       -- comment 1
- -- comment 2
-    -- comment 3
-   elsif (a = '1')
-     rd_en <= '0';
-
-**Fix**
-
-.. code-block:: vhdl
-
-   -- comment 1
-   -- comment 2
-   -- comment 3
-   elsif (a = '1')
-     rd_en <= '0';
+The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
 
 if_033
 ######
 
-|phase_4| |error| |alignment|
-
-This rule aligns consecutive comment only lines above the **else** keyword in if statements.
-These comments are used to describe what the elsif code is going to do.
-
-**Violation**
-
-.. code-block:: vhdl
-
-       -- comment 1
- -- comment 2
-    -- comment 3
-   else
-     rd_en <= '0';
-
-**Fix**
-
-.. code-block:: vhdl
-
-   -- comment 1
-   -- comment 2
-   -- comment 3
-   else
-     rd_en <= '0';
+The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
 
 if_034
 ######

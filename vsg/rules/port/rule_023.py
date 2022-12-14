@@ -39,6 +39,7 @@ class rule_023(structure.Rule):
         structure.Rule.__init__(self, name='port', identifier='023')
         self.solution = 'Add mode'
         self.fixable = False
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_interface_elements_between_tokens(token.open_parenthesis, token.close_parenthesis)

@@ -140,6 +140,15 @@ class tic(item):
         item.__init__(self, sString)
 
 
+class attribute(item):
+    '''
+    unique_id = parser : attribute
+    '''
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
 class event_keyword(item):
     '''
     unique_id = parser : event_keyword
@@ -300,6 +309,7 @@ class whitespace(item):
 
     def __init__(self, sString):
         item.__init__(self, sString)
+        self.has_tab = False
 
 
 class comment(item):
@@ -311,6 +321,7 @@ class comment(item):
         item.__init__(self, sString)
         self.is_block_comment = False
         self.block_comment_indent = None
+        self.has_tab = False
 
 
 class logical_name(item):

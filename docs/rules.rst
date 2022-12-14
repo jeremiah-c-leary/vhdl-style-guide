@@ -21,11 +21,12 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    comment_rules.rst
    component_rules.rst
    concurrent_rules.rst
-   conditional_expressions.rst
-   conditional_waveforms.rst
+   conditional_expressions_rules.rst
+   conditional_waveforms_rules.rst
    constant_rules.rst
    context_rules.rst
    context_ref_rules.rst
+   declarative_part_rules.rst
    element_association_rules.rst
    entity_rules.rst
    entity_specification_rules.rst
@@ -55,7 +56,9 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    procedure_call_rules.rst
    process_rules.rst
    range_rules.rst
+   record_type_definition_rules.rst
    report_statement_rules.rst
+   selected_assignment_rules.rst
    sequential_rules.rst
    signal_rules.rst
    source_file_rules.rst

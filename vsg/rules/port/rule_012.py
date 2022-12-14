@@ -48,6 +48,7 @@ class rule_012(structure.Rule):
         self.oStart = token.port_clause.open_parenthesis
         self.oEnd = token.port_clause.close_parenthesis
         self.fixable = False
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_interface_elements_between_tokens(self.oStart, self.oEnd)

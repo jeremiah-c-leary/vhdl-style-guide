@@ -18,7 +18,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.constant_declaration.semicolon'>
@@ -30,7 +30,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.character_literal'>
 <class 'vsg.token.constant_declaration.semicolon'>
@@ -56,7 +56,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.todo'>
@@ -69,7 +69,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.multiplying_operator.star'>
@@ -83,7 +83,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.parser.todo'>

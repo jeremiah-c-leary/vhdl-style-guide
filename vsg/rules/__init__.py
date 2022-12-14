@@ -66,12 +66,17 @@ from .token_case_n_token_after_tokens_between_tokens import token_case_n_token_a
 from .existence_of_tokens_which_should_not_occur import existence_of_tokens_which_should_not_occur
 from .multiline_alignment_between_tokens import multiline_alignment_between_tokens
 from .multiline_structure import multiline_structure
+from .multiline_simple_structure import multiline_simple_structure
+from .multiline_array_alignment import multiline_array_alignment
 from .multiline_constraint_structure import multiline_constraint_structure
 from .multiline_procedure_call_structure import multiline_procedure_call_structure
+from .multiline_conditional_alignment import multiline_conditional_alignment
 from .remove_carriage_return_after_token import remove_carriage_return_after_token
 from .move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens import move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens
 from .number_of_lines_between_tokens import number_of_lines_between_tokens
 from .token_does_not_exist_before_token import Rule as token_does_not_exist_before_token
+
+from .experiment import Rule as experiment
 
 from vsg.rules import alias_declaration
 from vsg.rules import after
@@ -88,9 +93,13 @@ from vsg.rules import case_generate_statement
 from vsg.rules import comment
 from vsg.rules import component
 from vsg.rules import concurrent
+from vsg.rules import conditional_expressions
+from vsg.rules import conditional_waveforms
 from vsg.rules import constant
 from vsg.rules import context
 from vsg.rules import context_ref
+from vsg.rules import declarative_part
+from vsg.rules import element_association
 from vsg.rules import entity
 from vsg.rules import entity_specification
 from vsg.rules import exit_statement
@@ -121,6 +130,7 @@ from vsg.rules import process
 from vsg.rules import ranges
 from vsg.rules import record_type_definition
 from vsg.rules import report_statement
+from vsg.rules import selected_assignment
 from vsg.rules import sequential
 from vsg.rules import signal
 from vsg.rules import source_file

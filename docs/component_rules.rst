@@ -326,7 +326,7 @@ This rule checks the **component** keyword in the **end component** line has pro
 component_015
 #############
 
-This rule has been depricated.
+This rule has been deprecated.
 The **component** keyword is required per the LRM.
 
 component_016
@@ -335,6 +335,8 @@ component_016
 |phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **end component** line.
+
+|configuring_blank_lines_link|
 
 **Violation**
 

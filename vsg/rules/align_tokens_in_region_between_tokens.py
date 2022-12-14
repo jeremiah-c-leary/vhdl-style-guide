@@ -3,6 +3,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -48,7 +49,10 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.configuration.append('comment_line_ends_group')
         self.separate_generic_port_alignment = True
         self.configuration.append('separate_generic_port_alignment')
+        self.generate_statement_ends_group = False
+#        self.configuration.append('generate_statement_ends_group')
         self.bIncludeTillBeginningOfLine = False
+        self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'
 
     def analyze(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)
@@ -82,7 +86,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                                dAnalysis[iLine]['left_column'] = iColumn
                            break
 
-                   iColumn += len(oToken.get_value())
+                   iColumn += alignment_utils.update_column_width(self, oToken)
 
                if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
                    add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
@@ -97,6 +101,18 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                    dAnalysis = {}
 
                if isinstance(oToken, token.generic_map_aspect.close_parenthesis) and self.separate_generic_port_alignment:
+                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   for iKey in list(dAnalysis.keys()):
+                       if dAnalysis[iKey]['adjust'] != 0:
+                           oLineTokens = oFile.get_tokens_from_line(iKey)
+                           sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
+                           oViolation.set_action(dAnalysis[iKey])
+                           self.add_violation(oViolation)
+
+                   dAnalysis = {}
+
+               if generate_statement_detected(self, oToken):
                    add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
@@ -185,3 +201,39 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
     else:
         for iKey in list(dAnalysis.keys()):
             dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
+
+
+def generate_statement_detected(self, oToken):
+    if not self.generate_statement_ends_group:
+        return False
+    if generate_label_detected(oToken):
+        return True
+    if generate_semicolon_detected(oToken):
+        return True
+    if case_generate_alternative_detected(oToken):
+        return True
+    return False
+
+
+def generate_label_detected(oToken):
+    if isinstance(oToken, token.if_generate_statement.generate_label):
+        return True
+    if isinstance(oToken, token.for_generate_statement.generate_label):
+        return True
+    return False
+
+
+def generate_semicolon_detected(oToken):
+    if isinstance(oToken, token.if_generate_statement.semicolon):
+        return True
+    if isinstance(oToken, token.for_generate_statement.semicolon):
+        return True
+    if isinstance(oToken, token.case_generate_statement.semicolon):
+        return True
+    return False
+
+
+def case_generate_alternative_detected(oToken):
+    if isinstance(oToken, token.case_generate_alternative.when_keyword):
+        return True
+    return False

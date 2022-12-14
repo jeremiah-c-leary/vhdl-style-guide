@@ -5,11 +5,14 @@
 .. |configuring_block_comments_link| replace::
    Refer to :ref:`configuring-block-comments` for more information.
 
-.. |configuring_concurrent_alignment_rules_link| replace::
-   Refer to :ref:`configuring-concurrent-alignment-rules` for more information.
+.. |configuring_conditional_multiline_indent_rules_link| replace::
+   Refer to :ref:`configuring-conditional-multiline-indent-rules` for more information.
 
 .. |configuring_conditional_expressions_structure_rules_link| replace::
    Refer to :ref:`configuring-conditional-expressions-structure-rules` for more information.
+
+.. |configuring_consecutive_blank_line_rules| replace::
+   Refer to :ref:`configuring-consecutive-blank-line-rules` for more information.
 
 .. |configuring_disabled_rules_link| replace::
    Refer to :ref:`configuring-disabled-rules` for more information.
@@ -32,11 +35,20 @@
 .. |configuring_multiline_indent_rules_link| replace::
    Refer to :ref:`configuring-multiline-indent-rules` for more information.
 
-.. |configuring_multiline_structure_rules_link| replace::
-   Refer to :ref:`configuring-multiline-structure-rules` for more information.
+.. |configuring_selected_assignment_structure_rules_link| replace::
+   Refer to :ref:`configuring-selected-assignment-structure-rules` for more information.
+
+.. |configuring_simple_multiline_structure_rules_link| replace::
+   Refer to :ref:`configuring-simple-multiline-structure-rules` for more information.
+
+.. |configuring_array_multiline_structure_rules_link| replace::
+   Refer to :ref:`configuring-array-multiline-structure-rules` for more information.
 
 .. |configuring_multiline_constraint_rules_link| replace::
    Refer to :ref:`configuring-multiline-constraint-rules` for more information.
+
+.. |configuring_multiline_report_rule_link| replace::
+   Refer to :ref:`configuring-multiline-report-rule` for more information.
 
 .. |configuring_number_of_signals_in_signal_declaration_link| replace::
    Refer to :ref:`configuring-number-of-signals-in-signal-declaration` for more information.

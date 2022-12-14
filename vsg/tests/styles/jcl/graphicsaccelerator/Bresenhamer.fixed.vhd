@@ -54,7 +54,7 @@ architecture BEHAVIORAL of BRESENHAMER is
   signal minus_dx_minus_dy  : std_logic_vector(11 downto 0);
   signal minus_dx_plus_dy   : std_logic_vector(11 downto 0);
   signal dx_plus_dy         : std_logic_vector(11 downto 0);
-  signal state              : std_logic_vector(3 downto 0) := "0000";
+  signal state              : std_logic_vector(3 downto 0)  := "0000";
   signal condx1x2, condy1y2 : std_logic;
   signal ccounter           : std_logic_vector(18 downto 0) := "0000000000000000000";
 

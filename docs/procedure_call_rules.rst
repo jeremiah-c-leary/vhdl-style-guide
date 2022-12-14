@@ -80,6 +80,8 @@ procedure_call_100
 
 This rule checks for a single space between the following block elements:  label, label colon, **postponed** keyword and the *procedure* name.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -91,6 +93,37 @@ This rule checks for a single space between the following block elements:  label
 .. code-block:: vhdl
 
    procedure_label : postponed WR_EN(parameter);
+
+procedure_call_101
+##################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **=>** operator in procedure calls.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1 =>    data,
+     port_2 =>enable,
+     port_3 =>  overflow,
+     port_4 => underflow
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   connect_ports(
+     port_1 => data,
+     port_2 => enable,
+     port_3 => overflow,
+     port_4 => underflow
+   );
 
 procedure_call_300
 ##################
@@ -168,6 +201,8 @@ procedure_call_400
 
 This rule checks the alignment of multiline procedure calls.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -190,6 +225,8 @@ procedure_call_401
 |phase_5| |error| |alignment|
 
 This rule checks the alignment of :code:`=>` keywords in procedure calls.
+
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 

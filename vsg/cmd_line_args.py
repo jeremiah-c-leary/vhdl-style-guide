@@ -10,6 +10,7 @@ import multiprocessing
 from . import junit
 from . import rule_list
 from . import severity
+from . import utils
 from . import version
 from . import vhdlFile
 import argparse
@@ -29,9 +30,13 @@ def __is_valid_file(value: str) -> str:
     :param value: String path to analyze.
     :return:
     """
-    if not os.path.isfile(value):
-        raise argparse.ArgumentTypeError(f"The file {value} does not exist.")
-    return value
+    lFileNames = glob.glob(utils.expand_filename(value), recursive=True)
+    if len(lFileNames) == 0:
+        if '*' in value:
+            raise argparse.ArgumentTypeError(f"The file glob {value} did not match any files.")
+        else:
+            raise argparse.ArgumentTypeError(f"The file {value} does not exist.")
+    return lFileNames
 
 
 def parse_command_line_arguments():
@@ -80,6 +85,8 @@ def parse_command_line_arguments():
 
     validate_backup_argument(args_)
     validate_ap_argument(args_)
+    fix_filename_argument(args_)
+    fix_configuration_argument(args_)
 
     if sys.platform == "win32":
         # Work around https://bugs.python.org/issue26903
@@ -135,3 +142,21 @@ def add_quality_report_argument(parser):
         action='store',
         help='Create code quality report for GitLab'
     )
+
+
+def fix_filename_argument(args_):
+    if args_.filename is None:
+        return None
+    lUpdate = []
+    for lFilenames in args_.filename:
+        lUpdate.extend(lFilenames)
+    args_.filename = lUpdate
+
+
+def fix_configuration_argument(args_):
+    if args_.configuration is None:
+        return None
+    lUpdate = []
+    for lFilenames in args_.configuration:
+        lUpdate.extend(lFilenames)
+    args_.configuration = lUpdate

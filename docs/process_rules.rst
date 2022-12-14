@@ -368,7 +368,7 @@ process_015
 
 This rule checks for blank lines or comments above the **process** declaration.
 
-|configuring_blank_lines_link|
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -494,6 +494,8 @@ process_020
 |phase_4| |error| |alignment|
 
 This rule checks the indentation of multiline sensitivity lists.
+
+|configuring_multiline_indent_rules_link|
 
 **Violation**
 
@@ -867,6 +869,8 @@ process_031
 |phase_5| |error| |alignment|
 
 This rule checks for alignment of identifiers in the process declarative region.
+
+|configuring_keyword_alignment_rules_link|
 
 **Violation**
 

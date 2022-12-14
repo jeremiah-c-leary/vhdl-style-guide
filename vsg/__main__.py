@@ -128,22 +128,26 @@ def main():
     lReturn = []
     if commandLineArguments.jobs == 1:
         for iIndex, sFileName in enumerate(commandLineArguments.filename):
-            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = f((iIndex, sFileName))
+            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles = f((iIndex, sFileName))
             lReturn.append((fStatus, testCase, dJsonEntry))
             if sOutputStd:
                 print(sOutputStd)
             if sOutputErr:
                 print(sOutputErr, file=sys.stderr)
+            if bKeepProcessingFiles:
+                break
 
     else:
         with multiprocessing.Pool(commandLineArguments.jobs) as pool:
             for tResult in pool.imap(f, enumerate(commandLineArguments.filename)):
-                fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr = tResult
+                fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles = tResult
                 lReturn.append((fStatus, testCase, dJsonEntry))
                 if sOutputStd:
                     print(sOutputStd)
                 if sOutputErr:
                     print(sOutputErr, file=sys.stderr)
+                if bKeepProcessingFiles:
+                    break
 
     for tValue in lReturn:
         fStatus, testCase, dJsonEntry = tValue

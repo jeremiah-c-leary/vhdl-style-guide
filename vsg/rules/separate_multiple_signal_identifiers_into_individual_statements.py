@@ -35,6 +35,7 @@ class separate_multiple_signal_identifiers_into_individual_statements(structure.
         self.lTokens = lTokens
         self.consecutive = iAllow
         self.configuration.append('consecutive')
+        self.configuration_documentation_link = 'configuring_number_of_signals_in_signal_declaration_link'
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.signal_declaration.signal_keyword, token.signal_declaration.semicolon)

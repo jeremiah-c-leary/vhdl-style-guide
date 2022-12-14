@@ -177,19 +177,11 @@ class test_concurrent_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    @unittest.skip('Yes')
     def test_rule_009(self):
         oRule = concurrent.rule_009()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '009')
-
-        lExpected = [46, 49, 53, 54, 57, 58, 59, 60, 63, 64, 65, 66, 67]
-        lExpected.extend(range(70, 75))
-        lExpected.extend(range(77, 80))
-
-        oRule.analyze(self.oFile)
-        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_009_align_left_no(self):
         oRule = concurrent.rule_009()

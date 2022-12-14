@@ -20,3 +20,4 @@ class Rule(rule.Rule):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 7
         self.groups.append('naming')
+        self.configuration_documentation_link = 'configuring_prefix_and_suffix_rules_link'

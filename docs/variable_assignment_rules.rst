@@ -85,6 +85,8 @@ variable_assignment_004
 
 This rule checks the alignment of multiline variable assignments.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -125,4 +127,125 @@ This rule checks for comments in multiline variable assignments.
 
      counter := 1 + 4 + 10 + 25 +
                 30 + 35;
+
+variable_assignment_007
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of simple and conditional variable assignments.
+
+|configuring_simple_multiline_structure_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_en :=
+     '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo :=
+     I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_en := '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo := I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
+variable_assignment_008
+#######################
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of multiline variable assignments that contain arrays.
+
+|configuring_array_multiline_structure_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data := (0, 65535, 32768);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data :=
+   (
+     0,
+     65535,
+     32768
+   );
+
+variable_assignment_400
+#######################
+
+|phase_5| |error| |alignment|
+
+This rule checks alignment of multiline conditional variable assignments.
+
+|configuring_conditional_multiline_indent_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_en := '0' when q_wr_en = '1' else
+        '1';
+
+   w_foo := I_FOO when ((I_BAR = '1') and
+            (I_CRUFT = '1')) else
+            '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_en := '0' when q_wr_en = '1' else
+            '1';
+
+   w_foo := I_FOO when ((I_BAR = '1') and
+                        (I_CRUFT = '1')) else
+            '0';
+
+variable_assignment_401
+#######################
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of multiline variable assignments that contain arrays.
+
+|configuring_multiline_indent_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data :=
+   (
+            0,
+        65535,
+        32768
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data :=
+   (
+     0,
+     65535,
+     32768
+   );
 

@@ -41,3 +41,4 @@ class rule_010(blank_lines_between_token_pairs):
 
     def __init__(self):
         blank_lines_between_token_pairs.__init__(self, 'concurrent', '010', lTokenPairs)
+        self.configuration_documentation_link = None

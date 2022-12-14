@@ -75,8 +75,20 @@ def update_code_tags(oToken1, oToken2):
     return oToken2
 
 
-def insert_whitespace(lTokens, index, num=1):
-    insert_token(lTokens, index, parser.whitespace(' '*num))
+def insert_whitespace(lTokens, index, num=1, sString=' '):
+    if sString == ' ':
+        insert_token(lTokens, index, parser.whitespace(' '*num))
+    else:
+        oToken = parser.whitespace('\t'*num)
+        oToken.has_tabs = True
+        insert_token(lTokens, index, oToken)
+
+
+def insert_new_whitespace(lTokens, index, sWhitespace):
+    oToken = parser.whitespace(sWhitespace)
+    if '\t' in sWhitespace:
+        oToken.has_tabs = True
+    insert_token(lTokens, index, oToken)
 
 
 def insert_carriage_return(lTokens, index):
@@ -100,6 +112,14 @@ def get_index_of_token_in_list(oToken, lTokens):
         if isinstance(token, oToken):
             return iToken
     return None
+
+
+def get_indexes_of_token_in_list(oToken, lTokens):
+    lReturn = []
+    for iToken, token in enumerate(lTokens):
+        if isinstance(token, oToken):
+            lReturn.append(iToken)
+    return lReturn
 
 
 def get_number_of_carriage_returns_before_token(oStopToken, lTokens):
@@ -328,6 +348,14 @@ def update_close_paren_counter(oToken, iCloseParen):
     return iCloseParen
 
 
+def update_paren_counter(oToken, iParen):
+    if token_is_open_paren(oToken):
+        iParen += 1
+    elif token_is_close_paren(oToken):
+        iParen -= 1
+    return iParen
+
+
 def analyze_with_function(self, oToi, oTokenType, fFunction):
     iLine, lTokens = get_toi_parameters(oToi)
 
@@ -338,3 +366,44 @@ def analyze_with_function(self, oToi, oTokenType, fFunction):
             oToi.set_meta_data('iStart', iToken)
             oToi.set_meta_data('iToken', iToken)
             fFunction(self, oToi)
+
+def token_exists_in_token_type_list(oToken, lTypeTokens):
+    for oTokenType in lTypeTokens:
+        if isinstance(oToken, oTokenType):
+            return True
+    return False
+
+def is_next_token_ignoring_whitespace(oToken, iToken, lTokens):
+    iToken = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
+    if isinstance(lTokens[iToken], oToken):
+        return True
+    return False
+
+
+def array_detected_after_assignment_operator(assignment_operator, oToi):
+    lTokens = oToi.get_tokens()
+    if not open_paren_after_assignment_operator(assignment_operator, lTokens):
+        return False
+
+    iParen = 0
+    bFirstTokenFound = False
+    for oToken in lTokens:
+        if second_open_paren_detected_after_first_open_paren_was_closed(bFirstTokenFound, iParen, oToken):
+            return False
+        iParen = update_paren_counter(oToken, iParen)
+        if not bFirstTokenFound:
+            bFirstTokenFound = token_is_open_paren(oToken)
+#        print(f'{iParen}|{bFirstTokenFound}|{oToken}')
+    return True
+
+
+def second_open_paren_detected_after_first_open_paren_was_closed(bFirstTokenFound, iParen, oToken):
+    if bFirstTokenFound:
+        if iParen == 0 and token_is_open_paren(oToken):
+            return True
+    return False
+
+
+def open_paren_after_assignment_operator(assignment_operator, lTokens):
+    iToken = get_index_of_token_in_list(assignment_operator, lTokens)
+    return is_next_token_ignoring_whitespace(parser.open_parenthesis, iToken, lTokens)

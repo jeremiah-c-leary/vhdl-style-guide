@@ -3,7 +3,8 @@ from vsg import token
 
 from vsg.rules import move_token_left_to_next_non_whitespace_token as Rule
 
-oToken = token.component_instantiation_statement.semicolon
+lTokens = []
+lTokens.append(token.component_instantiation_statement.semicolon)
 
 
 class rule_035(Rule):
@@ -31,5 +32,5 @@ class rule_035(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'instantiation', '035', oToken)
+        Rule.__init__(self, 'instantiation', '035', lTokens)
         self.bInsertWhitespace = False

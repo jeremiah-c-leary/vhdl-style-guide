@@ -113,6 +113,8 @@ generic_006
 
 This rule checks for a single space after the default assignment.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl

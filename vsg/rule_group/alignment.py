@@ -20,3 +20,4 @@ class Rule(rule.Rule):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 5
         self.groups.append('alignment')
+        self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'

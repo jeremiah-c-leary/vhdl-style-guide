@@ -150,10 +150,13 @@ class rule_list():
                 self.oVhdlFile.set_token_indent()
 
             for subphase in range(0, 5):
+                #print(f'phase {phase}.{subphase} ' + '-'*80)
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
+                lRules = enforce_prerequisites(lRules)
                 for oRule in lRules:
+                    #print(oRule.unique_id)
                     if oRule.severity.type == severity.error_type:
                         oRule.fix(self.oVhdlFile, dFixOnly)
                     else:
@@ -242,7 +245,6 @@ class rule_list():
 
           sOutputFormat (string)
         '''
-#        print('--> report_violations')
         dRunInfo = {}
         dRunInfo['filename'] = self.oVhdlFile.filename
         dRunInfo['stopPhase'] = 7
@@ -251,7 +253,6 @@ class rule_list():
         for oRule in self.rules:
             if oRule.has_violations():
                 lViolations = oRule.get_violations()
-#                    print(f'{oRule.name}_{oRule.identifier} | {iLineNumber} | {len(lViolations)}')
                 dRunInfo['violations'].extend(lViolations)
         dRunInfo['violations'] = sorted(dRunInfo['violations'], key=lambda x: int(x['lineNumber']))
         dRunInfo['stopPhase'] = self.lastPhaseRan
@@ -266,7 +267,6 @@ class rule_list():
             name = dViolation['severity']['name']
             dRunInfo['severities'][name] = dRunInfo['severities'][name] + 1
 
-#        print(dRunInfo)
         if sOutputFormat == 'vsg':
             sOutputStd, sOutputErr = report.vsg_stdout.print_output(dRunInfo)
         elif sOutputFormat == 'syntastic':
@@ -439,4 +439,26 @@ def is_global_configuration(sName):
 def is_group_configuration(sName):
     if sName == 'group':
         return True
+    return False
+
+
+def enforce_prerequisites(lRules):
+    lReturn = []
+    lPrereqs = []
+    for oRule in lRules:
+        if oRule.prerequisites == []:
+            lReturn.append(oRule)
+        else:
+            lPrereqs.append(oRule)
+    lReturn.extend(lPrereqs)
+    return lReturn
+
+
+def rule_prerequisites_met(oRule, lTestsRan):
+    print(oRule.unique_id)
+    if len(oRule.prerequisites) == 0:
+        return True
+    for oPrerequisite in oRule.prerequisites:
+        if oPrerequisite.unique_id in lTestsRan:
+            return True
     return False

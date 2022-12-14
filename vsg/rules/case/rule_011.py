@@ -1,10 +1,10 @@
 
-from vsg.rules import align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token
+from vsg.rules import align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token as Rule
 
 from vsg.token import case_statement_alternative as token
 
 
-class rule_011(align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token):
+class rule_011(Rule):
     '''
     This rule checks the alignment of multiline **when** statements.
 
@@ -28,5 +28,8 @@ class rule_011(align_consecutive_lines_after_line_starting_with_token_and_stoppi
     '''
 
     def __init__(self):
-        align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token.__init__(self, 'case', '011', token.when_keyword, token.assignment)
+        Rule.__init__(self, 'case', '011')
+        self.lStartTokens = [token.when_keyword]
+        self.lEndTokens = [token.assignment]
         self.solution = 'Align one space after *when* keyword'
+        self.configuration_documentation_link = None

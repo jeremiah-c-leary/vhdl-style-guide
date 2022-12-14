@@ -36,9 +36,11 @@ class multiline_structure(structure.Rule):
 
     def __init__(self, name, identifier, lTokenPairs):
         structure.Rule.__init__(self, name=name, identifier=identifier)
-        self.phase = 5
+        self.phase = 1
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = True
+        self.assignment_operator = None
+        self.configuration_documentation_link = 'configuring_array_multiline_structure_rules_link'
 
         self.first_paren_new_line = 'yes'
         self.configuration.append('first_paren_new_line')
@@ -55,7 +57,6 @@ class multiline_structure(structure.Rule):
         self.ignore_single_line = 'yes'
         self.configuration.append('ignore_single_line')
         self.move_last_comment = 'ignore'
-        self.configuration.append('move_last_comment')
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -65,15 +66,17 @@ class multiline_structure(structure.Rule):
 
         lReturn = []
         for oToi in lToi:
-            if rules_utils.is_single_line(oToi) and self.ignore_single_line:
+            if rules_utils.is_single_line(oToi) and self.ignore_single_line == 'yes':
                 continue
 
-            if not _is_open_paren_after_assignment(oToi):
-                continue
+#            if not _is_open_paren_after_assignment(self, oToi):
+#                continue
 
             lReturn.append(oToi)
 
-        return lReturn
+        lMyReturn = remove_non_arrays(self.assignment_operator, lReturn)
+
+        return lMyReturn
 
     def _analyze(self, lToi):
         for oToi in lToi:
@@ -101,7 +104,7 @@ def _check_first_paren_new_line(self, oToi):
     bSearch = False
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
-        if isinstance(oToken, token.constant_declaration.assignment_operator):
+        if isinstance(oToken, self.assignment_operator):
             iStart = iToken
             bSearch = True
         if isinstance(oToken, parser.open_parenthesis) and bSearch:
@@ -162,6 +165,7 @@ def _check_last_paren_new_line(self, oToi):
                     oToi.set_meta_data('sAction', 'insert_and_move_comment')
                     oToi.set_meta_data('sSolution', sSolution)
                     oViolation = _create_violation(oToi)
+                    oViolation.semicolon = self.semicolon
                     self.add_violation(oViolation)
                 else:
                     sSolution = 'Move closing parenthesis to the next line.'
@@ -172,6 +176,7 @@ def _check_last_paren_new_line(self, oToi):
                     oToi.set_meta_data('sAction', 'insert')
                     oToi.set_meta_data('sSolution', sSolution)
                     oViolation = _create_violation(oToi)
+                    oViolation.semicolon = self.semicolon
                     self.add_violation(oViolation)
             elif self.last_paren_new_line == 'no' and bReturnFound:
                 iStart = utils.find_previous_non_whitespace_token(iEnd - 1, lTokens)
@@ -182,6 +187,7 @@ def _check_last_paren_new_line(self, oToi):
                 oToi.set_meta_data('sAction', 'remove')
                 oToi.set_meta_data('sSolution', 'Move closing parenthesis to previous line.')
                 oViolation = _create_violation(oToi)
+                oViolation.semicolon = self.semicolon
                 self.add_violation(oViolation)
 
             break
@@ -197,7 +203,7 @@ def _check_open_paren_new_line(self, oToi):
     bAssignmentFound = False
     bOthersClause = False
 
-    iToken = _find_assignment_operator(lTokens) + 1
+    iToken = _find_assignment_operator(self, lTokens) + 1
     iStopIndex = len(lTokens)
     bFirstParenFound = False
     while iToken < iStopIndex:
@@ -260,7 +266,7 @@ def _check_close_paren_new_line(self, oToi):
     bAssignmentFound = False
     bOthersClause = False
 
-    iToken = _find_assignment_operator(lTokens) + 1
+    iToken = _find_assignment_operator(self, lTokens) + 1
     iStopIndex = _find_last_closing_paren(lTokens)
     bFirstParenFound = False
     while iToken < iStopIndex:
@@ -327,7 +333,7 @@ def _check_new_line_after_comma(self, oToi):
     bOthersClause = False
     bPositionalFound = True
 
-    iToken = _find_assignment_operator(lTokens) + 1
+    iToken = _find_assignment_operator(self, lTokens) + 1
     iStopIndex = len(lTokens)
     bFirstParenFound = False
     while iToken < iStopIndex:
@@ -395,7 +401,7 @@ def _check_assign_on_single_line(self, oToi):
     bAssignmentFound = False
     bOthersClause = False
 
-    iToken = _find_assignment_operator(lTokens) + 1
+    iToken = _find_assignment_operator(self, lTokens) + 1
     iStopIndex = len(lTokens)
     bFirstParenFound = False
     while iToken < iStopIndex:
@@ -434,12 +440,12 @@ def _check_assign_on_single_line(self, oToi):
     return None
 
 
-def _is_open_paren_after_assignment(oToi):
+def _is_open_paren_after_assignment(self, oToi):
 
     lTokens = oToi.get_tokens()
     for iToken, oToken in enumerate(lTokens):
-        if isinstance(oToken, token.constant_declaration.assignment_operator):
-            lExpectedTokens = [token.constant_declaration.assignment_operator, parser.open_parenthesis]
+        if isinstance(oToken, self.assignment_operator):
+            lExpectedTokens = [self.assignment_operator, parser.open_parenthesis]
             if utils.are_next_consecutive_token_types_ignoring_whitespace(lExpectedTokens, iToken, lTokens):
                 return True
     return False
@@ -477,7 +483,8 @@ def _fix_last_paren_new_line(oViolation):
     elif dAction['action'] == 'insert_and_move_comment':
         if not isinstance(lTokens[0], parser.whitespace):
             rules_utils.insert_whitespace(lTokens, 1)
-        iSwapIndex = rules_utils.get_index_of_token_in_list(token.constant_declaration.semicolon, lTokens) + 1
+        oSemicolon = oViolation
+        iSwapIndex = rules_utils.get_index_of_token_in_list(oViolation.semicolon, lTokens) + 1
         lNewTokens = []
         lNewTokens.append(lTokens[0])
         lNewTokens.extend(lTokens[iSwapIndex:])
@@ -583,14 +590,14 @@ def _create_action_dictionary(sType, sAction):
 def _found_assignment_operator(oToken, bSearch):
     if bSearch:
         return True
-    if isinstance(oToken, token.constant_declaration.assignment_operator):
+    if isinstance(oToken, self.assignment_operator):
         return True
     return False
 
 
-def _find_assignment_operator(lTokens):
+def _find_assignment_operator(self, lTokens):
     for iToken, oToken in enumerate(lTokens):
-        if isinstance(oToken, token.constant_declaration.assignment_operator):
+        if isinstance(oToken, self.assignment_operator):
             return iToken
     return None
 
@@ -666,3 +673,11 @@ def _classify_others(iToken, lTokens):
                 return iEnd, True
 
     return iToken, False
+
+
+def remove_non_arrays(assignment_operator, lToi):
+    lReturn = []
+    for oToi in lToi:
+        if rules_utils.array_detected_after_assignment_operator(assignment_operator, oToi):
+            lReturn.append(oToi)
+    return lReturn

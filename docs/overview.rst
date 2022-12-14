@@ -50,8 +50,7 @@ Key Features
 * Fully configurable rules via JSON/YAML configuration file
 
   * Disable rules
-  * Alter behavior of existing rules
-  * Change phase of execution
+  * Alter behavior of rules
 
 * Localize rule sets
 

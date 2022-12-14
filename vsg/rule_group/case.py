@@ -20,3 +20,4 @@ class Rule(rule.Rule):
         rule.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 6
         self.groups.append('case')
+        self.configuration_documentation_link = 'configuring_uppercase_and_lowercase_rules_link'

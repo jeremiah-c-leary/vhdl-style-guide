@@ -74,7 +74,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -139,7 +139,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -184,7 +184,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -249,7 +249,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -338,16 +338,355 @@
 41 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-42 | begin
+42 |   -- Test default assignments
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+43 |   procedure proc_4 (
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+44 |     constant a : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+45 |     variable b : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+46 |     signal   c : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'))
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+--------------------------------------------------------------------------------
+47 |   ) is
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_body.is_keyword'>
+--------------------------------------------------------------------------------
+48 |   begin
+<class 'vsg.token.subprogram_body.begin_keyword'>
+--------------------------------------------------------------------------------
+49 |     b <= a;
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+50 |   end procedure proc_4;
+<class 'vsg.token.subprogram_body.end_keyword'>
+<class 'vsg.token.subprogram_kind.procedure_keyword'>
+<class 'vsg.token.subprogram_body.designator'>
+<class 'vsg.token.subprogram_body.semicolon'>
+--------------------------------------------------------------------------------
+51 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+52 |   -- Test default assignments
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+53 |   procedure proc_4 (
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+54 |     variable b : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+55 |     signal   c : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+56 |     constant a : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'))
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+--------------------------------------------------------------------------------
+57 |   ) is
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_body.is_keyword'>
+--------------------------------------------------------------------------------
+58 |   begin
+<class 'vsg.token.subprogram_body.begin_keyword'>
+--------------------------------------------------------------------------------
+59 |     b <= a;
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+60 |   end procedure proc_4;
+<class 'vsg.token.subprogram_body.end_keyword'>
+<class 'vsg.token.subprogram_kind.procedure_keyword'>
+<class 'vsg.token.subprogram_body.designator'>
+<class 'vsg.token.subprogram_body.semicolon'>
+--------------------------------------------------------------------------------
+61 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+62 |   -- Test default assignments
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+63 |   procedure proc_4 (
+<class 'vsg.token.procedure_specification.procedure_keyword'>
+<class 'vsg.token.procedure_specification.designator'>
+<class 'vsg.token.procedure_specification.open_parenthesis'>
+--------------------------------------------------------------------------------
+64 |     signal   c : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+65 |     constant a : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'));
+<class 'vsg.token.interface_constant_declaration.constant_keyword'>
+<class 'vsg.token.interface_constant_declaration.identifier'>
+<class 'vsg.token.interface_constant_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_constant_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+66 |     variable b : in t_slv_array(0 to 1)(7 downto 0) := (others => (others => '0'))
+<class 'vsg.token.interface_variable_declaration.variable_keyword'>
+<class 'vsg.token.interface_variable_declaration.identifier'>
+<class 'vsg.token.interface_variable_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.interface_variable_declaration.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+--------------------------------------------------------------------------------
+67 |   ) is
+<class 'vsg.token.procedure_specification.close_parenthesis'>
+<class 'vsg.token.subprogram_body.is_keyword'>
+--------------------------------------------------------------------------------
+68 |   begin
+<class 'vsg.token.subprogram_body.begin_keyword'>
+--------------------------------------------------------------------------------
+69 |     b <= a;
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+70 |   end procedure proc_4;
+<class 'vsg.token.subprogram_body.end_keyword'>
+<class 'vsg.token.subprogram_kind.procedure_keyword'>
+<class 'vsg.token.subprogram_body.designator'>
+<class 'vsg.token.subprogram_body.semicolon'>
+--------------------------------------------------------------------------------
+71 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+72 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-43 |
+73 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-44 |
+74 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-45 | end architecture RTL;
+75 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

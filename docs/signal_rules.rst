@@ -56,7 +56,7 @@ This rule checks the **signal** keyword has proper case.
 signal_003
 ##########
 
-This rule was depricated and replaced with rules:
+This rule was deprecated and replaced with rules:
 
 * `function_015 <function_rules.html#function-015>`_
 * `package_019 <package_rules.html#package-019>`_
@@ -304,7 +304,7 @@ By default, this rule will only flag more than two signal declarations.
 signal_016
 ##########
 
-This rule was depricated and replaced with rule:
+This rule was deprecated and replaced with rule:
 
 * `signal_017 <signal_rules.html#signal-017>`_
 
