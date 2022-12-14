@@ -76,6 +76,8 @@ from .move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
 from .number_of_lines_between_tokens import number_of_lines_between_tokens
 from .token_does_not_exist_before_token import Rule as token_does_not_exist_before_token
 
+from .experiment import Rule as experiment
+
 from vsg.rules import alias_declaration
 from vsg.rules import after
 from vsg.rules import architecture
@@ -128,6 +130,7 @@ from vsg.rules import process
 from vsg.rules import ranges
 from vsg.rules import record_type_definition
 from vsg.rules import report_statement
+from vsg.rules import selected_assignment
 from vsg.rules import sequential
 from vsg.rules import signal
 from vsg.rules import source_file

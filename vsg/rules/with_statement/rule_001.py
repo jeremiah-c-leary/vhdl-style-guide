@@ -1,34 +1,13 @@
 
-from vsg import token
-from vsg import violation
-
-from vsg.rule_group import structure
+from vsg import deprecated_rule
 
 
-class rule_001(structure.Rule):
+class rule_001(deprecated_rule.Rule):
     '''
-    This rule checks for **with** statements.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       with buttons select
-
-    **Fix**
-
-    Refactor **with** statement into a process.
+    This rule has been replaced with rules in the selected_assignment group.
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, name='with', identifier='001')
-        self.solution = "Rewrite with as a process"
-        self.fixable = False
-        self.configuration_documentation_link = None
 
-    def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_matching([token.concurrent_selected_signal_assignment.with_keyword])
-
-    def _analyze(self, lToi):
-        for oToi in lToi:
-            self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+        deprecated_rule.Rule.__init__(self, 'with', '001')
+        self.message.append('Rule ' + self.unique_id + ' has been replaced by selected_assignment rules.')

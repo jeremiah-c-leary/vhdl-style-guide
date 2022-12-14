@@ -114,7 +114,10 @@ indent:
         concurrent_selected_signal_assignment:
             with_keyword:
                 token : current
-                after : current
+                after : '+1'
+            semicolon:
+                token : current
+                after : '-1'
         concurrent_signal_assignment_statement:
             label_name:
                 token : current
@@ -419,10 +422,27 @@ indent:
             return_keyword:
                 token : current
                 after : current
+        selected_force_assignment:
+            with_keyword:
+                token : current
+                after : '+1'
+            semicolon:
+                token : current
+                after : '-1'
         selected_variable_assignment:
             with_keyword:
                 token : current
-                after : current
+                after : '+1'
+            semicolon:
+                token : current
+                after : '-1'
+        selected_waveform_assignment:
+            with_keyword:
+                token : current
+                after : '+1'
+            semicolon:
+                token : current
+                after : '-1'
         signal_assignment_statement:
             label:
                 token : current

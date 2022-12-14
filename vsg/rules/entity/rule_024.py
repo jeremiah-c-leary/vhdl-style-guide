@@ -3,7 +3,8 @@ from vsg import token
 
 from vsg.rules import move_token_left_to_next_non_whitespace_token as Rule
 
-oToken = token.entity_declaration.entity_simple_name
+lTokens = []
+lTokens.append(token.entity_declaration.entity_simple_name)
 
 
 class rule_024(Rule):
@@ -29,6 +30,6 @@ class rule_024(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'entity', '024', oToken)
+        Rule.__init__(self, 'entity', '024', lTokens)
         self.subphase = 2
         self.bRemoveTrailingWhitespace = False

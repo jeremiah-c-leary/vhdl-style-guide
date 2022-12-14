@@ -367,6 +367,11 @@ def analyze_with_function(self, oToi, oTokenType, fFunction):
             oToi.set_meta_data('iToken', iToken)
             fFunction(self, oToi)
 
+def token_exists_in_token_type_list(oToken, lTypeTokens):
+    for oTokenType in lTypeTokens:
+        if isinstance(oToken, oTokenType):
+            return True
+    return False
 
 def is_next_token_ignoring_whitespace(oToken, iToken, lTokens):
     iToken = utils.find_next_non_whitespace_token(iToken + 1, lTokens)

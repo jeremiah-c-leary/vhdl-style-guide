@@ -193,6 +193,14 @@ Rules Enforcing Whitespace
 * `record_type_definition_101 <record_type_definition_rules.html#record-type-definition-101>`_
 * `report_statement_100 <report_statement_rules.html#report-statement-100>`_
 * `report_statement_101 <report_statement_rules.html#report-statement-101>`_
+* `selected_assignment_100 <selected_assignment_rules.html#selected-assignment-100>`_
+* `selected_assignment_101 <selected_assignment_rules.html#selected-assignment-101>`_
+* `selected_assignment_102 <selected_assignment_rules.html#selected-assignment-102>`_
+* `selected_assignment_103 <selected_assignment_rules.html#selected-assignment-103>`_
+* `selected_assignment_104 <selected_assignment_rules.html#selected-assignment-104>`_
+* `selected_assignment_105 <selected_assignment_rules.html#selected-assignment-105>`_
+* `selected_assignment_106 <selected_assignment_rules.html#selected-assignment-106>`_
+* `selected_assignment_107 <selected_assignment_rules.html#selected-assignment-107>`_
 * `sequential_002 <sequential_rules.html#sequential-002>`_
 * `sequential_003 <sequential_rules.html#sequential-003>`_
 * `signal_005 <signal_rules.html#signal-005>`_

@@ -38,6 +38,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
         self.bIgnoreStartParen = False
         self.bConstraint = False
         self.iIndentAfterParen = 1
+        self.override = False
         self.configuration_documentation_link = 'configuring_multiline_indent_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
@@ -127,7 +128,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
             iFirstTokenLength = len(lTokens[0].get_value())
 
             if self.align_paren == 'no' and self.align_left == 'yes':
-                dExpectedIndent = _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, self.indentSize, dActualIndent, bStartsWithParen, self.bIgnoreStartParen)
+                dExpectedIndent = _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, self.indentSize, dActualIndent, bStartsWithParen, self.bIgnoreStartParen, self.override)
             if self.align_paren == 'yes' and self.align_left == 'no':
                 dExpectedIndent = _analyze_align_left_no_align_paren_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, iFirstTokenLength, self.bIgnoreStartParen, self.iIndentAfterParen)
             if self.align_paren == 'yes' and self.align_left == 'yes':
@@ -226,18 +227,21 @@ def _set_column_adjustment(iToken, lTokens):
     return iReturn
 
 
-def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent, bStartsWithParen, bIgnoreStartParen):
+def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent, bStartsWithParen, bIgnoreStartParen, bOverride):
 #    print('--> _analyze_align_left_yes_align_paren_no <-' + '-'*70)
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
-    if bStartsWithParen or bIgnoreStartParen:
+
+    if bOverride:
+        iFirstIndent = dActualIndent[iFirstLine] + iIndentStep
+    elif bStartsWithParen or bIgnoreStartParen:
         iFirstIndent = dActualIndent[iFirstLine]
     else:
         iFirstIndent = dActualIndent[iFirstLine] + iIndentStep
 
     iIndent = iFirstIndent
 
-#    print(iIndent)
+#    print(f'{dExpectedIndent[iFirstLine]}|{iIndent}')
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):

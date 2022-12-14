@@ -35,6 +35,9 @@
 .. |configuring_multiline_indent_rules_link| replace::
    Refer to :ref:`configuring-multiline-indent-rules` for more information.
 
+.. |configuring_selected_assignment_structure_rules_link| replace::
+   Refer to :ref:`configuring-selected-assignment-structure-rules` for more information.
+
 .. |configuring_simple_multiline_structure_rules_link| replace::
    Refer to :ref:`configuring-simple-multiline-structure-rules` for more information.
 

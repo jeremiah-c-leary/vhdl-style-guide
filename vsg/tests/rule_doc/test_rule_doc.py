@@ -387,6 +387,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_selected_assignment_rules_doc(self):
+
+        lExpected, lActual = compare_files('selected_assignment')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_sequential_statement_rules_doc(self):
 
         lExpected, lActual = compare_files('sequential')
