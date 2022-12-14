@@ -73,3 +73,6 @@
 
 .. |configuring_whitespace_rules_link| replace::
    Refer to :ref:`configuring-whitespace-rules` for options on changing the number of whitespaces..
+
+.. |configuring_whitespace_after_comment_rules_link| replace::
+   Refer to :ref:`configuring-whitespace-after-comment-rules` for information on creating exceptions to this rule.
