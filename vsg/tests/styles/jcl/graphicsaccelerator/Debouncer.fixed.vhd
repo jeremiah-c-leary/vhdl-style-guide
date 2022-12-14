@@ -14,8 +14,8 @@ end entity DEBOUNCER;
 architecture BEHAVIORAL of DEBOUNCER is
 
   signal counter,       ncounter       : std_logic_vector(23 downto 0) := x"000000";
-  signal buttonhistory, nbuttonhistory : std_logic_vector(1 downto 0) := "00";
-  signal nexthistory                   : std_logic := '0';
+  signal buttonhistory, nbuttonhistory : std_logic_vector(1 downto 0)  := "00";
+  signal nexthistory                   : std_logic                     := '0';
 
 begin
 

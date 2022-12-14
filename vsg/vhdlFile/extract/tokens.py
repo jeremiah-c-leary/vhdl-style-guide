@@ -32,7 +32,7 @@ class New():
         lTokens = self.lTokens[iStart:iEnd + 1]
         iStartIndex = iStart + self.iStartIndex
         iLine = self.iLine
-        for iIndex in range(0, iStart + 1):
+        for iIndex in range(0, iStart):
             try:
                 if isinstance(self.lTokens[iIndex], parser.carriage_return):
                     iLine += 1

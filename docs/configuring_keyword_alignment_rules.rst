@@ -401,6 +401,7 @@ Rules Enforcing Keyword Alignment
 * `concurrent_006 <concurrent_rules.html#concurrent-006>`_
 * `concurrent_008 <concurrent_rules.html#concurrent-008>`_
 * `concurrent_400 <concurrent_rules.html#concurrent-400>`_
+* `declarative_part_400 <declarative_part_rules.html#declarative-part-400>`_
 * `entity_017 <entity_rules.html#entity-017>`_
 * `entity_018 <entity_rules.html#entity-018>`_
 * `entity_020 <entity_rules.html#entity-020>`_

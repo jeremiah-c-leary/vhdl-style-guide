@@ -96,6 +96,7 @@ from vsg.rules import conditional_waveforms
 from vsg.rules import constant
 from vsg.rules import context
 from vsg.rules import context_ref
+from vsg.rules import declarative_part
 from vsg.rules import element_association
 from vsg.rules import entity
 from vsg.rules import entity_specification

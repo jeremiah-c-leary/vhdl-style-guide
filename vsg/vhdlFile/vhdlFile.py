@@ -312,6 +312,10 @@ class vhdlFile():
                 return oToken.get_indent()
         return 0
 
+    def get_tokens_in_declarative_parts(self):
+        return extract.get_tokens_in_declarative_parts(self.lAllObjects, self.oTokenMap)
+
+
 def split_on_carriage_return(lObjects):
     lReturn = []
     lMyObjects = []

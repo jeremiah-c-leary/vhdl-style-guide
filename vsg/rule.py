@@ -27,6 +27,7 @@ class Rule():
         self.proposed = False
         self.groups = []
         self.configuration_documentation_link = None
+        self.prerequisites = []
 
     def configure(self, oConfig):
         '''Configures attributes on rules using a dictionary of the following form:
