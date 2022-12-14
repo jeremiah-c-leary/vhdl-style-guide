@@ -19,7 +19,7 @@ This behavior can be modified by using the :code:`exceptions` and :code:`pattern
 
 .. |patterns_description| replace::
    A list of patterns to insert whitespace after comment characters :code:`--`.
-   each pattern must start with :code:`--` and there is not restriction on length.
+   Each pattern must start with :code:`--` and there is not restriction on length.
    Patterns not starting with :code:`--` will be ignored.
 
 +--------------------------+-----------------------+--------------------------+
