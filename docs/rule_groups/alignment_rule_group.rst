@@ -1,0 +1,82 @@
+
+Alignment Rule Group
+____________________
+
+Rules Enforcing Alignment Rule Group
+####################################
+
+* `after_002 <after_rules.html#after-002>`_
+* `architecture_026 <architecture_rules.html#architecture-026>`_
+* `architecture_027 <architecture_rules.html#architecture-027>`_
+* `architecture_029 <architecture_rules.html#architecture-029>`_
+* `architecture_400 <architecture_rules.html#architecture-400>`_
+* `assert_400 <assert_rules.html#assert-400>`_
+* `block_400 <block_rules.html#block-400>`_
+* `block_401 <block_rules.html#block-401>`_
+* `block_402 <block_rules.html#block-402>`_
+* `case_011 <case_rules.html#case-011>`_
+* `case_generate_statement_400 <case_generate_statement_rules.html#case-generate-statement-400>`_
+* `component_017 <component_rules.html#component-017>`_
+* `component_020 <component_rules.html#component-020>`_
+* `concurrent_003 <concurrent_rules.html#concurrent-003>`_
+* `concurrent_006 <concurrent_rules.html#concurrent-006>`_
+* `concurrent_008 <concurrent_rules.html#concurrent-008>`_
+* `concurrent_009 <concurrent_rules.html#concurrent-009>`_
+* `concurrent_400 <concurrent_rules.html#concurrent-400>`_
+* `concurrent_401 <concurrent_rules.html#concurrent-401>`_
+* `constant_012 <constant_rules.html#constant-012>`_
+* `constant_014 <constant_rules.html#constant-014>`_
+* `declarative_part_400 <declarative_part_rules.html#declarative-part-400>`_
+* `entity_017 <entity_rules.html#entity-017>`_
+* `entity_018 <entity_rules.html#entity-018>`_
+* `entity_020 <entity_rules.html#entity-020>`_
+* `function_012 <function_rules.html#function-012>`_
+* `function_015 <function_rules.html#function-015>`_
+* `generate_400 <generate_rules.html#generate-400>`_
+* `generate_401 <generate_rules.html#generate-401>`_
+* `generate_402 <generate_rules.html#generate-402>`_
+* `generate_403 <generate_rules.html#generate-403>`_
+* `generate_404 <generate_rules.html#generate-404>`_
+* `generate_405 <generate_rules.html#generate-405>`_
+* `if_009 <if_rules.html#if-009>`_
+* `instantiation_010 <instantiation_rules.html#instantiation-010>`_
+* `instantiation_029 <instantiation_rules.html#instantiation-029>`_
+* `library_009 <library_rules.html#library-009>`_
+* `package_019 <package_rules.html#package-019>`_
+* `package_400 <package_rules.html#package-400>`_
+* `package_401 <package_rules.html#package-401>`_
+* `package_402 <package_rules.html#package-402>`_
+* `package_body_400 <package_body_rules.html#package-body-400>`_
+* `package_body_401 <package_body_rules.html#package-body-401>`_
+* `package_body_402 <package_body_rules.html#package-body-402>`_
+* `procedure_010 <procedure_rules.html#procedure-010>`_
+* `procedure_401 <procedure_rules.html#procedure-401>`_
+* `procedure_410 <procedure_rules.html#procedure-410>`_
+* `procedure_411 <procedure_rules.html#procedure-411>`_
+* `procedure_412 <procedure_rules.html#procedure-412>`_
+* `procedure_call_400 <procedure_call_rules.html#procedure-call-400>`_
+* `procedure_call_401 <procedure_call_rules.html#procedure-call-401>`_
+* `process_020 <process_rules.html#process-020>`_
+* `process_028 <process_rules.html#process-028>`_
+* `process_031 <process_rules.html#process-031>`_
+* `process_033 <process_rules.html#process-033>`_
+* `process_034 <process_rules.html#process-034>`_
+* `process_035 <process_rules.html#process-035>`_
+* `process_400 <process_rules.html#process-400>`_
+* `process_401 <process_rules.html#process-401>`_
+* `report_statement_400 <report_statement_rules.html#report-statement-400>`_
+* `selected_assignment_400 <selected_assignment_rules.html#selected-assignment-400>`_
+* `sequential_004 <sequential_rules.html#sequential-004>`_
+* `sequential_400 <sequential_rules.html#sequential-400>`_
+* `sequential_401 <sequential_rules.html#sequential-401>`_
+* `sequential_402 <sequential_rules.html#sequential-402>`_
+* `signal_012 <signal_rules.html#signal-012>`_
+* `signal_400 <signal_rules.html#signal-400>`_
+* `subprogram_body_400 <subprogram_body_rules.html#subprogram-body-400>`_
+* `subprogram_body_401 <subprogram_body_rules.html#subprogram-body-401>`_
+* `type_400 <type_rules.html#type-400>`_
+* `variable_400 <variable_rules.html#variable-400>`_
+* `variable_assignment_004 <variable_assignment_rules.html#variable-assignment-004>`_
+* `variable_assignment_400 <variable_assignment_rules.html#variable-assignment-400>`_
+* `variable_assignment_401 <variable_assignment_rules.html#variable-assignment-401>`_
+
