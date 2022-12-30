@@ -461,6 +461,7 @@ class testMain(unittest.TestCase):
         with open('deleteme.json') as yaml_file:
             dActual = yaml.full_load(yaml_file)
 
+        self.assertTrue(dExpected == dActual)
         self.assertEqual(dExpected, dActual)
 
     @mock.patch('sys.stdout')
