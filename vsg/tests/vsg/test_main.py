@@ -461,8 +461,13 @@ class testMain(unittest.TestCase):
         with open('deleteme.json') as yaml_file:
             dActual = yaml.full_load(yaml_file)
 
-        self.assertTrue(dExpected == dActual)
-        self.assertEqual(dExpected, dActual)
+        lExpectedKeys = list(dExpected.keys())
+        lActualKeys = list(dActual.keys())
+
+        self.assertEqual(len(lExpectedKeys), len(lActualKeys))
+
+        for sKey in lExpectedKeys:
+            self.assertEqual(dExpected[sKey], dActual[sKey])
 
     @mock.patch('sys.stdout')
     def test_backup_file(self, mock_stdout):
