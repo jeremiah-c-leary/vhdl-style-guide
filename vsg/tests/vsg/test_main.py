@@ -461,13 +461,20 @@ class testMain(unittest.TestCase):
         with open('deleteme.json') as yaml_file:
             dActual = yaml.full_load(yaml_file)
 
-        lExpectedKeys = list(dExpected.keys())
-        lActualKeys = list(dActual.keys())
+        lExpected = dExpected['files']
+        lActual = dActual['files']
 
-        self.assertEqual(len(lExpectedKeys), len(lActualKeys))
+        self.assertEqual(len(lExpected), len(lActual))
 
-        for sKey in lExpectedKeys:
-            self.assertEqual(dExpected[sKey], dActual[sKey])
+        iCompares = 0
+        for dExpectedEntry in lExpected:
+            for dActualEntry in lActual:
+                if dExpectedEntry['file_path'] == dActualEntry['file_path']:
+                    self.assertEqual(dExpectedEntry, dActualEntry)
+                    iCompares += 1
+
+        self.assertEqual(iCompares, len(lExpected))
+       
 
     @mock.patch('sys.stdout')
     def test_backup_file(self, mock_stdout):
