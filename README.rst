@@ -24,22 +24,11 @@ VHDL Style Guide (VSG)
 
 Announcements
 -------------
-Update 10/20/2022
+Update 01/18/2023
 
-Release 3.13.0 is scheduled for 10/23/2022.
+I will be swamped at work for the next couple of months so my availability to work on VSG will be reduced.
 
-I plan to take a month or two month long break after this release.
-
-There are existing issues awaiting validation which will still be worked.
-These issues will result in addition releases.
-
-New issues will still be triaged, however the rate of response from me will be significantly reduced.
-
-Over the next two months I will be contemplating how much further I want to take VSG.
-There are currently issues I can not solve unless I update the underlying data structure.
-I need to decide if it is worth updating the data structure to address these issues.
-
-Regardless, I plan to take this back up in January 2023.
+I will provide an update towards the end of March on when I can return.
 
 Regards,
 
