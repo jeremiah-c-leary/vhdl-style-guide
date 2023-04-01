@@ -21,6 +21,11 @@ def detect(iToken, lObjects):
     return iToken
 
 
+def detect_discrete_subtype_indication(iToken, lObjects):
+    if utils.is_next_token('(', iToken, lObjects):
+        return index_constraint.classify(iToken, lObjects)
+    return iToken
+
 def classify(iToken, lObjects):
 
     iCurrent = utils.find_next_token(iToken, lObjects)
@@ -41,3 +46,8 @@ def open_detected(iToken, lObjects):
         if utils.find_in_next_n_tokens('open', 2, iToken, lObjects):
             return True
     return False
+
+
+def classify_index_constraint(iToken, lObjects):
+    print('--> classify_index_constraint')
+    return index_constraint.classify(iToken, lObjects)

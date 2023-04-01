@@ -84,13 +84,26 @@
 13 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-14 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+14 |   signal slv : std_logic_vector(integer_range_subtype);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
 15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-16 | end architecture RTL;
+16 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+17 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

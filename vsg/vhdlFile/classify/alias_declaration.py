@@ -29,7 +29,6 @@ def classify(iToken, lObjects):
     if utils.is_next_token(':', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required(':', token.colon, iCurrent, lObjects)
         iCurrent = subtype_indication.classify(iCurrent, lObjects)
-
     iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent, lObjects)
 
     iCurrent = name.classify_until([';', '['], iCurrent, lObjects)

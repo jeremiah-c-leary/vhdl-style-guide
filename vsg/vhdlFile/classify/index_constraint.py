@@ -19,7 +19,6 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
-
     iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iToken, lObjects)
 
     while not utils.is_next_token(')', iCurrent, lObjects):
