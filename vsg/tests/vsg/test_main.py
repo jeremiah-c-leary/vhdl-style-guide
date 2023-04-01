@@ -7,6 +7,7 @@ import subprocess
 import shutil
 import sys
 import shutil
+import yaml
 
 import contextlib
 from io import StringIO
@@ -454,63 +455,26 @@ class testMain(unittest.TestCase):
 
         self.assertTrue(os.path.isfile('deleteme.json'))
 
-        # Read in the expected JSON file for comparison
-        lExpected = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.json'), lExpected)
-        # Read in the alternate expected JSON file for comparison
-        lAlternateExpected = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate.json'), lAlternateExpected)
-        # Read in another alternate expected JSON file for comparison
-        lAlternateExpected2 = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate2.json'), lAlternateExpected2)
-        # Read in another alternate expected JSON file for comparison
-        lAlternateExpected3 = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate3.json'), lAlternateExpected3)
-        # Read in another alternate expected JSON file for comparison
-        lAlternateExpected4 = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate4.json'), lAlternateExpected4)
-        # Read in another alternate expected JSON file for comparison
-        lAlternateExpected5 = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate5.json'), lAlternateExpected5)
-        # Read in another alternate expected JSON file for comparison
-        lAlternateExpected6 = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate6.json'), lAlternateExpected6)
-        # Read in another alternate expected JSON file for comparison
-        lAlternateExpected7 = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate7.json'), lAlternateExpected7)
-        # Read in another alternate expected JSON file for comparison
-        lAlternateExpected8 = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'json-expected.alternate8.json'), lAlternateExpected8)
+        sFileName = os.path.join(os.path.dirname(__file__),'json-expected.json')
+        with open(sFileName) as yaml_file:
+            dExpected = yaml.full_load(yaml_file)
+        with open('deleteme.json') as yaml_file:
+            dActual = yaml.full_load(yaml_file)
 
-        # Read in the actual JSON file for comparison
-        lActual = []
-        utils.read_file(os.path.join('deleteme.json'), lActual)
+        lExpected = dExpected['files']
+        lActual = dActual['files']
 
         self.assertEqual(len(lExpected), len(lActual))
 
-        if lActual == lExpected:
-            self.assertEqual(lActual, lExpected)
-        elif lActual == lAlternateExpected:
-            self.assertEqual(lActual, lAlternateExpected)
-        elif lActual == lAlternateExpected2:
-            self.assertEqual(lActual, lAlternateExpected2)
-        elif lActual == lAlternateExpected3:
-            self.assertEqual(lActual, lAlternateExpected3)
-        elif lActual == lAlternateExpected4:
-            self.assertEqual(lActual, lAlternateExpected4)
-        elif lActual == lAlternateExpected5:
-            self.assertEqual(lActual, lAlternateExpected5)
-        elif lActual == lAlternateExpected6:
-            self.assertEqual(lActual, lAlternateExpected6)
-        elif lActual == lAlternateExpected7:
-            self.assertEqual(lActual, lAlternateExpected7)
-        elif lActual == lAlternateExpected8:
-            self.assertEqual(lActual, lAlternateExpected8)
-        else:
-            self.assertEqual(lActual, [])
+        iCompares = 0
+        for dExpectedEntry in lExpected:
+            for dActualEntry in lActual:
+                if dExpectedEntry['file_path'] == dActualEntry['file_path']:
+                    self.assertEqual(dExpectedEntry, dActualEntry)
+                    iCompares += 1
 
-#        for sActual, sExpected in zip(lActual, lExpected):
-#            self.assertEqual(sActual, sExpected)
+        self.assertEqual(iCompares, len(lExpected))
+       
 
     @mock.patch('sys.stdout')
     def test_backup_file(self, mock_stdout):
