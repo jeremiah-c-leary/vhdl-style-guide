@@ -24,11 +24,17 @@ VHDL Style Guide (VSG)
 
 Announcements
 -------------
-Update 01/18/2023
+Update 04/01/2023
 
-I will be swamped at work for the next couple of months so my availability to work on VSG will be reduced.
+Work is still demanding a lot of my free time, however I am planning on focusing some of my attention back on VSG.
 
-I will provide an update towards the end of March on when I can return.
+Here is my plan going forward:
+
+. Address issues requiring *User Validation*
+. Address issues requiring *User Feedback*
+. Triage new issues
+. Prioritize parsing issues
+. Begin working other issues
 
 Regards,
 
