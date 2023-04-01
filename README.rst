@@ -30,11 +30,11 @@ Work is still demanding a lot of my free time, however I am planning on focusing
 
 Here is my plan going forward:
 
-. Address issues requiring *User Validation*
-. Address issues requiring *User Feedback*
-. Triage new issues
-. Prioritize parsing issues
-. Begin working other issues
+1) Address issues requiring *User Validation*
+2) Address issues requiring *User Feedback*
+3) Triage new issues
+4) Prioritize parsing issues
+5) Begin working other issues
 
 Regards,
 
