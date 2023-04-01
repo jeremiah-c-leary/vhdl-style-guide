@@ -14,3 +14,7 @@ vsg/version_info.*
 # IDE files
 .idea/
 .vscode/
+
+# Ignore external repos used for tests
+vsg/tests/external_repos/repos
+
