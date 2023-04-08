@@ -32,7 +32,7 @@ class rule_012(structure.Rule):
         self.disable = True
         self.fixable = False
         self.severity = severity.warning('Warning')
-        self.keywords= ['TODO', 'FIXME']
+        self.keywords = ['TODO', 'FIXME']
         self.configuration.append('keywords')
         self.configuration_documentation_link = 'configuring_comment_keywords_link'
 
