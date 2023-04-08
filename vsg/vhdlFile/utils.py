@@ -574,7 +574,7 @@ def remove_all_trailing_whitespace(lTokens):
     for iToken, oToken in enumerate(lTokens):
         if token_is_whitespace_token(oToken) and token_is_carriage_return(lTokens[iToken + 1]):
             continue
-        lReturn.append(oToken) 
+        lReturn.append(oToken)
     return lReturn
 
 

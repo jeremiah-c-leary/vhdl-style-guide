@@ -92,7 +92,7 @@ class New():
 
     def get_index_of_next_non_whitespace_token_after_index_ignoring_comments(self, iIndex):
         iStartIndex = iIndex + 1
-        for i in range(iStartIndex, self.iMaxToken) :
+        for i in range(iStartIndex, self.iMaxToken):
             if not self.is_token_at_index_whitespace_or_comment(i):
                 return i
 

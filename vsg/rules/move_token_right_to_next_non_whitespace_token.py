@@ -37,15 +37,8 @@ class move_token_right_to_next_non_whitespace_token(structure.Rule):
         for oToken in self.tokens_to_move:
             aToi = oFile.get_tokens_from_beginning_of_line_containing_token_to_the_next_non_whitespace_token_to_the_right(oToken)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
-        lReturn = []
-        for oToi in lToi:
-            if tokens_are_next_to_each_other(oToi):
-                continue
-            if skip_based_on_whitespace(self.bInsertWhitespace, oToi):
-                continue
-            lReturn.append(oToi)
+        lReturn = filter_toi(self, lToi)
         return lReturn
-
 
     def _analyze(self, lToi):
         for oToi in lToi:
@@ -57,7 +50,6 @@ class move_token_right_to_next_non_whitespace_token(structure.Rule):
             oViolation.set_action(oToi.get_meta_data('iTokenIndex'))
             oViolation.fix_blank_lines = True
             self.add_violation(oViolation)
-
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -82,6 +74,16 @@ def tokens_are_next_to_each_other(oToi):
         return True
     return False
 
+
+def filter_toi(self, lToi):
+    lReturn = []
+    for oToi in lToi:
+        if tokens_are_next_to_each_other(oToi):
+            continue
+        if skip_based_on_whitespace(self.bInsertWhitespace, oToi):
+            continue
+        lReturn.append(oToi)
+    return lReturn
 
 
 def skip_based_on_whitespace(bInsertWhitespace, oToi):
