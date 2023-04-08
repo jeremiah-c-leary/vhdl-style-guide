@@ -127,7 +127,8 @@ Rules Enforcing Structure Rule Group
 * `process_018 <process_rules.html#process-018>`_
 * `process_029 <process_rules.html#process-029>`_
 * `process_030 <process_rules.html#process-030>`_
-* `process_032 <process_rules.html#process-032>`_
+* `process_037 <process_rules.html#process-037>`_
+* `process_038 <process_rules.html#process-038>`_
 * `record_type_definition_001 <record_type_definition_rules.html#record-type-definition-001>`_
 * `record_type_definition_002 <record_type_definition_rules.html#record-type-definition-002>`_
 * `record_type_definition_003 <record_type_definition_rules.html#record-type-definition-003>`_

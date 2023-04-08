@@ -903,23 +903,10 @@ This rule checks for alignment of identifiers in the process declarative region.
 process_032
 ###########
 
-|phase_1| |error| |structure|
+This rule has been replaced with the following rules:
 
-This rule checks the process label is on the same line as the process keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   proc_1 :
-
-   process(all) is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   proc_1 : process(all) is
+* `process_037 <process_rules.html#process-037>`_
+* `process_038 <process_rules.html#process-038>`_
 
 process_033
 ###########
@@ -1037,6 +1024,47 @@ The default prefix is *proc\_*.
 .. code-block:: vhdl
 
    proc_main: process () is
+
+process_037
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks a label and the colon are on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label
+   :
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label :
+
+process_038
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks a label colon is on the same line as the **process** or **postponed** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label :
+   process
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label
+   : process
 
 process_400
 ###########

@@ -248,8 +248,8 @@ class vhdlFile():
     def get_tokens_between_tokens_inclusive_while_storing_value_from_token(self, left_token, right_token, value_token):
         return extract.get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_token, right_token, value_token, self.lAllObjects, self.oTokenMap)
 
-    def get_tokens_between_non_whitespace_token_and_token(self, right_token):
-        return extract.get_tokens_between_non_whitespace_token_and_token(right_token, self.lAllObjects, self.oTokenMap)
+    def get_tokens_between_non_whitespace_token_and_token(self, right_token, sStyle='left'):
+        return extract.get_tokens_between_non_whitespace_token_and_token(right_token, self.lAllObjects, self.oTokenMap, sStyle)
 
     def get_tokens_from_line(self, iLineNumber):
         return extract.get_tokens_from_line(iLineNumber, self.lAllObjects, self.oTokenMap)
@@ -304,6 +304,9 @@ class vhdlFile():
 
     def get_tokens_between_indexes(self, iStartIndex, iEndIndex):
         return extract.get_tokens_between_indexes(iStartIndex, iEndIndex, self.lAllObjects)
+
+    def get_tokens_from_beginning_of_line_containing_token_to_the_next_non_whitespace_token_to_the_right(self, token):
+        return extract.get_tokens_from_beginning_of_line_containing_token_to_the_next_non_whitespace_token_to_the_right(token, self.lAllObjects, self.oTokenMap)
 
     def get_indent_of_line_at_index(self, iIndex):
         for iToken in range(iIndex, 0, -1):

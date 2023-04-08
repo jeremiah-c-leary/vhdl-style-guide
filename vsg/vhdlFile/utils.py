@@ -569,6 +569,15 @@ def remove_leading_whitespace_and_comments(iToken, lTokens):
         return iToken, lTokens
 
 
+def remove_all_trailing_whitespace(lTokens):
+    lReturn = []
+    for iToken, oToken in enumerate(lTokens):
+        if token_is_whitespace_token(oToken) and token_is_carriage_return(lTokens[iToken + 1]):
+            continue
+        lReturn.append(oToken) 
+    return lReturn
+
+
 def token_is_whitespace_or_comment(oToken):
     if isinstance(oToken, parser.whitespace) or \
        isinstance(oToken, parser.carriage_return) or \
@@ -580,11 +589,25 @@ def token_is_whitespace_or_comment(oToken):
         return False
 
 
+def token_is_whitespace_token(oToken):
+    if isinstance(oToken, parser.whitespace):
+        return True
+    else:
+        return False
+
+
 def token_is_whitespace(oToken):
     if isinstance(oToken, parser.whitespace) or \
        isinstance(oToken, parser.carriage_return) or \
        isinstance(oToken, parser.blank_line) or \
        isinstance(oToken, parser.preprocessor):
+        return True
+    else:
+        return False
+
+
+def token_is_carriage_return(oToken):
+    if isinstance(oToken, parser.carriage_return):
         return True
     else:
         return False
