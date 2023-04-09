@@ -116,3 +116,13 @@ begin
   a(c ** d) <= '0';
 
 end architecture RTL;
+
+-- test sign is not triggered
+
+architecture RTL of FIFO is
+
+begin
+
+  a <= -1 + 10;
+
+end architecture RTL;

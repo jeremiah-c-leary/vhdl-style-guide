@@ -128,7 +128,7 @@
 <class 'vsg.token.exit_statement.exit_keyword'>
 <class 'vsg.token.exit_statement.when_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.less_than_or_equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.exit_statement.semicolon'>
 --------------------------------------------------------------------------------

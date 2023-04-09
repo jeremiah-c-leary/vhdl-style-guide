@@ -7,6 +7,7 @@ from vsg.token import choice
 from vsg.token import element_association
 from vsg.token import exponent
 from vsg.token import predefined_attribute
+from vsg.token import relational_operator
 
 from vsg.token.ieee.std_logic_1164 import types
 
@@ -769,7 +770,7 @@ def assignment_operator_found(iToken, lObjects):
 
 
 def assign_special_tokens(lObjects, iCurrent, oType):
-    sValue = lObjects[iCurrent].get_value()
+    sValue = lObjects[iCurrent].get_value().lower()
     if sValue == ')':
         assign_token(lObjects, iCurrent, parser.close_parenthesis)
     elif sValue == '(':
@@ -790,35 +791,60 @@ def assign_special_tokens(lObjects, iCurrent, oType):
         assign_token(lObjects, iCurrent, parser.todo)
     elif sValue == '/':
         assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue.lower() == 'downto':
+    elif sValue == 'downto':
         assign_token(lObjects, iCurrent, direction.downto)
-    elif sValue.lower() == 'to':
+    elif sValue == 'to':
         assign_token(lObjects, iCurrent, direction.to)
-    elif sValue.lower() == 'std_logic_vector':
+    elif sValue == 'std_logic_vector':
         assign_token(lObjects, iCurrent, types.std_logic_vector)
-    elif sValue.lower() == 'std_ulogic_vector':
+    elif sValue == 'std_ulogic_vector':
         assign_token(lObjects, iCurrent, types.std_ulogic_vector)
-    elif sValue.lower() == 'std_ulogic':
+    elif sValue == 'std_ulogic':
         assign_token(lObjects, iCurrent, types.std_ulogic)
-    elif sValue.lower() == 'std_logic':
+    elif sValue == 'std_logic':
         assign_token(lObjects, iCurrent, types.std_logic)
-    elif sValue.lower() == 'integer':
+    elif sValue == 'integer':
         assign_token(lObjects, iCurrent, types.integer)
-    elif sValue.lower() == 'signed':
+    elif sValue == 'signed':
         assign_token(lObjects, iCurrent, types.signed)
-    elif sValue.lower() == 'unsigned':
+    elif sValue == 'unsigned':
         assign_token(lObjects, iCurrent, types.unsigned)
-    elif sValue.lower() == 'natural':
+    elif sValue == 'natural':
         assign_token(lObjects, iCurrent, types.natural)
-    elif sValue.lower() == 'others':
+    elif sValue == 'others':
         assign_token(lObjects, iCurrent, choice.others_keyword)
-    elif sValue.lower() == '=>':
+    elif sValue == '=>':
         assign_token(lObjects, iCurrent, element_association.assignment)
-    elif sValue.lower() == 'e':
+    elif sValue == 'e':
         if lObjects[iCurrent + 1].get_value().isdigit() or lObjects[iCurrent + 1].get_value() == '-' or lObjects[iCurrent + 1].get_value() == '+':
             assign_token(lObjects, iCurrent, exponent.e_keyword)
         else:
             assign_token(lObjects, iCurrent, oType)
+    elif sValue == '=':
+        assign_token(lObjects, iCurrent, relational_operator.equal)
+    elif sValue == '/=':
+        assign_token(lObjects, iCurrent, relational_operator.not_equal)
+    elif sValue == '<':
+        assign_token(lObjects, iCurrent, relational_operator.less_than)
+    elif sValue == '<=':
+        assign_token(lObjects, iCurrent, relational_operator.less_than_or_equal)
+    elif sValue == '>':
+        assign_token(lObjects, iCurrent, relational_operator.greater_than)
+    elif sValue == '>=':
+        assign_token(lObjects, iCurrent, relational_operator.greater_than_or_equal)
+    elif sValue == '?=':
+        assign_token(lObjects, iCurrent, relational_operator.question_equal)
+    elif sValue == '?/=':
+        assign_token(lObjects, iCurrent, relational_operator.question_not_equal)
+    elif sValue == '?<':
+        assign_token(lObjects, iCurrent, relational_operator.question_less_than)
+    elif sValue == '?<=':
+        assign_token(lObjects, iCurrent, relational_operator.question_less_than_or_equal)
+    elif sValue == '?>':
+        assign_token(lObjects, iCurrent, relational_operator.question_greater_than)
+    elif sValue == '?>=':
+        assign_token(lObjects, iCurrent, relational_operator.question_greater_than_or_equal)
+
     elif exponent_detected(lObjects, iCurrent):
         assign_token(lObjects, iCurrent, exponent.integer)
     else:

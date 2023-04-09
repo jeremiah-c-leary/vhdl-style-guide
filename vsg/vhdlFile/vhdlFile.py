@@ -17,6 +17,7 @@ from vsg.token import sign
 from vsg.token import subtype_indication
 from vsg.token import type_mark
 from vsg.token import unary_logical_operator
+from vsg.token import choices
 
 from vsg.token.ieee.std_logic_1164 import types
 from vsg.token.ieee.std_logic_1164 import function
@@ -384,6 +385,8 @@ def post_token_assignments(lTokens):
                     lTokens[iToken] = sign.plus()
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
                     lTokens[iToken] = sign.plus()
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([choices.bar], iToken - 1, lTokens):
+                    lTokens[iToken] = sign.plus()
                 else:
                     lTokens[iToken] = adding_operator.plus()
                 continue
@@ -395,6 +398,8 @@ def post_token_assignments(lTokens):
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
                     lTokens[iToken] = sign.minus()
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
+                    lTokens[iToken] = sign.minus()
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([choices.bar], iToken - 1, lTokens):
                     lTokens[iToken] = sign.minus()
                 else:
                     lTokens[iToken] = adding_operator.minus()
