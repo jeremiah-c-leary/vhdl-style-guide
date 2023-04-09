@@ -419,7 +419,6 @@ Rules Enforcing Keyword Alignment
 * `procedure_401 <procedure_rules.html#procedure-401>`_
 * `procedure_410 <procedure_rules.html#procedure-410>`_
 * `procedure_411 <procedure_rules.html#procedure-411>`_
-* `procedure_412 <procedure_rules.html#procedure-412>`_
 * `procedure_call_401 <procedure_call_rules.html#procedure-call-401>`_
 * `process_031 <process_rules.html#process-031>`_
 * `process_033 <process_rules.html#process-033>`_
