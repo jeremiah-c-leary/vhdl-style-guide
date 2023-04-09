@@ -374,6 +374,31 @@ This rule checks for a procedure parameter on the same line as the procedure key
    ) is
    begin
 
+procedure_012
+#############
+
+|phase_1| |error| |structure| |structure_optional|
+
+This rule checks the procedure keyword exist in the closing of the procedure specification.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure proc is
+
+   end proc;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure proc is
+
+   end procedure proc;
+
 procedure_100
 #############
 
