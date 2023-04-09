@@ -48,14 +48,7 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
             return oFile.get_token_and_n_tokens_before_it([self.insert_token], 1)
         else:
             lToi = oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
-            lReturn = []
-            for oToi in lToi:
-                for oToken in self.filter_tokens:
-                    if oToi.token_type_exists(oToken):
-                        break
-                else:
-                    lReturn.append(oToi)
-            return lReturn
+            return filter_toi(self.filter_tokens, lToi)
 
     def _analyze(self, lToi):
         if remove_keyword(self):
@@ -68,6 +61,17 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
             rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
             add_optional_item(oViolation, self)
+
+
+def filter_toi(filter_tokens, lToi):
+    lReturn = []
+    for oToi in lToi:
+        for oToken in filter_tokens:
+            if oToi.token_type_exists(oToken):
+                break
+        else:
+            lReturn.append(oToi)
+    return lReturn
 
 
 def remove_keyword(self):
