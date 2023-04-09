@@ -5,6 +5,7 @@ import unittest
 from vsg import vhdlFile
 
 from vsg.rules import comment
+from vsg.rules import constant
 from vsg.rules import entity
 from vsg.rules import library
 from vsg.rules import port
@@ -32,6 +33,12 @@ class testCodeTags(unittest.TestCase):
 
     def test_rule_comment_010(self):
         oRule = comment.rule_010()
+
+        oRule.analyze(oFile)
+        self.assertEqual(len(oRule.violations), 0)
+
+    def test_rule_constant_016(self):
+        oRule = constant.rule_016()
 
         oRule.analyze(oFile)
         self.assertEqual(len(oRule.violations), 0)
