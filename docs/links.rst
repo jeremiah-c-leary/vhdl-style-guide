@@ -76,3 +76,7 @@
 
 .. |configuring_whitespace_after_comment_rules_link| replace::
    Refer to :ref:`configuring-whitespace-after-comment-rules` for information on creating exceptions to this rule.
+
+.. |configuring_comment_keywords_link| replace::
+   Refer to :ref:`configuring-comment-keywords` for information on how to change the search comment keywords.
+
