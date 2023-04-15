@@ -1,6 +1,9 @@
 
 architecture RTL of FIFO is
 
+  constant c_const : integer := -2;
+  signal c_const : integer := -1;
+
 begin
 
   process begin

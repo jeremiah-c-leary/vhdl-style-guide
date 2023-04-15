@@ -14,20 +14,43 @@
 3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-4 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+4 |   constant c_const : integer := -2;
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.sign.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
-5 |
+5 |   signal c_const : integer := -1;
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.signal_declaration.assignment_operator'>
+<class 'vsg.token.sign.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+6 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-6 |   process begin
+7 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+8 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 |   process begin
 <class 'vsg.token.process_statement.process_keyword'>
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-7 |
+10 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-8 |     if a = -1 +6 then
+11 |     if a = -1 +6 then
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.relational_operator.equal'>
@@ -37,21 +60,21 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
-9 |       b <= 0;
+12 |       b <= 0;
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-10 |     end if;
+13 |     end if;
 <class 'vsg.token.if_statement.end_keyword'>
 <class 'vsg.token.if_statement.end_if_keyword'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-11 |
+14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-12 |     if a /= -1 -10 then
+15 |     if a /= -1 -10 then
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.relational_operator.not_equal'>
@@ -61,21 +84,21 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
-13 |       b <= 0;
+16 |       b <= 0;
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-14 |     end if;
+17 |     end if;
 <class 'vsg.token.if_statement.end_keyword'>
 <class 'vsg.token.if_statement.end_if_keyword'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-15 |
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-16 |     if a(-3 downto -6) = 0 then
+19 |     if a(-3 downto -6) = 0 then
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.open_parenthesis'>
@@ -89,37 +112,37 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
-17 |       b <= 0;
+20 |       b <= 0;
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-18 |     end if;
+21 |     end if;
 <class 'vsg.token.if_statement.end_keyword'>
 <class 'vsg.token.if_statement.end_if_keyword'>
 <class 'vsg.token.if_statement.semicolon'>
---------------------------------------------------------------------------------
-19 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-20 |     case some_number is
-<class 'vsg.token.case_statement.case_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.case_statement.is_keyword'>
---------------------------------------------------------------------------------
-21 |        when -1 -16 =>
-<class 'vsg.token.case_statement_alternative.when_keyword'>
-<class 'vsg.token.sign.minus'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.adding_operator.minus'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.case_statement_alternative.assignment'>
 --------------------------------------------------------------------------------
 22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-23 |        when -1 | -2 + 10 | -3 =>
+23 |     case some_number is
+<class 'vsg.token.case_statement.case_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.case_statement.is_keyword'>
+--------------------------------------------------------------------------------
+24 |        when -1 -16 =>
+<class 'vsg.token.case_statement_alternative.when_keyword'>
+<class 'vsg.token.sign.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.adding_operator.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.case_statement_alternative.assignment'>
+--------------------------------------------------------------------------------
+25 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+26 |        when -1 | -2 + 10 | -3 =>
 <class 'vsg.token.case_statement_alternative.when_keyword'>
 <class 'vsg.token.sign.minus'>
 <class 'vsg.parser.todo'>
@@ -133,30 +156,30 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_statement_alternative.assignment'>
 --------------------------------------------------------------------------------
-24 |     end case;
+27 |     end case;
 <class 'vsg.token.case_statement.end_keyword'>
 <class 'vsg.token.case_statement.end_case_keyword'>
 <class 'vsg.token.case_statement.semicolon'>
 --------------------------------------------------------------------------------
-25 |
+28 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-26 |   end process;
+29 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-27 |
+30 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-28 |   process begin
+31 |   process begin
 <class 'vsg.token.process_statement.process_keyword'>
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-29 |
+32 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-30 |     if a = +1 then
+33 |     if a = +1 then
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.relational_operator.equal'>
@@ -164,21 +187,21 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
-31 |       b <= 0;
+34 |       b <= 0;
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-32 |     end if;
+35 |     end if;
 <class 'vsg.token.if_statement.end_keyword'>
 <class 'vsg.token.if_statement.end_if_keyword'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-33 |
+36 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-34 |     if a /= +1 then
+37 |     if a /= +1 then
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.relational_operator.not_equal'>
@@ -186,21 +209,21 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
-35 |       b <= 0;
+38 |       b <= 0;
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-36 |     end if;
+39 |     end if;
 <class 'vsg.token.if_statement.end_keyword'>
 <class 'vsg.token.if_statement.end_if_keyword'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-37 |
+40 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-38 |     if a(+3 downto +6) = 0 then
+41 |     if a(+3 downto +6) = 0 then
 <class 'vsg.token.if_statement.if_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.open_parenthesis'>
@@ -214,63 +237,63 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
-39 |       b <= 0;
+42 |       b <= 0;
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
-40 |     end if;
+43 |     end if;
 <class 'vsg.token.if_statement.end_keyword'>
 <class 'vsg.token.if_statement.end_if_keyword'>
 <class 'vsg.token.if_statement.semicolon'>
 --------------------------------------------------------------------------------
-41 |
+44 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-42 |     case some_number is
+45 |     case some_number is
 <class 'vsg.token.case_statement.case_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_statement.is_keyword'>
 --------------------------------------------------------------------------------
-43 |        when +1 =>
+46 |        when +1 =>
 <class 'vsg.token.case_statement_alternative.when_keyword'>
 <class 'vsg.token.sign.plus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_statement_alternative.assignment'>
---------------------------------------------------------------------------------
-44 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-45 |        when +1 | +2 | +3 =>
-<class 'vsg.token.case_statement_alternative.when_keyword'>
-<class 'vsg.token.sign.plus'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.choices.bar'>
-<class 'vsg.token.sign.plus'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.choices.bar'>
-<class 'vsg.token.sign.plus'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.case_statement_alternative.assignment'>
---------------------------------------------------------------------------------
-46 |     end case;
-<class 'vsg.token.case_statement.end_keyword'>
-<class 'vsg.token.case_statement.end_case_keyword'>
-<class 'vsg.token.case_statement.semicolon'>
 --------------------------------------------------------------------------------
 47 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-48 |   end process;
+48 |        when +1 | +2 | +3 =>
+<class 'vsg.token.case_statement_alternative.when_keyword'>
+<class 'vsg.token.sign.plus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.token.sign.plus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.choices.bar'>
+<class 'vsg.token.sign.plus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.case_statement_alternative.assignment'>
+--------------------------------------------------------------------------------
+49 |     end case;
+<class 'vsg.token.case_statement.end_keyword'>
+<class 'vsg.token.case_statement.end_case_keyword'>
+<class 'vsg.token.case_statement.semicolon'>
+--------------------------------------------------------------------------------
+50 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+51 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-49 |
+52 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-50 | end architecture RTL;
+53 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
