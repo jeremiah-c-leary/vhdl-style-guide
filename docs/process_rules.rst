@@ -1066,6 +1066,27 @@ This rule checks a label colon is on the same line as the **process** or **postp
    label
    : process
 
+process_039
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks a **postponed** keyword is on the same line at the **process** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label : postponed
+   process
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label :
+   postponed process
+
 process_400
 ###########
 

@@ -43,8 +43,9 @@ class move_token_right_to_next_non_whitespace_token(structure.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
+            iTokenIndex = oToi.get_meta_data('iTokenIndex')
 
-            sSolution = 'Move ' + lTokens[0].get_value() + ' to same line as ' + lTokens[-1].get_value()
+            sSolution = 'Move ' + lTokens[iTokenIndex].get_value() + ' to same line as ' + lTokens[-1].get_value()
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
             oViolation.set_remap()
             oViolation.set_action(oToi.get_meta_data('iTokenIndex'))
@@ -54,10 +55,10 @@ class move_token_right_to_next_non_whitespace_token(structure.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         iTokenIndex = oViolation.get_action()
-        rules_utils.insert_token(lTokens, -2, lTokens.pop(iTokenIndex))
+        rules_utils.insert_token(lTokens, -1, lTokens.pop(iTokenIndex))
 
         if self.bInsertWhitespace:
-            rules_utils.insert_whitespace(lTokens, -2)
+            rules_utils.insert_whitespace(lTokens, -1)
 
         lNewTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         lNewTokens = utils.remove_all_trailing_whitespace(lNewTokens)

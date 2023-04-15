@@ -28,4 +28,4 @@ class rule_037(Rule):
 
     def __init__(self):
         Rule.__init__(self, 'process', '037', lTokens)
-        self.subphase = 2
+        self.subphase = 3

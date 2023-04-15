@@ -8,23 +8,23 @@ begin
   PROC_LABEL : postponed process begin end process;
 
   PROC_LABEL -- Comment
-: process begin end process;
+  : process begin end process;
 
   PROC_LABEL -- Comment
-: postponed process begin end process;
-
-  PROC_LABEL -- Comment
-
-
-
-
-: process begin end process;
+  : postponed process begin end process;
 
   PROC_LABEL -- Comment
 
 
 
 
-: postponed process begin end process;
+  : process begin end process;
+
+  PROC_LABEL -- Comment
+
+
+
+
+  : postponed process begin end process;
 
 end;
