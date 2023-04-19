@@ -380,6 +380,31 @@ This rule checks the function designator has proper case.
 
    function overflow (a: integer) return integer is
 
+function_018
+############
+
+|phase_1| |error| |structure| |structure_optional|
+
+This rule checks the function keyword exist in the closing of the function specification.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function func return integer is
+
+   end func;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function func return integer is
+
+   end function func;
+
 function_100
 ############
 

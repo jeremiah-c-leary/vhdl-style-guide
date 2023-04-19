@@ -1,5 +1,4 @@
 
-
 from vsg import parser
 from vsg import violation
 
@@ -10,7 +9,7 @@ from vsg.rules import utils as rules_utils
 from vsg.rules.insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token import insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token as Rule
 
 
-class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(Rule):
+class insert_token_right_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(Rule):
     '''
     Checks for the existence of a token and will insert it if it does not exist.
 
@@ -40,4 +39,5 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
         self.left_token = left_token
         self.right_token = right_token
         self.value_token = value_token
-        self.direction = 'left'
+        self.configuration_documentation_link = 'configuring_optional_items_link'
+        self.direction = 'right'
