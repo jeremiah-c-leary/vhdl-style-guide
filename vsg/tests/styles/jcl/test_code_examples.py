@@ -53,6 +53,10 @@ lDeclarativePart, eDeclarativePartError = vhdlFile.utils.read_vhdlfile(os.path.j
 oDeclarativePart = vhdlFile.vhdlFile(lDeclarativePart)
 oDeclarativePart.set_indent_map(dIndentMap)
 
+lTokenMovement, eTokenMovementError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'token_movements.vhd'))
+oTokenMovement = vhdlFile.vhdlFile(lTokenMovement)
+oTokenMovement.set_indent_map(dIndentMap)
+
 oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','..','styles', 'jcl.yaml'))
 
 oSeverityList = severity.create_list({})
@@ -68,6 +72,7 @@ class testCodeExample(unittest.TestCase):
         self.assertIsNone(eLibraryStatementsError)
         self.assertIsNone(eCommentsError)
         self.assertIsNone(eDeclarativePartError)
+        self.assertIsNone(eTokenMovementError)
 
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp, oSeverityList)
@@ -201,4 +206,14 @@ class testCodeExample(unittest.TestCase):
         self.assertFalse(oRuleList.violations)
         oRuleList.check_rules()
         self.assertFalse(oRuleList.violations)
+
+    def test_token_movement(self):
+        oRuleList = rule_list.rule_list(oTokenMovement, oSeverityList)
+        oRuleList.configure(oConfig)
+        oRuleList.fix()
+
+        lExpected = ['']
+        utils.read_file(os.path.join(os.path.dirname(__file__),'token_movements.fixed.vhd'), lExpected)
+
+        self.assertEqual(lExpected, oTokenMovement.get_lines())
 

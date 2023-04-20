@@ -1,37 +1,17 @@
 
-from vsg import parser
-from vsg.token import process_statement as token
-
-from vsg.rules import move_token_sequences_left_of_token
-
-lSequences = []
-lSequences.append([token.process_label, token.label_colon, token.process_keyword])
-lSequences.append([token.process_label, token.label_colon, parser.whitespace, token.process_keyword])
-lSequences.append([token.process_label, parser.whitespace, token.label_colon, token.process_keyword])
-lSequences.append([token.process_label, parser.whitespace, token.label_colon, parser.whitespace, token.process_keyword])
-
-oLeftToken = token.process_keyword
+from vsg import deprecated_rule
 
 
-class rule_032(move_token_sequences_left_of_token):
+class rule_032(deprecated_rule.Rule):
     '''
-    This rule checks the process label is on the same line as the process keyword.
+    This rule has been replaced with the following rules:
 
-    **Violation**
-
-    .. code-block:: vhdl
-
-       proc_1 :
-
-       process(all) is
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       proc_1 : process(all) is
+    * `process_037 <process_rules.html#process-037>`_
+    * `process_038 <process_rules.html#process-038>`_
     '''
 
     def __init__(self):
-        move_token_sequences_left_of_token.__init__(self, 'process', '032', lSequences, oLeftToken)
-        self.solution = 'Ensure process label is on the same line as *process* keyword.'
+        deprecated_rule.Rule.__init__(self, 'process', '032')
+        self.message.append('Rule ' + self.unique_id + ' has been replaced with the following rules:')
+        self.message.append('  * process_037')
+        self.message.append('  * process_038')
