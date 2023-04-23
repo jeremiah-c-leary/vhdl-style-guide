@@ -492,6 +492,11 @@ indent:
             subtype_keyword:
                 token : current
                 after : current
+        use_clause:
+            keyword:
+                token : current
+                after : current
+                token_after_library_clause: '+1'
         variable_assignment_statement:
             label:
                 token : current

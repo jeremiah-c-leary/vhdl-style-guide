@@ -44,7 +44,10 @@ def set_token_indent(dIndentMap, lTokens):
 
         if isinstance(oToken, token.use_clause.keyword):
             if not cParams.bArchitectureFound:
-                oToken.set_indent(cParams.iIndent + 1)
+#                oToken.set_indent(cParams.iIndent + 1)
+                sIndent = cParams.dIndents[sUniqueId]['token_after_library_clause']
+                iIndent = update_indent_var(cParams.iIndent, sIndent)
+                oToken.set_indent(iIndent)
             else:
                 oToken.set_indent(cParams.iIndent)
             continue
