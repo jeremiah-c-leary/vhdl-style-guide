@@ -599,9 +599,13 @@ def set_aggregate_tokens(lTokens):
         if isinstance(oToken, parser.close_parenthesis):
             iIndex = lOpenParens.pop()
             if isinstance(lTokens[iIndex], token.aggregate.open_parenthesis):
+                iId = oToken.iId
                 lTokens[iToken] = token.aggregate.close_parenthesis()
+                lTokens[iToken].iId = iId
         if isinstance(oToken, token.element_association.assignment):
+            iId = lTokens[lOpenParens[-1]].iId
             lTokens[lOpenParens[-1]] = token.aggregate.open_parenthesis()
+            lTokens[lOpenParens[-1]].iId = iId
 
 
 def combine_use_clause_selected_name(lTokens):

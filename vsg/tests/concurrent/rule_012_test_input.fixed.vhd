@@ -36,4 +36,8 @@ begin
        (d2 xor to_stdulogic(gen2)) &
        (d1 xor to_stdulogic(gen1));
 
+  new_phase <= (not sig1) or
+               sig2 or
+               sig3;
+
 end architecture RTL;
