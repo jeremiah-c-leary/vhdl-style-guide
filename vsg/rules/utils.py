@@ -313,7 +313,8 @@ def extract_identifiers_with_mode(lToi, oTokenType):
     lReturn = []
     for oToi in lToi:
         if oToi.token_type_exists(oTokenType):
-            lReturn.append(oToi.extract_tokens(0, 0))
+            iIndex = oToi.get_index_of_token_matching(parser.identifier)
+            lReturn.append(oToi.extract_tokens(iIndex, iIndex))
     return lReturn
 
 
