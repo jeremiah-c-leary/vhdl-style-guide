@@ -462,4 +462,4 @@ def close_paren_detected_at_end_of_tokens(lTokens):
         lTokens.reverse()
         return True
     lTokens.reverse()
-    return False 
+    return False
