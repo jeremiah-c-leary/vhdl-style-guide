@@ -23,7 +23,7 @@ class test_port_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '605')
 
-        lExpected = [14]
+        lExpected = [21, 24, 26, 27]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

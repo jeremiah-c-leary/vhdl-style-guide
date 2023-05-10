@@ -11,7 +11,7 @@ def get_interface_elements_between_tokens(oStart, oEnd, lAllTokens, oTokenMap):
 
     for iStart, iEnd in zip(lStartIndexes, lEndIndexes):
         iLine = oTokenMap.get_line_number_of_index(iStart)
-        lToi = lAllTokens[iStart + 1:iEnd + 1]
+        lToi = lAllTokens[iStart + 1:iEnd - 1]
 
         bStore = False
         iLineNumber = None

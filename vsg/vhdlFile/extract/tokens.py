@@ -64,6 +64,12 @@ class New():
     def get_meta_data(self, sKey):
         return self.dMetaData[sKey]
 
+    def get_index_of_token_matching(self, oTokenType):
+        for iToken, oToken in enumerate(self.lTokens):
+            if isinstance(oToken, oTokenType):
+                return iToken
+        return None
+
 
 def calculate_end_index(iStartIndex, lTokens):
     try:
