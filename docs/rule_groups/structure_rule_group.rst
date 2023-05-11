@@ -87,7 +87,6 @@ Rules Enforcing Structure Rule Group
 * `if_036 <if_rules.html#if-036>`_
 * `instantiation_005 <instantiation_rules.html#instantiation-005>`_
 * `instantiation_012 <instantiation_rules.html#instantiation-012>`_
-* `instantiation_023 <instantiation_rules.html#instantiation-023>`_
 * `instantiation_033 <instantiation_rules.html#instantiation-033>`_
 * `instantiation_034 <instantiation_rules.html#instantiation-034>`_
 * `instantiation_035 <instantiation_rules.html#instantiation-035>`_
@@ -119,6 +118,7 @@ Rules Enforcing Structure Rule Group
 * `port_map_005 <port_map_rules.html#port-map-005>`_
 * `port_map_008 <port_map_rules.html#port-map-008>`_
 * `port_map_009 <port_map_rules.html#port-map-009>`_
+* `port_map_010 <port_map_rules.html#port-map-010>`_
 * `procedure_011 <procedure_rules.html#procedure-011>`_
 * `procedure_012 <procedure_rules.html#procedure-012>`_
 * `procedure_call_001 <procedure_call_rules.html#procedure-call-001>`_
