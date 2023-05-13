@@ -37,3 +37,5 @@ class test_length_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+        oViolation = oRule.violations[0]
+        self.assertEqual('Reduce line to less than 125 characters', oViolation.sSolution)
