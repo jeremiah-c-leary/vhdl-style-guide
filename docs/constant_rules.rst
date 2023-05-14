@@ -134,19 +134,17 @@ This rule checks the **:=** is on the same line at the **constant** keyword.
 
    constant size : integer
       := 1;
+   constant width : integer
+      := 32;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   constant size : integer := 1;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   constant size    : integer := 1;
-   constant width   : integer := 32
+   constant size    : integer :=
+     1;
+   constant width   : integer :=
+     32
 
 constant_010
 ############
