@@ -428,7 +428,10 @@ indent:
         return_statement:
             return_keyword:
                 token : current
-                after : current
+                after : '+1'
+            semicolon:
+                token : current
+                after : '-1'
         selected_force_assignment:
             with_keyword:
                 token : current

@@ -86,3 +86,20 @@ package fifo_pkg is
 -- Comment 2c
 end package;
 
+package body function_pkg is
+
+  function init_axi4_aw (
+    aw   : in axi4_aw_t;
+    ival : std_logic := 'Z'
+  ) return axi4_aw_t is
+  begin
+    return (
+      -- AXI4 Lite  <<< HERE
+      addr   => (aw.addr'range => ival),
+      -- AXI 4 Full <<< AND HERE
+      id     => (aw.id'range => ival),
+      len    => (aw.len'range => ival)
+    );
+  end function init_axi4_aw; 
+
+end package body function_pkg;
