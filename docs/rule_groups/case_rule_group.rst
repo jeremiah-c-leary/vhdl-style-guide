@@ -187,6 +187,7 @@ Rules Enforcing Case Rule Group
 * `type_013 <../type_rules.html#type-013>`_
 * `type_014 <../type_rules.html#type-014>`_
 * `type_500 <../type_rules.html#type-500>`_
+* `type_501 <../type_rules.html#type-501>`_
 * `use_clause_500 <../use_clause_rules.html#use-clause-500>`_
 * `use_clause_501 <../use_clause_rules.html#use-clause-501>`_
 * `use_clause_502 <../use_clause_rules.html#use-clause-502>`_
@@ -194,4 +195,3 @@ Rules Enforcing Case Rule Group
 * `variable_002 <../variable_rules.html#variable-002>`_
 * `variable_004 <../variable_rules.html#variable-004>`_
 * `variable_011 <../variable_rules.html#variable-011>`_
-

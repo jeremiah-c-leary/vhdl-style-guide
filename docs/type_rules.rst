@@ -474,6 +474,33 @@ This rule checks enumerate types have proper case.
 
    type state_machine is (idle, write, read, done);
 
+type_501
+########
+
+|phase_6| |error| |case|
+
+This rule checks for consistent capitalization of enumerated types.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type state is (IDLE, WRITE, READ);
+
+   state <= Idle;
+   state <= write;
+   state <= ReAd;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type state is (IDLE, WRITE, READ);
+
+   state <= IDLE;
+   state <= WRITE;
+   state <= READ;
+
 type_600
 ########
 
