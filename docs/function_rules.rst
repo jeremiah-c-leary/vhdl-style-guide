@@ -541,3 +541,47 @@ This rule checks the function designator has proper case on the end function dec
 
    end function overflow;
 
+function_600
+############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on function designators.
+Default signal prefix is *f\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function read_data
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function f_read_data
+
+function_601
+############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on function designators.
+Default signal suffix is *\_f*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function read_data
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function read_data_f
+
