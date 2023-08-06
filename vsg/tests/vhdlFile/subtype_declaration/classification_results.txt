@@ -91,8 +91,15 @@
 17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-18 |
-<class 'vsg.parser.blank_line'>
+18 |   subtype new_std_logic is (resolved) std_ulogic;
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.subtype_declaration.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.token.resolution_indication.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.resolution_indication.close_parenthesis'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_ulogic'>
+<class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
 19 |
 <class 'vsg.parser.blank_line'>

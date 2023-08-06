@@ -27,5 +27,5 @@ The following example configures the rules to:
         length:
           disable: True
         naming:
-          disable: Tue
+          disable: True
 
