@@ -214,8 +214,35 @@ def combine_comment(self):
     if self.lChars.count('--') > 0:
         iIndex = self.lChars.index('--')
         lReturn = self.lChars[0:iIndex]
-        lReturn.append(''.join(self.lChars[iIndex::]))
+        if has_beginning_delimited_comment(self.lChars) and beginning_delimited_comment_after_comment(self.lChars):
+            lReturn.append(''.join(self.lChars[iIndex::]))
+        elif has_ending_delimited_comment(self.lChars):
+            iStopIndex = self.lChars.index('*/')
+            lReturn.append(''.join(self.lChars[iIndex:iStopIndex]))
+            lReturn.append(self.lChars[iStopIndex])
+        else:
+            lReturn.append(''.join(self.lChars[iIndex::]))
         self.lChars = lReturn
+
+
+def has_ending_delimited_comment(lTokens):
+    if lTokens.count('*/') > 0:
+        return True
+    return False
+
+
+def has_beginning_delimited_comment(lTokens):
+    if lTokens.count('*/') > 0:
+        return True
+    return False
+
+
+def beginning_delimited_comment_after_comment(lTokens):
+    iCommentIndex = lTokens.index('--')
+    iBeginningDelimitedCommentIndex = lTokens.index('/*')
+    if iCommentIndex < iBeginningDelimitedCommentIndex:
+        return True
+    return False
 
 
 def has_trailing_whitespace(lChars):

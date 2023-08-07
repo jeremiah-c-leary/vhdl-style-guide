@@ -871,3 +871,36 @@ class testTokenMethod(unittest.TestCase):
   
         self.assertEqual(lTokens, lActual)
 
+    def test_delimited_comment(self):
+        sLine = '/* --- */'
+        lTokens = []
+        lTokens.append('/*')
+        lTokens.append(' ')
+        lTokens.append('--- ')
+        lTokens.append('*/')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_delimited_comment_after_comment(self):
+        sLine = '-- Comment /* --- */'
+        lTokens = []
+        lTokens.append('-- Comment /* --- */')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
+    def test_beginning_delimited_comment_before_comment(self):
+        sLine = '/* --- '
+        lTokens = []
+        lTokens.append('/*')
+        lTokens.append(' ')
+        lTokens.append('---')
+        lTokens.append(' ')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+
