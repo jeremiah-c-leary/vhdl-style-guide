@@ -1,0 +1,15 @@
+
+    architecture_010
+    architecture_024
+    block_002
+    block_007
+    component_021
+    context_021
+    context_022
+    entity_019
+    function_018
+    generate_011
+    instantiation_033
+    procedure_012
+    process_012
+    record_type_definition_005
