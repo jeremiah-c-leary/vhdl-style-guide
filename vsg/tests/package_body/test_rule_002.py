@@ -30,7 +30,7 @@ class test_package_body_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'package_body')
         self.assertEqual(oRule.identifier, '002')
-        self.assertEqual(oRule.groups, ['structure'])
+        self.assertEqual(oRule.groups, ['structure', 'structure::optional'])
 
         lExpected = [8, 12, 16, 20, 25]
 
