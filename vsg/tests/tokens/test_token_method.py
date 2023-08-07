@@ -904,3 +904,13 @@ class testTokenMethod(unittest.TestCase):
   
         self.assertEqual(lTokens, lActual)
 
+    def test_ending_delimited_comment_after_comment(self):
+        sLine = '-- */'
+        lTokens = []
+        lTokens.append('-- ')
+        lTokens.append('*/')
+  
+        lActual = tokens.create(sLine)
+  
+        self.assertEqual(lTokens, lActual)
+

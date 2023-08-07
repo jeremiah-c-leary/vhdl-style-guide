@@ -239,7 +239,10 @@ def has_beginning_delimited_comment(lTokens):
 
 def beginning_delimited_comment_after_comment(lTokens):
     iCommentIndex = lTokens.index('--')
-    iBeginningDelimitedCommentIndex = lTokens.index('/*')
+    try:
+        iBeginningDelimitedCommentIndex = lTokens.index('/*')
+    except ValueError:
+        iBeginningDelimitedCommentIndex = 0
     if iCommentIndex < iBeginningDelimitedCommentIndex:
         return True
     return False
