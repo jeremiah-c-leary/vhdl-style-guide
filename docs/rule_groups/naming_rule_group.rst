@@ -12,6 +12,8 @@ Rules Enforcing Naming Rule Group
 * `block_601 <../block_rules.html#block-601>`_
 * `constant_015 <../constant_rules.html#constant-015>`_
 * `constant_600 <../constant_rules.html#constant-600>`_
+* `function_600 <../function_rules.html#function-600>`_
+* `function_601 <../function_rules.html#function-601>`_
 * `generate_017 <../generate_rules.html#generate-017>`_
 * `generate_600 <../generate_rules.html#generate-600>`_
 * `generic_020 <../generic_rules.html#generic-020>`_
