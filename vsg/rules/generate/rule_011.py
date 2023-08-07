@@ -44,7 +44,7 @@ class rule_011(structure.Rule):
 
     def __init__(self):
         structure.Rule.__init__(self, 'generate', '011')
-        self.solution = 'Add generate label'
+        self.solution = 'generate label'
         self.insert_token = oInsertTokens
         self.anchor_token = oAnchorTokens
         self.left_token = oLeftTokens
