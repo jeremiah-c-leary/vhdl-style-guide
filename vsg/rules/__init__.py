@@ -7,6 +7,7 @@ from .move_token import move_token
 from .move_token_next_to_another_token import move_token_next_to_another_token
 from .move_token_next_to_another_token_if_it_exists_between_tokens import move_token_next_to_another_token_if_it_exists_between_tokens
 from .move_token_left_to_next_non_whitespace_token import move_token_left_to_next_non_whitespace_token
+from .move_token_right_to_next_non_whitespace_token import move_token_right_to_next_non_whitespace_token
 from .previous_line import previous_line
 from .blank_line_above_line_starting_with_token import blank_line_above_line_starting_with_token
 
@@ -20,6 +21,8 @@ from .blank_line_below_line_ending_with_token import blank_line_below_line_endin
 from .blank_line_below_line_ending_with_several_possible_tokens import blank_line_below_line_ending_with_several_possible_tokens
 from .insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token import insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token
 from .insert_token_left_of_token_if_it_does_not_exist_between_tokens import insert_token_left_of_token_if_it_does_not_exist_between_tokens
+from .insert_token_right_of_token_if_it_does_not_exist_between_tokens_using_value_from_token import insert_token_right_of_token_if_it_does_not_exist_between_tokens_using_value_from_token
+from .insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token import insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token
 from .is_token_value_one_of import is_token_value_one_of
 from .align_tokens_in_region_between_tokens import align_tokens_in_region_between_tokens
 from .align_tokens_in_region_between_tokens_unless_between_tokens import align_tokens_in_region_between_tokens_unless_between_tokens
@@ -76,6 +79,8 @@ from .move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
 from .number_of_lines_between_tokens import number_of_lines_between_tokens
 from .token_does_not_exist_before_token import Rule as token_does_not_exist_before_token
 
+from .experiment import Rule as experiment
+
 from vsg.rules import alias_declaration
 from vsg.rules import after
 from vsg.rules import architecture
@@ -96,6 +101,7 @@ from vsg.rules import conditional_waveforms
 from vsg.rules import constant
 from vsg.rules import context
 from vsg.rules import context_ref
+from vsg.rules import declarative_part
 from vsg.rules import element_association
 from vsg.rules import entity
 from vsg.rules import entity_specification
@@ -127,6 +133,7 @@ from vsg.rules import process
 from vsg.rules import ranges
 from vsg.rules import record_type_definition
 from vsg.rules import report_statement
+from vsg.rules import selected_assignment
 from vsg.rules import sequential
 from vsg.rules import signal
 from vsg.rules import source_file

@@ -1,7 +1,7 @@
 [
   {
-    "description": "architecture_010 :: Add *architecture* keyword.",
-    "fingerprint": "323039ccd1801791163d7a302cfd5b25",
+    "description": "architecture_010 :: Add architecture keyword.",
+    "fingerprint": "ee262985f72eb4362312010bb21678ff",
     "severity": "critical",
     "location": {
       "path": "vsg/tests/tool_integration/quality_report/example.vhd",

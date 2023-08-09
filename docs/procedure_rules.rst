@@ -374,6 +374,31 @@ This rule checks for a procedure parameter on the same line as the procedure key
    ) is
    begin
 
+procedure_012
+#############
+
+|phase_1| |error| |structure| |structure_optional|
+
+This rule checks the procedure keyword exist in the closing of the procedure specification.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure proc is
+
+   end proc;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure proc is
+
+   end procedure proc;
+
 procedure_100
 #############
 
@@ -562,29 +587,7 @@ This rule checks the alignment of **:=** operator for each parameter in the proc
 procedure_412
 #############
 
-|phase_5| |error| |alignment|
-
-This rule checks for alignment of inline comments for each parameter in the procedure declaration.
-
-|configuring_keyword_alignment_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-     procedure average_samples (
-       constant a : in integer;   -- Comment about a
-       signal d   : out std_logic;   -- Comment about d
-     );
-
-**Fix**
-
-.. code-block:: vhdl
-
-     procedure average_samples (
-       constant a : in integer;    -- Comment about a
-       signal d   : out std_logic; -- Comment about d
-     );
+This rule has been superceeded by rule `architecture_027 <architecture_rules.html#architecture-027>`_.
 
 procedure_500
 #############

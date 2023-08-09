@@ -36,7 +36,7 @@ architecture BEHAVIORAL of FRAMEBUFFER is
 
     return temp;
 
-  end initfb;
+  end function initfb;
 
   signal mybuffer                  : fbuffer := initfb;
   signal addresswrite, addressread : std_logic_vector(14 downto 0);

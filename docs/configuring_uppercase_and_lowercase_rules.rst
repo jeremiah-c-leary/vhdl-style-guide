@@ -278,6 +278,11 @@ Rules Enforcing Case
 * `report_statement_500 <report_statement_rules.html#report-statement-500>`_
 * `report_statement_501 <report_statement_rules.html#report-statement-501>`_
 
+* `selected_assignment_500 <selected_assignment_rules.html#selected-assignment-500>`_
+* `selected_assignment_501 <selected_assignment_rules.html#selected-assignment-501>`_
+* `selected_assignment_502 <selected_assignment_rules.html#selected-assignment-502>`_
+* `selected_assignment_503 <selected_assignment_rules.html#selected-assignment-503>`_
+
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_
 

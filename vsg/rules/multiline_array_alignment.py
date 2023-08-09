@@ -226,6 +226,8 @@ def populate_toi_parameters(aToi, oFile):
 
 def check_indents(self, oToi, oLines):
     for oLine in oLines.lLines[1:]:
+        if oLine.isBlank:
+            continue
         sExpectedIndent = convert_column_index_to_whitespace(self, oLine.get_expected_indent(), oLines.get_first_line_indent(), oToi.iFirstLineIndentIndex)
         oLine.sExpectedIndent = sExpectedIndent
         if sExpectedIndent != oLine.actual_leading_whitespace:
@@ -288,6 +290,8 @@ class lines():
                 oLine = line(lLine, iLine, iToken - len(lLine) + 1, iOffset)
                 oLine.isFirst = bFirstLine
                 bFirstLine = False
+                if isinstance(lTokens[iToken - 1], parser.blank_line):
+                    oLine.isBlank = True
                 self.lLines.append(oLine)
                 iLine += 1
                 iOffset = 0
@@ -328,6 +332,7 @@ class line():
         self.isFirst = False
         self.isLast = False
         self.iExpectedIndent = 0
+        self.isBlank = False
 
     def populate_paren_list(self, iIndent):
         iColumn = iIndent

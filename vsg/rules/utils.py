@@ -5,7 +5,7 @@ from vsg import token
 from vsg.vhdlFile import utils
 
 
-def remove_optional_item(oViolation, oInsertToken):
+def remove_optional_item(oViolation, oInsertToken=None):
     lTokens = oViolation.get_tokens()
     if isinstance(lTokens[0], parser.whitespace):
         oViolation.set_tokens([])
@@ -313,7 +313,8 @@ def extract_identifiers_with_mode(lToi, oTokenType):
     lReturn = []
     for oToi in lToi:
         if oToi.token_type_exists(oTokenType):
-            lReturn.append(oToi.extract_tokens(0, 0))
+            iIndex = oToi.get_index_of_token_matching(parser.identifier)
+            lReturn.append(oToi.extract_tokens(iIndex, iIndex))
     return lReturn
 
 
@@ -367,6 +368,11 @@ def analyze_with_function(self, oToi, oTokenType, fFunction):
             oToi.set_meta_data('iToken', iToken)
             fFunction(self, oToi)
 
+def token_exists_in_token_type_list(oToken, lTypeTokens):
+    for oTokenType in lTypeTokens:
+        if isinstance(oToken, oTokenType):
+            return True
+    return False
 
 def is_next_token_ignoring_whitespace(oToken, iToken, lTokens):
     iToken = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
@@ -379,16 +385,28 @@ def array_detected_after_assignment_operator(assignment_operator, oToi):
     lTokens = oToi.get_tokens()
     if not open_paren_after_assignment_operator(assignment_operator, lTokens):
         return False
+    if open_paren_after_assignment_operator_is_aggregate(assignment_operator, lTokens):
+        return True
+    if open_paren_after_assignment_operator_id_matches_last_paren_id(assignment_operator, lTokens):
+        return True
+    if open_paren_after_assignment_operator_is_followed_by_aggregate_open_parenthesis(assignment_operator, lTokens):
+        return True
+    if not close_paren_detected_at_end_of_tokens(lTokens):
+        return False
 
     iParen = 0
     bFirstTokenFound = False
+    iParenId = -1
     for oToken in lTokens:
+        if iParenId == -1 and token_is_open_paren(oToken):
+            iParenId = oToken.iId
         if second_open_paren_detected_after_first_open_paren_was_closed(bFirstTokenFound, iParen, oToken):
             return False
         iParen = update_paren_counter(oToken, iParen)
         if not bFirstTokenFound:
             bFirstTokenFound = token_is_open_paren(oToken)
 #        print(f'{iParen}|{bFirstTokenFound}|{oToken}')
+    
     return True
 
 
@@ -402,3 +420,46 @@ def second_open_paren_detected_after_first_open_paren_was_closed(bFirstTokenFoun
 def open_paren_after_assignment_operator(assignment_operator, lTokens):
     iToken = get_index_of_token_in_list(assignment_operator, lTokens)
     return is_next_token_ignoring_whitespace(parser.open_parenthesis, iToken, lTokens)
+
+
+def open_paren_after_assignment_operator_is_aggregate(assignment_operator, lTokens):
+    iToken = get_index_of_token_in_list(assignment_operator, lTokens)
+    if is_next_token_ignoring_whitespace(parser.open_parenthesis, iToken, lTokens):
+        iIndex = get_index_of_token_in_list(parser.open_parenthesis, lTokens)
+        return isinstance(lTokens[iIndex], token.aggregate.open_parenthesis)
+    return False
+
+
+def open_paren_after_assignment_operator_id_matches_last_paren_id(assignment_operator, lTokens):
+    iToken = get_index_of_token_in_list(assignment_operator, lTokens)
+    if is_next_token_ignoring_whitespace(parser.open_parenthesis, iToken, lTokens):
+        iIndex = get_index_of_token_in_list(parser.open_parenthesis, lTokens)
+        iOpenParenId = lTokens[iIndex].iId
+    lTokens.reverse()
+    if is_next_token_ignoring_whitespace(parser.close_parenthesis, 1, lTokens):
+        iIndex = get_index_of_token_in_list(parser.close_parenthesis, lTokens)
+        iCloseParenId = lTokens[iIndex].iId
+    else:
+        lTokens.reverse()
+        return False
+    lTokens.reverse()
+    if iOpenParenId == iCloseParenId:
+        return True
+    return False
+
+
+def open_paren_after_assignment_operator_is_followed_by_aggregate_open_parenthesis(assignment_operator, lTokens):
+    iToken = get_index_of_token_in_list(assignment_operator, lTokens)
+    if is_next_token_ignoring_whitespace(parser.open_parenthesis, iToken, lTokens):
+        iIndex = get_index_of_token_in_list(parser.open_parenthesis, lTokens)
+        return is_next_token_ignoring_whitespace(token.aggregate.open_parenthesis, iIndex + 1, lTokens)
+    return False
+
+
+def close_paren_detected_at_end_of_tokens(lTokens):
+    lTokens.reverse()
+    if is_next_token_ignoring_whitespace(parser.close_parenthesis, 1, lTokens):
+        lTokens.reverse()
+        return True
+    lTokens.reverse()
+    return False

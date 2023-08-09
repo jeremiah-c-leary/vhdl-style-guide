@@ -65,7 +65,7 @@ class subtype_indication(parser.subtype_indication):
         parser.subtype_indication.__init__(self, sString)
 
 
-class assignment_operator(parser.item):
+class assignment_operator(parser.assignment):
     '''
     unique_id = variable_declaration : assignment_operator
     '''

@@ -99,6 +99,41 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_rule_group_links(self):
+        self.maxDiff = None
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+        lActual = []
+
+        dConfigurationFiles = {}
+        for oRule in oRuleList.rules:
+            for sGroup in oRule.groups:
+                dConfigurationFiles[sGroup] = []
+
+        for oRule in oRuleList.rules:
+            for sGroup in oRule.groups:
+                dConfigurationFiles[sGroup].append(oRule.unique_id)
+
+        for sKey in list(dConfigurationFiles.keys()):
+            sFileName = sKey.replace('::', '_') + '_rule_group.rst'
+            sFullPathFileName = os.path.join(sResultsDir,'..','..','..','docs','rule_groups',sFileName)
+#            print(sFullPathFileName)
+            lFile = []
+            utils.read_file(sFullPathFileName, lFile)
+            lActual = []
+            bStartProcessing = False
+            for sLine in lFile:
+                if bStartProcessing:
+                    if sLine.startswith('*'):
+                        lLine = sLine.split()
+                        lActual.append(lLine[1][1:])
+                if sLine.startswith('Rules Enforcing'):
+                    bStartProcessing = True
+#            print(dConfigurationFiles[sKey])
+            self.assertEqual(dConfigurationFiles[sKey], lActual)
+
+
+
     def test_alias_declaration_rules_doc(self):
 
         lExpected, lActual = compare_files('alias_declaration')
@@ -384,6 +419,12 @@ class testDocGen(unittest.TestCase):
     def test_report_statement_rules_doc(self):
 
         lExpected, lActual = compare_files('report_statement')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_selected_assignment_rules_doc(self):
+
+        lExpected, lActual = compare_files('selected_assignment')
 
         self.assertEqual(lExpected, lActual)
 

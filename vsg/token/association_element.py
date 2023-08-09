@@ -2,7 +2,7 @@
 from vsg import parser
 
 
-class assignment(parser.item):
+class assignment(parser.assignment):
     '''
     unique_id = association_element : assignment
     '''

@@ -35,6 +35,9 @@
 .. |configuring_multiline_indent_rules_link| replace::
    Refer to :ref:`configuring-multiline-indent-rules` for more information.
 
+.. |configuring_selected_assignment_structure_rules_link| replace::
+   Refer to :ref:`configuring-selected-assignment-structure-rules` for more information.
+
 .. |configuring_simple_multiline_structure_rules_link| replace::
    Refer to :ref:`configuring-simple-multiline-structure-rules` for more information.
 
@@ -70,3 +73,10 @@
 
 .. |configuring_whitespace_rules_link| replace::
    Refer to :ref:`configuring-whitespace-rules` for options on changing the number of whitespaces..
+
+.. |configuring_whitespace_after_comment_rules_link| replace::
+   Refer to :ref:`configuring-whitespace-after-comment-rules` for information on creating exceptions to this rule.
+
+.. |configuring_comment_keywords_link| replace::
+   Refer to :ref:`configuring-comment-keywords` for information on how to change the search comment keywords.
+

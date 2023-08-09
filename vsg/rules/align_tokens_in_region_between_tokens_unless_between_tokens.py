@@ -59,8 +59,11 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         self.loop_control_statements_ends_group = False
         self.configuration.append('loop_control_statements_ends_group')
 
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by_unless_between(self.left_token, self.right_token, self.lUnless)
+
     def analyze(self, oFile):
-        lToi = get_tokens_of_interest(self, oFile)
+        lToi = self._get_tokens_of_interest(oFile)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
@@ -314,6 +317,3 @@ def is_case_keyword(config, iIndex, lTokens):
         if config != 'break_on_case_or_end_case':
            return True
     return False
-
-def get_tokens_of_interest(self, oFile):
-    return oFile.get_tokens_bounded_by_unless_between(self.left_token, self.right_token, self.lUnless)

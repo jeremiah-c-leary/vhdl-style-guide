@@ -52,3 +52,21 @@ begin
 
 end architecture rtl;
 
+-- vsg_off
+
+architecture rtl of fifo is
+
+  constant CONST : t_rec_vector :=
+  (
+    (val1 => 1, val2 => 2), -- Despite the tag vsg_off, VSG reports missing carriage return here
+    (val1 => 3, val2 => 4), -- Despite the tag vsg_off, VSG reports missing carriage return here
+    (val1 => 5, val2 => 6)  -- Despite the tag vsg_off, VSG reports missing carriage return here
+  );
+-- vsg_on
+
+begin
+
+end architecture rtl;
+
+-- vsg_on comment_010
+

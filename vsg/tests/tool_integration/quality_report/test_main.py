@@ -26,8 +26,8 @@ class testMain(unittest.TestCase):
         if os.path.isfile('deleteme.json'):
             os.remove('deleteme.json')
 
-        if os.path.isfile('actual.json'):
-            os.remove('actual.json')
+#        if os.path.isfile('actual.json'):
+#            os.remove('actual.json')
 
 
     @mock.patch('sys.stdout')
@@ -37,7 +37,7 @@ class testMain(unittest.TestCase):
         sExpected += '\n'
         sExpected += 'ERROR: vsg/tests/tool_integration/quality_report/example.vhd(4)entity_019 -- Add entity simple name'
         sExpected += '\n'
-        sExpected += 'ERROR: vsg/tests/tool_integration/quality_report/example.vhd(8)architecture_010 -- Add *architecture* keyword.'
+        sExpected += 'ERROR: vsg/tests/tool_integration/quality_report/example.vhd(8)architecture_010 -- Add architecture keyword.'
         sExpected += '\n'
         sExpected += 'ERROR: vsg/tests/tool_integration/quality_report/example.vhd(8)architecture_024 -- Add architecture simple name'
         lExpected = []

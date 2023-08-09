@@ -47,7 +47,7 @@ class semicolon(parser.semicolon):
         parser.semicolon.__init__(self)
 
 
-class assignment_operator(parser.item):
+class assignment_operator(parser.assignment):
     '''
     unique_id = constant_declaration : assignment_operator
     '''

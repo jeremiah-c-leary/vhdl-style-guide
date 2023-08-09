@@ -37,7 +37,7 @@
 <class 'vsg.token.loop_statement.label_colon'>
 <class 'vsg.token.iteration_scheme.while_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.less_than'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.loop_statement.loop_keyword'>
 --------------------------------------------------------------------------------
@@ -63,7 +63,7 @@
 16 |     while a < 50 loop
 <class 'vsg.token.iteration_scheme.while_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.less_than'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.loop_statement.loop_keyword'>
 --------------------------------------------------------------------------------

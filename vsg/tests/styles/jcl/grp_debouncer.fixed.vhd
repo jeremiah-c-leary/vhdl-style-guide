@@ -142,15 +142,15 @@ end entity GRP_DEBOUNCER;
 architecture RTL of GRP_DEBOUNCER is
 
   -- datapath pipeline
-  signal reg_a, reg_b : std_logic_vector(N - 1 downto 0) := (others => '0');        -- debounce edge detectors
-  signal reg_out      : std_logic_vector(N - 1 downto 0) := (others => '0');        -- registered output
-  signal dat_strb     : std_logic := '0';                                           -- data transfer strobe
-  signal strb_reg     : std_logic := '0';                                           -- registered strobe
-  signal strb_next    : std_logic := '0';                                           -- lookahead strobe
-  signal dat_diff     : std_logic := '0';                                           -- edge detector
+  signal reg_a, reg_b : std_logic_vector(N - 1 downto 0) := (others => '0');                             -- debounce edge detectors
+  signal reg_out      : std_logic_vector(N - 1 downto 0) := (others => '0');                             -- registered output
+  signal dat_strb     : std_logic                        := '0';                                         -- data transfer strobe
+  signal strb_reg     : std_logic                        := '0';                                         -- registered strobe
+  signal strb_next    : std_logic                        := '0';                                         -- lookahead strobe
+  signal dat_diff     : std_logic                        := '0';                                         -- edge detector
   -- debounce counter
-  signal cnt_reg      : integer range CNT_VAL + 1 downto 0 := 0;                    -- debounce period counter
-  signal cnt_next     : integer range CNT_VAL + 1 downto 0 := 0;                    -- combinatorial signal
+  signal cnt_reg      : integer range CNT_VAL + 1 downto 0 := 0;                                         -- debounce period counter
+  signal cnt_next     : integer range CNT_VAL + 1 downto 0 := 0;                                         -- combinatorial signal
 
 begin
 

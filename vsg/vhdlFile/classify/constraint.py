@@ -24,4 +24,8 @@ def detect(iToken, lObjects):
     if iReturn != iToken:
         return iReturn
 
+    iReturn = array_constraint.detect_discrete_subtype_indication(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
     return iToken

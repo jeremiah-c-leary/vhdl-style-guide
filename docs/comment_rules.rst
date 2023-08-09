@@ -88,12 +88,36 @@ The indent of the comment will be set to the indent of the current line.
    -- Assign signal
    a <= b;
 
+comment_012
+###########
+
+|phase_1| |disabled| |warning| |structure|
+
+This rule checks for user defined keywords in comments.
+
+.. NOTE:: This rule is disabled by default.
+
+|configuring_comment_keywords_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   -- TODO:  Refactor the section below
+   -- FIXME: Update
+
+**Fix**
+
+This is a reporting only rule.
+
 comment_100
 ###########
 
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **--**.
+
+|configuring_whitespace_after_comment_rules_link|
 
 **Violation**
 
@@ -109,7 +133,7 @@ This rule checks for a single space after the **--**.
 .. code-block:: vhdl
 
    -- Comment 1
-   --| Comment 2
-   --- Comment
+   --|Comment 2
+   ---Comment
    ---------------------------
 
