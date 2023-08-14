@@ -23,6 +23,7 @@ class is_token_value_one_of(naming.Rule):
         return oFile.get_tokens_matching([self.token])
 
     def _analyze(self, lToi):
+        self.solution = self._get_solution()
         lower_names = []
         for sName in self.names:
             lower_names.append(sName.lower())
