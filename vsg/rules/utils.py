@@ -5,7 +5,7 @@ from vsg import token
 from vsg.vhdlFile import utils
 
 
-def remove_optional_item(oViolation, oInsertToken):
+def remove_optional_item(oViolation, oInsertToken=None):
     lTokens = oViolation.get_tokens()
     if isinstance(lTokens[0], parser.whitespace):
         oViolation.set_tokens([])
