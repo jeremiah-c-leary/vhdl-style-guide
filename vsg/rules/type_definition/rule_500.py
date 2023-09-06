@@ -17,7 +17,7 @@ class rule_500(token_case):
 
     .. code-block:: vhdl
 
-       TYPE state_machine is (IDLE, WRITE, READ, DONE);
+       type state_machine is (IDLE, WRITE, READ, DONE);
 
     **Fix**
 
