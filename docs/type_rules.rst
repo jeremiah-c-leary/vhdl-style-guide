@@ -466,7 +466,7 @@ This rule checks enumerate types have proper case.
 
 .. code-block:: vhdl
 
-   TYPE state_machine is (IDLE, WRITE, READ, DONE);
+   type state_machine is (IDLE, WRITE, READ, DONE);
 
 **Fix**
 
