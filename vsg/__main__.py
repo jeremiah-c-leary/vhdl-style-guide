@@ -90,8 +90,8 @@ def display_rule_configuration(commandLineArguments, oConfig):
         sys.exit(fExitStatus)
 
 
-def validate_files_exist_to_analyze(sName):
-    if sName is None:
+def validate_files_exist_to_analyze(sName, stdin):
+    if sName is None and not stdin:
         print('ERROR: No file defined by the -f command line option or filename given in configuration file.')
         sys.exit(1)
 
@@ -119,25 +119,34 @@ def main():
 
     display_rule_configuration(commandLineArguments, oConfig)
 
-    validate_files_exist_to_analyze(commandLineArguments.filename)
-
     dJson = create_json_dictionary()
 
     f = functools.partial(apply_rules.apply_rules, commandLineArguments, oConfig)
     # It's easier to debug when not using multiprocessing.Pool()
     lReturn = []
-    if commandLineArguments.jobs == 1:
-        for iIndex, sFileName in enumerate(commandLineArguments.filename):
-            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles = f((iIndex, sFileName))
+    if commandLineArguments.jobs == 1 or commandLineArguments.stdin:
+        validate_files_exist_to_analyze(commandLineArguments.filename, commandLineArguments.stdin)
+        if commandLineArguments.stdin:
+            fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles = f((0, 'stdin'))
             lReturn.append((fStatus, testCase, dJsonEntry))
             if sOutputStd:
                 print(sOutputStd)
             if sOutputErr:
                 print(sOutputErr, file=sys.stderr)
-            if bKeepProcessingFiles:
-                break
+
+        else:
+            for iIndex, sFileName in enumerate(commandLineArguments.filename):
+                fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles = f((iIndex + int(commandLineArguments.stdin), sFileName))
+                lReturn.append((fStatus, testCase, dJsonEntry))
+                if sOutputStd:
+                    print(sOutputStd)
+                if sOutputErr:
+                    print(sOutputErr, file=sys.stderr)
+                if bKeepProcessingFiles:
+                    break
 
     else:
+        validate_files_exist_to_analyze(commandLineArguments.filename, False)
         with multiprocessing.Pool(commandLineArguments.jobs) as pool:
             for tResult in pool.imap(f, enumerate(commandLineArguments.filename)):
                 fStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles = tResult

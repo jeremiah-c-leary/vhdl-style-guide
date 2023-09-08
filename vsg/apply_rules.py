@@ -64,7 +64,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
     dJsonEntry = {}
     lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
     try:
-        oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
+        oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError, commandLineArguments.stdin)
     except ClassifyError as e:
         fExitStatus = True
         testCase = create_junit_testcase(sFileName, e)
