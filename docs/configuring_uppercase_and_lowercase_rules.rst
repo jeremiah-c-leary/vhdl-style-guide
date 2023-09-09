@@ -286,6 +286,10 @@ Rules Enforcing Case
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_
 
+* `subtype_500 <../subtype_rules.html#subtype-500>`_
+* `subtype_501 <../subtype_rules.html#subtype-501>`_
+* `subtype_502 <../subtype_rules.html#subtype-502>`_
+
 * `type_002 <type_rules.html#type-002>`_
 * `type_004 <type_rules.html#type-004>`_
 * `type_013 <type_rules.html#type-013>`_
