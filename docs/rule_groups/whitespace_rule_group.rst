@@ -1,9 +1,9 @@
 
 Whitespace Rule Group
---------------------
+---------------------
 
 Rules Enforcing Whitespace Rule Group
-####################################
+#####################################
 
 * `alias_declaration_100 <../alias_declaration_rules.html#alias-declaration-100>`_
 * `alias_declaration_101 <../alias_declaration_rules.html#alias-declaration-101>`_
