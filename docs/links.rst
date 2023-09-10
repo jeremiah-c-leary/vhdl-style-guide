@@ -8,9 +8,6 @@
 .. |configuring_conditional_multiline_indent_rules_link| replace::
    Refer to :ref:`configuring-conditional-multiline-indent-rules` for more information.
 
-.. |configuring_conditional_expressions_structure_rules_link| replace::
-   Refer to :ref:`configuring-conditional-expressions-structure-rules` for more information.
-
 .. |configuring_consecutive_blank_line_rules| replace::
    Refer to :ref:`configuring-consecutive-blank-line-rules` for more information.
 
