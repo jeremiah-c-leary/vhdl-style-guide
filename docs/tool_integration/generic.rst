@@ -1,5 +1,5 @@
-Tool Integration
-----------------
+Generic Tool Integration
+------------------------
 
 VSG supports integration with other tools via several command line options.
 
