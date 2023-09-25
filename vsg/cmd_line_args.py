@@ -117,7 +117,7 @@ def get_predefined_styles():
             with open(os.path.join(sStylePath, sStyle)) as yaml_file:
                 tempConfiguration = yaml.safe_load(yaml_file)
             lReturn.append(tempConfiguration['name'])
-    return lReturn
+    return sorted(lReturn)
 
 
 def validate_backup_argument(args_):

@@ -158,12 +158,12 @@ The command line tool can be invoked with:
    $ vsg
    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
                                  [-fp FIX_PHASE] [-j JUNIT] [-js JSON] [-of {vsg,syntastic,summary}] [-b] [-oc OUTPUT_CONFIGURATION]
-                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--fix_only FIX_ONLY] [-p JOBS]
-                                 [--debug]
-   
+                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--fix_only FIX_ONLY] [--stdin]
+                                 [--quality_report QUALITY_REPORT] [-p JOBS] [--debug]
+
    Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
-   
-   optional arguments:
+
+   options:
      -h, --help            show this help message and exit
      -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
                            File to analyze
@@ -190,6 +190,9 @@ The command line tool can be invoked with:
      -v, --version         Displays version information
      -ap, --all_phases     Do not stop when a violation is detected.
      --fix_only FIX_ONLY   Restrict fixing via JSON file.
+     --stdin               Read VHDL input from stdin, disables all other file selections, disables multiprocessing
+     --quality_report QUALITY_REPORT
+                           Create code quality report for GitLab
      -p JOBS, --jobs JOBS  number of parallel jobs to use, default is the number of cpu cores
      --debug               Displays verbose debug information
 
