@@ -48,6 +48,32 @@ class test(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
+    def test_filename_w_two_files_positional(self):
+        sys.argv = ['vsg']
+        sys.argv.extend([sAFile, sBFile])
+
+        lExpected = [sAFile, sBFile]
+        lExpected.sort()
+
+        oActual = cmd_line_args.parse_command_line_arguments()
+        lActual = oActual.filename
+        lActual.sort()
+
+        self.assertEqual(lActual, lExpected)
+
+    def test_filename_w_two_files_positional_merge(self):
+        sys.argv = ['vsg']
+        sys.argv.extend(['-f', sAFile, sBFile])
+
+        lExpected = [sAFile, sBFile]
+        lExpected.sort()
+
+        oActual = cmd_line_args.parse_command_line_arguments()
+        lActual = oActual.filename
+        lActual.sort()
+
+        self.assertEqual(lActual, lExpected)
+
     def test_valid_glob(self):
         sys.argv = ['vsg']
         sys.argv.extend(['-f', sGlobFile])

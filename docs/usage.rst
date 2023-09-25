@@ -18,9 +18,13 @@ The command line tool can be invoked with:
                                  [--fix_only FIX_ONLY] [--stdin]
                                  [--quality_report QUALITY_REPORT] [-p JOBS]
                                  [--debug]
+                                 [FILENAME ...]
 
    Analyzes VHDL files for style guide violations. Reference documentation is
    located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
+
+   positional arguments:
+     FILENAME              File to analyze
 
    options:
      -h, --help            show this help message and exit

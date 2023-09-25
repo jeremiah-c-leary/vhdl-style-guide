@@ -48,7 +48,7 @@ def parse_command_line_arguments():
                    Reference documentation is located at:
                    http://vhdl-style-guide.readthedocs.io/en/latest/index.html''')
 
-    parser.add_argument('-f', '--filename', type=__is_valid_file, nargs='+', help='File to analyze')
+    parser.add_argument('-f', '--filename', type=__is_valid_file, nargs='+', default=[], help='File to analyze')
     parser.add_argument('-lr', '--local_rules', help='Path to local rules')
     parser.add_argument('-c', '--configuration', type=__is_valid_file, nargs='+', help='JSON or YAML configuration file(s)')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
@@ -82,6 +82,8 @@ def parse_command_line_arguments():
         help="number of parallel jobs to use, default is the number of cpu cores",
     )
     parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
+    parser.add_argument('filename_args', metavar='FILENAME', type=__is_valid_file, nargs='*', default=[],
+                        help='File to analyze')
 
     args_ = parser.parse_args()
 
@@ -147,12 +149,12 @@ def add_quality_report_argument(parser):
 
 
 def fix_filename_argument(args_):
-    if args_.filename is None:
-        return None
     lUpdate = []
     for lFilenames in args_.filename:
         lUpdate.extend(lFilenames)
-    args_.filename = lUpdate
+    for lFilenames in args_.filename_args:
+        lUpdate.extend(lFilenames)
+    args_.filename = lUpdate or None
 
 
 def fix_configuration_argument(args_):
