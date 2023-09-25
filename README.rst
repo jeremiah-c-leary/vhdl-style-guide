@@ -204,6 +204,19 @@ Here is an example output running against a test file:
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/fixing_single_file.gif
 
+pre-commit Integration
+----------------------
+
+Here is an example of ``.pre-commit-config.yaml`` file:
+
+.. code-block:: yaml
+
+  repos:
+    - repo: https://github.com/jeremiah-c-leary/vhdl-style-guide
+      rev: v3.18.0
+      hooks:
+        - id: vsg
+
 Documentation
 -------------
 
