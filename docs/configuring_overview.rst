@@ -97,6 +97,17 @@ The file_rules option allows for configuration of individual rules per file.
 Any file listed under this option will have the configuration applied if it is being analyzed.
 .. The file_rules is exactly the same as file_list except that it will not add the file to the scan list.
 
+linesep
+-------
+
+The linesep is an optional settings for line separator.
+Default is platform specific.
+Logical values may be "\n" or "\r\n".
+
+.. code-block:: yaml
+
+   linesep: "\n"
+
 local_rules
 -----------
 

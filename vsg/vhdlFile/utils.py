@@ -731,23 +731,21 @@ def is_whitespace(oObject):
 
 
 def read_vhdlfile(sFileName):
+
+    def _read(oFile):
+        lLines = []
+        for sLine in oFile:
+            lLines.append(sLine.rstrip('\r\n'))
+        return lLines
+
     if sFileName == 'stdin':
-        lLines = []
-        for line in sys.stdin:
-            lLines.append(line[:-1])
-        return lLines, None
+        return _read(sys.stdin), None
     try:
-        lLines = []
         with open(sFileName, encoding='utf-8') as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        return lLines, None
+            return _read(oFile), None
     except UnicodeDecodeError:
-        lLines = []
         with open(sFileName, encoding="ISO-8859-1") as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        return lLines, None
+            return _read(oFile), None
     except OSError as e:
         return [], e
 

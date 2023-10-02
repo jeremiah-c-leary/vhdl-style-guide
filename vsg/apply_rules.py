@@ -125,7 +125,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         oRules.fix(
             commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only
         )
-        write_vhdl_file(oVhdlFile)
+        write_vhdl_file(oVhdlFile, oConfig.dConfig)
 
     oRules.clear_violations()
     oRules.check_rules(
@@ -149,9 +149,9 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
     return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles
 
 
-def write_vhdl_file(oVhdlFile):
+def write_vhdl_file(oVhdlFile, dConfig):
     try:
-        with open(oVhdlFile.filename, 'w', encoding='utf-8') as oFile:
+        with open(oVhdlFile.filename, 'w', encoding='utf-8', newline=dConfig.get("linesep")) as oFile:
             for sLine in oVhdlFile.get_lines()[1:]:
                 oFile.write(sLine + '\n')
     except PermissionError as err:
