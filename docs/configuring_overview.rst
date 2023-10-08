@@ -87,10 +87,15 @@ The file name will be converted to POSIX style using '/' as a separator for all 
 
 Rule configurations can be specified for each file by following the format of the **rule** configuration.
 
+.. NOTE:: Defining rule configurations under the file_list will be deprecated at some point.
+          Use the file_rules option instead.
+
 file_rules
 ----------
 
-The file_rules is exactly the same as file_list except that it will not add the file to the scan list.
+The file_rules option allows for configuration of individual rules per file.
+Any file listed under this option will have the configuration applied if it is being analyzed.
+.. The file_rules is exactly the same as file_list except that it will not add the file to the scan list.
 
 local_rules
 -----------
