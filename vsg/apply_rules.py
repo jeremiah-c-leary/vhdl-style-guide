@@ -21,18 +21,19 @@ def configure_rules(oConfig, oRules, configuration, iIndex, sFileName):
 
     sFileName = sFileName.replace(os.sep, "/")
 
-    oRules.configure(oConfig)
-    if is_filename_in_file_list(configuration, sFileName):
-        iMyIndex = get_index_of_filename_in_file_list(configuration, sFileName)
-        oRuleConfig = config.config()
-        if does_file_have_rule_configuration(configuration, iMyIndex, sFileName):
-            oRuleConfig.dConfig = configuration["file_list"][iMyIndex][sFileName]
-            oRules.configure(oRuleConfig)
+    for section in ("file_rules", "file_list"):
+        oRules.configure(oConfig)
+        if is_filename_in_file_list(configuration, section, sFileName):
+            iMyIndex = get_index_of_filename_in_file_list(configuration, section, sFileName)
+            oRuleConfig = config.config()
+            if does_file_have_rule_configuration(configuration, section, iMyIndex, sFileName):
+                oRuleConfig.dConfig = configuration[section][iMyIndex][sFileName]
+                oRules.configure(oRuleConfig)
 
 
-def is_filename_in_file_list(configuration, sFileName):
+def is_filename_in_file_list(configuration, section, sFileName):
     try:
-        lFileNames = utils.extract_file_names_from_file_list(configuration["file_list"])
+        lFileNames = utils.extract_file_names_from_file_list(configuration[section])
         if sFileName in lFileNames:
             return True
         return False
@@ -40,14 +41,14 @@ def is_filename_in_file_list(configuration, sFileName):
         return False
 
 
-def get_index_of_filename_in_file_list(configuration, sFileName):
-    lFileNames = utils.extract_file_names_from_file_list(configuration["file_list"])
+def get_index_of_filename_in_file_list(configuration, section, sFileName):
+    lFileNames = utils.extract_file_names_from_file_list(configuration[section])
     return lFileNames.index(sFileName)
 
 
-def does_file_have_rule_configuration(configuration, iMyIndex, sFileName):
+def does_file_have_rule_configuration(configuration, section, iMyIndex, sFileName):
     try:
-        sTemp = configuration["file_list"][iMyIndex][sFileName]
+        sTemp = configuration[section][iMyIndex][sFileName]
         return True
     except:
         return False
