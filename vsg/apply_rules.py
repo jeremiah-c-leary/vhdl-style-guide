@@ -21,17 +21,33 @@ def configure_rules(oConfig, oRules, configuration, iIndex, sFileName):
 
     sFileName = sFileName.replace(os.sep, "/")
 
-    for section in ("file_rules", "file_list"):
-        oRules.configure(oConfig)
-        if is_filename_in_file_list(configuration, section, sFileName):
-            iMyIndex = get_index_of_filename_in_file_list(configuration, section, sFileName)
+    configure_rules_per_rule_option(oConfig, oRules)
+    configure_rules_per_file_list_option(oRules, configuration, iIndex, sFileName)
+    configure_rules_per_file_rules_option(oRules, configuration, iIndex, sFileName)
+
+
+def configure_rules_per_rule_option(oConfig, oRules):
+    oRules.configure(oConfig)
+
+
+def configure_rules_per_file_list_option(oRules, configuration, iIndex, sFileName):
+    configure_rules_per_option(oRules, configuration, iIndex, sFileName, 'file_list')
+
+
+def configure_rules_per_file_rules_option(oRules, configuration, iIndex, sFileName):
+    configure_rules_per_option(oRules, configuration, iIndex, sFileName, 'file_rules')
+
+
+def configure_rules_per_option(oRules, configuration, iIndex, sFileName, section):
+    if is_filename_in_option(configuration, section, sFileName):
+        iMyIndex = get_index_of_filename_in_file_list(configuration, section, sFileName)
+        if does_file_have_rule_configuration(configuration, section, iMyIndex, sFileName):
             oRuleConfig = config.config()
-            if does_file_have_rule_configuration(configuration, section, iMyIndex, sFileName):
-                oRuleConfig.dConfig = configuration[section][iMyIndex][sFileName]
-                oRules.configure(oRuleConfig)
+            oRuleConfig.dConfig = configuration[section][iMyIndex][sFileName]
+            oRules.configure(oRuleConfig)
 
 
-def is_filename_in_file_list(configuration, section, sFileName):
+def is_filename_in_option(configuration, section, sFileName):
     try:
         lFileNames = utils.extract_file_names_from_file_list(configuration[section])
         if sFileName in lFileNames:
