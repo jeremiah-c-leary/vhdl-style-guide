@@ -71,6 +71,8 @@ File globbing is also supported.
 The Environment variables will be expanded before globbing occurs.
 This option can be useful when running VSG over multiple files.
 
+The file name will be converted to POSIX style using '/' as a separator for all platforms.
+
 Rule configurations can be specified for each file by following the format of the **rule** configuration.
 
 local_rules
