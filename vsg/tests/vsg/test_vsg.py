@@ -520,5 +520,3 @@ class testVsg(unittest.TestCase):
             iExitStatus = e.returncode
 
         self.assertEqual(lActual, lExpected)
-
-
