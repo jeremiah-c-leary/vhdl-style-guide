@@ -1,4 +1,5 @@
 
+import os
 import shutil
 
 from . import config
@@ -17,6 +18,8 @@ def create_backup_file(sFileName):
 
 
 def configure_rules(oConfig, oRules, configuration, iIndex, sFileName):
+
+    sFileName = sFileName.replace(os.sep, "/")
 
     oRules.configure(oConfig)
     if is_filename_in_file_list(configuration, sFileName):
