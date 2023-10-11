@@ -127,13 +127,13 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
             iFirstTokenLength = len(lTokens[0].get_value())
 
-            if self.align_paren == 'no' and self.align_left == 'yes':
+            if not align_paren(self) and align_left(self):
                 dExpectedIndent = _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, self.indentSize, dActualIndent, bStartsWithParen, self.bIgnoreStartParen, self.override)
-            if self.align_paren == 'yes' and self.align_left == 'no':
+            elif align_paren(self) and not align_left(self):
                 dExpectedIndent = _analyze_align_left_no_align_paren_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, iFirstTokenLength, self.bIgnoreStartParen, self.iIndentAfterParen)
-            if self.align_paren == 'yes' and self.align_left == 'yes':
+            elif align_paren(self) and align_left(self):
                 dExpectedIndent = _analyze_align_paren_yes_align_left_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen, self.bConstraint)
-            if self.align_paren == 'no' and self.align_left == 'no':
+            elif not align_paren(self) and not align_left(self):
                 dExpectedIndent = _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen)
 
 
@@ -164,6 +164,22 @@ class multiline_alignment_between_tokens(alignment.Rule):
             rules_utils.insert_new_whitespace(lTokens, 0, dAction['column'])
 
         oViolation.set_tokens(lTokens)
+
+
+def align_paren(self):
+    if self.align_paren == 'yes':
+        return True
+    if self.align_paren is True:
+        return True
+    return False
+
+
+def align_left(self):
+    if self.align_left == 'yes':
+        return True
+    if self.align_left is True:
+        return True
+    return False
 
 
 def build_violation(iLine, oToi, iToken, dExpectedIndent, dIndex, dActualIndent):
