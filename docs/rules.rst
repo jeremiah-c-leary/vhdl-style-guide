@@ -58,6 +58,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    range_rules.rst
    record_type_definition_rules.rst
    report_statement_rules.rst
+   return_statement_rules.rst
    selected_assignment_rules.rst
    sequential_rules.rst
    signal_rules.rst

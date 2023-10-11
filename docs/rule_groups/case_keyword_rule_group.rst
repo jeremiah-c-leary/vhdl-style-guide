@@ -61,6 +61,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `function_005 <../function_rules.html#function-005>`_
 * `function_013 <../function_rules.html#function-013>`_
 * `function_014 <../function_rules.html#function-014>`_
+* `function_501 <../function_rules.html#function-501>`_
 * `function_502 <../function_rules.html#function-502>`_
 * `generate_009 <../generate_rules.html#generate-009>`_
 * `generate_010 <../generate_rules.html#generate-010>`_
@@ -124,6 +125,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `record_type_definition_502 <../record_type_definition_rules.html#record-type-definition-502>`_
 * `report_statement_500 <../report_statement_rules.html#report-statement-500>`_
 * `report_statement_501 <../report_statement_rules.html#report-statement-501>`_
+* `return_statement_500 <../return_statement_rules.html#return-statement-500>`_
 * `selected_assignment_500 <../selected_assignment_rules.html#selected-assignment-500>`_
 * `selected_assignment_501 <../selected_assignment_rules.html#selected-assignment-501>`_
 * `selected_assignment_502 <../selected_assignment_rules.html#selected-assignment-502>`_
