@@ -76,6 +76,12 @@ class multiline_conditional_alignment(alignment.Rule):
     def analyze(self, oFile):
         lToi = self._get_tokens_of_interest(oFile)
 
+        self.align_left = utils.convert_boolean_to_yes_no(self.align_left)
+        self.align_paren = utils.convert_boolean_to_yes_no(self.align_paren)
+        self.wrap_at_when = utils.convert_boolean_to_yes_no(self.wrap_at_when)
+        self.align_when_keywords = utils.convert_boolean_to_yes_no(self.align_when_keywords)
+        self.align_else_keywords = utils.convert_boolean_to_yes_no(self.align_else_keywords)
+
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
 

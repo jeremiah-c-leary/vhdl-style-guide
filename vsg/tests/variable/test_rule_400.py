@@ -65,7 +65,7 @@ class test_variable_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_400__align_left_yes__align_paren_no_boolean(self):
+    def test_fix_rule_400__align_left_true__align_paren_false(self):
         oRule = variable.rule_400()
         oRule.align_left = True
         oRule.align_paren = False
@@ -108,7 +108,7 @@ class test_variable_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_400__align_left_no__align_paren_no_boolean(self):
+    def test_fix_rule_400__align_left_false__align_paren_false(self):
         oRule = variable.rule_400()
         oRule.align_left = False
         oRule.align_paren = False
@@ -151,7 +151,7 @@ class test_variable_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_400__align_left_no__align_paren_yes_boolean(self):
+    def test_fix_rule_400__align_left_false__align_paren_true(self):
         oRule = variable.rule_400()
         oRule.align_left = False
         oRule.align_paren = True
@@ -194,7 +194,7 @@ class test_variable_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_fix_rule_400__align_left_yes__align_paren_yes_boolean(self):
+    def test_fix_rule_400__align_left_true__align_paren_true(self):
         oRule = variable.rule_400()
         oRule.align_left = True
         oRule.align_paren = True

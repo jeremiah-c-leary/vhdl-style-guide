@@ -898,3 +898,21 @@ def classify_predefined_types(lObjects, iCurrent):
             assign_token(lObjects, iCurrent, predefined_attribute.event_keyword)
         else:
             assign_token(lObjects, iCurrent, predefined_attribute.keyword)
+
+
+def convert_yes_no_option_to_boolean(option):
+    if option == 'yes':
+        return True
+    elif option == 'no':
+        return False
+    return option
+
+
+def convert_boolean_to_yes_no(option):
+    if isinstance(option, bool):
+        if option:
+            return 'yes'
+        else:
+            return 'no'
+    return option
+
