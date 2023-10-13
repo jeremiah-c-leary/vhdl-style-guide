@@ -27,7 +27,7 @@ class New():
         oResults = Results()
 
         try:
-            oVhdlFile = vhdlFile.vhdlFile(lText, sFileName, None)
+            oVhdlFile = vhdlFile.vhdlFile(lText, sFilename=sFileName)
         except vsg.exceptions.ClassifyError as e:
             oResults.error = True
             oResults.set_violations(False)

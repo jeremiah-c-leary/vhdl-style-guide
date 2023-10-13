@@ -1,4 +1,5 @@
 
+from vsg import exceptions
 from vsg import parser
 from vsg import token
 
@@ -38,6 +39,20 @@ from vsg.token_map import process_tokens
 
 from vsg.vhdlFile import code_tags
 
+class command_line_args():
+    ''' This is used as an input into the version command.'''
+    def __init__(self, version=False):
+        self.version = version
+        self.style = 'indent_only'
+        self.configuration = []
+        self.debug = False
+        self.fix_only = False
+        self.stdin = False
+        self.force_fix = False
+        self.fix = False
+
+default_cla = command_line_args()
+
 
 class vhdlFile():
     '''
@@ -54,7 +69,7 @@ class vhdlFile():
 
        fileobject
     '''
-    def __init__(self, filecontent, sFilename=None, eError=None, stdin=False):
+    def __init__(self, filecontent, commandLineArguments=default_cla, sFilename=None, eError=None):
         self.filecontent = filecontent
         self.hasArchitecture = False
         self.hasEntity = False
@@ -66,7 +81,8 @@ class vhdlFile():
         self.dVars = {}
         self.dVars['pragma'] = False
         self.eError = eError
-        self.stdin = stdin
+        self.stdin = commandLineArguments.stdin
+        self.commandLineArguments = commandLineArguments
         self._processFile()
 
     def _processFile(self):
@@ -93,7 +109,18 @@ class vhdlFile():
         except IndexError:
             pass
 
-        design_file.tokenize(self.lAllObjects)
+        try:
+            design_file.tokenize(self.lAllObjects)
+        except exceptions.ClassifyError as e:
+            if self.commandLineArguments.force_fix and self.commandLineArguments.fix:
+                print(e.message)
+                print('')
+                print('INFO:  The --force_fix option was enabled.')
+                print('       Proceeding to analyze and apply fixes.')
+                print('')
+            else:
+               raise e
+
         post_token_assignments(self.lAllObjects)
         self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
