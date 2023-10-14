@@ -43,19 +43,25 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
         self.right_token = right_token
         self.lSkip = lSkip
         ## Stuff below is from original keyword_alignment_rule
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
 
-        self.blank_line_ends_group = True
+        self.blank_line_ends_group = 'yes'
         self.configuration.append('blank_line_ends_group')
-        self.comment_line_ends_group = True
+        self.comment_line_ends_group = 'yes'
         self.configuration.append('comment_line_ends_group')
-        self.separate_generic_port_alignment = True
+        self.separate_generic_port_alignment = 'yes'
         self.configuration.append('separate_generic_port_alignment')
-        self.include_lines_without_comments = False
+        self.include_lines_without_comments = 'no'
         self.configuration.append('include_lines_without_comments')
 
     def analyze(self, oFile):
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+        self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
+        self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+        self.separate_generic_port_alignment = utils.convert_yes_no_option_to_boolean(self.separate_generic_port_alignment)
+        self.include_lines_without_comments = utils.convert_yes_no_option_to_boolean(self.include_lines_without_comments)
+
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
         for oToi in lToi:
 
