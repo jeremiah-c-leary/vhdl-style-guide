@@ -66,7 +66,7 @@ begin
   c <= d; -- comment
   -- comment line
 
-  s <= a;
+  s <= a; -- Comment
   -- A
   s <= b;  -- B
   s <= cc; -- C
