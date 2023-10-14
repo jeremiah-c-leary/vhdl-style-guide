@@ -44,12 +44,12 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         self.lUnless = lUnless
         ## attributes below are configurable by the user
 
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
 
-        self.blank_line_ends_group = True
+        self.blank_line_ends_group = 'yes'
         self.configuration.append('blank_line_ends_group')
-        self.comment_line_ends_group = True
+        self.comment_line_ends_group = 'yes'
         self.configuration.append('comment_line_ends_group')
 
         self.if_control_statements_ends_group = False
@@ -63,6 +63,10 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         return oFile.get_tokens_bounded_by_unless_between(self.left_token, self.right_token, self.lUnless)
 
     def analyze(self, oFile):
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+        self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
+        self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+
         lToi = self._get_tokens_of_interest(oFile)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
