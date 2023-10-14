@@ -49,7 +49,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.separate_generic_port_alignment = 'yes'
         self.configuration.append('separate_generic_port_alignment')
 
-        self.generate_statement_ends_group = False
+        self.generate_statement_ends_group = 'no'
         self.bIncludeTillBeginningOfLine = False
         self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'
 
@@ -58,6 +58,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
         self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
         self.separate_generic_port_alignment = utils.convert_yes_no_option_to_boolean(self.separate_generic_port_alignment)
+        self.generate_statement_ends_group = utils.convert_yes_no_option_to_boolean(self.generate_statement_ends_group)
 
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)
         for oToi in lToi:
