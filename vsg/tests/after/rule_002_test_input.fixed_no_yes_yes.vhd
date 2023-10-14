@@ -30,7 +30,7 @@ begin
        c <= '0';
        d <= '1';
     elsif (clk'event and clk = '1') then
-       a <= b     after 1 ns;
+       a <= b             after 1 ns;
        b <= c             after 1 ns;
        -- Comment
        c <= d   after 1 ns;
