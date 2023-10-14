@@ -40,21 +40,25 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.bIndexes = bIndexes
         ## Stuff below is from original keyword_alignment_rule
 
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
-
-        self.blank_line_ends_group = True
+        self.blank_line_ends_group = 'yes'
         self.configuration.append('blank_line_ends_group')
-        self.comment_line_ends_group = True
+        self.comment_line_ends_group = 'yes'
         self.configuration.append('comment_line_ends_group')
-        self.separate_generic_port_alignment = True
+        self.separate_generic_port_alignment = 'yes'
         self.configuration.append('separate_generic_port_alignment')
+
         self.generate_statement_ends_group = False
-#        self.configuration.append('generate_statement_ends_group')
         self.bIncludeTillBeginningOfLine = False
         self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'
 
     def analyze(self, oFile):
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+        self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
+        self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+        self.separate_generic_port_alignment = utils.convert_yes_no_option_to_boolean(self.separate_generic_port_alignment)
+
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
