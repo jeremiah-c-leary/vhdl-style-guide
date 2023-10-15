@@ -66,6 +66,9 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
         self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
         self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+        self.if_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.if_control_statements_ends_group)
+        self.case_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.case_control_statements_ends_group)
+        self.loop_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.loop_control_statements_ends_group)
 
         lToi = self._get_tokens_of_interest(oFile)
         for oToi in lToi:

@@ -24,11 +24,11 @@ begin
     a <= 2;
     b := 1;
 
-    a  <= 2;
-    b    := 3;
+    a <= 2;
+    b := 3;
 
-    a      <= 3;
-    b  := 10;
+    a <= 3;
+    b := 10;
 
   end process;
 
@@ -36,34 +36,34 @@ begin
 
   begin
 
-    a <= x;
+    a  <= x;
     aa <= x;
 
     if a = b then
-      aaa <= x;
+      aaa  <= x;
       aaaa <= x;
     elsif a = b then
-      aaaaa <= x;
+      aaaaa  <= x;
       aaaaaa <= x;
     else
-      aaaaaaa <= x;
+      aaaaaaa  <= x;
       aaaaaaaa <= x;
     end if;
 
     case a is
       when 0 => 
-        aaaaaaaaa <= x;
+        aaaaaaaaa  <= x;
         aaaaaaaaaa <= x;
       when 1 =>
-        aaaaaaaaaaa <= x;
+        aaaaaaaaaaa  <= x;
         aaaaaaaaaaaa <= x;
       when others =>
-        aaaaaaaaaaaaa <= x;
+        aaaaaaaaaaaaa  <= x;
         aaaaaaaaaaaaaa <= x;
     end case;
 
     loop
-      aaaaaaaaaaaaaaa <= x;
+      aaaaaaaaaaaaaaa  <= x;
       aaaaaaaaaaaaaaaa <= x;
     end loop;
 
