@@ -42,8 +42,8 @@ class rule_400(Rule):
         self.phase = 5
         self.subphase = 3
         self.solution = 'Align =>'
-        self.separate_generic_port_alignment = False
-        self.comment_line_ends_group = False
-        self.blank_line_ends_group = False
+        self.separate_generic_port_alignment = 'no'
+        self.comment_line_ends_group = 'no'
+        self.blank_line_ends_group = 'no'
         self.configuration.remove('separate_generic_port_alignment')
         self.bIncludeTillBeginningOfLine = True
