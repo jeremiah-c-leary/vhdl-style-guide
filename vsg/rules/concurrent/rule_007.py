@@ -65,7 +65,7 @@ class rule_007(structure.Rule):
         self.subphase = 2
         self.lSplitTokens = lSplitTokens
         self.lTokenPairs = lTokenPairs
-        self.allow_single_line = False
+        self.allow_single_line = 'no'
         self.configuration.append('allow_single_line')
         self.configuration_documentation_link = None
 
@@ -77,6 +77,8 @@ class rule_007(structure.Rule):
         return lToi
 
     def _analyze(self, lToi):
+        self.allow_single_line = utils.convert_yes_no_option_to_boolean(self.allow_single_line)
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 

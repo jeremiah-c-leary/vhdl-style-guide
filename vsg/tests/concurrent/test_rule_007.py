@@ -51,7 +51,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_rule_007_w_allow_single_line_true(self):
         oRule = concurrent.rule_007()
-        oRule.allow_single_line = True
+        oRule.allow_single_line = 'yes'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '007')
@@ -63,7 +63,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_007_w_allow_single_line_true(self):
         oRule = concurrent.rule_007()
-        oRule.allow_single_line = True
+        oRule.allow_single_line = 'yes'
 
         oRule.fix(self.oFile)
 
