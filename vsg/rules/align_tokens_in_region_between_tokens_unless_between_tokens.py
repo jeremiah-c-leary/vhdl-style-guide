@@ -52,11 +52,11 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         self.comment_line_ends_group = 'yes'
         self.configuration.append('comment_line_ends_group')
 
-        self.if_control_statements_ends_group = False
+        self.if_control_statements_ends_group = 'no'
         self.configuration.append('if_control_statements_ends_group')
-        self.case_control_statements_ends_group = False
+        self.case_control_statements_ends_group = 'no'
         self.configuration.append('case_control_statements_ends_group')
-        self.loop_control_statements_ends_group = False
+        self.loop_control_statements_ends_group = 'no'
         self.configuration.append('loop_control_statements_ends_group')
 
     def _get_tokens_of_interest(self, oFile):
