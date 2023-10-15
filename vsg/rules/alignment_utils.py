@@ -130,6 +130,7 @@ def check_for_if_keywords(iToken, lTokens):
 
     return False
 
+
 def check_for_case_keywords(iToken, lTokens):
     iMyToken = iToken
     if isinstance(lTokens[iToken], parser.whitespace):
@@ -146,6 +147,7 @@ def check_for_case_keywords(iToken, lTokens):
 
     return False
 
+
 def check_for_when_keywords(iToken, lTokens):
     iMyToken = iToken
     if isinstance(lTokens[iToken], parser.whitespace):
@@ -155,6 +157,7 @@ def check_for_when_keywords(iToken, lTokens):
         return True
 
     return False
+
 
 def check_for_loop_keywords(iToken, lTokens):
     iMyToken = iToken
@@ -180,4 +183,3 @@ def check_for_loop_keywords(iToken, lTokens):
         return True
 
     return False
-
