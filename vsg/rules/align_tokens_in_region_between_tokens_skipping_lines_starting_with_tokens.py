@@ -100,7 +100,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                    iColumn += alignment_utils.update_column_width(self, oToken)
 
                if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
-                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
@@ -112,7 +112,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                    dAnalysis = {}
 
                if isinstance(oToken, token.generic_map_aspect.close_parenthesis) and self.separate_generic_port_alignment:
-                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
@@ -153,7 +153,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                    if self.comment_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \
                           utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
@@ -166,7 +166,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
                            dAnalysis = {}
                    if self.blank_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
@@ -180,7 +180,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
 
 
 
-            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment, self.include_lines_without_comments, iMaxColumn)
+            alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment, self.include_lines_without_comments, iMaxColumn)
 
             for iKey in list(dAnalysis.keys()):
                 if dAnalysis[iKey]['adjust'] != 0:
@@ -203,24 +203,6 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
         else:
             rules_utils.insert_whitespace(lTokens, iTokenIndex, dAction['adjust'])
         oViolation.set_tokens(lTokens)
-
-
-def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_without_comments=False, iMaxColumn=0):
-    iMaxLeftColumn = 0
-    iMaxTokenColumn = 0
-    for iKey in list(dAnalysis.keys()):
-        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['left_column'])
-        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])
-
-    if include_lines_without_comments:
-        iMaxTokenColumn = max(iMaxTokenColumn, iMaxColumn)
-
-    if compact_alignment:
-        for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['token_column'] + 1
-    else:
-        for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
 
 
 def not_enough_tokens_to_align(oToi, lTokens):

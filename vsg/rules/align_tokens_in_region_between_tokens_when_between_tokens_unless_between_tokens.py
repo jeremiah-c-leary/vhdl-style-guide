@@ -5,6 +5,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
+from vsg.rules import alignment_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
@@ -81,7 +82,7 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
                iToken += 1
                oToken = lTokens[iIndex]
 
-               bSkip, oEndSkipToken = check_for_exclusions(oToken, bSkip, oEndSkipToken, self.lUnless)
+               bSkip, oEndSkipToken = alignment_utils.check_for_exclusions(oToken, bSkip, oEndSkipToken, self.lUnless)
 
                if not bTokenFound and not bSkip:
                    for oSearch in self.lTokens:
@@ -108,7 +109,7 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
                    if self.comment_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \
                           utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
@@ -121,7 +122,7 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
                            dAnalysis = {}
                    if self.blank_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
@@ -134,8 +135,8 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
                            dAnalysis = {}
 
                    if self.if_control_statements_ends_group:
-                       if check_for_if_keywords(iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                       if alignment_utils.check_for_if_keywords(iIndex + 1, lTokens):
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
@@ -148,8 +149,8 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
                            dAnalysis = {}
 
                    if self.case_control_statements_ends_group:
-                       if check_for_case_keywords(iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                       if alignment_utils.check_for_case_keywords(iIndex + 1, lTokens):
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
@@ -163,7 +164,7 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
 
 
 
-            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+            alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
 
             for iKey in list(dAnalysis.keys()):
@@ -187,78 +188,3 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
         else:
             rules_utils.insert_whitespace(lTokens, iTokenIndex, dAction['adjust'])
         oViolation.set_tokens(lTokens)
-
-
-def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
-    iMaxLeftColumn = 0
-    iMinLeftColumn = 9999999999999999
-    iMaxTokenColumn = 0
-    iMinTokenColumn = 9999999999999999
-
-    for iKey in list(dAnalysis.keys()):
-        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['left_column'])
-        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]['left_column'])
-        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])
-        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]['token_column'])
-
-    if compact_alignment:
-        for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['token_column'] + 1
-    else:
-        for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
-
-
-def check_for_exclusions(oToken, bSkip, oEndSkipToken, lUnless):
-    if bSkip:
-        if isinstance(oToken, oEndSkipToken):
-            return False, None
-    else:
-        for lTokenPairs in lUnless:
-            if isinstance(oToken, lTokenPairs[0]):
-                return True, lTokenPairs[1]
-
-    return bSkip, oEndSkipToken
-
-
-def check_for_if_keywords(iToken, lTokens):
-    iMyToken = iToken
-    if isinstance(lTokens[iToken], parser.whitespace):
-        iMyToken += 1
-
-    if isinstance(lTokens[iMyToken], token.if_statement.if_label):
-        return True
-
-    if isinstance(lTokens[iMyToken], token.if_statement.if_keyword):
-        return True
-
-    if isinstance(lTokens[iMyToken], token.if_statement.elsif_keyword):
-        return True
-
-    if isinstance(lTokens[iMyToken], token.if_statement.else_keyword):
-        return True
-
-    if isinstance(lTokens[iMyToken], token.if_statement.end_keyword):
-        return True
-
-    return False
-
-
-def check_for_case_keywords(iToken, lTokens):
-    iMyToken = iToken
-    if isinstance(lTokens[iToken], parser.whitespace):
-        iMyToken += 1
-
-    if isinstance(lTokens[iMyToken], token.case_statement.case_label):
-        return True
-
-    if isinstance(lTokens[iMyToken], token.case_statement.case_keyword):
-        return True
-
-    if isinstance(lTokens[iMyToken], token.case_statement_alternative.when_keyword):
-        return True
-
-    if isinstance(lTokens[iMyToken], token.case_statement.end_keyword):
-        return True
-
-    return False
