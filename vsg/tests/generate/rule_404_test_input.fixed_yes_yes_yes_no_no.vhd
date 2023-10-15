@@ -59,23 +59,23 @@ begin
 
     when a = 1 =>
 
-        signal       sig1 : std_logic;
-        constant   con1 : std_logic;
+        signal   sig1 : std_logic;
+        constant con1 : std_logic;
         -- Comment
-        shared variable       var1 : std_logic;
-        alias    a    is name;
+        shared variable var1 : std_logic;
+        alias           a    is name;
 
-        alias      a    : subtype_indication is name;
+        alias a    : subtype_indication is name;
 
     begin
 
     when a = 0 =>
 
-        signal       sig1 : std_logic;
-        constant  con1 : std_logic;
+        signal   sig1 : std_logic;
+        constant con1 : std_logic;
         -- Comment
         shared variable var1 : std_logic;
-        alias        a    is name;
+        alias           a    is name;
 
         alias a    : subtype_indication is name;
 

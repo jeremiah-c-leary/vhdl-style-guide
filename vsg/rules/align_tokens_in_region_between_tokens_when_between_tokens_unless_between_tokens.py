@@ -44,21 +44,27 @@ class align_tokens_in_region_between_tokens_when_between_tokens_unless_between_t
         self.lUnless = lUnless
         ## attributes below are configurable by the user
 
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
 
-        self.blank_line_ends_group = True
+        self.blank_line_ends_group = 'yes'
         self.configuration.append('blank_line_ends_group')
-        self.comment_line_ends_group = True
+        self.comment_line_ends_group = 'yes'
         self.configuration.append('comment_line_ends_group')
 
-        self.if_control_statements_ends_group = False
+        self.if_control_statements_ends_group = 'no'
         self.configuration.append('if_control_statements_ends_group')
-        self.case_control_statements_ends_group = False
+        self.case_control_statements_ends_group = 'no'
         self.configuration.append('case_control_statements_ends_group')
 
 
     def analyze(self, oFile):
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+        self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
+        self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+        self.if_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.if_control_statements_ends_group)
+        self.case_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.case_control_statements_ends_group)
+
         self._print_debug_message('Analyzing rule: ' + self.unique_id)
         lToi = oFile.get_tokens_bounded_by_token_when_between_tokens(self.left_token, self.right_token, self.lBetween[0], self.lBetween[1])
         for oToi in lToi:

@@ -19,35 +19,35 @@ begin
 
   IF_LABEL : if a = '1' generate
 
-    signal               sig1 : std_logic;
-    constant   con1 : std_logic;
+    signal   sig1 : std_logic;
+    constant con1 : std_logic;
     -- Comment
-    shared variable                var1 : std_logic;
-    alias    a    is name;
+    shared variable var1 : std_logic;
+    alias           a    is name;
 
-    alias     a    : subtype_indication is name;
+    alias a    : subtype_indication is name;
 
     begin
 
   elsif a = '0' generate
 
-    signal  sig1 : std_logic;
-    constant        con1 : std_logic;
+    signal   sig1 : std_logic;
+    constant con1 : std_logic;
     -- Comment
-    shared variable        var1 : std_logic;
-    alias             a    is name;
+    shared variable var1 : std_logic;
+    alias           a    is name;
 
-    alias    a    : subtype_indication is name;
+    alias a    : subtype_indication is name;
 
     begin
 
   else generate
 
-    signal       sig1 : std_logic;
+    signal   sig1 : std_logic;
     constant con1 : std_logic;
     -- Comment
     shared variable var1 : std_logic;
-    alias    a    is name;
+    alias           a    is name;
 
     alias a    : subtype_indication is name;
 
