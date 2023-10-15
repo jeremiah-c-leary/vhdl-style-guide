@@ -77,7 +77,6 @@ class rule_008(alignment.Rule):
         self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
         self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
         self.include_lines_without_comments = utils.convert_yes_no_option_to_boolean(self.include_lines_without_comments)
-        
 
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
         for oToi in lToi:

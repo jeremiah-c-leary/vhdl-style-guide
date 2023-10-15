@@ -7,6 +7,7 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 
+
 class rule_001(block_rule.Rule):
     '''
     This rule checks the block comment header is correct.

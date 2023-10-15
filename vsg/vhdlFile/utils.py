@@ -915,4 +915,3 @@ def convert_boolean_to_yes_no(option):
         else:
             return 'no'
     return option
-
