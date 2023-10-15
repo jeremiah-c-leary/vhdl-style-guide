@@ -91,8 +91,8 @@ There are additional options for configuring block comments:
 +---------------------+----------+----------+-------------------------------------------------------------+
 | max_footer_column   | Integer  |   120    | Sets the maximum length of the combined footer.             |
 +---------------------+----------+----------+-------------------------------------------------------------+
-| allow_indenting     | Boolean  |  True    | Allows indented block comments. Setting this to False will  |
-|                     |          |          | only detect block comments starting at column 0.            |
+| allow_indenting     | "yes"    |  "yes"   | Allows indented block comments. Setting this to False will  |
+|                     | "no"     |          | only detect block comments starting at column 0.            |
 +---------------------+----------+----------+-------------------------------------------------------------+
 
 With these options, a block comment can be validated by VSG.
