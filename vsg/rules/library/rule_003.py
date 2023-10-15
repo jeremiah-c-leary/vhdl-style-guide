@@ -1,5 +1,6 @@
 
 from vsg.rules import previous_line
+from vsg.vhdlFile import utils
 
 from vsg import token
 
@@ -43,11 +44,12 @@ class rule_003(previous_line):
 
     def __init__(self):
         previous_line.__init__(self, 'library', '003', lTokens)
-        self.allow_library_clause = False
+        self.allow_library_clause = 'no'
         self.configuration.append('allow_library_clause')
         self.style = 'require_blank_line'
 
     def _set_allow_tokens(self):
+        self.allow_library_clause = utils.convert_yes_no_option_to_boolean(self.allow_library_clause)
         if self.allow_library_clause:
             self.lAllowTokens = []
             self.lAllowTokens.append(token.library_clause.keyword)
