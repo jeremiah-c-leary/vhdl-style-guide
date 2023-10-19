@@ -9,21 +9,54 @@ These rules allow enforcement of comments and blank lines.
 
 There are several options to these rules, which can be selected by using the :code:`style` option:
 
-+---------------------+----------------------------------------------------------+
-| Style               | Description                                              |
-+=====================+==========================================================+
-| no_blank_line       | Removes blank lines on the line above.                   |
-+---------------------+----------------------------------------------------------+
-| require_blank_line  | Requires a blank line on the line above.                 |
-+---------------------+----------------------------------------------------------+
-| no_code             | Either a blank line; or comment(s) on the line(s) above. |
-+---------------------+----------------------------------------------------------+
-| allow_comment       | Either a blank line; or comment(s) on the line(s) above  |
-|                     | and a blank line above the comment(s).                   |
-+---------------------+----------------------------------------------------------+
-| require_comment     | Comment(s) required on the line(s) above and a           |
-|                     | blank line above the comment(s).                         |
-+---------------------+----------------------------------------------------------+
+.. |style| replace::
+   :code:`style`
+
+.. |no_blank_line| replace::
+   :code:`no_blank_line`
+
+.. |require_blank_line| replace::
+   :code:`require_blank_line`
+
+.. |no_code| replace::
+   :code:`no_code`
+
+.. |allow_comment| replace::
+   :code:`allow_comment`
+
+.. |require_comment| replace::
+   :code:`require_comment`
+
+.. |style_values| replace::
+   |no_blank_line|, |require_blank_line|, |no_code|, |allow_comment|, |require_comment|, |require_blank_line|
+
+.. |style__no_blank_line| replace::
+   |no_blank_line| = Removes blank lines on the line above.
+
+.. |style__require_blank_line| replace::
+   |require_blank_line| = Requires a blank line on the line above.
+
+.. |style__no_code| replace::
+   |no_code| = Either a blank line; or comment(s) on the line(s) above.
+
+.. |style__allow_comment| replace::
+   |allow_comment| = Either a blank line; or comment(s) on the line(s) above and a blank line above the comment(s).
+
+.. |style__require_comment| replace::
+   |require_comment| = Comment(s) required on the line(s) above and a blank line above the comment(s).
+
+.. |default_value| replace::
+   |require_blank_line|
+
++----------------------+----------------+-------------------+-------------------------------+
+| Option               | Values         | Default Value     | Description                   |
++======================+================+===================+===============================+
+| |style|              | |style_values| | |default_value|   | * |style__no_blank_line|      |
+|                      |                |                   | * |style__require_blank_line| |
+|                      |                |                   | * |style__no_code|            | 
+|                      |                |                   | * |style__allow_comment|      | 
+|                      |                |                   | * |style__require_comment|    | 
++----------------------+----------------+-------------------+-------------------------------+
 
 .. NOTE:: Unless stated in the rule description, the default style is :code:`require_blank_line`.
 
@@ -41,8 +74,8 @@ This is an example of how to configure these options.
 
 .. NOTE:: All examples below are using the rule **entity_004**.
 
-Example: no_blank
-#################
+Example: |style| set to |no_blank_line|
+#######################################
 
 The following code would fail with this option:
 
@@ -61,8 +94,8 @@ The following code would pass with this option:
     -- Define entity
     entity fifo is
 
-Example: require_blank_line
-###########################
+Example: |style| set to |require_blank_line|
+############################################
 
 The following code would fail with this option:
 
@@ -81,8 +114,8 @@ The following code would pass with this option:
 
     entity fifo is
 
-Example: no_code
-################
+Example: |style| set to |no_code|
+#################################
 
 The following code would fail with this option:
 
@@ -108,8 +141,8 @@ The following code would pass with this option:
    -- Comment
    entity fifo is
 
-Example: allow_comment
-######################
+Example: |style| set to |allow_comment|
+#######################################
 
 The following code would fail with this option:
 
@@ -140,8 +173,8 @@ The following code would pass with this option:
    -- Comment
    entity fifo is
 
-Example: require_comment
-########################
+Example: |style| set to |require_comment|
+#########################################
 
 The following code would fail these options:
 
