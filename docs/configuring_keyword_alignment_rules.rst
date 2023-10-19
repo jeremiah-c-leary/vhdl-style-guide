@@ -404,7 +404,7 @@ Any line with if control statement ends the group of lines that should be aligne
           hold_transmission <= '1';
       end if;
 
-    **Fix (if_control_statements_ends_group = True)**
+    **Fix**
 
     .. code-block:: vhdl
 
