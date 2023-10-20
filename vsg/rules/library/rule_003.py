@@ -14,13 +14,13 @@ class rule_003(previous_line):
 
     |configuring_previous_line_rules_link|
 
-    There is an additional **allow_library_clause** option which can be set.
+    There is an additional :code:`allow_library_clause` option which can be set.
     Refer to section :ref:`reporting-single-rule-configuration` for details on finding configuration options for individual rules.
 
     allow_library_clause
     ^^^^^^^^^^^^^^^^^^^^
 
-    When set to **True**, it allows consecutive library clauses.
+    When set to :code:`yes`, it allows consecutive library clauses.
 
     **Violation**
 

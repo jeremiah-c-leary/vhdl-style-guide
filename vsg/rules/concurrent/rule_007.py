@@ -17,10 +17,10 @@ class rule_007(structure.Rule):
     '''
     This rule checks for code after the **else** keyword.
 
-    .. NOTE:: There is a configuration option **allow_single_line** which allows single line concurrent statements.
+    .. NOTE:: There is a configuration option :code:`allow_single_line` which allows single line concurrent statements.
 
-    allow_single_line set to False (Default)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    :code:`allow_single_line` set to :code:`no` (Default)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     **Violation**
 
@@ -39,8 +39,8 @@ class rule_007(structure.Rule):
                 '1' when underflow = '1' else
                 sig_a;
 
-    allow_single_line set to True
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    :code:`allow_single_line` set to :code:`yes`
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     **Violation**
 

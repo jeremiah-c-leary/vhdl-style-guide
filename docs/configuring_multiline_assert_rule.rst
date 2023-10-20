@@ -71,5 +71,5 @@ Rules Enforcing Alignment
 #########################
 
 * `assert_400 <assert_rules.html#assert-400>`_
-* `report_statement_400 <report_statement_rules.html#report_statement-400>`_
+* `report_statement_400 <report_statement_rules.html#report-statement-400>`_
 
