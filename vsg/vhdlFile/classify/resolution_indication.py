@@ -22,6 +22,7 @@ def classify_element_resolution(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iToken, lObjects)
     iCurrent = utils.assign_tokens_until_matching_closing_paren(parser.todo, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
 
     return iCurrent
 

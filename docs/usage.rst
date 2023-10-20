@@ -7,16 +7,22 @@ The command line tool can be invoked with:
 .. code-block:: text
 
    $ vsg
-   usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES]
-                                 [-c CONFIGURATION [CONFIGURATION ...]] [--fix] [-fp FIX_PHASE] [-j JUNIT] [-js JSON]
-                                 [-of {vsg,syntastic,summary}] [-b] [-oc OUTPUT_CONFIGURATION]
-                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--fix_only FIX_ONLY]
-                                 [--quality_report QUALITY_REPORT] [-p JOBS] [--debug]
-
-   Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-
-   guide.readthedocs.io/en/latest/index.html
-
-   optional arguments:
+   usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]]
+                                 [-lr LOCAL_RULES]
+                                 [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
+                                 [-fp FIX_PHASE] [-j JUNIT] [-js JSON]
+                                 [-of {vsg,syntastic,summary}] [-b]
+                                 [-oc OUTPUT_CONFIGURATION]
+                                 [-rc RULE_CONFIGURATION]
+                                 [--style {jcl,indent_only}] [-v] [-ap]
+                                 [--fix_only FIX_ONLY] [--stdin]
+                                 [--quality_report QUALITY_REPORT] [-p JOBS]
+                                 [--debug]
+   
+   Analyzes VHDL files for style guide violations. Reference documentation is
+   located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
+   
+   options:
      -h, --help            show this help message and exit
      -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
                            File to analyze
@@ -33,19 +39,23 @@ The command line tool can be invoked with:
                            Extract JSON file
      -of {vsg,syntastic,summary}, --output_format {vsg,syntastic,summary}
                            Sets the output format.
-     -b, --backup          Creates a copy of input file for comparison with fixed version.
+     -b, --backup          Creates a copy of input file for comparison with fixed
+                           version.
      -oc OUTPUT_CONFIGURATION, --output_configuration OUTPUT_CONFIGURATION
                            Write configuration to file name.
      -rc RULE_CONFIGURATION, --rule_configuration RULE_CONFIGURATION
                            Display configuration of a rule
-     --style {indent_only,jcl}
+     --style {jcl,indent_only}
                            Use predefined style
      -v, --version         Displays version information
      -ap, --all_phases     Do not stop when a violation is detected.
      --fix_only FIX_ONLY   Restrict fixing via JSON file.
+     --stdin               Read VHDL input from stdin, disables all other file
+                           selections, disables multiprocessing
      --quality_report QUALITY_REPORT
                            Create code quality report for GitLab
-     -p JOBS, --jobs JOBS  number of parallel jobs to use, default is the number of cpu cores
+     -p JOBS, --jobs JOBS  number of parallel jobs to use, default is the number
+                           of cpu cores
      --debug               Displays verbose debug information
 
 **Command Line Options**
@@ -58,6 +68,12 @@ The command line tool can be invoked with:
 |                               | option.                                         |
 |                               | The path to each file can also be specified.    |
 |                               | File globbing is also supported.                |
++-------------------------------+-------------------------------------------------+
+| --stdin                       | Reads VHDL file input from standard in put      |
+|                               | instead of reading from a file or files. Can be |
+|                               | useful for using with other tools such as       |
+|                               | editors that can interact through stdin/stdout  |
+|                               | for diagnostics                                 |
 +-------------------------------+-------------------------------------------------+
 | --local_rules LOCAL_RULES     | Additional rules not in the base set.           |
 +-------------------------------+-------------------------------------------------+
@@ -197,6 +213,13 @@ Checking a single file
 .. code-block:: text
 
    $ vsg -f fifo.vhd
+
+Checking a single file over standard input
+------------------------------------------
+
+.. code-block:: text
+
+   $ vsg --stdin
 
 Checking multiple files using globbing
 --------------------------------------

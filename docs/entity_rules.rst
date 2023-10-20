@@ -312,7 +312,7 @@ This rule checks the **entity** keyword has proper case in the closing of the en
 entity_015
 ##########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the keyword **entity** in the **end entity** statement.
 

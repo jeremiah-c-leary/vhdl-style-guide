@@ -448,7 +448,7 @@ This rule checks the process label has proper case.
 process_018
 ###########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks the **end process** line has a label.
 The closing label will be added if the opening process label exists.

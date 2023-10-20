@@ -481,3 +481,42 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(utils.replace_total_count_summary(lActualStdErr), lExpectedStdErr)
         self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
+
+    def test_globbing_filenames_in_configuration_with_file_rules(self):
+        lExpected = []
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
+        lExpected.append('')
+
+        try:
+            subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_glob_with_file_rules.yaml','--output_format','syntastic'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(lActual, lExpected)
+
+    def test_configuration_with_file_rules_and_no_file_list_entity2(self):
+        lExpected = []
+        lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
+        lExpected.append('')
+
+        try:
+            subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_file_rules.yaml', '-f', 'vsg/tests/vsg/entity2.vhd', '--output_format','syntastic'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(lActual, lExpected)
+
+    def test_configuration_with_file_rules_and_no_file_list_entity1(self):
+        lExpected = []
+
+        lActual = []
+
+        try:
+            subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_file_rules.yaml', '-f', 'vsg/tests/vsg/entity1.vhd', '--output_format','syntastic'])
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode('utf-8')).split('\n')
+            iExitStatus = e.returncode
+
+        self.assertEqual(lActual, lExpected)

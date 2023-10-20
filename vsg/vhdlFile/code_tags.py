@@ -17,7 +17,8 @@ class New():
         self.next_line_code_tags.clear()
 
     def remove(self, sCodeTag):
-        self.code_tags.remove(sCodeTag)
+        if sCodeTag in self.code_tags:
+            self.code_tags.remove(sCodeTag)
 
     def add(self, sCodeTag):
         if sCodeTag not in self.code_tags:

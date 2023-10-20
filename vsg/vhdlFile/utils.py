@@ -11,6 +11,7 @@ from vsg.token import relational_operator
 
 from vsg.token.ieee.std_logic_1164 import types
 
+import sys
 
 def assign_tokens_until(sToken, token, iToken, lObjects):
     iCurrent = iToken
@@ -730,6 +731,11 @@ def is_whitespace(oObject):
 
 
 def read_vhdlfile(sFileName):
+    if sFileName == 'stdin':
+        lLines = []
+        for line in sys.stdin:
+            lLines.append(line[:-1])
+        return lLines, None
     try:
         lLines = []
         with open(sFileName, encoding='utf-8') as oFile:

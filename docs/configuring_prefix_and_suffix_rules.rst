@@ -56,6 +56,8 @@ Rules Enforcing Prefixes and Suffixes
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Constant Identifier     | `constant_015 <constant_rules.html#constant-015>`_             | `constant_600 <constant_rules.html#constant-600>`_             |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Function Designator     | `function_600 <function_rules.html#function-600>`_             | `function_601 <function_rules.html#function-601>`_             |
++-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Generate Label          | `generate_017 <generate_rules.html#generate-017>`_             | `generate_600 <generate_rules.html#generate-600>`_             |
 +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
 | Generic Identifier      | `generic_020 <generic_rules.html#generic-020>`_                | `generic_600 <generic_rules.html#generic-600>`_                |

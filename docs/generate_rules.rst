@@ -234,7 +234,9 @@ generate_011
 
 |phase_1| |error| |structure| |structure_optional|
 
-This rule checks the **end generate** line has a label on for generate statements.
+This rule checks the **end generate**  label on for, case and if generate statements.
+
+|configuring_optional_items_link|
 
 **Violation**
 

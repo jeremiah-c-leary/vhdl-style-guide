@@ -26,7 +26,7 @@ This rule checks the **is** keyword is on the same line as the **package** keywo
 package_body_002
 ################
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the optional **package body** keywords on the end package body declaration.
 
@@ -47,7 +47,7 @@ This rule checks for the optional **package body** keywords on the end package b
 package_body_003
 ################
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks the package name exists in the closing of the package body declaration.
 

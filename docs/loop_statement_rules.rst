@@ -150,7 +150,7 @@ This rule checks that loop statements have a label.
 loop_statement_007
 ##################
 
-|phase_1| |disabled| |error| |structure|
+|phase_1| |disabled| |error| |structure| |structure_optional|
 
 This rule checks the **end loop_statement** line has a label.
 The closing label will be added if the opening loop_statement label exists.
