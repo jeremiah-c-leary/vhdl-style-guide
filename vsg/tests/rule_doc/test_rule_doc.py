@@ -230,6 +230,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_concurrent_selected_signal_assignment_rules_doc(self):
+        self.maxDiff = None
+        lExpected, lActual = compare_files('concurrent_selected_signal_assignment')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_conditional_expressions_rules_doc(self):
 
         lExpected, lActual = compare_files('conditional_expressions')
