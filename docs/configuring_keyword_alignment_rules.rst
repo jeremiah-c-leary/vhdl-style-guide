@@ -6,14 +6,167 @@ Configuring Keyword Alignment Rules
 There are several rules that enforce alignment for a group of lines based on the keywords such as 'after', '<=' etc.
 Some of the configurations are available in all keyword alignment rules, while others are rule specific.
 
-Common Keyword Alignment Configuration
-######################################
+There are several options to these rules:
 
-Following configuration options can be independently changed for each of the keyword alignment rules.
+.. NOTE:: Some options are rule dependent.
 
-#. :code:`compact_alignment` - if set to :code:`True` it enforces single space before alignment keyword in the line with the longest part before the keyword.
-   Otherwise the alignment occurs to the keyword maximum column.
-   By default set to :code:`True`.
+.. |compact_alignment| replace::
+   :code:`compact_alignment`
+
+.. |compact_alignment__yes| replace::
+   :code:`yes` = Align to left most column.
+
+.. |compact_alignment__no| replace::
+   :code:`no` = Align to right most column.
+
+.. |blank_line_ends_group| replace::
+   :code:`blank_line_ends_group`
+
+.. |blank_line_ends_group__yes| replace::
+   :code:`yes` = stop if a blank line is encountered.
+
+.. |blank_line_ends_group__no| replace::
+   :code:`no` = continue if a blank line is encountered.
+
+.. |comment_line_ends_group| replace::
+   :code:`comment_line_ends_group`
+
+.. |comment_line_ends_group__yes| replace::
+   :code:`yes` = stop if a blank line is encountered.
+
+.. |comment_line_ends_group__no| replace::
+   :code:`no` = continue if a blank line is encountered.
+
+.. |separate_generic_port_alignment| replace::
+   :code:`separate_generic_port_alignment`
+
+.. |separate_generic_port_alignment__yes| replace::
+   :code:`yes` = stop if port keyword detected.
+
+.. |separate_generic_port_alignment__no| replace::
+   :code:`no` = continue if port keyword detected.
+
+.. |if_control_statements_ends_group| replace::
+   :code:`if_control_statements_ends_group`
+
+.. |if_control_statements_ends_group__yes| replace::
+   :code:`yes` = stop when an if structure keyword is encountered.
+
+.. |if_control_statements_ends_group__no| replace::
+   :code:`no` = continue when an if structure keyword is encountered.
+
+.. |case_control_statements_ends_group| replace::
+   :code:`case_control_statements_ends_group`
+
+.. |case_control_statements_ends_group__yes| replace::
+   :code:`yes` = stop when a case control keyword is encountered.
+
+.. |case_control_statements_ends_group__no| replace::
+   :code:`no` = continue when a case control keyword is encountered.
+
+.. |case_control_statements_ends_group__bocoec| replace::
+   :code:`break_on_case_or_end_case` = Stop alignment if :code:`case` or :code:`end case` is encountered.
+
+.. |generate_statements_ends_group| replace::
+   :code:`generate_statements_ends_group`
+
+.. |generate_statements_ends_group__yes| replace::
+   :code:`yes` = stop when a generate statement keyword is encountered.
+
+.. |generate_statements_ends_group__no| replace::
+   :code:`no` = continue when a generate statement keyword is encountered.
+
+.. |loop_control_statements_ends_group| replace::
+   :code:`loop_control_generic_port_alignment`
+
+.. |loop_control_statements_ends_group__yes| replace::
+   :code:`yes` = stop when a loop control statement keyword is encountered.
+
+.. |loop_control_statements_ends_group__no| replace::
+   :code:`no` = continue when a loop control statement keyword is encountered.
+
+.. |yes| replace::
+   :code:`yes`
+
+.. |no| replace::
+   :code:`no`
+
+.. |break_on_case_or_end_case| replace::
+   :code:`break_on_case_or_end_case`
+
+.. |values_ca| replace::
+   :code:`yes`, :code:`no`
+
+.. |values_bleg| replace::
+   :code:`yes`, :code:`no`
+
+.. |values_cleg| replace::
+   :code:`yes`, :code:`no`
+
+.. |values_sgpa| replace::
+   :code:`yes`, :code:`no`
+
+.. |values_icseg| replace::
+   :code:`yes`, :code:`no`
+
+.. |values_ccseg| replace::
+   :code:`yes`, :code:`no`, :code:`break_on_case_or_end_case`
+
+.. |values_gseg| replace::
+   :code:`yes`, :code:`no`
+
+.. |values_lcseg| replace::
+   :code:`yes`, :code:`no`
+
++--------------------------------------+----------------+----------+------------------------------------------------+
+| Option                               |   Values       | Default  | Description                                    |
++======================================+================+==========+================================================+
+| |compact_alignment|                  | |values_ca|    | |yes|    | * |compact_alignment__yes|                     |
+|                                      |                |          | * |compact_alignment__no|                      |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |blank_line_ends_group|              | |values_bleg|  | |yes|    | * |blank_line_ends_group__yes|                 |
+|                                      |                |          | * |blank_line_ends_group__no|                  |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |comment_line_ends_group|            | |values_cleg|  | |yes|    | * |comment_line_ends_group__yes|               |
+|                                      |                |          | * |comment_line_ends_group__no|                |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |separate_generic_port_alignment|    | |values_sgpa|  | |yes|    | * |separate_generic_port_alignment__yes|       |
+|                                      |                |          | * |separate_generic_port_alignment__no|        |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |if_control_statements_ends_group|   | |values_icseg| | |yes|    | * |if_control_statements_ends_group__yes|      |
+|                                      |                |          | * |if_control_statements_ends_group__no|       |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |case_control_statements_ends_group| | |values_ccseg| | |yes|    | * |case_control_statements_ends_group__yes|    |
+|                                      |                |          | * |case_control_statements_ends_group__no|     |
+|                                      |                |          | * |case_control_statements_ends_group__bocoec| |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |generate_statements_ends_group|     | |values_gseg|  | |yes|    | * |generate_statements_ends_group__yes|        |
+|                                      |                |          | * |generate_statements_ends_group__no|         |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |loop_control_statements_ends_group| | |values_lcseg| | |yes|    | * |loop_control_statements_ends_group__yes|    |
+|                                      |                |          | * |loop_control_statements_ends_group__no|     |
++--------------------------------------+----------------+----------+------------------------------------------------+
+
+This is an example of how to configure these options.
+
+.. code-block:: yaml
+
+   rule :
+     process_031:
+        compact_alignment: 'yes'
+        blank_line_ends_group: 'yes'
+        comment_line_ends_group : 'yes'
+        separate_generic_port_alignment: 'yes'
+        if_control_statements_ends_group: 'yes'
+        case_control_statements_ends_group: 'yes'
+        generate_statements_ends_group: 'yes'
+        loop_control_statements_ends_group: 'yes'
+
+
+Example: |compact_alignment| set to |yes|
+#########################################
+
+Enforces single space before alignment keyword in the line with the longest part before the keyword.
 
     **Violation**
 
@@ -22,22 +175,36 @@ Following configuration options can be independently changed for each of the key
       signal sig_short   : std_logic;
       signal sig_very_long      : std_logic;
 
-    **Fix (compact_alignment = True)**
+    **Fix**
 
     .. code-block:: vhdl
 
       signal sig_short     : std_logic;
       signal sig_very_long : std_logic;
 
-    **Fix (compact_alignment = False)**
+Example: |compact_alignment| set to |no|
+########################################
+
+Aligns to right most instance of keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      signal sig_short   : std_logic;
+      signal sig_very_long      : std_logic;
+
+    **Fix**
 
     .. code-block:: vhdl
 
       signal sig_short          : std_logic;
       signal sig_very_long      : std_logic;
 
-#. :code:`blank_line_ends_group` - if set to :code:`True` any blank line encountered in the VHDL file ends the group of lines that should be aligned and starts new group.
-   By default set to :code:`True`.
+Example: |blank_line_ends_group| set to |yes|
+#############################################
+
+Any blank line encountered in the VHDL file ends the group of lines that should be aligned and starts new group.
 
     **Violation**
 
@@ -49,7 +216,7 @@ Following configuration options can be independently changed for each of the key
       constant c_short_period : time;
       constant c_long_period : time;
 
-    **Fix (blank_line_ends_group = True)**
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -59,7 +226,22 @@ Following configuration options can be independently changed for each of the key
       constant c_short_period : time;
       constant c_long_period  : time;
 
-    **Fix (blank_line_ends_group = False)**
+Example: |blank_line_ends_group| set to |no|
+############################################
+
+Any blank line encountered in the VHDL file will not end the group of lines that should be aligned.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      signal wr_en : std_logic;
+      signal rd_en   : std_logic;
+
+      constant c_short_period : time;
+      constant c_long_period : time;
+
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -69,8 +251,10 @@ Following configuration options can be independently changed for each of the key
       constant c_short_period : time;
       constant c_long_period  : time;
 
-#. :code:`comment_line_ends_group` - if set to :code:`True` any purely comment line in the VHDL file ends the group of lines that should be aligned and starts new group.
-   By default set to :code:`True`.
+Example: |comment_line_ends_group| set to |yes|
+###############################################
+
+Any comment line in the VHDL file ends the group of lines that should be aligned and starts new group.
 
     **Violation**
 
@@ -87,7 +271,7 @@ Following configuration options can be independently changed for each of the key
           spi_miso_i : in std_logic
       );
 
-    **Fix (comment_line_ends_group = True)**
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -102,8 +286,27 @@ Following configuration options can be independently changed for each of the key
           spi_miso_i : in std_logic
       );
 
+Example: |comment_line_ends_group| set to |no|
+##############################################
 
-    **Fix (comment_line_ends_group = False)**
+Any comment line in the VHDL file will not end the group of lines that should be aligned and starts new group.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      port (
+          sclk_i : in std_logic;
+          pclk_i : in std_logic;
+          rst_i : in std_logic;
+          ---- serial interface ----
+          spi_ssel_o : out std_logic;
+          spi_sck_o : out std_logic;
+          spi_mosi_o : out std_logic;
+          spi_miso_i : in std_logic
+      );
+
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -118,13 +321,10 @@ Following configuration options can be independently changed for each of the key
           spi_miso_i : in std_logic
       );
 
-.. NOTE:: As all keyword alignment rules have above configurations they are not mentioned in the documentation for each rule.
+Example: |separate_generic_port_alignment| set to |yes|
+#######################################################
 
-Rule Specific Keyword Alignment Configuration
-#############################################
-
-#. :code:`separate_generic_port_alignment` - if set to :code:`True` alignment within the generic declarative/mapping part is separated from alignment within the  port declarative/mapping part.
-   By default set to :code:`True`.
+Alignment within the generic declarative/mapping part is separated from alignment within the port declarative/mapping part.
 
     **Violation**
 
@@ -140,7 +340,7 @@ Rule Specific Keyword Alignment Configuration
           data_o : in std_logic
       );
 
-    **Fix (separate_generic_port_alignment = True)**
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -154,7 +354,26 @@ Rule Specific Keyword Alignment Configuration
           data_o : in std_logic
       );
 
-    **Fix (separate_generic_port_alignment = False)**
+Example: |separate_generic_port_alignment| set to |no|
+######################################################
+
+Alignment within the generic declarative/mapping part is the same as the alignment within the port declarative/mapping part.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      generic (
+          g_width : positive;
+          g_output_delay : positive
+      );
+      port (
+          clk_i : in std_logic;
+          data_i : in std_logic;
+          data_o : in std_logic
+      );
+
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -168,8 +387,10 @@ Rule Specific Keyword Alignment Configuration
           data_o         : in std_logic
       );
 
-#. :code:`if_control_statements_ends_group` - if set to :code:`True` any line with if control statement ends the group of lines that should be aligned and starts new group.
-   By default set to :code:`True`.
+Example: |if_control_statements_ends_group| set to |yes|
+########################################################
+
+Any line with if control statement ends the group of lines that should be aligned and starts new group.
 
     **Violation**
 
@@ -183,7 +404,7 @@ Rule Specific Keyword Alignment Configuration
           hold_transmission <= '1';
       end if;
 
-    **Fix (if_control_statements_ends_group = True)**
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -195,7 +416,24 @@ Rule Specific Keyword Alignment Configuration
           hold_transmission <= '1';
       end if;
 
-    **Fix (if_control_statements_ends_group = False)**
+Example: |if_control_statements_ends_group| set to |no|
+#######################################################
+
+Any line with if control statement does not end the group of lines that should be aligned and starts new group.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      if condition = '1' then
+          data_valid <= '1';
+          data <= '1';
+      else
+          data_valid <= '0';
+          hold_transmission <= '1';
+      end if;
+
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -207,8 +445,10 @@ Rule Specific Keyword Alignment Configuration
           hold_transmission <= '1';
       end if;
 
-#. :code:`case_control_statements_ends_group` - if set to :code:`True`, any line with case control statements (:code:`case`, :code:`when` or :code:`end case`) ends the group of lines that should be aligned and starts new group. If set to :code:`False`, no line with case control statements ends the group of lines that should be aligned and starts a group. If set to :code:`break_on_case_or_end_case`, any line with :code:`case` or :code:`end case` ends the group of lines that should be aligned and starts new group.
-   By default set to :code:`True`.
+Example: |case_control_statements_ends_group| set to |yes|
+##########################################################
+
+Any line with case control statements (:code:`case`, :code:`when` or :code:`end case`) ends the group of lines that should be aligned and starts new group.
 
     **Violation**
 
@@ -229,7 +469,7 @@ Rule Specific Keyword Alignment Configuration
       end case;
       data_valid_after       <= '1';
 
-    **Fix (case_control_statements_ends_group = True)**
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -248,7 +488,31 @@ Rule Specific Keyword Alignment Configuration
       end case;
       data_valid_after <= '1';
 
-    **Fix (case_control_statements_ends_group = False)**
+Example: |case_control_statements_ends_group| set to |no|
+#########################################################
+
+No line with case control statements ends the group of lines that should be aligned and starts a group.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      data_valid_before    <= '1';
+      case A is
+          when A =>
+              X <= F;
+              XY <= G;
+              XYZ <= H;
+          when B =>
+              a <= I;
+              ab <= h;
+              c <= a;
+          when others =>
+            null;
+      end case;
+      data_valid_after       <= '1';
+
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -267,7 +531,31 @@ Rule Specific Keyword Alignment Configuration
       end case;
       data_valid_after  <= '1';
 
-    **Fix (case_control_statements_ends_group = break_on_case_or_end_case)**
+Example: |case_control_statements_ends_group| set to |break_on_case_or_end_case|
+################################################################################
+
+Any line with :code:`case` or :code:`end case` ends the group of lines that should be aligned and starts new group.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      data_valid_before    <= '1';
+      case A is
+          when A =>
+              X <= F;
+              XY <= G;
+              XYZ <= H;
+          when B =>
+              a <= I;
+              ab <= h;
+              c <= a;
+          when others =>
+            null;
+      end case;
+      data_valid_after       <= '1';
+
+    **Fix**
 
     .. code-block:: vhdl
 
@@ -286,8 +574,10 @@ Rule Specific Keyword Alignment Configuration
       end case;
       data_valid_after <= '1';
 
-#. :code:`generate_statements_ends_group` - if set to :code:`True` any line with generate statement keywords ends the group of lines that should be aligned and starts new group.
-   By default set to :code:`False`.
+Example: |generate_statements_ends_group| set to |yes|
+######################################################
+
+Any line with generate statement keywords ends the group of lines that should be aligned and starts new group.
 
     **Violation**
 
@@ -299,92 +589,98 @@ Rule Specific Keyword Alignment Configuration
           hold_transmission <= '1';
       end generate;
       data_valid_after       <= '1';
-
-    **Fix (generate_statements_ends_group = True)**
-
-    .. code-block:: vhdl
-
-      data_valid_before <= '1';
-      generate_label : if G_ENABLE = '1' generate
-          data_valid        <= '0';
-          hold_transmission <= '1';
-      end generate;
-      data_valid_after <= '1';
-
-    **Fix (generate_statements_ends_group = False)**
-
-    .. code-block:: vhdl
-
-      data_valid_before     <= '1';
-      generate_label : if G_ENABLE = '1' generate
-          data_valid        <= '0';
-          hold_transmission <= '1';
-      end generate;
-      data_valid_after      <= '1';
-
-#. :code:`loop_control_statements_ends_group` - if set to :code:`True` any line with loop control statement (including for and while loops) ends the group of lines that should be aligned and starts new group.
-   By default set to :code:`False`.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-      data_valid_before    <= '1';
-      for index in 4 to 23 loop
-          data_valid <= '0';
-          hold_transmission <= '1';
-      end loop;
-      data_valid_after       <= '1';
-
-    **Fix (loop_control_statements_ends_group = True)**
-
-    .. code-block:: vhdl
-
-      data_valid_before <= '1';
-      for index in 4 to 23 loop
-          data_valid        <= '0';
-          hold_transmission <= '1';
-      end loop;
-      data_valid_after <= '1';
-
-    **Fix (loop_control_statements_ends_group = False)**
-
-    .. code-block:: vhdl
-
-      data_valid_before     <= '1';
-      for index in 4 to 23 loop
-          data_valid        <= '0';
-          hold_transmission <= '1';
-      end loop;
-      data_valid_after      <= '1';
-
-#. :code:`no_alignment` - if set to :code:`True` the keyword will be forced to the left.
-   By default set to :code:`False`.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-      signal wr_en : std_logic;
-      signal rd_en   : std_logic;
-
-      constant c_short_period : time;
-      constant c_long_period : time;
 
     **Fix**
 
     .. code-block:: vhdl
 
-      signal wr_en : std_logic;
-      signal rd_en   : std_logic;
+      data_valid_before <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid        <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after <= '1';
 
-      constant c_short_period : time;
-      constant c_long_period : time;
+Example: |generate_statements_ends_group| set to |no|
+#####################################################
 
+No line with generate statement keywords ends the group of lines that should be aligned and starts new group.
 
-.. NOTE:: If given keyword alignment rule has any of the above keyword alignment specific configuration, then it is explicitly noted in the documentation of this rule.
+    **Violation**
 
-The default value for each of these case rules can be overridden using a configuration.
+    .. code-block:: vhdl
+
+      data_valid_before    <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after       <= '1';
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      data_valid_before     <= '1';
+      generate_label : if G_ENABLE = '1' generate
+          data_valid        <= '0';
+          hold_transmission <= '1';
+      end generate;
+      data_valid_after      <= '1';
+
+Example: |loop_control_statements_ends_group| set to |yes|
+##########################################################
+
+Any line with loop control statement (including for and while loops) ends the group of lines that should be aligned and starts new group.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      data_valid_before    <= '1';
+      for index in 4 to 23 loop
+          data_valid <= '0';
+          hold_transmission <= '1';
+      end loop;
+      data_valid_after       <= '1';
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      data_valid_before <= '1';
+      for index in 4 to 23 loop
+          data_valid        <= '0';
+          hold_transmission <= '1';
+      end loop;
+      data_valid_after <= '1';
+
+Example: |loop_control_statements_ends_group| set to |no|
+#########################################################
+
+No line with loop control statement (including for and while loops) ends the group of lines that should be aligned and starts new group.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      data_valid_before    <= '1';
+      for index in 4 to 23 loop
+          data_valid <= '0';
+          hold_transmission <= '1';
+      end loop;
+      data_valid_after       <= '1';
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      data_valid_before     <= '1';
+      for index in 4 to 23 loop
+          data_valid        <= '0';
+          hold_transmission <= '1';
+      end loop;
+      data_valid_after      <= '1';
 
 Rules Enforcing Keyword Alignment
 #################################

@@ -32,4 +32,41 @@ begin
 
   end process;
 
+  PROC_2 : process
+
+  begin
+
+    a <= x;
+    aa <= x;
+
+    if a = b then
+      aaa <= x;
+      aaaa <= x;
+    elsif a = b then
+      aaaaa <= x;
+      aaaaaa <= x;
+    else
+      aaaaaaa <= x;
+      aaaaaaaa <= x;
+    end if;
+
+    case a is
+      when 0 => 
+        aaaaaaaaa <= x;
+        aaaaaaaaaa <= x;
+      when 1 =>
+        aaaaaaaaaaa <= x;
+        aaaaaaaaaaaa <= x;
+      when others =>
+        aaaaaaaaaaaaa <= x;
+        aaaaaaaaaaaaaa <= x;
+    end case;
+
+    loop
+      aaaaaaaaaaaaaaa <= x;
+      aaaaaaaaaaaaaaaa <= x;
+    end loop;
+
+  end process;
+
 end architecture RTL;

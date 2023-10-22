@@ -18,7 +18,7 @@ class Rule(structure.Rule):
 
         self.min_height = 3
         self.configuration.append('min_height')
-        self.allow_indenting = True
+        self.allow_indenting = 'yes'
         self.configuration.append('allow_indenting')
         self.configuration_documentation_link = 'configuring_block_comments_link'
 

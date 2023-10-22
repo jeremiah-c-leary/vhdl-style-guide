@@ -40,21 +40,26 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.bIndexes = bIndexes
         ## Stuff below is from original keyword_alignment_rule
 
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
-
-        self.blank_line_ends_group = True
+        self.blank_line_ends_group = 'yes'
         self.configuration.append('blank_line_ends_group')
-        self.comment_line_ends_group = True
+        self.comment_line_ends_group = 'yes'
         self.configuration.append('comment_line_ends_group')
-        self.separate_generic_port_alignment = True
+        self.separate_generic_port_alignment = 'yes'
         self.configuration.append('separate_generic_port_alignment')
-        self.generate_statement_ends_group = False
-#        self.configuration.append('generate_statement_ends_group')
+
+        self.generate_statement_ends_group = 'no'
         self.bIncludeTillBeginningOfLine = False
         self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'
 
     def analyze(self, oFile):
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+        self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
+        self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+        self.separate_generic_port_alignment = utils.convert_yes_no_option_to_boolean(self.separate_generic_port_alignment)
+        self.generate_statement_ends_group = utils.convert_yes_no_option_to_boolean(self.generate_statement_ends_group)
+
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
@@ -89,7 +94,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                    iColumn += alignment_utils.update_column_width(self, oToken)
 
                if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
-                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
@@ -101,7 +106,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                    dAnalysis = {}
 
                if isinstance(oToken, token.generic_map_aspect.close_parenthesis) and self.separate_generic_port_alignment:
-                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
@@ -113,7 +118,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                    dAnalysis = {}
 
                if generate_statement_detected(self, oToken):
-                   add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                   alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
                    for iKey in list(dAnalysis.keys()):
                        if dAnalysis[iKey]['adjust'] != 0:
                            oLineTokens = oFile.get_tokens_from_line(iKey)
@@ -132,7 +137,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                    if self.comment_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \
                           utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
                                    oLineTokens = oFile.get_tokens_from_line(iKey)
@@ -145,7 +150,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
 
                    if self.blank_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
                            for iKey in list(dAnalysis.keys()):
                                if dAnalysis[iKey]['adjust'] != 0:
@@ -157,7 +162,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
 
                            dAnalysis = {}
 
-            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+            alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
             for iKey in list(dAnalysis.keys()):
                 if dAnalysis[iKey]['adjust'] != 0:
@@ -181,26 +186,6 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         else:
             rules_utils.insert_whitespace(lTokens, iTokenIndex, dAction['adjust'])
         oViolation.set_tokens(lTokens)
-
-
-def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
-    iMaxLeftColumn = 0
-    iMinLeftColumn = 9999999999999999
-    iMaxTokenColumn = 0
-    iMinTokenColumn = 9999999999999999
-
-    for iKey in list(dAnalysis.keys()):
-        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['left_column'])
-        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]['left_column'])
-        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])
-        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]['token_column'])
-
-    if compact_alignment:
-        for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['token_column'] + 1
-    else:
-        for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
 
 
 def generate_statement_detected(self, oToken):

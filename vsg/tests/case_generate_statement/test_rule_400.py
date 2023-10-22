@@ -26,10 +26,10 @@ class test_case_generate_statement_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'case_generate_statement')
         self.assertEqual(oRule.identifier, '400')
-        self.assertTrue(oRule.compact_alignment)
-        self.assertFalse(oRule.blank_line_ends_group)
-        self.assertFalse(oRule.comment_line_ends_group)
-        self.assertFalse(oRule.separate_generic_port_alignment)
+        self.assertEqual(oRule.compact_alignment, 'yes')
+        self.assertEqual(oRule.blank_line_ends_group, 'no')
+        self.assertEqual(oRule.comment_line_ends_group, 'no')
+        self.assertEqual(oRule.separate_generic_port_alignment, 'no')
 
         lExpected = [8, 10]
 

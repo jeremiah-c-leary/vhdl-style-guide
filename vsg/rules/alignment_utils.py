@@ -1,5 +1,7 @@
 
 from vsg import parser
+from vsg import token
+
 from vsg.vhdlFile import utils
 
 
@@ -69,3 +71,115 @@ def update_column_width(self, oToken):
         return iLength
 
     return len(oToken.get_value())
+
+
+def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_without_comments=False, iMaxColumn=0):
+    iMaxLeftColumn = 0
+    iMinLeftColumn = 9999999999999999
+    iMaxTokenColumn = 0
+    iMinTokenColumn = 9999999999999999
+
+    for iKey in list(dAnalysis.keys()):
+        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['left_column'])
+        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]['left_column'])
+        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])
+        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]['token_column'])
+
+    if include_lines_without_comments:
+        iMaxTokenColumn = max(iMaxTokenColumn, iMaxColumn)
+
+    if compact_alignment:
+        for iKey in list(dAnalysis.keys()):
+            dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['token_column'] + 1
+    else:
+        for iKey in list(dAnalysis.keys()):
+            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
+
+
+def check_for_exclusions(oToken, bSkip, oEndSkipToken, lUnless):
+    if bSkip:
+        if isinstance(oToken, oEndSkipToken):
+            return False, None
+    else:
+        for lTokenPairs in lUnless:
+            if isinstance(oToken, lTokenPairs[0]):
+                return True, lTokenPairs[1]
+
+    return bSkip, oEndSkipToken
+
+
+def check_for_if_keywords(iToken, lTokens):
+    iMyToken = iToken
+    if isinstance(lTokens[iToken], parser.whitespace):
+        iMyToken += 1
+
+    if isinstance(lTokens[iMyToken], token.if_statement.if_label):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.if_statement.if_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.if_statement.elsif_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.if_statement.else_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.if_statement.end_keyword):
+        return True
+
+    return False
+
+
+def check_for_case_keywords(iToken, lTokens):
+    iMyToken = iToken
+    if isinstance(lTokens[iToken], parser.whitespace):
+        iMyToken += 1
+
+    if isinstance(lTokens[iMyToken], token.case_statement.case_label):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.case_statement.case_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.case_statement.end_keyword):
+        return True
+
+    return False
+
+
+def check_for_when_keywords(iToken, lTokens):
+    iMyToken = iToken
+    if isinstance(lTokens[iToken], parser.whitespace):
+        iMyToken += 1
+
+    if isinstance(lTokens[iMyToken], token.case_statement_alternative.when_keyword):
+        return True
+
+    return False
+
+
+def check_for_loop_keywords(iToken, lTokens):
+    iMyToken = iToken
+    if isinstance(lTokens[iToken], parser.whitespace):
+        iMyToken += 1
+
+    if isinstance(lTokens[iMyToken], token.loop_statement.loop_label):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.iteration_scheme.while_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.iteration_scheme.for_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.loop_statement.loop_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.loop_statement.end_keyword):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.loop_statement.end_loop_keyword):
+        return True
+
+    return False

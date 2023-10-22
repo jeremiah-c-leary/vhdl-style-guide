@@ -6,15 +6,38 @@ Configuring Blank Lines
 There are rules which will check for blank lines either above or below a line.
 These rules are designed to improve readability by separating code using blank lines.
 
-There are a couple of options to these rules, which can be selected by using the :code:`style` option:
 
-+---------------------+----------------------------------------------------------+
-| Style               | Description                                              |
-+=====================+==========================================================+
-| no_blank_line       | Removes blank lines on the line above or below.          |
-+---------------------+----------------------------------------------------------+
-| require_blank_line  | Requires a blank line on the line above or below.        |
-+---------------------+----------------------------------------------------------+
+There are several options to these rules:
+
+.. |style| replace::
+   :code:`style`
+
+.. |no_blank_line| replace::
+   :code:`no_blank_line`
+
+.. |require_blank_line| replace::
+   :code:`require_blank_line`
+
+.. |style__no_blank_line| replace::
+   :code:`no_blank_line` = Removes blank lines on the line above or below
+
+.. |style__require_blank_line| replace::
+   :code:`require_blank_line` = Requires a blank line on the line above or below
+
+.. |style_values| replace::
+   :code:`no_blank_line`, :code:`require_blank_line`
+
+.. |style_default| replace::
+   Rule dependent
+
++-------------------------+----------------+-----------------+----------------------------------------------+
+| Option                  |   Values       | Default         | Description                                  |
++=========================+================+=================+==============================================+
+| |style|                 | |style_values| | |style_default| | * |style__no_blank_line|                     |
+|                         |                |                 | * |style__require_blank_line|                |
++-------------------------+----------------+-----------------+----------------------------------------------+
+
+This is an example of how to configure the options.
 
 .. code-block:: yaml
 
@@ -26,8 +49,8 @@ There are a couple of options to these rules, which can be selected by using the
   This can occur when a below rule is applied and then on the next line a previous rule applies.
   Resolve any conflicts by changing the configuration of either rule.
 
-Example: require_blank_line
-###########################
+Example: |style| set to |require_blank_line|
+############################################
 
 The following code would fail with this option:
 
@@ -51,8 +74,8 @@ The following code would pass with this option:
 
      signal s_sig1 : std_logic;
 
-Example: no_blank_line
-######################
+Example: |style| set to |no_blank_line|
+#######################################
 
 The following code would fail with this option:
 

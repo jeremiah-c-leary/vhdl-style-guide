@@ -62,6 +62,10 @@ class multiline_array_alignment(alignment.Rule):
         return lToi
 
     def _analyze(self, lToi):
+
+        self.align_left = utils.convert_boolean_to_yes_no(self.align_left)
+        self.align_paren = utils.convert_boolean_to_yes_no(self.align_paren)
+
         for oToi in lToi:
             oLines = lines(oToi)
             oLines.set_first_line_indent(oToi.iFirstLineIndent)

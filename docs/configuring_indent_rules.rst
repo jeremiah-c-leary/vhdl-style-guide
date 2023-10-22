@@ -19,6 +19,12 @@ The method of indenting can be configured using one of the following options:
 .. |default_value| replace::
    :code:`spaces`
 
+.. |spaces| replace::
+   :code:`spaces`
+
+.. |smart_tabs| replace::
+   :code:`smart_tabs`
+
 .. |option| replace::
    :code:`indent_style`
 
@@ -44,10 +50,10 @@ The :code:`indent_style` option can be set globally for all rules and locally fo
               indent_style: 'spaces'
 
 
-:code:`spaces` Example
-#######################
+Example: |option| set to |spaces|
+#################################
 
-Setting the :code:`indent_style` option to :code:`spaces` will result in leading whitespace to be converted into spaces.
+Setting the |option| option to |spaces| will result in leading whitespace being converted into spaces.
 
 **Violation**
 
@@ -83,10 +89,11 @@ Setting the :code:`indent_style` option to :code:`spaces` will result in leading
 
    end architecture rtl;
 
-:code:`smart_tabs` Example
-##########################
+Example: |option| set to |smart_tabs|
+#####################################
 
-Setting the :code:`indent_style` option to :code:`smart_tabs` will result in leading whitespace to be converted into tabs and spaces.  Tabs set the indent and spaces are used for alignment.
+Setting the |option| option to |smart_tabs| will result in leading whitespace being converted into tabs and spaces.
+Tabs set the indent and spaces are used for alignment.
 
 **Violation**
 

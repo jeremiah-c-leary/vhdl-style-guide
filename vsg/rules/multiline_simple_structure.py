@@ -63,6 +63,9 @@ class multiline_simple_structure(structure.Rule):
         return lReturn
 
     def _analyze(self, lToi):
+        self.new_line_after_assign = utils.convert_boolean_to_yes_no(self.new_line_after_assign)
+        self.ignore_single_line = utils.convert_boolean_to_yes_no(self.ignore_single_line)
+
         for oToi in lToi:
             if rules_utils.is_single_line(oToi) and self.ignore_single_line:
                 continue

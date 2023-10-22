@@ -17,10 +17,10 @@ class rule_007(structure.Rule):
     '''
     This rule checks for code after the **else** keyword.
 
-    .. NOTE:: There is a configuration option **allow_single_line** which allows single line concurrent statements.
+    .. NOTE:: There is a configuration option :code:`allow_single_line` which allows single line concurrent statements.
 
-    allow_single_line set to False (Default)
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    :code:`allow_single_line` set to :code:`no` (Default)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     **Violation**
 
@@ -39,8 +39,8 @@ class rule_007(structure.Rule):
                 '1' when underflow = '1' else
                 sig_a;
 
-    allow_single_line set to True
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    :code:`allow_single_line` set to :code:`yes`
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     **Violation**
 
@@ -65,7 +65,7 @@ class rule_007(structure.Rule):
         self.subphase = 2
         self.lSplitTokens = lSplitTokens
         self.lTokenPairs = lTokenPairs
-        self.allow_single_line = False
+        self.allow_single_line = 'no'
         self.configuration.append('allow_single_line')
         self.configuration_documentation_link = None
 
@@ -77,6 +77,8 @@ class rule_007(structure.Rule):
         return lToi
 
     def _analyze(self, lToi):
+        self.allow_single_line = utils.convert_yes_no_option_to_boolean(self.allow_single_line)
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 

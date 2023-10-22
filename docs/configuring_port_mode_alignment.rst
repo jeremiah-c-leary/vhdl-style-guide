@@ -7,15 +7,59 @@ Configuring Port Mode Alignment
 The number of spaces before and after each port mode ('in', 'out', 'inout', 'buffer', 'linkage') can be individually set.
 This is accomplished using the `spaces_before` and `spaces_after` options for those rules.
 
-The default options for each rule are:
+.. |spaces_before| replace::
+   :code:`spaces_before`
 
-+----------+---------------+--------------+
-|  Rule    | spaces_before | spaces_after |
-+----------+---------------+--------------+
-| port_007 |       1       |       4      |
-| port_008 |       1       |       3      |
-| port_009 |       1       |       1      |
-+----------+---------------+--------------+
+.. |spaces_after| replace::
+   :code:`spaces_after`
+
+.. |values| replace::
+   integer > 0
+
+.. |default_value_1| replace::
+   1
+
+.. |default_value_2| replace::
+   Rule dependent
+
+.. |spaces_before_description| replace::
+   Sets the number of spaces required before the mode
+
+.. |spaces_after_description| replace::
+   Sets the number of spaces required after the mode
+
++----------------------+----------+-------------------+-----------------------------+
+| Option               | Values   | Default Value     | Description                 |
++======================+==========+===================+=============================+
+| |spaces_before|      | |values| | |default_value_1| | |spaces_before_description| |
++----------------------+----------+-------------------+-----------------------------+
+| |spaces_after|       | |values| | |default_value_2| | |spaces_after_description|  |
++----------------------+----------+-------------------+-----------------------------+
+
+This is an example of how to configure these options.
+
+.. code-block:: yaml
+
+   rule :
+     port_007:
+        spaces_before: 1
+        spaces_after : 4
+
+Example: Align modes to the left (default)
+##########################################
+
+.. code-block:: yaml
+
+   rule :
+     port_007:
+        spaces_before: 1
+        spaces_after : 4
+     port_008:
+        spaces_before: 1
+        spaces_after : 3
+     port_009:
+        spaces_before: 1
+        spaces_after : 1
 
 which results in the following format being enforced:
 
@@ -25,15 +69,21 @@ which results in the following format being enforced:
    O_OUTPUT : out   std_logic;
    IO_INOUT : inout std_logic;
 
-Setting the `spaces_before` and `spaces_after` options for each mode aligment rule to:
+Example:  Align modes based on type
+###################################
 
-+----------+---------------+--------------+
-|  Rule    | spaces_before | spaces_after |
-+----------+---------------+--------------+
-| port_007 |       1       |       4      |
-| port_008 |       3       |       1      |
-| port_009 |       1       |       1      |
-+----------+---------------+--------------+
+.. code-block:: yaml
+
+   rule :
+     port_007:
+        spaces_before: 1
+        spaces_after : 4
+     port_008:
+        spaces_before: 3
+        spaces_after : 1
+     port_009:
+        spaces_before: 1
+        spaces_after : 1
 
 would result in the following format being enforced:
 

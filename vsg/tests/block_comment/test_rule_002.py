@@ -60,7 +60,7 @@ class test_block_comment_rule(unittest.TestCase):
 
     def test_rule_002_bar_wo_allow_indent(self):
         oRule = block_comment.rule_002()
-        oRule.allow_indenting = False
+        oRule.allow_indenting = 'no'
         oRule.comment_left = '|'
 
         lExpected = [3, 4, 5, 9, 10, 11, 22, 23, 24, 25, 46, 47, 48]
