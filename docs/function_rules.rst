@@ -499,6 +499,27 @@ This rule checks the indent of the closing parenthesis if it is on its own line.
      e : std_logic
    ) return integer is
 
+function_501
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **return** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) RETURN integer is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+
 function_502
 ############
 

@@ -78,6 +78,7 @@ Rules Enforcing Indent Rule Group
 * `record_type_definition_300 <../record_type_definition_rules.html#record-type-definition-300>`_
 * `record_type_definition_301 <../record_type_definition_rules.html#record-type-definition-301>`_
 * `report_statement_300 <../report_statement_rules.html#report-statement-300>`_
+* `return_statement_300 <../return_statement_rules.html#return-statement-300>`_
 * `selected_assignment_300 <../selected_assignment_rules.html#selected-assignment-300>`_
 * `sequential_001 <../sequential_rules.html#sequential-001>`_
 * `signal_001 <../signal_rules.html#signal-001>`_
