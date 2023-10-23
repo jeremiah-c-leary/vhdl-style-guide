@@ -27,6 +27,7 @@ def update_previous_library(oToi, lAllTokens, oTokenMap):
         oToken = lAllTokens[lTokenIndex[0]]
         oToi.set_meta_data('previous_library', oToken.get_value().lower())
 
+
 def update_current_library(oToi, lAllTokens, oTokenMap):
     iLineNumber = oToi.get_line_number()
     iStartIndex = oTokenMap.get_index_of_line(iLineNumber)
