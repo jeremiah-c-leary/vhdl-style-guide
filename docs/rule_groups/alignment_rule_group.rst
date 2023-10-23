@@ -24,6 +24,7 @@ Rules Enforcing Alignment Rule Group
 * `concurrent_009 <../concurrent_rules.html#concurrent-009>`_
 * `concurrent_400 <../concurrent_rules.html#concurrent-400>`_
 * `concurrent_401 <../concurrent_rules.html#concurrent-401>`_
+* `concurrent_selected_signal_assignment_400 <concurrent_selected_signal_assignment_rules.html#concurrent-selected-signal-assignment-009>`_
 * `constant_012 <../constant_rules.html#constant-012>`_
 * `constant_014 <../constant_rules.html#constant-014>`_
 * `declarative_part_400 <../declarative_part_rules.html#declarative-part-400>`_

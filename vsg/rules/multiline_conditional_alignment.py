@@ -112,12 +112,11 @@ class multiline_conditional_alignment(alignment.Rule):
                 dExpectedIndent, lStructure = _apply_align_paren_after_when(lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
             dExpectedIndent, lStructure = _apply_align_else_keywords_option(self.align_else_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
 
-#            print(lStructure)
-#            print(lActualStructure)
+#            print(f'lStructure = {lStructure}')
+#            print(f'lActualStructure = {lActualStructure}')
 
 #            print(f'Actual = {dActualIndent}')
 #            print(f'Expect = {dExpectedIndent}')
-#            print(f'Index  = {dIndex}')
 #            print(f'dIndex = {dIndex}')
 
             if self.indentStyle == 'smart_tabs':
@@ -218,10 +217,8 @@ def is_token_before_carriage_return(tToken, lTokens):
 def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_align_left_option  <-' + '-'*70)
     iFirstLine = alignment_utils.get_first_line(dActualIndent)
-
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
-
     bWhenFound = False
     iParens = 0
     iLine = iFirstLine
@@ -229,6 +226,8 @@ def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithPare
         if dStruct['type'] == 'when':
             bWhenFound = True
         elif dStruct['type'] == 'else':
+            bWhenFound = False
+        elif dStruct['type'] == 'comma':
             bWhenFound = False
         elif dStruct['type'] == 'return':
 #            print(f'iLine = {iLine} | bWhenFound = {bWhenFound} | iParens = {iParens}')
@@ -251,7 +250,7 @@ def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithPare
                 iIndent = iFirstIndent
             dExpectedIndent[iLine] = iIndent * ' '
         elif dStruct['type'] == 'open':
-            iParens +=1
+            iParens += 1
         elif dStruct['type'] == 'close':
             iParens -= 1
 
@@ -636,6 +635,14 @@ def _build_structure_list(iLine, iColumn, lTokens):
             dElse['column'] = iColumn - 4
             dElse['iToken'] = iToken
             lStructure.append(dElse)
+
+        if isinstance(oToken, token.selected_waveforms.comma):
+            dComma = {}
+            dComma['type'] = 'comma'
+            dComma['line'] = iLine
+            dComma['column'] = iColumn - 4
+            dComma['iToken'] = iToken
+            lStructure.append(dComma)
 
     return lStructure, iLine
 

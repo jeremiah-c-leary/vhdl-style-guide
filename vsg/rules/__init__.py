@@ -96,6 +96,7 @@ from vsg.rules import case_generate_statement
 from vsg.rules import comment
 from vsg.rules import component
 from vsg.rules import concurrent
+from vsg.rules import concurrent_selected_signal_assignment
 from vsg.rules import conditional_expressions
 from vsg.rules import conditional_waveforms
 from vsg.rules import constant
