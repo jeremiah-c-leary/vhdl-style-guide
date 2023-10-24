@@ -17,11 +17,11 @@ Rules Enforcing Structure::Optional Rule Group
 * `function_018 <../function_rules.html#function-018>`_
 * `generate_011 <../generate_rules.html#generate-011>`_
 * `instantiation_033 <../instantiation_rules.html#instantiation-033>`_
-* `loop_statement_007 <../loop_statement_rules.html#loop-statement-007>`_ 
-* `package_007 <../package_rules.html#package-007>`_ 
-* `package_014 <../package_rules.html#package-014>`_ 
-* `package_body_002 <../package_body_rules.html#package-body-002>`_ 
-* `package_body_003 <../package_body_rules.html#package-body-003>`_ 
+* `loop_statement_007 <../loop_statement_rules.html#loop-statement-007>`_
+* `package_007 <../package_rules.html#package-007>`_
+* `package_014 <../package_rules.html#package-014>`_
+* `package_body_002 <../package_body_rules.html#package-body-002>`_
+* `package_body_003 <../package_body_rules.html#package-body-003>`_
 * `procedure_012 <../procedure_rules.html#procedure-012>`_
 * `process_012 <../process_rules.html#process-012>`_
 * `process_018 <../process_rules.html#process-018>`_

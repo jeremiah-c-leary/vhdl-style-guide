@@ -1,5 +1,8 @@
 .. _configuring-simple-multiline-structure-rules:
 
+Configuring Simple Multiline Structure Rules
+--------------------------------------------
+
 .. |new_line_after_assign| replace::
    :code:`new_line_after_assign`
 
@@ -16,7 +19,7 @@
    :code:`yes`, :code:`no`, :code:`ignore`
 
 .. |values2| replace::
-   :code:`yes`, :code:`no` 
+   :code:`yes`, :code:`no`
 
 .. |ignore_single_line| replace::
    :code:`ignore_single_line`
@@ -32,9 +35,6 @@
 
 .. |default_no| replace::
    :code:`no`
-
-Configuring Simple Multiline Structure Rules
---------------------------------------------
 
 There are rules which will check the structure of simple multiline expressions and conditions.
 
