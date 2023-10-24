@@ -29,7 +29,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = [5, 6, 7, 9, 10, 11]
+        lExpected = [5, 6, 7, 9, 10, 11, 13]
         lExpected.extend([17, 18, 19, 21, 22, 24])
 
         oRule.analyze(self.oFile)
@@ -47,7 +47,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = [5, 6, 7, 9, 10, 11]
+        lExpected = [5, 6, 7, 9, 10, 11, 13]
         lExpected.extend([17, 18, 19, 21, 22, 24])
 
         oRule.analyze(self.oFile)
@@ -87,7 +87,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = [5, 6, 7, 10, 11, 13]
+        lExpected = [5, 6, 7, 9, 10, 11, 13]
         lExpected.extend([17, 18, 19, 21, 22, 24])
 
         oRule.analyze(self.oFile)
@@ -105,7 +105,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = [5, 6, 7, 10, 11, 13]
+        lExpected = [5, 6, 7, 9, 10, 11, 13]
         lExpected.extend([17, 18, 19, 21, 22, 24])
 
         oRule.analyze(self.oFile)
@@ -145,7 +145,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = [5, 6, 7, 9, 10, 11]
+        lExpected = [5, 6, 7, 9, 10, 11, 13]
         lExpected.extend([17, 18, 19, 21, 22, 24])
 
         oRule.analyze(self.oFile)
@@ -163,7 +163,7 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = [5, 6, 7, 9, 10, 11]
+        lExpected = [5, 6, 7, 9, 10, 11, 13]
         lExpected.extend([17, 18, 19, 21, 22, 24])
 
         oRule.analyze(self.oFile)
@@ -203,8 +203,8 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = [4, 5, 6, 9, 10, 13]
-        lExpected.extend([16, 18, 19, 21, 22])
+        lExpected = [4, 5, 6, 9, 10]
+        lExpected.extend([16, 18, 19, 21])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -221,8 +221,8 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '020')
 
-        lExpected = [4, 5, 6, 9, 10, 13]
-        lExpected.extend([16, 18, 19, 21, 22])
+        lExpected = [4, 5, 6, 9, 10]
+        lExpected.extend([16, 18, 19, 21])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

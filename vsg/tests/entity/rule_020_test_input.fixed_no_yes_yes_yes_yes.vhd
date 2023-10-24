@@ -10,7 +10,7 @@ entity fifo is
     gen_dec6   : integer := 1;      -- Comment
     gen_dec7   : integer := 1;      -- Comment
     -- Comment
-    gen_dec3  : integer := 2        -- Comment
+    gen_dec3  : integer := 2   -- Comment
   );
   port (
     sig1     : std_logic := '0';                -- Comment
@@ -18,8 +18,8 @@ entity fifo is
     sig3     : std_logic := '1';                -- Comment
     sig4     : std_logic := '1';                -- Comment
     --Comment
-    sig5     : std_logic := '1';                -- Comment
-    sig6     : std_logic := '1';                -- Comment
+    sig5     : std_logic := '1';    -- Comment
+    sig6     : std_logic := '1';    -- Comment
 
     sig7     : std_logic := 'Z'       -- Comment
   );

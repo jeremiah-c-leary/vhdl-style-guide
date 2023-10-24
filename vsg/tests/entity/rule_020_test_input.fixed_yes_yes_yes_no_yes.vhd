@@ -6,9 +6,9 @@ entity fifo is
     gen_dec3   : integer := 1; -- Comment
     gen_dec4   : integer := 1; -- Comment
 
-    gen_dec5   : integer := 1;   -- Comment
-    gen_dec6   : integer := 1;   -- Comment
-    gen_dec7   : integer := 1;   -- Comment
+    gen_dec5   : integer := 1; -- Comment
+    gen_dec6   : integer := 1; -- Comment
+    gen_dec7   : integer := 1; -- Comment
     -- Comment
     gen_dec3  : integer := 2     -- Comment
   );
