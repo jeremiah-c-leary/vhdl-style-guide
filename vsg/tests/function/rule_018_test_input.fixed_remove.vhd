@@ -15,11 +15,11 @@ package body fifo_pkg is
 
   function func_a (x : boolean) return integer is
   begin
-  end function func_a;
+  end func_a;
 
   function func_b (x : boolean) return integer is
   begin
-  end function func_b;
+  end func_b;
 
   function func_a (x : boolean) return integer is
   begin

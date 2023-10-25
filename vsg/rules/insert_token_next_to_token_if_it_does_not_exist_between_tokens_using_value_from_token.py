@@ -47,6 +47,9 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
         if remove_keyword(self):
             return oFile.get_token_and_n_tokens_before_it([self.insert_token], 1)
         else:
+            return self._get_add_tokens_of_interest(oFile)
+
+    def _get_add_tokens_of_interest(self, oFile):
             lToi = oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
             return filter_toi(self.filter_tokens, lToi)
 
@@ -103,6 +106,7 @@ def optional_keyword_exists(oToken, lTokens):
 
 def add_optional_item(oViolation, self):
     lTokens = oViolation.get_tokens()
+
     if not token_value_available(oViolation):
         return
 
