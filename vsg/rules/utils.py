@@ -114,6 +114,13 @@ def get_index_of_token_in_list(oToken, lTokens):
     return None
 
 
+def get_index_of_token_in_list_after_index(oToken, lTokens, iIndex):
+    for iToken, token in enumerate(lTokens):
+        if iToken > iIndex and isinstance(token, oToken):
+            return iToken
+    return None
+
+
 def get_indexes_of_token_in_list(oToken, lTokens):
     lReturn = []
     for iToken, token in enumerate(lTokens):
@@ -425,7 +432,7 @@ def open_paren_after_assignment_operator(assignment_operator, lTokens):
 def open_paren_after_assignment_operator_is_aggregate(assignment_operator, lTokens):
     iToken = get_index_of_token_in_list(assignment_operator, lTokens)
     if is_next_token_ignoring_whitespace(parser.open_parenthesis, iToken, lTokens):
-        iIndex = get_index_of_token_in_list(parser.open_parenthesis, lTokens)
+        iIndex = get_index_of_token_in_list_after_index(parser.open_parenthesis, lTokens, iToken)
         return isinstance(lTokens[iIndex], token.aggregate.open_parenthesis)
     return False
 

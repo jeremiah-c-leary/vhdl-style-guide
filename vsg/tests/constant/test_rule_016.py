@@ -117,7 +117,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.new_line_after_comma = 'ignore'
         oRule.assign_on_single_line = 'ignore'
 
-        lExpected = [14, 17, 21, 27, 41, 57, 75]
+        lExpected = [14, 17, 21, 27, 41, 57, 75, 83]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -131,7 +131,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.new_line_after_comma = 'ignore'
         oRule.assign_on_single_line = 'ignore'
 
-        lExpected = [11, 14, 80]
+        lExpected = [11, 14, 80, 88]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -173,7 +173,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.new_line_after_comma = 'ignore'
         oRule.assign_on_single_line = 'ignore'
 
-        lExpected = [10, 21, 27, 41, 42, 48, 57, 58, 65, 75]
+        lExpected = [10, 21, 27, 41, 42, 48, 57, 58, 65, 75, 83]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -242,6 +242,7 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(64)
         lExpected.extend(range(66, 70))
         lExpected.extend(range(76, 80))
+        lExpected.extend(range(84, 88))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -271,7 +272,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.assign_on_single_line = 'ignore'
         oRule.move_last_comment = 'yes'
 
-        lExpected = [11, 14, 80]
+        lExpected = [11, 14, 80, 88]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -286,7 +287,7 @@ class test_constant_rule(unittest.TestCase):
         oRule.assign_on_single_line = 'ignore'
         oRule.move_last_comment = 'no'
 
-        lExpected = [11, 14, 80]
+        lExpected = [11, 14, 80, 88]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
