@@ -27,6 +27,9 @@ There are several options to these rules, which can be selected by using the :co
 .. |require_comment| replace::
    :code:`require_comment`
 
+.. |no_blank_line_unless_different_library| replace::
+   :code:`no_blank_line_unless_different_library`
+
 .. |style_values| replace::
    |no_blank_line|, |require_blank_line|, |no_code|, |allow_comment|, |require_comment|, |require_blank_line|
 
@@ -45,18 +48,22 @@ There are several options to these rules, which can be selected by using the :co
 .. |style__require_comment| replace::
    |require_comment| = Comment(s) required on the line(s) above and a blank line above the comment(s).
 
+.. |style__no_blank_line_unless_different_library| replace::
+   |no_blank_line_unless_different_library| = Removes blank lines on lines above unless the library is different.
+
 .. |default_value| replace::
    |require_blank_line|
 
-+----------------------+----------------+-------------------+-------------------------------+
-| Option               | Values         | Default Value     | Description                   |
-+======================+================+===================+===============================+
-| |style|              | |style_values| | |default_value|   | * |style__no_blank_line|      |
-|                      |                |                   | * |style__require_blank_line| |
-|                      |                |                   | * |style__no_code|            | 
-|                      |                |                   | * |style__allow_comment|      | 
-|                      |                |                   | * |style__require_comment|    | 
-+----------------------+----------------+-------------------+-------------------------------+
++----------------------+----------------+-------------------+---------------------------------------------------+
+| Option               | Values         | Default Value     | Description                                       |
++======================+================+===================+===================================================+
+| |style|              | |style_values| | |default_value|   | * |style__no_blank_line|                          |
+|                      |                |                   | * |style__require_blank_line|                     |
+|                      |                |                   | * |style__no_code|                                | 
+|                      |                |                   | * |style__allow_comment|                          | 
+|                      |                |                   | * |style__require_comment|                        | 
+|                      |                |                   | * |style__no_blank_line_unless_different_library| | 
++----------------------+----------------+-------------------+---------------------------------------------------+
 
 .. NOTE:: Unless stated in the rule description, the default style is :code:`require_blank_line`.
 
@@ -195,6 +202,37 @@ The following code would pass these options:
 
    -- Comment
    entity fifo is
+
+Example: |style| set to |no_blank_line_unless_different_library|
+################################################################
+
+This option provides grouping of use clauses based on library.
+
+The following code:
+
+.. code-block:: vhdl
+
+   library ieee;
+
+   use ieee.std_logic_1164.all;
+
+   use ieee.numeric_std.all;
+
+   use work.axi4_stream_pkg.all;
+
+   use work.axi4_lite_pkg.all;
+
+will be fixed to:
+
+.. code-block:: vhdl
+
+   library ieee;
+   use ieee.std_logic_1164.all;
+   use ieee.numeric_std.all;
+
+   use work.axi4_stream_pkg.all;
+   use work.axi4_lite_pkg.all;
+
 
 Rules Enforcing Previous Lines
 ##############################
