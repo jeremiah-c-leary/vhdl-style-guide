@@ -77,3 +77,6 @@
 .. |configuring_comment_keywords_link| replace::
    Refer to :ref:`configuring-comment-keywords` for information on how to change the search comment keywords.
 
+.. |configuring_use_clause_indenting_link| replace::
+   Refer to :ref:`configuring-use-clause-indenting` for information on how to change the indenting of use clauses.
+
