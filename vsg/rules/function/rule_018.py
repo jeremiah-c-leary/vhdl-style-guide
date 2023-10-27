@@ -48,4 +48,3 @@ class rule_018(Rule):
             oToken = oToi.get_first_token_matching(oValueToken)
             oToi.set_token_value(oToken.get_value())
         return lToi
-
