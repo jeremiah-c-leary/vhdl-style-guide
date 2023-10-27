@@ -194,6 +194,8 @@ library_008
 
 This rule checks the indent of the **use** keyword.
 
+|configuring_use_clause_indenting_link|
+
 **Violation**
 
 .. code-block:: vhdl

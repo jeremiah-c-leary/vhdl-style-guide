@@ -11,6 +11,8 @@ class rule_008(token_indent):
     '''
     This rule checks the indent of the **use** keyword.
 
+    |configuring_use_clause_indenting_link|
+
     **Violation**
 
     .. code-block:: vhdl

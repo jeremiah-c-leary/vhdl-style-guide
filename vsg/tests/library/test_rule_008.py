@@ -12,14 +12,6 @@ lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_008_test
 
 dIndentMap = utils.read_indent_file()
 
-lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed.vhd'), lExpected)
-
-lExpected_with_indent_size_zero = []
-lExpected_with_indent_size_zero.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed_with_indent_size_0.vhd'), lExpected_with_indent_size_zero)
-
 
 class test_library_rule(unittest.TestCase):
 
@@ -34,7 +26,7 @@ class test_library_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'library')
         self.assertEqual(oRule.identifier, '008')
 
-        lExpected = [7, 8, 9]
+        lExpected = [10, 11, 21, 28, 42, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -46,6 +38,10 @@ class test_library_rule(unittest.TestCase):
 
         lActual = self.oFile.get_lines()
 
+        lExpected = []
+        lExpected.append('')
+        utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed.vhd'), lExpected)
+
         self.assertEqual(lExpected, lActual)
 
         oRule.analyze(self.oFile)
@@ -55,7 +51,7 @@ class test_library_rule(unittest.TestCase):
         oRule = library.rule_008()
         oRule.indentSize = 0
 
-        lExpected = [3, 4, 8, 9]
+        lExpected = [3, 4, 10, 11, 21, 28, 35, 42]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -68,7 +64,46 @@ class test_library_rule(unittest.TestCase):
 
         lActual = self.oFile.get_lines()
 
-        self.assertEqual(lExpected_with_indent_size_zero, lActual)
+        lExpected = []
+        lExpected.append('')
+        utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed_with_indent_size_0.vhd'), lExpected)
+
+        self.assertEqual(lExpected, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_rule_008_token_if_no_matching_library_clause_current(self):
+        oRule = library.rule_008()
+
+        lExpected = [10, 11, 21, 28, 35, 42, 44]
+
+        dIndentMap = utils.read_indent_file()
+        dIndentMap['indent']['tokens']['use_clause']['keyword']['token_if_no_matching_library_clause'] = 'current'
+
+        self.oFile.set_indent_map(dIndentMap)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_008_token_if_no_matching_library_clause_current(self):
+        oRule = library.rule_008()
+
+        dIndentMap = utils.read_indent_file()
+        dIndentMap['indent']['tokens']['use_clause']['keyword']['token_if_no_matching_library_clause'] = 'current'
+
+        self.oFile.set_indent_map(dIndentMap)
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        lExpected = []
+        lExpected.append('')
+        utils.read_file(os.path.join(sTestDir, 'rule_008_test_input.fixed_token_if_no_matching_library_clause_current.vhd'), lExpected)
+
+        self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
