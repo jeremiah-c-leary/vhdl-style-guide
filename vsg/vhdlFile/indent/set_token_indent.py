@@ -54,7 +54,7 @@ def set_token_indent(dIndentMap, lTokens):
                 sLibraryName = extract_use_clause_library_name(iToken, lTokens)
                 if sLibraryName in cParams.library_name:
                     sIndent = cParams.dIndents[sUniqueId]['token_after_library_clause']
-                else: 
+                else:
                     sIndent = cParams.dIndents[sUniqueId]['token_if_no_matching_library_clause']
                 iIndent = update_indent_var(cParams.iIndent, sIndent)
                 oToken.set_indent(iIndent)
@@ -218,6 +218,12 @@ class parameters():
 
 
 def clear_library_name(oToken):
+    if is_primary_unit(oToken) or is_secondary_unit(oToken):
+        return True
+    return False
+
+
+def is_primary_unit(oToken):
     if isinstance(oToken, token.entity_declaration.entity_keyword):
         return True
     if isinstance(oToken, token.configuration_declaration.configuration_keyword):
@@ -226,11 +232,14 @@ def clear_library_name(oToken):
         return True
     if isinstance(oToken, token.package_instantiation_declaration.package_keyword):
         return True
+    return False
+
+
+def is_secondary_unit(oToken):
     if isinstance(oToken, token.architecture_body.architecture_keyword):
         return True
     if isinstance(oToken, token.package_body.package_keyword):
         return True
-    
     return False
 
 
