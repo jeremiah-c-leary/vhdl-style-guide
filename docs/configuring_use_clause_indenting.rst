@@ -61,9 +61,9 @@ The following code snippet is used for all examples.
 .. code-block:: vhdl
 
     library ieee;
-      ieee.std_logic_1164.all;
+      use ieee.std_logic_1164.all;
 
-      work.my_package.all;
+      use work.my_package.all;
 
 
 Example: |token_if_no_matching_library_clause| set to |current_value|
@@ -74,9 +74,9 @@ The |token_if_no_matching_library_clause| option controls the indent of use clau
 .. code-block:: vhdl
 
     library ieee;
-      ieee.std_logic_1164.all;
+      use ieee.std_logic_1164.all;
 
-    work.my_package.all;
+    use work.my_package.all;
 
 Example: |token_if_no_matching_library_clause| set to :code:`'+1'`
 ##################################################################
@@ -84,9 +84,9 @@ Example: |token_if_no_matching_library_clause| set to :code:`'+1'`
 .. code-block:: vhdl
 
     library ieee;
-      ieee.std_logic_1164.all;
+      use ieee.std_logic_1164.all;
 
-      work.my_package.all;
+      use work.my_package.all;
 
 Example: |token_after_library_clause| set to |current_value|
 ############################################################
@@ -96,9 +96,9 @@ The |token_after_library_clause| option controls the indent of use clauses if th
 .. code-block:: vhdl
 
     library ieee;
-    ieee.std_logic_1164.all;
+    use ieee.std_logic_1164.all;
 
-      work.my_package.all;
+      use work.my_package.all;
 
 Example: |token_after_library_clause| set to :code:`'+1'`
 #########################################################
@@ -106,9 +106,9 @@ Example: |token_after_library_clause| set to :code:`'+1'`
 .. code-block:: vhdl
 
     library ieee;
-      ieee.std_logic_1164.all;
+      use ieee.std_logic_1164.all;
 
-      work.my_package.all;
+      use work.my_package.all;
 
 Rules Enforcing Keyword Alignment
 #################################
