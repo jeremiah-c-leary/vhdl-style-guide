@@ -327,6 +327,9 @@ class vhdlFile():
     def get_function_subprogram_body(self):
         return extract.get_function_subprogram_body(self.lAllObjects, self.oTokenMap)
 
+    def get_procedure_subprogram_body(self):
+        return extract.get_procedure_subprogram_body(self.lAllObjects, self.oTokenMap)
+
 
 def split_on_carriage_return(lObjects):
     lReturn = []

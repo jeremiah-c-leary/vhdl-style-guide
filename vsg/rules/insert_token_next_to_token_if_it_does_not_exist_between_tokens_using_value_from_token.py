@@ -93,13 +93,13 @@ def analyze_for_missing_optional_keyword(lToi, self):
     for oToi in lToi:
         iLine, lTokens = utils.get_toi_parameters(oToi)
         if not optional_keyword_exists(self.insert_token, lTokens):
-            iLine += rules_utils.get_number_of_carriage_returns_before_token(self.anchor_token, lTokens)
+            iLine += rules_utils.get_number_of_carriage_returns_before_last_token(self.anchor_token, lTokens)
             oViolation = create_violation(oToi, iLine, self)
             self.add_violation(oViolation)
 
 
 def optional_keyword_exists(oToken, lTokens):
-    if rules_utils.get_index_of_token_in_list(oToken, lTokens) is None:
+    if rules_utils.get_last_index_of_token_in_list(oToken, lTokens) is None:
         return False
     return True
 
@@ -113,7 +113,7 @@ def add_optional_item(oViolation, self):
     if not optional_keyword_exists(self.anchor_token, lTokens):
         return
 
-    iIndex = rules_utils.get_index_of_token_in_list(self.anchor_token, lTokens)
+    iIndex = rules_utils.get_last_index_of_token_in_list(self.anchor_token, lTokens)
 
     if self.direction == 'right':
         rules_utils.insert_token(lTokens, iIndex + 1, self.insert_token(oViolation.get_token_value()))
