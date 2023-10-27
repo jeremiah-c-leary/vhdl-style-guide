@@ -497,6 +497,7 @@ indent:
                 token : current
                 after : current
                 token_after_library_clause: '+1'
+                token_if_no_matching_library_clause: '+1'
         variable_assignment_statement:
             label:
                 token : current

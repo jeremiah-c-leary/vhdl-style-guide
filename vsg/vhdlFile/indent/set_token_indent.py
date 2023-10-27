@@ -10,6 +10,7 @@ def set_token_indent(dIndentMap, lTokens):
     cParams = parameters()
     cParams.lTokenKeys = lTokenKeys
     cParams.dIndents = dIndents
+    cParams.library_name = []
 
     for iToken, oToken in enumerate(lTokens):
 
@@ -42,10 +43,19 @@ def set_token_indent(dIndentMap, lTokens):
             cParams.bLibraryFound = True
             continue
 
+        if isinstance(oToken, token.logical_name_list.logical_name):
+            cParams.library_name.append(oToken.get_value().lower())
+
+        if clear_library_name(oToken):
+            cParams.library_name = []
+
         if isinstance(oToken, token.use_clause.keyword):
             if not cParams.bArchitectureFound:
-#                oToken.set_indent(cParams.iIndent + 1)
-                sIndent = cParams.dIndents[sUniqueId]['token_after_library_clause']
+                sLibraryName = extract_use_clause_library_name(iToken, lTokens)
+                if sLibraryName in cParams.library_name:
+                    sIndent = cParams.dIndents[sUniqueId]['token_after_library_clause']
+                else: 
+                    sIndent = cParams.dIndents[sUniqueId]['token_if_no_matching_library_clause']
                 iIndent = update_indent_var(cParams.iIndent, sIndent)
                 oToken.set_indent(iIndent)
             else:
@@ -205,3 +215,28 @@ class parameters():
         self.bArchitectureFound = False
         self.insideConcurrentSignalAssignment = False
         self.iIndent = 0
+
+
+def clear_library_name(oToken):
+    if isinstance(oToken, token.entity_declaration.entity_keyword):
+        return True
+    if isinstance(oToken, token.configuration_declaration.configuration_keyword):
+        return True
+    if isinstance(oToken, token.package_declaration.package_keyword):
+        return True
+    if isinstance(oToken, token.package_instantiation_declaration.package_keyword):
+        return True
+    if isinstance(oToken, token.architecture_body.architecture_keyword):
+        return True
+    if isinstance(oToken, token.package_body.package_keyword):
+        return True
+    
+    return False
+
+
+def extract_use_clause_library_name(iToken, lTokens):
+    for i in range(iToken, len(lTokens)):
+        oToken = lTokens[i]
+        if isinstance(oToken, token.use_clause.library_name):
+            return oToken.get_value().lower()
+    return None
