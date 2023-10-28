@@ -104,8 +104,9 @@ def remove_suffix(sString, sSuffix):
     return sString[0:len(sString) - len(sSuffix)]
 
 
-def create_case_violation(sActual, sExpected, oToi, iIndex, iLine):
-    sSolution = 'Change "' + sActual + '" to "' + sExpected + '"'
+def create_case_violation(sActual, sExpected, oToi, iIndex, iLine, sSolution=None):
+    if sSolution is None:
+        sSolution = 'Change "' + sActual + '" to "' + sExpected + '"'
     oViolation = violation.New(iLine, oToi, sSolution)
     dAction = {}
     dAction['value'] = sExpected
@@ -205,12 +206,14 @@ def check_for_lower_case(sObjectValue, oToi, iIndex, iLine):
 
 def check_for_camelcase(sObjectValue, oToi, iIndex, iLine):
     if camelCase.fullmatch(sObjectValue) is None:
-        return create_case_violation(sObjectValue, sObjectValue, oToi, iIndex, iLine)
+        sSolution = 'Format ' + sObjectValue + ' into camelCase'
+        return create_case_violation(sObjectValue, sObjectValue, oToi, iIndex, iLine, sSolution)
 
 
 def check_for_pascalcase(sObjectValue, oToi, iIndex, iLine):
     if PascalCase.fullmatch(sObjectValue) is None:
-        return create_case_violation(sObjectValue, sObjectValue, oToi, iIndex, iLine)
+        sSolution = 'Format ' + sObjectValue + ' into PascalCase'
+        return create_case_violation(sObjectValue, sObjectValue, oToi, iIndex, iLine, sSolution)
 
 
 def check_for_lower_case_with_whole_exception(sObjectValue, self, oToi, iIndex, iLine):
