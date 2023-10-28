@@ -191,7 +191,7 @@
 42 |                   d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 43 |
@@ -366,7 +366,7 @@
 78 |                   d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 79 |
@@ -588,7 +588,7 @@
 122 |                               d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 123 |                     BLK4A : block is
@@ -724,7 +724,7 @@
 149 |                               d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 150 |

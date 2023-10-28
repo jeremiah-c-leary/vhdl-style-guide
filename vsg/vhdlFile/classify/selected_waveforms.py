@@ -16,19 +16,28 @@ def classify(iToken, lObjects):
         waveform when choices
     '''
     iCurrent = iToken
+    lMyUntils = lUntils
+    lMyUntils.append(',')
 
     iCurrent = utils.assign_tokens_until('when', parser.todo, iCurrent, lObjects)
     iCurrent = utils.assign_next_token_required('when', token.when_keyword, iCurrent, lObjects)
-    sEnd = utils.find_earliest_occurance([',', ';'], iCurrent, lObjects)
-    iCurrent = utils.assign_tokens_until(sEnd, parser.todo, iCurrent, lObjects)
+
+    iCurrent = choices.classify_until(lMyUntils, iCurrent, lObjects)
+
+#    sEnd = utils.find_earliest_occurance_not_in_paren([',', ';'], iCurrent, lObjects)
+#    print(f'iCurrent = {iCurrent}||sEnd = {sEnd}')
+#    iCurrent = utils.assign_tokens_until_ignoring_paren(sEnd, parser.todo, iCurrent, lObjects)
+#    print(f'iCurrent = {iCurrent}||Token Value = {lObjects[iCurrent].get_value()}')
 
     while utils.is_next_token(',', iCurrent, lObjects):
+        print('Got Here')
         iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
         iCurrent = utils.assign_tokens_until('when', parser.todo, iCurrent, lObjects)
         iCurrent = utils.assign_next_token_required('when', token.when_keyword, iCurrent, lObjects)
-        sEnd = utils.find_earliest_occurance([',', ';'], iCurrent, lObjects)
-        iCurrent = utils.assign_tokens_until(sEnd, parser.todo, iCurrent, lObjects)
+        sEnd = utils.find_earliest_occurance_not_in_paren([',', ';'], iCurrent, lObjects)
+        iCurrent = utils.assign_tokens_until_ignoring_paren(sEnd, parser.todo, iCurrent, lObjects)
 
+    print('<-- selected_waveforms.classify')
     return iCurrent
 
 
