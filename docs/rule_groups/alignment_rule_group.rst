@@ -27,6 +27,7 @@ Rules Enforcing Alignment Rule Group
 * `concurrent_selected_signal_assignment_400 <concurrent_selected_signal_assignment_rules.html#concurrent-selected-signal-assignment-009>`_
 * `constant_012 <../constant_rules.html#constant-012>`_
 * `constant_014 <../constant_rules.html#constant-014>`_
+* `constant_400 <../constant_rules.html#constant-400>`_
 * `declarative_part_400 <../declarative_part_rules.html#declarative-part-400>`_
 * `entity_017 <../entity_rules.html#entity-017>`_
 * `entity_018 <../entity_rules.html#entity-018>`_

@@ -398,6 +398,35 @@ Having a space makes it clearer where the assignment occurs on the line.
    constant size : integer := 1;
    constant width : t_type := (
 
+constant_400
+############
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of assignment keywords in constant declarations.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant c_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data => true,
+     others => false
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant c_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data    => true,
+     others            => false
+   );
+
 constant_600
 ############
 
