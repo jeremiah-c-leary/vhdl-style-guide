@@ -21,7 +21,6 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    comment_rules.rst
    component_rules.rst
    concurrent_rules.rst
-   concurrent_selected_signal_assignment_rules.rst
    conditional_expressions_rules.rst
    conditional_waveforms_rules.rst
    constant_rules.rst

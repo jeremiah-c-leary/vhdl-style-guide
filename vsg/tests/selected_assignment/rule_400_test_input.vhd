@@ -57,4 +57,11 @@ begin
        "0001" when 1,
  "1111" when others;
 
+  -- Parenthesis formatting
+
+  with mux_sel select addr <=
+                                c_input_data when 0,
+  c_output_data when 1,
+                                         (others => 'X') when others;
+
 end architecture rtl;
