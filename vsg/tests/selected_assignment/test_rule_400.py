@@ -29,7 +29,7 @@ class test_rule(unittest.TestCase):
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
 
-        lExpected = [39, 40, 41, 44, 45, 46, 49, 50, 51, 56, 57, 58]
+        lExpected = [39, 40, 41, 44, 45, 46, 49, 50, 51, 56, 57, 58, 63, 64, 65]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -39,7 +39,7 @@ class test_rule(unittest.TestCase):
         oRule.align_left = True
         oRule.align_paren = False
 
-        lExpected = [39, 40, 41, 44, 45, 46, 49, 50, 51, 56, 57, 58]
+        lExpected = [39, 40, 41, 44, 45, 46, 49, 50, 51, 56, 57, 58, 63, 64, 65]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

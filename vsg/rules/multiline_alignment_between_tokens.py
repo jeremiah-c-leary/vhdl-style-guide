@@ -40,6 +40,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
         self.iIndentAfterParen = 1
         self.override = False
         self.configuration_documentation_link = 'configuring_multiline_indent_rules_link'
+        self.check_for_array = True
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -49,7 +50,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
         lReturn = []
         for oToi in lToi:
-            if toi_is_an_array(oToi):
+            if self.check_for_array and toi_is_an_array(oToi):
                 continue
             iLine, lTokens = utils.get_toi_parameters(oToi)
             iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)

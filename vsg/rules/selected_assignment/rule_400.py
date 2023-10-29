@@ -1,5 +1,5 @@
 
-from vsg.rules import multiline_alignment_between_tokens
+from vsg.rules import multiline_alignment_between_tokens as Rule
 
 from vsg import token
 
@@ -10,7 +10,7 @@ lTokenPairs.append([token.selected_variable_assignment.with_keyword, token.selec
 lTokenPairs.append([token.selected_waveform_assignment.with_keyword, token.selected_waveform_assignment.semicolon])
 
 
-class rule_400(multiline_alignment_between_tokens):
+class rule_400(Rule):
     '''
     This rule checks the alignment of multiline selected assignment statements.
 
@@ -36,10 +36,11 @@ class rule_400(multiline_alignment_between_tokens):
     '''
 
     def __init__(self):
-        multiline_alignment_between_tokens.__init__(self, 'selected_assignment', '400', lTokenPairs)
+        Rule.__init__(self, 'selected_assignment', '400', lTokenPairs)
         self.phase = 5
         self.configuration.remove('align_left')
         self.configuration.remove('align_paren')
         self.align_left = 'yes'
         self.align_paren = 'no'
         self.override = True
+        self.check_for_array = False
