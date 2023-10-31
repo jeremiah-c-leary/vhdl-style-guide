@@ -164,8 +164,8 @@ Rules Enforcing Whitespace
 * `instantiation_002 <instantiation_rules.html#instantiation-002>`_
 * `instantiation_003 <instantiation_rules.html#instantiation-003>`_
 * `instantiation_032 <instantiation_rules.html#instantiation-032>`_
-* `iteration_scheme_100 <interation_scheme_rules.html#iteration-scheme-100>`_
-* `iteration_scheme_101 <interation_scheme_rules.html#iteration-scheme-101>`_
+* `iteration_scheme_100 <iteration_scheme_rules.html#iteration-scheme-100>`_
+* `iteration_scheme_101 <iteration_scheme_rules.html#iteration-scheme-101>`_
 * `library_002 <library_rules.html#library-002>`_
 * `library_006 <library_rules.html#library-006>`_
 * `loop_statement_100 <loop_statement_rules.html#loop-statement-100>`_
