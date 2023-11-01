@@ -3,8 +3,8 @@ import re
 
 from vsg import violation
 
-camelCase = re.compile('(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])(?:[a-z0-9])+)*')
-PascalCase = re.compile('((?:[A-Z])(?:[a-z0-9])+)+')
+camelCase = re.compile('(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*')
+PascalCase = re.compile('((?:[A-Z])+(?:[a-z0-9])+)+')
 
 
 def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, check_whole=False, iIndex=0, iLine=None):
@@ -15,8 +15,32 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False,
     if does_not_contain_any_alpha_characters(sObjectValue):
        return None
 
+    elif is_camelcase_with_prefix_exception(self.case, check_prefix, check_suffix, check_whole):
+        oViolation = check_for_camelcase_with_prefix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+
+    elif is_camelcase_with_suffix_exception(self.case, check_prefix, check_suffix, check_whole):
+        oViolation = check_for_camelcase_with_suffix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+
+    elif is_camelcase_with_prefix_and_suffix_exception(self.case, check_prefix, check_suffix, check_whole):
+        oViolation = check_for_camelcase_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iMyLine)
+
+    elif is_camelcase_with_whole_exception(self.case, check_whole):
+        oViolation = check_for_camelcase_with_whole_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+
     elif is_camelcase(self.case):
         oViolation = check_for_camelcase(sObjectValue, oToi, iIndex, iMyLine)
+
+    elif is_pascalcase_with_prefix_exception(self.case, check_prefix, check_suffix, check_whole):
+        oViolation = check_for_pascalcase_with_prefix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+
+    elif is_pascalcase_with_suffix_exception(self.case, check_prefix, check_suffix, check_whole):
+        oViolation = check_for_pascalcase_with_suffix_exception(sObjectValue, self, oToi, iIndex, iMyLine)
+
+    elif is_pascalcase_with_prefix_and_suffix_exception(self.case, check_prefix, check_suffix, check_whole):
+        oViolation = check_for_pascalcase_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iMyLine)
+
+    elif is_pascalcase_with_whole_exception(self.case, check_whole):
+        oViolation = check_for_pascalcase_with_whole_exception(sObjectValue, self, oToi, iIndex, iMyLine)
 
     elif is_pascalcase(self.case):
         oViolation = check_for_pascalcase(sObjectValue, oToi, iIndex, iMyLine)
@@ -133,8 +157,56 @@ def is_camelcase(sCase):
     return False
 
 
+def is_camelcase_with_prefix_exception(sCase, bPrefix, bSuffix, bWhole):
+    if sCase == 'camelCase' and bPrefix and not bSuffix and not bWhole:
+        return True
+    return False
+
+
+def is_camelcase_with_suffix_exception(sCase, bPrefix, bSuffix, bWhole):
+    if sCase == 'camelCase' and not bPrefix and bSuffix and not bWhole:
+        return True
+    return False
+
+
+def is_camelcase_with_prefix_and_suffix_exception(sCase, bPrefix, bSuffix, bWhole):
+    if sCase == 'camelCase' and bPrefix and bSuffix and not bWhole:
+        return True
+    return False
+
+
+def is_camelcase_with_whole_exception(sCase, bWhole):
+    if sCase == 'camelCase' and bWhole:
+        return True
+    return False
+
+
 def is_pascalcase(sCase):
     if sCase == 'PascalCase':
+        return True
+    return False
+
+
+def is_pascalcase_with_prefix_exception(sCase, bPrefix, bSuffix, bWhole):
+    if sCase == 'PascalCase' and bPrefix and not bSuffix and not bWhole:
+        return True
+    return False
+
+
+def is_pascalcase_with_suffix_exception(sCase, bPrefix, bSuffix, bWhole):
+    if sCase == 'PascalCase' and not bPrefix and bSuffix and not bWhole:
+        return True
+    return False
+
+
+def is_pascalcase_with_prefix_and_suffix_exception(sCase, bPrefix, bSuffix, bWhole):
+    if sCase == 'PascalCase' and bPrefix and bSuffix and not bWhole:
+        return True
+    return False
+
+
+def is_pascalcase_with_whole_exception(sCase, bWhole):
+    if sCase == 'PascalCase' and bWhole:
         return True
     return False
 
@@ -210,10 +282,98 @@ def check_for_camelcase(sObjectValue, oToi, iIndex, iLine):
         return create_case_violation(sObjectValue, sObjectValue, oToi, iIndex, iLine, sSolution)
 
 
+def check_for_camelcase_with_prefix_exception(sObjectValue, self, oToi, iIndex, iLine):
+    if prefix_detected(sObjectValue, self.prefix_exceptions):
+        sDesiredPrefix = get_matched_prefix(sObjectValue, self.prefix_exceptions)
+        sActualPrefix = extract_prefix(sObjectValue, sDesiredPrefix)
+        sConstant = remove_prefix(sObjectValue, sActualPrefix)
+        if camelCase.fullmatch(sConstant) is None:
+            return check_for_camelcase(sObjectValue, oToi, iIndex, iLine)
+    else:
+        return check_for_camelcase(sObjectValue, oToi, iIndex, iLine)
+
+
+def check_for_camelcase_with_suffix_exception(sObjectValue, self, oToi, iIndex, iLine):
+    if suffix_detected(sObjectValue, self.suffix_exceptions):
+        sDesiredSuffix = get_matched_suffix(sObjectValue, self.suffix_exceptions)
+        sActualSuffix = extract_suffix(sObjectValue, sDesiredSuffix)
+        sConstant = remove_suffix(sObjectValue, sActualSuffix)
+        if camelCase.fullmatch(sConstant) is None:
+            return check_for_camelcase(sObjectValue, oToi, iIndex, iLine)
+    else:
+        return check_for_camelcase(sObjectValue, oToi, iIndex, iLine)
+
+
+def check_for_camelcase_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iLine):
+    if prefix_detected(sObjectValue, self.prefix_exceptions) and suffix_detected(sObjectValue, self.suffix_exceptions):
+        sDesiredPrefix = get_matched_prefix(sObjectValue, self.prefix_exceptions)
+        sActualPrefix = extract_prefix(sObjectValue, sDesiredPrefix)
+        sConstant = remove_prefix(sObjectValue, sActualPrefix)
+        sDesiredSuffix = get_matched_suffix(sConstant, self.suffix_exceptions)
+        sActualSuffix = extract_suffix(sConstant, sDesiredSuffix)
+        sConstant = remove_suffix(sConstant, sActualSuffix)
+        sExpected = sDesiredPrefix + sConstant.lower() + sDesiredSuffix
+        if camelCase.fullmatch(sConstant) is None:
+            return check_for_camelcase(sObjectValue, oToi, iIndex, iLine)
+    else:
+        return check_for_camelcase(sObjectValue, oToi, iIndex, iLine)
+
+
+def check_for_camelcase_with_whole_exception(sObjectValue, self, oToi, iIndex, iLine):
+    if exception_found(sObjectValue, self):
+        return check_for_exception(sObjectValue, self, oToi, iIndex, iLine)
+    else:
+        return check_for_camelcase(sObjectValue, oToi, iIndex, iLine)
+
+
+def check_for_pascalcase_with_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iLine):
+    if prefix_detected(sObjectValue, self.prefix_exceptions) and suffix_detected(sObjectValue, self.suffix_exceptions):
+        sDesiredPrefix = get_matched_prefix(sObjectValue, self.prefix_exceptions)
+        sActualPrefix = extract_prefix(sObjectValue, sDesiredPrefix)
+        sConstant = remove_prefix(sObjectValue, sActualPrefix)
+        sDesiredSuffix = get_matched_suffix(sConstant, self.suffix_exceptions)
+        sActualSuffix = extract_suffix(sConstant, sDesiredSuffix)
+        sConstant = remove_suffix(sConstant, sActualSuffix)
+        sExpected = sDesiredPrefix + sConstant.lower() + sDesiredSuffix
+        if PascalCase.fullmatch(sConstant) is None:
+            return check_for_pascalcase(sObjectValue, oToi, iIndex, iLine)
+    else:
+        return check_for_pascalcase(sObjectValue, oToi, iIndex, iLine)
+
+
 def check_for_pascalcase(sObjectValue, oToi, iIndex, iLine):
     if PascalCase.fullmatch(sObjectValue) is None:
         sSolution = 'Format ' + sObjectValue + ' into PascalCase'
         return create_case_violation(sObjectValue, sObjectValue, oToi, iIndex, iLine, sSolution)
+
+
+def check_for_pascalcase_with_prefix_exception(sObjectValue, self, oToi, iIndex, iLine):
+    if prefix_detected(sObjectValue, self.prefix_exceptions):
+        sDesiredPrefix = get_matched_prefix(sObjectValue, self.prefix_exceptions)
+        sActualPrefix = extract_prefix(sObjectValue, sDesiredPrefix)
+        sConstant = remove_prefix(sObjectValue, sActualPrefix)
+        if PascalCase.fullmatch(sConstant) is None:
+            return check_for_pascalcase(sObjectValue, oToi, iIndex, iLine)
+    else:
+        return check_for_pascalcase(sObjectValue, oToi, iIndex, iLine)
+
+
+def check_for_pascalcase_with_suffix_exception(sObjectValue, self, oToi, iIndex, iLine):
+    if suffix_detected(sObjectValue, self.suffix_exceptions):
+        sDesiredSuffix = get_matched_suffix(sObjectValue, self.suffix_exceptions)
+        sActualSuffix = extract_suffix(sObjectValue, sDesiredSuffix)
+        sConstant = remove_suffix(sObjectValue, sActualSuffix)
+        if PascalCase.fullmatch(sConstant) is None:
+            return check_for_pascalcase(sObjectValue, oToi, iIndex, iLine)
+    else:
+        return check_for_pascalcase(sObjectValue, oToi, iIndex, iLine)
+
+
+def check_for_pascalcase_with_whole_exception(sObjectValue, self, oToi, iIndex, iLine):
+    if exception_found(sObjectValue, self):
+        return check_for_exception(sObjectValue, self, oToi, iIndex, iLine)
+    else:
+        return check_for_pascalcase(sObjectValue, oToi, iIndex, iLine)
 
 
 def check_for_lower_case_with_whole_exception(sObjectValue, self, oToi, iIndex, iLine):
