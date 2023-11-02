@@ -3,7 +3,7 @@ architecture rtl of fifo is
 
   procedure proc is
   begin
-  end procedure proc;
+  end proc;
 
   procedure proc is
   begin
@@ -39,7 +39,7 @@ architecture rtl of fifo is
     end func;
 
   begin
-  end procedure proc;
+  end proc;
 
 begin
 

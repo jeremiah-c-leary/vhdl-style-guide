@@ -324,6 +324,15 @@ class vhdlFile():
     def get_tokens_in_declarative_parts(self):
         return extract.get_tokens_in_declarative_parts(self.lAllObjects, self.oTokenMap)
 
+    def get_subprogram_body(self):
+        return extract.get_subprogram_body(self.lAllObjects, self.oTokenMap)
+
+    def get_function_subprogram_body(self):
+        return extract.get_function_subprogram_body(self.lAllObjects, self.oTokenMap)
+
+    def get_procedure_subprogram_body(self):
+        return extract.get_procedure_subprogram_body(self.lAllObjects, self.oTokenMap)
+
 
 def split_on_carriage_return(lObjects):
     lReturn = []

@@ -23,11 +23,11 @@ package body fifo_pkg is
 
   function func_a (x : boolean) return integer is
   begin
-  end func_a;
+  end function func_a;
 
   function func_b (x : boolean) return integer is
   begin
-  end func_b;
+  end function func_b;
 
   procedure proc_a (x : boolean) is
   begin

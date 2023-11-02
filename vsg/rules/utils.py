@@ -114,6 +114,14 @@ def get_index_of_token_in_list(oToken, lTokens):
     return None
 
 
+def get_last_index_of_token_in_list(oToken, lTokens):
+    iReturn = None
+    for iToken, token in enumerate(lTokens):
+        if isinstance(token, oToken):
+            iReturn = iToken
+    return iReturn
+
+
 def get_index_of_token_in_list_after_index(oToken, lTokens, iIndex):
     for iToken, token in enumerate(lTokens):
         if iToken > iIndex and isinstance(token, oToken):
@@ -136,6 +144,17 @@ def get_number_of_carriage_returns_before_token(oStopToken, lTokens):
             iReturn += 1
         if isinstance(oToken, oStopToken):
             break
+    return iReturn
+
+
+def get_number_of_carriage_returns_before_last_token(oStopToken, lTokens):
+    iReturn = 0
+    iCarriage = 0
+    for oToken in lTokens:
+        if isinstance(oToken, parser.carriage_return):
+            iCarriage += 1
+        if isinstance(oToken, oStopToken):
+            iReturn = iCarriage
     return iReturn
 
 

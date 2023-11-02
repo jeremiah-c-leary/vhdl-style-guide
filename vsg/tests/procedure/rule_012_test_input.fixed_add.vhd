@@ -23,6 +23,24 @@ architecture rtl of fifo is
   begin
   end func;
 
+  procedure proc is
+
+    function func return integer is
+    begin
+    end func;
+
+  begin
+  end procedure proc;
+
+  procedure proc is
+
+    function func return integer is
+    begin
+    end func;
+
+  begin
+  end procedure proc;
+
 begin
 
 end architecture rtl;
