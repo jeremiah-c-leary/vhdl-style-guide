@@ -11,6 +11,14 @@ begin
             d when others;
 
 
+  -- Basic version
+  with sel select ?
+    out1 <= a when "00",
+            b when "01",
+            c when "10",
+            d when others;
+
+
   --with guarded keyword
   with sel select
     out1 <= guarded a when "00",
