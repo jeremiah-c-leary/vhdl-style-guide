@@ -13,6 +13,12 @@ architecture RTL of FIFO is
 
   signal slv : std_logic_vector(integer_range_subtype);
 
+  signal slv : std_logic_vector(open);
+
+  signal slv : std_logic_vector(open) bus;
+
+  signal slv : std_logic_vector(open) register;
+
 begin
 
 end architecture RTL;

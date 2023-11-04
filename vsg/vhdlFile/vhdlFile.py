@@ -14,7 +14,6 @@ from vsg.token import multiplying_operator
 from vsg.token import relational_operator
 from vsg.token import resolution_indication
 from vsg.token import sign
-from vsg.token import subtype_indication
 from vsg.token import type_mark
 from vsg.token import unary_logical_operator
 from vsg.token import choices
@@ -95,7 +94,7 @@ class vhdlFile():
 
         design_file.tokenize(self.lAllObjects)
         post_token_assignments(self.lAllObjects)
-        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
+#        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
         set_token_hierarchy_value(self.lAllObjects)
         set_aggregate_tokens(self.lAllObjects)
@@ -356,7 +355,7 @@ def post_token_assignments(lTokens):
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
 
-        if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name):
+        if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name):
             sValue = oToken.get_value()
             ### IEEE values
             if sValue.lower() == 'std_logic_vector':
@@ -373,6 +372,9 @@ def post_token_assignments(lTokens):
 
             elif sValue.lower() == 'integer':
                 lTokens[iToken] = types.integer(sValue)
+
+            elif sValue.lower() == 'natural':
+                lTokens[iToken] = types.natural(sValue)
 
             elif sValue.lower() == 'signed':
                 lTokens[iToken] = types.signed(sValue)
@@ -621,15 +623,15 @@ def set_aggregate_tokens(lTokens):
             lTokens[lOpenParens[-1]].iId = iId
 
 
-def combine_use_clause_selected_name(lTokens):
-    lReturn = []
-    for iToken, oToken in enumerate(lTokens):
-        if isinstance(oToken, token.use_clause.selected_name):
-            if isinstance(lReturn[-1], token.use_clause.selected_name):
-                lReturn[-1].value = lReturn[-1].value + oToken.value
-                continue
-        lReturn.append(oToken)
-    return lReturn
+#def combine_use_clause_selected_name(lTokens):
+#    lReturn = []
+#    for iToken, oToken in enumerate(lTokens):
+#        if isinstance(oToken, token.use_clause.selected_name):
+#            if isinstance(lReturn[-1], token.use_clause.selected_name):
+#                lReturn[-1].value = lReturn[-1].value + oToken.value
+#                continue
+#        lReturn.append(oToken)
+#    return lReturn
 
 
 def remove_beginning_of_file_tokens(lTokens):

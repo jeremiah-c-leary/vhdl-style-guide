@@ -29,15 +29,6 @@ class is_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
-class begin_keyword(parser.keyword):
-    '''
-    unique_id = package_declaration : begin_keyword
-    '''
-
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
-
-
 class end_keyword(parser.keyword):
     '''
     unique_id = package_declaration : end_keyword
