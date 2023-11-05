@@ -40,6 +40,14 @@ begin
       wait for 20 ns;
     end if;
 
+    if a ?= b then
+    elsif a ?/= b then
+    elsif ?< b then
+    elsif ?<= b then
+    elsif ?> b then
+    elsif ?>= b then
+    end if;
+
   end process;
 
 end architecture RTL;

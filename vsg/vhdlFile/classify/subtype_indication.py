@@ -1,8 +1,6 @@
 
 from vsg.vhdlFile import utils
 
-from vsg.token import subtype_indication as token
-
 from vsg.vhdlFile.classify import constraint
 from vsg.vhdlFile.classify import resolution_indication
 from vsg.vhdlFile.classify import type_mark

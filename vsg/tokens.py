@@ -1,7 +1,7 @@
 
 lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>', ';', '=', '[', ']', '?']
 lTwoCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?<', '?>', '<<', '>>', '--', '/*', '*/']
-lThreeCharacterSymbols = ['?/=', '?<', '?<=', '?>=']
+lThreeCharacterSymbols = ['?/=', '?<=', '?>=']
 lFourCharacterSymbols = ['\\?=\\']
 
 lStopChars = [' ', '(', ';']
@@ -16,6 +16,7 @@ def create(sString):
     oLine.combine_whitespace()
     oLine.combine_string_literals()
     oLine.combine_backslash_characters_into_symbols()
+    oLine.combine_three_character_symbols()
     oLine.combine_two_character_symbols()
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
@@ -59,23 +60,32 @@ class New():
         lReturn = add_trailing_string(lReturn, sSymbol)
         self.lChars = lReturn
 
+    def combine_three_character_symbols(self):
+        lReturn = []
+        i = 0
+        while i < len(self.lChars):
+            sChars = ''.join(self.lChars[i:i+3])
+            if sChars in lThreeCharacterSymbols:
+                lReturn.append(sChars)
+                i += 3
+            else:
+                lReturn.append(self.lChars[i])
+                i += 1
+
+        self.lChars = lReturn
+
     def combine_two_character_symbols(self):
         lReturn = []
-        sNextChar = ''
-        bSkip = False
-        for iChar, sChar in enumerate(self.lChars):
-            if bSkip:
-                bSkip = False
-                continue
-            try:
-                sNextChar = self.lChars[iChar + 1]
-            except IndexError:
-                sNextChar = ''
-            if sChar + sNextChar in lTwoCharacterSymbols:
-                bSkip = True
-                lReturn.append(sChar + sNextChar)
+        i = 0
+        while i < len(self.lChars):
+            sChars = ''.join(self.lChars[i:i+2])
+            if sChars in lTwoCharacterSymbols:
+                lReturn.append(sChars)
+                i += 2 
             else:
-                lReturn.append(sChar)
+                lReturn.append(self.lChars[i])
+                i += 1
+
         self.lChars = lReturn
 
     def combine_characters_into_words(self):

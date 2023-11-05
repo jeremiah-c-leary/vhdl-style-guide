@@ -39,22 +39,74 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
-7 |   end protected T_FLAG_TYPE;
+7 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 |    use ieee.std_logic_1164.all;
+<class 'vsg.token.use_clause.keyword'>
+<class 'vsg.token.use_clause.library_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.package_name'>
+<class 'vsg.token.use_clause.dot'>
+<class 'vsg.token.use_clause.all_keyword'>
+<class 'vsg.token.use_clause.semicolon'>
+--------------------------------------------------------------------------------
+9 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 |    attribute Max_delay of Const_1: constant is 10 ns;
+<class 'vsg.token.attribute_specification.attribute_keyword'>
+<class 'vsg.token.attribute_specification.attribute_designator'>
+<class 'vsg.token.attribute_specification.of_keyword'>
+<class 'vsg.token.entity_designator.entity_tag'>
+<class 'vsg.token.entity_specification.colon'>
+<class 'vsg.token.entity_specification.entity_class'>
+<class 'vsg.token.attribute_specification.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.attribute_specification.semicolon'>
+--------------------------------------------------------------------------------
+11 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 |    function PARITY is new uninstantiated_subprogram_name;
+<class 'vsg.token.subprogram_kind.function_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+13 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 |    procedure PARITY is new uninstantiated_subprogram_name;
+<class 'vsg.token.subprogram_kind.procedure_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.identifier'>
+<class 'vsg.token.subprogram_instantiation_declaration.is_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.new_keyword'>
+<class 'vsg.token.subprogram_instantiation_declaration.uninstantiated_subprogram_name'>
+<class 'vsg.token.subprogram_instantiation_declaration.semicolon'>
+--------------------------------------------------------------------------------
+15 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 |   end protected T_FLAG_TYPE;
 <class 'vsg.token.protected_type_declaration.end_keyword'>
 <class 'vsg.token.protected_type_declaration.end_protected_keyword'>
 <class 'vsg.token.protected_type_declaration.protected_type_simple_name'>
 <class 'vsg.token.full_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
-8 |
+17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-9 | begin
+18 | begin
 <class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
-10 |
+19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-11 | end architecture RTL;
+20 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

@@ -20,7 +20,7 @@
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.unbounded_array_definition.array_keyword'>
 <class 'vsg.token.unbounded_array_definition.open_parenthesis'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.natural'>
 <class 'vsg.token.index_subtype_definition.range_keyword'>
 <class 'vsg.token.index_subtype_definition.undefined_range'>
 <class 'vsg.token.unbounded_array_definition.close_parenthesis'>
@@ -42,11 +42,11 @@
 <class 'vsg.token.full_type_declaration.is_keyword'>
 <class 'vsg.token.unbounded_array_definition.array_keyword'>
 <class 'vsg.token.unbounded_array_definition.open_parenthesis'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.natural'>
 <class 'vsg.token.index_subtype_definition.range_keyword'>
 <class 'vsg.token.index_subtype_definition.undefined_range'>
 <class 'vsg.token.unbounded_array_definition.comma'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.natural'>
 <class 'vsg.token.index_subtype_definition.range_keyword'>
 <class 'vsg.token.index_subtype_definition.undefined_range'>
 <class 'vsg.token.unbounded_array_definition.close_parenthesis'>

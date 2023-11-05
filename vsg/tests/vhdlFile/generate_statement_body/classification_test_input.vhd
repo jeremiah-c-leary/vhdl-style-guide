@@ -10,7 +10,7 @@ begin
 
     begin
         a <= blah;
-    end;
+    end LABEL_1A;
 
   end generate LABEL3;
 

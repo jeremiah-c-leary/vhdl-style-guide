@@ -108,12 +108,3 @@ class semicolon(parser.semicolon):
 
     def __init__(self, sString=';'):
         parser.semicolon.__init__(self)
-
-
-class condition(parser.condition):
-    '''
-    unique_id = if_generate_statement : condition
-    '''
-
-    def __init__(self, sString):
-        parser.condition.__init__(self, sString)

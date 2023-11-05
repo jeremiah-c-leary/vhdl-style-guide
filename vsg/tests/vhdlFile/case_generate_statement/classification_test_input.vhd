@@ -5,9 +5,9 @@ begin
 
   LABEL0 : case a & b & c generate
 
-    when "000" =>
+    when LABEL0_A : "000" =>
 
-    when "001" =>
+    when LABEL0_B : "001" =>
 
   end generate LABEL0;
 

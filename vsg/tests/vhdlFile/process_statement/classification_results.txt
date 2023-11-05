@@ -173,7 +173,20 @@
 37 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-38 | end architecture RTL;
+38 |   process (all) begin end process;
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.open_parenthesis'>
+<class 'vsg.token.process_sensitivity_list.all_keyword'>
+<class 'vsg.token.process_statement.close_parenthesis'>
+<class 'vsg.token.process_statement.begin_keyword'>
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+39 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

@@ -27,12 +27,3 @@ class is_keyword(parser.keyword):
 
     def __init__(self, sString):
         parser.keyword.__init__(self, sString)
-
-
-class file_logical_name(parser.expression):
-    '''
-    unique_id = file_open_information : file_logical_name
-    '''
-
-    def __init__(self, sString):
-        parser.expression.__init__(self, sString)

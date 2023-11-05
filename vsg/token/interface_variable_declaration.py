@@ -29,14 +29,6 @@ class colon(parser.colon):
         parser.colon.__init__(self)
 
 
-class subtype_indication(parser.subtype_indication):
-    '''
-    unique_id = interface_variable_declaration : subtype_indication
-    '''
-    def __init__(self, sString):
-        parser.subtype_indication.__init__(self, sString)
-
-
 class assignment(parser.assignment):
     '''
     unique_id = interface_variable_declaration : assignment

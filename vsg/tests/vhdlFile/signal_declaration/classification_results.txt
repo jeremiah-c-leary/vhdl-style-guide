@@ -97,13 +97,54 @@
 15 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-16 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+16 |   signal slv : std_logic_vector(open);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.array_constraint.open_parenthesis'>
+<class 'vsg.token.array_constraint.open_keyword'>
+<class 'vsg.token.array_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
 17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-18 | end architecture RTL;
+18 |   signal slv : std_logic_vector(open) bus;
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.array_constraint.open_parenthesis'>
+<class 'vsg.token.array_constraint.open_keyword'>
+<class 'vsg.token.array_constraint.close_parenthesis'>
+<class 'vsg.token.signal_kind.bus_keyword'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+19 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 |   signal slv : std_logic_vector(open) register;
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.array_constraint.open_parenthesis'>
+<class 'vsg.token.array_constraint.open_keyword'>
+<class 'vsg.token.array_constraint.close_parenthesis'>
+<class 'vsg.token.signal_kind.register_keyword'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+21 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+23 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
