@@ -520,3 +520,13 @@ class testVsg(unittest.TestCase):
             iExitStatus = e.returncode
 
         self.assertEqual(lActual, lExpected)
+
+    def test_file_as_stdin(self):
+
+        with open('vsg/tests/vsg/entity1.vhd') as file1:
+            lExpected = []
+            lExpected.append('')
+
+            lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_3.yaml','--output_format','syntastic','--stdin'], stdin=file1)
+            lActual = str(lActual.decode('utf-8')).split('\n')
+            self.assertEqual(lActual, lExpected)

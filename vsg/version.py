@@ -33,13 +33,14 @@ def get_version_info():
         sReturnPath = os.getcwd()
         sPath = os.path.dirname(__file__)
         os.chdir(sPath)
-        lActual = subprocess.check_output(['git', 'describe', '--tags'])
-        lActual = str(lActual.decode('utf-8')).split('\n')
-        lVersion = lActual[0].split('-')
+        lVersion = "0"  # version if no tags (shallow checkout)
         try:
+            lActual = subprocess.check_output(['git', 'describe', '--tags'])
+            lActual = str(lActual.decode('utf-8')).split('\n')
+            lVersion = lActual[0].split('-')
             sVersion = str(lVersion[0]) + '.dev' + str(lVersion[1])
             sShaNum = str(lVersion[-1][1:])
-        except IndexError:
+        except (IndexError, subprocess.CalledProcessError):
             sVersion = str(lVersion[0])
             lActual = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'])
             lActual = str(lActual.decode('utf-8')).split('\n')

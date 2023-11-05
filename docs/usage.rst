@@ -14,14 +14,18 @@ The command line tool can be invoked with:
                                  [-of {vsg,syntastic,summary}] [-b]
                                  [-oc OUTPUT_CONFIGURATION]
                                  [-rc RULE_CONFIGURATION]
-                                 [--style {jcl,indent_only}] [-v] [-ap]
+                                 [--style {indent_only,jcl}] [-v] [-ap]
                                  [--fix_only FIX_ONLY] [--stdin]
                                  [--quality_report QUALITY_REPORT] [-p JOBS]
                                  [--debug]
-   
+                                 [FILENAME ...]
+
    Analyzes VHDL files for style guide violations. Reference documentation is
    located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
-   
+
+   positional arguments:
+     FILENAME              File to analyze
+
    options:
      -h, --help            show this help message and exit
      -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
@@ -45,7 +49,7 @@ The command line tool can be invoked with:
                            Write configuration to file name.
      -rc RULE_CONFIGURATION, --rule_configuration RULE_CONFIGURATION
                            Display configuration of a rule
-     --style {jcl,indent_only}
+     --style {indent_only,jcl}
                            Use predefined style
      -v, --version         Displays version information
      -ap, --all_phases     Do not stop when a violation is detected.
