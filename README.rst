@@ -39,6 +39,10 @@ Due to this an effort was made to change all the `True` and `False` options to `
 The original `True` and `False` are still supported, but going forward all options will be strings.
 Refer to issue #1009 for more details.
 
+Platform independent features were added in this release.
+This includes line separators and file path separators.
+The type of line separator can be based on the platform or hard coded.
+
 Regards,
 
 --Jeremy
