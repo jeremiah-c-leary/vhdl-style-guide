@@ -24,17 +24,20 @@ VHDL Style Guide (VSG)
 
 Announcements
 -------------
-Update 04/01/2023
 
-Work is still demanding a lot of my free time, however I am planning on focusing some of my attention back on VSG.
+Update 11/05/2023
 
-Here is my plan going forward:
+Release 3.18.0
 
-1) Address issues requiring *User Validation*
-2) Address issues requiring *User Feedback*
-3) Triage new issues
-4) Prioritize parsing issues
-5) Begin working other issues
+There were several alignment rules which were ignoring the `comment_line_ends_group` option.
+Please be aware that some alignment rules may trigger from the previous release.
+Refer to issue #988 for more details.
+
+There was also an issue with YAML configurations with options using `yes` and `no`.
+These options could be converted to booleans by PyYAML according to the YAML spec if they were not strings.
+Due to this an effort was made to change all the `True` and `False` options to `yes` and `no` strings.
+The original `True` and `False` are still supported, but going forward all options will be strings.
+Refer to issue #1009 for more details.
 
 Regards,
 
