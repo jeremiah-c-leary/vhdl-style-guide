@@ -173,6 +173,23 @@ def are_next_consecutive_token_types(lTypes, iToken, lObjects):
         return False
 
 
+def are_next_consecutive_tokens_ignoring_whitespace(lTokens, iToken, lObjects):
+    iMaxTokenCount = len(lTokens)
+    iTokenCount = 0
+    iCurrent = iToken
+    try:
+        while iTokenCount < iMaxTokenCount:
+            iCurrent = find_next_non_whitespace_token(iCurrent, lObjects)
+            if not lTokens[iTokenCount] is None:
+                if not is_next_token(lTokens[iTokenCount], iCurrent, lObjects):
+                    return False
+            iCurrent += 1
+            iTokenCount += 1
+        return True
+    except IndexError:
+        return False
+
+
 def are_next_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lObjects):
     iMaxTokenCount = len(lTypes)
     iTokenCount = 0
