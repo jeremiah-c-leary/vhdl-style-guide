@@ -382,14 +382,14 @@
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 83 |

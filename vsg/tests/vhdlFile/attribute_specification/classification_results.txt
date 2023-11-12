@@ -93,11 +93,11 @@
 <class 'vsg.token.entity_specification.colon'>
 <class 'vsg.token.entity_specification.entity_class'>
 <class 'vsg.token.attribute_specification.is_keyword'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.attribute_specification.semicolon'>
 --------------------------------------------------------------------------------
 10 |

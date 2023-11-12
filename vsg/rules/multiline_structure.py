@@ -232,7 +232,7 @@ def _check_open_paren_new_line(self, oToi):
 
         oToken = lTokens[iToken]
 
-        if isinstance(oToken, parser.open_parenthesis):
+        if isinstance(oToken, token.aggregate.open_parenthesis):
             bFirstParenFound = True
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.open_paren_new_line == 'no':
@@ -295,10 +295,10 @@ def _check_close_paren_new_line(self, oToi):
 
         oToken = lTokens[iToken]
 
-        if isinstance(oToken, parser.open_parenthesis):
+        if isinstance(oToken, token.aggregate.open_parenthesis):
             bFirstParenFound = True
 
-        if isinstance(oToken, parser.close_parenthesis):
+        if isinstance(oToken, token.aggregate.close_parenthesis):
             if utils.does_token_start_line(iToken, lTokens):
                 if self.close_paren_new_line == 'no':
                     iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)

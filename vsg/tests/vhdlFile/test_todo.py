@@ -14,6 +14,7 @@ oFile = vhdlFile.vhdlFile(lFile)
 class test_token(unittest.TestCase):
 
     def test_classification(self):
+        self.maxDiff = None
         sTestDir = os.path.join(os.path.dirname(__file__), sLrmUnit)
 
         lExpected = []

@@ -97,14 +97,14 @@
 21 |              item2 => f(a, b ,c),
 <class 'vsg.parser.todo'>
 <class 'vsg.token.element_association.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.comma'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.parser.comma'>
 --------------------------------------------------------------------------------
 22 |              item3 => 36,

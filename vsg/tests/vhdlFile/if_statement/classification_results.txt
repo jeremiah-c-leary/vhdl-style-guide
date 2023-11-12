@@ -95,10 +95,10 @@
 <class 'vsg.token.if_statement.if_label'>
 <class 'vsg.token.if_statement.label_colon'>
 <class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.character_literal'>
 --------------------------------------------------------------------------------
@@ -113,10 +113,10 @@
 --------------------------------------------------------------------------------
 21 |         elsif Code_of_Operation(0) = '1'
 <class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.character_literal'>
 --------------------------------------------------------------------------------
