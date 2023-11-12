@@ -100,14 +100,14 @@
 --------------------------------------------------------------------------------
 19 |     if a(-3 downto -6) = 0 then
 <class 'vsg.token.if_statement.if_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.sign.minus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
 <class 'vsg.token.sign.minus'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_statement.then_keyword'>
@@ -225,14 +225,14 @@
 --------------------------------------------------------------------------------
 41 |     if a(+3 downto +6) = 0 then
 <class 'vsg.token.if_statement.if_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.sign.plus'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
 <class 'vsg.token.sign.plus'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.if_statement.then_keyword'>

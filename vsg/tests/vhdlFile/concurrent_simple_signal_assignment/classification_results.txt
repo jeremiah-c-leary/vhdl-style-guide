@@ -141,8 +141,8 @@
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.and_operator'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
@@ -160,7 +160,7 @@
 <class 'vsg.parser.comma'>
 <class 'vsg.token.unary_logical_operator.xnor_operator'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -170,11 +170,11 @@
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.nand_operator'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -184,11 +184,11 @@
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.or_operator'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -198,11 +198,11 @@
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.nor_operator'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -212,11 +212,11 @@
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.xor_operator'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -226,11 +226,11 @@
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.unary_logical_operator.xnor_operator'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------

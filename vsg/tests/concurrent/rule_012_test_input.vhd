@@ -31,4 +31,12 @@ begin
                sig2 or
                sig3;
 
+  -- Test functions/constant in array
+
+  data_concurrent <=
+  (
+    c_enum_list(ENUM_LITERAL_1) => 1,
+    others       => 'X'
+  );
+
 end architecture RTL;

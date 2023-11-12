@@ -18,6 +18,7 @@ from vsg.token import sign
 from vsg.token import type_mark
 from vsg.token import unary_logical_operator
 from vsg.token import choices
+from vsg.token import todo
 
 from vsg.token.ieee.std_logic_1164 import types
 from vsg.token.ieee.std_logic_1164 import function
@@ -124,6 +125,7 @@ class vhdlFile():
 #        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
         set_token_hierarchy_value(self.lAllObjects)
+        set_todo_tokens(self.lAllObjects)
         set_aggregate_tokens(self.lAllObjects)
         set_code_tags(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
@@ -382,7 +384,7 @@ def post_token_assignments(lTokens):
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
 
-        if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name):
+        if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name) or isinstance(oToken, todo.name):
             sValue = oToken.get_value()
             ### IEEE values
             if sValue.lower() == 'std_logic_vector':
@@ -636,19 +638,54 @@ def set_code_tags(lTokens):
 def set_aggregate_tokens(lTokens):
     lOpenParens = []
     for iToken, oToken in enumerate(lTokens):
-        if isinstance(oToken, parser.open_parenthesis):
+#        if isinstance(oToken, parser.open_parenthesis):
+        if type(oToken) == parser.open_parenthesis:
             lOpenParens.append(iToken)
-        if isinstance(oToken, parser.close_parenthesis):
+#        if isinstance(oToken, parser.close_parenthesis):
+        if type(oToken) == parser.close_parenthesis:
             iIndex = lOpenParens.pop()
             if isinstance(lTokens[iIndex], token.aggregate.open_parenthesis):
                 iId = oToken.iId
                 lTokens[iToken] = token.aggregate.close_parenthesis()
                 lTokens[iToken].iId = iId
-        if isinstance(oToken, token.element_association.assignment):
+#        if isinstance(oToken, token.element_association.assignment):
+        if len(lOpenParens) > 0 and (isinstance(oToken, token.element_association.assignment) or type(oToken) == parser.comma):
             iId = lTokens[lOpenParens[-1]].iId
             lTokens[lOpenParens[-1]] = token.aggregate.open_parenthesis()
             lTokens[lOpenParens[-1]].iId = iId
 
+
+def set_todo_tokens(lTokens):
+    lOpenParens = []
+    for iToken, oToken in enumerate(lTokens):
+        check_for_name(oToken, iToken, lTokens)
+        check_for_open_parenthesis(oToken, iToken, lTokens, lOpenParens)
+        check_for_close_parenthesis(oToken, iToken, lTokens, lOpenParens)
+
+
+def check_for_name(oToken, iToken, lTokens):
+    if type(oToken) == parser.todo:
+        if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
+            lTokens[iToken] = oToken.convert_to(todo.name)
+
+
+def check_for_open_parenthesis(oToken, iToken, lTokens, lOpenParens):
+    if type(oToken) == parser.open_parenthesis:
+        if utils.are_previous_consecutive_token_types_ignoring_whitespace([todo.name], iToken - 1, lTokens) or \
+           utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.type], iToken - 1, lTokens) or \
+           utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.function], iToken - 1, lTokens):
+            lTokens[iToken] = oToken.convert_to(todo.open_parenthesis)
+            lOpenParens.append(oToken)
+
+
+def check_for_close_parenthesis(oToken, iToken, lTokens, lOpenParens):
+    if type(oToken) == parser.close_parenthesis:
+        try:
+            if oToken.iId == lOpenParens[-1].iId:
+                lOpenParens.pop()
+                lTokens[iToken] = oToken.convert_to(todo.close_parenthesis)
+        except IndexError:
+            pass
 
 #def combine_use_clause_selected_name(lTokens):
 #    lReturn = []

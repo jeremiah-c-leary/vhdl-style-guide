@@ -104,12 +104,12 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
 15 |

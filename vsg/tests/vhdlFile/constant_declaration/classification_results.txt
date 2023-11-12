@@ -85,7 +85,7 @@
 <class 'vsg.token.constant_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
@@ -101,7 +101,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
 15 |

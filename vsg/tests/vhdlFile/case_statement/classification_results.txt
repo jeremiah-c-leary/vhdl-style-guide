@@ -263,10 +263,10 @@
 --------------------------------------------------------------------------------
 48 |     case foo(i) is
 <class 'vsg.token.case_statement.case_keyword'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.case_statement.is_keyword'>
 --------------------------------------------------------------------------------
 49 |     end case;
