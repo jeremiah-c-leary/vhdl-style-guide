@@ -17,14 +17,38 @@ There are several options to these rules:
 .. |lower_value| replace::
    :code:`lower`
 
+.. |camelCase_value| replace::
+   :code:`camelCase`
+
+.. |PascalCase_value| replace::
+   :code:`PascalCase`
+
+.. |upper_snake_case_value| replace::
+   :code:`UPPER_SNAKE_CASE`
+
+.. |lower_snake_case_value| replace::
+   :code:`lower_snake_case`
+
 .. |case_option__upper| replace::
    |upper_value| = Enforce upper case
 
 .. |case_option__lower| replace::
    |lower_value| = Enforce lower case
 
+.. |case_option__camelCase| replace::
+   |camelCase_value| = Enforce camelCase
+
+.. |case_option__PascalCase| replace::
+   |PascalCase_value| = Enforce PascalCase
+
+.. |case_option__upper_snake_case| replace::
+   |upper_snake_case_value| = Enforce SNAKE_CASE
+
+.. |case_option__lower_snake_case| replace::
+   |lower_snake_case_value| = Enforce snake_case
+
 .. |case_values| replace::
-   |upper_value|, |lower_value|
+   |upper_value|, |lower_value|, |camelCase_value|, |PascalCase_value|
 
 .. |case_default_value| replace::
    |lower_value|
@@ -65,18 +89,42 @@ There are several options to these rules:
 .. |ce_description| replace::
    Enforce case for items in the list.
 
-+----------------------------+---------------+----------------------+----------------------------+
-| Option                     | Values        | Default Value        | Description                |
-+============================+===============+======================+============================+
-| |case_option|              | |case_values| | |case_default_value| | * |case_option__upper|     |
-|                            |               |                      | * |case_option__lower|     |
-+----------------------------+---------------+----------------------+----------------------------+
-| |prefix_exceptions_option| | |pe_values|   | |pe_default_value|   | |pe_description|           |
-+----------------------------+---------------+----------------------+----------------------------+
-| |suffix_exceptions_option| | |se_values|   | |se_default_value|   | |se_description|           |
-+----------------------------+---------------+----------------------+----------------------------+
-| |case_exceptions_option|   | |ce_values|   | |ce_default_value|   | |ce_description|           |
-+----------------------------+---------------+----------------------+----------------------------+
+.. |style_option| replace::
+   :code:`style`
+
+.. |ignore_value| replace::
+   :code:`ignore`
+
+.. |ignore_description| replace::
+   |ignore_value| = Do not enforce style
+
+.. |style_default| replace::
+   |ignore_value|
+
+.. |style_values| replace::
+   |ignore_value|, |camelCase_value|, |PascalCase_value|, |upper_snake_case_value|, |lower_snake_case_value|
+
++----------------------------+------------------------+----------------------+-----------------------------------+
+| Option                     | Values                 | Default Value        | Description                       |
++============================+========================+======================+===================================+
+| |case_option|              | |case_values|          | |case_default_value| | * |case_option__upper|            |
+|                            |                        |                      | * |case_option__lower|            |
+|                            |                        |                      | * |case_option__camelCase|        |
+|                            |                        |                      | * |case_option__PascalCase|       |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |prefix_exceptions_option| | |pe_values|            | |pe_default_value|   | |pe_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |suffix_exceptions_option| | |se_values|            | |se_default_value|   | |se_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |case_exceptions_option|   | |ce_values|            | |ce_default_value|   | |ce_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+.. | |style_option|             | |style_values|         | |style_default|      | * |ignore_description|            |
+.. |                            |                        |                      | * |case_option__camelCase|        |
+.. |                            |                        |                      | * |case_option__PascalCase|       |
+.. |                            |                        |                      | * |case_option__upper_snake_case| |
+.. |                            |                        |                      | * |case_option__lower_snake_case| |
+.. +----------------------------+------------------------+----------------------+-----------------------------------+
+
 
 This is an example of how to configure these options.
 
