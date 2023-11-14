@@ -109,6 +109,14 @@ def check_for_upper_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iL
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine)
 
 
+def check_for_upper_or_lower_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine):
+    sExpectedUpperValue = sPrefix + sWord.upper() + sSuffix
+    sExpectedLowerValue = sPrefix + sWord.lower() + sSuffix
+    if not sActualValue == sExpectedUpperValue and not sActualValue == sExpectedLowerValue:
+        sSolution = f'Change "{sActualValue}" to "{sExpectedUpperValue}" or "{sExpectedLowerValue}"'
+        return create_case_violation(sActualValue, None, oToi, iIndex, iLine, sSolution)
+
+
 def check_for_camelcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine):
     sExpectedValue = sPrefix + sWord + sSuffix
     if camelCase.fullmatch(sWord) is None:
@@ -199,6 +207,8 @@ dCase['lower'] = {}
 dCase['lower']['check'] = check_for_lower_case
 dCase['upper'] = {}
 dCase['upper']['check'] = check_for_upper_case
+dCase['upper_or_lower'] = {}
+dCase['upper_or_lower']['check'] = check_for_upper_or_lower_case
 
 # Define mapping of exceptions to functions
 dChecker = {}

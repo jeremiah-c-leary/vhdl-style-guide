@@ -4,7 +4,7 @@
 Configuring Uppercase and Lowercase Rules
 -----------------------------------------
 
-There are several rules that enforce either uppercase or lowercase.
+There are several rules that enforce upper_or_lower uppercase or lowercase.
 
 There are several options to these rules:
 
@@ -16,6 +16,9 @@ There are several options to these rules:
 
 .. |lower_value| replace::
    :code:`lower`
+
+.. |upper_or_lower_value| replace::
+   :code:`upper_or_lower`
 
 .. |camelCase_value| replace::
    :code:`camelCase`
@@ -35,20 +38,17 @@ There are several options to these rules:
 .. |case_option__lower| replace::
    |lower_value| = Enforce lower case
 
+.. |case_option__upper_or_lower| replace::
+   |upper_or_lower_value| = Allow upper or lower case
+
 .. |case_option__camelCase| replace::
    |camelCase_value| = Enforce camelCase
 
 .. |case_option__PascalCase| replace::
    |PascalCase_value| = Enforce PascalCase
 
-.. |case_option__upper_snake_case| replace::
-   |upper_snake_case_value| = Enforce SNAKE_CASE
-
-.. |case_option__lower_snake_case| replace::
-   |lower_snake_case_value| = Enforce snake_case
-
 .. |case_values| replace::
-   |upper_value|, |lower_value|, |camelCase_value|, |PascalCase_value|
+   |upper_value|, |lower_value|, |upper_or_lower_value|, |camelCase_value|, |PascalCase_value|
 
 .. |case_default_value| replace::
    |lower_value|
@@ -89,26 +89,12 @@ There are several options to these rules:
 .. |ce_description| replace::
    Enforce case for items in the list.
 
-.. |style_option| replace::
-   :code:`style`
-
-.. |ignore_value| replace::
-   :code:`ignore`
-
-.. |ignore_description| replace::
-   |ignore_value| = Do not enforce style
-
-.. |style_default| replace::
-   |ignore_value|
-
-.. |style_values| replace::
-   |ignore_value|, |camelCase_value|, |PascalCase_value|, |upper_snake_case_value|, |lower_snake_case_value|
-
 +----------------------------+------------------------+----------------------+-----------------------------------+
 | Option                     | Values                 | Default Value        | Description                       |
 +============================+========================+======================+===================================+
 | |case_option|              | |case_values|          | |case_default_value| | * |case_option__upper|            |
 |                            |                        |                      | * |case_option__lower|            |
+|                            |                        |                      | * |case_option__upper_or_lower|   |
 |                            |                        |                      | * |case_option__camelCase|        |
 |                            |                        |                      | * |case_option__PascalCase|       |
 +----------------------------+------------------------+----------------------+-----------------------------------+
@@ -118,12 +104,6 @@ There are several options to these rules:
 +----------------------------+------------------------+----------------------+-----------------------------------+
 | |case_exceptions_option|   | |ce_values|            | |ce_default_value|   | |ce_description|                  |
 +----------------------------+------------------------+----------------------+-----------------------------------+
-.. | |style_option|             | |style_values|         | |style_default|      | * |ignore_description|            |
-.. |                            |                        |                      | * |case_option__camelCase|        |
-.. |                            |                        |                      | * |case_option__PascalCase|       |
-.. |                            |                        |                      | * |case_option__upper_snake_case| |
-.. |                            |                        |                      | * |case_option__lower_snake_case| |
-.. +----------------------------+------------------------+----------------------+-----------------------------------+
 
 
 This is an example of how to configure these options.
@@ -164,6 +144,16 @@ Example: |case_option| set to |upper_value|
 
    constant C_DATA_WIDTH : positive := 32;
    constant ADDR_WIDTH_C : positive := 8;
+
+Example: |case_option| set to |upper_or_lower_value|
+####################################################
+
+This option will not perform any updates to the code as the case could be either upper or lower.
+
+.. code-block:: vhdl
+
+   constant c_DATA_width : positive := 32;
+   constant addr_WIDTH_c : positive := 8;
 
 Example: |case_option| set to |upper_value| and |prefix_exceptions_option| set to :code:`c_`
 ############################################################################################
