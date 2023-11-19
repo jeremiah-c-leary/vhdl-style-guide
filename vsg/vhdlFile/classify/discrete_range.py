@@ -4,6 +4,7 @@ from vsg import parser
 from vsg.vhdlFile import utils
 
 from vsg.vhdlFile.classify import range
+from vsg.vhdlFile.classify import subtype_indication
 
 
 def detect(iToken, lObjects):
@@ -11,6 +12,8 @@ def detect(iToken, lObjects):
     discrete_range ::=
         *discrete*_subtype_indication | range
     '''
+    if utils.are_next_consecutive_tokens([None, '(', None, ')'], iToken, lObjects):
+        return subtype_indication.classify(iToken, lObjects)
     return range.detect(iToken, lObjects)
 
 

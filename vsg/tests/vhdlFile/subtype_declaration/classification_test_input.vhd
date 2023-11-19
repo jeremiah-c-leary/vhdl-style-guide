@@ -17,6 +17,15 @@ architecture RTL of FIFO is
 
   subtype new_std_logic is (resolved) std_ulogic;
 
+  -- Example 4 : subtype in subtype declaration
+  subtype identifier is type_mark(type_mark(blah));
+
+  subtype identifier is type_mark(type_mark
+    (
+     blah
+    )
+  );
+
 begin
 
 end architecture RTL;
