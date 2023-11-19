@@ -131,6 +131,10 @@ class New():
             return True
         return False
 
+    def is_previous_non_whitespace_token(self, iIndex, oToken):
+        index = self.get_index_of_previous_non_whitespace_token_before_index(iIndex)
+        return self.is_token_at_index(oToken, index)
+
     def pretty_print(self):
         pp=pprint.PrettyPrinter(indent=4)
         pp.pprint(self.dMap)
