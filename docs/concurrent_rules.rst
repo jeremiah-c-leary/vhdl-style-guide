@@ -156,50 +156,7 @@ This rule checks the alignment of the **<=** operator over multiple consecutive 
 concurrent_007
 ##############
 
-|phase_1| |error| |structure|
-
-This rule checks for code after the **else** keyword.
-
-.. NOTE:: There is a configuration option :code:`allow_single_line` which allows single line concurrent statements.
-
-:code:`allow_single_line` set to :code:`no` (Default)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Violation**
-
-.. code-block:: vhdl
-
-   wr_en <= '0' when overflow = '0' else '1';
-   wr_en <= '0' when overflow = '0' else '1' when underflow = '1' else sig_a;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   wr_en <= '0' when overflow = '0' else
-            '1';
-   wr_en <= '0' when overflow = '0' else
-            '1' when underflow = '1' else
-            sig_a;
-
-:code:`allow_single_line` set to :code:`yes`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Violation**
-
-.. code-block:: vhdl
-
-   wr_en <= '0' when overflow = '0' else '1';
-   wr_en <= '0' when overflow = '0' else '1' when underflow = '1' else sig_a;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   wr_en <= '0' when overflow = '0' else '1';
-   wr_en <= '0' when overflow = '0' else
-            '1' when underflow = '1' else
-            sig_a;
+This rule has been renamed to `conditional_waveforms_001 <conditional_waveforms_rules.html#conditional-waveforms-001>`_.
 
 concurrent_008
 ##############
