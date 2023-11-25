@@ -144,6 +144,9 @@ class vhdlFile():
         if bUpdateMap:
             self.oTokenMap = process_tokens(self.lAllObjects)
 
+    def get_token_map(self):
+        return self.oTokenMap
+
     def update_token_map(self):
         self.oTokenMap = process_tokens(self.lAllObjects)
 

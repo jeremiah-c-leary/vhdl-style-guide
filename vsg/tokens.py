@@ -184,7 +184,8 @@ def find_character_literal_candidates(lQuotes, lChars):
 def is_character_literal_candidate(iIndex, lQuotes, lChars):
     iQuote = lQuotes[iIndex]
     if there_is_a_single_token_between_quotes(iIndex, lQuotes) and \
-       token_between_quotes_is_a_single_character(iQuote, lChars):
+       token_between_quotes_is_a_single_character(iQuote, lChars) and \
+       token_is_not_a_parenthesis(iQuote, lChars):
         return True
     return False
 
@@ -201,12 +202,19 @@ def token_between_quotes_is_a_single_character(iQuote, lChars):
     return False
 
 
+def token_is_not_a_parenthesis(iQuote, lChars):
+    if lChars[iQuote + 1] == '(':
+        return False
+    return True
+
 def filter_character_literal_candidates(lLiterals):
     lReturn = []
     for iIndex, lLiteral in enumerate(lLiterals[0:-1]):
         lNextLiteral = lLiterals[iIndex + 1]
-        if lLiteral[1] != lNextLiteral[0]:
-            lReturn.append(lLiteral)
+        lPreviousLiteral = lLiterals[iIndex - 1]
+        if lLiteral[1] == lNextLiteral[0] and lLiteral[0] == lPreviousLiteral[1]:
+            continue
+        lReturn.append(lLiteral)
     lReturn.append(lLiterals[-1])
     return lReturn
 

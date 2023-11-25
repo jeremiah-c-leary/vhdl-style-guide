@@ -2,23 +2,17 @@
 from vsg import parser
 from vsg import token
 
-from vsg.rules import consistent_token_case
+from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
 lTokens.append(token.subtype_declaration.identifier)
 
-lIgnore = []
-lIgnore.append(token.interface_signal_declaration.identifier)
-lIgnore.append(token.interface_unknown_declaration.identifier)
-lIgnore.append(token.interface_constant_declaration.identifier)
-lIgnore.append(token.interface_variable_declaration.identifier)
-lIgnore.append(token.association_element.formal_part)
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
+lNames = []
+lNames.append(parser.todo)
+lNames.append(token.type_mark.name)
 
 
-class rule_002(consistent_token_case):
+class rule_002(Rule):
     '''
     This rule checks for consistent capitalization of subtype names.
 
@@ -51,4 +45,5 @@ class rule_002(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'subtype', '002', lTokens, lIgnore)
+        Rule.__init__(self, 'subtype', '002', lTokens, lNames)
+        self.bIncludeDeclarativePartNames = True
