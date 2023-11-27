@@ -56,8 +56,9 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
-13 |     end;
+13 |     end LABEL_1A;
 <class 'vsg.token.generate_statement_body.end_keyword'>
+<class 'vsg.token.generate_statement_body.alternative_label'>
 <class 'vsg.token.generate_statement_body.semicolon'>
 --------------------------------------------------------------------------------
 14 |

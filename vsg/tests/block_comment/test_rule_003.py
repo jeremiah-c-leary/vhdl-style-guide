@@ -33,7 +33,7 @@ class test_block_comment_rule(unittest.TestCase):
 
     def test_rule_003_default_wo_allow_indenting(self):
         oRule = block_comment.rule_003()
-        oRule.allow_indenting = False
+        oRule.allow_indenting = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'block_comment')

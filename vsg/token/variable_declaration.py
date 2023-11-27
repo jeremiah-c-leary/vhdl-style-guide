@@ -20,15 +20,6 @@ class variable_keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
-class keyword(parser.keyword):
-    '''
-    unique_id = variable_declaration : keyword
-    '''
-
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
-
-
 class identifier(parser.identifier):
     '''
     unique_id = variable_declaration : identifier
@@ -36,15 +27,6 @@ class identifier(parser.identifier):
 
     def __init__(self, sString):
         parser.identifier.__init__(self, sString)
-
-
-class comma(parser.comma):
-    '''
-    unique_id = variable_declaration : comma
-    '''
-
-    def __init__(self):
-        parser.comma.__init__(self)
 
 
 class colon(parser.colon):
@@ -56,30 +38,12 @@ class colon(parser.colon):
         parser.colon.__init__(self)
 
 
-class subtype_indication(parser.subtype_indication):
-    '''
-    unique_id = variable_declaration : subtype_indication
-    '''
-
-    def __init__(self, sString):
-        parser.subtype_indication.__init__(self, sString)
-
-
-class assignment_operator(parser.item):
+class assignment_operator(parser.assignment):
     '''
     unique_id = variable_declaration : assignment_operator
     '''
 
     def __init__(self, sString=':='):
-        parser.item.__init__(self, sString)
-
-
-class assignment_expression(parser.item):
-    '''
-    unique_id = variable_declaration : assignment_expression
-    '''
-
-    def __init__(self, sString):
         parser.item.__init__(self, sString)
 
 

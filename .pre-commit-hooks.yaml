@@ -1,0 +1,8 @@
+- id: vsg
+  name: fix VHDL style
+  description: VHDL Style Guide
+  entry: vsg --fix --jobs=1
+  language: python
+  types:
+    - file
+  files: \.(vhd|vhdl)$

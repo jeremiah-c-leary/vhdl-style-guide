@@ -35,7 +35,7 @@
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
 7 |
@@ -63,7 +63,7 @@
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
 11 |
@@ -91,7 +91,7 @@
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
 15 |
@@ -128,7 +128,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -179,7 +179,7 @@
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
 23 |
@@ -197,10 +197,10 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
 26 |
@@ -244,10 +244,10 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.natural'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
 31 |
@@ -311,7 +311,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.function_specification.close_parenthesis'>
 <class 'vsg.token.function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>

@@ -11,7 +11,7 @@ class rule_016(Rule):
     '''
     This rule checks the structure of multiline constants that contain arrays.
 
-    |configuring_multiline_structure_rules_link|
+    |configuring_array_multiline_structure_rules_link|
 
     .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
 
@@ -35,3 +35,6 @@ class rule_016(Rule):
 
     def __init__(self):
         Rule.__init__(self, 'constant', '016', lTokenPairs)
+        self.assignment_operator = token.constant_declaration.assignment_operator
+        self.semicolon = token.constant_declaration.semicolon
+        self.phase = 5

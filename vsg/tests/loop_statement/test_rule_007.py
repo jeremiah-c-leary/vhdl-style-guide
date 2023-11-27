@@ -29,6 +29,7 @@ class test_loop_statement_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'loop_statement')
         self.assertEqual(oRule.identifier, '007')
+        self.assertEqual(oRule.groups, ['structure', 'structure::optional'])
 
         lExpected = [11, 13, 15]
 

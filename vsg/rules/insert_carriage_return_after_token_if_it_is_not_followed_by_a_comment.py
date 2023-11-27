@@ -28,6 +28,7 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment(stru
     def __init__(self, name, identifier, lTokens):
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_n_tokens_after_token(2, self.lTokens)

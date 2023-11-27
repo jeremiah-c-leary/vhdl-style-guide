@@ -36,7 +36,7 @@
 <class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
 <class 'vsg.token.resolution_indication.resolution_function_name'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
 8 |
@@ -91,19 +91,69 @@
 17 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-18 |
-<class 'vsg.parser.blank_line'>
+18 |   subtype new_std_logic is (resolved) std_ulogic;
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.subtype_declaration.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.token.resolution_indication.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.resolution_indication.close_parenthesis'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_ulogic'>
+<class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
 19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-20 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+20 |   -- Example 4 : subtype in subtype declaration
+<class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-21 |
+21 |   subtype identifier is type_mark(type_mark(blah));
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.subtype_declaration.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-22 | end architecture RTL;
+23 |   subtype identifier is type_mark(type_mark
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.subtype_declaration.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.token.type_mark.name'>
+--------------------------------------------------------------------------------
+24 |     (
+<class 'vsg.token.index_constraint.open_parenthesis'>
+--------------------------------------------------------------------------------
+25 |      blah
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+26 |     )
+<class 'vsg.token.index_constraint.close_parenthesis'>
+--------------------------------------------------------------------------------
+27 |   );
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+28 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+29 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+30 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+31 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

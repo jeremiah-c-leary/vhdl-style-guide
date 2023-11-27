@@ -52,7 +52,7 @@ This rule checks the **constant** keyword has proper case.
 constant_003
 ############
 
-This rule was depricated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
+This rule was deprecated and replaced with rules:  function_015, package_019, procedure_010, architecture_029 and process_037.
 
 constant_004
 ############
@@ -134,19 +134,17 @@ This rule checks the **:=** is on the same line at the **constant** keyword.
 
    constant size : integer
       := 1;
+   constant width : integer
+      := 32;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   constant size : integer := 1;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   constant size    : integer := 1;
-   constant width   : integer := 32
+   constant size    : integer :=
+     1;
+   constant width   : integer :=
+     32
 
 constant_010
 ############
@@ -331,7 +329,7 @@ constant_016
 
 This rule checks the structure of multiline constants that contain arrays.
 
-|configuring_multiline_structure_rules_link|
+|configuring_array_multiline_structure_rules_link|
 
 .. NOTE:: The indenting of multiline array constants is handled by the rule `constant_012 <constant_rules.html#constant-012>`_.
 
@@ -449,6 +447,35 @@ This rule checks for a blank line below a constant declaration unless there is a
 
    constant width  : integer := 32;
    constant height : integer := 4;
+
+constant_400
+############
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of assignment keywords in constant declarations.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant c_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data => true,
+     others => false
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant c_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data    => true,
+     others            => false
+   );
 
 constant_600
 ############

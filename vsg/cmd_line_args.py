@@ -10,6 +10,7 @@ import multiprocessing
 from . import junit
 from . import rule_list
 from . import severity
+from . import utils
 from . import version
 from . import vhdlFile
 import argparse
@@ -29,9 +30,13 @@ def __is_valid_file(value: str) -> str:
     :param value: String path to analyze.
     :return:
     """
-    if not os.path.isfile(value):
-        raise argparse.ArgumentTypeError(f"The file {value} does not exist.")
-    return value
+    lFileNames = glob.glob(utils.expand_filename(value), recursive=True)
+    if len(lFileNames) == 0:
+        if '*' in value:
+            raise argparse.ArgumentTypeError(f"The file glob {value} did not match any files.")
+        else:
+            raise argparse.ArgumentTypeError(f"The file {value} does not exist.")
+    return lFileNames
 
 
 def parse_command_line_arguments():
@@ -43,7 +48,7 @@ def parse_command_line_arguments():
                    Reference documentation is located at:
                    http://vhdl-style-guide.readthedocs.io/en/latest/index.html''')
 
-    parser.add_argument('-f', '--filename', type=__is_valid_file, nargs='+', help='File to analyze')
+    parser.add_argument('-f', '--filename', type=__is_valid_file, nargs='+', default=[], help='File to analyze')
     parser.add_argument('-lr', '--local_rules', help='Path to local rules')
     parser.add_argument('-c', '--configuration', type=__is_valid_file, nargs='+', help='JSON or YAML configuration file(s)')
     parser.add_argument('--fix', default=False, action='store_true', help='Fix issues found')
@@ -65,6 +70,11 @@ def parse_command_line_arguments():
     parser.add_argument('-ap', '--all_phases', default=False, action='store_true',
                         help='Do not stop when a violation is detected.')
     parser.add_argument('--fix_only', action='store', help='Restrict fixing via JSON file.')
+    parser.add_argument('--stdin', action='store_true', default=False,
+                        help='Read VHDL input from stdin, disables all other file selections, disables multiprocessing')
+    parser.add_argument('--force_fix', action='store_true', default=False,
+                        help='ALPHA: Apply fixes if syntax errors are detected.')
+
     add_quality_report_argument(parser)
     parser.add_argument(
         "-p",
@@ -75,11 +85,15 @@ def parse_command_line_arguments():
         help="number of parallel jobs to use, default is the number of cpu cores",
     )
     parser.add_argument('--debug', default=False, action='store_true', help='Displays verbose debug information')
+    parser.add_argument('filename_args', metavar='FILENAME', type=__is_valid_file, nargs='*', default=[],
+                        help='File to analyze')
 
     args_ = parser.parse_args()
 
     validate_backup_argument(args_)
     validate_ap_argument(args_)
+    fix_filename_argument(args_)
+    fix_configuration_argument(args_)
 
     if sys.platform == "win32":
         # Work around https://bugs.python.org/issue26903
@@ -108,7 +122,7 @@ def get_predefined_styles():
             with open(os.path.join(sStylePath, sStyle)) as yaml_file:
                 tempConfiguration = yaml.safe_load(yaml_file)
             lReturn.append(tempConfiguration['name'])
-    return lReturn
+    return sorted(lReturn)
 
 
 def validate_backup_argument(args_):
@@ -135,3 +149,21 @@ def add_quality_report_argument(parser):
         action='store',
         help='Create code quality report for GitLab'
     )
+
+
+def fix_filename_argument(args_):
+    lUpdate = []
+    for lFilenames in args_.filename:
+        lUpdate.extend(lFilenames)
+    for lFilenames in args_.filename_args:
+        lUpdate.extend(lFilenames)
+    args_.filename = lUpdate or None
+
+
+def fix_configuration_argument(args_):
+    if args_.configuration is None:
+        return None
+    lUpdate = []
+    for lFilenames in args_.configuration:
+        lUpdate.extend(lFilenames)
+    args_.configuration = lUpdate

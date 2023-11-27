@@ -27,7 +27,7 @@ class test(unittest.TestCase):
         self.assertEqual(oRule.identifier, '200')
         self.assertEqual(oRule.groups, ['blank_line'])
 
-        lExpected = [4, 7, 11, 16, 21, 25, 28, 31, 34, 38, 41, 44, 47, 50, 54, 57, 62]
+        lExpected = [1, 4, 7, 11, 16, 21, 25, 28, 31, 34, 38, 41, 44, 47, 50, 54, 57, 62]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

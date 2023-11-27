@@ -18,8 +18,9 @@ class Rule(structure.Rule):
 
         self.min_height = 3
         self.configuration.append('min_height')
-        self.allow_indenting = True
+        self.allow_indenting = 'yes'
         self.configuration.append('allow_indenting')
+        self.configuration_documentation_link = 'configuring_block_comments_link'
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_consecutive_lines_starting_with_token(parser.comment, self.min_height)
@@ -46,11 +47,9 @@ class Rule(structure.Rule):
         self.analyze(oFile)
 
     def set_token_indent(self, oToken):
-        if self.allow_indenting:
-            oToken.is_block_comment = False
-        else:
+        oToken.is_block_comment = True
+        if not self.allow_indenting:
             oToken.set_indent(0)
-            oToken.is_block_comment = True
             oToken.block_comment_indent = 0
 
     def calculate_leading_whitespace(self, oToken):

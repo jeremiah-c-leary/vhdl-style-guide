@@ -15,7 +15,16 @@ architecture RTL of FIFO is
   -- EXAMPLE 3 : an array subtype
   subtype ShortVector is STD_LOGIC_VECTOR(1 downto 0);
 
+  subtype new_std_logic is (resolved) std_ulogic;
 
+  -- Example 4 : subtype in subtype declaration
+  subtype identifier is type_mark(type_mark(blah));
+
+  subtype identifier is type_mark(type_mark
+    (
+     blah
+    )
+  );
 
 begin
 

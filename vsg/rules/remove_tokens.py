@@ -28,6 +28,7 @@ class remove_tokens(structure.Rule):
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_n_tokens_before_and_after_tokens(1, self.lTokens)

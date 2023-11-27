@@ -5,16 +5,23 @@ VSG can use a configuration file to alter it's behavior and/or include a list of
 This is accomplished by passing JSON and/or YAML file(s) through the **--configuration** command line argument.
 This is the basic form of a configuration file in JSON:
 
-.. code-block:: json
+.. code-block:: text
 
    {
      "file_list": [
        "fifo.vhd",
-       "$PATH_TO_FILE/spi_master.vhd",
-       "$OTHER_PATH/src/*.vhd",
        "source/spi.vhd": {
          "rule": {
-           "ruleId_ruleNumber":"blah"
+           "ruleId_ruleNumber": "blah"
+         }
+       },
+       "$PATH_TO_FILE/spi_master.vhd",
+       "$OTHER_PATH/src/*.vhd"
+     ],
+     "file_rules": [
+       "source/i2c.vhd": {
+         "rule": {
+           "ruleId_ruleNumber": "blah"
          }
        }
      ],
@@ -46,6 +53,11 @@ This is the basic form of a configuration file in YAML:
              attributeName: AttributeValue
      - $PATH_TO_FILE/spi_master.vhd
      - $OTHER_PATH/src/*.vhd
+   file_rules:
+     - source/i2c.vhd:
+         rule:
+           ruleId_ruleNumber:
+             attributeName: AttributeValue
    local_rules: $DIRECTORY_PATH
    rule:
      global:
@@ -71,7 +83,30 @@ File globbing is also supported.
 The Environment variables will be expanded before globbing occurs.
 This option can be useful when running VSG over multiple files.
 
+The file name will be converted to POSIX style using '/' as a separator for all platforms.
+
 Rule configurations can be specified for each file by following the format of the **rule** configuration.
+
+.. NOTE:: Defining rule configurations under the file_list will be deprecated at some point.
+          Use the file_rules option instead.
+
+file_rules
+----------
+
+The file_rules option allows for configuration of individual rules per file.
+Any file listed under this option will have the configuration applied if it is being analyzed.
+.. The file_rules is exactly the same as file_list except that it will not add the file to the scan list.
+
+linesep
+-------
+
+The linesep is an optional settings for line separator.
+Default is platform specific.
+Logical values may be "\n" or "\r\n".
+
+.. code-block:: yaml
+
+   linesep: "\n"
 
 local_rules
 -----------
@@ -153,12 +188,12 @@ From least to highest priority are:
 
 If the same rule is defined in all four locations as in the example below, then the final setting will be equal to the highest priority.
 
-.. code-block:: json
+.. code-block:: text
 
    {
-     "file_list":[
-       "entity.vhd":{
-         "rule":{
+     "file_list": [
+       "entity.vhd": {
+         "rule": {
            "length_001":{
              "disable": true
            }
@@ -179,10 +214,10 @@ If the same rule is defined in all four locations as in the example below, then 
        "rule": {
          "length_001":{
            "disable": false
+         }
        }
      }
    }
-  }
 
 
 In this example configuration, all rules are disabled by the **global** configuration.
@@ -249,13 +284,13 @@ Configure the indent size for all rules by setting the **global** attribute.
 .. code-block:: json
 
    {
-       "rule":{
-           "global":{
-               "indentSize":4
+       "rule": {
+           "global": {
+               "indentSize": 4
            },
-           "group":{
-               "indent":{
-                   "disable":False
+           "group": {
+               "indent": {
+                   "disable": false
                }
            }
        }

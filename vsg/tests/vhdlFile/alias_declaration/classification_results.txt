@@ -43,7 +43,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -86,7 +86,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -104,12 +104,12 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
 15 |
@@ -128,7 +128,7 @@
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -157,7 +157,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
 <class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------

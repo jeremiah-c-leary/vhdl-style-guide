@@ -33,6 +33,7 @@ class move_token_next_to_another_token_if_it_exists_between_tokens(structure.Rul
         self.anchor_token = anchor_token
         self.token_to_move = token_to_move
         self.between_tokens = between_tokens
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.between_tokens[0], self.between_tokens[1], bIncludeTillEndOfLine=True)

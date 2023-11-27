@@ -28,7 +28,7 @@ class test_library_rule(unittest.TestCase):
     def test_rule_003(self):
         oRule = library.rule_003()
         oRule.style = 'no_code'
-        oRule.allow_library_clause = False
+        oRule.allow_library_clause = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'library')
@@ -42,7 +42,7 @@ class test_library_rule(unittest.TestCase):
     def test_fix_rule_003(self):
         oRule = library.rule_003()
         oRule.style = 'no_code'
-        oRule.allow_library_clause = False
+        oRule.allow_library_clause = 'no'
 
         oRule.fix(self.oFile)
 
@@ -55,7 +55,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_rule_003_w_allow_library_clause(self):
         oRule = library.rule_003()
-        oRule.allow_library_clause = True
+        oRule.allow_library_clause = 'yes'
 
         lExpected = [5]
 
@@ -64,7 +64,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_fix_rule_003_w_allow_library_clause(self):
         oRule = library.rule_003()
-        oRule.allow_library_clause = True
+        oRule.allow_library_clause = 'yes'
 
         oRule.fix(self.oFile)
 

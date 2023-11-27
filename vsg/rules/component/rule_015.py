@@ -4,7 +4,7 @@ from vsg import deprecated_rule
 
 class rule_015(deprecated_rule.Rule):
     '''
-    This rule has been depricated.
+    This rule has been deprecated.
     The **component** keyword is required per the LRM.
     '''
 

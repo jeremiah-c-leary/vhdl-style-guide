@@ -15,7 +15,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.record_constraint.open_parenthesis'>
 --------------------------------------------------------------------------------
 4 |   element1(7 downto 0),
@@ -145,25 +145,25 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.comma'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.direction.downto'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.comma'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -174,7 +174,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -189,7 +189,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
@@ -204,7 +204,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -223,7 +223,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.tic'>
@@ -238,7 +238,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.record_constraint.open_parenthesis'>
 <class 'vsg.token.record_element_constraint.record_element_simple_name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
@@ -256,7 +256,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.tic'>
@@ -271,7 +271,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.tic'>
@@ -286,7 +286,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.subtype_indication.type_mark'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.tic'>

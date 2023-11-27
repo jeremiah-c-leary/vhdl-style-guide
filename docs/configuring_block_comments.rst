@@ -73,27 +73,27 @@ Where:
 
 There are additional options for configuring block comments:
 
-+---------------------+----------+----------+-------------------------------------------------------------+
-| Attribute           | Values   | Default  | Description                                                 |
-+=====================+==========+==========+=============================================================+
-| min_height          | Integer  |    3     | Sets minimum number of consecutive comment lines before     |
-|                     |          |          | being considered a block comment.                           |
-+---------------------+----------+----------+-------------------------------------------------------------+
-| header_alignment    | "left"   |          | Sets horizontal position of header string.                  |
-|                     | "center" | "center" |                                                             |
-|                     | "right"  |          |                                                             |
-+---------------------+----------+----------+-------------------------------------------------------------+
-| max_header_column   | Integer  |   120    | Sets the maximum length of the combined header.             |
-+---------------------+----------+----------+-------------------------------------------------------------+
-| footer_alignment    | "left"   |          | Sets horizontal position of footer string.                  |
-|                     | "center" | "center" |                                                             |
-|                     | "right"  |          |                                                             |
-+---------------------+----------+----------+-------------------------------------------------------------+
-| max_footer_column   | Integer  |   120    | Sets the maximum length of the combined footer.             |
-+---------------------+----------+----------+-------------------------------------------------------------+
-| allow_indenting     | Boolean  |  True    | Allows indented block comments. Setting this to False will  |
-|                     |          |          | only detect block comments starting at column 0.            |
-+---------------------+----------+----------+-------------------------------------------------------------+
++---------------------+----------+----------+------------------------------------------------------------------+
+| Attribute           | Values   | Default  | Description                                                      |
++=====================+==========+==========+==================================================================+
+| min_height          | Integer  |    3     | Sets minimum number of consecutive comment lines before          |
+|                     |          |          | being considered a block comment.                                |
++---------------------+----------+----------+------------------------------------------------------------------+
+| header_alignment    | "left"   |          | Sets horizontal position of header string.                       |
+|                     | "center" | "center" |                                                                  |
+|                     | "right"  |          |                                                                  |
++---------------------+----------+----------+------------------------------------------------------------------+
+| max_header_column   | Integer  |   120    | Sets the maximum length of the combined header.                  |
++---------------------+----------+----------+------------------------------------------------------------------+
+| footer_alignment    | "left"   |          | Sets horizontal position of footer string.                       |
+|                     | "center" | "center" |                                                                  |
+|                     | "right"  |          |                                                                  |
++---------------------+----------+----------+------------------------------------------------------------------+
+| max_footer_column   | Integer  |   120    | Sets the maximum length of the combined footer.                  |
++---------------------+----------+----------+------------------------------------------------------------------+
+| allow_indenting     | "yes"    |  "yes"   | Allows indented block comments. Setting this to :code:`no` will  |
+|                     | "no"     |          | only detect block comments starting at column 0.                 |
++---------------------+----------+----------+------------------------------------------------------------------+
 
 With these options, a block comment can be validated by VSG.
 
@@ -122,19 +122,19 @@ To configure the following example...
    rule:
      block_comment_001:
        disable : False
-       header_left : None
+       header_left : ''
        header_left_repeat : '-'
-       header_string : None
-       header_right_repeat : None
+       header_string : ''
+       header_right_repeat : ''
      block_comment_002:
        disable : False
-       comment_left : None
+       comment_left : ''
      block_comment_003:
        disable : False
-       footer_left : None
+       footer_left : ''
        footer_left_repeat : '-'
-       footer_string : None
-       footer_right_repeat : None
+       footer_string : ''
+       footer_right_repeat : ''
 
 Complex Block Comment
 ^^^^^^^^^^^^^^^^^^^^^
@@ -194,8 +194,8 @@ To configure a block comment for Doxygen...
        disable : False
        header_left : '-'
        header_left_repeat : '-'
-       header_string : None
-       header_right_repeat : None
+       header_string : ''
+       header_right_repeat : ''
      block_comment_002:
        disable : False
        comment_left : '!'
@@ -203,8 +203,8 @@ To configure a block comment for Doxygen...
        disable : False
        footer_left : '-'
        footer_left_repeat : '-'
-       footer_string : None
-       footer_right_repeat : None
+       footer_string : ''
+       footer_right_repeat : ''
 
 Rules Enforcing Block Comments
 ##############################

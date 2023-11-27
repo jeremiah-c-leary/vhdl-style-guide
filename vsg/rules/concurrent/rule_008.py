@@ -61,17 +61,22 @@ class rule_008(alignment.Rule):
         self.lStart = lStart
         self.lEnd = lEnd
         ## Stuff below is from original keyword_alignment_rule
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
 
-        self.blank_line_ends_group = True
+        self.blank_line_ends_group = 'yes'
         self.configuration.append('blank_line_ends_group')
-        self.comment_line_ends_group = True
+        self.comment_line_ends_group = 'yes'
         self.configuration.append('comment_line_ends_group')
-        self.include_lines_without_comments = False
+        self.include_lines_without_comments = 'no'
         self.configuration.append('include_lines_without_comments')
 
     def analyze(self, oFile):
+
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+        self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
+        self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+        self.include_lines_without_comments = utils.convert_yes_no_option_to_boolean(self.include_lines_without_comments)
 
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
         for oToi in lToi:

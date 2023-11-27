@@ -26,7 +26,7 @@ This will create a template **task.json** file:
 
 Replace the contents of the template file with the following...
 
-.. code-block:: json
+.. code-block:: text
     
     {
       // See https://go.microsoft.com/fwlink/?LinkId=733558

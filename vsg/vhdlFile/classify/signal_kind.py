@@ -21,6 +21,6 @@ def detect(iToken, lObjects):
 def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_if('register', token.register_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if('bus', token.register_bus, iToken, lObjects)
+    iCurrent = utils.assign_next_token_if('bus', token.bus_keyword, iToken, lObjects)
 
     return iCurrent

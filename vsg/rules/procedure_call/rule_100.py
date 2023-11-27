@@ -17,6 +17,8 @@ class rule_100(Rule):
     '''
     This rule checks for a single space between the following block elements:  label, label colon, **postponed** keyword and the *procedure* name.
 
+    |configuring_whitespace_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

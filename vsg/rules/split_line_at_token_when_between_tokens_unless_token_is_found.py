@@ -38,6 +38,7 @@ class split_line_at_token_when_between_tokens_unless_token_is_found(structure.Ru
         self.oStart = oStart
         self.oEnd = oEnd
         self.oStop = oStop
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_token_and_n_tokens_before_it_in_between_tokens_unless_token_is_found(self.lTokens, 2, self.oStart, self.oEnd, self.oStop)

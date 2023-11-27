@@ -32,7 +32,7 @@ class New():
         lTokens = self.lTokens[iStart:iEnd + 1]
         iStartIndex = iStart + self.iStartIndex
         iLine = self.iLine
-        for iIndex in range(0, iStart + 1):
+        for iIndex in range(0, iStart):
             try:
                 if isinstance(self.lTokens[iIndex], parser.carriage_return):
                     iLine += 1
@@ -63,6 +63,12 @@ class New():
 
     def get_meta_data(self, sKey):
         return self.dMetaData[sKey]
+
+    def get_index_of_token_matching(self, oTokenType):
+        for iToken, oToken in enumerate(self.lTokens):
+            if isinstance(oToken, oTokenType):
+                return iToken
+        return None
 
 
 def calculate_end_index(iStartIndex, lTokens):

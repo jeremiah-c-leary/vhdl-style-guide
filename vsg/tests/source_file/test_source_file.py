@@ -27,7 +27,7 @@ class testOSError(unittest.TestCase):
 
     def test_file_not_found(self):
         try:
-            subprocess.check_output(['bin/vsg', '-f', 'no_file.vhd'])
+            subprocess.check_output(['bin/vsg', '-f', 'no_file.vhd'], stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
             exit_status: int = e.returncode
 

@@ -117,7 +117,7 @@ class test_block_comment_rule(unittest.TestCase):
         oRule.header_right_repeat = '-'
         oRule.header_alignment = 'center'
         oRule.max_header_column = 80
-        oRule.allow_indenting = False
+        oRule.allow_indenting = 'no'
 
         lExpected = []
 

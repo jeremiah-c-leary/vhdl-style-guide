@@ -3,24 +3,84 @@ architecture RTL of ENT is
 
 begin
 
-   -- These should pass the check
-   O_FOO <= (1 => q_foo(63 downto 32),
-             0 => q_foo(31 downto  0));
-
-   n_foo <= resize(unsigned(I_FOO) +
-                   unsigned(I_BAR), q_foo'length);
-   -- These should fail the check
-   O_FOO <= (1 => q_foo(63 downto 32),
-             0 => q_foo(31 downto  0));
+   --  Align left = no align paren = no
 
    n_foo <= resize(unsigned(I_FOO) +
                    unsigned(I_BAR), q_foo'length);
 
-   O_FOO <=
-            (
-              1 => func1(std_logic_vector(G_GEN1), G_GEN2),
-              2 => func2(func3(G_GEN3), G_GEN3),
-              3 => func4(G_GEN4)
-            );
+   n_foo <=
+            resize(unsigned(I_FOO) +
+                   unsigned(I_BAR), q_foo'length);
+
+   n_bar <= a or b and c
+            xor z and x or
+            w and z;
+
+   n_bar <=
+            a or b and c
+            xor z and x or
+            w and z;
+
+   --  Align left = no align paren = yes
+
+   n_foo <= resize(unsigned(I_FOO) +
+                   unsigned(I_BAR), q_foo'length);
+
+   n_foo <=
+            resize(unsigned(I_FOO) +
+                   unsigned(I_BAR), q_foo'length);
+
+   n_bar <= a or b and c
+            xor z and x or
+            w and z;
+
+   n_bar <=
+            a or b and c
+            xor z and x or
+            w and z;
+
+   -- Align left = yes and align paren = no
+
+   n_foo <= resize(unsigned(I_FOO) +
+                   unsigned(I_BAR), q_foo'length);
+
+   n_foo <=
+            resize(unsigned(I_FOO) +
+                   unsigned(I_BAR), q_foo'length);
+
+   n_bar <= a or b and c
+            xor z and x or
+            w and z;
+
+   n_bar <=
+            a or b and c
+            xor z and x or
+            w and z;
+
+   -- Align left = yes and align paren = yes
+
+   n_foo <= resize(unsigned(I_FOO) +
+                   unsigned(I_BAR), q_foo'length);
+
+   n_foo <=
+            resize(unsigned(I_FOO) +
+                   unsigned(I_BAR), q_foo'length);
+
+   n_bar <= a or b and c
+            xor z and x or
+            w and z;
+
+   n_bar <=
+            a or b and c
+            xor z and x or
+            w and z;
+
+   -- Test detection of arrays
+
+   test <= my_function(    arg1      =>   input,
+                       arg2   =>   input2);
+
+   test <= (    arg1      =>   input,
+ arg2   =>   input2);
 
 end architecture RTL;

@@ -87,7 +87,7 @@ Example
 Let us assume the jcl style matches 95% of the desired style.
 The only differences are:
 
-* The entity keyword is always lower case
+* The entity identifier is always lower case
 * Indenting is three spaces instead of two
 
 Create a configuration with the following:
@@ -98,7 +98,7 @@ Create a configuration with the following:
    rule:
      global:
        indentSize: 3
-     entity_004:
+     entity_008:
        case: lower
    ...
 

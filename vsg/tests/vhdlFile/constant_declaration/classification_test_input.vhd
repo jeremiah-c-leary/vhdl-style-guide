@@ -15,6 +15,12 @@ architecture RTL of FIFO is
 
   constant DataBusReset: Std_Logic_Vector(7 downto 0) := "00000000";
 
+  constant AddrSize : natural := abs -200;
+
+  constant AddrSize : natural := rem 200;
+
+  constant DataBusReset: std_ulogic_vector(7 downto 0) := "00000000";
+
 begin
 
 end architecture RTL;

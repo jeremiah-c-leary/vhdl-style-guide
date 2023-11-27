@@ -140,6 +140,8 @@ generic_map_006
 
 This rule checks for a single space between the **map** keyword and the (.
 
+|configuring_whitespace_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -221,7 +223,7 @@ generic_map_600
 This rule checks for valid suffixes on generic identifiers in generic maps
 The default generic suffix is *\_g*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 
@@ -251,7 +253,7 @@ generic_map_601
 This rule checks for valid prefixes on generic identifiers in generic maps
 The default generic suffix is *\g_*.
 
-Refer to the section `Configuring Prefix and Suffix Rules <configuring.html#configuring-prefix-and-suffix-rules>`_ for information on changing the allowed suffixes.
+|configuring_prefix_and_suffix_rules_link|
 
 **Violation**
 

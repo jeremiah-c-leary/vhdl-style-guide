@@ -262,79 +262,79 @@
           "rule": "assert_001",
           "linenumber": 287,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "assert_001",
           "linenumber": 291,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "assert_001",
           "linenumber": 295,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "assert_001",
           "linenumber": 299,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 503,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 505,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 513,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 521,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 530,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 538,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 555,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 571,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "case_001",
           "linenumber": 573,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "case_007",
@@ -400,799 +400,799 @@
           "rule": "comment_010",
           "linenumber": 184,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 189,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 196,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 216,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 221,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 225,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 229,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 230,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 231,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 232,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 233,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 234,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 235,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 236,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 237,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 238,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 239,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 242,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 245,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 247,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 249,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 253,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 256,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 259,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 262,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 265,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 268,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 275,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 283,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 284,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 285,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 286,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 290,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 294,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 298,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 303,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 304,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 305,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 306,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 307,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 308,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 309,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 310,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 311,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 312,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 313,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 314,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 315,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 316,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 317,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 318,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 319,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 320,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 334,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 335,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 340,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 343,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 353,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 354,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 355,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 356,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 366,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 367,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 368,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 378,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 379,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 389,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 390,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 393,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 394,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 395,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 396,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 406,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 407,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 408,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 409,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 410,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 411,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 417,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 423,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 424,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 431,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 435,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 438,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 444,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 454,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 455,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 456,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 457,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 460,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 468,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 479,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 487,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 488,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 489,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 490,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 576,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 577,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 578,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 579,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 585,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 586,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 587,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 588,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 589,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 590,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 603,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 604,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 605,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "comment_010",
           "linenumber": 606,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 359,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 364,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 371,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 376,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 382,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 387,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 391,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 580,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 581,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 582,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 583,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 584,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 607,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 608,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 609,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 610,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 611,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 612,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 613,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 614,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 615,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 616,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_001",
           "linenumber": 617,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "concurrent_005",
@@ -1428,6 +1428,66 @@
           "severity": "Error",
           "solution": "Move -24 columns"
         },
+        {"linenumber": 241,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 1 columns"},
+        {"linenumber": 252,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 1 columns"},
+        {"linenumber": 255,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 1 columns"},
+        {"linenumber": 264,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 1 columns"},
+        {"linenumber": 267,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 1 columns"},
+        {"linenumber": 269,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 4 columns"},
+        {"linenumber": 270,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 4 columns"},
+        {"linenumber": 271,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 4 columns"},
+        {"linenumber": 272,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 4 columns"},
+        {"linenumber": 273,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 1 columns"},
+        {"linenumber": 276,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 3 columns"},
+        {"linenumber": 277,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 3 columns"},
+        {"linenumber": 278,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 3 columns"},
+        {"linenumber": 279,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 3 columns"},
+        {"linenumber": 281,
+         "rule": "declarative_part_400",
+         "severity": "Error",
+         "solution": "Move := 1 columns"},
         {
           "rule": "entity_015",
           "linenumber": 209,
@@ -1624,49 +1684,49 @@
           "rule": "entity_020",
           "linenumber": 179,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -31 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 181,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -31 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 182,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -31 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 183,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -31 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 185,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -30 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 186,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -30 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 187,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -30 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 188,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -30 columns"
         },
         {
           "rule": "entity_020",
@@ -1708,79 +1768,79 @@
           "rule": "entity_020",
           "linenumber": 197,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -13 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 198,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -13 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 199,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -13 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 200,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -13 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 201,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -13 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 202,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -13 columns"
         },
         {
           "rule": "entity_020",
           "linenumber": 207,
           "severity": "Error",
-          "solution": "Move -1 columns"
+          "solution": "Move -13 columns"
         },
         {
           "rule": "generate_001",
           "linenumber": 357,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_001",
           "linenumber": 362,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_001",
           "linenumber": 369,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_001",
           "linenumber": 374,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_001",
           "linenumber": 380,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_001",
           "linenumber": 385,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_002",
@@ -1858,73 +1918,73 @@
           "rule": "generate_006",
           "linenumber": 358,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_006",
           "linenumber": 363,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_006",
           "linenumber": 370,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_006",
           "linenumber": 375,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_006",
           "linenumber": 381,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_006",
           "linenumber": 386,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_007",
           "linenumber": 360,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_007",
           "linenumber": 365,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_007",
           "linenumber": 372,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_007",
           "linenumber": 377,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_007",
           "linenumber": 383,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_007",
           "linenumber": 388,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generate_011",
@@ -1966,37 +2026,37 @@
           "rule": "generic_002",
           "linenumber": 174,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "generic_004",
           "linenumber": 175,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "generic_004",
           "linenumber": 176,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "generic_004",
           "linenumber": 177,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "generic_004",
           "linenumber": 178,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "generic_004",
           "linenumber": 179,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "generic_007",
@@ -2044,127 +2104,127 @@
           "rule": "if_001",
           "linenumber": 324,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 325,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 338,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 339,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 399,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 400,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 416,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 439,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 440,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 445,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 446,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 461,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 462,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 469,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 470,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 480,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 481,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 544,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 558,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 593,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_001",
           "linenumber": 594,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_002",
@@ -2308,181 +2368,181 @@
           "rule": "if_012",
           "linenumber": 448,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_012",
           "linenumber": 464,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_013",
           "linenumber": 328,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_013",
           "linenumber": 346,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_013",
           "linenumber": 549,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "if_013",
           "linenumber": 564,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "if_013",
           "linenumber": 596,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 331,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 332,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 349,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 350,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 402,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 403,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 430,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 442,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 443,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 450,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 451,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 466,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 467,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 477,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 478,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 483,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 484,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 553,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 569,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 598,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "if_014",
           "linenumber": 599,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "if_015",
           "linenumber": 443,
           "severity": "Error",
-          "solution": "Change spaces between end and if to 1"
+          "solution": "Change the number of space(s) between end and if to 1"
         },
         {
           "rule": "if_015",
           "linenumber": 451,
           "severity": "Error",
-          "solution": "Change spaces between end and if to 1"
+          "solution": "Change the number of space(s) between end and if to 1"
         },
         {
           "rule": "if_030",
@@ -3004,169 +3064,169 @@
           "rule": "library_008",
           "linenumber": 157,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "library_008",
           "linenumber": 158,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "library_008",
           "linenumber": 159,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "port_002",
           "linenumber": 180,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 181,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 182,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 183,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 185,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 186,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 187,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 188,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 190,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 191,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 192,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 193,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 194,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 195,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 197,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 198,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 199,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 200,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 201,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 202,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 203,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 204,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 205,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 206,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_004",
           "linenumber": 207,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "port_007",
@@ -3352,7 +3412,7 @@
           "rule": "port_015",
           "linenumber": 208,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "port_017",
@@ -3364,145 +3424,145 @@
           "rule": "process_001",
           "linenumber": 321,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_001",
           "linenumber": 336,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_001",
           "linenumber": 397,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_001",
           "linenumber": 412,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_001",
           "linenumber": 436,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_001",
           "linenumber": 458,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_001",
           "linenumber": 491,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_001",
           "linenumber": 591,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_003",
           "linenumber": 323,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_003",
           "linenumber": 337,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_003",
           "linenumber": 398,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_003",
           "linenumber": 415,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_003",
           "linenumber": 437,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_003",
           "linenumber": 459,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_003",
           "linenumber": 493,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_003",
           "linenumber": 592,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_006",
           "linenumber": 333,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_006",
           "linenumber": 351,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_006",
           "linenumber": 404,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_006",
           "linenumber": 434,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_006",
           "linenumber": 452,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_006",
           "linenumber": 485,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_006",
           "linenumber": 574,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_006",
           "linenumber": 601,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "process_011",
@@ -3520,19 +3580,19 @@
           "rule": "process_020",
           "linenumber": 413,
           "severity": "Error",
-          "solution": "Adjust indent to column 33"
+          "solution": "Indent with 33 space(s)"
         },
         {
           "rule": "process_020",
           "linenumber": 414,
           "severity": "Error",
-          "solution": "Adjust indent to column 33"
+          "solution": "Indent with 33 space(s)"
         },
         {
           "rule": "process_020",
           "linenumber": 492,
           "severity": "Error",
-          "solution": "Adjust indent to column 31"
+          "solution": "Indent with 31 space(s)"
         },
         {
           "rule": "process_022",
@@ -4084,811 +4144,811 @@
           "rule": "sequential_001",
           "linenumber": 326,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 329,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 341,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 342,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 344,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 345,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 347,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 348,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 401,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 418,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 419,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 420,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 421,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 422,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 425,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 426,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 427,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 428,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 429,
           "severity": "Error",
-          "solution": "Indent level 3"
+          "solution": "Use 6 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 432,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 433,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 441,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 447,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 449,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 463,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 465,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 471,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 472,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 473,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 474,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 475,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 476,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 482,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 494,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 495,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 496,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 497,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 498,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 499,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 500,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 501,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 502,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 506,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 507,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 508,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 509,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 510,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 511,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 514,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 515,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 516,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 517,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 518,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 519,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 522,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 523,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 524,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 525,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 526,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 527,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 528,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 531,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 532,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 533,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 534,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 535,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 536,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 539,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 540,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 541,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 542,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 543,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 545,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 546,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 547,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 548,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 550,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 551,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 552,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 556,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 557,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 559,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 560,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 561,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 562,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 563,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 565,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 566,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 567,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 568,
           "severity": "Error",
-          "solution": "Indent level 5"
+          "solution": "Use 10 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 572,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 595,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 597,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "sequential_001",
           "linenumber": 600,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 217,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 218,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 219,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 220,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 222,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 223,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 224,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 226,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 227,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 228,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 240,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 241,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 243,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 244,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 246,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 248,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 250,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 251,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 252,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 254,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 255,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 257,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 258,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 260,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 261,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 263,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 264,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 266,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 267,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 269,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 270,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 271,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 272,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 273,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 274,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 276,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 277,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 278,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 279,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 280,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_001",
           "linenumber": 281,
           "severity": "Error",
-          "solution": "Indent level 1"
+          "solution": "Use 2 spaces for indent"
         },
         {
           "rule": "signal_004",
@@ -5134,7 +5194,7 @@
           "rule": "variable_001",
           "linenumber": 322,
           "severity": "Error",
-          "solution": "Indent level 2"
+          "solution": "Use 4 spaces for indent"
         },
         {
           "rule": "variable_007",
@@ -5146,13 +5206,13 @@
           "rule": "variable_assignment_001",
           "linenumber": 327,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "variable_assignment_001",
           "linenumber": 330,
           "severity": "Error",
-          "solution": "Indent level 4"
+          "solution": "Use 8 spaces for indent"
         },
         {
           "rule": "whitespace_005",

@@ -29,15 +29,6 @@ class colon(parser.colon):
         parser.colon.__init__(self)
 
 
-class subtype_indication(parser.subtype_indication):
-    '''
-    unique_id = constant_declaration : subtype_indication
-    '''
-
-    def __init__(self, sString):
-        parser.subtype_indication.__init__(self, sString)
-
-
 class semicolon(parser.semicolon):
     '''
     unique_id = constant_declaration : semicolon
@@ -47,7 +38,7 @@ class semicolon(parser.semicolon):
         parser.semicolon.__init__(self)
 
 
-class assignment_operator(parser.item):
+class assignment_operator(parser.assignment):
     '''
     unique_id = constant_declaration : assignment_operator
     '''

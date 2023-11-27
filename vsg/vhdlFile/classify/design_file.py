@@ -9,9 +9,10 @@ def tokenize(lObjects):
     design_file ::=
         design_unit { design_unit }
     '''
-    iReturn = 0
-    for iCurrent in range(0, len(lObjects)):
-        iTemp = iCurrent
-        if iTemp >= iReturn:
-            if utils.is_item(lObjects, iTemp):
-                iReturn = design_unit.detect(iTemp, lObjects)
+    iCurrent = 0
+    while iCurrent < len(lObjects):
+        iReturn = design_unit.detect(iCurrent, lObjects)
+        if iReturn == iCurrent:
+            iCurrent += 1
+        else:
+            iCurrent = iReturn

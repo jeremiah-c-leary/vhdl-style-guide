@@ -56,13 +56,13 @@ This rule checks for blank lines or comments above the **library** keyword.
 
 |configuring_previous_line_rules_link|
 
-There is an additional **allow_library_clause** option which can be set.
+There is an additional :code:`allow_library_clause` option which can be set.
 Refer to section :ref:`reporting-single-rule-configuration` for details on finding configuration options for individual rules.
 
 allow_library_clause
 ^^^^^^^^^^^^^^^^^^^^
 
-When set to **True**, it allows consecutive library clauses.
+When set to :code:`yes`, it allows consecutive library clauses.
 
 **Violation**
 
@@ -165,7 +165,7 @@ library_007
 
 This rule checks for blank lines or comments above the **use** declaration.
 
-|configuring_blank_lines_link|
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_blank_line`.
 
@@ -193,6 +193,8 @@ library_008
 |phase_4| |error| |indent|
 
 This rule checks the indent of the **use** keyword.
+
+|configuring_use_clause_indenting_link|
 
 **Violation**
 

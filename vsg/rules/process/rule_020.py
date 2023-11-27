@@ -11,6 +11,8 @@ class rule_020(multiline_alignment_between_tokens):
     '''
     This rule checks the indentation of multiline sensitivity lists.
 
+    |configuring_multiline_indent_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

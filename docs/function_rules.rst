@@ -380,6 +380,31 @@ This rule checks the function designator has proper case.
 
    function overflow (a: integer) return integer is
 
+function_018
+############
+
+|phase_1| |error| |structure| |structure_optional|
+
+This rule checks the function keyword exist in the closing of the function specification.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function func return integer is
+
+   end func;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function func return integer is
+
+   end function func;
+
 function_100
 ############
 
@@ -474,6 +499,27 @@ This rule checks the indent of the closing parenthesis if it is on its own line.
      e : std_logic
    ) return integer is
 
+function_501
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **return** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) RETURN integer is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function overflow (a: integer) return integer is
+
 function_502
 ############
 
@@ -515,4 +561,48 @@ This rule checks the function designator has proper case on the end function dec
 .. code-block:: vhdl
 
    end function overflow;
+
+function_600
+############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on function designators.
+Default signal prefix is *f\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function read_data
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function f_read_data
+
+function_601
+############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on function designators.
+Default signal suffix is *\_f*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function read_data
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function read_data_f
 

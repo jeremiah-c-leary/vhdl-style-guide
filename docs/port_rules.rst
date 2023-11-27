@@ -10,6 +10,8 @@ port_001
 
 This rule checks for a blank line above the **port** keyword.
 
+|configuring_blank_lines_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -52,6 +54,8 @@ port_003
 |phase_2| |error| |whitespace|
 
 This rule checks for a single space after the **port** keyword and (.
+
+|configuring_whitespace_rules_link|
 
 **Violation**
 

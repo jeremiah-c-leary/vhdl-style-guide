@@ -1,4 +1,5 @@
 
+from vsg import parser
 from vsg import token
 
 from vsg.rules.whitespace_between_token_pairs import Rule
@@ -11,6 +12,8 @@ lTokens.append([token.function_specification.designator, token.function_specific
 lTokens.append([token.function_specification.designator, token.function_specification.open_parenthesis])
 lTokens.append([token.function_specification.close_parenthesis, token.function_specification.return_keyword])
 lTokens.append([token.function_specification.return_keyword, token.type_mark.name])
+lTokens.append([token.function_specification.return_keyword, parser.type])
+lTokens.append([parser.type, token.subprogram_body.is_keyword])
 lTokens.append([token.type_mark.name, token.subprogram_body.is_keyword])
 
 

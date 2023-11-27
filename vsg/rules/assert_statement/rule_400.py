@@ -12,8 +12,6 @@ class rule_400(Rule):
 
     .. NOTE:: There is a configuration option **alignment** which changes the indent location of multiple lines.
 
-    |configuring_multiline_report_rule_link|
-
     **Violation**
 
     .. code-block:: vhdl
@@ -37,3 +35,4 @@ class rule_400(Rule):
         Rule.__init__(self, name="assert", identifier="400")
         self.lStartTokens = [assertion.report_keyword]
         self.lEndTokens = [assertion.severity_keyword, assertion_statement.semicolon, concurrent_assertion_statement.semicolon]
+        self.configuration_documentation_link = None

@@ -37,6 +37,7 @@ class insert_tokens_right_of_token_if_it_does_not_exist_before_token(structure.R
         self.end_token = end_token
         self.action = 'add'
         self.configuration.append('action')
+        self.configuration_documentation_link = 'configuring_optional_items_link'
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.anchor_token, self.end_token)

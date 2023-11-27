@@ -9,6 +9,7 @@ class New():
 
     def __init__(self, dMap):
         self.dMap = dMap
+        self.maxTokenNum = None
 
     def get_token_indexes(self, oToken, bCopy=False):
         sBase, sSub = extract_unique_id(oToken)
@@ -89,6 +90,12 @@ class New():
             if not self.is_token_at_index_whitespace(i):
                 return i
 
+    def get_index_of_next_non_whitespace_token_after_index_ignoring_comments(self, iIndex):
+        iStartIndex = iIndex + 1
+        for i in range(iStartIndex, self.iMaxToken):
+            if not self.is_token_at_index_whitespace_or_comment(i):
+                return i
+
     def get_index_of_previous_non_whitespace_token(self, iIndex):
         iStartIndex = iIndex - 1
         for i in range(iStartIndex, 0, -1):
@@ -123,6 +130,10 @@ class New():
         if self.is_token_at_index(parser.blank_line, iIndex):
             return True
         return False
+
+    def is_previous_non_whitespace_token(self, iIndex, oToken):
+        index = self.get_index_of_previous_non_whitespace_token_before_index(iIndex)
+        return self.is_token_at_index(oToken, index)
 
     def pretty_print(self):
         pp=pprint.PrettyPrinter(indent=4)
@@ -194,7 +205,9 @@ def process_tokens(lTokens):
                     dMap['parser']['open_parenthesis'].append(iToken)
             continue
 
-    return New(dMap)
+    oNew = New(dMap)
+    oNew.iMaxToken = len(lTokens)
+    return oNew
 
 
 def build_default_map():

@@ -38,6 +38,19 @@ class test_concurrent_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
+    def test_rule_011_new_line_after_assign_true(self):
+        oRule = concurrent.rule_011()
+        oRule.new_line_after_assign = True
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'concurrent')
+        self.assertEqual(oRule.identifier, '011')
+        self.assertEqual(oRule.groups, ['structure'])
+
+        lExpected = [19, 22]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
     def test_fix_rule_011_new_line_after_assign_yes(self):
         oRule = concurrent.rule_011()
         oRule.new_line_after_assign = 'yes'
@@ -54,6 +67,15 @@ class test_concurrent_rule(unittest.TestCase):
     def test_rule_011_new_line_after_assign_no(self):
         oRule = concurrent.rule_011()
         oRule.new_line_after_assign = 'no'
+
+        lExpected = [8, 12]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_011_new_line_after_assign_false(self):
+        oRule = concurrent.rule_011()
+        oRule.new_line_after_assign = False
 
         lExpected = [8, 12]
 

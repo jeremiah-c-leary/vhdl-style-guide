@@ -312,7 +312,7 @@ This rule checks the **entity** keyword has proper case in the closing of the en
 entity_015
 ##########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the keyword **entity** in the **end entity** statement.
 
@@ -340,6 +340,8 @@ entity_016
 |phase_3| |error| |blank_line|
 
 This rule checks for blank lines above the **end entity** keywords.
+
+|configuring_blank_lines_link|
 
 **Violation**
 
@@ -723,6 +725,8 @@ entity_200
 
 This rule checks for blank lines above the **generic** keyword in entity specifications.
 
+|configuring_blank_lines_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -770,6 +774,8 @@ entity_202
 
 This rule checks for blank lines above the **port** keyword in entity specifications.
 
+|configuring_blank_lines_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -793,6 +799,8 @@ entity_203
 |phase_3| |error| |blank_line|
 
 This rule checks for blank lines below the semicolon in entity specifications.
+
+|configuring_blank_lines_link|
 
 **Violation**
 

@@ -91,6 +91,16 @@ class item():
     def get_filename(self):
         return self.filename
 
+    def convert_to(self, token):
+        oReturn = token(self.value)
+        oReturn.indent = self.indent
+        oReturn.hierarchy = self.hierarchy
+        oReturn.context = self.context
+        oReturn.code_tags = self.code_tags
+        oReturn.base_token, self.sub_token = self.update_token_types()
+        oReturn.filename = self.filename
+        return oReturn
+        
 
 class todo(item):
     '''
@@ -134,6 +144,15 @@ class function(item):
 class tic(item):
     '''
     unique_id = parser : tic
+    '''
+
+    def __init__(self, sString):
+        item.__init__(self, sString)
+
+
+class attribute(item):
+    '''
+    unique_id = parser : attribute
     '''
 
     def __init__(self, sString):

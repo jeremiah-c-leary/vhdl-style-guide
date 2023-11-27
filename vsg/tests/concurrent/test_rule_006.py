@@ -27,13 +27,14 @@ class test_concurrent_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '006')
 
-        lExpected = [18, 19, 23, 24]
+        lExpected = [18, 19, 23, 24, 33, 40, 42, 47, 49, 53]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_006(self):
         oRule = concurrent.rule_006()
+        oRule.generate_statement_ends_group = 'yes'
 
         oRule.fix(self.oFile)
 

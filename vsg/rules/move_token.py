@@ -34,6 +34,7 @@ class move_token(structure.Rule):
         self.configuration.append('action')
         self.preserve_comment = False
         self.insert_whitespace = False
+        self.configuration_documentation_link = 'configuring_move_token_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
         if self.action == 'new_line' and not self.preserve_comment:

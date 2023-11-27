@@ -5,6 +5,7 @@ from vsg import violation
 
 from vsg.vhdlFile import utils
 from vsg.rule_group import structure
+from vsg.rules import utils as rules_utils
 
 oInsertTokens = token.for_generate_statement.end_generate_label
 oAnchorTokens = token.for_generate_statement.semicolon
@@ -12,10 +13,17 @@ oLeftTokens = token.for_generate_statement.end_keyword
 oRightTokens = token.for_generate_statement.semicolon
 oValueTokens = token.for_generate_statement.generate_label
 
+lRemoveTokens = []
+lRemoveTokens.append(token.for_generate_statement.end_generate_label)
+lRemoveTokens.append(token.if_generate_statement.end_generate_label)
+lRemoveTokens.append(token.case_generate_statement.end_generate_label)
+
 
 class rule_011(structure.Rule):
     '''
-    This rule checks the **end generate** line has a label on for generate statements.
+    This rule checks the **end generate**  label on for, case and if generate statements.
+
+    |configuring_optional_items_link|
 
     **Violation**
 
@@ -36,18 +44,52 @@ class rule_011(structure.Rule):
 
     def __init__(self):
         structure.Rule.__init__(self, 'generate', '011')
-        self.solution = 'Add generate label'
+        self.solution = 'generate label'
         self.insert_token = oInsertTokens
         self.anchor_token = oAnchorTokens
         self.left_token = oLeftTokens
         self.right_token = oRightTokens
         self.value_token = oValueTokens
         self.groups.append('structure::optional')
+        self.configuration_documentation_link = None
+        self.action = 'add'
+        self.configuration.append('action')
+        self.configuration_documentation_link = 'configuring_optional_items_link'
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_bounded_by(token.architecture_body.begin_keyword, token.architecture_body.end_keyword)
+        if remove_keyword(self):
+            return oFile.get_token_and_n_tokens_before_it(lRemoveTokens, 1)
+        else:
+            return oFile.get_tokens_bounded_by(token.architecture_body.begin_keyword, token.architecture_body.end_keyword)
 
     def _analyze(self, lToi):
+        if remove_keyword(self):
+           analyze_for_existence_of_optional_keyword(lToi, self)
+        else:
+           analyze_for_missing_optional_keyword(lToi, self)
+
+    def _fix_violation(self, oViolation):
+        if remove_keyword(self):
+            rules_utils.remove_optional_item(oViolation)
+        else:
+            add_optional_item(oViolation)
+
+
+def add_optional_item(oViolation):
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lTokens.append(parser.whitespace(' '))
+        lTokens.append(dAction['label'])
+        oViolation.set_tokens(lTokens)
+
+
+def analyze_for_existence_of_optional_keyword(lToi, self):
+    for oToi in lToi:
+        oViolation = create_violation(oToi, oToi.get_line_number(), self)
+        self.add_violation(oViolation)
+
+
+def analyze_for_missing_optional_keyword(lToi, self):
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
             lLabels = []
@@ -90,13 +132,6 @@ class rule_011(structure.Rule):
                        self.add_violation(oViolation)
                    continue
 
-    def _fix_violation(self, oViolation):
-        lTokens = oViolation.get_tokens()
-        dAction = oViolation.get_action()
-        lTokens.append(parser.whitespace(' '))
-        lTokens.append(dAction['label'])
-        oViolation.set_tokens(lTokens)
-
 
 def manage_labels(oToken, lLabels):
 
@@ -125,3 +160,15 @@ def manage_labels(oToken, lLabels):
         return True
 
     return False
+
+
+def remove_keyword(self):
+    if self.action == 'remove':
+        return True
+    return False
+
+
+def create_violation(oToi, iLineNumber, self):
+    sSolution = self.action.capitalize() + ' ' + self.solution
+    oViolation = violation.New(iLineNumber, oToi, sSolution)
+    return oViolation

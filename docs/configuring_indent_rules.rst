@@ -8,7 +8,7 @@ There are rules which will check indent of lines.
 The method of indenting can be configured using one of the following options:
 
 .. |spaces_description| replace::
-   Indentation will be perfomed using spaces.
+   Indentation will be performed using spaces.
 
 .. |smart_tabs_description| replace::
    Indentation will be performed using tabs and spaces.
@@ -16,10 +16,22 @@ The method of indenting can be configured using one of the following options:
 .. |values| replace::
    :code:`spaces`, :code:`smart_tabs`
 
+.. |default_value| replace::
+   :code:`spaces`
+
+.. |spaces| replace::
+   :code:`spaces`
+
+.. |smart_tabs| replace::
+   :code:`smart_tabs`
+
+.. |option| replace::
+   :code:`indent_style`
+
 +----------------------+----------+-----------------+----------------------------+
 | Option               | Values   | Default Value   | Description                |
-+======================+==========+==============--=+============================+
-| :code:`indent_style` | |values| | |default_value| | * |spaces_description|     |
++======================+==========+=================+============================+
+| |option|             | |values| | |default_value| | * |spaces_description|     |
 |                      |          |                 | * |smart_tabs_description| |
 +----------------------+----------+-----------------+----------------------------+
 
@@ -29,23 +41,23 @@ The :code:`indent_style` option can be set globally for all rules and locally fo
 
    rules:
       global:
-         indent_style: `smart_tabs`
+         indent_style: 'smart_tabs'
          indent_size: 2
    file_list:
        - ram.vhd:
           rule:
             global:
-              indent_style: `spaces`
+              indent_style: 'spaces'
 
 
-:code:`spaces` Example
-#######################
+Example: |option| set to |spaces|
+#################################
 
-Setting the :code:`indent_style` option to :code:`spaces` will result in leading whitespace to be converted into spaces.
+Setting the |option| option to |spaces| will result in leading whitespace being converted into spaces.
 
 **Violation**
 
-.. code-block:: vhdl
+.. code-block:: text
 
    architecture rtl of fifo is
 
@@ -77,10 +89,11 @@ Setting the :code:`indent_style` option to :code:`spaces` will result in leading
 
    end architecture rtl;
 
-:code:`smart_tabs` Example
-##########################
+Example: |option| set to |smart_tabs|
+#####################################
 
-Setting the :code:`indent_style` option to :code:`smart_tabs` will result in leading whitespace to be converted into tabs and spaces.  Tabs set the indent and spaces are used for alignment.
+Setting the |option| option to |smart_tabs| will result in leading whitespace being converted into tabs and spaces.
+Tabs set the indent and spaces are used for alignment.
 
 **Violation**
 

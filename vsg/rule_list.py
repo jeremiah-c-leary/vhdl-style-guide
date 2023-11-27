@@ -153,7 +153,9 @@ class rule_list():
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
+                lRules = enforce_prerequisites(lRules)
                 for oRule in lRules:
+                    #print(oRule.unique_id)
                     if oRule.severity.type == severity.error_type:
                         oRule.fix(self.oVhdlFile, dFixOnly)
                     else:
@@ -436,4 +438,26 @@ def is_global_configuration(sName):
 def is_group_configuration(sName):
     if sName == 'group':
         return True
+    return False
+
+
+def enforce_prerequisites(lRules):
+    lReturn = []
+    lPrereqs = []
+    for oRule in lRules:
+        if oRule.prerequisites == []:
+            lReturn.append(oRule)
+        else:
+            lPrereqs.append(oRule)
+    lReturn.extend(lPrereqs)
+    return lReturn
+
+
+def rule_prerequisites_met(oRule, lTestsRan):
+    print(oRule.unique_id)
+    if len(oRule.prerequisites) == 0:
+        return True
+    for oPrerequisite in oRule.prerequisites:
+        if oPrerequisite.unique_id in lTestsRan:
+            return True
     return False

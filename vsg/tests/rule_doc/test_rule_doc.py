@@ -3,6 +3,8 @@ import os
 import unittest
 
 from vsg import __rule_doc_gen__
+from vsg import vhdlFile
+from vsg import rule_list
 
 from vsg.tests import utils
 
@@ -23,6 +25,114 @@ class testDocGen(unittest.TestCase):
                 os.remove(sFilename)
             except:
                 pass
+
+    def test_documentation_links_in_docstrings(self):
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+        lExpected = []
+        lActual = []
+
+        for oRule in oRuleList.rules:
+            if oRule.configuration_documentation_link is None:
+                continue
+            lExpected.append(oRule.unique_id)
+            if '|' + oRule.configuration_documentation_link + '|' in oRule.__doc__:
+               lActual.append(oRule.unique_id)
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_rule_link_in_configuration_documentation_exists(self):
+        self.maxDiff = None
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+        lExpected = []
+        lActual = []
+
+        dConfigurationFiles = {}
+        for oRule in oRuleList.rules:
+            if oRule.configuration_documentation_link is None:
+                continue
+            dConfigurationFiles[oRule.configuration_documentation_link] = []
+
+        for oRule in oRuleList.rules:
+            if oRule.configuration_documentation_link is None:
+                continue
+            dConfigurationFiles[oRule.configuration_documentation_link].append(oRule.unique_id)
+
+#        print(dConfigurationFiles)
+        for sKey in list(dConfigurationFiles.keys()):
+            if sKey == 'configuring_prefix_and_suffix_rules_link':
+                continue
+            if sKey.endswith('_link'):
+                 sFileName = sKey[:-len('_link')] + ".rst"
+                 sFullPathFileName = os.path.join(sResultsDir,'..','..','..','docs',sFileName)
+#            print(sFileName)
+#            print(sFullPathFileName)
+            lFile = []
+            utils.read_file(sFullPathFileName, lFile)
+            lActual = []
+            bStartProcessing = False
+            for sLine in lFile:
+                if bStartProcessing:
+                    if sLine.startswith('*'):
+                        lLine = sLine.split()
+                        lActual.append(lLine[1][1:])
+                if sLine.startswith('Rules Enforcing'):
+                    bStartProcessing = True
+#            print(lActual)
+            self.assertEqual(dConfigurationFiles[sKey], lActual)
+
+    def test_rule_link_in_configuration_documentation_for_underscores(self):
+        self.maxDiff = None
+        lExpected = []
+        lActual = []
+        for sFilename in glob.glob(os.path.join('docs', 'configuring_*.rst')):
+            lFile = []
+            utils.read_file(sFilename, lFile)
+            for sLine in lFile:
+                if 'html#' in sLine:
+                    iStartIndex = sLine.index('html#') + 5
+                    iEndIndex = sLine.index('>', iStartIndex)
+                    sLink = sLine[iStartIndex:iEndIndex]
+                    if '_' in sLink:
+                        lActual.append(f'{sFilename}::{sLink}')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_rule_group_links(self):
+        self.maxDiff = None
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+        lActual = []
+
+        dConfigurationFiles = {}
+        for oRule in oRuleList.rules:
+            for sGroup in oRule.groups:
+                dConfigurationFiles[sGroup] = []
+
+        for oRule in oRuleList.rules:
+            for sGroup in oRule.groups:
+                dConfigurationFiles[sGroup].append(oRule.unique_id)
+
+        for sKey in list(dConfigurationFiles.keys()):
+            sFileName = sKey.replace('::', '_') + '_rule_group.rst'
+            sFullPathFileName = os.path.join(sResultsDir,'..','..','..','docs','rule_groups',sFileName)
+#            print(sFullPathFileName)
+            lFile = []
+            utils.read_file(sFullPathFileName, lFile)
+            lActual = []
+            bStartProcessing = False
+            for sLine in lFile:
+                if bStartProcessing:
+                    if sLine.startswith('*'):
+                        lLine = sLine.split()
+                        lActual.append(lLine[1][1:])
+                if sLine.startswith('Rules Enforcing'):
+                    bStartProcessing = True
+#            print(dConfigurationFiles[sKey])
+            self.assertEqual(dConfigurationFiles[sKey], lActual)
+
+
 
     def test_alias_declaration_rules_doc(self):
 
@@ -309,6 +419,18 @@ class testDocGen(unittest.TestCase):
     def test_report_statement_rules_doc(self):
 
         lExpected, lActual = compare_files('report_statement')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_return_statement_rules_doc(self):
+
+        lExpected, lActual = compare_files('return_statement')
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_selected_assignment_rules_doc(self):
+
+        lExpected, lActual = compare_files('selected_assignment')
 
         self.assertEqual(lExpected, lActual)
 

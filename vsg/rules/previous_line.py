@@ -35,6 +35,7 @@ class previous_line(blank_line.Rule):
             self.lAllowTokens = []
         else:
             self.lAllowTokens = lAllowTokens
+        self.configuration_documentation_link = 'configuring_previous_line_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
         bIncludeComments = _include_comments(self.style)
@@ -51,6 +52,8 @@ class previous_line(blank_line.Rule):
 
         elif self.style == 'no_blank_line':
             return oFile.get_blank_lines_above_line_starting_with_token(self.lTokens)
+        elif self.style == 'no_blank_line_unless_different_library':
+            return oFile.get_blank_lines_above_line_starting_with_use_clause(self.lTokens)
         else:
 
             if self.lHierarchyLimits is None:
@@ -65,6 +68,8 @@ class previous_line(blank_line.Rule):
         self._set_allow_tokens()
         if self.style == 'no_blank_line':
             _analyze_no_blank_line(self, lToi, self.lAllowTokens)
+        elif self.style == 'no_blank_line_unless_different_library':
+            _analyze_no_blank_line_unless_different_library(self, lToi, self.lAllowTokens)
         elif self.style == 'require_blank_line':
             _analyze_require_blank_line(self, lToi, self.lAllowTokens)
         elif self.style == 'no_code':
@@ -105,6 +110,24 @@ def _analyze_no_blank_line(self, lToi, lAllowTokens):
             dAction['action'] = 'Remove'
             oViolation.set_action(dAction)
             self.add_violation(oViolation)
+
+
+def _analyze_no_blank_line_unless_different_library(self, lToi, lAllowTokens):
+        for oToi in lToi:
+            if oToi.get_meta_data('previous_library') == oToi.get_meta_data('current_library'):
+                sSolution = 'Remove blank lines'
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+                dAction = {}
+                dAction['action'] = 'Remove'
+                oViolation.set_action(dAction)
+                self.add_violation(oViolation)
+            elif oToi.get_meta_data('previous_library') is None:
+                sSolution = 'Remove blank lines'
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+                dAction = {}
+                dAction['action'] = 'Remove'
+                oViolation.set_action(dAction)
+                self.add_violation(oViolation)
 
 
 def _analyze_require_blank_line(self, lToi, lAllowTokens):

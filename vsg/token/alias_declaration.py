@@ -45,12 +45,3 @@ class semicolon(parser.semicolon):
 
     def __init__(self, sString=';'):
         parser.semicolon.__init__(self)
-
-
-class name(parser.name):
-    '''
-    unique_id = alias_declaration : name
-    '''
-
-    def __init__(self, sString):
-        parser.name.__init__(self, sString)

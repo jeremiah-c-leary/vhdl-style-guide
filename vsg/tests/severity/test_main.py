@@ -131,10 +131,6 @@ class test_severity_using_main(unittest.TestCase):
 
         self.assertEqual(utils.replace_total_count(lActual), lExpected1 + lExpected2)
 
-    def test_oc_option(self):
-        lActual = subprocess.check_output(['bin/vsg', '-oc', 'blah.json']).decode('utf-8').split('\n')
-        self.assertEqual(lActual, [''])
-
     def test_junit_output(self):
         try:
             subprocess.check_output(['bin/vsg', '-f', sEntityFileName, '-c', sConfigFile, '-j', sJUnitFileName])

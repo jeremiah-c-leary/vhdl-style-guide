@@ -34,3 +34,4 @@ class rule_010(remove_excessive_blank_lines_above_line_starting_with_token):
     def __init__(self):
         remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, 'if', '010', lTokens, iAllow=0, lOverrides=lOverrides)
         self.solution = 'Remove blank line(s) before the *else* keyword.'
+        self.configuration_documentation_link = None

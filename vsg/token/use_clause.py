@@ -11,15 +11,6 @@ class keyword(parser.keyword):
         parser.keyword.__init__(self, sString)
 
 
-class selected_name(parser.selected_name):
-    '''
-    unique_id = use_clause : selected_name
-    '''
-
-    def __init__(self, sString):
-        parser.selected_name.__init__(self, sString)
-
-
 class library_name(parser.name):
     '''
     unique_id = use_clause : library_name

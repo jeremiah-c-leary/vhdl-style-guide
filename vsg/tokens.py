@@ -1,7 +1,7 @@
 
 lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>', ';', '=', '[', ']', '?']
 lTwoCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?<', '?>', '<<', '>>', '--', '/*', '*/']
-lThreeCharacterSymbols = ['?/=', '?<', '?<=', '?>=']
+lThreeCharacterSymbols = ['?/=', '?<=', '?>=']
 lFourCharacterSymbols = ['\\?=\\']
 
 lStopChars = [' ', '(', ';']
@@ -16,6 +16,7 @@ def create(sString):
     oLine.combine_whitespace()
     oLine.combine_string_literals()
     oLine.combine_backslash_characters_into_symbols()
+    oLine.combine_three_character_symbols()
     oLine.combine_two_character_symbols()
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
@@ -59,23 +60,32 @@ class New():
         lReturn = add_trailing_string(lReturn, sSymbol)
         self.lChars = lReturn
 
+    def combine_three_character_symbols(self):
+        lReturn = []
+        i = 0
+        while i < len(self.lChars):
+            sChars = ''.join(self.lChars[i:i+3])
+            if sChars in lThreeCharacterSymbols:
+                lReturn.append(sChars)
+                i += 3
+            else:
+                lReturn.append(self.lChars[i])
+                i += 1
+
+        self.lChars = lReturn
+
     def combine_two_character_symbols(self):
         lReturn = []
-        sNextChar = ''
-        bSkip = False
-        for iChar, sChar in enumerate(self.lChars):
-            if bSkip:
-                bSkip = False
-                continue
-            try:
-                sNextChar = self.lChars[iChar + 1]
-            except IndexError:
-                sNextChar = ''
-            if sChar + sNextChar in lTwoCharacterSymbols:
-                bSkip = True
-                lReturn.append(sChar + sNextChar)
+        i = 0
+        while i < len(self.lChars):
+            sChars = ''.join(self.lChars[i:i+2])
+            if sChars in lTwoCharacterSymbols:
+                lReturn.append(sChars)
+                i += 2 
             else:
-                lReturn.append(sChar)
+                lReturn.append(self.lChars[i])
+                i += 1
+
         self.lChars = lReturn
 
     def combine_characters_into_words(self):
@@ -214,8 +224,38 @@ def combine_comment(self):
     if self.lChars.count('--') > 0:
         iIndex = self.lChars.index('--')
         lReturn = self.lChars[0:iIndex]
-        lReturn.append(''.join(self.lChars[iIndex::]))
+        if has_beginning_delimited_comment(self.lChars) and beginning_delimited_comment_after_comment(self.lChars):
+            lReturn.append(''.join(self.lChars[iIndex::]))
+        elif has_ending_delimited_comment(self.lChars):
+            iStopIndex = self.lChars.index('*/')
+            lReturn.append(''.join(self.lChars[iIndex:iStopIndex]))
+            lReturn.append(self.lChars[iStopIndex])
+        else:
+            lReturn.append(''.join(self.lChars[iIndex::]))
         self.lChars = lReturn
+
+
+def has_ending_delimited_comment(lTokens):
+    if lTokens.count('*/') > 0:
+        return True
+    return False
+
+
+def has_beginning_delimited_comment(lTokens):
+    if lTokens.count('*/') > 0:
+        return True
+    return False
+
+
+def beginning_delimited_comment_after_comment(lTokens):
+    iCommentIndex = lTokens.index('--')
+    try:
+        iBeginningDelimitedCommentIndex = lTokens.index('/*')
+    except ValueError:
+        iBeginningDelimitedCommentIndex = 0
+    if iCommentIndex < iBeginningDelimitedCommentIndex:
+        return True
+    return False
 
 
 def has_trailing_whitespace(lChars):

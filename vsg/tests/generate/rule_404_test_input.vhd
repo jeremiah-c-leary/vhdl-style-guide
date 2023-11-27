@@ -3,73 +3,83 @@ architecture RTL of FIFO is
 
 begin
 
-  CASE_LABEL : case data generate
+  FOR_LABEL : for i in 0 to 7 generate
 
-    when a = 1 =>
+    signal     sig1 : std_logic;
+    constant     con1 : std_logic;
+    -- Comment
+    shared variable       var1 : std_logic;
+    alias a    is name;
 
-        signal          signal1 : std_logic;
-        constant        con1    : std_logic;
-        shared variable var1    : std_logic;
-        alias           a       is name;
-        alias           a       : subtype_indication is name;
+    alias     a    : subtype_indication is name;
 
-      begin
-
-    when b = 2 =>
-
-        signal          sig1      : std_logic;
-        constant        constant1 : std_logic;
-        shared variable var1      : std_logic;
-        alias           a         is name;
-        alias           a         : subtype_indication is name;
-
-      begin
-
-    when c = 2 =>
-
-        signal          sig1  : std_logic;
-        constant        con1  : std_logic;
-        shared variable vars1 : std_logic;
-        alias           a     is name;
-        alias           a     : subtype_indication is name;
-
-      begin
+  begin
 
   end generate;
 
-  -- Violations below
+  IF_LABEL : if a = '1' generate
+
+    signal               sig1 : std_logic;
+    constant   con1 : std_logic;
+    -- Comment
+    shared variable                var1 : std_logic;
+    alias    a    is name;
+
+    alias     a    : subtype_indication is name;
+
+    begin
+
+  elsif a = '0' generate
+
+    signal  sig1 : std_logic;
+    constant        con1 : std_logic;
+    -- Comment
+    shared variable        var1 : std_logic;
+    alias             a    is name;
+
+    alias    a    : subtype_indication is name;
+
+    begin
+
+  else generate
+
+    signal       sig1 : std_logic;
+    constant con1 : std_logic;
+    -- Comment
+    shared variable var1 : std_logic;
+    alias    a    is name;
+
+    alias a    : subtype_indication is name;
+
+  begin
+
+  end generate;
 
   CASE_LABEL : case data generate
 
     when a = 1 =>
 
-        signal  signal1 : std_logic;
-        constant             con1    : std_logic;
-        shared variable   var1    : std_logic;
-        alias a       is name;
-        alias a       : subtype_indication is name;
+        signal       sig1 : std_logic;
+        constant   con1 : std_logic;
+        -- Comment
+        shared variable       var1 : std_logic;
+        alias    a    is name;
 
-      begin
+        alias      a    : subtype_indication is name;
 
-    when b = 2 =>
+    begin
 
-        signal                 sig1      : std_logic;
-        constant   constant1 : std_logic;
-        shared variable  var1      : std_logic;
-        alias a         is name;
-        alias a         : subtype_indication is name;
+    when a = 0 =>
 
-      begin
+        signal       sig1 : std_logic;
+        constant  con1 : std_logic;
+        -- Comment
+        shared variable var1 : std_logic;
+        alias        a    is name;
 
-    when c = 2 =>
+        alias a    : subtype_indication is name;
 
-        signal                     sig1  : std_logic;
-        constant con1  : std_logic;
-        shared variable               vars1 : std_logic;
-        alias a     is name;
-        alias a     : subtype_indication is name;
-
-      begin
+  begin
 
   end generate;
 

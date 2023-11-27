@@ -11,6 +11,8 @@ class rule_400(Rule):
     '''
     This rule checks the alignment of multiline procedure calls.
 
+    |configuring_multiline_indent_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

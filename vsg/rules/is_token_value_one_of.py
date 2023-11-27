@@ -17,11 +17,13 @@ class is_token_value_one_of(naming.Rule):
         self.disable = True
         self.configuration.append('names')
         self.token = token
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching([self.token])
 
     def _analyze(self, lToi):
+        self.solution = self._get_solution(None)
         lower_names = []
         for sName in self.names:
             lower_names.append(sName.lower())

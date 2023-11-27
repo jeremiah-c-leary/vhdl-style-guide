@@ -1,4 +1,5 @@
 
+import os
 import shutil
 
 from . import config
@@ -18,18 +19,37 @@ def create_backup_file(sFileName):
 
 def configure_rules(oConfig, oRules, configuration, iIndex, sFileName):
 
+    sFileName = sFileName.replace(os.sep, "/")
+
+    configure_rules_per_rule_option(oConfig, oRules)
+    configure_rules_per_file_list_option(oRules, configuration, iIndex, sFileName)
+    configure_rules_per_file_rules_option(oRules, configuration, iIndex, sFileName)
+
+
+def configure_rules_per_rule_option(oConfig, oRules):
     oRules.configure(oConfig)
-    if is_filename_in_file_list(configuration, sFileName):
-        iMyIndex = get_index_of_filename_in_file_list(configuration, sFileName)
-        oRuleConfig = config.config()
-        if does_file_have_rule_configuration(configuration, iMyIndex, sFileName):
-            oRuleConfig.dConfig = configuration["file_list"][iMyIndex][sFileName]
+
+
+def configure_rules_per_file_list_option(oRules, configuration, iIndex, sFileName):
+    configure_rules_per_option(oRules, configuration, iIndex, sFileName, 'file_list')
+
+
+def configure_rules_per_file_rules_option(oRules, configuration, iIndex, sFileName):
+    configure_rules_per_option(oRules, configuration, iIndex, sFileName, 'file_rules')
+
+
+def configure_rules_per_option(oRules, configuration, iIndex, sFileName, section):
+    if is_filename_in_option(configuration, section, sFileName):
+        iMyIndex = get_index_of_filename_in_file_list(configuration, section, sFileName)
+        if does_file_have_rule_configuration(configuration, section, iMyIndex, sFileName):
+            oRuleConfig = config.config()
+            oRuleConfig.dConfig = configuration[section][iMyIndex][sFileName]
             oRules.configure(oRuleConfig)
 
 
-def is_filename_in_file_list(configuration, sFileName):
+def is_filename_in_option(configuration, section, sFileName):
     try:
-        lFileNames = utils.extract_file_names_from_file_list(configuration["file_list"])
+        lFileNames = utils.extract_file_names_from_file_list(configuration[section])
         if sFileName in lFileNames:
             return True
         return False
@@ -37,18 +57,20 @@ def is_filename_in_file_list(configuration, sFileName):
         return False
 
 
-def get_index_of_filename_in_file_list(configuration, sFileName):
-    lFileNames = utils.extract_file_names_from_file_list(configuration["file_list"])
+def get_index_of_filename_in_file_list(configuration, section, sFileName):
+    lFileNames = utils.extract_file_names_from_file_list(configuration[section])
     return lFileNames.index(sFileName)
 
 
-def does_file_have_rule_configuration(configuration, iMyIndex, sFileName):
+def does_file_have_rule_configuration(configuration, section, iMyIndex, sFileName):
     try:
-        sTemp = configuration["file_list"][iMyIndex][sFileName]
+        sTemp = configuration[section][iMyIndex][sFileName]
         return True
     except:
         return False
 
+bStopProcessingFiles = True
+bKeepProcessingFiles = False
 
 # This function is in a separate module from __main__ as a workaround for https://bugs.python.org/issue25053
 # see also https://stackoverflow.com/questions/41385708/multiprocessing-example-giving-attributeerror/42383397#42383397
@@ -62,7 +84,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
     dJsonEntry = {}
     lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
     try:
-        oVhdlFile = vhdlFile.vhdlFile(lFileContent, sFileName, eError)
+        oVhdlFile = vhdlFile.vhdlFile(lFileContent, commandLineArguments, sFileName, eError)
     except ClassifyError as e:
         fExitStatus = True
         testCase = create_junit_testcase(sFileName, e)
@@ -70,7 +92,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["violations"] = []
         sOutputStd = ''
         sOutputErr = e.message
-        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles
 
     oVhdlFile.set_indent_map(dIndent)
     try:
@@ -84,7 +106,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
             + " when trying to open local rules file."
         )
         sOutputErr = None
-        return 1, None, dJsonEntry, sOutputStd, sOutputErr
+        return 1, None, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
 
     try:
         configure_rules(oConfig, oRules, configuration, iIndex, sFileName)
@@ -95,7 +117,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["violations"] = []
         sOutputStd = ''
         sOutputErr = e.message
-        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+        return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
 
     if commandLineArguments.fix:
         if commandLineArguments.backup:
@@ -103,7 +125,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         oRules.fix(
             commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only
         )
-        write_vhdl_file(oVhdlFile)
+        write_vhdl_file(oVhdlFile, oConfig.dConfig)
 
     oRules.clear_violations()
     oRules.check_rules(
@@ -124,16 +146,23 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = oRules.extract_violation_dictionary()["violations"]
 
-    return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr
+    return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles
 
 
-def write_vhdl_file(oVhdlFile):
+def write_vhdl_file(oVhdlFile, dConfig):
+    tmpfile = f"{oVhdlFile.filename}.tmp"
     try:
-        with open(oVhdlFile.filename, 'w', encoding='utf-8') as oFile:
+        with open(tmpfile, 'w', encoding='utf-8', newline=dConfig.get("linesep")) as oFile:
             for sLine in oVhdlFile.get_lines()[1:]:
                 oFile.write(sLine + '\n')
+        os.replace(tmpfile, oVhdlFile.filename)
     except PermissionError as err:
         print (err, "Could not write fixes back to file.")
+    finally:
+        try:
+            os.remove(tmpfile)
+        except FileNotFoundError:
+            pass
 
 
 def create_junit_testcase(sVhdlFileName, oException):

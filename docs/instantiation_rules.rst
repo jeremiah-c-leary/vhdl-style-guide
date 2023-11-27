@@ -324,26 +324,7 @@ This rule has been renamed to `port_map_007 <port_map_rules.html#port-map-007>`_
 instantiation_023
 #################
 
-|phase_1| |error| |structure|
-
-This rule checks for comments at the end of the port and generic assignments in instantiations.
-These comments represent additional maintainence.
-They will be out of sync with the entity at some point.
-Refer to the entity for port types, port directions and purpose.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   WR_EN => w_wr_en;   -- out : std_logic
-   RD_EN => w_rd_en;   -- Reads data when asserted
-
-**Fix**
-
-.. code-block:: vhdl
-
-   WR_EN => w_wr_en;
-   RD_EN => w_rd_en;
+This rule has been renamed to `port_map_010 <port_map_rules.html#port-map-010>`_.
 
 instantiation_024
 #################

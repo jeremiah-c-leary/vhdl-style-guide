@@ -28,6 +28,7 @@ class existence_of_tokens_which_should_not_occur(structure.Rule):
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.fixable = False
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching(self.lTokens)

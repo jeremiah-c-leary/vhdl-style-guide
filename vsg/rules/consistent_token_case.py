@@ -30,6 +30,7 @@ class consistent_token_case(case.Rule):
             self.lIgnoreTokens = []
         else:
             self.lIgnoreTokens = lIgnore
+        self.configuration_documentation_link = None
 
     def analyze(self, oFile):
         lTargetTypes = oFile.get_tokens_matching(self.lTokens)

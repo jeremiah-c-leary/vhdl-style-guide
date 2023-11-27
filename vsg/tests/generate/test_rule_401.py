@@ -21,8 +21,14 @@ class test_generate_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_401(self):
+    def test_rule_401_yes_yes_yes_no_no(self):
         oRule = generate.rule_401()
+        oRule.compact_alignment = True
+        oRule.blank_line_ends_group = True
+        oRule.comment_line_ends_group = True
+        oRule.if_control_statements_ends_group = False
+        oRule.case_control_statements_ends_group = False
+
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'generate')
         self.assertEqual(oRule.identifier, '401')

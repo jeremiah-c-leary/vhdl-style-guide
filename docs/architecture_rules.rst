@@ -194,7 +194,7 @@ This rule checks the **end** keyword has proper case.
 architecture_010
 ################
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the keyword **architecture** in the **end architecture** statement.
 It is clearer to the reader to state what is ending.

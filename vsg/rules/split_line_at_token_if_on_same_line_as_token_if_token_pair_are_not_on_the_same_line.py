@@ -39,6 +39,7 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
         self.oToken = oToken
         self.oSameLineToken = oSameLineToken
         self.lTokenPair = lTokenPair
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.lTokenPair[0], self.lTokenPair[1])

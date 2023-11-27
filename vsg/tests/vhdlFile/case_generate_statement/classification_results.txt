@@ -34,16 +34,20 @@
 7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-8 |     when "000" =>
+8 |     when LABEL0_A : "000" =>
 <class 'vsg.token.case_generate_alternative.when_keyword'>
+<class 'vsg.token.case_generate_alternative.alternative_label_name'>
+<class 'vsg.token.case_generate_alternative.alternative_label_colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------
 9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-10 |     when "001" =>
+10 |     when LABEL0_B : "001" =>
 <class 'vsg.token.case_generate_alternative.when_keyword'>
+<class 'vsg.token.case_generate_alternative.alternative_label_name'>
+<class 'vsg.token.case_generate_alternative.alternative_label_colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_generate_alternative.assignment'>
 --------------------------------------------------------------------------------

@@ -120,6 +120,81 @@ This rule checks for a single space before the identifier.
 
    subtype my_subtype is range 0 to 9;
 
+subtype_500
+###########
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **subtype** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   SUBTYPE interface is record
+   Subtype interface is record
+   subtype interface is record
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype interface is record
+   subtype interface is record
+   subtype interface is record
+
+subtype_501
+###########
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks the identifier has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype INTERFACE is record
+   subtype Interface is record
+   subtype interface is record
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype interface is record
+   subtype interface is record
+   subtype interface is record
+
+subtype_502
+###########
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **is** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype interface IS record
+   subtype interface Is record
+   subtype interface is record
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype interface is record
+   subtype interface is record
+   subtype interface is record
+
 subtype_600
 ###########
 

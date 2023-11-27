@@ -5,11 +5,11 @@
 .. |configuring_block_comments_link| replace::
    Refer to :ref:`configuring-block-comments` for more information.
 
-.. |configuring_concurrent_alignment_rules_link| replace::
-   Refer to :ref:`configuring-concurrent-alignment-rules` for more information.
+.. |configuring_conditional_multiline_indent_rules_link| replace::
+   Refer to :ref:`configuring-conditional-multiline-indent-rules` for more information.
 
-.. |configuring_conditional_expressions_structure_rules_link| replace::
-   Refer to :ref:`configuring-conditional-expressions-structure-rules` for more information.
+.. |configuring_consecutive_blank_line_rules| replace::
+   Refer to :ref:`configuring-consecutive-blank-line-rules` for more information.
 
 .. |configuring_disabled_rules_link| replace::
    Refer to :ref:`configuring-disabled-rules` for more information.
@@ -32,8 +32,14 @@
 .. |configuring_multiline_indent_rules_link| replace::
    Refer to :ref:`configuring-multiline-indent-rules` for more information.
 
-.. |configuring_multiline_structure_rules_link| replace::
-   Refer to :ref:`configuring-multiline-structure-rules` for more information.
+.. |configuring_selected_assignment_structure_rules_link| replace::
+   Refer to :ref:`configuring-selected-assignment-structure-rules` for more information.
+
+.. |configuring_simple_multiline_structure_rules_link| replace::
+   Refer to :ref:`configuring-simple-multiline-structure-rules` for more information.
+
+.. |configuring_array_multiline_structure_rules_link| replace::
+   Refer to :ref:`configuring-array-multiline-structure-rules` for more information.
 
 .. |configuring_multiline_constraint_rules_link| replace::
    Refer to :ref:`configuring-multiline-constraint-rules` for more information.
@@ -56,9 +62,6 @@
 .. |configuring_previous_line_rules_link| replace::
    Refer to :ref:`configuring-previous-line-rules` for more information.
 
-.. |configuring_tabs_vs_spaces_link| replace::
-   Refer to :ref:`configuring-tabs-vs-spaces` for more information.
-
 .. |configuring_type_of_instantiations_link| replace::
    Refer to :ref:`configuring-type-of-instantiations` for more information.
 
@@ -67,3 +70,13 @@
 
 .. |configuring_whitespace_rules_link| replace::
    Refer to :ref:`configuring-whitespace-rules` for options on changing the number of whitespaces..
+
+.. |configuring_whitespace_after_comment_rules_link| replace::
+   Refer to :ref:`configuring-whitespace-after-comment-rules` for information on creating exceptions to this rule.
+
+.. |configuring_comment_keywords_link| replace::
+   Refer to :ref:`configuring-comment-keywords` for information on how to change the search comment keywords.
+
+.. |configuring_use_clause_indenting_link| replace::
+   Refer to :ref:`configuring-use-clause-indenting` for information on how to change the indenting of use clauses.
+

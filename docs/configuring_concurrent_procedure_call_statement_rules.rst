@@ -1,5 +1,5 @@
 
-.. _configuring-multiline-constraint-rules:
+.. _configuring-concurrent-procedure-call-statement-rules:
 
 Configuring Concurrent Procedure Call Statement Rules
 -----------------------------------------------------
@@ -59,7 +59,7 @@ There are several options to the structure rules:
 +=======================================+====================+===========+========================+============================+============================+
 | :code:`first_open_paren`              | |green_diamond|    | |values|  | opening parenthesis    | |default_remove_new_line|  | * |add_new_line|           |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+ * |remove_new_line|        |
-| :code:`last_open_paren`               | |red_penta_star|   | |values|  | closing parenthesis    | |default_remove_new_line|  | * |ignore|                 |
+| :code:`last_close_paren`              | |red_penta_star|   | |values|  | closing parenthesis    | |default_remove_new_line|  | * |ignore|                 |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+                            |
 | :code:`association_element`           | |orange_triangle|  | |values|  | association element    | |default_remove_new_line|  |                            |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+                            |

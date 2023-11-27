@@ -54,3 +54,4 @@ class rule_400(Rule):
         self.lStartTokens = [report_statement.report_keyword]
         self.lEndTokens = [report_statement.severity_keyword, report_statement.semicolon]
         self.indentAdjust = 2
+        self.configuration_documentation_link = None

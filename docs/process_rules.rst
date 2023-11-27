@@ -368,7 +368,7 @@ process_015
 
 This rule checks for blank lines or comments above the **process** declaration.
 
-|configuring_blank_lines_link|
+|configuring_previous_line_rules_link|
 
 The default style is :code:`no_code`.
 
@@ -448,7 +448,7 @@ This rule checks the process label has proper case.
 process_018
 ###########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks the **end process** line has a label.
 The closing label will be added if the opening process label exists.
@@ -494,6 +494,8 @@ process_020
 |phase_4| |error| |alignment|
 
 This rule checks the indentation of multiline sensitivity lists.
+
+|configuring_multiline_indent_rules_link|
 
 **Violation**
 
@@ -868,6 +870,8 @@ process_031
 
 This rule checks for alignment of identifiers in the process declarative region.
 
+|configuring_keyword_alignment_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -899,23 +903,10 @@ This rule checks for alignment of identifiers in the process declarative region.
 process_032
 ###########
 
-|phase_1| |error| |structure|
+This rule has been replaced with the following rules:
 
-This rule checks the process label is on the same line as the process keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   proc_1 :
-
-   process(all) is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   proc_1 : process(all) is
+* `process_037 <process_rules.html#process-037>`_
+* `process_038 <process_rules.html#process-038>`_
 
 process_033
 ###########
@@ -1033,6 +1024,68 @@ The default prefix is *proc\_*.
 .. code-block:: vhdl
 
    proc_main: process () is
+
+process_037
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks a label and the colon are on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label
+   :
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label :
+
+process_038
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks a label colon is on the same line as the **process** or **postponed** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label :
+   process
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label
+   : process
+
+process_039
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks a **postponed** keyword is on the same line at the **process** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label : postponed
+   process
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label :
+   postponed process
 
 process_400
 ###########

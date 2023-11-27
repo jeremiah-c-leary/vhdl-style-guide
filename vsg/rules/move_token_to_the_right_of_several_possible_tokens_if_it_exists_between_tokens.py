@@ -35,6 +35,7 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
         self.oStartToken = oStartToken
         self.oEndToken = oEndToken
         self.bInsertWhitespace = bInsertWhitespace
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.oStartToken, self.oEndToken, bIncludeTillEndOfLine=True)

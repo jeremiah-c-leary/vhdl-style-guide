@@ -14,6 +14,8 @@ class rule_004(multiline_alignment_between_tokens):
     '''
     This rule checks the alignment of multiline sequential statements.
 
+    |configuring_multiline_indent_rules_link|
+
     **Violation**
 
     .. code-block:: vhdl

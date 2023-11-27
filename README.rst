@@ -25,45 +25,23 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
-Update 04/22/2022
+Update 11/05/2023
 
-The Release 3.11.0 will include a change to comment indenting.
-Prior to this release comments were indented at the current indent level.
-This would result in comment indents being enforced like this:
+Release 3.18.0
 
-.. code-block:: vhdl
+There were several alignment rules which were ignoring the `comment_line_ends_group` option.
+Please be aware that some alignment rules may trigger from the previous release.
+Refer to issue #988 for more details.
 
-    architecture rtl of fifo is
+There was also an issue with YAML configurations with options using `yes` and `no`.
+These options could be converted to booleans by PyYAML according to the YAML spec if they were not strings.
+Due to this an effort was made to change all the `True` and `False` options to `yes` and `no` strings.
+The original `True` and `False` are still supported, but going forward all options will be strings.
+Refer to issue #1009 for more details.
 
-      -- Define FIFO control signals
-      signal wr_en : std_logic;
-      signal rd_en : std_logic;
-
-      -- Comment
-
-    begin
-
-
-Release 3.11.0 will employ a forward looking comment indent.
-The rationale being that comments are describing what comes next and therefore should be indented to match the code that comes next.
-The code snippet above will now be formatted as:
-
-.. code-block:: vhdl
-
-    architecture rtl of fifo is
-
-      -- Define FIFO control signals
-      signal wr_en : std_logic;
-      signal rd_en : std_logic;
-
-    -- Comment
-
-    begin
-
-With the comment **-- Comment** matching the indent of the **begin** keyword.
-
-There are existing rules in 3.10.0 which enforce this behavior, for example **case_021**.
-These will eventually be deprecated in a future release as they are no longer required.
+Platform independent features were added in this release.
+This includes line separators and file path separators.
+The type of line separator can be based on the platform or hard coded.
 
 Regards,
 
@@ -152,7 +130,6 @@ Known Limitations
 VSG is a continual work in progress.
 As such, this version has the following known limitations:
 
-* Parser will not process configurations
 * Parser will not process embedded PSL
 * Parser will not process VHDL 2019
 
@@ -188,12 +165,16 @@ The command line tool can be invoked with:
    $ vsg
    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
                                  [-fp FIX_PHASE] [-j JUNIT] [-js JSON] [-of {vsg,syntastic,summary}] [-b] [-oc OUTPUT_CONFIGURATION]
-                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--fix_only FIX_ONLY] [-p JOBS]
-                                 [--debug]
-   
+                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--fix_only FIX_ONLY] [--stdin]
+                                 [--quality_report QUALITY_REPORT] [-p JOBS] [--debug]
+                                 [FILENAME ...]
+
    Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
-   
-   optional arguments:
+
+   positional arguments:
+     FILENAME              File to analyze
+
+   options:
      -h, --help            show this help message and exit
      -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
                            File to analyze
@@ -220,12 +201,28 @@ The command line tool can be invoked with:
      -v, --version         Displays version information
      -ap, --all_phases     Do not stop when a violation is detected.
      --fix_only FIX_ONLY   Restrict fixing via JSON file.
+     --stdin               Read VHDL input from stdin, disables all other file selections, disables multiprocessing
+     --quality_report QUALITY_REPORT
+                           Create code quality report for GitLab
      -p JOBS, --jobs JOBS  number of parallel jobs to use, default is the number of cpu cores
      --debug               Displays verbose debug information
 
 Here is an example output running against a test file:
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/fixing_single_file.gif
+
+pre-commit Integration
+----------------------
+
+Here is an example of ``.pre-commit-config.yaml`` file:
+
+.. code-block:: yaml
+
+  repos:
+    - repo: https://github.com/jeremiah-c-leary/vhdl-style-guide
+      rev: v3.18.0
+      hooks:
+        - id: vsg
 
 Documentation
 -------------

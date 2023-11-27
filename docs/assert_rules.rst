@@ -179,8 +179,6 @@ This rule checks the alignment of the report expressions.
 
 .. NOTE:: There is a configuration option **alignment** which changes the indent location of multiple lines.
 
-|configuring_multiline_report_rule_link|
-
 **Violation**
 
 .. code-block:: vhdl

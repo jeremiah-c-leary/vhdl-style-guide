@@ -34,6 +34,7 @@ class consistent_case_of_tokens_from_between_tokens_applied_to_region(case.Rule)
             self.lIgnoreTokens = []
         else:
             self.lIgnoreTokens = lIgnore
+        self.configuration_documentation_link = None
 
     def analyze(self, oFile):
         self._print_debug_message('Analyzing rule: ' + self.unique_id)

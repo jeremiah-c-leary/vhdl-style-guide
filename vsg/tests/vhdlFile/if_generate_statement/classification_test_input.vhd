@@ -8,13 +8,13 @@ begin
   end generate LABEL0;
 
   -- Simple test case
-  LABEL1 : if a = 1 generate
+  LABEL1 : if LABEL1A : a = 1 generate
 
-  elsif a = 0 generate
+  elsif LABEL1B : a = 0 generate
 
-  elsif a = 1 generate
+  elsif LABEL1C : a = 1 generate
 
-  else generate
+  else LABEL1D : generate
 
   end generate LABEL1;
 

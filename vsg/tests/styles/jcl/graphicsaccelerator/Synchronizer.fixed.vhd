@@ -22,12 +22,12 @@ architecture BEHAVIORAL of SYNCHRONIZER is
 
   signal   x,          nx          : std_logic_vector(10 downto 0) := (others => '0');
   signal   y,          ny          : std_logic_vector(20 downto 0) := (others => '0');
-  constant tpw                     : std_logic_vector(1 downto 0) := "00";
-  constant tbp                     : std_logic_vector(1 downto 0) := "01";
-  constant tdp                     : std_logic_vector(1 downto 0) := "10";
-  constant tfp                     : std_logic_vector(1 downto 0) := "11";
-  signal   xstate                  : std_logic_vector(1 downto 0) := tpw;
-  signal   ystate                  : std_logic_vector(1 downto 0) := tpw;
+  constant tpw                     : std_logic_vector(1 downto 0)  := "00";
+  constant tbp                     : std_logic_vector(1 downto 0)  := "01";
+  constant tdp                     : std_logic_vector(1 downto 0)  := "10";
+  constant tfp                     : std_logic_vector(1 downto 0)  := "11";
+  signal   xstate                  : std_logic_vector(1 downto 0)  := tpw;
+  signal   ystate                  : std_logic_vector(1 downto 0)  := tpw;
   signal   enabledisplay           : std_logic;
   signal   addressofy, naddressofy : std_logic_vector(8 downto 0);
 

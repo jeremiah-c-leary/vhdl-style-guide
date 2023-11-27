@@ -11,6 +11,8 @@ class rule_001(blank_line_above_line_starting_with_token):
     '''
     This rule checks for a blank line above the **port** keyword.
 
+    |configuring_blank_lines_link|
+
     **Violation**
 
     .. code-block:: vhdl

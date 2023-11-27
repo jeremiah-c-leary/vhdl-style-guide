@@ -11,8 +11,6 @@ class rule_002(ws_group.Rule):
     '''
     This rule will check for the existence of tabs in the middle of a line.
 
-    |configuring_tabs_vs_spaces_link|
-
     **Violation**
 
     .. code-block:: text
@@ -31,6 +29,7 @@ class rule_002(ws_group.Rule):
         ws_group.Rule.__init__(self, 'whitespace', '002')
         self.phase = 1
         self.solution = 'Remove tab'
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         lTemp = oFile.get_tokens_matching_not_at_beginning_or_ending_of_line([parser.whitespace])

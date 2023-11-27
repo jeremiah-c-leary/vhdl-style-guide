@@ -37,3 +37,4 @@ class rule_400(Rule):
         self.phase = 5
         self.subphase = 3
         self.bIgnoreStartParen = True
+        self.bConstraint = True

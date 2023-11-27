@@ -5,26 +5,192 @@ Configuring Uppercase and Lowercase Rules
 -----------------------------------------
 
 There are several rules that enforce either uppercase or lowercase.
-The default for all such rules is :code:`lowercase`.
-The decision was motivated by the fact, that the VHDL language is case insensitive.
-Having the same default for all case rules also results in less documentation and code to maintain.
-The default value for each of these case rules can be overridden using a configuration.
 
-Overriding Default Lowercase Enforcement
-########################################
+There are several options to these rules:
 
-The default lowercase setting can be changed using a configuration.
+.. |case_option| replace::
+   :code:`case`
 
-For example the rule constant_002 can be changed to enforce uppercase using the following configuration:
+.. |upper_value| replace::
+   :code:`upper`
+
+.. |lower_value| replace::
+   :code:`lower`
+
+.. |camelCase_value| replace::
+   :code:`camelCase`
+
+.. |PascalCase_value| replace::
+   :code:`PascalCase`
+
+.. |upper_snake_case_value| replace::
+   :code:`UPPER_SNAKE_CASE`
+
+.. |lower_snake_case_value| replace::
+   :code:`lower_snake_case`
+
+.. |case_option__upper| replace::
+   |upper_value| = Enforce upper case
+
+.. |case_option__lower| replace::
+   |lower_value| = Enforce lower case
+
+.. |case_option__camelCase| replace::
+   |camelCase_value| = Enforce camelCase
+
+.. |case_option__PascalCase| replace::
+   |PascalCase_value| = Enforce PascalCase
+
+.. |case_option__upper_snake_case| replace::
+   |upper_snake_case_value| = Enforce SNAKE_CASE
+
+.. |case_option__lower_snake_case| replace::
+   |lower_snake_case_value| = Enforce snake_case
+
+.. |case_values| replace::
+   |upper_value|, |lower_value|, |camelCase_value|, |PascalCase_value|
+
+.. |case_default_value| replace::
+   |lower_value|
+
+.. |prefix_exceptions_option| replace::
+   :code:`prefix_exceptions`
+
+.. |pe_values| replace::
+   List of strings
+
+.. |pe_default_value| replace::
+   Empty list
+
+.. |pe_description| replace::
+   Enforce exception case on prefix if encountered.
+
+.. |suffix_exceptions_option| replace::
+   :code:`suffix_exceptions`
+
+.. |se_values| replace::
+   List of strings
+
+.. |se_default_value| replace::
+   Empty list
+
+.. |se_description| replace::
+   Enforce exception case on suffix if encountered.
+
+.. |case_exceptions_option| replace::
+   :code:`case_exceptions`
+
+.. |ce_values| replace::
+   List of strings
+
+.. |ce_default_value| replace::
+   Empty list
+
+.. |ce_description| replace::
+   Enforce case for items in the list.
+
+.. |style_option| replace::
+   :code:`style`
+
+.. |ignore_value| replace::
+   :code:`ignore`
+
+.. |ignore_description| replace::
+   |ignore_value| = Do not enforce style
+
+.. |style_default| replace::
+   |ignore_value|
+
+.. |style_values| replace::
+   |ignore_value|, |camelCase_value|, |PascalCase_value|, |upper_snake_case_value|, |lower_snake_case_value|
+
++----------------------------+------------------------+----------------------+-----------------------------------+
+| Option                     | Values                 | Default Value        | Description                       |
++============================+========================+======================+===================================+
+| |case_option|              | |case_values|          | |case_default_value| | * |case_option__upper|            |
+|                            |                        |                      | * |case_option__lower|            |
+|                            |                        |                      | * |case_option__camelCase|        |
+|                            |                        |                      | * |case_option__PascalCase|       |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |prefix_exceptions_option| | |pe_values|            | |pe_default_value|   | |pe_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |suffix_exceptions_option| | |se_values|            | |se_default_value|   | |se_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |case_exceptions_option|   | |ce_values|            | |ce_default_value|   | |ce_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+.. | |style_option|             | |style_values|         | |style_default|      | * |ignore_description|            |
+.. |                            |                        |                      | * |case_option__camelCase|        |
+.. |                            |                        |                      | * |case_option__PascalCase|       |
+.. |                            |                        |                      | * |case_option__upper_snake_case| |
+.. |                            |                        |                      | * |case_option__lower_snake_case| |
+.. +----------------------------+------------------------+----------------------+-----------------------------------+
+
+
+This is an example of how to configure these options.
 
 .. code-block:: yaml
 
    rule :
-     constant_002 :
-        case : 'upper'
+     architecture_004:
+        case: 'lower'
+        prefix_exceptions:
+          - 'G_'
+        suffix_exceptions:
+          - '_G'
+        case_exceptions:
+          = 'IEEE'
 
-Changing Multiple Case Rules
-############################
+The following code snippet is used in the following examples:
+
+.. code-block:: vhdl
+
+   constant c_DATA_width : positive := 32;
+   constant addr_WIDTH_c : positive := 8;
+
+.. NOTE:: The following examples use rule `constant_004`.
+
+Example: |case_option| set to |lower_value|
+###########################################
+
+.. code-block:: vhdl
+
+   constant c_data_width : positive := 32;
+   constant addr_width_c : positive := 8;
+
+Example: |case_option| set to |upper_value|
+###########################################
+
+.. code-block:: vhdl
+
+   constant C_DATA_WIDTH : positive := 32;
+   constant ADDR_WIDTH_C : positive := 8;
+
+Example: |case_option| set to |upper_value| and |prefix_exceptions_option| set to :code:`c_`
+############################################################################################
+
+.. code-block:: vhdl
+
+   constant c_DATA_WIDTH : positive := 32;
+   constant ADDR_WIDTH_C : positive := 8;
+
+Example: |case_option| set to |upper_value| and |suffix_exceptions_option| set to :code:`_c`
+############################################################################################
+
+.. code-block:: vhdl
+
+   constant C_DATA_WIDTH : positive := 32;
+   constant ADDR_WIDTH_c : positive := 8;
+
+Example: |case_option| set to |upper_value| and |case_exceptions_option| set to :code:`addr_WIDTH_c`
+####################################################################################################
+
+.. code-block:: vhdl
+
+   constant C_DATA_WIDTH : positive := 32;
+   constant addr_WIDTH_c : positive := 8;
+
+Example: Changing Multiple Case Rules
+#####################################
 
 If there are a lot of case rules you want to change, you can use the global option to reduce the size of the configuration.
 For example, if you want to uppercase everything except the entity name, you could write the following configuration:
@@ -37,43 +203,12 @@ For example, if you want to uppercase everything except the entity name, you cou
      entity_008 :
        case : 'lower'
 
-Adding Prefix and Suffix Exceptions
-###################################
-
-Some rules allow for prefixes and suffixes to be cased differently than the rest of the identifier.
-This is performed by changing the `prefix_exceptions` and `suffix_exceptions` parameters.
-The default values for these are an empty list.
-
-If they are set and if the prefix and/or suffix are encountered, then the exact prefix/suffix will be validated along with the case of the rest of the string.
-
-.. code-block:: yaml
-
-   rule :
-     constant_007 :
-        case : 'lower'
-        prefix_exceptions :
-          - 'G_'
-
-.. code-block:: yaml
-
-   rule :
-     constant_007 :
-        case : 'lower'
-        suffix_exceptions :
-          - '_G'
-
-.. code-block:: yaml
-
-   rule :
-     constant_007 :
-        case : 'lower'
-        prefix_exceptions :
-          - 'G_'
-        suffix_exceptions :
-          - '_G'
-
 Rules Enforcing Case
 ####################
+
+* `alias_declaration_500 <alias_declaration_rules.html#alias-declaration-500>`_
+* `alias_declaration_501 <alias_declaration_rules.html#alias-declaration-501>`_
+* `alias_declaration_502 <alias_declaration_rules.html#alias-declaration-502>`_
 
 * `architecture_004 <architecture_rules.html#architecture-004>`_
 * `architecture_009 <architecture_rules.html#architecture-009>`_
@@ -84,6 +219,8 @@ Rules Enforcing Case
 * `architecture_020 <architecture_rules.html#architecture-020>`_
 * `architecture_021 <architecture_rules.html#architecture-021>`_
 * `architecture_028 <architecture_rules.html#architecture-028>`_
+
+* `attribute_500 <attribute_rules.html#attribute-500>`_
 
 * `attribute_declaration_500 <attribute_declaration_rules.html#attribute-declaration-500>`_
 * `attribute_declaration_501 <attribute_declaration_rules.html#attribute-declaration-501>`_
@@ -108,6 +245,12 @@ Rules Enforcing Case
 * `case_017 <case_rules.html#case-017>`_
 * `case_018 <case_rules.html#case-018>`_
 
+* `case_generate_alternative_500 <case_generate_alternative_rules.html#case-generate-alternative-500>`_
+* `case_generate_alternative_501 <case_generate_alternative_rules.html#case-generate-alternative-501>`_
+
+* `case_generate_statement_500 <case_generate_statement_rules.html#case-generate-statement-500>`_
+* `case_generate_statement_501 <case_generate_statement_rules.html#case-generate-statement-501>`_
+
 * `component_004 <component_rules.html#component-004>`_
 * `component_006 <component_rules.html#component-006>`_
 * `component_008 <component_rules.html#component-008>`_
@@ -115,9 +258,14 @@ Rules Enforcing Case
 * `component_012 <component_rules.html#component-012>`_
 * `component_014 <component_rules.html#component-014>`_
 
+* `conditional_expressions_500 <conditional_expressions_rules.html#conditional-expressions-500>`_
+* `conditional_expressions_501 <conditional_expressions_rules.html#conditional-expressions-501>`_
+
+* `conditional_waveforms_500 <conditional_waveforms_rules.html#conditional-waveforms-500>`_
+* `conditional_waveforms_501 <conditional_waveforms_rules.html#conditional-waveforms-501>`_
+
 * `constant_002 <constant_rules.html#constant-002>`_
 * `constant_004 <constant_rules.html#constant-004>`_
-* `constant_011 <constant_rules.html#constant-011>`_
 
 * `context_004 <context_rules.html#context-004>`_
 * `context_012 <context_rules.html#context-012>`_
@@ -127,7 +275,8 @@ Rules Enforcing Case
 * `context_016 <context_rules.html#context-016>`_
 
 * `context_ref_003 <context_ref_rules.html#context-ref-003>`_
-* `context_ref_004 <context_ref_rules.html#context-ref-004>`_
+* `context_ref_500 <context_ref_rules.html#context-ref-500>`_
+* `context_ref_501 <context_ref_rules.html#context-ref-501>`_
 
 * `entity_004 <entity_rules.html#entity-004>`_
 * `entity_006 <entity_rules.html#entity-006>`_
@@ -135,21 +284,25 @@ Rules Enforcing Case
 * `entity_010 <entity_rules.html#entity-010>`_
 * `entity_012 <entity_rules.html#entity-012>`_
 * `entity_014 <entity_rules.html#entity-014>`_
+* `entity_500 <entity_rules.html#entity-500>`_
 
 * `entity_specification_500 <entity_specification_rules.html#entity-specification-500>`_
 * `entity_specification_501 <entity_specification_rules.html#entity-specification-501>`_
-* `entity_specification_502 <entity_specification_rules.html#entity-specification-502>`_
 * `entity_specification_503 <entity_specification_rules.html#entity-specification-503>`_
 
-* `file_statement_002 <file_statement_rules.html#file-statement-002>`_
+* `exponent_500 <exponent_rules.html#exponent-500>`_
 
-* `for_loop_003 <for_loop_rules.html#for-loop-003>`_
+* `file_002 <file_rules.html#file-002>`_
+
+* `for_generate_statement_500 <for_generate_statement_rules.html#for-generate-statement-500>`_
+* `for_generate_statement_501 <for_generate_statement_rules.html#for-generate-statement-501>`_
 
 * `function_004 <function_rules.html#function-004>`_
 * `function_005 <function_rules.html#function-005>`_
 * `function_013 <function_rules.html#function-013>`_
 * `function_014 <function_rules.html#function-014>`_
 * `function_017 <function_rules.html#function-017>`_
+* `function_501 <function_rules.html#function-501>`_
 * `function_502 <function_rules.html#function-502>`_
 * `function_506 <function_rules.html#function-506>`_
 
@@ -157,6 +310,8 @@ Rules Enforcing Case
 * `generate_009 <generate_rules.html#generate-009>`_
 * `generate_010 <generate_rules.html#generate-010>`_
 * `generate_012 <generate_rules.html#generate-012>`_
+* `generate_500 <generate_rules.html#generate-500>`_
+* `generate_501 <generate_rules.html#generate-501>`_
 
 * `generic_007 <generic_rules.html#generic-007>`_
 * `generic_009 <generic_rules.html#generic-009>`_
@@ -165,20 +320,40 @@ Rules Enforcing Case
 * `generic_map_001 <generic_map_rules.html#generic-map-001>`_
 * `generic_map_002 <generic_map_rules.html#generic-map-002>`_
 
-* `if_statement_025 <if_rules.html#if-statement-025>`_
-* `if_statement_026 <if_rules.html#if-statement-026>`_
-* `if_statement_027 <if_rules.html#if-statement-027>`_
-* `if_statement_028 <if_rules.html#if-statement-028>`_
-* `if_statement_029 <if_rules.html#if-statement-029>`_
-* `if_statement_034 <if_rules.html#if-statement-034>`_
+* `ieee_500 <ieee_rules.html#ieee-500>`_
+
+* `if_generate_statement_500 <if_generate_statement_rules.html#if-generate-statement-500>`_
+* `if_generate_statement_501 <if_generate_statement_rules.html#if-generate-statement-501>`_
+* `if_generate_statement_502 <if_generate_statement_rules.html#if-generate-statement-502>`_
+* `if_generate_statement_503 <if_generate_statement_rules.html#if-generate-statement-503>`_
+
+* `if_025 <if_rules.html#if-025>`_
+* `if_026 <if_rules.html#if-026>`_
+* `if_027 <if_rules.html#if-027>`_
+* `if_028 <if_rules.html#if-028>`_
+* `if_029 <if_rules.html#if-029>`_
+* `if_034 <if_rules.html#if-034>`_
 
 * `instantiation_008 <instantiation_rules.html#instantiation-008>`_
 * `instantiation_009 <instantiation_rules.html#instantiation-009>`_
 * `instantiation_027 <instantiation_rules.html#instantiation-027>`_
+* `instantiation_028 <instantiation_rules.html#instantiation-028>`_
 * `instantiation_031 <instantiation_rules.html#instantiation-031>`_
+
+* `iteration_scheme_500 <iteration_scheme_rules.html#iteration-scheme-500>`_
+* `iteration_scheme_501 <iteration_scheme_rules.html#iteration-scheme-501>`_
 
 * `library_004 <library_rules.html#library-004>`_
 * `library_005 <library_rules.html#library-005>`_
+* `library_500 <library_rules.html#library-500>`_
+
+* `logical_operator_500 <logical_operator_rules.html#logical-operator-500>`_
+
+* `loop_statement_500 <loop_statement_rules.html#loop-statement-500>`_
+* `loop_statement_501 <loop_statement_rules.html#loop-statement-501>`_
+* `loop_statement_502 <loop_statement_rules.html#loop-statement-502>`_
+* `loop_statement_503 <loop_statement_rules.html#loop-statement-503>`_
+* `loop_statement_504 <loop_statement_rules.html#loop-statement-504>`_
 
 * `package_004 <package_rules.html#package-004>`_
 * `package_006 <package_rules.html#package-006>`_
@@ -214,6 +389,9 @@ Rules Enforcing Case
 * `procedure_505 <procedure_rules.html#procedure-505>`_
 * `procedure_506 <procedure_rules.html#procedure-506>`_
 
+* `procedure_call_500 <procedure_call_rules.html#procedure-call-500>`_
+* `procedure_call_501 <procedure_call_rules.html#procedure-call-501>`_
+
 * `process_004 <process_rules.html#process-004>`_
 * `process_005 <process_rules.html#process-005>`_
 * `process_008 <process_rules.html#process-008>`_
@@ -225,15 +403,36 @@ Rules Enforcing Case
 * `range_001 <range_rules.html#range-001>`_
 * `range_002 <range_rules.html#range-002>`_
 
+* `record_type_definition_500 <record_type_definition_rules.html#record-type-definition-500>`_
+* `record_type_definition_501 <record_type_definition_rules.html#record-type-definition-501>`_
+* `record_type_definition_502 <record_type_definition_rules.html#record-type-definition-502>`_
+
+* `report_statement_500 <report_statement_rules.html#report-statement-500>`_
+* `report_statement_501 <report_statement_rules.html#report-statement-501>`_
+
+* `return_statement_500 <return_statement_rules.html#return-statement-500>`_
+
+* `selected_assignment_500 <selected_assignment_rules.html#selected-assignment-500>`_
+* `selected_assignment_501 <selected_assignment_rules.html#selected-assignment-501>`_
+* `selected_assignment_502 <selected_assignment_rules.html#selected-assignment-502>`_
+* `selected_assignment_503 <selected_assignment_rules.html#selected-assignment-503>`_
+
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_
-* `signal_010 <signal_rules.html#signal-010>`_
-* `signal_011 <signal_rules.html#signal-011>`_
 
-* `type_definition_002 <type_rules.html#type-definition-002>`_
-* `type_definition_004 <type_rules.html#type-definition-004>`_
-* `type_definition_013 <type_rules.html#type-definition-013>`_
+* `subtype_500 <../subtype_rules.html#subtype-500>`_
+* `subtype_501 <../subtype_rules.html#subtype-501>`_
+* `subtype_502 <../subtype_rules.html#subtype-502>`_
+
+* `type_002 <type_rules.html#type-002>`_
+* `type_004 <type_rules.html#type-004>`_
+* `type_013 <type_rules.html#type-013>`_
+* `type_500 <type_rules.html#type-500>`_
+
+* `use_clause_500 <use_clause_rules.html#use-clause-500>`_
+* `use_clause_501 <use_clause_rules.html#use-clause-501>`_
+* `use_clause_502 <use_clause_rules.html#use-clause-502>`_
+* `use_clause_503 <use_clause_rules.html#use-clause-503>`_
 
 * `variable_002 <variable_rules.html#variable-002>`_
 * `variable_004 <variable_rules.html#variable-004>`_
-* `variable_010 <variable_rules.html#variable-010>`_

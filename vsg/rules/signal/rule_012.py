@@ -41,13 +41,16 @@ class rule_012(alignment.Rule):
         self.lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
         ## attributes below are configurable by the user
 
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
+        self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.left_token, self.right_token)
 
     def _analyze(self, lToi):
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
             iColumn = 0
@@ -142,7 +145,7 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
             dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['identifier_column'] + 1
     else:
         for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['identifier_column'] + 1
+            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['identifier_column']
 
 
 def check_for_exclusions(bSkip, oToken, lUnless):

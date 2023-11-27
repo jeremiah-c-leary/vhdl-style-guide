@@ -64,6 +64,8 @@ However, there is a special case if there are parenthesis in the assignment.
 If the parenthesis are not closed on the same line, then the next line will be aligned to the parenthesis.
 Aligning to the parenthesis improves readability.
 
+|configuring_multiline_indent_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -158,10 +160,10 @@ concurrent_007
 
 This rule checks for code after the **else** keyword.
 
-.. NOTE:: There is a configuration option **allow_single_line** which allows single line concurrent statements.
+.. NOTE:: There is a configuration option :code:`allow_single_line` which allows single line concurrent statements.
 
-allow_single_line set to False (Default)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:code:`allow_single_line` set to :code:`no` (Default)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Violation**
 
@@ -180,8 +182,8 @@ allow_single_line set to False (Default)
             '1' when underflow = '1' else
             sig_a;
 
-allow_single_line set to True
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:code:`allow_single_line` set to :code:`yes`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Violation**
 
@@ -230,7 +232,7 @@ concurrent_009
 
 This rule checks alignment of multiline concurrent conditional signal statements.
 
-|configuring_concurrent_alignment_rules_link|
+|configuring_conditional_multiline_indent_rules_link|
 
 **Violation**
 
@@ -293,7 +295,7 @@ concurrent_011
 
 This rule checks the structure of simple and conditional concurrent statements.
 
-|configuring_multiline_structure_rules_link|
+|configuring_simple_multiline_structure_rules_link|
 
 **Violation**
 
@@ -318,6 +320,32 @@ This rule checks the structure of simple and conditional concurrent statements.
    w_foo <= I_FOO when ((I_BAR = '1') and
                         (I_CRUFT = '1')) else
             '0';
+
+concurrent_012
+##############
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of multiline concurrent simple signal assignments that contain arrays.
+
+|configuring_array_multiline_structure_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data <= (0, 65535, 32768);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data <=
+   (
+     0,
+     65535,
+     32768
+   );
 
 concurrent_400
 ##############
@@ -347,4 +375,35 @@ This rule checks the alignment the => operator in record aggregates.
                  read_words  => 32
                  address     => 57
                 );
+
+concurrent_401
+##############
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of multiline concurrent simple signal assignments that contain arrays.
+
+|configuring_multiline_indent_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_data <=
+   (
+            0,
+        65535,
+        32768
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_data <=
+   (
+     0,
+     65535,
+     32768
+   );
 

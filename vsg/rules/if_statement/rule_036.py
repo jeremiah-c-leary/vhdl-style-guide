@@ -1,12 +1,13 @@
 
 from vsg import token
 
-from vsg.rules import move_token_left_to_next_non_whitespace_token
+from vsg.rules import move_token_left_to_next_non_whitespace_token as Rule
 
-oToken = token.if_statement.then_keyword
+lTokens = []
+lTokens.append(token.if_statement.then_keyword)
 
 
-class rule_036(move_token_left_to_next_non_whitespace_token):
+class rule_036(Rule):
     '''
     This rule checks the **then** keyword is not on a line by itself.
 
@@ -25,4 +26,4 @@ class rule_036(move_token_left_to_next_non_whitespace_token):
     '''
 
     def __init__(self):
-        move_token_left_to_next_non_whitespace_token.__init__(self, 'if', '036', oToken)
+        Rule.__init__(self, 'if', '036', lTokens)

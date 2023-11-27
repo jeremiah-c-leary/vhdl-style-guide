@@ -5,6 +5,8 @@ from vsg import block_rule
 from vsg import parser
 from vsg import violation
 
+from vsg.vhdlFile import utils
+
 
 class rule_001(block_rule.Rule):
     '''
@@ -42,6 +44,8 @@ class rule_001(block_rule.Rule):
         self.configuration.extend(['header_left', 'header_left_repeat', 'header_string', 'header_right_repeat', 'header_alignment', 'max_header_column'])
 
     def analyze(self, oFile):
+
+        self.allow_indenting = utils.convert_yes_no_option_to_boolean(self.allow_indenting)
 
         self._print_debug_message('Analyzing rule: ' + self.unique_id)
         lToi = self._get_tokens_of_interest(oFile)
