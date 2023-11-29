@@ -26,6 +26,15 @@ architecture RTL of FIFO is
     )
   );
 
+  subtype t_data_axi_stream_m2s is t_axi_stream_m2s(
+      st_keep(T_AXI_RANGE)
+  );
+
+  subtype t_data_axi_stream_m2s is t_axi_stream_m2s(
+      st_strb2(0 downto 0),
+      st_keep(T_AXI_RANGE)
+  );
+
 begin
 
 end architecture RTL;
