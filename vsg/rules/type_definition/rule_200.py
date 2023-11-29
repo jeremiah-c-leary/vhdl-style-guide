@@ -16,6 +16,8 @@ class rule_200(Rule):
     '''
     This rule checks for a blank line below a type declaration unless there is another type declaration.
 
+    |configuring_blank_lines_link|
+
     **Violation**
 
     .. code-block:: vhdl

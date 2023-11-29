@@ -14,6 +14,8 @@ class rule_200(Rule):
     '''
     This rule checks for a blank line below a constant declaration unless there is another constant definition.
 
+    |configuring_blank_lines_link|
+
     **Violation**
 
     .. code-block:: vhdl

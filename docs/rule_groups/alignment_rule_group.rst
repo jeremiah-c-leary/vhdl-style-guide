@@ -10,7 +10,6 @@ Rules Enforcing Alignment Rule Group
 * `architecture_027 <../architecture_rules.html#architecture-027>`_
 * `architecture_029 <../architecture_rules.html#architecture-029>`_
 * `architecture_400 <../architecture_rules.html#architecture-400>`_
-* `architecture_401 <../architecture_rules.html#architecture-401>`_
 * `assert_400 <../assert_rules.html#assert-400>`_
 * `block_400 <../block_rules.html#block-400>`_
 * `block_401 <../block_rules.html#block-401>`_

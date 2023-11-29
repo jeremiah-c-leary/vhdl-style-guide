@@ -77,7 +77,7 @@ Rules Enforcing Blank Line Rule Group
 * `process_027 <../process_rules.html#process-027>`_
 * `record_type_definition_200 <../record_type_definition_rules.html#record-type-definition-200>`_
 * `record_type_definition_201 <../record_type_definition_rules.html#record-type-definition-201>`_
-* `signal_200<../signal_rules.html#signal-200>`_
+* `signal_200 <../signal_rules.html#signal-200>`_
 * `subprogram_body_201 <../subprogram_body_rules.html#subprogram-body-201>`_
 * `subprogram_body_202 <../subprogram_body_rules.html#subprogram-body-202>`_
 * `subprogram_body_203 <../subprogram_body_rules.html#subprogram-body-203>`_

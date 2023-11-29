@@ -117,6 +117,7 @@ Rules Enforcing Blank Lines
 * `case_200 <case_rules.html#case-200>`_
 * `component_016 <component_rules.html#component-016>`_
 * `component_018 <component_rules.html#component-018>`_
+* `constant_200 <constant_rules.html#constant-200>`_
 * `context_023 <context_rules.html#context-023>`_
 * `context_024 <context_rules.html#context-024>`_
 * `context_025 <context_rules.html#context-025>`_
@@ -143,9 +144,11 @@ Rules Enforcing Blank Lines
 * `process_026 <process_rules.html#process-026>`_
 * `process_027 <process_rules.html#process-027>`_
 * `record_type_definition_200 <record_type_definition_rules.html#record-type-definition-200>`_
+* `signal_200 <signal_rules.html#signal-200>`_
 * `subprogram_body_201 <subprogram_body_rules.html#subprogram-body-201>`_
 * `subprogram_body_202 <subprogram_body_rules.html#subprogram-body-202>`_
 * `subprogram_body_203 <subprogram_body_rules.html#subprogram-body-203>`_
 * `subprogram_body_204 <subprogram_body_rules.html#subprogram-body-204>`_
 * `subprogram_body_205 <subprogram_body_rules.html#subprogram-body-205>`_
 * `type_011 <type_rules.html#type-011>`_
+* `type_200 <type_rules.html#type-200>`_

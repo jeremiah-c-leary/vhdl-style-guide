@@ -1,5 +1,5 @@
 
-from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
+from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens as Rule
 
 from vsg import token
 
@@ -10,13 +10,12 @@ lAlign.append(token.constant_declaration.colon)
 lAlign.append(token.variable_declaration.colon)
 lAlign.append(token.alias_declaration.colon)
 lAlign.append(token.alias_declaration.is_keyword)
-lAlign.append(token.full_type_declaration.is_keyword)
 
 lUnless = []
 lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
 
 
-class rule_026(align_tokens_in_region_between_tokens_unless_between_tokens):
+class rule_026(Rule):
     '''
     This rule checks the colons are in the same column for all declarations in the architecture declarative part.
 
@@ -48,6 +47,8 @@ class rule_026(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'architecture', '026', lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
+        Rule.__init__(self, 'architecture', '026', lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
         self.solution = 'Align identifer.'
         self.subphase = 3
+        self.configuration.append('include_type_is_keyword')
+        self.is_keyword = token.full_type_declaration.is_keyword
