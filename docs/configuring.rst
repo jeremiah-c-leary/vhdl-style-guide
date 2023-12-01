@@ -26,6 +26,7 @@ Configuring
    configuring_number_of_signals_in_signal_declaration.rst
    configuring_optional_items.rst
    configuring_port_mode_alignment.rst
+   configuring_pragmas.rst
    configuring_prefix_and_suffix_rules.rst
    configuring_previous_line_rules.rst
    configuring_rule_groups.rst

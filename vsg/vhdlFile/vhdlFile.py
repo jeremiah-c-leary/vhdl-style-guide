@@ -1,4 +1,5 @@
 
+from vsg import config
 from vsg import exceptions
 from vsg import parser
 from vsg import token
@@ -53,6 +54,8 @@ class command_line_args():
 
 default_cla = command_line_args()
 
+default_conf = config.New(default_cla)
+
 
 class vhdlFile():
     '''
@@ -69,7 +72,7 @@ class vhdlFile():
 
        fileobject
     '''
-    def __init__(self, filecontent, commandLineArguments=default_cla, sFilename=None, eError=None):
+    def __init__(self, filecontent, commandLineArguments=default_cla, sFilename=None, eError=None, configuration=default_conf):
         self.filecontent = filecontent
         self.hasArchitecture = False
         self.hasEntity = False
@@ -82,6 +85,7 @@ class vhdlFile():
         self.dVars['pragma'] = False
         self.eError = eError
         self.stdin = commandLineArguments.stdin
+        self.configuration = configuration
         self.commandLineArguments = commandLineArguments
         self._processFile()
 
@@ -99,7 +103,7 @@ class vhdlFile():
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects, oOptions)
             preprocessor.classify(lTokens, lObjects)
-            pragma.classify(lTokens, lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars)
+            pragma.classify(lTokens, lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars, self.configuration)
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())

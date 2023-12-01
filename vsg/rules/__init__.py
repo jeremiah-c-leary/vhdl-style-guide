@@ -126,6 +126,7 @@ from vsg.rules import package
 from vsg.rules import package_body
 from vsg.rules import port
 from vsg.rules import port_map
+from vsg.rules import pragma
 from vsg.rules import procedure
 from vsg.rules import procedure_call
 from vsg.rules import process

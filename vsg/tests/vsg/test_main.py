@@ -23,6 +23,13 @@ class command_line_args():
     ''' This is used as an input into the version command.'''
     def __init__(self, version=False):
         self.version = version
+        self.style = 'indent_only'
+        self.configuration = []
+        self.debug = False
+        self.fix_only = False
+        self.stdin = False
+        self.force_fix = False
+        self.fix = False
 
 
 class testMain(unittest.TestCase):

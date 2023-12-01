@@ -80,3 +80,6 @@
 .. |configuring_use_clause_indenting_link| replace::
    Refer to :ref:`configuring-use-clause-indenting` for information on how to change the indenting of use clauses.
 
+.. |configuring_pragmas_link| replace::
+   Refer to :ref:`configuring-pragmas` for information on how to configure detecting of pragmas.
+
