@@ -13,6 +13,7 @@ def uniquify_standards(dMap):
                 lReturn.append(sWord)
     return lReturn
 
+
 dMap = {}
 # https://redirect.cs.umbc.edu/portal/help/VHDL/VHDL-Handbook.pdf
 dMap['1987'] = ['abs', 'access', 'after', 'alias', 'all', 'and', 'architecture', 'array', 'assert', 'attribute', 'begin', 'block', 'body', 'buffer', 'bus', 'case', 'component', 'configuration', 'constant', 'disconnect', 'downto', 'else', 'elsif', 'end', 'entity', 'exit', 'file', 'for', 'function', 'generate', 'generic', 'group', 'guarded', 'if', 'impure', 'in', 'inertial', 'inout', 'is', 'label', 'library', 'linkage', 'literal', 'loop', 'map', 'mod', 'nand', 'new', 'next', 'nor', 'not', 'null', 'of', 'on', 'open', 'or', 'others', 'out', 'package', 'port', 'postponed', 'procedure', 'process', 'pure', 'range', 'record', 'register', 'reject', 'rem', 'report', 'return', 'rol', 'ror', 'select', 'severity', 'signal', 'shared', 'sla', 'sll', 'sra', 'srl', 'subtype', 'then', 'to', 'transport', 'type', 'unaffected', 'units', 'until', 'use', 'variable', 'wait', 'when', 'while', 'with', 'xnor', 'xor']
@@ -23,7 +24,7 @@ dMap['2000'] = ['abs', 'access', 'after', 'alias', 'all', 'and', 'architecture',
 # https://vhdl-manual.narod.ru/books/ieee_manual.pdf
 dMap['2002'] = ['abs', 'access', 'after', 'alias', 'all', 'and', 'architecture', 'array', 'assert', 'attribute', 'begin', 'block', 'body', 'buffer', 'bus', 'case', 'component', 'configuration', 'constant', 'disconnect', 'downto', 'else', 'elsif', 'end', 'entity', 'exit', 'file', 'for', 'function', 'generate', 'generic', 'group', 'guarded', 'if', 'impure', 'in', 'inertial', 'inout', 'is', 'label', 'library', 'linkage', 'literal', 'loop', 'map', 'mod', 'nand', 'new', 'next', 'nor', 'not', 'null', 'of', 'on', 'open', 'or', 'others', 'out', 'package', 'port', 'postponed', 'procedural', 'procedure', 'process', 'protected', 'pure', 'range', 'record', 'reference', 'register', 'reject', 'rem', 'report', 'return', 'rol', 'ror', 'select', 'severity', 'signal', 'shared', 'sla', 'sll', 'sra', 'srl', 'subtype', 'then', 'to', 'transport', 'type', 'unaffected', 'units', 'until', 'use', 'variable', 'wait', 'when', 'while', 'with', 'xnor', 'xor']
 # Unknown
-dMap['2008'] = ['abs', 'access', 'after', 'alias', 'all', 'and', 'architecture', 'array', 'assert', 'assume', 'assume_guarantee', 'attribute', 'begin', 'block', 'body', 'buffer', 'bus', 'case', 'component', 'configuration', 'constant', 'context', 'cover', 'default', 'disconnect', 'downto', 'else', 'elsif', 'end', 'entity', 'exit', 'fairness', 'file', 'for', 'force', 'function', 'generate', 'generic', 'group', 'guarded', 'if', 'impure', 'in', 'inertial', 'inout', 'is', 'label', 'library', 'linkage', 'literal', 'loop', 'map', 'mod', 'nand', 'new', 'next', 'nor', 'not', 'null', 'of', 'on', 'open', 'or', 'others', 'out', 'package', 'parameter', 'port', 'postponed', 'procedure', 'process', 'property', 'protected', 'pure', 'range', 'record', 'register', 'reject', 'release', 'rem', 'report', 'restrict', 'restrict_guarantee', 'return', 'rol', 'ror', 'select', 'sequence', 'severity', 'signal', 'shared', 'sla', 'sll', 'sra', 'srl', 'strong', 'subtype', 'then', 'to', 'transport', 'type', 'unaffected', 'units', 'until', 'use', 'variable', 'vmode', 'vprop', 'vunit', 'wait', 'when', 'while', 'with', 'xnor', 'xor', 'assert', 'assume', 'assume_guarantee', 'cover', 'default', 'fairness', 'property', 'restrict', 'restrict_guarantee', 'sequence', 'strong', 'vmode', 'vprop', 'vunit']
+dMap['2008'] = ['abs', 'access', 'after', 'alias', 'all', 'and', 'architecture', 'array', 'assert', 'assume', 'assume_guarantee', 'attribute', 'begin', 'block', 'body', 'buffer', 'bus', 'case', 'component', 'configuration', 'constant', 'context', 'cover', 'default', 'disconnect', 'downto', 'else', 'elsif', 'end', 'entity', 'exit', 'fairness', 'file', 'for', 'force', 'function', 'generate', 'generic', 'group', 'guarded', 'if', 'impure', 'in', 'inertial', 'inout', 'is', 'label', 'library', 'linkage', 'literal', 'loop', 'map', 'mod', 'nand', 'new', 'next', 'nor', 'not', 'null', 'of', 'on', 'open', 'or', 'others', 'out', 'package', 'parameter', 'port', 'postponed', 'procedure', 'process', 'property', 'protected', 'pure', 'range', 'record', 'register', 'reject', 'release', 'rem', 'report', 'restrict', 'restrict_guarantee', 'return', 'rol', 'ror', 'select', 'sequence', 'severity', 'signal', 'shared', 'sla', 'sll', 'sra', 'srl', 'strong', 'subtype', 'then', 'to', 'transport', 'type', 'unaffected', 'units', 'until', 'use', 'variable', 'vmode', 'vprop', 'vunit', 'wait', 'when', 'while', 'with', 'xnor', 'xor']
 dMap['all'] = uniquify_standards(dMap)
 
 
@@ -31,12 +32,10 @@ lIdentifiers = []
 lIdentifiers.append(token.architecture_body.identifier)
 lIdentifiers.append(token.architecture_body.identifier)
 lIdentifiers.append(token.attribute_declaration.identifier)
-#lIdentifiers.append(token.component.identifier)
 lIdentifiers.append(token.component_declaration.identifier)
 lIdentifiers.append(token.configuration_declaration.identifier)
 lIdentifiers.append(token.constant_declaration.identifier)
 lIdentifiers.append(token.context_declaration.identifier)
-#lIdentifiers.append(token.entity.identifier)
 lIdentifiers.append(token.entity_aspect.architecture_identifier)
 lIdentifiers.append(token.entity_declaration.identifier)
 lIdentifiers.append(token.entity_designator.entity_tag)
@@ -59,18 +58,15 @@ lIdentifiers.append(token.package_declaration.identifier)
 lIdentifiers.append(token.parameter_specification.identifier)
 lIdentifiers.append(token.primary_unit_declaration.identifier)
 lIdentifiers.append(token.secondary_unit_declaration.identifier)
-#lIdentifiers.append(token.shared_variable_declaration.identifier)
 lIdentifiers.append(token.signal_declaration.identifier)
 lIdentifiers.append(token.subprogram_instantiation_declaration.identifier)
 lIdentifiers.append(token.subtype_declaration.identifier)
 lIdentifiers.append(token.variable_declaration.identifier)
 ### Simple Names
 lIdentifiers.append(token.architecture_body.architecture_simple_name)
-#lIdentifiers.append(token.component.simple_name)
 lIdentifiers.append(token.component_declaration.component_simple_name)
 lIdentifiers.append(token.configuration_declaration.configuration_simple_name)
 lIdentifiers.append(token.context_declaration.context_simple_name)
-#lIdentifiers.append(token.entity.simple_name)
 lIdentifiers.append(token.entity_declaration.entity_simple_name)
 lIdentifiers.append(token.package_body.package_simple_name)
 lIdentifiers.append(token.package_body.end_package_simple_name)
@@ -94,7 +90,7 @@ class rule_001(structure.Rule):
     '''
     This rule checks for VHDL reserved words being used as identifiers and names.
 
-    |configuing_vhdl_reserved_words|
+    |configuring_vhdl_reserved_words_link|
 
     **Violation**
 
@@ -109,6 +105,7 @@ class rule_001(structure.Rule):
         self.configuration.append('standard')
         self.standard = 'all'
         self.fixable = False
+        self.configuration_documentation_link = 'configuring_vhdl_reserved_words_link'
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = oFile.get_tokens_matching(lIdentifiers)
@@ -126,10 +123,9 @@ class rule_001(structure.Rule):
         oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
         self.add_violation(oViolation)
 
+
 def token_value_is_a_reserved_word(oToi, lReservedWords):
     oToken = oToi.get_tokens()[0]
     if oToken.get_lower_value() in lReservedWords:
         return True
     return False
-
-

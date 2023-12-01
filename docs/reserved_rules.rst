@@ -10,7 +10,7 @@ reserved_001
 
 This rule checks for VHDL reserved words being used as identifiers and names.
 
-|configuing_vhdl_reserved_words|
+|configuring_vhdl_reserved_words_link|
 
 **Violation**
 

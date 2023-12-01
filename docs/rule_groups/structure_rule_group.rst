@@ -142,6 +142,7 @@ Rules Enforcing Structure Rule Group
 * `record_type_definition_007 <../record_type_definition_rules.html#record-type-definition-007>`_
 * `report_statement_001 <../report_statement_rules.html#report-statement-001>`_
 * `report_statement_002 <../report_statement_rules.html#report-statement-002>`_
+* `reserved_001 <../reserved_rules.html#reserved-001>`_
 * `selected_assignment_001 <../selected_assignment_rules.html#selected-assignment-001>`_
 * `selected_assignment_002 <../selected_assignment_rules.html#selected-assignment-002>`_
 * `selected_assignment_003 <../selected_assignment_rules.html#selected-assignment-003>`_
