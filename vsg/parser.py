@@ -31,6 +31,9 @@ class item():
     def get_value(self):
         return self.value
 
+    def get_lower_value(self):
+        return self.value.lower()
+
     def set_value(self, sString):
         self.value = sString
 

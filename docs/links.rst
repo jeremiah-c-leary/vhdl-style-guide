@@ -83,3 +83,5 @@
 .. |configuring_pragmas_link| replace::
    Refer to :ref:`configuring-pragmas` for information on how to configure detecting of pragmas.
 
+.. |configuring_vhdl_reserved_words_link| replace::
+   Refer to :ref:`configuring-vhdl-reserved-words` for information on how to change which VHDL standard reserved words to use.
