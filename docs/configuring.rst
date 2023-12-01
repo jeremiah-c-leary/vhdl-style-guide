@@ -35,3 +35,4 @@ Configuring
    configuring_use_clause_indenting.rst
    configuring_whitespace_rules.rst
    configuring_whitespace_after_comment_rules.rst
+   configuring_vhdl_reserved_words.rst
