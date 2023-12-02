@@ -223,8 +223,8 @@ def New(commandLineArguments):
     oReturn = config()
 
     dStyle = read_predefined_style(commandLineArguments.style)
-    add_pragma_regular_expressions(dStyle)
     dConfig = read_configuration_files(dStyle, commandLineArguments)
+    add_pragma_regular_expressions(dConfig)
 
     oReturn.severity_list = severity.create_list(dConfig)
 
