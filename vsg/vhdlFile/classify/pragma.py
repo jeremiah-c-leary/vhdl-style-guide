@@ -17,6 +17,7 @@ def classify(lTokens, lObjects, lOpenPragmas, lClosePragmas, dVars, configuratio
                for iToken, sToken in enumerate(lTokens):
                    if isinstance(lObjects[iToken], parser.comment):
                        lObjects[iToken] = pragma.pragma(sToken)
+               break
 
     for iToken, sToken in enumerate(lTokens):
         if sToken in lOpenPragmas:
