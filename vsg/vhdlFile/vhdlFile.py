@@ -94,6 +94,7 @@ class vhdlFile():
         oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
+            self.dVars['line'] = sLine
             lTokens = tokens.create(sLine.rstrip('\n').rstrip('\r'))
             lObjects = []
             for sToken in lTokens:
