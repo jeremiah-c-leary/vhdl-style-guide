@@ -3,6 +3,8 @@ from vsg.token import association_element as token
 
 from vsg.vhdlFile import utils
 
+from vsg.vhdlFile.classify import formal_part
+
 
 def detect(iCurrent, lObjects):
     '''
@@ -36,12 +38,9 @@ def detect(iCurrent, lObjects):
 
 def classify(iStart, iEnd, lObjects, sEnd):
     iCurrent = iStart
-    sPrint = ''
-    for oObject in lObjects[iStart:iEnd + 1]:
-        sPrint += oObject.get_value()
     # Classify formal part if it exists
     if utils.find_in_index_range('=>', iStart, iEnd, lObjects):
-        iCurrent = utils.assign_tokens_until('=>', token.formal_part, iCurrent, lObjects)
+        iCurrent = formal_part.classify(token.formal_part, iCurrent, lObjects)
         iCurrent = utils.assign_next_token_required('=>', token.assignment, iCurrent, lObjects)
 
     # Classify actual part
