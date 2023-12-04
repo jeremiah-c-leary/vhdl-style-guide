@@ -3,6 +3,7 @@
 import argparse
 import sys
 
+from . import config
 from . import vhdlFile
 
 from vsg.tests import utils
@@ -32,12 +33,21 @@ def main():
     fExitStatus = 0
 
     commandLineArguments = parse_command_line_arguments()
+    commandLineArguments.style = 'indent_only'
+    commandLineArguments.configuration = []
+    commandLineArguments.debug = False
+    commandLineArguments.fix_only = False
+    commandLineArguments.stdin = False
+    commandLineArguments.force_fix = False
+    commandLineArguments.fix = False
 
     sFileName = commandLineArguments.filename
 
     lLines = vhdlFile.utils.read_vhdlfile(sFileName)
 
-    oVhdlFile = vhdlFile.vhdlFile(lLines[0])
+    configuration = config.New(commandLineArguments)
+
+    oVhdlFile = vhdlFile.vhdlFile(lLines[0], None, None, configuration)
     oVhdlFile.filename = sFileName
 
     utils.print_objects(oVhdlFile, not commandLineArguments.whitespace)

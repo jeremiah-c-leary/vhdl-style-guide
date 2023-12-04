@@ -51,6 +51,8 @@ def generate_output_configuration(commandLineArguments, oConfig):
             dOutputConfiguration['local_rules'] = commandLineArguments.local_rules
         dOutputConfiguration['rule'] = oRules.get_configuration()
         dOutputConfiguration['indent'] = configuration['indent']
+        dOutputConfiguration['pragma'] = {}
+        dOutputConfiguration['pragma']['patterns'] = configuration['pragma']['patterns']
         with open(commandLineArguments.output_configuration, 'w') as json_file:
             json.dump(dOutputConfiguration, json_file, sort_keys=True, indent=2)
         sys.exit(fExitStatus)

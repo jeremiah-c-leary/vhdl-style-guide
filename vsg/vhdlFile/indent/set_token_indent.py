@@ -95,6 +95,11 @@ def set_token_indent(dIndentMap, lTokens):
             set_indent_of_comment(cParams, iToken, lTokens)
             continue
 
+        ### Pragmas
+        if isinstance(oToken, token.pragma.pragma):
+            set_indent_of_pragma(cParams, iToken, lTokens)
+            continue
+
         ### Concurrent signal assignment
         if isinstance(oToken, token.concurrent_signal_assignment_statement.label_name):
             cParams.insideConcurrentSignalAssignment = True
@@ -162,6 +167,11 @@ def is_use_clause_use_keyword_next(iIndex, lTokens):
     if isinstance(lTokens[iToken], token.context_reference.keyword):
         return True
     return False
+
+
+def set_indent_of_pragma(cParams, iToken, lTokens):
+    oToken = lTokens[iToken]
+    set_indent_of_normal_comment(cParams, iToken, lTokens)
 
 
 def set_indent_of_comment(cParams, iToken, lTokens):

@@ -1,6 +1,7 @@
 
 import glob
 import os
+import re
 import sys
 import yaml
 
@@ -194,11 +195,36 @@ def update_command_line_arguments(commandLineArguments, configuration):
         commandLineArguments.local_rules = utils.expand_filename(configuration['local_rules'])
 
 
+lPragmas = []
+lPragmas.append('^\s*--\s+synthesis\s+\w+\s*$')
+lPragmas.append('^\s*--\s+synthesis\s+\w+\s+\w+\s*$')
+lPragmas.append('^\s*--\s+pragma\s+\w+\s*$')
+lPragmas.append('^\s*--\s+pragma\s+\w+\s+\w+\s*$')
+lPragmas.append('^\s*--vhdl_comp_[on|off]\s*$')
+lPragmas.append('^\s*--\s+altera\s+\w+\s*$' )
+lPragmas.append('^\s*--\s+RTL_SYNTHESIS\s+ON\s*$' )
+lPragmas.append('^\s*--\s+RTL_SYNTHESIS\s+OFF\s*$' )
+lPragmas.append('^\s*--\s+synopsys\s+\w+\s*$')
+lPragmas.append('^\s*--\s+synopsys\s+\w+\s+\w+\s*$')
+lPragmas.append('^\s*--\s+xilinx\s+\w+\s*$')
+lPragmas.append('^\s*--\s+xilinx\s+\w+\s+\w+\s*$')
+
+
+def add_pragma_regular_expressions(dStyle):
+    if not 'pragma' in dStyle.keys():
+        dStyle['pragma'] = {} 
+        dStyle['pragma']['patterns'] = lPragmas
+    dStyle['pragma']['regexp'] = []
+    for pragma in dStyle['pragma']['patterns']:
+        dStyle['pragma']['regexp'].append(re.compile(pragma))
+
+
 def New(commandLineArguments):
     oReturn = config()
 
     dStyle = read_predefined_style(commandLineArguments.style)
     dConfig = read_configuration_files(dStyle, commandLineArguments)
+    add_pragma_regular_expressions(dConfig)
 
     oReturn.severity_list = severity.create_list(dConfig)
 
