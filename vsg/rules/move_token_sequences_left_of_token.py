@@ -38,7 +38,7 @@ class move_token_sequences_left_of_token(structure.Rule):
                 aToi = oFile.get_tokens_bounded_by(lSequence[0], self.oLeftToken, bIncludeTillBeginningOfLine=True)
                 lToi = utils.combine_two_token_class_lists(lToi, aToi)
             lPrevious.append(lSequence[0])
-        return lToi
+        return rules_utils.remove_tois_with_pragmas(lToi)
 
     def _analyze(self, lToi):
         for oToi in lToi:

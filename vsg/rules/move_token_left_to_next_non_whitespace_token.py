@@ -1,6 +1,7 @@
 
 
 from vsg import parser
+from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
@@ -45,6 +46,8 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if skip_based_on_whitespace(self.bInsertWhitespace, lTokens):
+                continue
+            if oToi.token_type_exists(token.pragma.pragma):
                 continue
             lReturn.append(oToi)
         return lReturn

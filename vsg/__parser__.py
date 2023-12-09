@@ -47,7 +47,7 @@ def main():
 
     configuration = config.New(commandLineArguments)
 
-    oVhdlFile = vhdlFile.vhdlFile(lLines[0], None, None, configuration)
+    oVhdlFile = vhdlFile.vhdlFile(lLines[0], commandLineArguments, None, None, configuration)
     oVhdlFile.filename = sFileName
 
     utils.print_objects(oVhdlFile, not commandLineArguments.whitespace)

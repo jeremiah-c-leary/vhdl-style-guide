@@ -36,7 +36,8 @@ class move_token_next_to_another_token(structure.Rule):
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_bounded_by(self.anchor_token, self.token_to_move, bIncludeTillEndOfLine=True)
+        lToi = oFile.get_tokens_bounded_by(self.anchor_token, self.token_to_move, bIncludeTillEndOfLine=True)
+        return rules_utils.remove_tois_with_pragmas(lToi)
 
     def _analyze(self, lToi):
         for oToi in lToi:

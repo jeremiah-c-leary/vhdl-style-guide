@@ -30,7 +30,7 @@ class test_type_definition_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'type')
         self.assertEqual(oRule.identifier, '018')
 
-        lExpected = [8, 11]
+        lExpected = [8, 11, 18]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

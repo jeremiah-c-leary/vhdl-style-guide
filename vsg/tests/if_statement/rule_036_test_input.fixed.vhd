@@ -28,6 +28,11 @@ begin
       b <= '1';
     end if;
 
+    if a = '1'
+    -- synthesis translate_off
+    then
+    end if;
+
   end process;
 
 end architecture RTL;

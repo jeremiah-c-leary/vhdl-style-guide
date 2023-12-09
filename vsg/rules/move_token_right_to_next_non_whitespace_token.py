@@ -84,7 +84,7 @@ def filter_toi(self, lToi):
         if skip_based_on_whitespace(self.bInsertWhitespace, oToi):
             continue
         lReturn.append(oToi)
-    return lReturn
+    return rules_utils.remove_tois_with_pragmas(lReturn)
 
 
 def skip_based_on_whitespace(bInsertWhitespace, oToi):
