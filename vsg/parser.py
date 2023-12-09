@@ -11,6 +11,7 @@ class item():
 
     def __init__(self, sString):
         self.value = sString
+        self.lower_value = sString.lower()
         self.indent = None
         self.hierarchy = None
         self.context = []
@@ -32,7 +33,7 @@ class item():
         return self.value
 
     def get_lower_value(self):
-        return self.value.lower()
+        return self.lower_value
 
     def set_value(self, sString):
         self.value = sString

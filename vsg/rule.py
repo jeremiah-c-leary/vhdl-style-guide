@@ -29,6 +29,7 @@ class Rule():
         self.options = []
         self.configuration_documentation_link = None
         self.prerequisites = []
+        self.remap = True
 
     def configure(self, oConfig):
         '''Configures attributes on rules using a dictionary of the following form:
@@ -108,7 +109,7 @@ class Rule():
             self._filter_out_fix_only_violations(dFixOnly)
             for oViolation in self.violations[::-1]:
                 self._fix_violation(oViolation)
-            oFile.update(self.violations)
+            oFile.update(self.violations, self.remap)
             self.clear_violations()
 
     def _filter_out_fix_only_violations(self, dFixOnly):

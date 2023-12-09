@@ -39,7 +39,7 @@ class consistent_token_case(case.Rule):
         for oTargetType in lTargetTypes:
             oToken = oTargetType.get_tokens()[0]
             lTargetValues.append(oToken.get_value())
-            lTargetValuesLower.append(oToken.get_value().lower())
+            lTargetValuesLower.append(oToken.get_lower_value())
 
         oToi = oFile.get_all_tokens()
         iLine, lTokens = utils.get_toi_parameters(oToi)

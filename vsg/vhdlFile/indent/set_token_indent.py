@@ -44,7 +44,7 @@ def set_token_indent(dIndentMap, lTokens):
             continue
 
         if isinstance(oToken, token.logical_name_list.logical_name):
-            cParams.library_name.append(oToken.get_value().lower())
+            cParams.library_name.append(oToken.get_lower_value())
 
         if clear_library_name(oToken):
             cParams.library_name = []
@@ -257,5 +257,5 @@ def extract_use_clause_library_name(iToken, lTokens):
     for i in range(iToken, len(lTokens)):
         oToken = lTokens[i]
         if isinstance(oToken, token.use_clause.library_name):
-            return oToken.get_value().lower()
+            return oToken.get_lower_value()
     return None
