@@ -75,3 +75,24 @@ This rule was deprecated and replaced with rules:
 * `procedure_010 <procedure_rules.html#procedure-010>`_
 * `architecture_029 <architecture_rules.html#architecture-029>`_
 
+file_100
+########
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   file           defaultImage : load_file_type open read_mode is load_file_name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open read_mode is load_file_name;
+

@@ -99,6 +99,27 @@ The default new subtype prefix is *st\_*.
 
    subtype st_my_subtype is range 0 to 9;
 
+subtype_100
+###########
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype         my_subtype is range 0 to 9;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype my_subtype is range 0 to 9;
+
 subtype_500
 ###########
 

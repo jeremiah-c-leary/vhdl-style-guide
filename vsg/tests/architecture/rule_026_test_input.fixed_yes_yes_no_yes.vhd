@@ -7,6 +7,7 @@ architecture RTL of FIFO is
   file file1             : integer;
   alias alias1           is name;
   alias alias1           : subtype_identifier is name;
+  type state_machine     is (idle, write, read, done);
   -- Comment to break up groups
   constant c_ab          : integer;
   signal sig_bc          : std_logic;

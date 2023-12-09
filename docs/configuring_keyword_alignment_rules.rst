@@ -85,6 +85,15 @@ There are several options to these rules:
 .. |loop_control_statements_ends_group__no| replace::
    :code:`no` = continue when a loop control statement keyword is encountered.
 
+.. |include_type_is_keyword| replace::
+   :code:`include_type_is_keyword`
+
+.. |include_type_is_keyword__yes| replace::
+   :code:`yes` = align type is keyword with colons.
+
+.. |include_type_is_keyword__no| replace::
+   :code:`no` = ignore type is keywords for alignment.
+
 .. |yes| replace::
    :code:`yes`
 
@@ -118,6 +127,9 @@ There are several options to these rules:
 .. |values_lcseg| replace::
    :code:`yes`, :code:`no`
 
+.. |values_itik| replace::
+   :code:`yes`, :code:`no`
+
 +--------------------------------------+----------------+----------+------------------------------------------------+
 | Option                               |   Values       | Default  | Description                                    |
 +======================================+================+==========+================================================+
@@ -146,6 +158,9 @@ There are several options to these rules:
 | |loop_control_statements_ends_group| | |values_lcseg| | |yes|    | * |loop_control_statements_ends_group__yes|    |
 |                                      |                |          | * |loop_control_statements_ends_group__no|     |
 +--------------------------------------+----------------+----------+------------------------------------------------+
+| |include_type_is_keyword|            | |values_itik|  | |no|     | * |include_type_is_keyword__yes|               |
+|                                      |                |          | * |include_type_is_keyword__no|                |
++--------------------------------------+----------------+----------+------------------------------------------------+
 
 This is an example of how to configure these options.
 
@@ -161,6 +176,7 @@ This is an example of how to configure these options.
         case_control_statements_ends_group: 'yes'
         generate_statements_ends_group: 'yes'
         loop_control_statements_ends_group: 'yes'
+        include_type_is_keyword: 'no'
 
 
 Example: |compact_alignment| set to |yes|
@@ -681,6 +697,58 @@ No line with loop control statement (including for and while loops) ends the gro
           hold_transmission <= '1';
       end loop;
       data_valid_after      <= '1';
+
+Example: |include_type_is_keyword| set to |yes|
+###############################################
+
+Any blank line encountered in the VHDL file ends the group of lines that should be aligned and starts new group.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      signal wr_en : std_logic;
+      signal rd_en   : std_logic;
+      type sm is (idle, read, write);
+      constant c_short_period : time;
+      constant c_long_period : time;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      signal wr_en            : std_logic;
+      signal rd_en            : std_logic;
+      type sm                 is (idle, read, write);
+      constant c_short_period : time;
+      constant c_long_period  : time;
+
+
+Example: |include_type_is_keyword| set to |no|
+##############################################
+
+Any blank line encountered in the VHDL file will not end the group of lines that should be aligned.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      signal wr_en : std_logic;
+      signal rd_en   : std_logic;
+      type sm is (idle, read, write);
+      constant c_short_period : time;
+      constant c_long_period : time;
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      signal wr_en            : std_logic;
+      signal rd_en            : std_logic;
+      type sm is (idle, read, write);
+      constant c_short_period : time;
+      constant c_long_period  : time;
+
 
 Rules Enforcing Keyword Alignment
 #################################

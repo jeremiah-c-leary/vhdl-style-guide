@@ -59,6 +59,8 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         self.loop_control_statements_ends_group = 'no'
         self.configuration.append('loop_control_statements_ends_group')
 
+        self.include_type_is_keyword = 'no'
+
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by_unless_between(self.left_token, self.right_token, self.lUnless)
 
@@ -69,6 +71,13 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         self.if_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.if_control_statements_ends_group)
         self.case_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.case_control_statements_ends_group)
         self.loop_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.loop_control_statements_ends_group)
+        self.include_type_is_keyword = utils.convert_yes_no_option_to_boolean(self.include_type_is_keyword)
+
+        lSearchTokens = []
+        lSearchTokens.extend(self.lTokens)
+
+        if self.include_type_is_keyword:
+            lSearchTokens.append(self.is_keyword)
 
         lToi = self._get_tokens_of_interest(oFile)
         for oToi in lToi:
@@ -88,7 +97,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
                bSkip, oEndSkipToken = alignment_utils.check_for_exclusions(oToken, bSkip, oEndSkipToken, self.lUnless)
 
                if not bTokenFound and not bSkip:
-                   for oSearch in self.lTokens:
+                   for oSearch in lSearchTokens:
                        if isinstance(oToken, oSearch):
                            bTokenFound = True
                            dAnalysis[iLine] = {}
