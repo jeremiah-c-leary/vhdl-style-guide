@@ -35,9 +35,9 @@ Rules Enforcing Structure Rule Group
 * `component_019 <../component_rules.html#component-019>`_
 * `component_021 <../component_rules.html#component-021>`_
 * `concurrent_005 <../concurrent_rules.html#concurrent-005>`_
-* `concurrent_007 <../concurrent_rules.html#concurrent-007>`_
 * `concurrent_011 <../concurrent_rules.html#concurrent-011>`_
 * `concurrent_012 <../concurrent_rules.html#concurrent-012>`_
+* `conditional_waveforms_001 <../conditional_waveforms_rules.html#conditional-waveforms-001>`_
 * `constant_007 <../constant_rules.html#constant-007>`_
 * `constant_016 <../constant_rules.html#constant-016>`_
 * `constant_017 <../constant_rules.html#constant-017>`_

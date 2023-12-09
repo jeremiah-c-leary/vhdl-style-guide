@@ -2,34 +2,34 @@
 import os
 import unittest
 
-from vsg.rules import concurrent
+from vsg.rules import conditional_waveforms
 from vsg import vhdlFile
 from vsg.tests import utils
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_007_test_input.vhd'))
+lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
 
 lExpected_true = []
 lExpected_true.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed_true.vhd'), lExpected_true)
+utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed_true.vhd'), lExpected_true)
 
 lExpected_false = []
 lExpected_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed_false.vhd'), lExpected_false)
+utils.read_file(os.path.join(sTestDir, 'rule_001_test_input.fixed_false.vhd'), lExpected_false)
 
 
-class test_concurrent_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_007_w_allow_single_line_false(self):
-        oRule = concurrent.rule_007()
+    def test_rule_001_w_allow_single_line_false(self):
+        oRule = conditional_waveforms.rule_001()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'concurrent')
-        self.assertEqual(oRule.identifier, '007')
+        self.assertEqual(oRule.name, 'conditional_waveforms')
+        self.assertEqual(oRule.identifier, '001')
         self.assertEqual(oRule.groups, ['structure'])
 
         lExpected = [8, 18, 18, 18, 20, 20, 21, 23, 24, 24]
@@ -37,8 +37,8 @@ class test_concurrent_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_007_w_allow_single_line_false(self):
-        oRule = concurrent.rule_007()
+    def test_fix_rule_001_w_allow_single_line_false(self):
+        oRule = conditional_waveforms.rule_001()
 
         oRule.fix(self.oFile)
 
@@ -49,20 +49,20 @@ class test_concurrent_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
-    def test_rule_007_w_allow_single_line_true(self):
-        oRule = concurrent.rule_007()
+    def test_rule_001_w_allow_single_line_true(self):
+        oRule = conditional_waveforms.rule_001()
         oRule.allow_single_line = 'yes'
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'concurrent')
-        self.assertEqual(oRule.identifier, '007')
+        self.assertEqual(oRule.name, 'conditional_waveforms')
+        self.assertEqual(oRule.identifier, '001')
 
         lExpected = [18, 18, 18, 20, 20, 21, 23, 24, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_007_w_allow_single_line_true(self):
-        oRule = concurrent.rule_007()
+    def test_fix_rule_001_w_allow_single_line_true(self):
+        oRule = conditional_waveforms.rule_001()
         oRule.allow_single_line = 'yes'
 
         oRule.fix(self.oFile)
