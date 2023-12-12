@@ -489,3 +489,11 @@ def close_paren_detected_at_end_of_tokens(lTokens):
         return True
     lTokens.reverse()
     return False
+
+
+def remove_tois_with_pragmas(lToi):
+    lReturn = []
+    for oToi in lToi:
+        if not oToi.token_type_exists(token.pragma.pragma):
+            lReturn.append(oToi)
+    return lReturn

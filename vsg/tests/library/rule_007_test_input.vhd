@@ -98,3 +98,22 @@ use work.utility_pkg.all;
 package body fifo_pkg is end package body;
 use work.utility_pkg.all;
 
+
+library ieee;
+
+  -- comment
+
+  use ieee.std_logic_1164.all;
+
+library ieee;
+-- comment
+  use ieee.std_logic_1164.all;
+
+library ieee;
+  use ieee.std_logic_1164.all;
+
+-- comment
+-- comment
+-- comment
+  use work.all;
+

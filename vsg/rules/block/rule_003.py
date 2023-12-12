@@ -28,7 +28,7 @@ class rule_003(move_token_to_the_right_of_several_possible_tokens_if_it_exists_b
 
     .. code-block:: vhdl
 
-       block_labeel : block is
+       block_label : block is
     '''
 
     def __init__(self):

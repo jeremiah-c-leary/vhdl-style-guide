@@ -3,6 +3,7 @@ import bisect
 import pprint
 
 from vsg import parser
+from vsg import token
 
 
 class New():
@@ -122,6 +123,8 @@ class New():
 
     def is_token_at_index_whitespace_or_comment(self, iIndex):
         if self.is_token_at_index(parser.whitespace, iIndex):
+            return True
+        if self.is_token_at_index(token.pragma.pragma, iIndex):
             return True
         if self.is_token_at_index(parser.comment, iIndex):
             return True
