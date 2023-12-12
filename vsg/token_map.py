@@ -225,6 +225,40 @@ def extract_start_end_indexes(lStartIndexes, lEndIndexes):
 
 def extract_pairs(lStartIndexes, lEndIndexes):
     lMyPairs = []
+#    print('='*80)
+#    print(lStartIndexes)
+#    print(lEndIndexes)
+#    iCurrentStart = 0
+#    iCurrentEnd = 0
+#    iNextStart = 1
+#    lStartStack = []
+#    lPairs = []
+#    while iCurrentStart < len(lStartIndexes) - 1:
+##    for iStart in lStartIndexes:
+#        cs = lStartIndexes[iCurrentStart]
+#        ce = lEndIndexes[iCurrentEnd]
+#        ns = lStartIndexes[iNextStart]
+#        print(f'{lStartStack}:{iCurrentStart}:{iCurrentEnd}:{iNextStart}:{cs}:{ce}:{ns}:{lPairs}')
+#        if ce < ns:
+## Add loop to pop stack
+#            if cs < ce:
+#                lPairs.append([cs, ce])
+#                iCurrentStart += 1
+#                iCurrentEnd += 1
+#                iNextStart += 1
+#            else:
+#                iPop = lStartStack.pop()
+#                lPairs.append([iPop, ce])
+##                iCurrentStart += 1
+#                iCurrentEnd += 1
+##                iNextStart += 1
+#        else:
+#            lStartStack.append(cs)
+#            iCurrentStart += 1
+#            iNextStart += 1
+#
+#    print('-'*80)
+
     while len(lEndIndexes) > 0 and len(lStartIndexes) > 0:
         iMin = lEndIndexes[-1] + 1
         lPair = []
