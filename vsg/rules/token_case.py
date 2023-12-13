@@ -48,5 +48,6 @@ class token_case(case.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lTokens[0].set_value(dAction['value'])
-        oViolation.set_tokens(lTokens)
+        if dAction['value'] is not None:
+            lTokens[0].set_value(dAction['value'])
+            oViolation.set_tokens(lTokens)
