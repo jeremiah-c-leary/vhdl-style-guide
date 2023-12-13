@@ -18,24 +18,31 @@ There are several options to these rules:
 .. |require_blank_line| replace::
    :code:`require_blank_line`
 
+.. |require_blank_line_unless_pragma| replace::
+   :code:`require_blank_line_unless_pragma`
+
 .. |style__no_blank_line| replace::
    :code:`no_blank_line` = Removes blank lines on the line above or below
 
 .. |style__require_blank_line| replace::
    :code:`require_blank_line` = Requires a blank line on the line above or below
 
+.. |style__require_blank_line_unless_pragma| replace::
+   :code:`require_blank_line_unless_pragma` = Requires a blank line on the line above or below unless the line has a pragma
+
 .. |style_values| replace::
-   :code:`no_blank_line`, :code:`require_blank_line`
+   :code:`no_blank_line`, :code:`require_blank_line`, :code:`require_blank_line_unless_pragma`
 
 .. |style_default| replace::
    Rule dependent
 
-+-------------------------+----------------+-----------------+----------------------------------------------+
-| Option                  |   Values       | Default         | Description                                  |
-+=========================+================+=================+==============================================+
-| |style|                 | |style_values| | |style_default| | * |style__no_blank_line|                     |
-|                         |                |                 | * |style__require_blank_line|                |
-+-------------------------+----------------+-----------------+----------------------------------------------+
++-------------------------+------------------------------------+-----------------+----------------------------------------------+
+| Option                  |   Values                           | Default         | Description                                  |
++=========================+====================================+=================+==============================================+
+| |style|                 | |no_blank_line|                    | |style_default| | * |style__no_blank_line|                     |
+|                         | |require_blank_line|               |                 | * |style__require_blank_line|                |
+|                         | |require_blank_line_unless_pragma| |                 | * |style__require_blank_line_unless_pragma|  |
++-------------------------+------------------------------------+-----------------+----------------------------------------------+
 
 This is an example of how to configure the options.
 
@@ -97,6 +104,30 @@ The following code would pass with this option:
      -- Comment
 
    architecture rtl of fifo is
+     signal s_sig1 : std_logic;
+
+Example: |style| set to |require_blank_line_unless_pragma|
+##########################################################
+
+The following code would fail with this option:
+
+.. code-Block:: vhdl
+
+   architecture rtl of fifo is
+     -- synthesis translate_off
+
+   architecture rtl of fifo is
+     signal s_sig1 : std_logic;
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+     -- synthesis translate_off
+
+   architecture rtl of fifo is
+
      signal s_sig1 : std_logic;
 
 Rules Enforcing Blank Lines
