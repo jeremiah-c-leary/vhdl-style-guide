@@ -61,7 +61,7 @@ class rule_021(blank_line.Rule):
         blank_line.Rule.__init__(self, 'process', '021')
         self.solution = 'Remove blank lines above *begin* keyword'
         self.phase = 1
-        self.style = 'no_blank_line_line'
+        self.style = 'no_blank_line'
         self.configuration.append('style')
 
     def _get_tokens_of_interest(self, oFile):
