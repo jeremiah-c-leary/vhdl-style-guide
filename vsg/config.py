@@ -195,28 +195,44 @@ def update_command_line_arguments(commandLineArguments, configuration):
         commandLineArguments.local_rules = utils.expand_filename(configuration['local_rules'])
 
 
-lPragmas = []
-lPragmas.append('^\s*--\s+synthesis\s+\w+\s*$')
-lPragmas.append('^\s*--\s+synthesis\s+\w+\s+\w+\s*$')
-lPragmas.append('^\s*--\s+pragma\s+\w+\s*$')
-lPragmas.append('^\s*--\s+pragma\s+\w+\s+\w+\s*$')
-lPragmas.append('^\s*--vhdl_comp_[on|off]\s*$')
-lPragmas.append('^\s*--\s+altera\s+\w+\s*$' )
-lPragmas.append('^\s*--\s+RTL_SYNTHESIS\s+ON\s*$' )
-lPragmas.append('^\s*--\s+RTL_SYNTHESIS\s+OFF\s*$' )
-lPragmas.append('^\s*--\s+synopsys\s+\w+\s*$')
-lPragmas.append('^\s*--\s+synopsys\s+\w+\s+\w+\s*$')
-lPragmas.append('^\s*--\s+xilinx\s+\w+\s*$')
-lPragmas.append('^\s*--\s+xilinx\s+\w+\s+\w+\s*$')
+dPragmas = {}
+dPragmas['open'] = []
+dPragmas['close'] = []
+dPragmas['single'] = []
+
+dPragmas['open'].append('^\s*--\s+synthesis\s+translate_off\s*$')
+dPragmas['close'].append('^\s*--\s+synthesis\s+translate_on\s*$')
+
+dPragmas['single'].append('^\s*--\s+synthesis\s+\w+\s*$')
+dPragmas['single'].append('^\s*--\s+synthesis\s+\w+\s+\w+\s*$')
+dPragmas['single'].append('^\s*--\s+pragma\s+\w+\s*$')
+dPragmas['single'].append('^\s*--\s+pragma\s+\w+\s+\w+\s*$')
+dPragmas['open'].append('^\s*--vhdl_comp_off\s*$')
+dPragmas['close'].append('^\s*--vhdl_comp_on\s*$')
+
+dPragmas['single'].append('^\s*--\s+altera\s+\w+\s*$' )
+
+dPragmas['open'].append('^\s*--\s+RTL_SYNTHESIS\s+OFF\s*$' )
+dPragmas['close'].append('^\s*--\s+RTL_SYNTHESIS\s+ON\s*$' )
+
+dPragmas['single'].append('^\s*--\s+synopsys\s+\w+\s*$')
+dPragmas['single'].append('^\s*--\s+synopsys\s+\w+\s+\w+\s*$')
+dPragmas['single'].append('^\s*--\s+xilinx\s+\w+\s*$')
+dPragmas['single'].append('^\s*--\s+xilinx\s+\w+\s+\w+\s*$')
 
 
 def add_pragma_regular_expressions(dStyle):
     if not 'pragma' in dStyle.keys():
         dStyle['pragma'] = {} 
-        dStyle['pragma']['patterns'] = lPragmas
-    dStyle['pragma']['regexp'] = []
-    for pragma in dStyle['pragma']['patterns']:
-        dStyle['pragma']['regexp'].append(re.compile(pragma))
+        dStyle['pragma']['patterns'] = dPragmas
+    dStyle['pragma']['regexp'] = {}
+    for types in list(dStyle['pragma']['patterns'].keys()):
+        for pragma in dStyle['pragma']['patterns'][types]:
+            try:
+                dStyle['pragma']['regexp'][types].append(re.compile(pragma))
+            except KeyError:
+                dStyle['pragma']['regexp'][types] = []
+                dStyle['pragma']['regexp'][types].append(re.compile(pragma))
 
 
 def New(commandLineArguments):
