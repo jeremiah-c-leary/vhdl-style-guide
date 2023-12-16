@@ -8,6 +8,7 @@ import yaml
 from . import junit
 from . import severity
 from . import utils
+from . import exceptions
 
 
 def read_predefined_style(sStyleName):
@@ -226,13 +227,27 @@ def add_pragma_regular_expressions(dStyle):
         dStyle['pragma'] = {} 
         dStyle['pragma']['patterns'] = dPragmas
     dStyle['pragma']['regexp'] = {}
-    for types in list(dStyle['pragma']['patterns'].keys()):
-        for pragma in dStyle['pragma']['patterns'][types]:
-            try:
-                dStyle['pragma']['regexp'][types].append(re.compile(pragma))
-            except KeyError:
-                dStyle['pragma']['regexp'][types] = []
-                dStyle['pragma']['regexp'][types].append(re.compile(pragma))
+
+    try:
+        types = list(dStyle['pragma']['patterns'].keys())
+        if 'close' not in types:
+            dStyle['pragma']['patterns']['close'] = []
+        if 'open' not in types:
+            dStyle['pragma']['patterns']['open'] = []
+        if 'single' not in types:
+            dStyle['pragma']['patterns']['single'] = []
+
+        for types in list(dStyle['pragma']['patterns'].keys()):
+            for pragma in dStyle['pragma']['patterns'][types]:
+                try:
+                    dStyle['pragma']['regexp'][types].append(re.compile(pragma))
+                except KeyError:
+                    dStyle['pragma']['regexp'][types] = []
+                    dStyle['pragma']['regexp'][types].append(re.compile(pragma))
+    except AttributeError as e:
+        print('Error in pragma definition:')
+        print('  Refer to "configuring pragmas" section in documentation for details on how to configure pragmas.')
+        sys.exit(1)
 
 
 def New(commandLineArguments):
