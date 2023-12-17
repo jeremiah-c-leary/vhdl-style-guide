@@ -18,7 +18,6 @@ architecture RTl of FIFO is
   component fifo is
 
   end component fifo;
-
   -- synthesis translate_off
   signal sig1 : std_logic;
 

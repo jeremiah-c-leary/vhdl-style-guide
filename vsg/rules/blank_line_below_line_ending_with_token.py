@@ -1,6 +1,7 @@
 
 from vsg import parser
 from vsg import violation
+from vsg import token
 
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import blank_line
@@ -35,7 +36,7 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
         self.configuration.append('style')
 
     def _get_tokens_of_interest(self, oFile):
-        if self.style == 'require_blank_line':
+        if self.style.startswith('require_blank_line'):
             if self.lHierarchyLimits is None:
                 return oFile.get_line_below_line_ending_with_token(self.lTokens)
             else:
@@ -48,6 +49,9 @@ class blank_line_below_line_ending_with_token(blank_line.Rule):
             _analyze_require_blank_line(self, lToi, self.lAllowTokens)
         elif self.style == 'no_blank_line':
             _analyze_no_blank_line(self, lToi, self.lAllowTokens)
+        elif self.style == 'require_blank_line_unless_pragma':
+            self.lAllowTokens.append(token.pragma.pragma)
+            _analyze_require_blank_line(self, lToi, self.lAllowTokens)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -95,6 +99,4 @@ def _is_allowed_token(lAllowTokens, lTokens):
                 break
         if bSkip:
            break
-    if bSkip:
-        return True
-    return False
+    return bSkip

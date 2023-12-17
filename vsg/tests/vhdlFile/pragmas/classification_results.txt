@@ -47,93 +47,99 @@
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 13 | -- synthesis something
-<class 'vsg.token.pragma.pragma'>
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
 14 | -- synthesis something else
-<class 'vsg.token.pragma.pragma'>
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
 15 | -- synthesis something else entirely
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-16 |
+16 | -- synthesis translate_off
+<class 'vsg.token.pragma.open'>
+--------------------------------------------------------------------------------
+17 | -- synthesis translate_on
+<class 'vsg.token.pragma.close'>
+--------------------------------------------------------------------------------
+18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-17 | -- pragma
+19 | -- pragma
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-18 | -- pragma something
-<class 'vsg.token.pragma.pragma'>
+20 | -- pragma something
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
-19 | -- pragma something else
-<class 'vsg.token.pragma.pragma'>
+21 | -- pragma something else
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
-20 | -- pragma something else entirely
+22 | -- pragma something else entirely
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-21 |
+23 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-22 | -- altera
+24 | -- altera
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-23 | -- altera something
-<class 'vsg.token.pragma.pragma'>
+25 | -- altera something
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
-24 | -- altera something else
+26 | -- altera something else
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-25 | -- altera something else entirely
+27 | -- altera something else entirely
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-26 |
+28 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-27 | -- RTL_SYNTHESIS
+29 | -- RTL_SYNTHESIS
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-28 | -- RTL_SYNTHESIS ON
-<class 'vsg.token.pragma.pragma'>
+30 | -- RTL_SYNTHESIS ON
+<class 'vsg.token.pragma.close'>
 --------------------------------------------------------------------------------
-29 | -- RTL_SYNTHESIS OFF
-<class 'vsg.token.pragma.pragma'>
+31 | -- RTL_SYNTHESIS OFF
+<class 'vsg.token.pragma.open'>
 --------------------------------------------------------------------------------
-30 | -- RTL_SYNTHESIS something
+32 | -- RTL_SYNTHESIS something
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-31 |
+33 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-32 | -- synopsys
+34 | -- synopsys
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-33 | -- synopsys something
-<class 'vsg.token.pragma.pragma'>
+35 | -- synopsys something
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
-34 | -- synopsys something else
-<class 'vsg.token.pragma.pragma'>
+36 | -- synopsys something else
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
-35 | -- synopsys something else entirely
+37 | -- synopsys something else entirely
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-36 |
+38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-37 | -- xilinx
+39 | -- xilinx
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-38 | -- xilinx something
-<class 'vsg.token.pragma.pragma'>
+40 | -- xilinx something
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
-39 | -- xilinx something else
-<class 'vsg.token.pragma.pragma'>
+41 | -- xilinx something else
+<class 'vsg.token.pragma.single'>
 --------------------------------------------------------------------------------
-40 | -- xilinx something else entirely
+42 | -- xilinx something else entirely
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-41 |
+43 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-42 | end entity;
+44 | end entity;
 <class 'vsg.token.entity_declaration.end_keyword'>
 <class 'vsg.token.entity_declaration.end_entity_keyword'>
 <class 'vsg.token.entity_declaration.semicolon'>

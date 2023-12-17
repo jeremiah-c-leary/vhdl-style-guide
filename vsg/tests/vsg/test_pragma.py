@@ -25,11 +25,9 @@ class testMain(unittest.TestCase):
     def test_default_pragmas(self, mock_stdout):
 
         sCall = ''
-        sCall += 'ERROR: vsg/tests/vsg/pragmas/pragmas.vhd(2)pragma_300 -- Indent level 0'
+        sCall += 'ERROR: vsg/tests/vsg/pragmas/pragmas.vhd(3)pragma_401 -- Remove blank lines below'
         sCall += '\n'
-        sCall += 'ERROR: vsg/tests/vsg/pragmas/pragmas.vhd(9)pragma_300 -- Use 2 spaces for indent'
-        sCall += '\n'
-        sCall += 'ERROR: vsg/tests/vsg/pragmas/pragmas.vhd(10)pragma_300 -- Use 2 spaces for indent'
+        sCall += 'ERROR: vsg/tests/vsg/pragmas/pragmas.vhd(11)pragma_401 -- Remove blank lines below'
 
         lExpected = []
         lExpected.append(mock.call(sCall))

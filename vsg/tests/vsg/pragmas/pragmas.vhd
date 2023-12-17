@@ -8,6 +8,7 @@ architecture rtl of fifo is
   -- Some comment
      -- xilinx something
 -- synthesis translate_off
+
   signal write : std_logic;
 
 begin

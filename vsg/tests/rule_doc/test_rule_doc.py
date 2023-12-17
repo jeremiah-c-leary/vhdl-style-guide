@@ -386,6 +386,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_pragma_rules_doc(self):
+
+        lExpected, lActual = compare_files('pragma')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_procedure_rules_doc(self):
 
         lExpected, lActual = compare_files('procedure')

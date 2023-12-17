@@ -60,9 +60,47 @@ def token_is_a_comment(sToken):
 
 
 def classify_pragmas(lTokens, lObjects, dVars, configuration):
-    for regex in configuration.dConfig['pragma']['regexp']:
+    if classify_open_pragmas(lTokens, lObjects, dVars, configuration):
+        return True
+    if classify_close_pragmas(lTokens, lObjects, dVars, configuration):
+        return True
+    if classify_single_pragmas(lTokens, lObjects, dVars, configuration):
+        return True
+    return False
+
+
+def classify_open_pragmas(lTokens, lObjects, dVars, configuration):
+    for regex in configuration.dConfig['pragma']['regexp']['open']:
         if regex.match(dVars['line']):
             for iToken, sToken in enumerate(lTokens):
                 if isinstance(lObjects[iToken], parser.comment):
-                    lObjects[iToken] = pragma.pragma(sToken)
-            break
+                    lObjects[iToken] = pragma.open(sToken)
+            return True
+    return False
+
+
+def classify_close_pragmas(lTokens, lObjects, dVars, configuration):
+    for regex in configuration.dConfig['pragma']['regexp']['close']:
+        if regex.match(dVars['line']):
+            for iToken, sToken in enumerate(lTokens):
+                if isinstance(lObjects[iToken], parser.comment):
+                    lObjects[iToken] = pragma.close(sToken)
+            return True
+    return False
+
+
+def classify_single_pragmas(lTokens, lObjects, dVars, configuration):
+    for regex in configuration.dConfig['pragma']['regexp']['single']:
+        if classify_pragma(lTokens, lObjects, dVars, regex, pragma.single):
+            return True
+    return False
+
+
+def classify_pragma(lTokens, lObjects, dVars, regex, oType):
+    if regex.match(dVars['line']):
+        for iToken, sToken in enumerate(lTokens):
+            if isinstance(lObjects[iToken], parser.comment):
+                lObjects[iToken] = pragma.single(sToken)
+                return True 
+    return False
+
