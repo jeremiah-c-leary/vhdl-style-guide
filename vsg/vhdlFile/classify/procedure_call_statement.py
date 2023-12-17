@@ -24,7 +24,7 @@ def detect(iToken, lObjects):
         iCurrent +=1
     # Check if next token is keyword
     iCurrent = utils.find_next_token(iCurrent, lObjects)
-    if lObjects[iCurrent].get_value().lower() in lKeywords:
+    if lObjects[iCurrent].get_lower_value() in lKeywords:
         return iToken
     # Check if signal assignment operator exists
     if not utils.all_assignments_inside_parenthesis(iToken, ';', lObjects):

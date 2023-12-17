@@ -43,7 +43,7 @@ class token_suffix_between_tokens(naming.Rule):
             lSuffixLower.append(sSuffix.lower())
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            sToken = lTokens[0].get_value().lower()
+            sToken = lTokens[0].get_lower_value()
             bValid = False
             for sSuffix in lSuffixLower:
                 if sToken.endswith(sSuffix):

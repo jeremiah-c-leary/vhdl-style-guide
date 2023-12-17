@@ -64,7 +64,7 @@ class token_case_n_token_after_tokens_between_tokens(case.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         if self.case == 'lower':
-            lTokens[0].set_value(lTokens[0].get_value().lower())
+            lTokens[0].set_value(lTokens[0].get_lower_value())
         if self.case == 'upper':
             lTokens[0].set_value(lTokens[0].get_value().upper())
         oViolation.set_tokens(lTokens)

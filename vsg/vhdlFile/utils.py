@@ -25,7 +25,7 @@ def assign_tokens_until_ignoring_paren(sToken, token, iToken, lObjects):
     iParen = 0
     for iCurrent in range(iToken, len(lObjects) - 1):
         iParen = update_paren_counter(iCurrent, lObjects, iParen)
-        if lObjects[iCurrent].get_value().lower() == sToken:
+        if lObjects[iCurrent].get_lower_value() == sToken:
             if iParen == 0:
                 return iCurrent
         if is_item(lObjects, iCurrent):
@@ -72,7 +72,7 @@ def assign_next_token_if_not(sToken, token, iToken, lObjects):
 
 def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value().lower() not in lTokens:
+    if lObjects[iCurrent].get_lower_value() not in lTokens:
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
         iCurrent += 1
         return iCurrent
@@ -101,7 +101,7 @@ def assign_tokens_until_matching_closing_paren(token, iToken, lObjects):
 
 
 def object_value_is(lAllObjects, iToken, sString):
-    if lAllObjects[iToken].get_value().lower() == sString.lower():
+    if lAllObjects[iToken].get_lower_value() == sString.lower():
         return True
     return False
 
@@ -114,7 +114,7 @@ def is_item(lAllObjects, iToken):
 
 def get_range(lObjects, iStart, sEnd):
     iIndex = iStart
-    while lObjects[iIndex].get_value().lower() != sEnd:
+    while lObjects[iIndex].get_lower_value() != sEnd:
         iIndex += 1
     iEnd = iIndex
     iStart = iStart
@@ -243,7 +243,7 @@ def find_earliest_occurance(lEnd, iToken, lObjects):
     iEarliest = len(lObjects)
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
-            if lObjects[iIndex].get_value().lower() == sEnd:
+            if lObjects[iIndex].get_lower_value() == sEnd:
                 if iIndex < iEarliest:
                     sEarliest = lObjects[iIndex].get_value()
                     iEarliest = iIndex
@@ -256,17 +256,21 @@ def find_earliest_occurance_not_in_paren(lEnd, iToken, lObjects):
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
             iParen = update_paren_counter(iIndex, lObjects, iParen)
-            if lObjects[iIndex].get_value().lower() == sEnd:
+            if lObjects[iIndex].get_lower_value() == sEnd:
                 if iIndex < iEarliest and iParen == 0:
                     return lObjects[iIndex].get_value()
     return None
 
 
 def find_next_token(iToken, lObjects):
-    for iCurrent in range(iToken, len(lObjects)):
-        if is_item(lObjects, iCurrent):
-            return iCurrent
+    for iCurrent, oToken in enumerate(lObjects[iToken::]):
+        if type(oToken) == parser.item:
+            return iCurrent + iToken
     return iToken
+
+
+def rename_this_is_item_function(oToken):
+    return type(oToken) == parser.item
 
 
 def find_next_non_whitespace_token(iToken, lObjects):
@@ -414,7 +418,7 @@ def is_next_token(sToken, iToken, lObjects):
 
 def is_next_token_one_of(lTokens, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value().lower() in lTokens:
+    if lObjects[iCurrent].get_lower_value() in lTokens:
         return True
     return False
 
@@ -489,7 +493,7 @@ def keyword_found(sKeyword, iToken, lObjects):
 
 def is_next_token_in_list(lUntils, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value().lower() in lUntils:
+    if lObjects[iCurrent].get_lower_value() in lUntils:
         return True
     return False
 
@@ -840,7 +844,7 @@ def assignment_operator_found(iToken, lObjects):
 
 
 def assign_special_tokens(lObjects, iCurrent, oType):
-    sValue = lObjects[iCurrent].get_value().lower()
+    sValue = lObjects[iCurrent].get_lower_value()
     if sValue == ')':
         assign_token(lObjects, iCurrent, parser.close_parenthesis)
     elif sValue == '(':
@@ -934,8 +938,8 @@ def exponent_detected(lObjects, iCurrent):
 def classify_predefined_types(lObjects, iCurrent):
     if not isinstance(lObjects[iCurrent], parser.todo):
         return
-    if lObjects[iCurrent].get_value().lower() in predefined_attribute.values:
-        if lObjects[iCurrent].get_value().lower() == 'event':
+    if lObjects[iCurrent].get_lower_value() in predefined_attribute.values:
+        if lObjects[iCurrent].get_lower_value() == 'event':
             assign_token(lObjects, iCurrent, predefined_attribute.event_keyword)
         else:
             assign_token(lObjects, iCurrent, predefined_attribute.keyword)

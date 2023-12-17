@@ -43,7 +43,7 @@ class token_prefix(naming.Rule):
             lPrefixLower.append(sPrefix.lower())
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            sToken = lTokens[0].get_value().lower()
+            sToken = lTokens[0].get_lower_value()
             bValid = False
             for sPrefix in lPrefixLower:
                 if sToken.startswith(sPrefix.lower()):

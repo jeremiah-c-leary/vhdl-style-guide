@@ -40,7 +40,7 @@ class rule_008(whitespace.Rule):
 
             iLine = utils.increment_line_number(iLine, oToken)
 
-            if oToken.get_value().lower() == 'std_logic_vector':
+            if oToken.get_lower_value() == 'std_logic_vector':
                 if utils.are_next_consecutive_token_types([parser.whitespace, parser.open_parenthesis], iToken + 1, lTokens):
                     lExtractedTokens = oToi.extract_tokens(iToken, iToken + 1)
                     oViolation = violation.New(iLine, lExtractedTokens, self.solution)
