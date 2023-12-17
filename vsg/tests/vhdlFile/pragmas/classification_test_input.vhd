@@ -13,6 +13,8 @@ entity FIFO is
 -- synthesis something
 -- synthesis something else
 -- synthesis something else entirely
+-- synthesis translate_off
+-- synthesis translate_on
 
 -- pragma
 -- pragma something

@@ -1,13 +1,13 @@
 
 architecture rtl of fifo is
 
-  -- synthesis translate_off
+  -- synthesis translate_on
 
   component my_block is
   end component;
 
 
-  -- synthesis translate_off
+  -- synthesis translate_on
 
   component my_block is
   end component;
