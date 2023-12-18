@@ -17,7 +17,7 @@ class test_generic_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_600(self):
+    def test_rule(self):
         oRule = generic.rule_600()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'generic')
@@ -29,7 +29,7 @@ class test_generic_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_rule_600_g_uppercase(self):
+    def test_rule_w_g_uppercase(self):
         oRule = generic.rule_600()
         oRule.suffixes = ['_G']
         self.assertTrue(oRule)
@@ -37,6 +37,15 @@ class test_generic_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, '600')
 
         lExpected = [14, 15]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_w_exceptions(self):
+        oRule = generic.rule_600()
+        oRule.exceptions.append('WIDTH_W')
+
+        lExpected = [15]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

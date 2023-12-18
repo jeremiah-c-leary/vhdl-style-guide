@@ -21,8 +21,6 @@ We can use the following configuration to change allowed prefix:
 
 .. code-block:: yaml
 
-   ---
-
     rule :
         variable_012:
             # Each prefix rule needs to be enabled explicitly.
@@ -38,13 +36,28 @@ We can use the following configuration to change allowed suffixes:
 
 .. code-block:: yaml
 
-   ---
+    rule :
+        port_025:
+            # Each suffix rule needs to be enabled explicitly.
+            disable: false
+            suffixes: ['_i', '_o']
+
+Exceptions to Prefix and Suffix Enforcement
+###########################################
+
+Exceptions to enforcing prefixes and suffixes can be given using the :code:`exceptions` option:
+
+.. code-block:: yaml
 
     rule :
         port_025:
             # Each suffix rule needs to be enabled explicitly.
             disable: false
             suffixes: ['_i', '_o']
+            exceptions: ['CLK']
+
+The exceptions option provides a list of keywords, that when matched, prevents the rule from validating the prefix or suffix.
+The keywords are treated as case insensitive.
 
 Rules Enforcing Prefixes and Suffixes
 #####################################
