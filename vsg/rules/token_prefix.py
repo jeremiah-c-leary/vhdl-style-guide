@@ -33,6 +33,8 @@ class token_prefix(naming.Rule):
         self.configuration.append('prefixes')
         self.fixable = False
         self.disable = True
+        self.exceptions = []
+        self.configuration.append('exceptions')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching(self.lTokens)
@@ -41,9 +43,17 @@ class token_prefix(naming.Rule):
         lPrefixLower = []
         for sPrefix in self.prefixes:
             lPrefixLower.append(sPrefix.lower())
+
+        lExceptionsLower = []
+        for sException in self.exceptions:
+            lExceptionsLower.append(sException.lower())
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_value().lower()
+            if sToken in lExceptionsLower:
+                continue
+
             bValid = False
             for sPrefix in lPrefixLower:
                 if sToken.startswith(sPrefix.lower()):
