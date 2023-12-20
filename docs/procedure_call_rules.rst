@@ -3,7 +3,7 @@
 Procedure Call Rules
 --------------------
 
-These rules handle **procedure_call_statement** and **concurrent_procedure_call_statement** elements.
+These rules handle **procedure_call_statement** and **concurrent_procedure_call_statement** productions.
 
 .. _procedure_call_structural_rules:
 
@@ -52,9 +52,9 @@ procedure_call_003
 
 |phase_1| |error| |structure|
 
-This rule checks the structure of concurrent procedure calls.
+This rule checks the structure of procedure calls.
 
-|configuring_multiline_concurrent_procedure_call_statement_rules_link|
+|configuring_multiline_procedure_call_statement_rules_link|
 
 **Violation**
 
