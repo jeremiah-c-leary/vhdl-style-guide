@@ -14,7 +14,10 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
     lNewStart = []
     if bIncludeTillBeginningOfLine:
         for iStart in lStart:
-            lNewStart.append(oTokenMap.get_index_of_carriage_return_before_index(iStart) + 1)
+            try:
+                lNewStart.append(oTokenMap.get_index_of_carriage_return_before_index(iStart) + 1)
+            except TypeError:
+                continue
     else:
         lNewStart = lStart
 

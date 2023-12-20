@@ -15,7 +15,7 @@ architecture RTl of FIFO is
   end component fifo;
 
   -- Failures below
-  component fifo is
+  component fifo is -- Comment
     generic (
       gen_dec1   : integer := 0; -- Comment
       gen_dec2     : integer := 1; -- Comment

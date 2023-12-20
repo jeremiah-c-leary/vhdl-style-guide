@@ -62,7 +62,7 @@ class align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens(
         self.separate_generic_port_alignment = utils.convert_yes_no_option_to_boolean(self.separate_generic_port_alignment)
         self.include_lines_without_comments = utils.convert_yes_no_option_to_boolean(self.include_lines_without_comments)
 
-        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
+        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=True)
         for oToi in lToi:
 
             if not_enough_tokens_to_align(oToi, self.lTokens):
