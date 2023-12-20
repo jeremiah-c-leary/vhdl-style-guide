@@ -5,11 +5,14 @@ from vsg import token
 
 lTokenPairs = []
 lTokenPairs.append([token.procedure_call.procedure_name, token.concurrent_procedure_call_statement.semicolon])
+lTokenPairs.append([token.procedure_call.procedure_name, token.procedure_call_statement.semicolon])
 
 
 class rule_003(Rule):
     '''
     This rule checks the structure of concurrent procedure calls.
+
+    |configuring_multiline_concurrent_procedure_call_statement_rules_link|
 
     **Violation**
 

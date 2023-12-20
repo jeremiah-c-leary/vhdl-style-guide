@@ -42,7 +42,8 @@ begin
   process
   begin
 
-    connect_ports(
+    connect_ports
+ (
       port_1   => data,
       port_2=> enable,
       port_3 => overflow,

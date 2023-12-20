@@ -85,3 +85,7 @@
 
 .. |configuring_vhdl_reserved_words_link| replace::
    Refer to :ref:`configuring-vhdl-reserved-words` for information on how to change which VHDL standard reserved words to use.
+
+.. |configuring_multiline_concurrent_procedure_call_statement_rules_link| replace::
+   Refer to :ref:`configuring-concurrent-procedure-call-statement-rules` for more configuration options.
+

@@ -54,6 +54,8 @@ procedure_call_003
 
 This rule checks the structure of concurrent procedure calls.
 
+|configuring_multiline_concurrent_procedure_call_statement_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
