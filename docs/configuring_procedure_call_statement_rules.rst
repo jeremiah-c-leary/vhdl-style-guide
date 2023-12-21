@@ -1,15 +1,18 @@
 
-.. _configuring-concurrent-procedure-call-statement-rules:
+.. _configuring-procedure-call-statement-rules:
 
-Configuring Concurrent Procedure Call Statement Rules
+Configuring Procedure Call Statement Rules
 -----------------------------------------------------
 
-There are rules which will check indent and formatting of constraints as part of a :code:`concurrent_procedure_call_statement`:
+There are rules which will check indent and formatting of constraints as part of a :code:`concurrent_procedure_call_statement` and :code:`procedure_call_statement`:
 
 .. code-block:: text
 
    concurrent_procedure_call_statement ::=
        [ label : ] [ postponed ] procedure_call ;
+
+   procedure_call_statement ::=
+       [ label : ] procedure_call ;
 
    procedure_call ::= procedure_name [ ( actual_parameter_part ) ]
 
@@ -22,7 +25,7 @@ There are rules which will check indent and formatting of constraints as part of
        [ formal_part => ] actual_part
 
 There are separate rules for the structure of the constraint and the indenting.
-Both rules are required to ensure proper formatting of concurrent procedure call statements.
+Both rules are required to ensure proper formatting of procedure call statements.
 
 There are several options to the structure rules:
 
@@ -66,7 +69,7 @@ There are several options to the structure rules:
 | :code:`association_list_comma`        | |purple_hexa_star| | |values2| | comma                  | |default_remove_new_line|  |                            |
 +---------------------------------------+--------------------+-----------+------------------------+----------------------------+----------------------------+
 
-The following figure illustrates where the options will be applied in an concurrent procedure call.
+The following figure illustrates where the options will be applied in an procedure call.
 
 .. image:: img/concurrent_procedure_call_code.png
 
@@ -75,7 +78,7 @@ The following configuration replicates the above code snippet.
 .. code-block:: yaml
 
    rule :
-     concurrent_procedure_call_003:
+     procedure_call_003:
         first_open_paren : 'remove_new_line'
         last_close_paren : 'add_new_line'
         association_list_comma : 'remove_new_line'
