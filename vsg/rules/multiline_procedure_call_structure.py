@@ -4,6 +4,7 @@ from vsg import token
 from vsg.rules import check
 from vsg.rules import fix
 from vsg.rules import tokens_of_interest as toi
+from vsg.rules import utils as rules_utils
 
 from vsg.rule_group import structure
 
@@ -29,12 +30,16 @@ class multiline_procedure_call_structure(structure.Rule):
         self.configuration.append('association_list_comma')
         self.association_element = 'ignore'
         self.configuration.append('association_element')
+        self.ignore_single_line = 'no'
+        self.configuration.append('ignore_single_line')
 
     def _get_tokens_of_interest(self, oFile):
         return toi.get_tokens_bounded_by(self.lTokenPairs, oFile)
 
     def _analyze(self, lToi):
         for oToi in lToi:
+            if rules_utils.is_single_line(oToi) and utils.convert_yes_no_option_to_boolean(self.ignore_single_line):
+                continue
 
             _check_first_open_paren(self, oToi)
             _check_last_close_paren(self, oToi)
