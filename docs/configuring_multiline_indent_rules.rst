@@ -50,7 +50,7 @@ This is an example of how to configure the option.
 .. code-block:: yaml
 
    rule :
-     constant_012:
+     concurrent_003:
         align_left : "no"
         align_paren : "yes"
 
