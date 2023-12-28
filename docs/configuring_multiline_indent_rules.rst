@@ -83,23 +83,22 @@ Example: |align_left| set to |default_no| and |align_paren| set to |default_no|
 .. code-block:: vhdl
 
   wr_en <= resize(unsigned(I_FOO) +
-                  unsigned(I_BAR), q_foo'length);
+             unsigned(I_BAR), q_foo'length);
 
   wr_en <=
            resize(unsigned(I_FOO) +
-                  unsigned(I_BAR), q_foo'length);
+             unsigned(I_BAR), q_foo'length);
 
 Example: |align_left| set to |default_yes| and |align_paren| set to |default_yes|
 #################################################################################
 
 .. code-block:: vhdl
-
   wr_en <= resize(unsigned(I_FOO) +
-      unsigned(I_BAR), q_foo'length);
+                  unsigned(I_BAR), q_foo'length);
 
   wr_en <=
     resize(unsigned(I_FOO) +
-    unsigned(I_BAR), q_foo'length);
+           unsigned(I_BAR), q_foo'length);
 
 Example: |align_left| set to |default_no| and |align_paren| set to |default_yes|
 ################################################################################
@@ -111,7 +110,7 @@ Example: |align_left| set to |default_no| and |align_paren| set to |default_yes|
 
   wr_en <=
            resize(unsigned(I_FOO) +
-                   unsigned(I_BAR), q_foo'length);
+                  unsigned(I_BAR), q_foo'length);
 
 Rules Enforcing Multiline Indent Rules
 ######################################
