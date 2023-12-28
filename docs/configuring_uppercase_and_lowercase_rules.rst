@@ -210,6 +210,10 @@ Rules Enforcing Case
 * `architecture_021 <architecture_rules.html#architecture-021>`_
 * `architecture_028 <architecture_rules.html#architecture-028>`_
 
+* `assert_500 <assert_rules.html#assert-500>`_
+* `assert_501 <assert_rules.html#assert-501>`_
+* `assert_502 <assert_rules.html#assert-502>`_
+
 * `attribute_500 <attribute_rules.html#attribute-500>`_
 
 * `attribute_declaration_500 <attribute_declaration_rules.html#attribute-declaration-500>`_

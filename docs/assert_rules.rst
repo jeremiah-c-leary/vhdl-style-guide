@@ -272,3 +272,72 @@ This rule checks the alignment of the report expressions.
             " to 16 bits."
      severity FAILURE;
 
+assert_500
+##########
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **assert** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ASSERT WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
+assert_501
+##########
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **report** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     REPORT "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
+assert_502
+##########
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **severity** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     SEVERITY FAILURE;
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
