@@ -4,7 +4,7 @@
 Configuring Uppercase and Lowercase Rules
 -----------------------------------------
 
-There are several rules that enforce upper_or_lower uppercase or lowercase.
+There are several rules that enforce upper_or_lower, uppercase or lowercase.
 
 There are several options to these rules:
 
