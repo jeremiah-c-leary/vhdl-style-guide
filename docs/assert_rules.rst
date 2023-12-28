@@ -170,6 +170,81 @@ This rule checks the **severity** keyword is on its own line for sequential asse
 
    end architecture rtl;
 
+assert_100
+##########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **assert** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   assert         WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
+assert_101
+##########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **report** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report      "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
+assert_102
+##########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **severity** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity       FAILURE;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   assert WIDTH > 16
+     report "FIFO width is limited to 16 bits."
+     severity FAILURE;
+
 assert_400
 ##########
 
