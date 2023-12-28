@@ -33,7 +33,7 @@ There are several options to these rules:
    :code:`yes`
 
 .. |default_no| replace::
-   :code:`no`   
+   :code:`no`
 
 +---------------+----------+---------------+----------------------+
 | Option        | Values   | Default       | Description          |
