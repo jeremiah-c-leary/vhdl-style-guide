@@ -9,7 +9,7 @@ lTokens.append(token.iteration_scheme.for_keyword)
 
 class rule_501(Rule):
     '''
-    This rule checks the **while** keyword has proper case.
+    This rule checks the **for** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
