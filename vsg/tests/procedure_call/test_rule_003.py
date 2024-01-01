@@ -38,6 +38,9 @@ lExpected_association_element__remove_new_line = []
 lExpected_association_element__remove_new_line.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_association_element__remove_new_line.vhd'), lExpected_association_element__remove_new_line)
 
+lExpected_ignore_single_line__yes = []
+lExpected_ignore_single_line__yes.append('')
+utils.read_file(os.path.join(sTestDir, 'rule_003_test_input.fixed_ignore_single_line__yes.vhd'), lExpected_ignore_single_line__yes)
 
 class test_rule(unittest.TestCase):
 
@@ -51,6 +54,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         self.assertEqual(oRule.groups, ['structure'])
 
@@ -69,6 +73,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         oRule.fix(self.oFile)
 
@@ -85,6 +90,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure_call')
@@ -101,6 +107,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         oRule.fix(self.oFile)
 
@@ -117,6 +124,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'add_new_line'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure_call')
@@ -133,6 +141,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'add_new_line'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         oRule.fix(self.oFile)
 
@@ -149,6 +158,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'remove_new_line'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure_call')
@@ -165,6 +175,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'remove_new_line'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         oRule.fix(self.oFile)
 
@@ -181,6 +192,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'remove_new_line'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure_call')
@@ -197,6 +209,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'remove_new_line'
         oRule.association_element = 'ignore'
+        oRule.ignore_single_line = 'no'
 
         oRule.fix(self.oFile)
 
@@ -213,6 +226,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'add_new_line'
+        oRule.ignore_single_line = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure_call')
@@ -229,6 +243,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'add_new_line'
+        oRule.ignore_single_line = 'no'
 
         oRule.fix(self.oFile)
 
@@ -245,6 +260,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'remove_new_line'
+        oRule.ignore_single_line = 'no'
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'procedure_call')
@@ -261,6 +277,7 @@ class test_rule(unittest.TestCase):
         oRule.last_close_paren = 'ignore'
         oRule.association_list_comma = 'ignore'
         oRule.association_element = 'remove_new_line'
+        oRule.ignore_single_line = 'no'
 
         oRule.fix(self.oFile)
 
@@ -271,3 +288,36 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_rule_003_ignore_single_line__yes(self):
+        oRule = procedure_call.rule_003()
+        oRule.first_open_paren = 'add_new_line'
+        oRule.last_close_paren = 'add_new_line'
+        oRule.association_list_comma = 'ignore'
+        oRule.association_element = 'add_new_line'
+        oRule.ignore_single_line = 'yes'
+
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'procedure_call')
+        self.assertEqual(oRule.identifier, '003')
+
+        lExpected = [8, 9, 9, 9, 9, 11, 11, 14, 16, 16, 16, 16, 16, 19, 40]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_003_ignore_single_line__yes(self):
+        oRule = procedure_call.rule_003()
+        oRule.first_open_paren = 'add_new_line'
+        oRule.last_close_paren = 'add_new_line'
+        oRule.association_list_comma = 'ignore'
+        oRule.association_element = 'add_new_line'
+        oRule.ignore_single_line = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_ignore_single_line__yes , lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
