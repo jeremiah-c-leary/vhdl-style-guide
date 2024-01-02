@@ -338,6 +338,12 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_iteration_scheme_doc(self):
+
+        lExpected, lActual = compare_files('iteration_scheme')
+
+        self.assertEqual(lExpected, lActual)
+
     def test_length_rules_doc(self):
 
         lExpected, lActual = compare_files('length')

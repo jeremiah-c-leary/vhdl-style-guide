@@ -1,7 +1,7 @@
 .. include:: includes.rst
 
 Iteration Scheme Rules
------------------------
+----------------------
 
 iteration_scheme_100
 ####################
