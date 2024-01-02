@@ -4,7 +4,7 @@
 Configuring Uppercase and Lowercase Rules
 -----------------------------------------
 
-There are several rules that enforce upper_or_lower uppercase or lowercase.
+There are several rules that enforce upper_or_lower, uppercase or lowercase.
 
 There are several options to these rules:
 
@@ -209,6 +209,10 @@ Rules Enforcing Case
 * `architecture_020 <architecture_rules.html#architecture-020>`_
 * `architecture_021 <architecture_rules.html#architecture-021>`_
 * `architecture_028 <architecture_rules.html#architecture-028>`_
+
+* `assert_500 <assert_rules.html#assert-500>`_
+* `assert_501 <assert_rules.html#assert-501>`_
+* `assert_502 <assert_rules.html#assert-502>`_
 
 * `attribute_500 <attribute_rules.html#attribute-500>`_
 

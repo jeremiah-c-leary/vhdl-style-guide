@@ -15,6 +15,9 @@ Rules Enforcing Whitespace Rule Group
 * `architecture_031 <../architecture_rules.html#architecture-031>`_
 * `architecture_032 <../architecture_rules.html#architecture-032>`_
 * `architecture_033 <../architecture_rules.html#architecture-033>`_
+* `assert_100 <../assert_rules.html#assert-100>`_
+* `assert_101 <../assert_rules.html#assert-101>`_
+* `assert_102 <../assert_rules.html#assert-102>`_
 * `attribute_declaration_100 <../attribute_declaration_rules.html#attribute-declaration-100>`_
 * `attribute_declaration_101 <../attribute_declaration_rules.html#attribute-declaration-101>`_
 * `attribute_specification_100 <../attribute_specification_rules.html#attribute-specification-100>`_

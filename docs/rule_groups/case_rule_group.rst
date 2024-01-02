@@ -20,6 +20,9 @@ Rules Enforcing Case Rule Group
 * `architecture_028 <../architecture_rules.html#architecture-028>`_
 * `architecture_600 <../architecture_rules.html#architecture-600>`_
 * `architecture_601 <../architecture_rules.html#architecture-601>`_
+* `assert_500 <../assert_rules.html#assert-500>`_
+* `assert_501 <../assert_rules.html#assert-501>`_
+* `assert_502 <../assert_rules.html#assert-502>`_
 * `attribute_500 <../attribute_rules.html#attribute-500>`_
 * `attribute_declaration_500 <../attribute_declaration_rules.html#attribute-declaration-500>`_
 * `attribute_declaration_501 <../attribute_declaration_rules.html#attribute-declaration-501>`_
