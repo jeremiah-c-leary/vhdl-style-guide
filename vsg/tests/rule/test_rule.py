@@ -13,6 +13,7 @@ from vsg.rules import option
 
 class command_line_args():
     ''' This is used as an input into the version command.'''
+
     def __init__(self, version=False):
         self.version = version
         self.style = 'indent_only'
@@ -36,8 +37,8 @@ class testRuleMethods(unittest.TestCase):
     def test_rule_id(self):
         oRule = rule.Rule()
         self.assertFalse(oRule.identifier)
-        oRule.id = 'rule id 001'
-        self.assertEqual(oRule.id, 'rule id 001')
+        oRule.identifier = 'rule id 001'
+        self.assertEqual(oRule.identifier, 'rule id 001')
 
     def test_rule_solution(self):
         oRule = rule.Rule()
@@ -73,7 +74,7 @@ class testRuleMethods(unittest.TestCase):
 
         lExpected = []
         lExpected.append(mock.call('INFO: This is a debug message'))
-        
+
         oRule._print_debug_message(sString)
 
         mock_stdout.write.assert_has_calls(lExpected)
@@ -140,7 +141,6 @@ class testRuleMethods(unittest.TestCase):
         dActual = oRule.get_violations_at_linenumber(2)
         self.assertEqual('Second', dActual[0]['solution'])
 
-
     def test_has_violations_method(self):
         oRule = rule.Rule()
 
@@ -151,7 +151,6 @@ class testRuleMethods(unittest.TestCase):
         oViolation = violation.New(0, oTokens, '')
         oRule.add_violation(oViolation)
         self.assertTrue(oRule.has_violations())
-
 
     def test_deprecated_rule(self):
         oRule = deprecated_rule.Rule('some_rule', '001')
@@ -176,4 +175,3 @@ class testRuleMethods(unittest.TestCase):
 
     def test_option_object_can_be_created(self):
         oOption = option.New('option_name')
-
