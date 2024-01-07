@@ -1,4 +1,3 @@
-
 architecture ARCH of FIFO is
 
   signal sig1 : std_logic; -- comment
