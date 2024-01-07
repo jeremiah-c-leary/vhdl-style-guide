@@ -30,7 +30,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '400')
 
-        lExpected = [27, 28, 30, 31, 39, 43, 46, 49, 55, 58, 61, 66]
+        lExpected = [27, 28, 30, 31, 39, 43, 46, 49, 55, 58, 61, 66, 78, 79, 80, 81]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -44,7 +44,7 @@ class test_rule(unittest.TestCase):
         oRule.case_control_statements_ends_group = True
         oRule.loop_control_statements_ends_group = True
 
-        lExpected = [27, 28, 30, 31, 39, 43, 46, 49, 55, 58, 61, 66]
+        lExpected = [27, 28, 30, 31, 39, 43, 46, 49, 55, 58, 61, 66, 78, 79, 80, 81]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -85,7 +85,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'process')
         self.assertEqual(oRule.identifier, '400')
 
-        lExpected = [24, 25, 27, 28, 31, 39, 40, 43, 44, 46, 47, 49, 50, 55, 56, 58, 59, 61, 66]
+        lExpected = [24, 25, 27, 28, 31, 39, 40, 43, 44, 46, 47, 49, 50, 55, 56, 58, 59, 61, 66, 78, 79, 80]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -99,7 +99,7 @@ class test_rule(unittest.TestCase):
         oRule.case_control_statements_ends_group = False
         oRule.loop_control_statements_ends_group = False
 
-        lExpected = [24, 25, 27, 28, 31, 39, 40, 43, 44, 46, 47, 49, 50, 55, 56, 58, 59, 61, 66]
+        lExpected = [24, 25, 27, 28, 31, 39, 40, 43, 44, 46, 47, 49, 50, 55, 56, 58, 59, 61, 66, 78, 79, 80]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
