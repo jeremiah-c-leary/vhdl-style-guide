@@ -7,13 +7,13 @@ architecture rtl of fifo is begin
           );
 
   s_foo <= (
-            item     => 12,
+            item         => 12,
             another_item => 34
           );
 
-  s_foo <= ( item1    => 12,
-             item2=> f(a, b ,c),
-             item3       => 36
+  s_foo <= ( item1 => 12,
+             item2 => f(a, b ,c),
+             item3 => 36
            );
 
   s_foo <= (a and
@@ -30,9 +30,9 @@ architecture rtl of fifo is begin
   );
 
   test_signal <= (
-    others=> (
-      data        => (others => '0'),
-      update_pulse=> '0'
+    others => (
+      data         => (others => '0'),
+      update_pulse => '0'
     )
   );
 

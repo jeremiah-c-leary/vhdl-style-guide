@@ -195,3 +195,16 @@ def check_for_aggregate_parens(iToken, lTokens):
         return True
 
     return False
+
+
+def is_single_line_aggregate(iToken, lTokens):
+    if not isinstance(lTokens[iToken], token.aggregate.open_parenthesis):
+        return False
+
+    for iIndex in range(iToken, len(lTokens)):
+        if isinstance(lTokens[iIndex], parser.carriage_return):
+            return False 
+        if isinstance(lTokens[iIndex], token.aggregate.close_parenthesis):
+            if lTokens[iIndex].iId == lTokens[iToken].iId:
+                return True
+    return False

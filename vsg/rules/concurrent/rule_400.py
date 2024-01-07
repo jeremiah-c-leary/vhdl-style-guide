@@ -47,3 +47,5 @@ class rule_400(Rule):
         self.blank_line_ends_group = 'no'
         self.configuration.remove('separate_generic_port_alignment')
         self.bIncludeTillBeginningOfLine = True
+        self.configuration.append('aggregate_parens_ends_group')
+        self.configuration.append('ignore_single_line_aggregates')

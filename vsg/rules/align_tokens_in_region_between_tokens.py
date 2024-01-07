@@ -11,7 +11,7 @@ from vsg.vhdlFile import utils
 
 class align_tokens_in_region_between_tokens(alignment.Rule):
     '''
-    Checks for a single space between two tokens.
+    Aligns tokens in a region.
 
     Parameters
     ----------
@@ -51,6 +51,8 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
 
         self.generate_statement_ends_group = 'no'
         self.bIncludeTillBeginningOfLine = False
+        self.aggregate_parens_ends_group = 'no'
+        self.ignore_single_line_aggregates = 'no'
         self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'
 
     def analyze(self, oFile):
@@ -59,6 +61,8 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
         self.separate_generic_port_alignment = utils.convert_yes_no_option_to_boolean(self.separate_generic_port_alignment)
         self.generate_statement_ends_group = utils.convert_yes_no_option_to_boolean(self.generate_statement_ends_group)
+        self.aggregate_parens_ends_group = utils.convert_yes_no_option_to_boolean(self.aggregate_parens_ends_group)
+        self.ignore_single_line_aggregates = utils.convert_yes_no_option_to_boolean(self.ignore_single_line_aggregates)
 
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)
         for oToi in lToi:
@@ -68,11 +72,12 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
             bTokenFound = False
             iToken = -1
             dAnalysis = {}
+            iIndex = 0
 
             if rules_utils.number_of_carriage_returns(lTokens) == 0:
                 continue
 
-            for iIndex in range(0, len(lTokens)):
+            while iIndex < len(lTokens):
                iToken += 1
                oToken = lTokens[iIndex]
 
@@ -161,6 +166,25 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                                    self.add_violation(oViolation)
 
                            dAnalysis = {}
+
+               elif self.ignore_single_line_aggregates and alignment_utils.is_single_line_aggregate(iIndex, lTokens):
+                   iIndex = rules_utils.get_index_of_matching_close_paren(iIndex, lTokens)
+               elif self.aggregate_parens_ends_group:
+                   if alignment_utils.check_for_aggregate_parens(iIndex, lTokens):
+                       if not self.ignore_single_line_aggregates or not alignment_utils.is_single_line_aggregate(iToken, lTokens):
+                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+
+                           for iKey in list(dAnalysis.keys()):
+                               if dAnalysis[iKey]['adjust'] != 0:
+                                   oLineTokens = oFile.get_tokens_from_line(iKey)
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
+                                   oViolation.set_action(dAnalysis[iKey])
+                                   self.add_violation(oViolation)
+
+                           dAnalysis = {}
+
+               iIndex += 1
 
             alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
