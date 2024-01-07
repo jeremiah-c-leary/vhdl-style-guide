@@ -42,6 +42,8 @@ class New():
         if iIndex == 0:
             return None
         iTemp = bisect.bisect_left(self.dMap['parser']['carriage_return'], iIndex) - 1
+        if iIndex < self.dMap['parser']['carriage_return'][iTemp]:
+            return iIndex
         return self.dMap['parser']['carriage_return'][iTemp]
 
     def get_index_of_token_after_index(self, oToken, iIndex):
