@@ -36,8 +36,8 @@ class testRuleMethods(unittest.TestCase):
     def test_rule_id(self):
         oRule = rule.Rule()
         self.assertFalse(oRule.identifier)
-        oRule.id = 'rule id 001'
-        self.assertEqual(oRule.id, 'rule id 001')
+        oRule.identifier = 'rule id 001'
+        self.assertEqual(oRule.identifier, 'rule id 001')
 
     def test_rule_solution(self):
         oRule = rule.Rule()
@@ -73,7 +73,7 @@ class testRuleMethods(unittest.TestCase):
 
         lExpected = []
         lExpected.append(mock.call('INFO: This is a debug message'))
-        
+
         oRule._print_debug_message(sString)
 
         mock_stdout.write.assert_has_calls(lExpected)
