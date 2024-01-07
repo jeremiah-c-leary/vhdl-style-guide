@@ -9,6 +9,7 @@ lAlign.append(token.simple_force_assignment.assignment)
 lAlign.append(token.simple_release_assignment.assignment)
 lAlign.append(token.simple_variable_assignment.assignment)
 lAlign.append(token.conditional_variable_assignment.assignment)
+lAlign.append(token.conditional_waveform_assignment.assignment)
 
 oStart = token.process_statement.begin_keyword
 oEnd = token.process_statement.end_keyword

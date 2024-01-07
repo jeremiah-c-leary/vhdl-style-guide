@@ -69,4 +69,17 @@ begin
 
   end process;
 
+  -- Check for alignment of assignment types
+
+  PROC_3 : process
+
+  begin
+
+    a <= x;
+    aa <= force x;
+    aaa <= release;
+    aaaa   <= x when y = z else w;
+
+  end process;
+
 end architecture RTL;
