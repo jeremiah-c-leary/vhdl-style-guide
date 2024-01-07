@@ -58,6 +58,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         self.configuration.append('case_control_statements_ends_group')
         self.loop_control_statements_ends_group = 'no'
         self.configuration.append('loop_control_statements_ends_group')
+        self.aggregate_parens_ends_group = 'no'
 
         self.include_type_is_keyword = 'no'
 
@@ -71,6 +72,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         self.if_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.if_control_statements_ends_group)
         self.case_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.case_control_statements_ends_group)
         self.loop_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.loop_control_statements_ends_group)
+        self.aggregate_parens_ends_group = utils.convert_yes_no_option_to_boolean(self.aggregate_parens_ends_group)
         self.include_type_is_keyword = utils.convert_yes_no_option_to_boolean(self.include_type_is_keyword)
 
         lSearchTokens = []
@@ -188,7 +190,19 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
 
                            dAnalysis = {}
 
+               elif self.aggregate_parens_ends_group:
+                   if alignment_utils.check_for_aggregate_parens(iIndex, lTokens):
+                       alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
+                       for iKey in list(dAnalysis.keys()):
+                           if dAnalysis[iKey]['adjust'] != 0:
+                               oLineTokens = oFile.get_tokens_from_line(iKey)
+                               sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                               oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
+                               oViolation.set_action(dAnalysis[iKey])
+                               self.add_violation(oViolation)
+
+                       dAnalysis = {}
 
             alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 

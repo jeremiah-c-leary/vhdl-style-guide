@@ -85,6 +85,15 @@ There are several options to these rules:
 .. |loop_control_statements_ends_group__no| replace::
    :code:`no` = continue when a loop control statement keyword is encountered.
 
+.. |aggregate_parens_ends_group| replace::
+   :code:`aggregate_parens_ends_group`
+
+.. |aggregate_parens_ends_group__yes| replace::
+   :code:`yes` = stop when an aggregate parenthesis is encountered.
+
+.. |aggregate_parens_ends_group__no| replace::
+   :code:`no` = continue when an aggregate parenthesis is encountered.
+
 .. |include_type_is_keyword| replace::
    :code:`include_type_is_keyword`
 
@@ -127,6 +136,9 @@ There are several options to these rules:
 .. |values_lcseg| replace::
    :code:`yes`, :code:`no`
 
+.. |values_apeg| replace::
+   :code:`yes`, :code:`no`
+
 .. |values_itik| replace::
    :code:`yes`, :code:`no`
 
@@ -161,6 +173,9 @@ There are several options to these rules:
 | |include_type_is_keyword|            | |values_itik|  | |no|     | * |include_type_is_keyword__yes|               |
 |                                      |                |          | * |include_type_is_keyword__no|                |
 +--------------------------------------+----------------+----------+------------------------------------------------+
+| |aggregate_parens_ends_group|        | |values_apeg|  | |no|     | * |aggregate_parens_ends_group__yes|           |
+|                                      |                |          | * |aggregate_parens_ends_group__no|            |
++--------------------------------------+----------------+----------+------------------------------------------------+
 
 This is an example of how to configure these options.
 
@@ -176,6 +191,7 @@ This is an example of how to configure these options.
         case_control_statements_ends_group: 'yes'
         generate_statements_ends_group: 'yes'
         loop_control_statements_ends_group: 'yes'
+        aggregate_parens_ends_group: 'yes'
         include_type_is_keyword: 'no'
 
 
@@ -749,6 +765,83 @@ Any blank line encountered in the VHDL file will not end the group of lines that
       constant c_short_period : time;
       constant c_long_period  : time;
 
+Example: |aggregate_parens_ends_group| set to |yes|
+###################################################
+
+Any aggregate parenthesis encountered in the VHDL file will end the group of lines that should be aligned.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1   => (
+          A      => 1,
+          B      => 2,
+          C      => 3
+        ),
+        ENUM_234 => (
+          AA     => 1,
+          BB     => 2,
+          CC     => 3
+        )
+      );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1 => (
+          A => 1,
+          B => 2,
+          C => 3
+        ),
+        ENUM_234 => (
+          AA => 1,
+          BB => 2,
+          CC => 3
+        )
+      );
+
+Example: |aggregate_parens_ends_group| set to |no|
+##################################################
+
+Any aggregate parenthesis encountered in the VHDL file will not end the group of lines that should be aligned.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1 => (
+          A => 1,
+          B => 2,
+          C => 3
+        ),
+        ENUM_234 => (
+          AA => 1,
+          BB => 2,
+          CC => 3
+        )
+      );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1   => (
+          A      => 1,
+          B      => 2,
+          C      => 3
+        ),
+        ENUM_234 => (
+          AA     => 1,
+          BB     => 2,
+          CC     => 3
+        )
+      );
 
 Rules Enforcing Keyword Alignment
 #################################

@@ -183,3 +183,15 @@ def check_for_loop_keywords(iToken, lTokens):
         return True
 
     return False
+
+
+def check_for_aggregate_parens(iToken, lTokens):
+    iMyToken = iToken
+
+    if isinstance(lTokens[iMyToken], token.aggregate.open_parenthesis):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.aggregate.close_parenthesis):
+        return True
+
+    return False
