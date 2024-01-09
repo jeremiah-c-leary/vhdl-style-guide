@@ -123,98 +123,36 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
                    if self.comment_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \
                           utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
-                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
-
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
+
                    if self.blank_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
-                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
-
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
 
                    if self.if_control_statements_ends_group:
                        if alignment_utils.check_for_if_keywords(iIndex + 1, lTokens):
-                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
-
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
 
-                   if is_case_control_enabled(self.case_control_statements_ends_group):
-                       if is_case_keyword(self.case_control_statements_ends_group, iIndex, lTokens):
-                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
-
+                   if alignment_utils.is_case_control_enabled(self.case_control_statements_ends_group):
+                       if alignment_utils.is_case_keyword(self.case_control_statements_ends_group, iIndex, lTokens):
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
 
                    if self.loop_control_statements_ends_group:
                        if alignment_utils.check_for_loop_keywords(iIndex + 1, lTokens):
-                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
-
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
 
                elif self.aggregate_parens_ends_group:
                    if alignment_utils.check_for_aggregate_parens(iIndex, lTokens):
-                       alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-                       for iKey in list(dAnalysis.keys()):
-                           if dAnalysis[iKey]['adjust'] != 0:
-                               oLineTokens = oFile.get_tokens_from_line(iKey)
-                               sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                               oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                               oViolation.set_action(dAnalysis[iKey])
-                               self.add_violation(oViolation)
-
+                       alignment_utils.check_for_violations(self, dAnalysis, oFile)
                        dAnalysis = {}
 
-            alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
-
-            for iKey in list(dAnalysis.keys()):
-                if dAnalysis[iKey]['adjust'] != 0:
-                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                    sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                    oViolation.set_action(dAnalysis[iKey])
-                    self.add_violation(oViolation)
-
+            alignment_utils.check_for_violations(self, dAnalysis, oFile)
             dAnalysis = {}
 
     def _fix_violation(self, oViolation):
@@ -228,17 +166,3 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
         else:
             rule_utils.insert_whitespace(lTokens, iTokenIndex, dAction['adjust'])
         oViolation.set_tokens(lTokens)
-
-
-def is_case_control_enabled(config):
-    if config == 'break_on_case_or_end_case':
-        return True
-    return config
-
-def is_case_keyword(config, iIndex, lTokens):
-    if alignment_utils.check_for_case_keywords(iIndex + 1, lTokens):
-        return True
-    if alignment_utils.check_for_when_keywords(iIndex + 1, lTokens):
-        if config != 'break_on_case_or_end_case':
-           return True
-    return False

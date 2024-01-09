@@ -99,39 +99,15 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                    iColumn += alignment_utils.update_column_width(self, oToken)
 
                if isinstance(oToken, token.generic_clause.semicolon) and self.separate_generic_port_alignment:
-                   alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-                   for iKey in list(dAnalysis.keys()):
-                       if dAnalysis[iKey]['adjust'] != 0:
-                           oLineTokens = oFile.get_tokens_from_line(iKey)
-                           sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                           oViolation.set_action(dAnalysis[iKey])
-                           self.add_violation(oViolation)
-
+                   alignment_utils.check_for_violations(self, dAnalysis, oFile)
                    dAnalysis = {}
 
                if isinstance(oToken, token.generic_map_aspect.close_parenthesis) and self.separate_generic_port_alignment:
-                   alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-                   for iKey in list(dAnalysis.keys()):
-                       if dAnalysis[iKey]['adjust'] != 0:
-                           oLineTokens = oFile.get_tokens_from_line(iKey)
-                           sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                           oViolation.set_action(dAnalysis[iKey])
-                           self.add_violation(oViolation)
-
+                   alignment_utils.check_for_violations(self, dAnalysis, oFile)
                    dAnalysis = {}
 
-               if generate_statement_detected(self, oToken):
-                   alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-                   for iKey in list(dAnalysis.keys()):
-                       if dAnalysis[iKey]['adjust'] != 0:
-                           oLineTokens = oFile.get_tokens_from_line(iKey)
-                           sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                           oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                           oViolation.set_action(dAnalysis[iKey])
-                           self.add_violation(oViolation)
-
+               if alignment_utils.generate_statement_detected(self, oToken):
+                   alignment_utils.check_for_violations(self, dAnalysis, oFile)
                    dAnalysis = {}
 
                if isinstance(oToken, parser.carriage_return):
@@ -142,29 +118,12 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                    if self.comment_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \
                           utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
-                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
-
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
 
                    if self.blank_line_ends_group:
                        if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
-                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
-
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
 
                elif self.ignore_single_line_aggregates and alignment_utils.is_single_line_aggregate(iIndex, lTokens):
@@ -172,30 +131,12 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                elif self.aggregate_parens_ends_group:
                    if alignment_utils.check_for_aggregate_parens(iIndex, lTokens):
                        if not self.ignore_single_line_aggregates or not alignment_utils.is_single_line_aggregate(iToken, lTokens):
-                           alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
-
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
 
                iIndex += 1
 
-            alignment_utils.add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-
-            for iKey in list(dAnalysis.keys()):
-                if dAnalysis[iKey]['adjust'] != 0:
-                    oLineTokens = oFile.get_tokens_from_line(iKey)
-                    sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
-                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
-                    oViolation.set_action(dAnalysis[iKey])
-                    self.add_violation(oViolation)
-
+            alignment_utils.check_for_violations(self, dAnalysis, oFile)
             dAnalysis = {}
 
     def _fix_violation(self, oViolation):
@@ -212,37 +153,3 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         oViolation.set_tokens(lTokens)
 
 
-def generate_statement_detected(self, oToken):
-    if not self.generate_statement_ends_group:
-        return False
-    if generate_label_detected(oToken):
-        return True
-    if generate_semicolon_detected(oToken):
-        return True
-    if case_generate_alternative_detected(oToken):
-        return True
-    return False
-
-
-def generate_label_detected(oToken):
-    if isinstance(oToken, token.if_generate_statement.generate_label):
-        return True
-    if isinstance(oToken, token.for_generate_statement.generate_label):
-        return True
-    return False
-
-
-def generate_semicolon_detected(oToken):
-    if isinstance(oToken, token.if_generate_statement.semicolon):
-        return True
-    if isinstance(oToken, token.for_generate_statement.semicolon):
-        return True
-    if isinstance(oToken, token.case_generate_statement.semicolon):
-        return True
-    return False
-
-
-def case_generate_alternative_detected(oToken):
-    if isinstance(oToken, token.case_generate_alternative.when_keyword):
-        return True
-    return False
