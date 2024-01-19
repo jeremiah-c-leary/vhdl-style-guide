@@ -6,7 +6,7 @@ Case Generate Alternative Rules
 case_generate_alternative_300
 #############################
 
-The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
+The function of this rule has been superseded with comment indent updates and is handled by rule comment_010.
 
 case_generate_alternative_500
 #############################
