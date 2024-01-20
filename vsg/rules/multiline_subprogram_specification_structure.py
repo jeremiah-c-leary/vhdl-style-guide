@@ -27,6 +27,8 @@ class multiline_subprogram_specification_structure(structure.Rule):
         self.configuration.append('first_open_paren')
         self.last_close_paren = 'add_new_line'
         self.configuration.append('last_close_paren')
+        self.interface_list_semicolon = 'remove_new_line'
+        self.configuration.append('interface_list_semicolon')
         self.interface_element = 'add_new_line'
         self.configuration.append('interface_element')
         self.ignore_single_line = 'no'
@@ -42,6 +44,7 @@ class multiline_subprogram_specification_structure(structure.Rule):
 
             _check_first_open_paren(self, oToi)
             _check_last_close_paren(self, oToi)
+            _check_interface_list_semicolon(self, oToi)
             _check_interface_element(self, oToi)
 
         self._sort_violations()
@@ -58,6 +61,11 @@ def _check_first_open_paren(self, oToi):
 def _check_last_close_paren(self, oToi):
 
     check.add_new_line_and_remove_new_line(self, oToi, self.last_close_paren, self.oSubprogramSpecification.close_parenthesis)
+
+
+def _check_interface_list_semicolon(self, oToi):
+
+    check.add_new_line_and_remove_new_line(self, oToi, self.interface_list_semicolon, token.interface_list.semicolon)
 
 
 def _check_interface_element(self, oToi):
