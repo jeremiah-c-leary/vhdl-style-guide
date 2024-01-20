@@ -3,9 +3,9 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rule_group import alignment
 from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
-from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
 
 
@@ -32,13 +32,13 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
        The second token that defines the region
     '''
 
-    def __init__(self, name, identifier, lTokens, left_token, right_token, bIndexes=False):
+    def __init__(self, name, identifier, lTokens, left_token, right_token):
         alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.lTokens = lTokens
         self.left_token = left_token
         self.right_token = right_token
-        self.bIndexes = bIndexes
-        ## Stuff below is from original keyword_alignment_rule
+        self.lUnless = []
+        ## attributes below are configurable by the user
 
         self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
@@ -49,28 +49,51 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         self.separate_generic_port_alignment = 'yes'
         self.configuration.append('separate_generic_port_alignment')
 
+        self.if_control_statements_ends_group = 'no'
+        self.configuration.append('if_control_statements_ends_group')
+        self.case_control_statements_ends_group = 'no'
+        self.configuration.append('case_control_statements_ends_group')
+        self.loop_control_statements_ends_group = 'no'
+        self.configuration.append('loop_control_statements_ends_group')
         self.generate_statement_ends_group = 'no'
         self.bIncludeTillBeginningOfLine = False
         self.aggregate_parens_ends_group = 'no'
         self.ignore_single_line_aggregates = 'no'
         self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'
 
+        self.include_type_is_keyword = 'no'
+
+    def _get_tokens_of_interest(self, oFile):
+        return oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)
+
     def analyze(self, oFile):
         self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
         self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
         self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+        self.if_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.if_control_statements_ends_group)
+        self.case_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.case_control_statements_ends_group)
+        self.loop_control_statements_ends_group = utils.convert_yes_no_option_to_boolean(self.loop_control_statements_ends_group)
         self.separate_generic_port_alignment = utils.convert_yes_no_option_to_boolean(self.separate_generic_port_alignment)
         self.generate_statement_ends_group = utils.convert_yes_no_option_to_boolean(self.generate_statement_ends_group)
         self.aggregate_parens_ends_group = utils.convert_yes_no_option_to_boolean(self.aggregate_parens_ends_group)
         self.ignore_single_line_aggregates = utils.convert_yes_no_option_to_boolean(self.ignore_single_line_aggregates)
+        self.include_type_is_keyword = utils.convert_yes_no_option_to_boolean(self.include_type_is_keyword)
 
-        lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token, bIncludeTillBeginningOfLine=self.bIncludeTillBeginningOfLine)
+        lSearchTokens = []
+        lSearchTokens.extend(self.lTokens)
+
+        if self.include_type_is_keyword:
+            lSearchTokens.append(self.is_keyword)
+
+        lToi = self._get_tokens_of_interest(oFile)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             iLine = oToi.get_line_number()
             iColumn = 0
             bTokenFound = False
             iToken = -1
+            bSkip = False
+            oEndSkipToken = None
             dAnalysis = {}
             iIndex = 0
 
@@ -80,9 +103,19 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
             while iIndex < len(lTokens):
                iToken += 1
                oToken = lTokens[iIndex]
+#               print(oToken)
 
-               if not bTokenFound:
-                   for oSearch in self.lTokens:
+#               if alignment_utils.unless_region_detected(oToken, self.lUnless):
+#                   print('Got Here')
+#                   iIndex = alignment_utils.get_index_of_end_unless_region(oToken, lTokens, self.lUnless, iIndex)
+#                   iIndex += 1
+#                   continue
+               bSkip, oEndSkipToken = alignment_utils.check_for_exclusions(oToken, bSkip, oEndSkipToken, self.lUnless)
+#               print(bSkip)
+
+               if not bTokenFound and not bSkip:
+#               if not bTokenFound:
+                   for oSearch in lSearchTokens:
                        if isinstance(oToken, oSearch):
                            bTokenFound = True
                            dAnalysis[iLine] = {}
@@ -126,6 +159,21 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
                            alignment_utils.check_for_violations(self, dAnalysis, oFile)
                            dAnalysis = {}
 
+                   if self.if_control_statements_ends_group:
+                       if alignment_utils.check_for_if_keywords(iIndex + 1, lTokens):
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
+                           dAnalysis = {}
+
+                   if alignment_utils.is_case_control_enabled(self.case_control_statements_ends_group):
+                       if alignment_utils.is_case_keyword(self.case_control_statements_ends_group, iIndex, lTokens):
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
+                           dAnalysis = {}
+
+                   if self.loop_control_statements_ends_group:
+                       if alignment_utils.check_for_loop_keywords(iIndex + 1, lTokens):
+                           alignment_utils.check_for_violations(self, dAnalysis, oFile)
+                           dAnalysis = {}
+
                elif self.ignore_single_line_aggregates and alignment_utils.is_single_line_aggregate(iIndex, lTokens):
                    iIndex = rules_utils.get_index_of_matching_close_paren(iIndex, lTokens)
                elif self.aggregate_parens_ends_group:
@@ -151,5 +199,3 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
         else:
             rules_utils.insert_whitespace(lTokens, iTokenIndex, dAction['adjust'])
         oViolation.set_tokens(lTokens)
-
-

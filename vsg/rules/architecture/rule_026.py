@@ -52,3 +52,4 @@ class rule_026(Rule):
         self.subphase = 3
         self.configuration.append('include_type_is_keyword')
         self.is_keyword = token.full_type_declaration.is_keyword
+        self.configuration.remove('separate_generic_port_alignment')

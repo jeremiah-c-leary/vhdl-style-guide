@@ -4,6 +4,7 @@ from vsg import token
 from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rules import utils as rules_utils
 
 
 def build_solution(sIndent):
@@ -270,3 +271,17 @@ def is_case_keyword(config, iIndex, lTokens):
         if config != 'break_on_case_or_end_case':
            return True
     return False
+
+
+def unless_region_detected(oToken, lUnless):
+    for lTokenPairs in lUnless:
+        if isinstance(oToken, lTokenPairs[0]):
+            return True
+    return False
+
+
+def get_index_of_end_unless_region(oToken, lTokens, lUnless, iIndex):
+    for lTokenPairs in lUnless:
+        if isinstance(oToken, lTokenPairs[0]):
+            return rules_utils.get_index_of_token_in_list_after_index(lTokenPairs[1], lTokens, iIndex)
+

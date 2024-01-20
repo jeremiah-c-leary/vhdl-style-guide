@@ -44,3 +44,6 @@ class rule_401(Rule):
         self.solution = 'Align =>.'
         self.subphase = 2
         self.bIncludeTillBeginningOfLine = True
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')
