@@ -29,7 +29,6 @@ class rule_013(Rule):
           i_arg1 : integer;
           i_arg2 : boolean
         );
-
     '''
 
     def __init__(self):

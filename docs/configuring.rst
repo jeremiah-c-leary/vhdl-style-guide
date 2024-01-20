@@ -31,6 +31,7 @@ Configuring
    configuring_procedure_call_statement_rules.rst
    configuring_rule_groups.rst
    configuring_simple_multiline_structure_rules.rst
+   configuring_subprogram_specification_statement_rules.rst
    configuring_type_of_instantiations.rst
    configuring_uppercase_and_lowercase_rules.rst
    configuring_use_clause_indenting.rst
