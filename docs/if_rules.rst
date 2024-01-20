@@ -687,12 +687,12 @@ The default style is :code:`no_code`.
 if_032
 ######
 
-The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
+The function of this rule has been superseded with comment indent updates and is handled by rule comment_010.
 
 if_033
 ######
 
-The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
+The function of this rule has been superseded with comment indent updates and is handled by rule comment_010.
 
 if_034
 ######
