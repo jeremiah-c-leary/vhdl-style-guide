@@ -8,7 +8,7 @@ from vsg.rules import token_prefix as Rule
 
 class token_prefix_between_tokens(Rule):
     '''
-    Checks the case for words.
+    Checks the prefix for words between tokens.
 
     Parameters
     ----------
