@@ -339,7 +339,7 @@ class rule_list():
 
         Returns: (junit testcase object)
         '''
-        oTestcase = junit.testcase(sVhdlFileName, str(0), 'failure')
+        oTestcase = junit.testcase(sVhdlFileName, str(0))
         oFailure = junit.failure('Failure')
         for oRule in self.rules:
             if len(oRule.violations) > 0 and oRule.severity.type == severity.error_type:
@@ -348,7 +348,9 @@ class rule_list():
                     sLine += str(utils.get_violation_line_number(dViolation)) + ' : '
                     sLine += dViolation.get_solution()
                     oFailure.add_text(sLine)
-        oTestcase.add_failure(oFailure)
+
+        if oFailure.has_text():
+            oTestcase.add_failure(oFailure)
 
         return oTestcase
 

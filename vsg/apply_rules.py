@@ -175,7 +175,7 @@ def create_junit_testcase(sVhdlFileName, oException):
 
     Returns: (junit testcase object)
     '''
-    oTestcase = junit.testcase(sVhdlFileName, str(0), 'failure')
+    oTestcase = junit.testcase(sVhdlFileName, str(0))
     oFailure = junit.failure('Failure')
     oFailure.add_text(oException.message)
     oTestcase.add_failure(oFailure)
