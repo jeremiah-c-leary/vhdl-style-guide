@@ -29,3 +29,5 @@ from .rule_504 import rule_504
 
 from .rule_600 import rule_600
 from .rule_601 import rule_601
+from .rule_602 import rule_602
+from .rule_603 import rule_603

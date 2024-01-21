@@ -35,9 +35,16 @@ Rules Disabled by Default
 * `comment_011 <comment_rules.html#comment-011>`_
 * `constant_015 <constant_rules.html#constant-015>`_
 * `generate_017 <generate_rules.html#generate-017>`_
+* `generate_600 <generate_rules.html#generate-600>`_
+* `generate_601 <generate_rules.html#generate-601>`_
+* `generate_602 <generate_rules.html#generate-602>`_
 * `generic_020 <generic_rules.html#generic-020>`_
 * `instantiation_600 <instantiation_rules.html#instantiation-600>`_
 * `instantiation_601 <instantiation_rules.html#instantiation-601>`_
+* `loop_600 <loop_statement_rules.html#loop-statement-600>`_
+* `loop_601 <loop_statement_rules.html#loop-statement-601>`_
+* `loop_602 <loop_statement_rules.html#loop-statement-602>`_
+* `loop_603 <loop_statement_rules.html#loop-statement-603>`_
 * `package_016 <package_rules.html#package-016>`_
 * `package_017 <package_rules.html#package-017>`_
 * `package_body_600 <package_body_rules.html#package-body-600>`_
