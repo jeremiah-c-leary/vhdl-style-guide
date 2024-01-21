@@ -63,6 +63,8 @@ Rules Disabled by Default
 * `loop_statement_007 <loop_statement_rules.html#loop-statement-007>`_
 * `loop_statement_600 <loop_statement_rules.html#loop-statement-600>`_
 * `loop_statement_601 <loop_statement_rules.html#loop-statement-601>`_
+* `loop_statement_602 <loop_statement_rules.html#loop-statement-602>`_
+* `loop_statement_603 <loop_statement_rules.html#loop-statement-603>`_
 * `package_016 <package_rules.html#package-016>`_
 * `package_017 <package_rules.html#package-017>`_
 * `package_body_600 <package_body_rules.html#package-body-600>`_
