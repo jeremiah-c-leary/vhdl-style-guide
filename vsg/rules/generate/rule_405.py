@@ -50,3 +50,5 @@ class rule_405(align_tokens_in_region_between_tokens_when_between_tokens_unless_
         align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens.__init__(self, 'generate', '405', lAlign, oStartToken, oEndToken, lBetweenTokens, lUnless)
         self.solution = 'Align colon.'
         self.subphase = 2
+        self.configuration.remove('loop_control_statements_ends_group')
+        self.configuration.remove('separate_generic_port_alignment')
