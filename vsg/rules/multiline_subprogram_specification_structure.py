@@ -25,11 +25,11 @@ class multiline_subprogram_specification_structure(structure.Rule):
 
         self.first_open_paren = 'remove_new_line'
         self.configuration.append('first_open_paren')
-        self.last_close_paren = 'add_new_line'
+        self.last_close_paren = 'ignore'
         self.configuration.append('last_close_paren')
-        self.interface_list_semicolon = 'remove_new_line'
+        self.interface_list_semicolon = 'ignore'
         self.configuration.append('interface_list_semicolon')
-        self.interface_element = 'add_new_line'
+        self.interface_element = 'ignore'
         self.configuration.append('interface_element')
         self.ignore_single_line = 'no'
         self.configuration.append('ignore_single_line')
