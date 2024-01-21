@@ -390,15 +390,15 @@ This rule checks the structure of procedure specifications.
 
 .. code-block:: vhdl
 
-    procedure my_procedure (i_arg1 : integer;i_arg2 : boolean);
+    procedure average_samples (num_samples : in integer; sample : out std_logic);
 
 **Fix**
 
 .. code-block:: vhdl
 
-    procedure my_procedure (
-      i_arg1 : integer;
-      i_arg2 : boolean
+    procedure average_samples (
+      num_samples : in integer;
+      sample      : out std_logic
     );
 
 procedure_100

@@ -19,15 +19,15 @@ class rule_019(Rule):
 
     .. code-block:: vhdl
 
-        function my_function (i_arg1 : integer; i_arg2 : boolean) return integer;
+        function average_samples (num_samples : in integer; sample : out std_logic) return integer;
 
     **Fix**
 
     .. code-block:: vhdl
 
-        function my_function (
-          i_arg1 : integer;
-          i_arg2 : boolean
+        function average_samples (
+          num_samples : in integer;
+          sample      : out std_logic
         ) return integer;
 
     '''
