@@ -103,7 +103,6 @@ class testDocGen(unittest.TestCase):
         self.maxDiff = None
         oVhdlFile = vhdlFile.vhdlFile([''])
         oRuleList = rule_list.rule_list(oVhdlFile, None, None)
-        lActual = []
 
         dConfigurationFiles = {}
         for oRule in oRuleList.rules:
@@ -137,9 +136,8 @@ class testDocGen(unittest.TestCase):
         self.maxDiff = None
         oVhdlFile = vhdlFile.vhdlFile([''])
         oRuleList = rule_list.rule_list(oVhdlFile, None, None)
-        lExpected = []
-        lActual = []
 
+        lExpected = []
         for oRule in oRuleList.rules:
             if oRule.disable and not oRule.deprecated:
                 lExpected.append(oRule.unique_id)
