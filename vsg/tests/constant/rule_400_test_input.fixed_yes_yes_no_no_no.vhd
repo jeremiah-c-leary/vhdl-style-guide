@@ -2,8 +2,8 @@ architecture rtl of fifo is
 
   constant my_rec : t_my_rec :=
   (
-    signal_one                    => '0',
-    signal_onetwo                 => '0'
+    signal_one    => '0',
+    signal_onetwo => '0'
 
     signal_onetwothree            => '0',
     signal_onetwothreefour        => '0'
@@ -28,8 +28,8 @@ architecture rtl of fifo is
 
   constant my_rec : t_my_rec :=
   (
-    signal_one                    => '0',
-    signal_onetwo                 => '0'
+    signal_one    => '0',
+    signal_onetwo => '0'
 
     signal_onetwothree            => '0',
     signal_onetwothreefour        => '0'
@@ -78,6 +78,20 @@ architecture rtl of fifo is
       AA     => 1,
       BB     => 2,
       CC     => 3
+    )
+  );
+
+  -- Test single line aggregates
+  constant c_my_constant : my_type := (
+    ENUM_1    => (
+      A       => 1,
+      B       => 2,
+      C       => 3
+    ),
+    ENUM_2    => (
+      AA      => 1,
+      BBBBBBB => ((others => '0')),
+      CC      => 3 -- Not aligned!
     )
   );
 

@@ -81,6 +81,20 @@ architecture rtl of fifo is
     )
   );
 
+  -- Test single line aggregates
+  constant c_my_constant : my_type := (
+    ENUM_1 => (
+      A => 1,
+      B => 2,
+      C => 3
+    ),
+    ENUM_2 => (
+      AA      => 1,
+      BBBBBBB => ((others => '0')),
+      CC => 3 -- Not aligned!
+    )
+  );
+
 begin
 
 end architecture rtl;

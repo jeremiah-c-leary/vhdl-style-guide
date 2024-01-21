@@ -22,14 +22,15 @@ class test_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'constant')
         self.assertEqual(oRule.identifier, '400')
-        self.assertEqual(len(oRule.configuration), 10)
+        self.assertEqual(len(oRule.configuration), 11)
 
-    def test_rule_400_yes_no_no_no(self):
+    def test_rule_400_yes_no_no_no_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'yes'
         oRule.blank_line_ends_group = 'no'
         oRule.comment_line_ends_group = 'no'
         oRule.aggregate_parens_ends_group = 'no'
+        oRule.ignore_single_line_aggregates = 'no'
 
         lExpected = [5, 6, 8, 9, 11]
         lExpected.extend([17, 18, 21, 22, 25, 26])
@@ -39,22 +40,24 @@ class test_rule(unittest.TestCase):
         lExpected.extend([64, 65, 66])
         lExpected.extend([72, 73, 74, 75])
         lExpected.extend([77, 78, 79, 80])
+        lExpected.extend([86, 87, 88, 89, 91, 94])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_400_yes_no_no_no(self):
+    def test_fix_rule_400_yes_no_no_no_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'yes'
         oRule.blank_line_ends_group = 'no'
         oRule.comment_line_ends_group = 'no'
         oRule.aggregate_parens_ends_group = 'no'
+        oRule.ignore_single_line_aggregates = 'no'
 
         oRule.fix(self.oFile)
 
         lExpected = []
         lExpected.append('')
-        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_no_no_no.vhd'), lExpected)
+        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_no_no_no_no.vhd'), lExpected)
 
         lActual = self.oFile.get_lines()
 
@@ -64,12 +67,13 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
 ###############################################################################
-    def test_rule_400_no_no_no_no(self):
+    def test_rule_400_no_no_no_no_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'no'
         oRule.blank_line_ends_group = 'no'
         oRule.comment_line_ends_group = 'no'
         oRule.aggregate_parens_ends_group = 'no'
+        oRule.ignore_single_line_aggregates = 'no'
 
         lExpected = [5, 6, 8, 9, 11]
         lExpected.extend([17, 18, 21, 22, 25, 26])
@@ -79,16 +83,18 @@ class test_rule(unittest.TestCase):
         lExpected.extend([64, 65, 66])
         lExpected.extend([73, 74, 75])
         lExpected.extend([77, 78, 80])
+        lExpected.extend([86, 87, 88, 89, 91, 94])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_400_false_false_false_false(self):
+    def test_fix_rule_400_no_no_no_no_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'no'
         oRule.blank_line_ends_group = 'no'
         oRule.comment_line_ends_group = 'no'
         oRule.aggregate_parens_ends_group = 'no'
+        oRule.ignore_single_line_aggregates = 'no'
 
         oRule.fix(self.oFile)
 
@@ -96,7 +102,7 @@ class test_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.append('')
-        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_no_no_no_no.vhd'), lExpected)
+        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_no_no_no_no_no.vhd'), lExpected)
 
         self.assertEqual(lExpected, lActual)
 
@@ -104,12 +110,13 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
 ###############################################################################
-    def test_rule_400_yes_no_yes_no(self):
+    def test_rule_400_yes_no_yes_no_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'yes'
         oRule.blank_line_ends_group = 'no'
         oRule.comment_line_ends_group = 'yes'
         oRule.aggregate_parens_ends_group = 'no'
+        oRule.ignore_single_line_aggregates = 'no'
 
         lExpected = [5, 6, 8, 11]
         lExpected.extend([17, 18, 21, 22, 25, 26])
@@ -119,16 +126,18 @@ class test_rule(unittest.TestCase):
         lExpected.extend([64, 65, 66])
         lExpected.extend([72, 73, 74, 75])
         lExpected.extend([77, 78, 79, 80])
+        lExpected.extend([86, 87, 88, 89, 91, 94])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_400_yes_no_yes_no(self):
+    def test_fix_rule_400_yes_no_yes_no_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'yes'
         oRule.blank_line_ends_group = 'no'
         oRule.comment_line_ends_group = 'yes'
         oRule.aggregate_parens_ends_group = 'no'
+        oRule.ignore_single_line_aggregates = 'no'
 
         oRule.fix(self.oFile)
 
@@ -136,7 +145,7 @@ class test_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.append('')
-        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_no_yes_no.vhd'), lExpected)
+        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_no_yes_no_no.vhd'), lExpected)
 
         self.assertEqual(lExpected, lActual)
 
@@ -144,12 +153,13 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
 ###############################################################################
-    def test_rule_400_yes_yes_no_no(self):
+    def test_rule_400_yes_yes_no_no_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'yes'
         oRule.blank_line_ends_group = 'yes'
         oRule.comment_line_ends_group = 'no'
         oRule.aggregate_parens_ends_group = 'no'
+        oRule.ignore_single_line_aggregates = 'no'
 
         lExpected = [5, 8, 9, 11]
         lExpected.extend([17, 18, 21, 22, 25, 26])
@@ -159,16 +169,18 @@ class test_rule(unittest.TestCase):
         lExpected.extend([64, 65, 66])
         lExpected.extend([72, 73, 74, 75])
         lExpected.extend([77, 78, 79, 80])
+        lExpected.extend([86, 87, 88, 89, 91, 94])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_400_yes_yes_no_no(self):
+    def test_fix_rule_400_yes_yes_no_no_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'yes'
         oRule.blank_line_ends_group = 'yes'
         oRule.comment_line_ends_group = 'no'
         oRule.aggregate_parens_ends_group = 'no'
+        oRule.ignore_single_line_aggregates = 'no'
 
         oRule.fix(self.oFile)
 
@@ -176,7 +188,7 @@ class test_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.append('')
-        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_yes_no_no.vhd'), lExpected)
+        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_yes_no_no_no.vhd'), lExpected)
 
         self.assertEqual(lExpected, lActual)
 
@@ -184,12 +196,13 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
 ###############################################################################
-    def test_rule_400_yes_yes_yes_yes(self):
+    def test_rule_400_yes_yes_yes_yes_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'yes'
         oRule.blank_line_ends_group = 'yes'
         oRule.comment_line_ends_group = 'yes'
         oRule.aggregate_parens_ends_group = 'yes'
+        oRule.ignore_single_line_aggregates = 'no'
 
         lExpected = [5, 8, 11]
         lExpected.extend([17, 18, 21, 22, 25, 26])
@@ -201,12 +214,13 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_400_yes_yes_yes_yes(self):
+    def test_fix_rule_400_yes_yes_yes_yes_no(self):
         oRule = constant.rule_400()
         oRule.compact_alignment = 'yes'
         oRule.blank_line_ends_group = 'yes'
         oRule.comment_line_ends_group = 'yes'
         oRule.aggregate_parens_ends_group = 'yes'
+        oRule.ignore_single_line_aggregates = 'no'
 
         oRule.fix(self.oFile)
 
@@ -214,7 +228,48 @@ class test_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.append('')
-        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_yes_yes_yes.vhd'), lExpected)
+        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_yes_yes_yes_no.vhd'), lExpected)
+
+        self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+###############################################################################
+    def test_rule_400_yes_yes_yes_yes_yes(self):
+        oRule = constant.rule_400()
+        oRule.compact_alignment = 'yes'
+        oRule.blank_line_ends_group = 'yes'
+        oRule.comment_line_ends_group = 'yes'
+        oRule.aggregate_parens_ends_group = 'yes'
+        oRule.ignore_single_line_aggregates = 'yes'
+
+        lExpected = [5, 8, 11]
+        lExpected.extend([17, 18, 21, 22, 25, 26])
+        lExpected.extend([31, 32, 34, 35, 37, 38])
+        lExpected.extend([42, 43, 44, 46, 48, 50, 51, 52])
+        lExpected.extend([72, 73, 74, 75])
+        lExpected.extend([77, 78, 79, 80])
+        lExpected.extend([94])
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_400_yes_yes_yes_yes_yes(self):
+        oRule = constant.rule_400()
+        oRule.compact_alignment = 'yes'
+        oRule.blank_line_ends_group = 'yes'
+        oRule.comment_line_ends_group = 'yes'
+        oRule.aggregate_parens_ends_group = 'yes'
+        oRule.ignore_single_line_aggregates = 'yes'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        lExpected = []
+        lExpected.append('')
+        utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed_yes_yes_yes_yes_yes.vhd'), lExpected)
 
         self.assertEqual(lExpected, lActual)
 
