@@ -661,7 +661,7 @@ generate_601
 
 |phase_7| |disabled| |error| |naming|
 
-This rule checks for valid prefixes on generate identifiers.
+This rule checks for valid prefixes on generate parameter identifiers.
 The default generate prefix is *gv\_*.
 
 |configuring_prefix_and_suffix_rules_link|
@@ -683,7 +683,7 @@ generate_602
 
 |phase_7| |disabled| |error| |naming|
 
-This rule checks for valid suffixes on generate identifiers.
+This rule checks for valid suffixes on generate parameter identifiers.
 The default generate suffix is *\_gv*.
 
 |configuring_prefix_and_suffix_rules_link|

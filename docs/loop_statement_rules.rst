@@ -653,7 +653,7 @@ loop_statement_602
 
 |phase_7| |disabled| |error| |naming|
 
-This rule checks for valid prefixes on loop identifiers.
+This rule checks for valid prefixes on loop parameter identifiers.
 The default loop prefix is *lv\_*.
 
 |configuring_prefix_and_suffix_rules_link|
@@ -675,7 +675,7 @@ loop_statement_603
 
 |phase_7| |disabled| |error| |naming|
 
-This rule checks for valid suffixes on loop identifiers.
+This rule checks for valid suffixes on loop parameter identifiers.
 The default loop suffix is *\_lv*.
 
 |configuring_prefix_and_suffix_rules_link|
