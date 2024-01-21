@@ -60,8 +60,14 @@ There are several options to the structure rules:
 .. |ignore| replace::
    The setting :code:`ignore` disables the option and hence no formatting check is done at all: spaces and new lines can be anything
 
+.. |default_add_new_line| replace::
+   :code:`add_new_line`
+
 .. |default_remove_new_line| replace::
    :code:`remove_new_line`
+
+.. |default_ignore| replace::
+   :code:`ignore`
 
 .. |ignore_single_line| replace::
    :code:`ignore_single_line`
@@ -72,20 +78,20 @@ There are several options to the structure rules:
 .. |ignore_single_line__no| replace::
    :code:`no` =  Apply rules to single line expressions.
 
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+-----------------------------+
-| Option                                | Symbol             | Values    | Structural Element     | Default Value              | Description                 |
-+=======================================+====================+===========+========================+============================+=============================+
-| :code:`first_open_paren`              | |green_diamond|    | |values|  | opening parenthesis    | |default_remove_new_line|  | * |add_new_line|            |
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+ * |remove_new_line|         |
-| :code:`last_close_paren`              | |red_penta_star|   | |values|  | closing parenthesis    | |default_remove_new_line|  | * |ignore|                  |
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+                             |
-| :code:`association_element`           | |orange_triangle|  | |values|  | association element    | |default_remove_new_line|  |                             |
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+                             |
-| :code:`association_list_comma`        | |purple_hexa_star| | |values2| | comma                  | |default_remove_new_line|  |                             |
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+-----------------------------+
-| :code:`ignore_single_line`            | N/A                | |values3| | N/A                    | |no|                       | * |ignore_single_line__yes| |
-|                                       |                    |           |                        |                            | * |ignore_single_line__no|  |
-+---------------------------------------+--------------------+-----------+------------------------+----------------------------+-----------------------------+
++---------------------------------------+--------------------+-----------+---------------------+------------------+-----------------------------+
+| Option                                | Symbol             | Values    | Structural Element  | Default Value    | Description                 |
++=======================================+====================+===========+=====================+==================+=============================+
+| :code:`first_open_paren`              | |green_diamond|    | |values|  | opening parenthesis | |default_ignore| | * |add_new_line|            |
++---------------------------------------+--------------------+-----------+---------------------+------------------+ * |remove_new_line|         |
+| :code:`last_close_paren`              | |red_penta_star|   | |values|  | closing parenthesis | |default_ignore| | * |ignore|                  |
++---------------------------------------+--------------------+-----------+---------------------+------------------+                             |
+| :code:`association_element`           | |orange_triangle|  | |values|  | association element | |default_ignore| |                             |
++---------------------------------------+--------------------+-----------+---------------------+------------------+                             |
+| :code:`association_list_comma`        | |purple_hexa_star| | |values2| | comma               | |default_ignore| |                             |
++---------------------------------------+--------------------+-----------+---------------------+------------------+-----------------------------+
+| :code:`ignore_single_line`            | N/A                | |values3| | N/A                 | |no|             | * |ignore_single_line__yes| |
+|                                       |                    |           |                     |                  | * |ignore_single_line__no|  |
++---------------------------------------+--------------------+-----------+---------------------+------------------+-----------------------------+
 
 The following figure illustrates where the options will be applied in an procedure call.
 
@@ -108,7 +114,7 @@ The following configuration replicates the above code snippet.
 Example: :code:`first_open_paren` set to :code:`add_new_line`
 #############################################################
 
-Setting the :code:`first_open_paren` option to :code:`remove_new_line` will result in the following formatting:
+Setting the :code:`first_open_paren` option to :code:`add_new_line` will result in the following formatting:
 
 .. code-block:: vhdl
 

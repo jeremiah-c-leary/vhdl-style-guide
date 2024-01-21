@@ -51,6 +51,8 @@ Rules Disabled by Default
 * `function_601 <function_rules.html#function-601>`_
 * `generate_017 <generate_rules.html#generate-017>`_
 * `generate_600 <generate_rules.html#generate-600>`_
+* `generate_601 <generate_rules.html#generate-601>`_
+* `generate_602 <generate_rules.html#generate-602>`_
 * `generic_020 <generic_rules.html#generic-020>`_
 * `generic_600 <generic_rules.html#generic-600>`_
 * `generic_map_600 <generic_map_rules.html#generic-map-600>`_

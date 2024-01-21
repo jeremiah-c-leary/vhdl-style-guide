@@ -7,18 +7,8 @@ from vsg.rules import consistent_token_case as Rule
 lTokens = []
 lTokens.append(token.alias_declaration.alias_designator)
 
-lIgnore = []
-lIgnore.append(token.interface_signal_declaration.identifier)
-lIgnore.append(token.interface_unknown_declaration.identifier)
-lIgnore.append(token.interface_constant_declaration.identifier)
-lIgnore.append(token.interface_variable_declaration.identifier)
-lIgnore.append(token.association_element.formal_part)
-lIgnore.append(token.entity_declaration.identifier)
-lIgnore.append(token.entity_declaration.entity_simple_name)
-lIgnore.append(token.architecture_body.entity_name)
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
+lNames = []
+lNames.append(parser.todo)
 
 
 class rule_503(Rule):
@@ -83,4 +73,5 @@ class rule_503(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'alias_declaration', '503', lTokens, lIgnore)
+        Rule.__init__(self, 'alias_declaration', '503', lTokens, lNames)
+        self.bIncludeDeclarativePartNames = True

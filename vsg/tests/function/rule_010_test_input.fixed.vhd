@@ -4,6 +4,8 @@ architecture RTL of FIFO is
   function func_1 (a : integer) return integer;
   function func_2 (b : integer) return integer;
 
+  signal sig1 : integer := func_1;
+
 begin
 
   OUT1 <= func_1;
