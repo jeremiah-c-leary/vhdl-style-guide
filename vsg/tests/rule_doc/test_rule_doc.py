@@ -133,6 +133,28 @@ class testDocGen(unittest.TestCase):
             self.assertEqual(dConfigurationFiles[sKey], lActual)
 
 
+    def test_configuring_disabled_rules_doc(self):
+        self.maxDiff = None
+        oVhdlFile = vhdlFile.vhdlFile([''])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+        lExpected = []
+        lActual = []
+
+        for oRule in oRuleList.rules:
+            if oRule.disable and not oRule.deprecated:
+                lExpected.append(oRule.unique_id)
+
+        sFileName = 'configuring_disabled_rules.rst'
+        sFullPathFileName = os.path.join(sResultsDir,'..','..','..','docs',sFileName)
+        lFile = []
+        utils.read_file(sFullPathFileName, lFile)
+        lActual = []
+        for sLine in lFile:
+            if sLine.startswith('*'):
+                lLine = sLine.split()
+                lActual.append(lLine[1][1:])
+        self.assertEqual(lExpected, lActual)
+
 
     def test_alias_declaration_rules_doc(self):
 
