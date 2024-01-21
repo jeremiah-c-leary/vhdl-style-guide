@@ -103,18 +103,10 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
             while iIndex < len(lTokens):
                iToken += 1
                oToken = lTokens[iIndex]
-#               print(oToken)
 
-#               if alignment_utils.unless_region_detected(oToken, self.lUnless):
-#                   print('Got Here')
-#                   iIndex = alignment_utils.get_index_of_end_unless_region(oToken, lTokens, self.lUnless, iIndex)
-#                   iIndex += 1
-#                   continue
                bSkip, oEndSkipToken = alignment_utils.check_for_exclusions(oToken, bSkip, oEndSkipToken, self.lUnless)
-#               print(bSkip)
 
                if not bTokenFound and not bSkip:
-#               if not bTokenFound:
                    for oSearch in lSearchTokens:
                        if isinstance(oToken, oSearch):
                            bTokenFound = True
