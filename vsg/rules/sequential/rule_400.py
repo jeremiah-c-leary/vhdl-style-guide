@@ -45,5 +45,10 @@ class rule_400(Rule):
         self.separate_generic_port_alignment = 'no'
         self.comment_line_ends_group = 'no'
         self.blank_line_ends_group = 'no'
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')
         self.configuration.remove('separate_generic_port_alignment')
+        self.configuration.append('aggregate_parens_ends_group')
+        self.configuration.append('ignore_single_line_aggregates')
         self.bIncludeTillBeginningOfLine = True

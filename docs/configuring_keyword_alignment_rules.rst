@@ -85,6 +85,24 @@ There are several options to these rules:
 .. |loop_control_statements_ends_group__no| replace::
    :code:`no` = continue when a loop control statement keyword is encountered.
 
+.. |aggregate_parens_ends_group| replace::
+   :code:`aggregate_parens_ends_group`
+
+.. |aggregate_parens_ends_group__yes| replace::
+   :code:`yes` = stop when an aggregate parenthesis is encountered.
+
+.. |aggregate_parens_ends_group__no| replace::
+   :code:`no` = continue when an aggregate parenthesis is encountered.
+
+.. |ignore_single_line_aggregates| replace::
+   :code:`ignore_single_line_aggregates`
+
+.. |ignore_single_line_aggregates__yes| replace::
+   :code:`yes` = ignore aggregates which are on a single line.
+
+.. |ignore_single_line_aggregates__no| replace::
+   :code:`no` = include aggregates which are on a single line.
+
 .. |include_type_is_keyword| replace::
    :code:`include_type_is_keyword`
 
@@ -127,6 +145,12 @@ There are several options to these rules:
 .. |values_lcseg| replace::
    :code:`yes`, :code:`no`
 
+.. |values_apeg| replace::
+   :code:`yes`, :code:`no`
+
+.. |values_isla| replace::
+   :code:`yes`, :code:`no`
+
 .. |values_itik| replace::
    :code:`yes`, :code:`no`
 
@@ -161,6 +185,12 @@ There are several options to these rules:
 | |include_type_is_keyword|            | |values_itik|  | |no|     | * |include_type_is_keyword__yes|               |
 |                                      |                |          | * |include_type_is_keyword__no|                |
 +--------------------------------------+----------------+----------+------------------------------------------------+
+| |aggregate_parens_ends_group|        | |values_apeg|  | |no|     | * |aggregate_parens_ends_group__yes|           |
+|                                      |                |          | * |aggregate_parens_ends_group__no|            |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |ignore_single_line_aggregates|      | |values_isla|  | |no|     | * |ignore_single_line_aggregates__yes|         |
+|                                      |                |          | * |ignore_single_line_aggregates__no|          |
++--------------------------------------+----------------+----------+------------------------------------------------+
 
 This is an example of how to configure these options.
 
@@ -176,6 +206,8 @@ This is an example of how to configure these options.
         case_control_statements_ends_group: 'yes'
         generate_statements_ends_group: 'yes'
         loop_control_statements_ends_group: 'yes'
+        aggregate_parens_ends_group: 'yes'
+        ignore_single_line_aggregates: 'yes'
         include_type_is_keyword: 'no'
 
 
@@ -749,6 +781,107 @@ Any blank line encountered in the VHDL file will not end the group of lines that
       constant c_short_period : time;
       constant c_long_period  : time;
 
+Example: |aggregate_parens_ends_group| set to |yes|
+###################################################
+
+Any aggregate parenthesis encountered in the VHDL file will end the group of lines that should be aligned.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1   => (
+          A      => 1,
+          B      => 2,
+          C      => 3
+        ),
+        ENUM_234 => (
+          AA     => 1,
+          BB     => 2,
+          CC     => 3
+        )
+      );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1 => (
+          A => 1,
+          B => 2,
+          C => 3
+        ),
+        ENUM_234 => (
+          AA => 1,
+          BB => 2,
+          CC => 3
+        )
+      );
+
+Example: |aggregate_parens_ends_group| set to |no|
+##################################################
+
+Any aggregate parenthesis encountered in the VHDL file will not end the group of lines that should be aligned.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1 => (
+          A => 1,
+          B => 2,
+          C => 3
+        ),
+        ENUM_234 => (
+          AA => 1,
+          BB => 2,
+          CC => 3
+        )
+      );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1   => (
+          A      => 1,
+          B      => 2,
+          C      => 3
+        ),
+        ENUM_234 => (
+          AA     => 1,
+          BB     => 2,
+          CC     => 3
+        )
+      );
+
+Example: |aggregate_parens_ends_group| set to |yes| and |ignore_single_line_aggregates| set to |yes|
+####################################################################################################
+
+Any aggregate which is fully contained on a single line, including parenthesis, will not be considered defining a group.
+In the example below, the others aggregates are ignored which will allow the ENUM_1 assignment and ENUM_234 assignment to be aligned.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1 => (others => '0'),
+        ENUM_234 => (others => '1')
+      );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      constant my_constant : my_type := (
+        ENUM_1   => (others => '0'),
+        ENUM_234 => (others => '1')
+      );
 
 Rules Enforcing Keyword Alignment
 #################################

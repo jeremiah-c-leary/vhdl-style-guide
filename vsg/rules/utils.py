@@ -497,3 +497,11 @@ def remove_tois_with_pragmas(lToi):
         if not oToi.token_type_exists(token.pragma.pragma):
             lReturn.append(oToi)
     return lReturn
+
+
+def get_index_of_matching_close_paren(iToken, lTokens):
+    for iIndex in range(iToken, len(lTokens)):
+        if isinstance(lTokens[iIndex], parser.close_parenthesis):
+            if lTokens[iIndex].iId == lTokens[iToken].iId:
+                return iIndex
+    return None

@@ -26,6 +26,8 @@ class test_sequential_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'sequential')
         self.assertEqual(oRule.identifier, '400')
+        self.assertTrue('aggregate_parens_ends_group' in oRule.configuration)
+        self.assertTrue('ignore_single_line_aggregates' in oRule.configuration)
 
         lExpected = [12, 16, 17, 18]
 

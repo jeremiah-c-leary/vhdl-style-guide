@@ -17,6 +17,7 @@ class item():
         self.code_tags = []
         self.base_token, self.sub_token = self.update_token_types()
         self.filename = None
+        self.iId = None
 
     def update_token_types(self):
         try:
@@ -102,6 +103,7 @@ class item():
         oReturn.code_tags = self.code_tags
         oReturn.base_token, self.sub_token = self.update_token_types()
         oReturn.filename = self.filename
+        oReturn.iId = self.iId
         oReturn.base_token, oReturn.sub_token = oReturn.update_token_types()
         return oReturn
         
