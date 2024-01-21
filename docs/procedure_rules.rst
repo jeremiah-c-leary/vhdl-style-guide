@@ -224,53 +224,7 @@ This rule checks the indent of the closing parenthesis if it is on its own line.
 procedure_007
 #############
 
-|phase_6| |error| |case|
-
-This rule checks for consistent capitalization of procedure names.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   architecture rtl of entity1 is
-
-     procedure average_samples (
-       constant a : in integer;
-       signal d : out std_logic
-     ) is
-
-   begin
-
-     proc1 : process () is
-     begin
-
-       Average_samples();
-
-     end process proc1;
-
-   end architecture rtl;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   architecture rtl of entity1 is
-
-     procedure average_samples (
-       constant a : in integer;
-       signal d : out std_logic
-     ) is
-
-   begin
-
-     proc1 : process () is
-     begin
-
-       average_samples();
-
-     end process proc1;
-
-   end architecture RTL;
+This rule has been moved to rule `procedure_507 <procedure_rules.html#procedure-507>`_.
 
 procedure_008
 #############
