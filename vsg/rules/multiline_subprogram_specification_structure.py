@@ -71,3 +71,7 @@ def _check_interface_list_semicolon(self, oToi):
 def _check_interface_element(self, oToi):
 
     check.add_new_line_and_remove_new_line(self, oToi, self.interface_element, token.interface_unknown_declaration.identifier)
+    check.add_new_line_and_remove_new_line(self, oToi, self.interface_element, token.interface_constant_declaration.constant_keyword)
+    check.add_new_line_and_remove_new_line(self, oToi, self.interface_element, token.interface_signal_declaration.signal_keyword)
+    check.add_new_line_and_remove_new_line(self, oToi, self.interface_element, token.interface_variable_declaration.variable_keyword)
+    check.add_new_line_and_remove_new_line(self, oToi, self.interface_element, token.interface_file_declaration.file_keyword)
