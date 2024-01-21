@@ -15,7 +15,7 @@ lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_010_test_input.fixed.vhd'), lExpected)
 
 
-class test_function_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
@@ -27,7 +27,7 @@ class test_function_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'function')
         self.assertEqual(oRule.identifier, '010')
 
-        lExpected = [9, 14, 15, 15]
+        lExpected = [7, 11, 16, 17, 17]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

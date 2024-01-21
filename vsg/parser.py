@@ -104,6 +104,7 @@ class item():
         oReturn.base_token, self.sub_token = self.update_token_types()
         oReturn.filename = self.filename
         oReturn.iId = self.iId
+        oReturn.base_token, oReturn.sub_token = oReturn.update_token_types()
         return oReturn
         
 

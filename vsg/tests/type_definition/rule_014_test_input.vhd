@@ -16,6 +16,18 @@ architecture RTL of ENTITY1 is
     );
   end component COMP1;
 
+  procedure proc_name (
+    constant a : in STATE_machine
+    ) is
+  begin
+  end procedure proc_name;
+
+  impure function func1 return State_machine is
+
+    variable temp : STATe_machine;
+
+  begin end function func1;
+
 begin
 
 end architecture RTL;
