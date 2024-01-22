@@ -49,7 +49,7 @@ class test_rule(unittest.TestCase):
 
     def test_zero_indent(self):
         oRule = pragma.rule_300()
-        oRule.indentSize = 0
+        oRule.indent_size = 0
 
         lExpected = [2, 5, 11, 17, 19]
 
@@ -58,7 +58,7 @@ class test_rule(unittest.TestCase):
 
     def test_fix_zero_indent(self):
         oRule = pragma.rule_300()
-        oRule.indentSize = 0
+        oRule.indent_size = 0
 
         oRule.fix(self.oFile)
 

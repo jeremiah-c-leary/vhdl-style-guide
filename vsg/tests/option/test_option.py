@@ -46,8 +46,8 @@ class testRuleMethods(unittest.TestCase):
     def test_option_reports_in_rc_command(self):
 
         dExpected = {}
-        dExpected['indentStyle'] = 'spaces'
-        dExpected['indentSize'] = 2
+        dExpected['indent_style'] = 'spaces'
+        dExpected['indent_size'] = 2
         dExpected['phase'] = None
         dExpected['disable'] = False
         dExpected['fixable'] = True

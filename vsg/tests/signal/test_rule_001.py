@@ -41,7 +41,7 @@ class test_signal_rule(unittest.TestCase):
 
     def test_fix_rule_001_spaces(self):
         oRule = signal.rule_001()
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
 
         oRule.fix(self.oFile)
 
@@ -54,7 +54,7 @@ class test_signal_rule(unittest.TestCase):
 
     def test_rule_001_smart_tabs(self):
         oRule = signal.rule_001()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         lExpected = [4, 9, 10, 14]
 
@@ -63,7 +63,7 @@ class test_signal_rule(unittest.TestCase):
 
     def test_fix_rule_001_smart_tabs(self):
         oRule = signal.rule_001()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         oRule.fix(self.oFile)
 

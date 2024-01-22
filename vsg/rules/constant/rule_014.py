@@ -51,7 +51,7 @@ class rule_014(Rule):
             oToi.set_meta_data('iFirstLine', iFirstLine)
             oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
             oToi.set_meta_data('iAssignColumn', iAssignColumn)
-            oToi.set_meta_data('indentSize', self.indentSize)
+            oToi.set_meta_data('indent_size', self.indent_size)
             oToi.set_meta_data('bStartsWithParen', alignment_utils.starts_with_paren(lTokens))
 
         return lToi

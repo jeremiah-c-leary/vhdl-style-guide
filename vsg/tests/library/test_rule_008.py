@@ -49,7 +49,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_rule_008_indent_size_zero(self):
         oRule = library.rule_008()
-        oRule.indentSize = 0
+        oRule.indent_size = 0
 
         lExpected = [3, 4, 10, 11, 21, 28, 35, 42]
 
@@ -58,7 +58,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_fix_rule_008_indent_size_zero(self):
         oRule = library.rule_008()
-        oRule.indentSize = 0
+        oRule.indent_size = 0
 
         oRule.fix(self.oFile)
 

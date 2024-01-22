@@ -5,10 +5,10 @@ import re
 import sys
 import yaml
 
+from . import exceptions
 from . import junit
 from . import severity
 from . import utils
-from . import exceptions
 
 
 def read_predefined_style(sStyleName):
@@ -32,7 +32,7 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
     '''Attempts to open a configuration file and read it's contents.'''
     try:
         with open(sFileName) as yaml_file:
-            tempConfiguration = yaml.full_load(yaml_file)
+            return yaml.full_load(yaml_file)
     except OSError as e:
         print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} while opening configuration file: ' + sFileName)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
@@ -42,7 +42,6 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
         print(e)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         sys.exit(1)
-    return tempConfiguration
 
 
 def validate_file_exists(sFilename, sConfigName):
@@ -67,6 +66,8 @@ def read_configuration_files(dStyle, commandLineArguments):
     for sConfigFilename in commandLineArguments.configuration:
         tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
 
+        check_for_deprecated_rule_options(tempConfiguration, sConfigFilename)
+
         dConfiguration = process_config_file(dConfiguration, tempConfiguration, sConfigFilename)
 
     return dConfiguration
@@ -90,6 +91,34 @@ def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
     return dReturn
 
 
+dDeprecatedOption = {}
+dDeprecatedOption['indentSize'] = 'Warning:  change deprecated option indentSize to indent_size.'
+dDeprecatedOption['indentType'] = 'Warning:  change deprecated option indentType to indent_type.'
+iNumDeprecatedKeys = len(dDeprecatedOption.keys())
+
+
+def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):
+    lDeprecatedKeys = list(dDeprecatedOption.keys())
+    lFoundDeprecatedKeys = []
+    bPrintFileName = True
+    iKeys = 0
+    for sKey in dConfiguration.keys():
+       if sKey == 'rule':
+           for sRule in dConfiguration[sKey]:
+               lKeys = list(dConfiguration[sKey][sRule].keys()) 
+               for sDeprecatedKey in lDeprecatedKeys:
+                   if sDeprecatedKey in lKeys:
+                      lFoundDeprecatedKeys.append(sDeprecatedKey)
+                      if bPrintFileName:
+                          print('Warning in configuration file ' + sConfigFilename + ':')
+                          bPrintFileName = False
+                      print(dDeprecatedOption[sDeprecatedKey])
+               for sFoundDeprecatedKey in lFoundDeprecatedKeys:
+                   lDeprecatedKeys.remove(sFoundDeprecatedKey)
+               if len(lDeprecatedKeys) == 0:
+                   break
+
+               
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     dReturn = dConfig
     if 'file_list' not in dConfig:

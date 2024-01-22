@@ -45,16 +45,16 @@ class token_indent(indent.Rule):
         if oViolation.get_action() == 'remove_whitespace':
             oViolation.set_tokens([lTokens[1]])
         elif oViolation.get_action() == 'adjust_whitespace':
-            if self.indentStyle == 'spaces':
-                lTokens[0].set_value(lTokens[1].get_indent() * self.indentSize * ' ')
+            if self.indent_style == 'spaces':
+                lTokens[0].set_value(lTokens[1].get_indent() * self.indent_size * ' ')
                 lTokens[0].has_tab = False
-            elif self.indentStyle == 'smart_tabs':
+            elif self.indent_style == 'smart_tabs':
                 lTokens[0].set_value(lTokens[1].get_indent() * '\t')
                 lTokens[0].has_tab = True
             oViolation.set_tokens(lTokens)
         elif oViolation.get_action() == 'add_whitespace':
-            if self.indentStyle == 'spaces':
-                rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent() * self.indentSize)
+            if self.indent_style == 'spaces':
+                rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent() * self.indent_size)
             else:
                 rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent(), '\t')
             oViolation.set_tokens(lTokens)
@@ -76,8 +76,8 @@ def indent_exists_but_is_incorrect(self, lTokens):
         if lTokens[1].get_indent() is None:
             return False
         sWhitespace = lTokens[0].get_value()
-        if self.indentStyle == 'spaces':
-            sIndent = ' ' * (self.indentSize * lTokens[1].get_indent())
+        if self.indent_style == 'spaces':
+            sIndent = ' ' * (self.indent_size * lTokens[1].get_indent())
         else:
             sIndent = '\t' * (lTokens[1].get_indent())
         if sWhitespace != sIndent:
@@ -96,7 +96,7 @@ def no_indent_exists_but_should(self, lTokens):
 
     if lTokens[0].get_indent() is None:
         return False
-    if self.indentSize == 0:
+    if self.indent_size == 0:
         return False
     if lTokens[0].get_indent() != 0:
         return True
@@ -125,8 +125,8 @@ def create_no_indent_solution(self, lTokens):
 
 def create_indent_solution(self, oToken):
     iIndentLevel = oToken.get_indent()
-    if self.indentStyle == 'spaces':
-        sSolution = 'Use ' + str(iIndentLevel * self.indentSize) + ' spaces for indent'
-    elif self.indentStyle == 'smart_tabs':
+    if self.indent_style == 'spaces':
+        sSolution = 'Use ' + str(iIndentLevel * self.indent_size) + ' spaces for indent'
+    elif self.indent_style == 'smart_tabs':
         sSolution = 'Use ' + str(iIndentLevel) + ' tab(s) for indent'
     return sSolution

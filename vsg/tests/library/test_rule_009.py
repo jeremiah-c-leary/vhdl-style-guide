@@ -53,7 +53,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_rule_009_smart_tabs(self):
         oRule = library.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         lExpected = [3, 5, 9, 12, 13, 15]
 
@@ -62,7 +62,7 @@ class test_library_rule(unittest.TestCase):
 
     def test_fix_rule_009_smart_tabs(self):
         oRule = library.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         oRule.fix(self.oFile)
 

@@ -54,7 +54,7 @@ class Rule(structure.Rule):
 
     def calculate_leading_whitespace(self, oToken):
         if self.allow_indenting:
-            iWhitespace = self.indentSize * oToken.get_indent()
+            iWhitespace = self.indent_size * oToken.get_indent()
         else:
             iWhitespace = 0
         return iWhitespace

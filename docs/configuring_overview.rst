@@ -128,17 +128,17 @@ Each rule is addressable by using it's unique **ruleId** and **ruleNumber** comb
 
 Here are a list of attributes that can be altered for each rule:
 
-+-------------+---------+--------------------------------------------------+
-| Attribute   | Values  | Description                                      |
-+=============+=========+==================================================+
-| indentSize  | Integer | Sets the number of spaces for each indent level. |
-+-------------+---------+--------------------------------------------------+
-| phase       | Integer | Sets the phase the rule will run in.             |
-+-------------+---------+--------------------------------------------------+
-| disable     | Boolean | If set to True, the rule will not run.           |
-+-------------+---------+--------------------------------------------------+
-| fixable     | Boolean | If set to False, the violation will not be fixed |
-+-------------+---------+--------------------------------------------------+
++--------------+---------+--------------------------------------------------+
+| Attribute    | Values  | Description                                      |
++==============+=========+==================================================+
+| indent_size  | Integer | Sets the number of spaces for each indent level. |
++--------------+---------+--------------------------------------------------+
+| phase        | Integer | Sets the phase the rule will run in.             |
++--------------+---------+--------------------------------------------------+
+| disable      | Boolean | If set to True, the rule will not run.           |
++--------------+---------+--------------------------------------------------+
+| fixable      | Boolean | If set to False, the violation will not be fixed |
++--------------+---------+--------------------------------------------------+
 
 .. _reporting-single-rule-configuration:
 
@@ -153,7 +153,7 @@ The configuration for a single rule can be reported using the **-rc** option:
    {
      "rule": {
        "entity_001": {
-         "indentSize": 2,
+         "indent_size": 2,
          "phase": 4,
          "disable": false,
          "fixable": true
@@ -256,7 +256,7 @@ It can be configured on an per rule basis...
    {
        "rule":{
            "entity_004":{
-               "indentSize":4
+               "indent_size":4
            }
        }
    }
@@ -271,7 +271,7 @@ Configure the indent size for all rules by setting the **global** attribute.
    {
        "rule":{
            "global":{
-               "indentSize":4
+               "indent_size":4
            }
        }
    }
@@ -286,7 +286,7 @@ Configure the indent size for all rules by setting the **global** attribute.
    {
        "rule": {
            "global": {
-               "indentSize": 4
+               "indent_size": 4
            },
            "group": {
                "indent": {

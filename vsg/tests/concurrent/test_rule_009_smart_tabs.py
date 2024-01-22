@@ -185,7 +185,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'no'
@@ -204,7 +204,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_no_align_when_no_wrap_at_when_no_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'no'
@@ -222,7 +222,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_no_align_when_no_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'no'
@@ -240,7 +240,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_no_align_when_no_wrap_at_when_yes_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'no'
@@ -258,7 +258,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_no_align_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'yes'
@@ -276,7 +276,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_no_align_when_yes_wrap_at_when_no_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'yes'
@@ -294,7 +294,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_no_align_when_yes_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'yes'
@@ -312,7 +312,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_no_align_when_yes_wrap_at_when_yes_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'yes'
@@ -330,7 +330,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'no'
@@ -348,7 +348,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_yes_align_when_no_wrap_at_when_no_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'no'
@@ -366,7 +366,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_yes_align_when_no_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'no'
@@ -384,7 +384,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_yes_align_when_no_wrap_at_when_yes_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'no'
@@ -402,7 +402,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_yes_align_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'yes'
@@ -420,7 +420,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_no_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'yes'
@@ -438,7 +438,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'yes'
@@ -456,7 +456,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_no_align_paren_yes_align_when_yes_wrap_at_when_yes_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'no'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'yes'
@@ -474,7 +474,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.wrap_at_when = 'no'
         oRule.align_when_keywords = 'no'
@@ -492,7 +492,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_no_align_when_no_wrap_at_when_no_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'no'
@@ -510,7 +510,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_no_align_when_no_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'no'
@@ -528,7 +528,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_no_align_when_no_wrap_at_when_yes_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'no'
@@ -546,7 +546,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_no_align_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'yes'
@@ -564,7 +564,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_no_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'yes'
@@ -582,7 +582,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'yes'
@@ -600,7 +600,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_no_align_when_yes_wrap_at_when_yes_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
         oRule.align_when_keywords = 'yes'
@@ -618,7 +618,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'no'
@@ -636,7 +636,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_no_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'no'
@@ -654,7 +654,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'no'
@@ -672,7 +672,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_no_wrap_at_when_yes_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'no'
@@ -690,7 +690,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'yes'
@@ -708,7 +708,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_no_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'yes'
@@ -726,7 +726,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'yes'
@@ -744,7 +744,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_009_align_left_yes_align_paren_yes_align_when_yes_wrap_at_when_yes_align_else_yes(self):
         oRule = concurrent.rule_009()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
         oRule.align_when_keywords = 'yes'

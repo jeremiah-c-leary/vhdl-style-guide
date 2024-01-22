@@ -27,7 +27,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_006_indent_2(self):
         oRule = concurrent.rule_006()
-        oRule.indentSize = 2
+        oRule.indent_size = 2
 
         oRule.fix(self.oFile)
 
@@ -40,7 +40,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_006_indent_4(self):
         oRule = concurrent.rule_006()
-        oRule.indentSize = 4
+        oRule.indent_size = 4
 
         oRule.fix(self.oFile)
 

@@ -86,8 +86,8 @@ class testRuleMethods(unittest.TestCase):
         dExpected = {}
         dExpected['disable'] = False
         dExpected['fixable'] = True
-        dExpected['indentSize'] = 2
-        dExpected['indentStyle'] = 'spaces'
+        dExpected['indent_size'] = 2
+        dExpected['indent_style'] = 'spaces'
         dExpected['phase'] = 3
         dExpected['severity'] = 'Error'
         dActual = oRule.get_configuration()

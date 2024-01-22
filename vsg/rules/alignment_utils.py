@@ -18,7 +18,7 @@ def build_solution(sIndent):
     return sSolution
 
 
-def convert_expected_indent_to_smart_tab(dExpectedIndent, indentSize, iFirstLineIndent):
+def convert_expected_indent_to_smart_tab(dExpectedIndent, indent_size, iFirstLineIndent):
     iFirstLine = get_first_line(dExpectedIndent)
     iLastLine = get_last_line(dExpectedIndent)
     for iLine in range(iFirstLine + 1, iLastLine + 1):
@@ -69,7 +69,7 @@ def update_column_width(self, oToken):
     sToken = oToken.get_value()
     if isinstance(oToken, parser.whitespace):
         iTabs = sToken.count('\t')
-        iLength = len(sToken) + (iTabs * self.indentSize) - iTabs
+        iLength = len(sToken) + (iTabs * self.indent_size) - iTabs
         return iLength
 
     return len(oToken.get_value())

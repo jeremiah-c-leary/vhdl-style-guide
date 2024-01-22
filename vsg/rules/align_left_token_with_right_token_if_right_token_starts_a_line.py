@@ -103,9 +103,9 @@ def expected_whitespace_before_last_token(self, oToi):
 
 def indent_whitespace(self, oToi):
     iIndentLevel = oToi.get_meta_data('indentLevel')
-    if self.indentStyle == 'smart_tabs':
+    if self.indent_style == 'smart_tabs':
         return '\t' * iIndentLevel
-    return ' ' * iIndentLevel * self.indentSize
+    return ' ' * iIndentLevel * self.indent_size
 
 
 def aligning_whitespace(self, oToi):

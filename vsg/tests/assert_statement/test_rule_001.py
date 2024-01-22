@@ -33,7 +33,7 @@ class test_rule(unittest.TestCase):
 
     def test_rule_001_spaces(self):
         oRule = assert_statement.rule_001()
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'assert')
         self.assertEqual(oRule.identifier, '001')
@@ -46,7 +46,7 @@ class test_rule(unittest.TestCase):
 
     def test_fix_rule_001_spaces(self):
         oRule = assert_statement.rule_001()
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
 
         oRule.fix(self.oFile)
 
@@ -59,7 +59,7 @@ class test_rule(unittest.TestCase):
 
     def test_rule_001_smart_tabs(self):
         oRule = assert_statement.rule_001()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         self.assertTrue(oRule)
 
         lExpected = [7, 9, 10, 12, 13, 15, 16, 17, 19, 21, 22, 24, 25, 27, 28, 29, 32, 34, 35, 37, 38, 40, 41, 42, 44, 46, 47, 49, 50, 52, 53, 54]
@@ -69,7 +69,7 @@ class test_rule(unittest.TestCase):
 
     def test_fix_rule_001_smart_tabs(self):
         oRule = assert_statement.rule_001()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         oRule.fix(self.oFile)
 

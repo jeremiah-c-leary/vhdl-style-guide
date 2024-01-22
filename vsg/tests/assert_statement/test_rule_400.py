@@ -42,7 +42,7 @@ class test_assert_rule(unittest.TestCase):
     def test_rule_400_w_report_align(self):
         oRule = assert_statement.rule_400()
         oRule.alignment = 'report'
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'assert')
         self.assertEqual(oRule.identifier, '400')
@@ -56,7 +56,7 @@ class test_assert_rule(unittest.TestCase):
     def test_fix_rule_400_w_report_align(self):
         oRule = assert_statement.rule_400()
         oRule.alignment = 'report'
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
 
         oRule.fix(self.oFile)
 
@@ -70,7 +70,7 @@ class test_assert_rule(unittest.TestCase):
     def test_rule_400_w_left_align(self):
         oRule = assert_statement.rule_400()
         oRule.alignment = 'left'
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
 
         lExpected = [19, 24, 29, 34]
 
@@ -80,7 +80,7 @@ class test_assert_rule(unittest.TestCase):
     def test_fix_rule_400_w_left_align(self):
         oRule = assert_statement.rule_400()
         oRule.alignment = 'left'
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
 
         oRule.fix(self.oFile)
 
@@ -94,7 +94,7 @@ class test_assert_rule(unittest.TestCase):
     def test_rule_400_w_report_align_smart_tabs(self):
         oRule = assert_statement.rule_400()
         oRule.alignment = 'report'
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'assert')
         self.assertEqual(oRule.identifier, '400')
@@ -109,7 +109,7 @@ class test_assert_rule(unittest.TestCase):
         self.maxDiff = None
         oRule = assert_statement.rule_400()
         oRule.alignment = 'report'
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         oRule.fix(self.oFile)
 
@@ -123,7 +123,7 @@ class test_assert_rule(unittest.TestCase):
     def test_rule_400_w_left_align_smart_tabs(self):
         oRule = assert_statement.rule_400()
         oRule.alignment = 'left'
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         lExpected = [9, 14, 19, 24, 29, 34]
 
@@ -133,7 +133,7 @@ class test_assert_rule(unittest.TestCase):
     def test_fix_rule_400_w_left_align_smart_tabs(self):
         oRule = assert_statement.rule_400()
         oRule.alignment = 'left'
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         oRule.fix(self.oFile)
 
