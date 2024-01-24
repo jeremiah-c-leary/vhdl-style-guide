@@ -9,7 +9,7 @@ class Rule():
     def __init__(self, name=None, identifier=None):
         self.name = name
         self.identifier = get_rule_identifier(self)
-        self.unique_id = str(name) + '_' + str(identifier)
+        self.unique_id = str(name) + '_' + str(self.identifier)
         self.solution = None
         self.violations = []
         self.indentStyle = 'spaces'
