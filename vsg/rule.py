@@ -8,7 +8,7 @@ class Rule():
 
     def __init__(self, name=None, identifier=None):
         self.name = name
-        self.identifier = identifier
+        self.identifier = get_rule_identifier(self)
         self.unique_id = str(name) + '_' + str(identifier)
         self.solution = None
         self.violations = []
@@ -264,3 +264,12 @@ def configure_rule_attributes(self, oConfig):
                     oOption.value = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
     except KeyError:
         pass
+
+def get_rule_identifier(self):
+    '''
+    Extracts the rule's identifier from the __module__ special variable.
+    '''
+    if self.__class__.__name__.startswith('rule_'):
+        return self.__class__.__name__[-3:]
+    else:
+        return ''
