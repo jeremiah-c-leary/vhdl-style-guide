@@ -112,6 +112,15 @@ There are several options to these rules:
 .. |include_type_is_keyword__no| replace::
    :code:`no` = ignore type is keywords for alignment.
 
+.. |align_to| replace::
+   :code:`align_to`
+
+.. |align_to__keyword| replace::
+   :code:`keyword` = align to the keyword specified in rule
+
+.. |align_to__current_indent| replace::
+   :code:`current_indent` = align to the current indent level
+
 .. |yes| replace::
    :code:`yes`
 
@@ -154,6 +163,12 @@ There are several options to these rules:
 .. |values_itik| replace::
    :code:`yes`, :code:`no`
 
+.. |values_at| replace::
+   :code:`keyword`, :code:`current_indent`
+
+.. |def_at| replace::
+   :code:`keyword`
+
 +--------------------------------------+----------------+----------+------------------------------------------------+
 | Option                               |   Values       | Default  | Description                                    |
 +======================================+================+==========+================================================+
@@ -190,6 +205,9 @@ There are several options to these rules:
 +--------------------------------------+----------------+----------+------------------------------------------------+
 | |ignore_single_line_aggregates|      | |values_isla|  | |no|     | * |ignore_single_line_aggregates__yes|         |
 |                                      |                |          | * |ignore_single_line_aggregates__no|          |
++--------------------------------------+----------------+----------+------------------------------------------------+
+| |align_to|                           | |values_at|    | |def_at| | * |align_to__keyword|                          |
+|                                      |                |          | * |align_to__current_indent|                   |
 +--------------------------------------+----------------+----------+------------------------------------------------+
 
 This is an example of how to configure these options.
@@ -883,6 +901,49 @@ In the example below, the others aggregates are ignored which will allow the ENU
         ENUM_234 => (others => '1')
       );
 
+Example: |align_to| set to :code:`current_indent`
+#################################################
+
+For example in rule :code:`process_028` the close parenthesis will be aligned with the process keyword.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      process (rd_en, wr_en,
+               wr_valid, rd_valid
+              )
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      process (rd_en, wr_en,
+               wr_valid, rd_valid
+      )
+
+Example: |align_to| set to :code:`keyword`
+##########################################
+
+For example in rule :code:`process_028` the close parenthesis will be aligned with the open parenthesis.
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      process (rd_en, wr_en,
+               wr_valid, rd_valid
+      )
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      process (rd_en, wr_en,
+               wr_valid, rd_valid
+              )
+
+
 Rules Enforcing Keyword Alignment
 #################################
 
@@ -918,6 +979,7 @@ Rules Enforcing Keyword Alignment
 * `procedure_410 <procedure_rules.html#procedure-410>`_
 * `procedure_411 <procedure_rules.html#procedure-411>`_
 * `procedure_call_401 <procedure_call_rules.html#procedure-call-401>`_
+* `process_028 <process_rules.html#process-028>`_
 * `process_031 <process_rules.html#process-031>`_
 * `process_033 <process_rules.html#process-033>`_
 * `process_034 <process_rules.html#process-034>`_
