@@ -29,7 +29,7 @@ class multiline_subprogram_specification_structure(structure.Rule):
         self.configuration.append('last_close_paren')
         self.interface_list_semicolon = 'ignore'
         self.configuration.append('interface_list_semicolon')
-        self.interface_element = 'ignore'
+        self.interface_element = 'add_new_line'
         self.configuration.append('interface_element')
         self.ignore_single_line = 'no'
         self.configuration.append('ignore_single_line')
