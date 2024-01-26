@@ -20,7 +20,7 @@ class multiline_subprogram_specification_structure(structure.Rule):
         structure.Rule.__init__(self, name=name, identifier=identifier)
         self.phase = 1
         self.lTokenPairs = None
-        self.configuration_documentation_link = 'configuring_multiline_subprogram_specification_statement_rules_link'
+        self.configuration_documentation_link = 'configuring_subprogram_specification_statement_rules_link'
         self.oSubprogramSpecification = None
 
         self.first_open_paren = 'remove_new_line'

@@ -13,7 +13,7 @@ class rule_013(Rule):
     '''
     This rule checks the structure of procedure specifications.
 
-    |configuring_multiline_subprogram_specification_statement_rules_link|
+    |configuring_subprogram_specification_statement_rules_link|
 
     **Violation**
 
