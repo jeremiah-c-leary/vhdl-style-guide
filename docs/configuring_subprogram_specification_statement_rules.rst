@@ -77,11 +77,11 @@ There are several options to the structure rules:
 +==================================+===========+=====================+===========================+=============================+
 | :code:`first_open_paren`         | |values|  | opening parenthesis | |default_remove_new_line| | * |add_new_line|            |
 +----------------------------------+-----------+---------------------+---------------------------+ * |remove_new_line|         |
-| :code:`last_close_paren`         | |values|  | closing parenthesis | |default_ignore|          | * |ignore|                  |
+| :code:`last_close_paren`         | |values|  | closing parenthesis | |default_add_new_line|    | * |ignore|                  |
 +----------------------------------+-----------+---------------------+---------------------------+                             |
-| :code:`interface_element`        | |values|  | interface element   | |default_ignore|          |                             |
+| :code:`interface_element`        | |values|  | interface element   | |default_add_new_line|    |                             |
 +----------------------------------+-----------+---------------------+---------------------------+                             |
-| :code:`interface_list_semicolon` | |values2| | semicolon           | |default_ignore|          |                             |
+| :code:`interface_list_semicolon` | |values2| | semicolon           | |default_remove_new_line| |                             |
 +----------------------------------+-----------+---------------------+---------------------------+-----------------------------+
 | :code:`ignore_single_line`       | |values3| | N/A                 | |no|                      | * |ignore_single_line__yes| |
 |                                  |           |                     |                           | * |ignore_single_line__no|  |
