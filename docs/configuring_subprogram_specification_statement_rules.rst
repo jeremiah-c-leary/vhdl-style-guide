@@ -79,7 +79,7 @@ There are several options to the structure rules:
 +----------------------------------+-----------+---------------------+---------------------------+ * |remove_new_line|         |
 | :code:`last_close_paren`         | |values|  | closing parenthesis | |default_ignore|          | * |ignore|                  |
 +----------------------------------+-----------+---------------------+---------------------------+                             |
-| :code:`interface_element`        | |values|  | interface element   | |default_add_new_line|    |                             |
+| :code:`interface_element`        | |values|  | interface element   | |default_ignore|          |                             |
 +----------------------------------+-----------+---------------------+---------------------------+                             |
 | :code:`interface_list_semicolon` | |values2| | semicolon           | |default_ignore|          |                             |
 +----------------------------------+-----------+---------------------+---------------------------+-----------------------------+
