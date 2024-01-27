@@ -26,8 +26,8 @@ class testMain(unittest.TestCase):
         if os.path.isfile('deleteme.json'):
             os.remove('deleteme.json')
 
-#        if os.path.isfile('actual.json'):
-#            os.remove('actual.json')
+        if os.path.isfile('actual.json'):
+            os.remove('actual.json')
 
 
     @mock.patch('sys.stdout')

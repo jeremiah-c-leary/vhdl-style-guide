@@ -153,35 +153,7 @@ This rule checks the indent of function parameters on multiple lines.
 function_009
 ############
 
-|phase_1| |error| |structure|
-
-This rule checks for a function parameter on the same line as the function keyword when the parameters are on multiple lines.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   function func_1 (a : integer; b : integer;
-     c : unsigned(3 downto 0);
-     d : std_logic_vector(7 downto 0);
-     e : std_logic) return integer is
-   begin
-
-   end;
-
-
-**Fix**
-
-.. code-block:: vhdl
-
-   function func_1 (
-     a : integer; b : integer;
-     c : unsigned(3 downto 0);
-     d : std_logic_vector(7 downto 0);
-     e : std_logic) return integer is
-   begin
-
-   end;
+The function of this rule has been superseded and is handled by rule function_019.
 
 function_010
 ############
@@ -404,6 +376,31 @@ This rule checks the function keyword exist in the closing of the function speci
    function func return integer is
 
    end function func;
+
+function_019
+############
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of function specifications.
+
+|configuring_subprogram_specification_statement_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+    function average_samples (num_samples : in integer; sample : out std_logic) return integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+    function average_samples (
+      num_samples : in integer;
+      sample      : out std_logic
+    ) return integer;
+
 
 function_100
 ############
