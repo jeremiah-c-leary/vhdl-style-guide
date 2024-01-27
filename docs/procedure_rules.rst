@@ -304,29 +304,7 @@ This rule checks the identifiers for all declarations are aligned in the procedu
 procedure_011
 #############
 
-|phase_1| |error| |structure|
-
-This rule checks for a procedure parameter on the same line as the procedure keyword when the parameters are on multiple lines.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   procedure average_samples (constant a : in integer;
-     signal d : out std_logic
-   ) is
-   begin
-
-
-**Fix**
-
-.. code-block:: vhdl
-
-   procedure average_samples (
-     constant a : in integer;
-     signal d : out std_logic
-   ) is
-   begin
+The function of this rule has been superseded and is handled by rule procedure_013.
 
 procedure_012
 #############
@@ -352,6 +330,30 @@ This rule checks the procedure keyword exist in the closing of the procedure spe
    procedure proc is
 
    end procedure proc;
+
+procedure_013
+#############
+
+|phase_1| |error| |structure|
+
+This rule checks the structure of procedure specifications.
+
+|configuring_subprogram_specification_statement_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+    procedure average_samples (num_samples : in integer; sample : out std_logic);
+
+**Fix**
+
+.. code-block:: vhdl
+
+    procedure average_samples (
+      num_samples : in integer;
+      sample      : out std_logic
+    );
 
 procedure_100
 #############
