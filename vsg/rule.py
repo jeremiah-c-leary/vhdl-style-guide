@@ -281,6 +281,7 @@ def get_rule_name(self):
     sReturn = None
     if self.__module__.startswith('vsg.rules.'):
         rule_group_name = self.__module__.split('.')[2]
+        # Cater for exceptions where the name of the rule doesn't match the name of the module.
         match rule_group_name:
             case 'assert_statement':
                 sReturn = 'assert'
@@ -288,8 +289,6 @@ def get_rule_name(self):
                 sReturn = 'file'
             case 'if_statement':
                 sReturn = 'if'
-            case 'local_rules':
-                sReturn = 'localized'
             case 'ranges':
                 sReturn = 'range'
             case 'type_definition':
