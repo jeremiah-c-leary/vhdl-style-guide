@@ -52,3 +52,4 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
         self.case_control_statements_ends_group = 'yes'
         self.case_keyword_statements_ends_group = 'yes'
         self.loop_control_statements_ends_group = 'yes'
+        self.configuration.remove('separate_generic_port_alignment')

@@ -54,3 +54,6 @@ class rule_010(align_tokens_in_region_between_tokens):
     def __init__(self):
         align_tokens_in_region_between_tokens.__init__(self, lAlign, oStart, oEnd)
         self.solution = 'Inconsistent alignment of "=>" in generic or port assignments of instantiation.'
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')

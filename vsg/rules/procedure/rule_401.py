@@ -46,3 +46,4 @@ class rule_401(Rule):
         Rule.__init__(self, lAlign, oStartToken, oEndToken, lUnless)
         self.solution = 'Align :.'
         self.subphase = 2
+        self.configuration.remove('separate_generic_port_alignment')

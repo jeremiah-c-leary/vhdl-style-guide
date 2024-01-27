@@ -48,3 +48,6 @@ class rule_400(Rule):
         self.comment_line_ends_group = 'no'
         self.separate_generic_port_alignment = 'no'
         self.configuration.remove('separate_generic_port_alignment')
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')

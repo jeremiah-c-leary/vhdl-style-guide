@@ -41,3 +41,6 @@ class rule_410(align_tokens_in_region_between_tokens):
             self, lAlign, token.procedure_specification.open_parenthesis,
             token.procedure_specification.close_parenthesis)
         self.solution = 'Align :.'
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')

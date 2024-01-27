@@ -30,6 +30,21 @@ begin
       SIg1 <= '0';
     end if;
 
+    Sig1 <= SIG2(4 downto 0) when SIG3 = 0 else
+            SIG1(2 downto 1);
+
+    with expression select
+        Sig1 <= SIG2 when 2,
+                SIg3 when 4;
+
+    with expression select
+        Sig1 <= force SIG2 when 2,
+                SIg3 when 4;
+
+    siG1 <= force '0';
+
+    siG1 <= release;
+
   end process PROC_NAME;
 
   -- This is a component that is brought in by a component declaration in the same file
@@ -63,5 +78,13 @@ begin
   SIG1 <= SIG2 and SIG3;
   SIG1 <= SIG1 or SIG1;
 
+  Sig1 <= SIG2(4 downto 0);
+
+  Sig1 <= SIG2(4 downto 0) when SIG3 = 0 else
+          SIG1(2 downto 1);
+
+  with expression select
+      Sig1 <= SIG2 when 2,
+              SIg3 when 4;
 
 end architecture RTL;

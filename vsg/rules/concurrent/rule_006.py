@@ -35,3 +35,6 @@ class rule_006(align_tokens_in_region_between_tokens):
         self.solution = 'Inconsistent alignment of "<=" in group of lines.'
         self.generate_statement_ends_group = 'yes'
         self.configuration.append('generate_statement_ends_group')
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')

@@ -53,3 +53,4 @@ class rule_401(Rule):
         Rule.__init__(self, lAlign, oStart, oEnd, lUnless)
         self.solution = 'Align colon.'
         self.subphase = 3
+        self.configuration.remove('separate_generic_port_alignment')

@@ -20,4 +20,20 @@ architecture rtl of fifo is begin
             b and
             c);
 
+  -- Test hierarchical assignments
+
+  test_signal <= (
+    others         => (
+      data         => (others => '0'),
+      update_pulse => '0'
+    )
+  );
+
+  test_signal <= (
+    others         => (
+      data         => (others => '0'),
+      update_pulse => '0'
+    )
+  );
+
 end architecture rtl;

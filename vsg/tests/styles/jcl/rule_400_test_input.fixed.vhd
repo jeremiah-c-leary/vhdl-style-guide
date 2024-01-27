@@ -10,7 +10,7 @@ package pkg is
     constant        default_value : integer                      := 32;     -- Constant Comment
     shared variable var1          : std_logic_vector(3 downto 0) := "0101"; -- Variable Comment
 
-  end protected body t_flag_type;
+  end protected body T_FLAG_TYPE;
 
 end package pkg;
 
@@ -42,7 +42,7 @@ package body pkg_bdy is
     constant        default_value : integer                      := 32; -- Constant Comment
     shared variable var1          : std_logic_vector(3 downto 0) := "0101"; -- Variable Comment
 
-  end protected body t_flag_type;
+  end protected body T_FLAG_TYPE;
 
 end package body pkg_bdy;
 
@@ -74,7 +74,7 @@ entity ENT is
     constant default_value : integer                    := 32;     -- Constant Comment
     shared variable var1 : std_logic_vector(3 downto 0) := "0101"; -- Variable Comment
 
-  end protected body t_flag_type;
+  end protected body T_FLAG_TYPE;
 
 end entity ENT;
 
@@ -107,7 +107,7 @@ architecture RTL of FIFO is
     constant        default_value : integer                      := 32;     -- Constant Comment
     shared variable var1          : std_logic_vector(3 downto 0) := "0101"; -- Variable Comment
 
-  end protected body t_flag_type;
+  end protected body T_FLAG_TYPE;
 
 begin
 
@@ -139,7 +139,7 @@ begin
       constant        default_value : integer                      := 32;     -- Constant Comment
       shared variable var1          : std_logic_vector(3 downto 0) := "0101"; -- Variable Comment
 
-    end protected body t_flag_type;
+    end protected body T_FLAG_TYPE;
 
   begin
 
@@ -174,7 +174,7 @@ begin
       constant        default_value : integer                      := 32; -- Constant Comment
       shared variable var1          : std_logic_vector(3 downto 0) := "0101"; -- Variable Comment
 
-    end protected body t_flag_type;
+    end protected body T_FLAG_TYPE;
 
   begin
 

@@ -2,26 +2,19 @@
 from vsg import parser
 from vsg import token
 
-from vsg.rules import consistent_token_case
+from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
 lTokens.append(token.variable_declaration.identifier)
 
-lIgnore = []
-lIgnore.append(token.interface_signal_declaration.identifier)
-lIgnore.append(token.interface_unknown_declaration.identifier)
-lIgnore.append(token.interface_constant_declaration.identifier)
-lIgnore.append(token.interface_variable_declaration.identifier)
-lIgnore.append(token.association_element.formal_part)
-lIgnore.append(token.entity_declaration.identifier)
-lIgnore.append(token.entity_declaration.entity_simple_name)
-lIgnore.append(token.architecture_body.entity_name)
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
+lNames = []
+lNames.append(parser.todo)
+lNames.append(token.simple_variable_assignment.target)
+lNames.append(token.selected_variable_assignment.target)
+lNames.append(token.conditional_variable_assignment.target)
 
 
-class rule_011(consistent_token_case):
+class rule_011(Rule):
     '''
     This rule checks for consistent capitalization of variable names.
 
@@ -80,4 +73,4 @@ class rule_011(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, lTokens, lIgnore)
+        Rule.__init__(self, lTokens, lNames)

@@ -17,26 +17,26 @@ lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_600_test_input.fixed.vhd'), lExpected)
 
 
-class test_entity_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
-    def test_rule_600(self):
+    def test_rule(self):
         oRule = entity.rule_600()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'entity')
         self.assertEqual(oRule.identifier, '600')
         self.assertEqual(oRule.groups, ['case'])
 
-        lExpected = [8]
+        lExpected = [8, 17]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_600(self):
+    def test_fix(self):
         oRule = entity.rule_600()
 
         oRule.fix(self.oFile)

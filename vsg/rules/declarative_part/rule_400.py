@@ -49,6 +49,7 @@ class rule_400(Rule):
         self.configuration.remove('if_control_statements_ends_group')
         self.configuration.remove('case_control_statements_ends_group')
         self.configuration.remove('loop_control_statements_ends_group')
+        self.configuration.remove('separate_generic_port_alignment')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_in_declarative_parts()

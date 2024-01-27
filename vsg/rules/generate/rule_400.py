@@ -48,3 +48,5 @@ class rule_400(align_tokens_in_region_between_tokens_when_between_tokens_unless_
         align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens.__init__(self, lAlign, oStartToken, oEndToken, lBetweenTokens, lUnless)
         self.solution = 'Align identifer.'
         self.configuration_documentation_link = 'configuring_identifier_alignment_rules_link'
+        self.configuration.remove('loop_control_statements_ends_group')
+        self.configuration.remove('separate_generic_port_alignment')

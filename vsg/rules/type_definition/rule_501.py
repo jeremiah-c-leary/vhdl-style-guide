@@ -2,23 +2,16 @@
 from vsg import parser
 from vsg import token
 
-from vsg.rules import consistent_token_case
+from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
 lTokens.append(token.enumeration_type_definition.enumeration_literal)
 
-lIgnore = []
-lIgnore.append(token.interface_signal_declaration.identifier)
-lIgnore.append(token.interface_unknown_declaration.identifier)
-lIgnore.append(token.interface_constant_declaration.identifier)
-lIgnore.append(token.interface_variable_declaration.identifier)
-lIgnore.append(token.association_element.formal_part)
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
+lNames = []
+lNames.append(parser.todo)
 
 
-class rule_501(consistent_token_case):
+class rule_501(Rule):
     '''
     This rule checks for consistent capitalization of enumerated types.
 
@@ -44,5 +37,6 @@ class rule_501(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, lTokens, lIgnore)
+        Rule.__init__(self, lTokens, lNames)
         self.subphase = 2
+        self.bIncludeDeclarativePartNames = True

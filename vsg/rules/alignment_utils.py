@@ -1,8 +1,10 @@
 
 from vsg import parser
 from vsg import token
+from vsg import violation
 
 from vsg.vhdlFile import utils
+from vsg.rules import utils as rules_utils
 
 
 def build_solution(sIndent):
@@ -183,3 +185,103 @@ def check_for_loop_keywords(iToken, lTokens):
         return True
 
     return False
+
+
+def check_for_aggregate_parens(iToken, lTokens):
+    iMyToken = iToken
+
+    if isinstance(lTokens[iMyToken], token.aggregate.open_parenthesis):
+        return True
+
+    if isinstance(lTokens[iMyToken], token.aggregate.close_parenthesis):
+        return True
+
+    return False
+
+
+def is_single_line_aggregate(iToken, lTokens):
+    if not isinstance(lTokens[iToken], token.aggregate.open_parenthesis):
+        return False
+
+    for iIndex in range(iToken, len(lTokens)):
+        if isinstance(lTokens[iIndex], parser.carriage_return):
+            return False 
+        if isinstance(lTokens[iIndex], token.aggregate.close_parenthesis):
+            if lTokens[iIndex].iId == lTokens[iToken].iId:
+                return True
+    return False
+
+
+def check_for_violations(self, dAnalysis, oFile):
+    add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+    for iKey in list(dAnalysis.keys()):
+        if dAnalysis[iKey]['adjust'] != 0:
+            oLineTokens = oFile.get_tokens_from_line(iKey)
+            sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+            oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
+            oViolation.set_action(dAnalysis[iKey])
+            self.add_violation(oViolation)
+
+
+def generate_statement_detected(self, oToken):
+    if not self.generate_statement_ends_group:
+        return False
+    if generate_label_detected(oToken):
+        return True
+    if generate_semicolon_detected(oToken):
+        return True
+    if case_generate_alternative_detected(oToken):
+        return True
+    return False
+
+
+def generate_label_detected(oToken):
+    if isinstance(oToken, token.if_generate_statement.generate_label):
+        return True
+    if isinstance(oToken, token.for_generate_statement.generate_label):
+        return True
+    return False
+
+
+def generate_semicolon_detected(oToken):
+    if isinstance(oToken, token.if_generate_statement.semicolon):
+        return True
+    if isinstance(oToken, token.for_generate_statement.semicolon):
+        return True
+    if isinstance(oToken, token.case_generate_statement.semicolon):
+        return True
+    return False
+
+
+def case_generate_alternative_detected(oToken):
+    if isinstance(oToken, token.case_generate_alternative.when_keyword):
+        return True
+    return False
+
+
+def is_case_control_enabled(config):
+    if config == 'break_on_case_or_end_case':
+        return True
+    return config
+
+def is_case_keyword(config, iIndex, lTokens):
+    if check_for_case_keywords(iIndex + 1, lTokens):
+        return True
+    if check_for_when_keywords(iIndex + 1, lTokens):
+        if config != 'break_on_case_or_end_case':
+           return True
+    return False
+
+
+def unless_region_detected(oToken, lUnless):
+    for lTokenPairs in lUnless:
+        if isinstance(oToken, lTokenPairs[0]):
+            return True
+    return False
+
+
+def get_index_of_end_unless_region(oToken, lTokens, lUnless, iIndex):
+    for lTokenPairs in lUnless:
+        if isinstance(oToken, lTokenPairs[0]):
+            return rules_utils.get_index_of_token_in_list_after_index(lTokenPairs[1], lTokens, iIndex)
+

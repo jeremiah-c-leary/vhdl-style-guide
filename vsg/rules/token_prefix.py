@@ -8,7 +8,7 @@ from vsg.rule_group import naming
 
 class token_prefix(naming.Rule):
     '''
-    Checks the case for words.
+    Checks the prefix for words.
 
     Parameters
     ----------

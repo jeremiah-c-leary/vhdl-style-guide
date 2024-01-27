@@ -52,6 +52,49 @@ architecture rtl of fifo is
     others              => false
   );
 
+  -- Test hierarcical assignments
+  -- Desired alignment
+  constant my_constant : my_type := (
+    ENUM_1   => (
+      A      => 1,
+      B      => 2,
+      C      => 3
+    ),
+    ENUM_224 => (
+      AA     => 1,
+      BB     => 2,
+      CC     => 3
+    )
+  );
+
+  -- Invalid alignment
+  constant my_constant : my_type := (
+    ENUM_1   => (
+      A      => 1,
+      B      => 2,
+      C      => 3
+    ),
+    ENUM_224 => (
+      AA     => 1,
+      BB     => 2,
+      CC     => 3
+    )
+  );
+
+  -- Test single line aggregates
+  constant c_my_constant : my_type := (
+    ENUM_1    => (
+      A       => 1,
+      B       => 2,
+      C       => 3
+    ),
+    ENUM_2    => (
+      AA      => 1,
+      BBBBBBB => ((others => '0')),
+      CC      => 3 -- Not aligned!
+    )
+  );
+
 begin
 
 end architecture rtl;
