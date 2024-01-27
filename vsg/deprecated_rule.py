@@ -4,8 +4,8 @@ from vsg import rule
 
 class Rule(rule.Rule):
 
-    def __init__(self, name, identifier):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, name=None, identifier=None):
+        rule.Rule.__init__(self)
         self.fixable = False
         self.disable = True
         self.phase = 0

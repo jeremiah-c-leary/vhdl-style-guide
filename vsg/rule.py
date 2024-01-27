@@ -7,9 +7,9 @@ from vsg import utils
 class Rule():
 
     def __init__(self, name=None, identifier=None):
-        self.name = name
+        self.name = get_rule_name(self)
         self.identifier = get_rule_identifier(self)
-        self.unique_id = str(name) + '_' + str(self.identifier)
+        self.unique_id = str(self.name) + '_' + str(self.identifier)
         self.solution = None
         self.violations = []
         self.indentStyle = 'spaces'
@@ -267,9 +267,35 @@ def configure_rule_attributes(self, oConfig):
 
 def get_rule_identifier(self):
     '''
-    Extracts the rule's identifier from the __module__ special variable.
+    Extracts the rule's identifier from the name of the class.
     '''
+    sReturn = None
     if self.__class__.__name__.startswith('rule_'):
-        return self.__class__.__name__[-3:]
-    else:
-        return ''
+        sReturn = self.__class__.__name__[-3:]
+    return sReturn
+
+def get_rule_name(self):
+    '''
+    Extracts the rule's name from the name of the module.
+    '''
+    sReturn = None
+    if self.__module__.startswith('vsg.rules.'):
+        rule_group_name = self.__module__.split('.')[2]
+        match rule_group_name:
+            case 'assert_statement':
+                sReturn = 'assert'
+            case 'file_statement':
+                sReturn = 'file'
+            case 'if_statement':
+                sReturn = 'if'
+            case 'local_rules':
+                sReturn = 'localized'
+            case 'ranges':
+                sReturn = 'range'
+            case 'type_definition':
+                sReturn = 'type'
+            case 'with_statement':
+                sReturn = 'with'
+            case _:
+                sReturn = rule_group_name
+    return sReturn
