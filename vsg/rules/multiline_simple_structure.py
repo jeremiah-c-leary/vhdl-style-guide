@@ -39,8 +39,8 @@ class multiline_simple_structure(structure.Rule):
                 '0';
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs):
+        structure.Rule.__init__(self)
         self.lTokenPairs = lTokenPairs
 
         self.new_line_after_assign = 'no'

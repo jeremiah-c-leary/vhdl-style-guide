@@ -85,7 +85,7 @@ class rule_029(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, 'process', '029')
+        structure.Rule.__init__(self)
         self.disable = True
         self.clock = 'event'
         self.configuration.append('clock')

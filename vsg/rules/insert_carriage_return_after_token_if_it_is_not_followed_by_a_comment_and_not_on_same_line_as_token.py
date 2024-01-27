@@ -22,8 +22,8 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_and_
        unique identifier.  Usually in the form of 00N.
     '''
 
-    def __init__(self, name, identifier, token, oSameLineToken):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, token, oSameLineToken):
+        structure.Rule.__init__(self)
         self.token = token
         self.oSameLineToken = oSameLineToken
         self.configuration_documentation_link = None

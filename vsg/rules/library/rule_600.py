@@ -8,5 +8,5 @@ class rule_600(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'library', '600')
+        Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' has been moved to rule library_500.')

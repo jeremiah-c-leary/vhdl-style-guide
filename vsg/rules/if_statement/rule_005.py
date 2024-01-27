@@ -35,4 +35,4 @@ class rule_005(Rule):
       elsif b = '0' then
     '''
     def __init__(self):
-        Rule.__init__(self, 'if', '005', lTokens)
+        Rule.__init__(self, lTokens)

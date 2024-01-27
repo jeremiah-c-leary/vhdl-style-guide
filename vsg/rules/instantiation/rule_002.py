@@ -29,4 +29,4 @@ class rule_002(Rule):
        U_FIFO : FIFO
     '''
     def __init__(self):
-        Rule.__init__(self, 'instantiation', '002', lTokens)
+        Rule.__init__(self, lTokens)

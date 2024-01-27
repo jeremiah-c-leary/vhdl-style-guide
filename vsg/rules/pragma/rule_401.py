@@ -32,5 +32,5 @@ class rule_401(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'pragma', '401', [token.open])
+        Rule.__init__(self, [token.open])
         self.style = 'no_blank_line'

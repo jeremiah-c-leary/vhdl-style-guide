@@ -33,7 +33,7 @@ class rule_012(alignment.Rule):
     '''
 
     def __init__(self):
-        alignment.Rule.__init__(self, 'signal', '012')
+        alignment.Rule.__init__(self)
         self.subphase = 2
         self.left_token = token.architecture_body.is_keyword
         self.right_token = token.architecture_body.begin_keyword

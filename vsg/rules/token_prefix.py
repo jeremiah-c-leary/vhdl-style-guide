@@ -26,8 +26,8 @@ class token_prefix(naming.Rule):
        acceptable prefixes
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        naming.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        naming.Rule.__init__(self)
         self.lTokens = lTokens
         self.prefixes = None
         self.configuration.append('prefixes')

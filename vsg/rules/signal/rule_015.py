@@ -32,4 +32,4 @@ class rule_015(separate_multiple_signal_identifiers_into_individual_statements):
     '''
 
     def __init__(self):
-        separate_multiple_signal_identifiers_into_individual_statements.__init__(self, 'signal', '015', iAllow)
+        separate_multiple_signal_identifiers_into_individual_statements.__init__(self, iAllow)

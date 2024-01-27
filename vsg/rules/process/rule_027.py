@@ -44,7 +44,7 @@ class rule_027(blank_line.Rule):
     '''
 
     def __init__(self):
-        blank_line.Rule.__init__(self, 'process', '027')
+        blank_line.Rule.__init__(self)
         self.phase = 3
         self.style = 'require_blank_line'
         self.configuration.append('style')

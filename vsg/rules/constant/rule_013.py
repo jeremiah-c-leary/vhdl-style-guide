@@ -85,4 +85,4 @@ class rule_013(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'constant', '013', lTokens, lIgnore)
+        consistent_token_case.__init__(self, lTokens, lIgnore)

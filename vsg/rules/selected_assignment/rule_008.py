@@ -30,5 +30,5 @@ class rule_008(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '008', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Move code after the guarded keyword to the next line.'

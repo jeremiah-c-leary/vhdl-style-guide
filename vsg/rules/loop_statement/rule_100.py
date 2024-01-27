@@ -25,6 +25,6 @@ class rule_100(Rule):
          end loop;
     '''
     def __init__(self):
-        Rule.__init__(self, 'loop_statement', '100')
+        Rule.__init__(self)
         self.left_token = token.end_keyword
         self.right_token = token.end_loop_keyword

@@ -29,8 +29,8 @@ class token_case_n_token_after_tokens_between_tokens(case.Rule):
        object type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, iToken, lTokens, oStart, oEnd, bLimitToVhdlKeywords=False):
-        case.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, iToken, lTokens, oStart, oEnd, bLimitToVhdlKeywords=False):
+        case.Rule.__init__(self)
         self.solution = None
         self.phase = 6
         self.case = 'lower'

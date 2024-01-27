@@ -25,8 +25,8 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
        reference token to align comments with
     '''
 
-    def __init__(self, name, identifier, token, bIncrement=False):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, token, bIncrement=False):
+        alignment.Rule.__init__(self)
         self.phase = 4
         self.subphase = 2
         self.token = token

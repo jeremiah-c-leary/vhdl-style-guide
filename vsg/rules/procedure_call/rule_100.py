@@ -32,5 +32,5 @@ class rule_100(Rule):
        procedure_label : postponed WR_EN(parameter);
     '''
     def __init__(self):
-        Rule.__init__(self, 'procedure_call', '100', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Ensure a single space between the label, colon, *postponed* keyword and procedure_name.'

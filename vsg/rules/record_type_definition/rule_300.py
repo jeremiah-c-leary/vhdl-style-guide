@@ -30,4 +30,4 @@ class rule_300(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '300', [token.record_keyword])
+        Rule.__init__(self, [token.record_keyword])

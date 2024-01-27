@@ -24,8 +24,8 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(structure.R
        The second token that defines the region
     '''
 
-    def __init__(self, name, identifier, left_token, right_token):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, left_token, right_token):
+        structure.Rule.__init__(self)
         self.left_token = left_token
         self.right_token = right_token
         self.configuration_documentation_link = None

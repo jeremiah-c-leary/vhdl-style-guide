@@ -30,5 +30,5 @@ class rule_003(Rule):
          count := counter + 1;
     '''
     def __init__(self):
-        Rule.__init__(self, 'variable_assignment', '003', lTokens)
+        Rule.__init__(self, lTokens)
         self.number_of_spaces = '>=1'

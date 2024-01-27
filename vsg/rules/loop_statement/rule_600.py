@@ -28,6 +28,6 @@ class rule_600(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, 'loop_statement', '600', lTokens)
+        token_prefix.__init__(self, lTokens)
         self.prefixes = ['loop_']
         self.solution = 'Loop labels'

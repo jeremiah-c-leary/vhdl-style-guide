@@ -58,7 +58,7 @@ class rule_021(blank_line.Rule):
     '''
 
     def __init__(self):
-        blank_line.Rule.__init__(self, 'process', '021')
+        blank_line.Rule.__init__(self)
         self.solution = 'Remove blank lines above *begin* keyword'
         self.phase = 1
         self.style = 'no_blank_line'

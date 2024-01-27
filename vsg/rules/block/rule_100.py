@@ -32,4 +32,4 @@ class rule_100(Rule):
        block_label : block is
     '''
     def __init__(self):
-        Rule.__init__(self, 'block', '100', lTokens)
+        Rule.__init__(self, lTokens)

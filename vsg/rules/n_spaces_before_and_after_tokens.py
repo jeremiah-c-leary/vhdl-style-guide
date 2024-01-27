@@ -25,8 +25,8 @@ class n_spaces_before_and_after_tokens(whitespace.Rule):
        The tokens to check for a single space between
     '''
 
-    def __init__(self, name, identifier, iSpaces, lTokens, bNIsMinimum=False):
-        whitespace.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, iSpaces, lTokens, bNIsMinimum=False):
+        whitespace.Rule.__init__(self)
         self.iSpaces = iSpaces
         self.lTokens = lTokens
         self.bNIsMinimum = bNIsMinimum

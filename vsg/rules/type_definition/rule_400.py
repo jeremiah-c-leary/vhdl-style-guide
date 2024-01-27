@@ -39,4 +39,4 @@ class rule_400(align_tokens_in_region_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens.__init__(self, 'type', '400', lAlign, oStartToken, oEndToken)
+        align_tokens_in_region_between_tokens.__init__(self, lAlign, oStartToken, oEndToken)

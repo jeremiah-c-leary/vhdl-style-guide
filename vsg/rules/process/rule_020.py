@@ -34,4 +34,4 @@ class rule_020(multiline_alignment_between_tokens):
     '''
 
     def __init__(self):
-        multiline_alignment_between_tokens.__init__(self, 'process', '020', lTokenPairs, True)
+        multiline_alignment_between_tokens.__init__(self, lTokenPairs, True)

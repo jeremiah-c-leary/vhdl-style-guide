@@ -47,6 +47,6 @@ class rule_401(align_tokens_in_region_between_tokens_when_between_tokens_unless_
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens.__init__(self, 'generate', '401', lAlign, oStartToken, oEndToken, lBetweenTokens, lUnless)
+        align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens.__init__(self, lAlign, oStartToken, oEndToken, lBetweenTokens, lUnless)
         self.solution = 'Align colon.'
         self.subphase = 2

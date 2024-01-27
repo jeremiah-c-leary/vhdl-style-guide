@@ -6,7 +6,7 @@ from vsg import utils
 
 class Rule():
 
-    def __init__(self, name=None, identifier=None):
+    def __init__(self):
         self.name = get_rule_name(self)
         self.identifier = get_rule_identifier(self)
         self.unique_id = str(self.name) + '_' + str(self.identifier)

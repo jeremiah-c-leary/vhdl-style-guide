@@ -33,5 +33,5 @@ class rule_005(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '005', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Move code after assignment to the next line.'

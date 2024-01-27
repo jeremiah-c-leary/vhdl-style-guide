@@ -36,5 +36,5 @@ class rule_401(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'subprogram_body', '401', lAlign, oStart, oEnd, lUnless)
+        Rule.__init__(self, lAlign, oStart, oEnd, lUnless)
         self.solution = 'Align colon.'

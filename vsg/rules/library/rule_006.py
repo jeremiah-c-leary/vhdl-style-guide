@@ -30,4 +30,4 @@ class rule_006(Rule):
          use ieee.std_logic_unsigned.all;
     '''
     def __init__(self):
-        Rule.__init__(self, 'library', '006', lTokens)
+        Rule.__init__(self, lTokens)

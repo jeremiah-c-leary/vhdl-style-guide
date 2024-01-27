@@ -40,8 +40,8 @@ class multiline_array_alignment(alignment.Rule):
        );
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs):
+        alignment.Rule.__init__(self)
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.align_left = 'no'

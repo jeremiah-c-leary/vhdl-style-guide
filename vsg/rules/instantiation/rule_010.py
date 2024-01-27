@@ -52,5 +52,5 @@ class rule_010(align_tokens_in_region_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens.__init__(self, 'instantiation', '010', lAlign, oStart, oEnd)
+        align_tokens_in_region_between_tokens.__init__(self, lAlign, oStart, oEnd)
         self.solution = 'Inconsistent alignment of "=>" in generic or port assignments of instantiation.'

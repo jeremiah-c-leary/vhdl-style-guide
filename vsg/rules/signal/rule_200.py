@@ -35,6 +35,6 @@ class rule_200(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'signal', '200', lTokens, lAllowTokens)
+        Rule.__init__(self, lTokens, lAllowTokens)
         self.disable = True
         self.configuration.remove('style')

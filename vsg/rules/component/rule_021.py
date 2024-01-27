@@ -27,6 +27,6 @@ class rule_021(insert_token_right_of_token_if_it_does_not_exist_before_token):
        end my_component;
     '''
     def __init__(self):
-        insert_token_right_of_token_if_it_does_not_exist_before_token.__init__(self, 'component', '021', token.is_keyword('is'), token.identifier, token.semicolon)
+        insert_token_right_of_token_if_it_does_not_exist_before_token.__init__(self, token.is_keyword('is'), token.identifier, token.semicolon)
         self.solution = '*is* keyword.'
         self.groups.append('structure::optional')

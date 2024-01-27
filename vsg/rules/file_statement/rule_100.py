@@ -23,7 +23,7 @@ class rule_100(Rule):
        file defaultImage : load_file_type open read_mode is load_file_name;
     '''
     def __init__(self):
-        Rule.__init__(self, 'file', '100')
+        Rule.__init__(self)
         self.disable = True
         self.left_token = token.file_keyword
         self.right_token = token.identifier

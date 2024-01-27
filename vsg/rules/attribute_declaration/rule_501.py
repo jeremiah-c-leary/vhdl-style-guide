@@ -27,5 +27,5 @@ class rule_501(token_case_with_prefix_suffix):
     '''
 
     def __init__(self):
-        token_case_with_prefix_suffix.__init__(self, 'attribute_declaration', '501', lTokens)
+        token_case_with_prefix_suffix.__init__(self, lTokens)
         self.groups.append('case::name')

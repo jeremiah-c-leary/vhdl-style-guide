@@ -29,8 +29,8 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
        The token which will be moved next to the anchor token.
     '''
 
-    def __init__(self, name, identifier, token_to_move):
-        structure.Rule.__init__(self, name, identifier)
+    def __init__(self, token_to_move):
+        structure.Rule.__init__(self)
         self.subphase = 2
         self.token_to_move = token_to_move
         self.bInsertWhitespace = True

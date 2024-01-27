@@ -35,5 +35,5 @@ class rule_003(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'procedure_call', '003')
+        Rule.__init__(self)
         self.lTokenPairs = lTokenPairs

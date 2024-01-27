@@ -32,4 +32,4 @@ class rule_003(blank_line_below_line_ending_with_token):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'generate', '003', lTokens)
+        blank_line_below_line_ending_with_token.__init__(self, lTokens)

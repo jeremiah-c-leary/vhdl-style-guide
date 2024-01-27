@@ -41,6 +41,6 @@ class rule_010(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'procedure', '010', lAlign, token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword, lUnless)
+        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, lAlign, token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword, lUnless)
         self.solution = 'Align identifer.'
         self.configuration_documentation_link = 'configuring_identifier_alignment_rules_link'

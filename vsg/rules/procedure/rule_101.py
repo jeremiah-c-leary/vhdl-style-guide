@@ -32,4 +32,4 @@ class rule_101(Rule):
        end average_samples;
     '''
     def __init__(self):
-        Rule.__init__(self, 'procedure', '101', lTokens)
+        Rule.__init__(self, lTokens)

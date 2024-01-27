@@ -27,6 +27,6 @@ class rule_500(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'context_ref', '500', lTokens)
+        Rule.__init__(self, lTokens)
         self.groups.append('case::name')
         self.configuration.append('case_exceptions')

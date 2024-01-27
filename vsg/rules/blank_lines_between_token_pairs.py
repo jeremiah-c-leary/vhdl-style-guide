@@ -24,8 +24,8 @@ class blank_lines_between_token_pairs(blank_line.Rule):
        The tokens to check for a single space between
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
-        blank_line.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs):
+        blank_line.Rule.__init__(self)
         self.solution = 'Remove blank line'
         self.lTokenPairs = lTokenPairs
 

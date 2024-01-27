@@ -30,6 +30,6 @@ class rule_600(token_suffix):
     '''
 
     def __init__(self):
-        token_suffix.__init__(self, 'signal', '600', lTokens)
+        token_suffix.__init__(self, lTokens)
         self.suffixes = ['_s']
         self.solution = 'Signal identifiers'

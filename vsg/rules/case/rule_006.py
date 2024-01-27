@@ -27,6 +27,6 @@ class rule_006(Rule):
       end case;
     '''
     def __init__(self):
-        Rule.__init__(self, 'case', '006')
+        Rule.__init__(self)
         self.left_token = token.end_keyword
         self.right_token = token.end_case_keyword

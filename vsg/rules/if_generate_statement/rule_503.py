@@ -27,5 +27,5 @@ class rule_503(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'if_generate_statement', '503', lTokens)
+        Rule.__init__(self, lTokens)
         self.groups.append('case::keyword')

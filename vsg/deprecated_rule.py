@@ -4,7 +4,7 @@ from vsg import rule
 
 class Rule(rule.Rule):
 
-    def __init__(self, name=None, identifier=None):
+    def __init__(self):
         rule.Rule.__init__(self)
         self.fixable = False
         self.disable = True

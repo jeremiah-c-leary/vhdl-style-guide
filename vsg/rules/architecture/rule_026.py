@@ -47,7 +47,7 @@ class rule_026(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'architecture', '026', lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
+        Rule.__init__(self, lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
         self.solution = 'Align identifer.'
         self.subphase = 3
         self.configuration.append('include_type_is_keyword')

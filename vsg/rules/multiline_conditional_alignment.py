@@ -40,8 +40,8 @@ class multiline_conditional_alignment(alignment.Rule):
                 '0';
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs):
+        alignment.Rule.__init__(self)
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.configuration_documentation_link = 'configuring_conditional_multiline_indent_rules_link'

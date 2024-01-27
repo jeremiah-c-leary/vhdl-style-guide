@@ -11,8 +11,8 @@ from vsg.rules import utils as rules_utils
 
 class Rule(structure.Rule):
 
-    def __init__(self, name, identifier):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        structure.Rule.__init__(self)
         self.fixable = False
         self.disable = True
 

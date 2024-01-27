@@ -25,8 +25,8 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment(stru
        The token to insert a carriage return after.
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        structure.Rule.__init__(self)
         self.lTokens = lTokens
         self.configuration_documentation_link = None
 

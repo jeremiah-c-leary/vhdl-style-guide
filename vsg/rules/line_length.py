@@ -19,8 +19,8 @@ class line_length(length.Rule):
 
     '''
 
-    def __init__(self, name, identifier):
-        length.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        length.Rule.__init__(self)
         self.disable = False
         self.length = 120
 

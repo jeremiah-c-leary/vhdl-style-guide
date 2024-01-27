@@ -22,9 +22,9 @@ class remove_spaces_before_token_rule(whitespace.Rule):
        The token where spaces will be removed before.
     '''
 
-    def __init__(self, name, identifier, oToken, bIgnoreIfLineStart=False):
+    def __init__(self, oToken, bIgnoreIfLineStart=False):
 
-        whitespace.Rule.__init__(self, name, identifier)
+        whitespace.Rule.__init__(self)
         self.oToken = oToken
         self.bIgnoreIfLineStart = bIgnoreIfLineStart
 

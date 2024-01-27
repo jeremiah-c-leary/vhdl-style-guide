@@ -31,4 +31,4 @@ class rule_003(Rule):
       if (a = '1') then
     '''
     def __init__(self):
-        Rule.__init__(self, 'if', '003', lTokens)
+        Rule.__init__(self, lTokens)

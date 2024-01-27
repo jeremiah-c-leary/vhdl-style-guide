@@ -26,8 +26,8 @@ class multiline_alignment_between_tokens(alignment.Rule):
        object type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokenPairs, bExcludeLastToken=False):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs, bExcludeLastToken=False):
+        alignment.Rule.__init__(self)
         self.phase = 4
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = bExcludeLastToken
@@ -333,7 +333,7 @@ def _analyze_align_left_no_align_paren_yes(iFirstLine, iLastLine, lParens, dActu
                     iColumn = dTemp['column'] + iTemp - len(dActualIndent[iLine]) + iIndentStep - 1
                     if iParens == 1:
 #                        print('Got Here')
-                        iColumn -= iIndentAfterParen 
+                        iColumn -= iIndentAfterParen
 #                    print(f"iColumn = {dTemp['column']} + ({iTemp} - {len({dActualIndent[iLine]})}) + {iIndentStep} - 1 = {iColumn}")
                 lColumn.append(iColumn)
                 if bIgnoreStartParen:

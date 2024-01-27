@@ -8,5 +8,5 @@ class rule_001(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self, 'generic', '001')
+        deprecated_rule.Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' has been moved to entity_200.')

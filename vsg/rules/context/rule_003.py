@@ -35,5 +35,5 @@ class rule_003(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'context', '003', [token.context_keyword])
+        previous_line.__init__(self, [token.context_keyword])
         self.style = 'no_code'

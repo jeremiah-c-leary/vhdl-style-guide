@@ -28,4 +28,4 @@ class rule_039(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'process', '039', lTokens)
+        Rule.__init__(self, lTokens)

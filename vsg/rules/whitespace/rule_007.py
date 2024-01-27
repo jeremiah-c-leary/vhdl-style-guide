@@ -27,5 +27,5 @@ class rule_007(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'whitespace', '007', lTokens)
+        Rule.__init__(self, lTokens)
         self.number_of_spaces = '>=1'

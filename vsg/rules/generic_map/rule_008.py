@@ -33,5 +33,5 @@ class rule_008(formal_part_in_association_element_between_tokens):
        );
     '''
     def __init__(self):
-        formal_part_in_association_element_between_tokens.__init__(self, 'generic_map', '008', lStart, lEnd)
+        formal_part_in_association_element_between_tokens.__init__(self, lStart, lEnd)
         self.solution = 'Add formal_part to positional assignment.'

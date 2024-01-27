@@ -36,8 +36,8 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(alignment.Rule
        A list of pairs of tokens in which to exclude alignment
     '''
 
-    def __init__(self, name, identifier, lTokens, left_token, right_token, lUnless):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, left_token, right_token, lUnless):
+        alignment.Rule.__init__(self)
         self.lTokens = lTokens
         self.left_token = left_token
         self.right_token = right_token

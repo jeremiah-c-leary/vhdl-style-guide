@@ -16,8 +16,8 @@ class Rule(rule.Rule):
        unique identifier.  Usually in the form of 00N.
     '''
 
-    def __init__(self, name, identifier):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        rule.Rule.__init__(self)
         self.phase = 1
         self.groups.append('structure')
         self.configuration_documentation_link = 'configuring_simple_multiline_structure_rules_link'

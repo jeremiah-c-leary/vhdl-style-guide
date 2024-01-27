@@ -22,8 +22,8 @@ class consistent_case_of_tokens_from_between_tokens_applied_to_region(case.Rule)
        token type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokens, oStart, oEnd, oRegionStart, oRegionEnd, lIgnore=None):
-        case.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, oStart, oEnd, oRegionStart, oRegionEnd, lIgnore=None):
+        case.Rule.__init__(self)
         self.subphase = 2
         self.lTokens = lTokens
         self.oStart = oStart

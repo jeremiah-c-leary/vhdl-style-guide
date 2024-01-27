@@ -28,6 +28,6 @@ class rule_601(token_suffix):
     '''
 
     def __init__(self):
-        token_suffix.__init__(self, 'loop_statement', '601', lTokens)
+        token_suffix.__init__(self, lTokens)
         self.suffixes = ['_loop']
         self.solution = 'Loop labels'

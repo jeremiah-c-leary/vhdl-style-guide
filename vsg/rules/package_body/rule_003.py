@@ -33,6 +33,6 @@ class rule_003(insert_token_left_of_token_if_it_does_not_exist_between_tokens_us
     '''
 
     def __init__(self):
-        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, 'package_body', '003', oInsertToken, oLeftToken, oStartToken, oEndToken, oValueToken)
+        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, oInsertToken, oLeftToken, oStartToken, oEndToken, oValueToken)
         self.solution = 'package name.'
         self.groups.append('structure::optional')

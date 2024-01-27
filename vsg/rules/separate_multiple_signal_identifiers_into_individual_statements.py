@@ -29,8 +29,8 @@ class separate_multiple_signal_identifiers_into_individual_statements(structure.
        acceptable prefixes
     '''
 
-    def __init__(self, name, identifier, lTokens, iAllow=2):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, iAllow=2):
+        structure.Rule.__init__(self)
         self.solution = 'Split signal declaration into individual declarations'
         self.lTokens = lTokens
         self.consecutive = iAllow

@@ -30,5 +30,5 @@ class rule_003(Rule):
        rd_en   <= '0';
     '''
     def __init__(self):
-        Rule.__init__(self, 'sequential', '003', lTokens)
+        Rule.__init__(self, lTokens)
         self.number_of_spaces = '>=1'

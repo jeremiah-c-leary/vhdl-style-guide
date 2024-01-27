@@ -63,4 +63,4 @@ class rule_007(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'procedure', '007', lTokens, lIgnore)
+        consistent_token_case.__init__(self, lTokens, lIgnore)

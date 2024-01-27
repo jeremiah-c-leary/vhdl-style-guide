@@ -32,8 +32,8 @@ class insert_token_right_of_token_if_it_does_not_exist_between_tokens_using_valu
        token to pull the value from
     '''
 
-    def __init__(self, name, identifier, insert_token, anchor_token, left_token, right_token, value_token):
-        Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, insert_token, anchor_token, left_token, right_token, value_token):
+        Rule.__init__(self)
         self.insert_token = insert_token
         self.anchor_token = anchor_token
         self.left_token = left_token

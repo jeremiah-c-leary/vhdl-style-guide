@@ -34,7 +34,7 @@ class rule_005(whitespace.Rule):
     '''
 
     def __init__(self):
-        whitespace.Rule.__init__(self, 'whitespace', '005')
+        whitespace.Rule.__init__(self)
         self.solution = 'Remove spaces after open (.'
         self.iSpaces = 0
         self.lTokens = [parser.open_parenthesis]

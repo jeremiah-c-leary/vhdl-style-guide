@@ -32,4 +32,4 @@ class rule_004(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'generate', '004', lTokens)
+        previous_line.__init__(self, lTokens)

@@ -40,7 +40,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'case_generate_statement', '400', lAlign, oStart, oEnd)
+        Rule.__init__(self, lAlign, oStart, oEnd)
         self.solution = 'Inconsistent alignment of "=>".'
         self.disable = True
         self.compact_alignment = 'yes'

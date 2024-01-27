@@ -32,5 +32,5 @@ class rule_035(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'instantiation', '035', lTokens)
+        Rule.__init__(self, lTokens)
         self.bInsertWhitespace = False

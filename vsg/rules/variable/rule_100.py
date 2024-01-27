@@ -25,7 +25,7 @@ class rule_100(Rule):
        variable width : integer;
     '''
     def __init__(self):
-        Rule.__init__(self, 'variable', '100')
+        Rule.__init__(self)
         self.disable = True
         self.left_token = token.variable_keyword
         self.right_token = token.identifier

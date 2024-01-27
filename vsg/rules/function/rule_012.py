@@ -41,6 +41,6 @@ class rule_012(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'function', '012', lAlign, oStartToken, oEndToken, lUnless)
+        Rule.__init__(self, lAlign, oStartToken, oEndToken, lUnless)
         self.solution = 'Align :.'
         self.subphase = 2

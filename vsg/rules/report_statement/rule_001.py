@@ -22,5 +22,5 @@ class rule_001(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     '''
 
     def __init__(self):
-        remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace.__init__(self, 'report_statement', '001', token.label, token.label_colon)
+        remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace.__init__(self, token.label, token.label_colon)
         self.solution = 'Remove Label'

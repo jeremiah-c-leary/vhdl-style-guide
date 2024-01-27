@@ -27,4 +27,4 @@ class rule_007(proposed_rule.Rule):
     '''
 
     def __init__(self):
-        proposed_rule.Rule.__init__(self, 'context_ref', '007')
+        proposed_rule.Rule.__init__(self)

@@ -57,4 +57,4 @@ class rule_600(consistent_case_of_tokens_from_between_tokens_applied_to_region):
     '''
 
     def __init__(self):
-        consistent_case_of_tokens_from_between_tokens_applied_to_region.__init__(self, 'entity', '600', lTokens, oStartToken, oEndToken, oRegionStart, oRegionEnd, lIgnore)
+        consistent_case_of_tokens_from_between_tokens_applied_to_region.__init__(self, lTokens, oStartToken, oEndToken, oRegionStart, oRegionEnd, lIgnore)

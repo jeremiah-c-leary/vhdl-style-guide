@@ -26,4 +26,4 @@ class rule_008(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'architecture', '008', [token.end_keyword])
+        token_indent.__init__(self, [token.end_keyword])

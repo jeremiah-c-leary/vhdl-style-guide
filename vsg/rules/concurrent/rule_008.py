@@ -52,7 +52,7 @@ class rule_008(alignment.Rule):
     '''
 
     def __init__(self):
-        alignment.Rule.__init__(self, 'concurrent', '008')
+        alignment.Rule.__init__(self)
         self.subphase = 3
         self.lTokens = lTokens
         self.left_token = oLeftToken

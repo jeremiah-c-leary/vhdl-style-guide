@@ -26,7 +26,7 @@ class rule_008(whitespace.Rule):
     '''
 
     def __init__(self):
-        whitespace.Rule.__init__(self, 'whitespace', '008')
+        whitespace.Rule.__init__(self)
         self.solution = 'Remove spaces after std_logic_vector'
         self.configuration_documentation_link = None
 

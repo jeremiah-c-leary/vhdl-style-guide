@@ -30,4 +30,4 @@ class rule_003(Rule):
        generic (
     '''
     def __init__(self):
-        Rule.__init__(self, 'generic', '003', lTokens)
+        Rule.__init__(self, lTokens)

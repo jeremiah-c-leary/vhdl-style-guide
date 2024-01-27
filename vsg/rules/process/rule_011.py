@@ -30,4 +30,4 @@ class rule_011(blank_line_below_line_ending_with_token):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'process', '011', lTokens)
+        blank_line_below_line_ending_with_token.__init__(self, lTokens)

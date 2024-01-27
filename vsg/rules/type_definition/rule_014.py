@@ -41,4 +41,4 @@ class rule_014(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'type', '014', lTokens, lIgnore)
+        consistent_token_case.__init__(self, lTokens, lIgnore)

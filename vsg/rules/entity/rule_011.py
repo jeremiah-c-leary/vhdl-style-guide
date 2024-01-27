@@ -23,6 +23,6 @@ class rule_011(Rule):
        end entity fifo;
     '''
     def __init__(self):
-        Rule.__init__(self, 'entity', '011')
+        Rule.__init__(self)
         self.left_token = token.end_keyword
         self.right_token = token.end_entity_keyword

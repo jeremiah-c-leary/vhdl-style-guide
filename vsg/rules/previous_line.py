@@ -24,8 +24,8 @@ class previous_line(blank_line.Rule):
        token object that a blank line above should appear
     '''
 
-    def __init__(self, name, identifier, lTokens, lAllowTokens=None):
-        blank_line.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, lAllowTokens=None):
+        blank_line.Rule.__init__(self)
         self.solution = 'Insert blank line above'
         self.lTokens = lTokens
         self.lHierarchyLimits = None

@@ -44,5 +44,5 @@ class rule_501(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'type', '501', lTokens, lIgnore)
+        consistent_token_case.__init__(self, lTokens, lIgnore)
         self.subphase = 2

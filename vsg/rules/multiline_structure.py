@@ -34,8 +34,8 @@ class multiline_structure(structure.Rule):
        );
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs):
+        structure.Rule.__init__(self)
         self.phase = 1
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = True

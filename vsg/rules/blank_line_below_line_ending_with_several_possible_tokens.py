@@ -23,8 +23,8 @@ class blank_line_below_line_ending_with_several_possible_tokens(Rule):
        token object that a blank line below should appear
     '''
 
-    def __init__(self, name, identifier, lTokens, lAllowTokens=None):
-        Rule.__init__(self, name, identifier, lTokens, lAllowTokens)
+    def __init__(self, lTokens, lAllowTokens=None):
+        Rule.__init__(self, lTokens, lAllowTokens)
 
     def _get_tokens_of_interest(self, oFile):
         if self.style.startswith('require_blank_line'):

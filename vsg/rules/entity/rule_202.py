@@ -32,6 +32,6 @@ class rule_202(Rule):
          port (
     '''
     def __init__(self):
-        Rule.__init__(self, 'entity', '202', lTokens)
+        Rule.__init__(self, lTokens)
         self.style = 'no_blank_line'
         self.lBetweenTokenPairs = [between.entity_keyword, between.semicolon]

@@ -27,6 +27,6 @@ class rule_503(token_case):
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'entity_specification', '503', lTokens)
+        token_case.__init__(self, lTokens)
         self.groups.append('case::name')
         self.configuration.append('case_exceptions')

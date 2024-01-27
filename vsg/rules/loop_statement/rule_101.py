@@ -23,6 +23,6 @@ class rule_101(Rule):
        end loop END_LOOP_LABEL;
     '''
     def __init__(self):
-        Rule.__init__(self, 'loop_statement', '101')
+        Rule.__init__(self)
         self.left_token = token.end_loop_keyword
         self.right_token = token.end_loop_label

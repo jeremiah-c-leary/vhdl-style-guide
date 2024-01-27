@@ -17,8 +17,8 @@ class multiline_constraint_structure(structure.Rule):
     This rule checks the structure of multiline constraints.
     '''
 
-    def __init__(self, name, identifier):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        structure.Rule.__init__(self)
         self.phase = 1
         self.lTokenPairs = None
         self.configuration_documentation_link = 'configuring_multiline_constraint_rules_link'

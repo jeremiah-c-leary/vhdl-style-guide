@@ -31,4 +31,4 @@ class rule_202(previous_line):
        end loop;
     '''
     def __init__(self):
-        previous_line.__init__(self, 'loop_statement', '202', lTokens)
+        previous_line.__init__(self, lTokens)

@@ -19,8 +19,8 @@ class Rule(rule):
        token object that a blank line above should appear
     '''
 
-    def __init__(self, name, identifier, lTokens, lAllowTokens=None):
-        rule.__init__(self, name=name, identifier=identifier, lTokens=lTokens, lAllowTokens=lAllowTokens)
+    def __init__(self, lTokens, lAllowTokens=None):
+        rule.__init__(self, lTokens=lTokens, lAllowTokens=lAllowTokens)
         self.lBetweenTokenPairs = None
 
     def _get_tokens_of_interest(self, oFile):

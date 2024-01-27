@@ -36,5 +36,5 @@ class rule_013(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'port', '013', lTokens, lTokenPairs)
+        Rule.__init__(self, lTokens, lTokenPairs)
         self.solution = 'Move multiple ports to their own lines.'

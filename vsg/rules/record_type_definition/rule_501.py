@@ -30,5 +30,5 @@ class rule_501(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '501', [token.end_keyword])
+        Rule.__init__(self, [token.end_keyword])
         self.groups.append('case::keyword')

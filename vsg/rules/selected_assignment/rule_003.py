@@ -35,5 +35,5 @@ class rule_003(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '003', lTokens, bInsertSpace=True)
+        Rule.__init__(self, lTokens, bInsertSpace=True)
         self.solution = 'Removed carraige returns after with keyword'

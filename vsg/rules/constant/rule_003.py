@@ -8,6 +8,6 @@ class rule_003(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self, 'constant', '003')
+        deprecated_rule.Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' has been replaced with the following rules:')
         self.message.append('  function_015, package_019, procedure_010, architecture_029 and process_037.')

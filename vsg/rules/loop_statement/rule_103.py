@@ -25,6 +25,6 @@ class rule_103(Rule):
          label : for index in 0 to 100 loop
     '''
     def __init__(self):
-        Rule.__init__(self, 'loop_statement', '103')
+        Rule.__init__(self)
         self.left_token = token.loop_label
         self.right_token = token.label_colon

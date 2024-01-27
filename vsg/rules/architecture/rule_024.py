@@ -25,6 +25,6 @@ class rule_024(insert_token_left_of_token_if_it_does_not_exist_between_tokens_us
     '''
 
     def __init__(self):
-        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, 'architecture', '024', token.architecture_simple_name, token.semicolon, token.end_keyword, token.semicolon, token.identifier)
+        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, token.architecture_simple_name, token.semicolon, token.end_keyword, token.semicolon, token.identifier)
         self.solution = 'architecture simple name'
         self.groups.append('structure::optional')

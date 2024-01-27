@@ -29,5 +29,5 @@ class rule_016(token_suffix):
     '''
 
     def __init__(self):
-        token_suffix.__init__(self, 'package', '016', lTokens)
+        token_suffix.__init__(self, lTokens)
         self.suffixes = ['_pkg']

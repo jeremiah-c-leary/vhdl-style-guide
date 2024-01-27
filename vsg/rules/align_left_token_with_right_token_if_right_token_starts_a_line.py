@@ -30,8 +30,8 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(alignment.R
        The second token that defines the region
     '''
 
-    def __init__(self, name, identifier, left_token, right_token):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, left_token, right_token):
+        alignment.Rule.__init__(self)
         self.left_token = left_token
         self.right_token = right_token
         self.configuration_documentation_link = None

@@ -44,5 +44,5 @@ class rule_019(token_case_in_range_bounded_by_tokens):
     '''
 
     def __init__(self):
-        token_case_in_range_bounded_by_tokens.__init__(self, 'port', '019', lTokens, oStart, oEnd)
+        token_case_in_range_bounded_by_tokens.__init__(self, lTokens, oStart, oEnd)
         self.groups.append('case::keyword')

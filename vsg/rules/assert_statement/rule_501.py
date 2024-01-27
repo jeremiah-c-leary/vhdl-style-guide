@@ -29,5 +29,5 @@ class rule_501(token_case):
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'assert', '501', lTokens)
+        token_case.__init__(self, lTokens)
         self.groups.append('case::keyword')

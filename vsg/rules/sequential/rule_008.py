@@ -40,4 +40,4 @@ class rule_008(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'sequential', '008', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)

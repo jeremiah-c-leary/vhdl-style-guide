@@ -51,5 +51,5 @@ class rule_017(align_tokens_in_region_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens.__init__(self, 'component', '017', lAlign, token.component_declaration.component_keyword, token.component_declaration.end_keyword)
+        align_tokens_in_region_between_tokens.__init__(self, lAlign, token.component_declaration.component_keyword, token.component_declaration.end_keyword)
         self.solution = 'Align :.'

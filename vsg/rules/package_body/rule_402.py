@@ -34,5 +34,5 @@ class rule_402(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'package_body', '402', lAlign, token.package_body.is_keyword, token.package_body.end_keyword, lUnless)
+        Rule.__init__(self, lAlign, token.package_body.is_keyword, token.package_body.end_keyword, lUnless)
         self.solution = 'Align colon.'

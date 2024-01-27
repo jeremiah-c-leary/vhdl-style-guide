@@ -23,7 +23,7 @@ class rule_103(Rule):
        alias alias_designator is name;
     '''
     def __init__(self):
-        Rule.__init__(self, 'alias_declaration', '103')
+        Rule.__init__(self)
         self.disable = True
         self.left_token = token.alias_keyword
         self.right_token = token.alias_designator

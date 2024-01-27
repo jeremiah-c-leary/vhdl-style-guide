@@ -61,4 +61,4 @@ class rule_010(consistent_token_case):
     '''
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'function', '010', lTokens, lIgnore)
+        consistent_token_case.__init__(self, lTokens, lIgnore)

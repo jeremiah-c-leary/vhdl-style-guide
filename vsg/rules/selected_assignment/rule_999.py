@@ -36,7 +36,7 @@ class rule_001(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '001')
+        Rule.__init__(self)
         self.lTokenPairs = lTokenPairs
         self.add_option(newLineAfterWithKeywordOption())
         self.add_option(newLineBeforeSelectKeywordOption())

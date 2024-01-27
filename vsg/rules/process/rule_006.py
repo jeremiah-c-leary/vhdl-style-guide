@@ -35,4 +35,4 @@ class rule_006(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'process', '006', lTokens)
+        token_indent.__init__(self, lTokens)
