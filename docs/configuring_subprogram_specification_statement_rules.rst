@@ -45,6 +45,8 @@ There are several options to the structure rules:
 
 .. |orange_triangle| image:: img/orange_triangle.png
 
+.. |purple_hexa_star| image:: img/purple_hexa_star.png
+
 .. |add_new_line| replace::
    The setting :code:`add_new_line` enforces a carriage return (alias "new line") [and, consequently by indentation rules kicking in, also (indirectly) enforces the indentation of the new line]
 
@@ -72,28 +74,24 @@ There are several options to the structure rules:
 .. |ignore_single_line__no| replace::
    :code:`no` =  Apply rules to single line expressions.
 
-+----------------------------------+-----------+---------------------+---------------------------+-----------------------------+
-| Option                           | Values    | Structural Element  | Default Value             | Description                 |
-+==================================+===========+=====================+===========================+=============================+
-| :code:`first_open_paren`         | |values|  | opening parenthesis | |default_remove_new_line| | * |add_new_line|            |
-+----------------------------------+-----------+---------------------+---------------------------+ * |remove_new_line|         |
-| :code:`last_close_paren`         | |values|  | closing parenthesis | |default_add_new_line|    | * |ignore|                  |
-+----------------------------------+-----------+---------------------+---------------------------+                             |
-| :code:`interface_element`        | |values|  | interface element   | |default_add_new_line|    |                             |
-+----------------------------------+-----------+---------------------+---------------------------+                             |
-| :code:`interface_list_semicolon` | |values2| | semicolon           | |default_remove_new_line| |                             |
-+----------------------------------+-----------+---------------------+---------------------------+-----------------------------+
-| :code:`ignore_single_line`       | |values3| | N/A                 | |no|                      | * |ignore_single_line__yes| |
-|                                  |           |                     |                           | * |ignore_single_line__no|  |
-+----------------------------------+-----------+---------------------+---------------------------+-----------------------------+
++----------------------------------+--------------------+-----------+---------------------+---------------------------+-----------------------------+
+| Option                           | Symbol             | Values    | Structural Element  | Default Value             | Description                 |
++==================================+====================+===========+=====================+===========================+=============================+
+| :code:`first_open_paren`         | |green_diamond|    | |values|  | opening parenthesis | |default_remove_new_line| | * |add_new_line|            |
++----------------------------------+--------------------+-----------+---------------------+---------------------------+ * |remove_new_line|         |
+| :code:`last_close_paren`         | |red_penta_star|   | |values|  | closing parenthesis | |default_add_new_line|    | * |ignore|                  |
++----------------------------------+--------------------+-----------+---------------------+---------------------------+                             |
+| :code:`interface_element`        | |orange_triangle|  | |values|  | interface element   | |default_add_new_line|    |                             |
++----------------------------------+--------------------+-----------+---------------------+---------------------------+                             |
+| :code:`interface_list_semicolon` | |purple_hexa_star| | |values2| | semicolon           | |default_remove_new_line| |                             |
++----------------------------------+--------------------+-----------+---------------------+---------------------------+-----------------------------+
+| :code:`ignore_single_line`       | N/A                | |values3| | N/A                 | |no|                      | * |ignore_single_line__yes| |
+|                                  |                    |           |                     |                           | * |ignore_single_line__no|  |
++----------------------------------+--------------------+-----------+---------------------+---------------------------+-----------------------------+
 
-.. code-block:: vhdl
+The following figure illustrates where the options will be applied in an procedure call.
 
-   procedure update_test (
-       test_number : integer;
-       test_result : boolean
-   );
-
+.. image:: img/subprogram_specification_statement_code.png
 
 The following configuration replicates the above code snippet.
 
