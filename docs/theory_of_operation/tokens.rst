@@ -62,6 +62,6 @@ All classes in a production are extensions of base classes in the parser module.
 | semicolon                | parser.semicolon   |
 +--------------------------+--------------------+
 
-Have a base class allows rules to be written against all type of a token, for example semicolons.
+Having a base class allows rules to be written against all types of a token, for example semicolons.
 Extending base classes in the production allows for rules to be written against specific tokens in a production, for example architecture_body.semicolon.
 
