@@ -34,6 +34,7 @@ Example
 For example, the following production for the architecture_body:
 
 .. code-block:: text
+
    architecture_body ::=
        architecture identifier of *entity*_name is
            architecture_declarative_part

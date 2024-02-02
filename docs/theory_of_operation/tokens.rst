@@ -9,6 +9,7 @@ Each class in each file maps to an element in the VHDL production.
 For example, the following production for the architecture_body:
 
 .. code-block:: text
+
    architecture_body ::=
        architecture identifier of *entity*_name is
            architecture_declarative_part
@@ -34,7 +35,7 @@ In the architecture_body.py file, there are the following classes:
 The name of the class matches the item in the production with the following additional rules applied:
 
 * All keywords have an _keyword suffix.
-* All duplicately named keywords at the end of the production have an end_ prefix.
+* All duplicately named keywords at the end of the production have an end\_ prefix.
 
 All classes in a production are extensions of base classes in the parser module.
 
