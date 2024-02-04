@@ -1,0 +1,18 @@
+file_rules:
+  - vsg/tests/vsg/deprecated_option/example.vhd:
+      rule:
+        architecture_001:
+           indentSize: 4
+  - vsg/tests/vsg/deprecated_option/example.vhd:
+      rule:
+        architecture_003:
+           indentType: 'spaces'
+  - vsg/tests/vsg/deprecated_option/example.vhd:
+      rule:
+        architecture_001:
+           indentSize : 4
+  - vsg/tests/vsg/deprecated_option/example.vhd:
+      rule:
+        architecture_003:
+           indentType: 'spaces'
+

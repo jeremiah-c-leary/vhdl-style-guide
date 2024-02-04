@@ -594,7 +594,9 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['-c', 'vsg/tests/vsg/deprecated_option/rule.yaml'])
         sys.argv.extend(['vsg/tests/vsg/deprecated_option/global.yaml'])
         sys.argv.extend(['vsg/tests/vsg/deprecated_option/group.yaml'])
-#        sys.argv.extend(['-c', 'vsg/tests/vsg/deprecated_option/global.yaml', 'vsg/tests/vsg/deprecated_option/group.yaml', 'vsg/tests/vsg/deprecated_option/file.yaml', 'vsg/tests/vsg/deprecated_option/rule.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/file_list.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/file_rules.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/all.yaml'])
 
 
 
@@ -645,6 +647,54 @@ class testMain(unittest.TestCase):
 
         sOutput = ''
         sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/group.yaml: option indentType will be deprecated in a future release, change to indent_type.'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        sOutput = ''
+        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/file_list.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        sOutput = ''
+        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/file_list.yaml: option indentType will be deprecated in a future release, change to indent_type.'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        sOutput = ''
+        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/file_rules.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        sOutput = ''
+        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/file_rules.yaml: option indentType will be deprecated in a future release, change to indent_type.'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        sOutput = ''
+        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/all.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        sOutput = ''
+        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/all.yaml: option indentType will be deprecated in a future release, change to indent_type.'
 
         lExpected = []
         lExpected.append(mock.call(sOutput))

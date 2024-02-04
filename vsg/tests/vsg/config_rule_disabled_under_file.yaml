@@ -5,4 +5,5 @@ file_list:
         rule:
           port_007:
               disable: True
+              IndentSize : 4
 ...

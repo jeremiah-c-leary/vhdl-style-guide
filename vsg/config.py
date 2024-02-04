@@ -94,46 +94,43 @@ def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
 dDeprecatedOption = {}
 dDeprecatedOption['indentSize'] = 'option indentSize will be deprecated in a future release, change to indent_size.'
 dDeprecatedOption['indentType'] = 'option indentType will be deprecated in a future release, change to indent_type.'
-iNumDeprecatedKeys = len(dDeprecatedOption.keys())
+#iNumDeprecatedKeys = len(dDeprecatedOption.keys())
 
 
 def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):
     lDeprecatedKeys = list(dDeprecatedOption.keys())
-    lFoundDeprecatedKeys = []
-    bPrintFileName = True
-    iKeys = 0
-    for sKey in dConfiguration.keys():
-       if sKey == 'rule':
-           for sRule in dConfiguration[sKey]:
-               if sRule == 'group':
-                   for sGroup in list(dConfiguration[sKey][sRule].keys()):
-                       lKeys = list(dConfiguration[sKey][sRule][sGroup].keys())
-                       for sDeprecatedKey in lDeprecatedKeys:
-                           if sDeprecatedKey in lKeys:
-                              lFoundDeprecatedKeys.append(sDeprecatedKey)
-                              sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
-                              sOutput += dDeprecatedOption[sDeprecatedKey]
-                              print(sOutput)
-                       for sFoundDeprecatedKey in lFoundDeprecatedKeys:
-                           lDeprecatedKeys.remove(sFoundDeprecatedKey)
-                       lFoundDeprecatedKeys = []
-                       if len(lDeprecatedKeys) == 0:
-                           break
+    dBlah(dConfiguration, lDeprecatedKeys, sConfigFilename)
 
-               else:
-                   lKeys = list(dConfiguration[sKey][sRule].keys())
-                   for sDeprecatedKey in lDeprecatedKeys:
-                       if sDeprecatedKey in lKeys:
-                          lFoundDeprecatedKeys.append(sDeprecatedKey)
-                          sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
-                          sOutput += dDeprecatedOption[sDeprecatedKey]
-                          print(sOutput)
-                   for sFoundDeprecatedKey in lFoundDeprecatedKeys:
-                       lDeprecatedKeys.remove(sFoundDeprecatedKey)
-               lFoundDeprecatedKeys = []
-               if len(lDeprecatedKeys) == 0:
-                   break
+def dBlah(dDict, lDeprecatedKeys, sConfigFilename):
+    if len(lDeprecatedKeys) == 0:
+        return None
+    for sKey in list(dDict.keys()):
+        if isinstance(dDict[sKey], dict):
+            dBlah(dDict[sKey], lDeprecatedKeys, sConfigFilename)
+        elif isinstance(dDict[sKey], list):
+            lBlah(dDict[sKey], lDeprecatedKeys, sConfigFilename)
+        elif sKey in lDeprecatedKeys:
+            sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
+            sOutput += dDeprecatedOption[sKey]
+            print(sOutput)
+            lDeprecatedKeys.remove(sKey)
+#            if len(lDeprecatedKeys) == 0:
+#                return None
 
+def lBlah(lDict, lDeprecatedKeys, sConfigFilename):
+    if len(lDeprecatedKeys) == 0:
+        return None
+    for sKey in lDict:
+        if isinstance(sKey, dict):
+            dBlah(sKey, lDeprecatedKeys, sConfigFilename)
+        elif isinstance(sKey, list):
+            lBlah(sKey, lDeprectedKeys, sConfigFilename)
+        elif sKey in lDeprecatedKeys:
+            sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
+            sOutput += dDeprecatedOption[sKey]
+            print(sOutput)
+            lDeprecatedKeys.remove(sKey)
+     
                
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     dReturn = dConfig
