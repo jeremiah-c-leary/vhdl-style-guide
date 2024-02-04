@@ -25,6 +25,6 @@ class rule_003(Rule):
        case data is
     '''
     def __init__(self):
-        Rule.__init__(self, 'case', '003')
+        Rule.__init__(self)
         self.left_token = parser.todo
         self.right_token = token.is_keyword

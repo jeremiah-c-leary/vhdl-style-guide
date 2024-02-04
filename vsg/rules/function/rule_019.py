@@ -33,6 +33,6 @@ class rule_019(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'function', '019')
+        Rule.__init__(self)
         self.lTokenPairs = lTokenPairs
         self.oSubprogramSpecification = oSubprogramSpecification

@@ -29,5 +29,5 @@ class rule_015(remove_carriage_returns_between_token_pairs):
     '''
 
     def __init__(self):
-        remove_carriage_returns_between_token_pairs.__init__(self, 'generate', '015', lTokens)
+        remove_carriage_returns_between_token_pairs.__init__(self, lTokens)
         self.solution = 'Merge lines with generate label with *generate* keyword.'

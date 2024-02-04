@@ -31,7 +31,7 @@ class rule_006(align_tokens_in_region_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens.__init__(self, 'concurrent', '006', lAlign, token.architecture_body.begin_keyword, token.architecture_body.end_keyword)
+        align_tokens_in_region_between_tokens.__init__(self, lAlign, token.architecture_body.begin_keyword, token.architecture_body.end_keyword)
         self.solution = 'Inconsistent alignment of "<=" in group of lines.'
         self.generate_statement_ends_group = 'yes'
         self.configuration.append('generate_statement_ends_group')

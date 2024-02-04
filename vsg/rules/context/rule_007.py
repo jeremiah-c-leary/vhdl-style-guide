@@ -30,5 +30,5 @@ class rule_007(split_line_at_token):
     '''
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'context', '007', lTokens)
+        split_line_at_token.__init__(self, lTokens)
         self.solution = 'Move library and code after library to the next line'

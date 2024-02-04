@@ -23,6 +23,6 @@ class rule_006(move_token_next_to_another_token):
     '''
 
     def __init__(self):
-        move_token_next_to_another_token.__init__(self, 'context', '006', token.identifier, token.is_keyword)
+        move_token_next_to_another_token.__init__(self, token.identifier, token.is_keyword)
         self.subphase = 2
         self.solution = 'Move *is* keyword next to context identifier'

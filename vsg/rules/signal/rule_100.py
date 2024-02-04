@@ -25,7 +25,7 @@ class rule_100(Rule):
        signal width : integer;
     '''
     def __init__(self):
-        Rule.__init__(self, 'signal', '100')
+        Rule.__init__(self)
         self.disable = True
         self.left_token = token.signal_keyword
         self.right_token = token.identifier

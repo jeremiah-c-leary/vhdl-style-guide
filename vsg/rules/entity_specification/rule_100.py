@@ -28,4 +28,4 @@ class rule_100(Rule):
        attribute coordinate of comp_1 : component is (0.0, 17.5);
     '''
     def __init__(self):
-        Rule.__init__(self, 'entity_specification', '100', lTokens)
+        Rule.__init__(self, lTokens)

@@ -28,4 +28,4 @@ class rule_002(Rule):
        ram_array : for i in 0 to 7 generate
     '''
     def __init__(self):
-        Rule.__init__(self, 'generate', '002', lTokens)
+        Rule.__init__(self, lTokens)

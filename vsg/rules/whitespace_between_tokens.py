@@ -29,8 +29,8 @@ class Rule(whitespace.Rule):
        The right token to check for a space between the left token
     '''
 
-    def __init__(self, name, identifier):
-        whitespace.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        whitespace.Rule.__init__(self)
         self.left_token = None
         self.right_token = None
         self.number_of_spaces = 1

@@ -33,7 +33,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'signal', '400', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)
         self.phase = 5
         self.subphase = 3
         self.bIgnoreStartParen = True

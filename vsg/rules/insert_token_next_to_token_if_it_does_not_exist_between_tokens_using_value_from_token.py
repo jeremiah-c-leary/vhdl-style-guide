@@ -30,8 +30,8 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
        token to pull the value from
     '''
 
-    def __init__(self, name, identifier):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        structure.Rule.__init__(self)
         self.insert_token = None
         self.anchor_token = None
         self.left_token = None

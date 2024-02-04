@@ -24,4 +24,4 @@ class rule_100(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'conditional_expressions', '100', [token.when_keyword])
+        Rule.__init__(self, [token.when_keyword])

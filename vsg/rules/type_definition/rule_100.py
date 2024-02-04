@@ -27,5 +27,5 @@ class rule_100(Rule):
        type t_my_type is range -5 to 5;
     '''
     def __init__(self):
-        Rule.__init__(self, 'type', '100', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)
         self.disable = True

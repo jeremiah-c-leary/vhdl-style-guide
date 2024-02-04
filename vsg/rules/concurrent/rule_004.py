@@ -28,5 +28,5 @@ class rule_004(Rule):
        wr_en <= '0';
     '''
     def __init__(self):
-        Rule.__init__(self, 'concurrent', '004', lTokens)
+        Rule.__init__(self, lTokens)
         self.number_of_spaces = '>=1'

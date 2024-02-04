@@ -31,5 +31,5 @@ class rule_005(split_line_at_token):
     '''
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'context_ref', '005', lTokens)
+        split_line_at_token.__init__(self, lTokens)
         self.solution = 'Move context and code after context to the next line'

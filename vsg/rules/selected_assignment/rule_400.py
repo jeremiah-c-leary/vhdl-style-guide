@@ -36,7 +36,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '400', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)
         self.phase = 5
         self.configuration.remove('align_left')
         self.configuration.remove('align_paren')

@@ -32,6 +32,6 @@ class rule_004(multiline_alignment_between_tokens):
     '''
 
     def __init__(self):
-        multiline_alignment_between_tokens.__init__(self, 'sequential', '004', lTokenPairs)
+        multiline_alignment_between_tokens.__init__(self, lTokenPairs)
         self.phase = 5
         self.subphase = 2

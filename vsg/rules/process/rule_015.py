@@ -39,5 +39,5 @@ class rule_015(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'process', '015', lTokens)
+        previous_line.__init__(self, lTokens)
         self.style = 'no_code'

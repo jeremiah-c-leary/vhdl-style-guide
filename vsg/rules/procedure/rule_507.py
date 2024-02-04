@@ -63,4 +63,4 @@ class rule_507(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'procedure', '507', lTokens, lNames)
+        Rule.__init__(self, lTokens, lNames)

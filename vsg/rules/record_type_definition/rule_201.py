@@ -31,5 +31,5 @@ class rule_201(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '201', [token.end_keyword])
+        Rule.__init__(self, [token.end_keyword])
         self.style = 'no_blank_line'

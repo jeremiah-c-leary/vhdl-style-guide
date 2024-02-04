@@ -29,4 +29,4 @@ class rule_301(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'block', '301', lTokens)
+        token_indent.__init__(self, lTokens)

@@ -23,7 +23,7 @@ class rule_100(Rule):
        subtype my_subtype is range 0 to 9;
     '''
     def __init__(self):
-        Rule.__init__(self, 'subtype', '100')
+        Rule.__init__(self)
         self.disable = True
         self.left_token = token.subtype_keyword
         self.right_token = token.identifier

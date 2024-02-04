@@ -38,7 +38,7 @@ class rule_002(token_case_formal_part_of_association_element_in_map_between_toke
          );
     '''
     def __init__(self):
-        token_case_formal_part_of_association_element_in_map_between_tokens.__init__(self, 'port_map', '002', sMapType, oStart, oEnd)
+        token_case_formal_part_of_association_element_in_map_between_tokens.__init__(self, sMapType, oStart, oEnd)
         self.configuration.append('prefix_exceptions')
         self.configuration.append('suffix_exceptions')
         self.configuration.append('case_exceptions')

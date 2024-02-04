@@ -23,8 +23,8 @@ class token_indent(indent.Rule):
        token type to apply the indent rule
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        indent.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        indent.Rule.__init__(self)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

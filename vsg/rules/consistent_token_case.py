@@ -28,8 +28,8 @@ class consistent_token_case(case.Rule):
        token type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokens, lNames, lIgnore=None):
-        case.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, lNames, lIgnore=None):
+        case.Rule.__init__(self)
         self.subphase = 2
         self.lTokens = lTokens
         self.lNames = lNames

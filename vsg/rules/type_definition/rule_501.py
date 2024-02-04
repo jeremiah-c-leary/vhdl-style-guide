@@ -37,6 +37,6 @@ class rule_501(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'type', '501', lTokens, lNames)
+        Rule.__init__(self, lTokens, lNames)
         self.subphase = 2
         self.bIncludeDeclarativePartNames = True

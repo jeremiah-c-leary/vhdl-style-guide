@@ -29,5 +29,5 @@ class rule_504(token_case_with_prefix_suffix):
     '''
 
     def __init__(self):
-        token_case_with_prefix_suffix.__init__(self, 'loop_statement', '504', lTokens)
+        token_case_with_prefix_suffix.__init__(self, lTokens)
         self.groups.append('case::label')

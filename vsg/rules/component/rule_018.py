@@ -28,4 +28,4 @@ class rule_018(blank_line_below_line_ending_with_token):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'component', '018', [token.semicolon])
+        blank_line_below_line_ending_with_token.__init__(self, [token.semicolon])

@@ -111,7 +111,9 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule._get_solution(1), 'Solution Line 1')
 
     def test_get_violations_w_vsg_output_method(self):
-        oRule = rule.Rule('xyz', '001')
+        oRule = rule.Rule()
+        oRule.name = 'xyz'
+        oRule.identifier = '001'
         oRule.solution = 'Solution'
 
         self.assertFalse(oRule.has_violations())
@@ -154,7 +156,8 @@ class testRuleMethods(unittest.TestCase):
 
 
     def test_deprecated_rule(self):
-        oRule = deprecated_rule.Rule('some_rule', '001')
+        oRule = deprecated_rule.Rule()
+        oRule.unique_id = 'some_rule_001'
         oRule.message = ['This has been deprecated.']
 
         oConfig = config.New(command_line_args())

@@ -31,4 +31,4 @@ class rule_105(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '105', lTokens)
+        Rule.__init__(self, lTokens)

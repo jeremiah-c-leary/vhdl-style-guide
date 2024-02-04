@@ -26,5 +26,5 @@ class rule_101(Rule):
        attribute max_delay : time;
     '''
     def __init__(self):
-        Rule.__init__(self, 'attribute_declaration', '101', lTokens)
+        Rule.__init__(self, lTokens)
         self.number_of_spaces = '>=1'

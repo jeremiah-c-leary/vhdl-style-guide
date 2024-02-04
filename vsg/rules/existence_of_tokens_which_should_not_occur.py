@@ -24,8 +24,8 @@ class existence_of_tokens_which_should_not_occur(structure.Rule):
        acceptable prefixes
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        structure.Rule.__init__(self)
         self.lTokens = lTokens
         self.fixable = False
         self.configuration_documentation_link = None

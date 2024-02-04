@@ -39,4 +39,4 @@ class rule_007(Rule):
          );
     '''
     def __init__(self):
-        Rule.__init__(self, 'port_map', '007', lTokens, lStart, lEnd)
+        Rule.__init__(self, lTokens, lStart, lEnd)

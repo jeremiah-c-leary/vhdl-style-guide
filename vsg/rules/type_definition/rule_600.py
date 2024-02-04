@@ -29,6 +29,6 @@ class rule_600(token_suffix):
     '''
 
     def __init__(self):
-        token_suffix.__init__(self, 'type', '600', lTokens)
+        token_suffix.__init__(self, lTokens)
         self.suffixes = ['_t']
         self.solution = 'Type identifiers'

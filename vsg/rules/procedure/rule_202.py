@@ -8,5 +8,5 @@ class rule_202(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'procedure', '202')
+        Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' has been moved to rule subprogram_body_202.')

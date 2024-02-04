@@ -26,5 +26,5 @@ class rule_001(insert_carriage_return_after_token_if_it_is_not_followed_by_a_com
     '''
 
     def __init__(self):
-        insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment.__init__(self, 'loop_statement', '001', lTokens)
+        insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment.__init__(self, lTokens)
         self.solution = 'Move code after **loop** to the next line.'

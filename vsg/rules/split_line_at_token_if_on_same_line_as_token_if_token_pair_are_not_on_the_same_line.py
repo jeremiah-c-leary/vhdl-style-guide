@@ -32,8 +32,8 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
        The end of the range
     '''
 
-    def __init__(self, name, identifier, oToken, oSameLineToken, lTokenPair):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, oToken, oSameLineToken, lTokenPair):
+        structure.Rule.__init__(self)
         self.solution = None
         self.phase = 1
         self.oToken = oToken

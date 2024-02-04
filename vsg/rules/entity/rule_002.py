@@ -23,6 +23,6 @@ class rule_002(Rule):
        entity fifo is
     '''
     def __init__(self):
-        Rule.__init__(self, 'entity', '002')
+        Rule.__init__(self)
         self.left_token = token.entity_keyword
         self.right_token = token.identifier

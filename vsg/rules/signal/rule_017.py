@@ -32,5 +32,5 @@ class rule_017(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'signal', '017')
+        Rule.__init__(self)
         self.lTokenPairs = lTokenPairs

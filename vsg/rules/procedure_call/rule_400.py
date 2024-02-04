@@ -31,5 +31,5 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'procedure_call', '400', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)
         self.phase = 5

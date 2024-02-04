@@ -30,5 +30,5 @@ class rule_002(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '002', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Move code after the begin to the next line.'

@@ -43,7 +43,7 @@ class rule_003(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'library', '003', lTokens)
+        previous_line.__init__(self, lTokens)
         self.allow_library_clause = 'no'
         self.configuration.append('allow_library_clause')
         self.style = 'require_blank_line'

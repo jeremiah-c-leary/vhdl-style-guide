@@ -27,4 +27,4 @@ class rule_002(Rule):
        context c1;
     '''
     def __init__(self):
-        Rule.__init__(self, 'context_ref', '002', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)

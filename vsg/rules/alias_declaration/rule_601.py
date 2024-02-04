@@ -31,6 +31,6 @@ class rule_601(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'alias_declaration', '601', lTokens)
+        Rule.__init__(self, lTokens)
         self.suffixes = ['_a']
         self.solution = 'Alias designators'

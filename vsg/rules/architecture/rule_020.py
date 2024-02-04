@@ -24,5 +24,5 @@ class rule_020(token_case):
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'architecture', '020', [token.is_keyword])
+        token_case.__init__(self, [token.is_keyword])
         self.groups.append('case::keyword')

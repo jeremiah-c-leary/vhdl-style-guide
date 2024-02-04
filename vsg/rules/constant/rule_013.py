@@ -75,5 +75,5 @@ class rule_013(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'constant', '013', lTokens, lNames)
+        Rule.__init__(self, lTokens, lNames)
         self.bIncludeDeclarativePartNames = True

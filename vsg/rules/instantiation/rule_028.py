@@ -27,5 +27,5 @@ class rule_028(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'instantiation', '028', lTokens)
+        Rule.__init__(self, lTokens)
         self.groups.append('case::name')

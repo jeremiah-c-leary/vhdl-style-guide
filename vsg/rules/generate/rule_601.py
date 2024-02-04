@@ -28,5 +28,5 @@ class rule_601(token_prefix_between_tokens):
     '''
 
     def __init__(self):
-        token_prefix_between_tokens.__init__(self, 'generate', '601', lTokens, token.for_generate_statement.for_keyword, token.parameter_specification.in_keyword)
+        token_prefix_between_tokens.__init__(self, lTokens, token.for_generate_statement.for_keyword, token.parameter_specification.in_keyword)
         self.prefixes = ['gv_']

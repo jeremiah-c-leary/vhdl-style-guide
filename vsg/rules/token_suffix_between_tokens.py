@@ -24,8 +24,8 @@ class token_suffix_between_tokens(Rule):
        acceptable suffixes
     '''
 
-    def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        Rule.__init__(self, name=name, identifier=identifier, lTokens=lTokens)
+    def __init__(self, lTokens, oStart, oEnd):
+        Rule.__init__(self, lTokens=lTokens)
         self.oStart = oStart
         self.oEnd = oEnd
 

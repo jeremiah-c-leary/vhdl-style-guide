@@ -9,8 +9,8 @@ class Rule(structure.Rule):
     This rule checks if a token pair does not exist.
     '''
 
-    def __init__(self, name, identifier, oFirstToken, oSecondToken):
-        structure.Rule.__init__(self, name, identifier)
+    def __init__(self, oFirstToken, oSecondToken):
+        structure.Rule.__init__(self)
         self.oFirstToken = oFirstToken
         self.oSecondToken = oSecondToken
         self.configuration_documentation_link = None

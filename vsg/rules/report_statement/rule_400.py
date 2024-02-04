@@ -50,7 +50,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, name="report_statement", identifier="400")
+        Rule.__init__(self)
         self.lStartTokens = [report_statement.report_keyword]
         self.lEndTokens = [report_statement.severity_keyword, report_statement.semicolon]
         self.indentAdjust = 2

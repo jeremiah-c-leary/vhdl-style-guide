@@ -33,5 +33,5 @@ class rule_016(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'generic', '016', lTokens, lTokenPairs)
+        Rule.__init__(self, lTokens, lTokenPairs)
         self.solution = 'Move multiple generics to their own lines.'

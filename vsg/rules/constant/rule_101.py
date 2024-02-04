@@ -25,7 +25,7 @@ class rule_101(Rule):
        constant width : integer := 32;
     '''
     def __init__(self):
-        Rule.__init__(self, 'constant', '101')
+        Rule.__init__(self)
         self.disable = True
         self.left_token = token.constant_keyword
         self.right_token = token.identifier

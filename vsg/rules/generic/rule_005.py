@@ -34,7 +34,7 @@ class rule_005(Rule):
        g_width : integer := 32;
     '''
     def __init__(self):
-        Rule.__init__(self, 'generic', '005', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Reduce number of spaces after the colon to 1.'
 
     def _get_tokens_of_interest(self, oFile):

@@ -28,4 +28,4 @@ class rule_100(Rule):
        package body FIFO_PKG is
     '''
     def __init__(self):
-        Rule.__init__(self, 'package_body', '100', lTokens)
+        Rule.__init__(self, lTokens)

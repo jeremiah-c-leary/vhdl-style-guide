@@ -11,8 +11,8 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
     '''
     '''
 
-    def __init__(self, name, identifier):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        alignment.Rule.__init__(self)
         self.alignment = 'report'
         self.configuration.append('alignment')
         self.phase = 4

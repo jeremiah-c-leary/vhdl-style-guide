@@ -28,7 +28,7 @@ class rule_011(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, name='comment', identifier='011')
+        structure.Rule.__init__(self)
         self.solution = 'Move inline comment to previous line.'
         self.disable = True
         self.lTokens = [parser.comment]

@@ -24,8 +24,8 @@ class move_token_sequences_left_of_token(structure.Rule):
        object type to split a line at
     '''
 
-    def __init__(self, name, identifier, lSequences, oLeftToken):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lSequences, oLeftToken):
+        structure.Rule.__init__(self)
         self.lSequences = lSequences
         self.oLeftToken = oLeftToken
         self.configuration_documentation_link = None

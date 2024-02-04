@@ -73,5 +73,5 @@ class rule_503(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'alias_declaration', '503', lTokens, lNames)
+        Rule.__init__(self, lTokens, lNames)
         self.bIncludeDeclarativePartNames = True

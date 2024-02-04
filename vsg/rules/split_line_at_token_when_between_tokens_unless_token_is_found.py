@@ -30,8 +30,8 @@ class split_line_at_token_when_between_tokens_unless_token_is_found(structure.Ru
        The end of the range
     '''
 
-    def __init__(self, name, identifier, lTokens, oStart, oEnd, oStop):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, oStart, oEnd, oStop):
+        structure.Rule.__init__(self)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

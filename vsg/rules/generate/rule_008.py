@@ -28,4 +28,4 @@ class rule_008(Rule):
        end generate ram_array;
     '''
     def __init__(self):
-        Rule.__init__(self, 'generate', '008', lTokens)
+        Rule.__init__(self, lTokens)

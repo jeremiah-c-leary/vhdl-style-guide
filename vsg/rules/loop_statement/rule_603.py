@@ -28,5 +28,5 @@ class rule_603(token_suffix_between_tokens):
     '''
 
     def __init__(self):
-        token_suffix_between_tokens.__init__(self, 'loop_statement', '603', lTokens, token.iteration_scheme.for_keyword, token.parameter_specification.in_keyword)
+        token_suffix_between_tokens.__init__(self, lTokens, token.iteration_scheme.for_keyword, token.parameter_specification.in_keyword)
         self.suffixes = ['_lv']

@@ -30,5 +30,5 @@ class rule_006(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '006', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Move code after the force keyword to the next line.'

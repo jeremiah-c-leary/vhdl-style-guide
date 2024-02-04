@@ -73,4 +73,4 @@ class rule_011(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'variable', '011', lTokens, lNames)
+        Rule.__init__(self, lTokens, lNames)

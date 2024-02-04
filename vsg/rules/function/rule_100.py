@@ -36,4 +36,4 @@ class rule_100(Rule):
        function overflow (a: integer) return integer is
     '''
     def __init__(self):
-        Rule.__init__(self, 'function', '100', lTokens)
+        Rule.__init__(self, lTokens)

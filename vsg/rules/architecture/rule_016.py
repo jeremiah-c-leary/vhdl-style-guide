@@ -31,4 +31,4 @@ class rule_016(blank_line_above_line_starting_with_token):
     '''
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, 'architecture', '016', [token.begin_keyword])
+        blank_line_above_line_starting_with_token.__init__(self, [token.begin_keyword])

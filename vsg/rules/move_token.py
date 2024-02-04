@@ -25,8 +25,8 @@ class move_token(structure.Rule):
        object type to split a line at
     '''
 
-    def __init__(self, name, identifier, oToken):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, oToken):
+        structure.Rule.__init__(self)
         self.solution = None
         self.phase = 1
         self.oToken = oToken

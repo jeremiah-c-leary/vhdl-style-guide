@@ -31,5 +31,5 @@ class rule_502(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'loop_statement', '502', lTokens)
+        Rule.__init__(self, lTokens)
         self.groups.append('case::keyword')

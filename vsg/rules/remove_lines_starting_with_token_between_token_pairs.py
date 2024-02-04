@@ -23,8 +23,8 @@ class remove_lines_starting_with_token_between_token_pairs(structure.Rule):
        The tokens to check for a single space between
     '''
 
-    def __init__(self, name, identifier, oRemoveToken, lTokens):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, oRemoveToken, lTokens):
+        structure.Rule.__init__(self)
         self.solution = None
         self.phase = 2
         self.oRemoveToken = oRemoveToken

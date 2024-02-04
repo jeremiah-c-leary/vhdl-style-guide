@@ -41,7 +41,7 @@ class rule_033(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'process', '033', lAlign, token.process_statement.process_keyword, token.process_statement.begin_keyword, lUnless)
+        Rule.__init__(self, lAlign, token.process_statement.process_keyword, token.process_statement.begin_keyword, lUnless)
         self.solution = 'Align :\'s.'
         self.subphase = 2
         self.configuration.remove('separate_generic_port_alignment')

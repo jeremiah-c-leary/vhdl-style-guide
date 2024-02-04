@@ -32,5 +32,5 @@ class rule_035(remove_carriage_return_after_token):
     '''
 
     def __init__(self):
-        remove_carriage_return_after_token.__init__(self, 'if', '035', lTokens, bInsertSpace=True)
+        remove_carriage_return_after_token.__init__(self, lTokens, bInsertSpace=True)
         self.solution = 'Merge lines with **elsif** keyword and expression below.'

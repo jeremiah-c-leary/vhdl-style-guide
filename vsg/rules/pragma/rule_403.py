@@ -32,5 +32,5 @@ class rule_403(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'pragma', '403', [token.close])
+        Rule.__init__(self, [token.close])
         self.style = 'require_blank_line'

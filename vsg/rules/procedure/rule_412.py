@@ -8,5 +8,5 @@ class rule_412(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'procedure', '412')
+        Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' has been superceeded by rule architecture_027.')

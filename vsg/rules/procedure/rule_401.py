@@ -43,7 +43,7 @@ class rule_401(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'procedure', '401', lAlign, oStartToken, oEndToken, lUnless)
+        Rule.__init__(self, lAlign, oStartToken, oEndToken, lUnless)
         self.solution = 'Align :.'
         self.subphase = 2
         self.configuration.remove('separate_generic_port_alignment')

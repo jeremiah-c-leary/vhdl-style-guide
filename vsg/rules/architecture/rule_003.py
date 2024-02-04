@@ -27,5 +27,5 @@ class rule_003(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'architecture', '003', [token.architecture_keyword])
+        previous_line.__init__(self, [token.architecture_keyword])
         self.style = 'require_blank_line'

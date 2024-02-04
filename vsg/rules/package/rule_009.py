@@ -27,4 +27,4 @@ class rule_009(Rule):
        end package FIFO_PKG;
     '''
     def __init__(self):
-        Rule.__init__(self, 'package', '009', lTokens)
+        Rule.__init__(self, lTokens)

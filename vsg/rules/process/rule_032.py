@@ -11,7 +11,7 @@ class rule_032(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self, 'process', '032')
+        deprecated_rule.Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' has been replaced with the following rules:')
         self.message.append('  * process_037')
         self.message.append('  * process_038')

@@ -10,8 +10,8 @@ class is_token_value_one_of(naming.Rule):
     Checks if a token value is in a list of provided values.
     '''
 
-    def __init__(self, name, identifier, token):
-        naming.Rule.__init__(self, name, identifier)
+    def __init__(self, token):
+        naming.Rule.__init__(self)
         self.names = []
         self.fixable = False
         self.disable = True

@@ -32,7 +32,7 @@ class rule_100(whitespace.Rule):
     '''
 
     def __init__(self):
-        whitespace.Rule.__init__(self, name='comment', identifier='100')
+        whitespace.Rule.__init__(self)
         self.solution = 'Undefined'
         self.phase = 2
         self.disable = False

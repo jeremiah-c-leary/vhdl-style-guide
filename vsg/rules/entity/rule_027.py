@@ -26,5 +26,5 @@ class rule_027(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'entity', '027', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Move code after the **begin** keyword to the next line.'

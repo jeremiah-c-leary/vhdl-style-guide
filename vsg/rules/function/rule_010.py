@@ -60,5 +60,5 @@ class rule_010(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'function', '010', lTokens, lNames)
+        Rule.__init__(self, lTokens, lNames)
         self.bIncludeDeclarativePartNames = True

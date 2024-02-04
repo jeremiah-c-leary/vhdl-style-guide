@@ -29,8 +29,8 @@ class remove_excessive_blank_lines_below_line_ending_with_token(blank_line.Rule)
        Ignore lines with given token types
     '''
 
-    def __init__(self, name, identifier, lTokens, iAllow=1, lOverrides=None):
-        blank_line.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, iAllow=1, lOverrides=None):
+        blank_line.Rule.__init__(self)
         self.solution = 'Remove blank lines below'
         self.lTokens = lTokens
         self.iAllow = iAllow

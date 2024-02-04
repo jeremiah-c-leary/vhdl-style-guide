@@ -32,6 +32,6 @@ class rule_033(insert_token_left_of_token_if_it_does_not_exist_between_tokens):
        INSTANCE_NAME : component ENTITY_NAME
     '''
     def __init__(self):
-        insert_token_left_of_token_if_it_does_not_exist_between_tokens.__init__(self, 'instantiation', '033', oInsertToken, oAnchorToken, oStartToken, oEndToken)
+        insert_token_left_of_token_if_it_does_not_exist_between_tokens.__init__(self, oInsertToken, oAnchorToken, oStartToken, oEndToken)
         self.solution = '*component* keyword'
         self.groups.append('structure::optional')

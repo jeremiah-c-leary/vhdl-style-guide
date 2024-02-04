@@ -23,8 +23,8 @@ class remove_tokens(structure.Rule):
 
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        structure.Rule.__init__(self)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

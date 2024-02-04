@@ -40,7 +40,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'constant', '400', lAlign, oStartToken, oEndToken, lUnless)
+        Rule.__init__(self, lAlign, oStartToken, oEndToken, lUnless)
         self.solution = 'Align => .'
         self.configuration.remove('if_control_statements_ends_group')
         self.configuration.remove('case_control_statements_ends_group')

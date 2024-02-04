@@ -40,7 +40,7 @@ class rule_026(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, name='port', identifier='026')
+        structure.Rule.__init__(self)
         self.subphase = 2
         self.configuration_documentation_link = None
 

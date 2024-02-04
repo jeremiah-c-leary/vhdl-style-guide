@@ -37,5 +37,5 @@ class rule_014(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'port', '014', oToken)
+        Rule.__init__(self, oToken)
         self.preserve_comment = True

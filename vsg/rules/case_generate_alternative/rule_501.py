@@ -31,5 +31,5 @@ class rule_501(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'case_generate_alternative', '501', lTokens, oStartToken, oEndToken)
+        Rule.__init__(self, lTokens, oStartToken, oEndToken)
         self.groups.append('case::keyword')

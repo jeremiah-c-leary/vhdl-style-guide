@@ -24,8 +24,8 @@ class token_suffix(naming.Rule):
        acceptable suffixes
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        naming.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        naming.Rule.__init__(self)
         self.lTokens = lTokens
         self.suffixes = None
         self.configuration.append('suffixes')

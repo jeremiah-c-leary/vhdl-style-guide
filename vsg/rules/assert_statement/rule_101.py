@@ -30,4 +30,4 @@ class rule_101(Rule):
          severity FAILURE;
     '''
     def __init__(self):
-        Rule.__init__(self, 'assert', '101', lTokens)
+        Rule.__init__(self, lTokens)

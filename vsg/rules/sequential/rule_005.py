@@ -8,5 +8,5 @@ class rule_005(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'sequential', '005')
+        Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' has been merged into process_400.')

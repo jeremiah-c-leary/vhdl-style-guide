@@ -32,6 +32,6 @@ class rule_013(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'procedure', '013')
+        Rule.__init__(self)
         self.lTokenPairs = lTokenPairs
         self.oSubprogramSpecification = oSubprogramSpecification

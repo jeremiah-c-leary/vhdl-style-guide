@@ -28,5 +28,5 @@ class rule_006(Rule):
        variable counter : integer;
     '''
     def __init__(self):
-        Rule.__init__(self, 'variable', '006', lTokens)
+        Rule.__init__(self, lTokens)
         self.number_of_spaces = '>=1'

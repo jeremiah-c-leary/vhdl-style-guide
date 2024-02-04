@@ -39,5 +39,5 @@ class rule_600(token_suffix_between_tokens):
     '''
 
     def __init__(self):
-        token_suffix_between_tokens.__init__(self, 'generic_map', '600', lTokens, lStart, lEnd)
+        token_suffix_between_tokens.__init__(self, lTokens, lStart, lEnd)
         self.suffixes = ['_g']

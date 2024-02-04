@@ -25,5 +25,5 @@ class rule_201(Rule):
          port (
     '''
     def __init__(self):
-        Rule.__init__(self, 'entity', '201', [token.is_keyword], iAllow=0)
+        Rule.__init__(self, [token.is_keyword], iAllow=0)
         self.configuration_documentation_link = None

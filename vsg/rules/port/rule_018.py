@@ -44,6 +44,6 @@ class rule_018(token_case_n_token_after_tokens_between_tokens):
     '''
 
     def __init__(self):
-        token_case_n_token_after_tokens_between_tokens.__init__(self, 'port', '018', 2, lTokens, oStart, oEnd, True)
+        token_case_n_token_after_tokens_between_tokens.__init__(self, 2, lTokens, oStart, oEnd, True)
         self.disabled = True
         self.groups.append('case::keyword')

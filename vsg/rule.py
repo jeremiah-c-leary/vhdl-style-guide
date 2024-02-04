@@ -6,10 +6,10 @@ from vsg import utils
 
 class Rule():
 
-    def __init__(self, name=None, identifier=None):
-        self.name = name
-        self.identifier = identifier
-        self.unique_id = str(name) + '_' + str(identifier)
+    def __init__(self):
+        self.name = get_rule_name(self)
+        self.identifier = get_rule_identifier(self)
+        self.unique_id = str(self.name) + '_' + str(self.identifier)
         self.solution = None
         self.violations = []
         self.indentStyle = 'spaces'
@@ -264,3 +264,36 @@ def configure_rule_attributes(self, oConfig):
                     oOption.value = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
     except KeyError:
         pass
+
+def get_rule_identifier(self):
+    '''
+    Extracts the rule's identifier from the name of the class.
+    '''
+    sReturn = None
+    if self.__class__.__name__.startswith('rule_'):
+        sReturn = self.__class__.__name__[-3:]
+    return sReturn
+
+def get_rule_name(self):
+    '''
+    Extracts the rule's name from the name of the module.
+    '''
+    sReturn = None
+    if self.__module__.startswith('vsg.rules.'):
+        rule_group_name = self.__module__.split('.')[2]
+        # Cater for exceptions where the name of the rule doesn't match the name of the module.
+        if rule_group_name == 'assert_statement':
+            sReturn = 'assert'
+        elif rule_group_name == 'file_statement':
+            sReturn = 'file'
+        elif rule_group_name == 'if_statement':
+            sReturn = 'if'
+        elif rule_group_name == 'ranges':
+            sReturn = 'range'
+        elif rule_group_name == 'type_definition':
+            sReturn = 'type'
+        elif rule_group_name == 'with_statement':
+            sReturn = 'with'
+        else:
+            sReturn = rule_group_name
+    return sReturn

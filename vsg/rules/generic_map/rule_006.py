@@ -31,5 +31,5 @@ class rule_006(Rule):
        generic map (
     '''
     def __init__(self):
-        Rule.__init__(self, 'generic_map', '006', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Ensure a single space exists between "map" and (.'

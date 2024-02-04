@@ -40,4 +40,4 @@ class rule_007(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'variable_assignment', '007', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)

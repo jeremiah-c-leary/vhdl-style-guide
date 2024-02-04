@@ -35,4 +35,4 @@ class rule_006(Rule):
        g_depth : integer := 512;
     '''
     def __init__(self):
-        Rule.__init__(self, 'generic', '006', lTokens, oStart, oEnd)
+        Rule.__init__(self, lTokens, oStart, oEnd)

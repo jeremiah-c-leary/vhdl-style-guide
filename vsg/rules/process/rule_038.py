@@ -28,5 +28,5 @@ class rule_038(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'process', '038', lTokens)
+        Rule.__init__(self, lTokens)
         self.subphase = 2

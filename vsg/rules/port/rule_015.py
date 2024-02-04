@@ -35,4 +35,4 @@ class rule_015(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'port', '015', lTokens)
+        token_indent.__init__(self, lTokens)

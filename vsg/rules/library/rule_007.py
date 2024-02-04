@@ -34,5 +34,5 @@ class rule_007(previous_line):
          use ieee.std_logic_unsigned.all;
     '''
     def __init__(self):
-        previous_line.__init__(self, 'library', '007', lTokens)
+        previous_line.__init__(self, lTokens)
         self.style = 'no_blank_line'

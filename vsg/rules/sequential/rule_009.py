@@ -32,6 +32,6 @@ class rule_009(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'sequential', '009', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)
         self.assignment_operator = token.simple_waveform_assignment.assignment
         self.semicolon = token.simple_waveform_assignment.semicolon

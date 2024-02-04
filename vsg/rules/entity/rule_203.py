@@ -27,4 +27,4 @@ class rule_203(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'entity', '203', [token.semicolon])
+        Rule.__init__(self, [token.semicolon])

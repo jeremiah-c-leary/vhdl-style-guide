@@ -97,11 +97,11 @@ class rule_001(structure.Rule):
     .. code-block:: vhdl
 
        entity null is
-       end null;   
+       end null;
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, 'reserved', '001')
+        structure.Rule.__init__(self)
         self.configuration.append('standard')
         self.standard = 'all'
         self.fixable = False

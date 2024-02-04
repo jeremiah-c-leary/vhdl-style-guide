@@ -25,8 +25,8 @@ class formal_part_in_association_element_between_tokens(structure.Rule):
        The end of the range
     '''
 
-    def __init__(self, name, identifier, oStart, oEnd):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, oStart, oEnd):
+        structure.Rule.__init__(self)
         self.fixable = False
         self.oStart = oStart
         self.oEnd = oEnd

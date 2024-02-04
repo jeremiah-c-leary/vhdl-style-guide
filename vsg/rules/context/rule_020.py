@@ -27,4 +27,4 @@ class rule_020(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'context', '020', lTokens)
+        token_indent.__init__(self, lTokens)

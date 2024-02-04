@@ -26,5 +26,5 @@ class rule_101(Rule):
        for x in (31 downto 0) loop
     '''
     def __init__(self):
-        Rule.__init__(self, 'iteration_scheme', '101', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Ensure a single space after for keyword.'

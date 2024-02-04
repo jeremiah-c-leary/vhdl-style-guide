@@ -30,4 +30,4 @@ class rule_009(proposed_rule.Rule):
     '''
 
     def __init__(self):
-        proposed_rule.Rule.__init__(self, 'context_ref', '009')
+        proposed_rule.Rule.__init__(self)

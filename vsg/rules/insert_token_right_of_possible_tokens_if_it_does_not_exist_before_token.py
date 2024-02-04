@@ -30,8 +30,8 @@ class insert_token_right_of_possible_tokens_if_it_does_not_exist_before_token(st
        token that bounds the search for the insert_token
     '''
 
-    def __init__(self, name, identifier, insert_token, anchor_tokens, end_token):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, insert_token, anchor_tokens, end_token):
+        structure.Rule.__init__(self)
         self.oInsertToken = insert_token
         self.lAnchorTokens = anchor_tokens
         self.oEndToken = end_token

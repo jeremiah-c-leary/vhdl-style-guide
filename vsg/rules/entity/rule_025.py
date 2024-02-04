@@ -30,6 +30,6 @@ class rule_025(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'entity', '025', lTokens)
+        Rule.__init__(self, lTokens)
         self.bInsertWhitespace = False
         self.subphase = 3

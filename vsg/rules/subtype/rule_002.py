@@ -45,5 +45,5 @@ class rule_002(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'subtype', '002', lTokens, lNames)
+        Rule.__init__(self, lTokens, lNames)
         self.bIncludeDeclarativePartNames = True

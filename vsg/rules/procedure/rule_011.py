@@ -8,5 +8,5 @@ class rule_011(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self, 'procedure', '011')
+        deprecated_rule.Rule.__init__(self)
         self.message.append('The function of rule ' + self.unique_id + ' is covered by rule procedure_013.')

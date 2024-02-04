@@ -81,4 +81,4 @@ class rule_014(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'signal', '014', lTokens, lNames)
+        Rule.__init__(self, lTokens, lNames)

@@ -24,6 +24,6 @@ class rule_100(Rule):
        a <= (others => (others => '0'));
     '''
     def __init__(self):
-        Rule.__init__(self, 'element_association', '100')
+        Rule.__init__(self)
         self.left_token = choice.others_keyword
         self.right_token = element_association.assignment
