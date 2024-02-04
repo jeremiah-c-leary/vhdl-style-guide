@@ -1,0 +1,5 @@
+rule:
+   architecture_001:
+       indentSize : 4
+   architecture_003:
+       indentType : 'spaces'

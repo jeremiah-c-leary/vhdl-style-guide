@@ -587,3 +587,41 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
+    @mock.patch('sys.stdout')
+    def test_deprecated_options(self, mock_stdout):
+
+        sys.argv = ['vsg', '-f', 'vsg/tests/vsg/deprecated_option/example.vhd', '-of', 'syntastic', '-p', '1']
+        sys.argv.extend(['-c', 'vsg/tests/vsg/deprecated_option/rule.yaml'])
+#        sys.argv.extend(['-c', 'vsg/tests/vsg/deprecated_option/global.yaml', 'vsg/tests/vsg/deprecated_option/group.yaml', 'vsg/tests/vsg/deprecated_option/file.yaml', 'vsg/tests/vsg/deprecated_option/rule.yaml'])
+
+
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        sOutput = ''
+        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        sOutput = ''
+        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentType will be deprecated in a future release, change to indent_type.'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+        sOutput = ''
+        sOutput += 'ERROR: vsg/tests/vsg/deprecated_option/example.vhd(4)architecture_021 -- Change "BEGIN" to "begin"'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)
+

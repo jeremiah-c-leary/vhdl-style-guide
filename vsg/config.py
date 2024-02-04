@@ -92,8 +92,8 @@ def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
 
 
 dDeprecatedOption = {}
-dDeprecatedOption['indentSize'] = 'Warning:  change deprecated option indentSize to indent_size.'
-dDeprecatedOption['indentType'] = 'Warning:  change deprecated option indentType to indent_type.'
+dDeprecatedOption['indentSize'] = 'option indentSize will be deprecated in a future release, change to indent_size.'
+dDeprecatedOption['indentType'] = 'option indentType will be deprecated in a future release, change to indent_type.'
 iNumDeprecatedKeys = len(dDeprecatedOption.keys())
 
 
@@ -105,18 +105,18 @@ def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):
     for sKey in dConfiguration.keys():
        if sKey == 'rule':
            for sRule in dConfiguration[sKey]:
-               lKeys = list(dConfiguration[sKey][sRule].keys()) 
+               lKeys = list(dConfiguration[sKey][sRule].keys())
                for sDeprecatedKey in lDeprecatedKeys:
                    if sDeprecatedKey in lKeys:
                       lFoundDeprecatedKeys.append(sDeprecatedKey)
-                      if bPrintFileName:
-                          print('Warning in configuration file ' + sConfigFilename + ':')
-                          bPrintFileName = False
-                      print(dDeprecatedOption[sDeprecatedKey])
+                      sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
+                      sOutput += dDeprecatedOption[sDeprecatedKey]
+                      print(sOutput)
                for sFoundDeprecatedKey in lFoundDeprecatedKeys:
                    lDeprecatedKeys.remove(sFoundDeprecatedKey)
                if len(lDeprecatedKeys) == 0:
                    break
+               lFoundDeprecatedKeys = []
 
                
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
