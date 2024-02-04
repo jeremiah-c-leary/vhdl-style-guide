@@ -282,19 +282,18 @@ def get_rule_name(self):
     if self.__module__.startswith('vsg.rules.'):
         rule_group_name = self.__module__.split('.')[2]
         # Cater for exceptions where the name of the rule doesn't match the name of the module.
-        match rule_group_name:
-            case 'assert_statement':
-                sReturn = 'assert'
-            case 'file_statement':
-                sReturn = 'file'
-            case 'if_statement':
-                sReturn = 'if'
-            case 'ranges':
-                sReturn = 'range'
-            case 'type_definition':
-                sReturn = 'type'
-            case 'with_statement':
-                sReturn = 'with'
-            case _:
-                sReturn = rule_group_name
+        if rule_group_name == 'assert_statement':
+            sReturn = 'assert'
+        elif rule_group_name == 'file_statement':
+            sReturn = 'file'
+        elif rule_group_name == 'if_statement':
+            sReturn = 'if'
+        elif rule_group_name == 'ranges':
+            sReturn = 'range'
+        elif rule_group_name == 'type_definition':
+            sReturn = 'type'
+        elif rule_group_name == 'with_statement':
+            sReturn = 'with'
+        else:
+            sReturn = rule_group_name
     return sReturn
