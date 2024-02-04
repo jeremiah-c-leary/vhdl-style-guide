@@ -105,18 +105,34 @@ def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):
     for sKey in dConfiguration.keys():
        if sKey == 'rule':
            for sRule in dConfiguration[sKey]:
-               lKeys = list(dConfiguration[sKey][sRule].keys())
-               for sDeprecatedKey in lDeprecatedKeys:
-                   if sDeprecatedKey in lKeys:
-                      lFoundDeprecatedKeys.append(sDeprecatedKey)
-                      sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
-                      sOutput += dDeprecatedOption[sDeprecatedKey]
-                      print(sOutput)
-               for sFoundDeprecatedKey in lFoundDeprecatedKeys:
-                   lDeprecatedKeys.remove(sFoundDeprecatedKey)
+               if sRule == 'group':
+                   for sGroup in list(dConfiguration[sKey][sRule].keys()):
+                       lKeys = list(dConfiguration[sKey][sRule][sGroup].keys())
+                       for sDeprecatedKey in lDeprecatedKeys:
+                           if sDeprecatedKey in lKeys:
+                              lFoundDeprecatedKeys.append(sDeprecatedKey)
+                              sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
+                              sOutput += dDeprecatedOption[sDeprecatedKey]
+                              print(sOutput)
+                       for sFoundDeprecatedKey in lFoundDeprecatedKeys:
+                           lDeprecatedKeys.remove(sFoundDeprecatedKey)
+                       lFoundDeprecatedKeys = []
+                       if len(lDeprecatedKeys) == 0:
+                           break
+
+               else:
+                   lKeys = list(dConfiguration[sKey][sRule].keys())
+                   for sDeprecatedKey in lDeprecatedKeys:
+                       if sDeprecatedKey in lKeys:
+                          lFoundDeprecatedKeys.append(sDeprecatedKey)
+                          sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
+                          sOutput += dDeprecatedOption[sDeprecatedKey]
+                          print(sOutput)
+                   for sFoundDeprecatedKey in lFoundDeprecatedKeys:
+                       lDeprecatedKeys.remove(sFoundDeprecatedKey)
+               lFoundDeprecatedKeys = []
                if len(lDeprecatedKeys) == 0:
                    break
-               lFoundDeprecatedKeys = []
 
                
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
