@@ -205,8 +205,42 @@ class testMain(unittest.TestCase):
         for iLineNumber, sLine in enumerate(lExpected):
             if iLineNumber != 1:
                 self.assertEqual(sLine, lActual[iLineNumber])
+
+        self.assertTrue('failures="1"' in lActual[1])
+
         # Clean up
         utils.remove_file('vsg/tests/vsg/junit/parse_error.actual.xml')
+
+    @mock.patch('sys.stdout')
+    def test_junit_with_file_with_no_errors(self, mock_stderr):
+#    def test_invalid_configuration(self):
+        utils.remove_file('vsg/tests/vsg/junit/no_error.actual.xml')
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['-f', 'vsg/tests/vsg/junit/no_error.vhd'])
+        sys.argv.extend(['--junit', 'vsg/tests/vsg/junit/no_error.actual.xml'])
+        sys.argv.extend(['-p 1'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        # Read in the expected JUnit XML file for comparison
+        lExpected = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','no_error.expected.xml'), lExpected)
+        # Read in the actual JUnit XML file for comparison
+        lActual = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','no_error.actual.xml'), lActual)
+        # Compare the two files, but skip the line with the timestamp (as it will never match)
+        for iLineNumber, sLine in enumerate(lExpected):
+            if iLineNumber != 1:
+                self.assertEqual(sLine, lActual[iLineNumber])
+
+        self.assertTrue('failures="0"' in lActual[1])
+
+        # Clean up
+        utils.remove_file('vsg/tests/vsg/junit/no_error.actual.xml')
 
     @mock.patch('sys.stdout')
     def test_local_rules(self,mock_stdout):

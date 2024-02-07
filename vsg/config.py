@@ -113,7 +113,7 @@ def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
     if sJUnitFileName:
         oJunitFile = junit.xmlfile(sJUnitFileName)
         oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
-        oJunitTestcase = junit.testcase(sFileName, str(0), 'failure')
+        oJunitTestcase = junit.testcase(sFileName, str(0))
         oFailure = junit.failure('Failure')
         oFailure.add_text('Invalid JSON format.  Review configuration for errors.')
         oJunitTestcase.add_failure(oFailure)

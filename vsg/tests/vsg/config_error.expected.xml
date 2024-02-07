@@ -2,7 +2,7 @@
 <testsuite errors="0" hostname="Rimmer" failures="1" timestamp="2018-12-07T03:10:28" tests="1" time="0" name="vhdl-style-guide">
   <properties>
   </properties>
-  <testcase name="vsg/tests/vsg/config_error.json" time="0" classname="failure">
+  <testcase name="vsg/tests/vsg/config_error.json" time="0">
     <failure type="Failure">
       Invalid JSON format.  Review configuration for errors.
     </failure>
