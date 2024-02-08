@@ -598,114 +598,18 @@ class testMain(unittest.TestCase):
         sys.argv.extend(['vsg/tests/vsg/deprecated_option/file_rules.yaml'])
         sys.argv.extend(['vsg/tests/vsg/deprecated_option/all.yaml'])
 
-
-
         try:
             __main__.main()
         except SystemExit:
             pass
 
         sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
+        sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentSize has been deprecated. Change to indent_size.'
+        sOutput += '\n'
+        sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentType has been deprecated. Change to indent_type.'
+        sOutput += '\n'
 
         lExpected = []
         lExpected.append(mock.call(sOutput))
 
         mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentType will be deprecated in a future release, change to indent_type.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/global.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/global.yaml: option indentType will be deprecated in a future release, change to indent_type.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/group.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/group.yaml: option indentType will be deprecated in a future release, change to indent_type.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/file_list.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/file_list.yaml: option indentType will be deprecated in a future release, change to indent_type.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/file_rules.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/file_rules.yaml: option indentType will be deprecated in a future release, change to indent_type.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/all.yaml: option indentSize will be deprecated in a future release, change to indent_size.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'Warning in configuration file vsg/tests/vsg/deprecated_option/all.yaml: option indentType will be deprecated in a future release, change to indent_type.'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-
-        sOutput = ''
-        sOutput += 'ERROR: vsg/tests/vsg/deprecated_option/example.vhd(4)architecture_021 -- Change "BEGIN" to "begin"'
-
-        lExpected = []
-        lExpected.append(mock.call(sOutput))
-
-        mock_stdout.write.assert_has_calls(lExpected)
-

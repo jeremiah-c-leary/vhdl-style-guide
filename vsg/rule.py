@@ -229,10 +229,6 @@ def configure_attribute(self, oConfig, sGroupName):
         for sAttributeName in oConfig.dConfig['rule']['group'][sGroupName]:
             if sAttributeName == 'severity':
                 self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule']['group'][sGroupName]['severity'])
-            elif sAttributeName == 'indentSize':
-                self.__dict__['indent_size'] = oConfig.dConfig['rule']['group'][sGroupName][sAttributeName]
-            elif sAttributeName == 'indentType':
-                self.__dict__['indent_type'] = oConfig.dConfig['rule']['group'][sGroupName][sAttributeName]
             elif sAttributeName in self.__dict__:
                 self.__dict__[sAttributeName] = oConfig.dConfig['rule']['group'][sGroupName][sAttributeName]
     except KeyError:
@@ -247,10 +243,6 @@ def configure_global_rule_attributes(self, oConfig):
         for sAttributeName in oConfig.dConfig['rule']['global']:
             if sAttributeName == 'severity':
                 self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule']['global']['severity'])
-            elif sAttributeName == 'indentSize':
-                self.__dict__['indent_size'] = oConfig.dConfig['rule'][sAttributeName]
-            elif sAttributeName == 'indentType':
-                self.__dict__['indent_type'] = oConfig.dConfig['rule'][sAttributeName]
             elif sAttributeName in self.configuration:
                 self.__dict__[sAttributeName] = oConfig.dConfig['rule']['global'][sAttributeName]
     except KeyError:
@@ -265,10 +257,6 @@ def configure_rule_attributes(self, oConfig):
         for sAttributeName in oConfig.dConfig['rule'][self.get_unique_id()]:
             if sAttributeName == 'severity':
                 self.severity = oConfig.severity_list.get_severity_named(oConfig.dConfig['rule'][self.get_unique_id()]['severity'])
-            elif sAttributeName == 'indentSize':
-                self.__dict__['indent_size'] = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
-            elif sAttributeName == 'indentType':
-                self.__dict__['indent_type'] = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
             elif sAttributeName in self.__dict__:
                 self.__dict__[sAttributeName] = oConfig.dConfig['rule'][self.get_unique_id()][sAttributeName]
             for oOption in self.options:

@@ -32,7 +32,9 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
     '''Attempts to open a configuration file and read it's contents.'''
     try:
         with open(sFileName) as yaml_file:
-            return yaml.full_load(yaml_file)
+            dTemp = yaml.full_load(yaml_file)
+            check_for_deprecated_rule_options(dTemp, sFileName)
+            return dTemp
     except OSError as e:
         print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} while opening configuration file: ' + sFileName)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
@@ -41,6 +43,9 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
         print('ERROR: Invalid configuration file: ' + sFileName)
         print(e)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
+        sys.exit(1)
+    except exceptions.ConfigurationError as e:
+        print(e.message)
         sys.exit(1)
 
 
@@ -63,13 +68,10 @@ def read_configuration_files(dStyle, commandLineArguments):
         return dStyle
 
     dConfiguration = dStyle
+    lMessages = []
     for sConfigFilename in commandLineArguments.configuration:
         tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
-
-        check_for_deprecated_rule_options(tempConfiguration, sConfigFilename)
-
         dConfiguration = process_config_file(dConfiguration, tempConfiguration, sConfigFilename)
-
     return dConfiguration
 
 
@@ -92,43 +94,45 @@ def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
 
 
 dDeprecatedOption = {}
-dDeprecatedOption['indentSize'] = 'option indentSize will be deprecated in a future release, change to indent_size.'
-dDeprecatedOption['indentType'] = 'option indentType will be deprecated in a future release, change to indent_type.'
-#iNumDeprecatedKeys = len(dDeprecatedOption.keys())
+dDeprecatedOption['indentSize'] = 'option indentSize has been deprecated. Change to indent_size.'
+dDeprecatedOption['indentType'] = 'option indentType has been deprecated. Change to indent_type.'
 
 
 def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):
+    lMessages = []
     lDeprecatedKeys = list(dDeprecatedOption.keys())
-    dBlah(dConfiguration, lDeprecatedKeys, sConfigFilename)
+    search_dictionary(dConfiguration, lDeprecatedKeys, sConfigFilename, lMessages)
 
-def dBlah(dDict, lDeprecatedKeys, sConfigFilename):
+    if len(lMessages) > 0:
+        sErrorMessage = ''
+        for sMessage in lMessages:
+            sErrorMessage += sMessage + '\n'
+        raise exceptions.ConfigurationError(sErrorMessage)
+
+
+def search_dictionary(dDict, lDeprecatedKeys, sConfigFilename, lMessages):
     if len(lDeprecatedKeys) == 0:
         return None
     for sKey in list(dDict.keys()):
         if isinstance(dDict[sKey], dict):
-            dBlah(dDict[sKey], lDeprecatedKeys, sConfigFilename)
+            search_dictionary(dDict[sKey], lDeprecatedKeys, sConfigFilename, lMessages)
         elif isinstance(dDict[sKey], list):
-            lBlah(dDict[sKey], lDeprecatedKeys, sConfigFilename)
+            search_list(dDict[sKey], lDeprecatedKeys, sConfigFilename, lMessages)
         elif sKey in lDeprecatedKeys:
-            sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
-            sOutput += dDeprecatedOption[sKey]
-            print(sOutput)
+            lMessages.append('ERROR: configuration file ' + sConfigFilename + ': ' + dDeprecatedOption[sKey])
             lDeprecatedKeys.remove(sKey)
-#            if len(lDeprecatedKeys) == 0:
-#                return None
 
-def lBlah(lDict, lDeprecatedKeys, sConfigFilename):
+
+def search_list(lDict, lDeprecatedKeys, sConfigFilename, lMessages):
     if len(lDeprecatedKeys) == 0:
         return None
     for sKey in lDict:
         if isinstance(sKey, dict):
-            dBlah(sKey, lDeprecatedKeys, sConfigFilename)
+            search_dictionary(sKey, lDeprecatedKeys, sConfigFilename, lMessages)
         elif isinstance(sKey, list):
-            lBlah(sKey, lDeprectedKeys, sConfigFilename)
+            search_list(sKey, lDeprectedKeys, sConfigFilename, lMessages)
         elif sKey in lDeprecatedKeys:
-            sOutput = 'Warning in configuration file ' + sConfigFilename + ': '
-            sOutput += dDeprecatedOption[sKey]
-            print(sOutput)
+            lMessages.append('ERROR: configuration file ' + sConfigFilename + ': ' + dDeprecatedOption[sKey])
             lDeprecatedKeys.remove(sKey)
      
                
@@ -296,7 +300,9 @@ def New(commandLineArguments):
     oReturn = config()
 
     dStyle = read_predefined_style(commandLineArguments.style)
+
     dConfig = read_configuration_files(dStyle, commandLineArguments)
+
     add_pragma_regular_expressions(dConfig)
 
     oReturn.severity_list = severity.create_list(dConfig)
