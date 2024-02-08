@@ -180,14 +180,14 @@ entity spi_master is
 		spi_2x_clk_div : positive  := 5    -- for a 100MHz sclk_i, yields a 10MHz SCK
 	);
 	port (
-		sclk_i : in    std_logic := 'X';                                        -- high-speed serial interface system clock
-		pclk_i : in    std_logic := 'X';                                        -- high-speed parallel interface system clock
-		rst_i  : in    std_logic := 'X';                                        -- reset core
+		sclk_i : in    std_logic := 'X'; -- high-speed serial interface system clock
+		pclk_i : in    std_logic := 'X'; -- high-speed parallel interface system clock
+		rst_i  : in    std_logic := 'X'; -- reset core
 		---- serial interface ----
-		spi_ssel_o : out   std_logic;                                           -- spi bus slave select line
-		spi_sck_o  : out   std_logic;                                           -- spi bus sck
-		spi_mosi_o : out   std_logic;                                           -- spi bus mosi output
-		spi_miso_i : in    std_logic := 'X';                                    -- spi bus spi_miso_i input
+		spi_ssel_o : out   std_logic;        -- spi bus slave select line
+		spi_sck_o  : out   std_logic;        -- spi bus sck
+		spi_mosi_o : out   std_logic;        -- spi bus mosi output
+		spi_miso_i : in    std_logic := 'X'; -- spi bus spi_miso_i input
 		---- parallel interface ----
 		di_req_o   : out   std_logic;                                           -- preload lookahead data request line
 		di_i       : in    std_logic_vector(n - 1 downto 0) := (others => 'X'); -- parallel data in (clocked on rising spi_clk after last bit)
@@ -196,17 +196,17 @@ entity spi_master is
 		do_valid_o : out   std_logic;                                           -- do_o data valid signal, valid during one spi_clk rising edge.
 		do_o       : out   std_logic_vector(n - 1 downto 0);                    -- parallel output (clocked on rising spi_clk after last bit)
 		--- debug ports: can be removed or left unconnected for the application circuit ---
-		sck_ena_o     : out   std_logic;                                        -- debug: internal sck enable signal
-		sck_ena_ce_o  : out   std_logic;                                        -- debug: internal sck clock enable signal
-		do_transfer_o : out   std_logic;                                        -- debug: internal transfer driver
-		wren_o        : out   std_logic;                                        -- debug: internal state of the wren_i pulse stretcher
-		rx_bit_reg_o  : out   std_logic;                                        -- debug: internal rx bit
-		state_dbg_o   : out   std_logic_vector(3 downto 0);                     -- debug: internal state register
+		sck_ena_o     : out   std_logic;                       -- debug: internal sck enable signal
+		sck_ena_ce_o  : out   std_logic;                       -- debug: internal sck clock enable signal
+		do_transfer_o : out   std_logic;                       -- debug: internal transfer driver
+		wren_o        : out   std_logic;                       -- debug: internal state of the wren_i pulse stretcher
+		rx_bit_reg_o  : out   std_logic;                       -- debug: internal rx bit
+		state_dbg_o   : out   std_logic_vector(3 downto 0);    -- debug: internal state register
 		core_clk_o    : out   std_logic;
 		core_n_clk_o  : out   std_logic;
 		core_ce_o     : out   std_logic;
 		core_n_ce_o   : out   std_logic;
-		sh_reg_dbg_o  : out   std_logic_vector(n - 1 downto 0)                  -- debug: internal shift register
+		sh_reg_dbg_o  : out   std_logic_vector(n - 1 downto 0) -- debug: internal shift register
 	);
 end entity spi_master;
 
@@ -218,18 +218,18 @@ end entity spi_master;
 architecture rtl of spi_master is
 
 	-- core clocks, generated from 'sclk_i': initialized at GSR to differential values
-	signal core_clk   : std_logic := '0';  -- continuous core clock, positive logic
-	signal core_n_clk : std_logic := '1';  -- continuous core clock, negative logic
-	signal core_ce    : std_logic := '0';  -- core clock enable, positive logic
-	signal core_n_ce  : std_logic := '1';  -- core clock enable, negative logic
+	signal core_clk   : std_logic := '0'; -- continuous core clock, positive logic
+	signal core_n_clk : std_logic := '1'; -- continuous core clock, negative logic
+	signal core_ce    : std_logic := '0'; -- core clock enable, positive logic
+	signal core_n_ce  : std_logic := '1'; -- core clock enable, negative logic
 	-- spi bus clock, generated from the CPOL selected core clock polarity
 	signal spi_2x_ce   : std_logic := '1'; -- spi_2x clock enable
 	signal spi_clk     : std_logic := '0'; -- spi bus output clock
 	signal spi_clk_reg : std_logic;        -- output pipeline delay for spi sck (do NOT global initialize)
 	-- core fsm clock enables
-	signal fsm_ce     : std_logic := '1';  -- fsm clock enable
-	signal sck_ena_ce : std_logic := '1';  -- SCK clock enable
-	signal samp_ce    : std_logic := '1';  -- data sampling clock enable
+	signal fsm_ce     : std_logic := '1'; -- fsm clock enable
+	signal sck_ena_ce : std_logic := '1'; -- SCK clock enable
+	signal samp_ce    : std_logic := '1'; -- data sampling clock enable
 	--
 	-- GLOBAL RESET:
 	--      all signals are initialized to zero at GSR (global set/reset) by giving explicit
@@ -549,7 +549,7 @@ begin
 
 				spi_mosi_o              <= sh_reg(n - 1);                                     -- shift out tx bit from the MSb
 				di_req_next             <= '0';                                               -- prefetch data request: deassert when shifting data
-				sh_next(n - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
+				sh_next(N - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
 				sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
 				wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
 				state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
@@ -559,7 +559,7 @@ begin
 				spi_mosi_o              <= sh_reg(n - 1);                                     -- shift out tx bit from the MSb
 				di_req_next             <= '0';                                               -- prefetch data request: deassert when shifting data
 				do_transfer_next        <= '0';                                               -- reset 'do_valid' transfer signal
-				sh_next(n - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
+				sh_next(N - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
 				sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
 				wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
 				state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
@@ -568,7 +568,7 @@ begin
 
 				spi_mosi_o              <= sh_reg(n - 1);                                     -- shift out tx bit from the MSb
 				di_req_next             <= '1';                                               -- request data in advance to allow for pipeline delays
-				sh_next(n - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
+				sh_next(N - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
 				sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
 				wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
 				state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
@@ -577,7 +577,7 @@ begin
 
 				spi_mosi_o                     <= sh_reg(n - 1);                              -- shift out tx bit from the MSb
 				di_req_next                    <= '1';                                        -- request data in advance to allow for pipeline delays
-				do_buffer_next(n - 1 downto 1) <= sh_reg(n - 2 downto 0);                     -- shift rx data directly into rx buffer
+				do_buffer_next(N - 1 downto 1) <= sh_reg(n - 2 downto 0);                     -- shift rx data directly into rx buffer
 				do_buffer_next(0)              <= rx_bit_reg;                                 -- shift last rx bit into rx buffer
 				do_transfer_next               <= '1';                                        -- signal transfer to do_buffer
 
