@@ -3,18 +3,18 @@ rule:
     case::keyword:
        indentSize : 4
     case::label:
-       indentType : 'spaces'
+       indentStyle : 'spaces'
     case::name:
        indentSize : 5
     length:
-       indentType : 'spaces'
+       indentStyle : 'spaces'
   architecture_001:
     indentSize : 2
   architecture_003:
-    indentType : 'spaces'
+    indentStyle : 'spaces'
   global:
     indentSize : 4
-    indentType : 'spaces'
+    indentStyle : 'spaces'
 file_list:
   - vsg/tests/vsg/deprecated_option/example.vhd
   - vsg/tests/vsg/deprecated_option/example.vhd:
@@ -25,7 +25,7 @@ file_list:
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
         architecture_003:
-           indentType: 'spaces'
+           indentStyle: 'spaces'
   - vsg/tests/vsg/deprecated_option/example.vhd
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
@@ -35,7 +35,7 @@ file_list:
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
         architecture_003:
-           indentType: 'spaces'
+           indentStyle: 'spaces'
 file_rules:
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
@@ -44,7 +44,7 @@ file_rules:
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
         architecture_003:
-           indentType: 'spaces'
+           indentStyle: 'spaces'
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
         architecture_001:
@@ -52,5 +52,5 @@ file_rules:
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
         architecture_003:
-           indentType: 'spaces'
+           indentStyle: 'spaces'
 

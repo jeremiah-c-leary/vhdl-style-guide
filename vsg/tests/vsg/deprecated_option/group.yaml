@@ -3,8 +3,8 @@ rule:
     case::keyword:
        indentSize : 4
     case::label:
-       indentType : 'spaces'
+       indentStyle : 'spaces'
     case::name:
        indentSize : 5
     length:
-       indentType : 'spaces'
+       indentStyle : 'spaces'

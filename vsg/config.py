@@ -95,7 +95,7 @@ def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
 
 dDeprecatedOption = {}
 dDeprecatedOption['indentSize'] = 'option indentSize has been deprecated. Change to indent_size.'
-dDeprecatedOption['indentType'] = 'option indentType has been deprecated. Change to indent_type.'
+dDeprecatedOption['indentStyle'] = 'option indentStyle has been deprecated. Change to indent_style.'
 
 
 def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):

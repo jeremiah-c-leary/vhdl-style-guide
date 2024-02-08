@@ -606,7 +606,7 @@ class testMain(unittest.TestCase):
         sOutput = ''
         sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentSize has been deprecated. Change to indent_size.'
         sOutput += '\n'
-        sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentType has been deprecated. Change to indent_type.'
+        sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentStyle has been deprecated. Change to indent_style.'
         sOutput += '\n'
 
         lExpected = []

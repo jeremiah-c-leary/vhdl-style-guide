@@ -6,7 +6,7 @@ file_rules:
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
         architecture_003:
-           indentType: 'spaces'
+           indentStyle: 'spaces'
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
         architecture_001:
@@ -14,5 +14,5 @@ file_rules:
   - vsg/tests/vsg/deprecated_option/example.vhd:
       rule:
         architecture_003:
-           indentType: 'spaces'
+           indentStyle: 'spaces'
 
