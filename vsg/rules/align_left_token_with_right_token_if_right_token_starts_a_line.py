@@ -34,7 +34,9 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(alignment.R
         alignment.Rule.__init__(self, name=name, identifier=identifier)
         self.left_token = left_token
         self.right_token = right_token
-        self.configuration_documentation_link = None
+        self.configuration.append('align_to')
+        self.align_to = 'keyword'
+        self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_tokens_bounded_by(self.left_token, self.right_token)
@@ -97,7 +99,8 @@ def extract_whitespace_before_last_token(oToi):
 
 def expected_whitespace_before_last_token(self, oToi):
     sReturn = indent_whitespace(self, oToi)
-    sReturn += aligning_whitespace(self, oToi)
+    if self.align_to == 'keyword':
+        sReturn += aligning_whitespace(self, oToi)
     return sReturn
 
 

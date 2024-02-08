@@ -745,6 +745,8 @@ process_028
 This rule checks the alignment of the closing parenthesis of a sensitivity list.
 Parenthesis on multiple lines should be in the same column.
 
+|configuring_keyword_alignment_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
