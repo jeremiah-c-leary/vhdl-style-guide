@@ -7,6 +7,7 @@ from vsg import violation
 from vsg.token import port_clause as token
 from vsg.token import interface_unknown_declaration
 from vsg.token import interface_list
+from vsg.token import identifier_list
 from vsg.rule_group import structure
 
 
@@ -49,27 +50,29 @@ class rule_026(structure.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
+            if not oToi.token_type_exists(identifier_list.comma):
+                continue
             lTokens = oToi.get_tokens()
-            iCount = 0
+
+            ### Find identifiers ###
             lIdentifiers = []
             lIdentifierIndexes = []
             for iToken, oToken in enumerate(lTokens):
                 if isinstance(oToken, interface_unknown_declaration.identifier):
                     lIdentifiers.append(oToken.get_value())
-                    iCount += 1
                     lIdentifierIndexes.append(iToken)
-            if iCount > 1:
-                sSolution = 'Split identifiers ' + ', '.join(lIdentifiers) + ' to individual lines.'
-                dAction = {}
-                if oToi == lToi[-1]:
-                    dAction['last_element'] = False
-                else:
-                    dAction['last_element'] = True
-                dAction['identifier_indexes'] = lIdentifierIndexes
-                dAction['split_index'] = lIdentifierIndexes[-1] + 1
-                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                oViolation.set_action(dAction)
-                self.add_violation(oViolation)
+
+            sSolution = 'Split identifiers ' + ', '.join(lIdentifiers) + ' to individual lines.'
+            dAction = {}
+            if oToi == lToi[-1]:
+                dAction['last_element'] = False
+            else:
+                dAction['last_element'] = True
+            dAction['identifier_indexes'] = lIdentifierIndexes
+            dAction['split_index'] = lIdentifierIndexes[-1] + 1
+            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+            oViolation.set_action(dAction)
+            self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         '''
@@ -83,6 +86,7 @@ class rule_026(structure.Rule):
             lNewTokens.append(lCopyTokens[iIndex])
 
             lNewTokens.extend(lCopyTokens[dAction['split_index']:])
+
             if iIndex != dAction['identifier_indexes'][-1]:
                 lNewTokens.append(interface_list.semicolon())
                 lNewTokens.append(parser.carriage_return())
