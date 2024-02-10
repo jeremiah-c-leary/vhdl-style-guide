@@ -9,9 +9,6 @@ VHDL Style Guide (VSG)
 .. image:: https://img.shields.io/pypi/v/vsg.svg?style=flat-square
    :target: https://pypi.python.org/pypi/vsg
    :alt: PyPI Version
-.. image:: https://img.shields.io/travis/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square
-   :target: https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide
-   :alt: Build Status
 .. image:: https://img.shields.io/codecov/c/github/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square
    :target: https://codecov.io/github/jeremiah-c-leary/vhdl-style-guide
    :alt: Test Coverage
