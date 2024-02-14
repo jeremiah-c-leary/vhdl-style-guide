@@ -472,6 +472,20 @@ def print_error_message(sToken, token, iToken, lObjects):
     raise exceptions.ClassifyError(sErrorMessage)
 
 
+def print_missing_error_message(lTokens, iToken, lObjects):
+    iLine = calculate_line_number(iToken, lObjects)
+
+    sErrorMessage = '\n'
+    sErrorMessage += f'Error: Closing token not found while parsing Line {iLine}'
+    sErrorMessage += '\n'
+    sErrorMessage += '\n'
+    sErrorMessage += f' {iLine} | '
+    sErrorMessage += extract_line_with_token_index_of(iToken, lObjects)
+    sErrorMessage += '\n'
+
+    raise exceptions.ClassifyError(sErrorMessage)
+
+
 def extract_module_name(token):
     return token.__module__.split('.')[-1]
 
@@ -956,3 +970,17 @@ def convert_boolean_to_yes_no(option):
         else:
             return 'no'
     return option
+
+
+def extract_line_with_token_index_of(iToken, lObjects):
+    for iIndex in range(0, iToken):
+        if isinstance(lObjects[iIndex], parser.carriage_return):
+            iStart = iIndex + 1
+    for iIndex in range(iToken, len(lObjects)):
+        if isinstance(lObjects[iIndex], parser.carriage_return):
+            iEnd = iIndex
+            break
+    sReturn = ''
+    for oObject in lObjects[iStart:iEnd]:
+        sReturn += oObject.get_value()
+    return sReturn
