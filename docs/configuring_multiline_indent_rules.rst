@@ -93,6 +93,7 @@ Example: |align_left| set to |default_yes| and |align_paren| set to |default_yes
 #################################################################################
 
 .. code-block:: vhdl
+
   wr_en <= resize(unsigned(I_FOO) +
                   unsigned(I_BAR), q_foo'length);
 
