@@ -12,8 +12,8 @@ class Rule():
         self.unique_id = str(self.name) + '_' + str(self.identifier)
         self.solution = None
         self.violations = []
-        self.indentStyle = 'spaces'
-        self.indentSize = 2
+        self.indent_style = 'spaces'
+        self.indent_size = 2
         self.phase = None
         self.subphase = 1
         self.disable = False
@@ -22,7 +22,7 @@ class Rule():
         self.debug = False
         self.dFix = {}
         self.dFix['violations'] = {}
-        self.configuration = ['indentStyle', 'indentSize', 'phase', 'disable', 'fixable', 'severity']
+        self.configuration = ['indent_style', 'indent_size', 'phase', 'disable', 'fixable', 'severity']
         self.deprecated = False
         self.proposed = False
         self.groups = []
@@ -40,7 +40,7 @@ class Rule():
             dConfiguration['rule']['xyz_002'] = {}
             dConfiguration['rule']['xyz_002']['disable'] = False
             dConfiguration['rule']['global'] = {}
-            dConfiguration['rule']['global']['indentSize'] = 4
+            dConfiguration['rule']['global']['indent_size'] = 4
 
           The rule:global dictionary will apply to all rules.
           Individual rule attributes can be modified with [self.name_self.identifier].

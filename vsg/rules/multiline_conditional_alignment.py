@@ -101,16 +101,16 @@ class multiline_conditional_alignment(alignment.Rule):
             if iFirstLine == iLastLine:
                 continue
 
-            iFirstIndent = _find_first_indent(self.align_left, dActualIndent, self.indentSize, iAssignColumn)
+            iFirstIndent = _find_first_indent(self.align_left, dActualIndent, self.indent_size, iAssignColumn)
 
-            dExpectedIndent, lStructure = _apply_align_left_option(self.align_left, lStructure, dActualIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_align_when_keywords_option(self.align_when_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_wrap_at_when_option(self.wrap_at_when, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_left_option(self.align_left, lStructure, dActualIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_when_keywords_option(self.align_when_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_wrap_at_when_option(self.wrap_at_when, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
             if self.wrap_at_when == 'yes' and self.align_paren == 'yes':
-                dExpectedIndent, lStructure = _apply_align_paren_after_when(lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_align_else_keywords_option(self.align_else_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
+                dExpectedIndent, lStructure = _apply_align_paren_after_when(lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_else_keywords_option(self.align_else_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
 
 #            print(f'lStructure = {lStructure}')
 #            print(f'lActualStructure = {lActualStructure}')
@@ -119,8 +119,8 @@ class multiline_conditional_alignment(alignment.Rule):
 #            print(f'Expect = {dExpectedIndent}')
 #            print(f'dIndex = {dIndex}')
 
-            if self.indentStyle == 'smart_tabs':
-                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
+            if self.indent_style == 'smart_tabs':
+                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
 
             for iLine in range(iFirstLine + 1, iLastLine + 1):
                 if dActualIndent[iLine] == dExpectedIndent[iLine]:

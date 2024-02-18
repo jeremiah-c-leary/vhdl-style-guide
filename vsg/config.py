@@ -5,10 +5,10 @@ import re
 import sys
 import yaml
 
+from . import exceptions
 from . import junit
 from . import severity
 from . import utils
-from . import exceptions
 
 
 def read_predefined_style(sStyleName):
@@ -32,7 +32,9 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
     '''Attempts to open a configuration file and read it's contents.'''
     try:
         with open(sFileName) as yaml_file:
-            tempConfiguration = yaml.full_load(yaml_file)
+            dTemp = yaml.full_load(yaml_file)
+            check_for_deprecated_rule_options(dTemp, sFileName)
+            return dTemp
     except OSError as e:
         print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} while opening configuration file: ' + sFileName)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
@@ -42,7 +44,9 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
         print(e)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         sys.exit(1)
-    return tempConfiguration
+    except exceptions.ConfigurationError as e:
+        print(e.message)
+        sys.exit(1)
 
 
 def validate_file_exists(sFilename, sConfigName):
@@ -64,11 +68,10 @@ def read_configuration_files(dStyle, commandLineArguments):
         return dStyle
 
     dConfiguration = dStyle
+    lMessages = []
     for sConfigFilename in commandLineArguments.configuration:
         tempConfiguration = open_configuration_file(sConfigFilename, commandLineArguments.junit)
-
         dConfiguration = process_config_file(dConfiguration, tempConfiguration, sConfigFilename)
-
     return dConfiguration
 
 
@@ -90,6 +93,49 @@ def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
     return dReturn
 
 
+dDeprecatedOption = {}
+dDeprecatedOption['indentSize'] = 'option indentSize has been deprecated. Change to indent_size.'
+dDeprecatedOption['indentStyle'] = 'option indentStyle has been deprecated. Change to indent_style.'
+
+
+def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):
+    lMessages = []
+    lDeprecatedKeys = list(dDeprecatedOption.keys())
+    search_dictionary(dConfiguration, lDeprecatedKeys, sConfigFilename, lMessages)
+
+    if len(lMessages) > 0:
+        sErrorMessage = ''
+        for sMessage in lMessages:
+            sErrorMessage += sMessage + '\n'
+        raise exceptions.ConfigurationError(sErrorMessage)
+
+
+def search_dictionary(dDict, lDeprecatedKeys, sConfigFilename, lMessages):
+    if len(lDeprecatedKeys) == 0:
+        return None
+    for sKey in list(dDict.keys()):
+        if isinstance(dDict[sKey], dict):
+            search_dictionary(dDict[sKey], lDeprecatedKeys, sConfigFilename, lMessages)
+        elif isinstance(dDict[sKey], list):
+            search_list(dDict[sKey], lDeprecatedKeys, sConfigFilename, lMessages)
+        elif sKey in lDeprecatedKeys:
+            lMessages.append('ERROR: configuration file ' + sConfigFilename + ': ' + dDeprecatedOption[sKey])
+            lDeprecatedKeys.remove(sKey)
+
+
+def search_list(lDict, lDeprecatedKeys, sConfigFilename, lMessages):
+    if len(lDeprecatedKeys) == 0:
+        return None
+    for sKey in lDict:
+        if isinstance(sKey, dict):
+            search_dictionary(sKey, lDeprecatedKeys, sConfigFilename, lMessages)
+        elif isinstance(sKey, list):
+            search_list(sKey, lDeprectedKeys, sConfigFilename, lMessages)
+        elif sKey in lDeprecatedKeys:
+            lMessages.append('ERROR: configuration file ' + sConfigFilename + ': ' + dDeprecatedOption[sKey])
+            lDeprecatedKeys.remove(sKey)
+     
+               
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     dReturn = dConfig
     if 'file_list' not in dConfig:
@@ -254,7 +300,9 @@ def New(commandLineArguments):
     oReturn = config()
 
     dStyle = read_predefined_style(commandLineArguments.style)
+
     dConfig = read_configuration_files(dStyle, commandLineArguments)
+
     add_pragma_regular_expressions(dConfig)
 
     oReturn.severity_list = severity.create_list(dConfig)

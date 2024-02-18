@@ -621,3 +621,29 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
+    @mock.patch('sys.stdout')
+    def test_deprecated_options(self, mock_stdout):
+
+        sys.argv = ['vsg', '-f', 'vsg/tests/vsg/deprecated_option/example.vhd', '-of', 'syntastic', '-p', '1']
+        sys.argv.extend(['-c', 'vsg/tests/vsg/deprecated_option/rule.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/global.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/group.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/file_list.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/file_rules.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/all.yaml'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        sOutput = ''
+        sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentSize has been deprecated. Change to indent_size.'
+        sOutput += '\n'
+        sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentStyle has been deprecated. Change to indent_style.'
+        sOutput += '\n'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)

@@ -96,7 +96,7 @@ class multiline_array_alignment(alignment.Rule):
     def analyze_align_left_true_align_paren_false(self, oToi, oLines):
         oLines.iIndent = oLines.get_first_line_indent()
         oLines.iParens = 0
-        oLines.indentSize = self.indentSize
+        oLines.indent_size = self.indent_size
         for oLine in oLines.lLines:
             if oLine.isFirst:
                 oLines.set_first_line_expected_indent(oLines.iIndent)
@@ -109,21 +109,21 @@ class multiline_array_alignment(alignment.Rule):
 
         for oLine in oLines.lLines:
             if oLine.isFirst:
-                check_first_line(oLine, oLines, oToi, self.indentSize)
+                check_first_line(oLine, oLines, oToi, self.indent_size)
             elif oLine.isLast:
-                check_last_line(oLine, oLines, self.indentSize)
+                check_last_line(oLine, oLines, self.indent_size)
             else:
-                check_middle_line(oLine, oLines, self.indentSize)
+                check_middle_line(oLine, oLines, self.indent_size)
 
     def analyze_align_left_true_align_paren_true(self, oToi, oLines):
 
         for oLine in oLines.lLines:
             if oLine.isFirst:
-                check_my_first_line(oLine, oLines, oToi, self.indentSize)
+                check_my_first_line(oLine, oLines, oToi, self.indent_size)
             elif oLine.isLast:
-                check_last_line(oLine, oLines, self.indentSize)
+                check_last_line(oLine, oLines, self.indent_size)
             else:
-                check_middle_line(oLine, oLines, self.indentSize)
+                check_middle_line(oLine, oLines, self.indent_size)
 
 
 def _set_indent(iToken, lTokens):
@@ -137,9 +137,9 @@ def _set_indent(iToken, lTokens):
 
 def check_left_aligned_line(oLine, oLines):
     if rules_utils.token_list_begins_with_close_paren(oLine.tokens):
-        oLine.set_expected_indent(oLines.iIndent + oLines.iParens * oLines.indentSize - oLines.indentSize)
+        oLine.set_expected_indent(oLines.iIndent + oLines.iParens * oLines.indent_size - oLines.indent_size)
     else:
-        oLine.set_expected_indent(oLines.iIndent + oLines.iParens * oLines.indentSize)
+        oLine.set_expected_indent(oLines.iIndent + oLines.iParens * oLines.indent_size)
 
 
 def check_first_line(oLine, oLines, oToi, iIndentStep):
@@ -240,11 +240,11 @@ def check_indents(self, oToi, oLines):
 
 
 def convert_column_index_to_whitespace(self, iColumn, iFirstLineIndent, iFirstLineIndentIndex):
-    if self.indentStyle == 'smart_tabs':
+    if self.indent_style == 'smart_tabs':
         sIndent = '\t' * iFirstLineIndentIndex
         sAlignment = ' ' * (iColumn - iFirstLineIndent)
     else:
-        sIndent = ' ' * self.indentSize * iFirstLineIndentIndex
+        sIndent = ' ' * self.indent_size * iFirstLineIndentIndex
         sAlignment = ' ' * (iColumn - len(sIndent))
     sLeadingWhitespace = sIndent + sAlignment
     return sLeadingWhitespace

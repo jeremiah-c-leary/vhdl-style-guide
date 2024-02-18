@@ -56,9 +56,9 @@ class rule_001(block_rule.Rule):
             if not self.allow_indenting:
                 iWhitespace = 0
             elif isinstance(lTokens[0], parser.comment):
-                iWhitespace = self.indentSize * lTokens[0].get_indent()
+                iWhitespace = self.indent_size * lTokens[0].get_indent()
             else:
-                iWhitespace = self.indentSize * lTokens[1].get_indent()
+                iWhitespace = self.indent_size * lTokens[1].get_indent()
 
             sHeader = '--'
 

@@ -1,7 +1,7 @@
 {
   "rule": {
     "global": {
-      "indentSize": 3
+      "indent_size": 3
     }
   }
 }

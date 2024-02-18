@@ -73,11 +73,11 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
         if self.alignment == 'report':
             iSpaces = oFile.get_column_of_token_index(oToi.get_start_index()) + 7
         else:
-            iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indentSize
+            iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indent_size
         return iSpaces
 
     def _expected_whitespace(self, oFile, oToi, lTokens):
-        if self.indentStyle == 'smart_tabs':
+        if self.indent_style == 'smart_tabs':
             if self.alignment == 'report':
                 return (lTokens[0].indent) * '\t' + ' ' * (len(lTokens[0].get_value()) + 1)
             else:
@@ -86,7 +86,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
             if self.alignment == 'report':
                 iSpaces = oFile.get_column_of_token_index(oToi.get_start_index()) + (len(lTokens[0].get_value()) + 1)
             else:
-                iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indentSize
+                iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indent_size
             return iSpaces * ' '
 
 

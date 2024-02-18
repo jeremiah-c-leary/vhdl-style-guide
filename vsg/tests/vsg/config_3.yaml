@@ -6,5 +6,5 @@ rule:
       disable: true
 # These are global rules
     global:
-       indentSize: 2
+       indent_size: 2
 ...

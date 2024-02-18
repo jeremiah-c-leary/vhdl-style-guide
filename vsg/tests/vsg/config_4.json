@@ -13,7 +13,7 @@
         "disable":false
     },
     "global":{
-       "indentSize":4
+       "indent_size":4
     }
   }
 }

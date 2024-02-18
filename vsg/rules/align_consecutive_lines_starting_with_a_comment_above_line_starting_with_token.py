@@ -73,9 +73,9 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
 
 def expected_whitespace(self, oToi):
     iIndentLevel = oToi.get_meta_data('indentLevel')
-    if self.indentStyle == 'smart_tabs':
+    if self.indent_style == 'smart_tabs':
         return '\t' * iIndentLevel
-    return ' ' * iIndentLevel * self.indentSize
+    return ' ' * iIndentLevel * self.indent_size
 
 
 def actual_whitespace(iToken, lTokens):

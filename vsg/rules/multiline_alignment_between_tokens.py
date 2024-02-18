@@ -129,21 +129,21 @@ class multiline_alignment_between_tokens(alignment.Rule):
             iFirstTokenLength = len(lTokens[0].get_value())
 
             if not align_paren(self) and align_left(self):
-                dExpectedIndent = _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, self.indentSize, dActualIndent, bStartsWithParen, self.bIgnoreStartParen, self.override)
+                dExpectedIndent = _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, self.indent_size, dActualIndent, bStartsWithParen, self.bIgnoreStartParen, self.override)
             elif align_paren(self) and not align_left(self):
-                dExpectedIndent = _analyze_align_left_no_align_paren_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, iFirstTokenLength, self.bIgnoreStartParen, self.iIndentAfterParen)
+                dExpectedIndent = _analyze_align_left_no_align_paren_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_size, bStartsWithParen, iAssignColumn, iFirstTokenLength, self.bIgnoreStartParen, self.iIndentAfterParen)
             elif align_paren(self) and align_left(self):
-                dExpectedIndent = _analyze_align_paren_yes_align_left_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen, self.bConstraint)
+                dExpectedIndent = _analyze_align_paren_yes_align_left_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_size, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen, self.bConstraint)
             elif not align_paren(self) and not align_left(self):
-                dExpectedIndent = _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen)
+                dExpectedIndent = _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_size, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen)
 
 
 #            print(f'Actual = {dActualIndent}')
 #            print(f'Expect = {dExpectedIndent}')
 #            print(f'Index  = {dIndex}')
 
-            if self.indentStyle == 'smart_tabs':
-                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
+            if self.indent_style == 'smart_tabs':
+                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
 
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] is None:

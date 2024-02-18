@@ -68,8 +68,8 @@ class token_prefix(naming.Rule):
         if oViolation.get_action() == 'remove_whitespace':
             oViolation.set_tokens([lTokens[1]])
         elif oViolation.get_action() == 'adjust_whitespace':
-            lTokens[0].set_value(lTokens[1].get_indent() * self.indentSize * ' ')
+            lTokens[0].set_value(lTokens[1].get_indent() * self.indent_size * ' ')
             oViolation.set_tokens(lTokens)
         elif oViolation.get_action() == 'add_whitespace':
-            rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent() * self.indentSize)
+            rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent() * self.indent_size)
             oViolation.set_tokens(lTokens)
