@@ -16,6 +16,6 @@ def classify(iToken, lObjects):
 
     while utils.is_next_token(';', iCurrent, lObjects):
          iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
-         iCurrent = interface_element.classify(iToken, lObjects)
+         iCurrent = interface_element.classify(iCurrent, lObjects)
 
     return iCurrent
