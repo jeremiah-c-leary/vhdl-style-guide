@@ -282,14 +282,18 @@ def token_list_is_the_beginning_of_a_line(lTokens):
     return False
 
 
-def left_most_token_is_at_the_end_of_a_line(lTokens):
-    if token_is_carriage_return(lTokens[1]):
+def token_is_at_end_of_line(iToken, lTokens):
+    if token_is_carriage_return(lTokens[iToken + 1]):
         return True
-    if token_is_comment(lTokens[1]):
+    if token_is_comment(lTokens[iToken + 1]):
         return True
-    if token_is_whitespace(lTokens[1]) and token_is_comment(lTokens[2]):
+    if token_is_whitespace(lTokens[iToken + 1]) and token_is_comment(lTokens[iToken + 2]):
         return True
     return False
+    
+
+def left_most_token_is_at_the_end_of_a_line(lTokens):
+    return token_is_at_end_of_line(0, lTokens)
 
 
 def whitespace_is_larger_than_a_single_character(lTokens):

@@ -69,4 +69,5 @@ def _check_association_list_comma(self, oToi):
 
 def _check_association_element(self, oToi):
 
-    check.add_new_line_and_remove_new_line(self, oToi, self.association_element, token.association_element.formal_part)
+    check.add_new_line_and_remove_new_line_after(self, oToi, self.association_element, token.procedure_call.open_parenthesis)
+    check.add_new_line_and_remove_new_line_after(self, oToi, self.association_element, token.association_list.comma)
