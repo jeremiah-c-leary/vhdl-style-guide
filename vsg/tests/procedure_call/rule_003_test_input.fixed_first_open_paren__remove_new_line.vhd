@@ -45,4 +45,15 @@ begin
 
   end process;
 
+  -- Test without formal part
+
+  connect_ports(data, enable, overflow, underflow);
+
+  connect_ports(
+    data,
+    enable,
+    overflow,
+    underflow
+  );
+
 end architecture;

@@ -62,7 +62,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'procedure_call')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [6, 8, 11, 16, 19, 40]
+        lExpected = [6, 8, 11, 16, 19, 40, 51, 53]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -130,7 +130,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'procedure_call')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [6, 9, 14]
+        lExpected = [6, 9, 14, 51]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -164,7 +164,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'procedure_call')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [17, 24, 34, 45]
+        lExpected = [17, 24, 34, 45, 58]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -232,7 +232,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'procedure_call')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [6, 6, 6, 6, 9, 9, 9, 11, 16, 16, 16, 16]
+        lExpected = [6, 6, 6, 6, 9, 9, 9, 11, 16, 16, 16, 16, 51, 51, 51, 51]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -266,7 +266,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'procedure_call')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [9, 12, 13, 14, 20, 21, 22, 23, 28, 30, 31, 33, 41, 42, 43, 44]
+        lExpected = [8, 11, 12, 13, 19, 20, 21, 22, 27, 29, 30, 32, 40, 41, 42, 43, 53, 54, 55, 56]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -300,7 +300,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'procedure_call')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [8, 9, 9, 9, 9, 11, 11, 14, 16, 16, 16, 16, 16, 19, 40]
+        lExpected = [8, 9, 9, 9, 9, 11, 11, 14, 16, 16, 16, 16, 16, 19, 40, 53]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
