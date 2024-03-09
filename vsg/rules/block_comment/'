@@ -32,7 +32,7 @@ class rule_002(block_rule.Rule):
     '''
 
     def __init__(self):
-        block_rule.Rule.__init__(self, 'block_comment', '002')
+        block_rule.Rule.__init__(self)
         self.comment_left = None
         self.configuration.append('comment_left')
 

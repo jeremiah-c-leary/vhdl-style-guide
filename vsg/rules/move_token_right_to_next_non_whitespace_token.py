@@ -25,8 +25,8 @@ class move_token_right_to_next_non_whitespace_token(structure.Rule):
        The token which will be moved next to the anchor token.
     '''
 
-    def __init__(self, name, identifier, tokens_to_move):
-        structure.Rule.__init__(self, name, identifier)
+    def __init__(self, tokens_to_move):
+        structure.Rule.__init__(self)
         self.tokens_to_move = tokens_to_move
         self.bInsertWhitespace = True
         self.bRemoveTrailingWhitespace = True
@@ -84,7 +84,7 @@ def filter_toi(self, lToi):
         if skip_based_on_whitespace(self.bInsertWhitespace, oToi):
             continue
         lReturn.append(oToi)
-    return lReturn
+    return rules_utils.remove_tois_with_pragmas(lReturn)
 
 
 def skip_based_on_whitespace(bInsertWhitespace, oToi):

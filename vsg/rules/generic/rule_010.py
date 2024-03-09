@@ -29,5 +29,5 @@ class rule_010(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'generic', '010', oToken)
+        Rule.__init__(self, oToken)
         self.preserve_comment = True

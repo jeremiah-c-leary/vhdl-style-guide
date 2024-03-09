@@ -26,4 +26,4 @@ class rule_100(Rule):
         report "FIFO width is limited to 16 bits.";
     '''
     def __init__(self):
-        Rule.__init__(self, 'report_statement', '100', lTokens)
+        Rule.__init__(self, lTokens)

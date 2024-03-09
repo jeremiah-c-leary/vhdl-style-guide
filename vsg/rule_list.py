@@ -149,8 +149,7 @@ class rule_list():
             if phase == 4:
                 self.oVhdlFile.set_token_indent()
 
-            for subphase in range(0, 5):
-                #print(f'phase {phase}.{subphase} ' + '-'*80)
+            for subphase in range(0, 6):
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
@@ -220,7 +219,7 @@ class rule_list():
             if phase in lSkipPhase:
                 continue
 
-            for subphase in range(0, 5):
+            for subphase in range(0, 6):
                 lRules = self.get_rules_in_phase(phase)
                 lRules = self.get_rules_in_subphase(lRules, subphase)
                 lRules = filter_out_disabled_rules(lRules)
@@ -340,7 +339,7 @@ class rule_list():
 
         Returns: (junit testcase object)
         '''
-        oTestcase = junit.testcase(sVhdlFileName, str(0), 'failure')
+        oTestcase = junit.testcase(sVhdlFileName, str(0))
         oFailure = junit.failure('Failure')
         for oRule in self.rules:
             if len(oRule.violations) > 0 and oRule.severity.type == severity.error_type:
@@ -349,7 +348,9 @@ class rule_list():
                     sLine += str(utils.get_violation_line_number(dViolation)) + ' : '
                     sLine += dViolation.get_solution()
                     oFailure.add_text(sLine)
-        oTestcase.add_failure(oFailure)
+
+        if oFailure.has_text():
+            oTestcase.add_failure(oFailure)
 
         return oTestcase
 

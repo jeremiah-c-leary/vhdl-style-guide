@@ -11,5 +11,5 @@ rule:
     disable: false
 # These are global rules
   global:
-    indentSize: 4
+    indent_size: 4
 ...

@@ -11,12 +11,26 @@ from vsg.token import relational_operator
 
 from vsg.token.ieee.std_logic_1164 import types
 
+import sys
+
 
 def assign_tokens_until(sToken, token, iToken, lObjects):
     iCurrent = iToken
     while not is_next_token(sToken, iCurrent, lObjects):
         iCurrent = assign_next_token(token, iCurrent, lObjects)
     return iCurrent
+
+
+def assign_tokens_until_ignoring_paren(sToken, token, iToken, lObjects):
+    iParen = 0
+    for iCurrent in range(iToken, len(lObjects) - 1):
+        iParen = update_paren_counter(iCurrent, lObjects, iParen)
+        if lObjects[iCurrent].get_value().lower() == sToken:
+            if iParen == 0:
+                return iCurrent
+        if is_item(lObjects, iCurrent):
+            assign_token(lObjects, iCurrent, token)
+    return None
 
 
 def assign_next_token(token, iToken, lObjects):
@@ -159,6 +173,23 @@ def are_next_consecutive_token_types(lTypes, iToken, lObjects):
         return False
 
 
+def are_next_consecutive_tokens_ignoring_whitespace(lTokens, iToken, lObjects):
+    iMaxTokenCount = len(lTokens)
+    iTokenCount = 0
+    iCurrent = iToken
+    try:
+        while iTokenCount < iMaxTokenCount:
+            iCurrent = find_next_non_whitespace_token(iCurrent, lObjects)
+            if not lTokens[iTokenCount] is None:
+                if not is_next_token(lTokens[iTokenCount], iCurrent, lObjects):
+                    return False
+            iCurrent += 1
+            iTokenCount += 1
+        return True
+    except IndexError:
+        return False
+
+
 def are_next_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lObjects):
     iMaxTokenCount = len(lTypes)
     iTokenCount = 0
@@ -174,6 +205,7 @@ def are_next_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lObject
         return True
     except IndexError:
         return False
+
 
 def are_previous_consecutive_token_types_ignoring_whitespace(lTypes, iToken, lObjects):
     iMinTokenCount = 0
@@ -208,7 +240,7 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
 
 
 def find_earliest_occurance(lEnd, iToken, lObjects):
-    iEarliest = 9999999999999999999999999999
+    iEarliest = len(lObjects)
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
             if lObjects[iIndex].get_value().lower() == sEnd:
@@ -216,6 +248,18 @@ def find_earliest_occurance(lEnd, iToken, lObjects):
                     sEarliest = lObjects[iIndex].get_value()
                     iEarliest = iIndex
     return sEarliest
+
+
+def find_earliest_occurance_not_in_paren(lEnd, iToken, lObjects):
+    iEarliest = len(lObjects)
+    iParen = 0
+    for sEnd in lEnd:
+        for iIndex in range(iToken, len(lObjects) - 1):
+            iParen = update_paren_counter(iIndex, lObjects, iParen)
+            if lObjects[iIndex].get_value().lower() == sEnd:
+                if iIndex < iEarliest and iParen == 0:
+                    return lObjects[iIndex].get_value()
+    return None
 
 
 def find_next_token(iToken, lObjects):
@@ -423,6 +467,20 @@ def print_error_message(sToken, token, iToken, lObjects):
     sErrorMessage += f'       Expecting : {sToken}'
     sErrorMessage += '\n'
     sErrorMessage += f'       Found     : {sFoundToken}'
+    sErrorMessage += '\n'
+
+    raise exceptions.ClassifyError(sErrorMessage)
+
+
+def print_missing_error_message(lTokens, iToken, lObjects):
+    iLine = calculate_line_number(iToken, lObjects)
+
+    sErrorMessage = '\n'
+    sErrorMessage += f'Error: Closing token not found while parsing Line {iLine}'
+    sErrorMessage += '\n'
+    sErrorMessage += '\n'
+    sErrorMessage += f' {iLine} | '
+    sErrorMessage += extract_line_with_token_index_of(iToken, lObjects)
     sErrorMessage += '\n'
 
     raise exceptions.ClassifyError(sErrorMessage)
@@ -730,18 +788,21 @@ def is_whitespace(oObject):
 
 
 def read_vhdlfile(sFileName):
+
+    def _read(oFile):
+        lLines = []
+        for sLine in oFile:
+            lLines.append(sLine.rstrip('\r\n'))
+        return lLines
+
+    if sFileName == 'stdin':
+        return _read(sys.stdin), None
     try:
-        lLines = []
         with open(sFileName, encoding='utf-8') as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        return lLines, None
+            return _read(oFile), None
     except UnicodeDecodeError:
-        lLines = []
         with open(sFileName, encoding="ISO-8859-1") as oFile:
-            for sLine in oFile:
-                lLines.append(sLine)
-        return lLines, None
+            return _read(oFile), None
     except OSError as e:
         return [], e
 
@@ -892,3 +953,34 @@ def classify_predefined_types(lObjects, iCurrent):
             assign_token(lObjects, iCurrent, predefined_attribute.event_keyword)
         else:
             assign_token(lObjects, iCurrent, predefined_attribute.keyword)
+
+
+def convert_yes_no_option_to_boolean(option):
+    if option == 'yes':
+        return True
+    elif option == 'no':
+        return False
+    return option
+
+
+def convert_boolean_to_yes_no(option):
+    if isinstance(option, bool):
+        if option:
+            return 'yes'
+        else:
+            return 'no'
+    return option
+
+
+def extract_line_with_token_index_of(iToken, lObjects):
+    for iIndex in range(0, iToken):
+        if isinstance(lObjects[iIndex], parser.carriage_return):
+            iStart = iIndex + 1
+    for iIndex in range(iToken, len(lObjects)):
+        if isinstance(lObjects[iIndex], parser.carriage_return):
+            iEnd = iIndex
+            break
+    sReturn = ''
+    for oObject in lObjects[iStart:iEnd]:
+        sReturn += oObject.get_value()
+    return sReturn

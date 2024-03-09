@@ -28,7 +28,7 @@ class rule_011(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'case', '011')
+        Rule.__init__(self)
         self.lStartTokens = [token.when_keyword]
         self.lEndTokens = [token.assignment]
         self.solution = 'Align one space after *when* keyword'

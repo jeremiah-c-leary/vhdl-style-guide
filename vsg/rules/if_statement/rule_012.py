@@ -37,4 +37,4 @@ class rule_012(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'if', '012', lTokens)
+        token_indent.__init__(self, lTokens)

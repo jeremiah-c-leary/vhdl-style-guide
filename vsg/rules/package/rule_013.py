@@ -27,5 +27,5 @@ class rule_013(token_case_with_prefix_suffix):
     '''
 
     def __init__(self):
-        token_case_with_prefix_suffix.__init__(self, 'package', '013', lTokens)
+        token_case_with_prefix_suffix.__init__(self, lTokens)
         self.groups.append('case::keyword')

@@ -37,7 +37,7 @@ class rule_602(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'port', '602', lTokens)
+        Rule.__init__(self, lTokens)
         self.prefixes = ['io_']
 
     def _get_tokens_of_interest(self, oFile):

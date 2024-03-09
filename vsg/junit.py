@@ -28,16 +28,20 @@ class failure():
 
         return lJunit
 
+    def has_text(self):
+        if self.text is None:
+            return False
+        return True
+
 
 class testcase():
     '''
     This class holds testcase attributes.
     '''
 
-    def __init__(self, sName=None, sTime=None, sClassName=None):
+    def __init__(self, sName=None, sTime=None):
         self.name = sName
         self.time = sTime
-        self.classname = sClassName
         self.failures = None
 
     def add_failure(self, oFailure):
@@ -51,7 +55,7 @@ class testcase():
         Return formatted testcase as a list of strings.
         '''
 
-        lJunit = ['  <testcase name="' + self.name + '" time="' + self.time + '" classname="' + self.classname + '">']
+        lJunit = ['  <testcase name="' + self.name + '" time="' + self.time + '">']
 
         if self.failures:
             for oFailure in self.failures:

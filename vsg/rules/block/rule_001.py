@@ -33,5 +33,5 @@ class rule_001(move_token_sequences_left_of_token):
     '''
 
     def __init__(self):
-        move_token_sequences_left_of_token.__init__(self, 'block', '001', lSequences, oLeftToken)
+        move_token_sequences_left_of_token.__init__(self, lSequences, oLeftToken)
         self.solution = 'Ensure block label is on the same line as *block* keyword.'

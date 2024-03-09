@@ -12,15 +12,14 @@ def classify_until(lUntils, iToken, lObjects):
         simple_expression
       | discrete_range
       | *element*_simple_name
-      | others
+      | **others**
     '''
-
+    iParen = 0
     for iIndex in range(iToken, len(lObjects)):
-        if not utils.is_item(lObjects, iIndex):
-            continue
-        if utils.is_next_token_in_list(lUntils, iIndex, lObjects):
+        iParen = utils.update_paren_counter(iIndex, lObjects, iParen)
+        if utils.is_next_token_in_list(lUntils, iIndex, lObjects) and iParen == 0:
             return iIndex
-        else:
+        if utils.is_item(lObjects, iIndex):
             if utils.is_next_token('others', iIndex, lObjects):
                 utils.assign_next_token_required('others', token.others_keyword, iIndex, lObjects)
             else:

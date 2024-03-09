@@ -28,7 +28,7 @@ class test_rule(unittest.TestCase):
     def test_fix_rule_400_indent_2(self):
         self.maxDiff = None
         oRule = process.rule_400()
-        oRule.indentSize = 2
+        oRule.indent_size = 2
         oRule.if_control_statements_ends_group = False
 
         oRule.fix(self.oFile)
@@ -42,7 +42,7 @@ class test_rule(unittest.TestCase):
 
     def test_fix_rule_400_indent_4(self):
         oRule = process.rule_400()
-        oRule.indentSize = 4
+        oRule.indent_size = 4
         oRule.if_control_statements_ends_group = False
 
         oRule.fix(self.oFile)

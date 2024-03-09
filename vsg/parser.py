@@ -17,6 +17,7 @@ class item():
         self.code_tags = []
         self.base_token, self.sub_token = self.update_token_types()
         self.filename = None
+        self.iId = None
 
     def update_token_types(self):
         try:
@@ -30,6 +31,9 @@ class item():
 
     def get_value(self):
         return self.value
+
+    def get_lower_value(self):
+        return self.value.lower()
 
     def set_value(self, sString):
         self.value = sString
@@ -91,6 +95,18 @@ class item():
     def get_filename(self):
         return self.filename
 
+    def convert_to(self, token):
+        oReturn = token(self.value)
+        oReturn.indent = self.indent
+        oReturn.hierarchy = self.hierarchy
+        oReturn.context = self.context
+        oReturn.code_tags = self.code_tags
+        oReturn.base_token, self.sub_token = self.update_token_types()
+        oReturn.filename = self.filename
+        oReturn.iId = self.iId
+        oReturn.base_token, oReturn.sub_token = oReturn.update_token_types()
+        return oReturn
+        
 
 class todo(item):
     '''

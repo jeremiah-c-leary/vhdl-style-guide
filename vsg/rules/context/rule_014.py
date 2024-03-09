@@ -31,5 +31,5 @@ class rule_014(token_case):
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'context', '014', lTokens)
+        token_case.__init__(self, lTokens)
         self.groups.append('case::keyword')

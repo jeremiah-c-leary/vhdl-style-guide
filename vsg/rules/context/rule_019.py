@@ -27,6 +27,6 @@ class rule_019(Rule):
        end context c1;
     '''
     def __init__(self):
-        Rule.__init__(self, 'context', '019')
+        Rule.__init__(self)
         self.left_token = token.end_context_keyword
         self.right_token = token.context_simple_name

@@ -38,5 +38,5 @@ class rule_402(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'sequential', '402', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)
         self.assignment_operator = token.simple_waveform_assignment.assignment

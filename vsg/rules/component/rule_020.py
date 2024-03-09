@@ -55,6 +55,6 @@ class rule_020(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(self, 'component', '020', lAlign, token.component_declaration.component_keyword, token.component_declaration.end_keyword, lSkip)
+        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(self, lAlign, token.component_declaration.component_keyword, token.component_declaration.end_keyword, lSkip)
         self.solution = 'Align identifer.'
         self.subphase = 2

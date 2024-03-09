@@ -43,5 +43,5 @@ class rule_020(Rule):
        );
     '''
     def __init__(self):
-        Rule.__init__(self, 'port', '020', lTokens, oStart, oEnd)
+        Rule.__init__(self, lTokens, oStart, oEnd)
         self.number_of_spaces = '>=1'

@@ -33,4 +33,4 @@ class rule_006(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'function', '006', lTokens)
+        previous_line.__init__(self, lTokens)

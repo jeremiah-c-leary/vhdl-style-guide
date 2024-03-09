@@ -26,5 +26,5 @@ class rule_028(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'entity', '028', lTokens)
+        Rule.__init__(self, lTokens)
         self.solution = 'Move code after the semicolon to the next line.'

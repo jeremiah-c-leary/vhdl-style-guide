@@ -37,7 +37,7 @@ def classify(iToken, lObjects):
 
     iCurrent = delay_mechanism.detect(iCurrent, lObjects)
 
-    selected_waveforms.classify(iToken, lObjects)
+    selected_waveforms.classify_until([';'], iToken, lObjects)
 
     iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
 

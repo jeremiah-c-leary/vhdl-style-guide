@@ -25,8 +25,8 @@ class move_token(structure.Rule):
        object type to split a line at
     '''
 
-    def __init__(self, name, identifier, oToken):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, oToken):
+        structure.Rule.__init__(self)
         self.solution = None
         self.phase = 1
         self.oToken = oToken
@@ -38,11 +38,13 @@ class move_token(structure.Rule):
 
     def _get_tokens_of_interest(self, oFile):
         if self.action == 'new_line' and not self.preserve_comment:
-            return get_toi_for_new_line_option(self, oFile)
+            lToi = get_toi_for_new_line_option(self, oFile)
         elif self.action == 'new_line' and self.preserve_comment:
-            return get_toi_for_new_line_option_with_preserve_comment(self, oFile)
+            lToi = get_toi_for_new_line_option_with_preserve_comment(self, oFile)
         else:
-            return get_toi_for_move_left_option(self, oFile)
+            lToi = get_toi_for_move_left_option(self, oFile)
+
+        return rules_utils.remove_tois_with_pragmas(lToi)
 
     def _analyze(self, lToi):
         if self.action == 'new_line' and not self.preserve_comment:

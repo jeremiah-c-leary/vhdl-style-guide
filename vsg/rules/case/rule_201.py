@@ -34,5 +34,5 @@ class rule_201(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'case', '201', [token.when_keyword])
+        Rule.__init__(self, [token.when_keyword])
         self.style = 'allow_comment'

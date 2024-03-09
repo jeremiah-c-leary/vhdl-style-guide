@@ -40,4 +40,4 @@ class rule_001(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'function', '001', lTokens)
+        token_indent.__init__(self, lTokens)

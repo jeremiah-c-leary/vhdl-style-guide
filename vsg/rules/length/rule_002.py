@@ -10,4 +10,4 @@ class rule_002(file_length):
     '''
 
     def __init__(self):
-        file_length.__init__(self, 'length', '002')
+        file_length.__init__(self)

@@ -49,5 +49,8 @@ class rule_018(align_tokens_in_region_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens.__init__(self, 'entity', '018', lAlign, token.entity_declaration.entity_keyword, token.entity_declaration.end_keyword)
+        align_tokens_in_region_between_tokens.__init__(self, lAlign, token.entity_declaration.entity_keyword, token.entity_declaration.end_keyword)
         self.solution = 'Align :.'
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')

@@ -19,8 +19,8 @@ class token_case_with_prefix_suffix(rules.token_case):
        The token types to check the case on.
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        rules.token_case.__init__(self, name=name, identifier=identifier, lTokens=lTokens)
+    def __init__(self, lTokens):
+        rules.token_case.__init__(self, lTokens=lTokens)
         self.configuration.append('prefix_exceptions')
         self.configuration.append('suffix_exceptions')
         self.configuration.append('case_exceptions')

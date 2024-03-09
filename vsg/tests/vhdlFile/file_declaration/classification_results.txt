@@ -74,10 +74,10 @@
 <class 'vsg.token.file_open_information.file_open_kind_expression'>
 <class 'vsg.token.file_open_information.is_keyword'>
 <class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.file_declaration.semicolon'>
 --------------------------------------------------------------------------------

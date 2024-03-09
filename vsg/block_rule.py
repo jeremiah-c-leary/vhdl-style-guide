@@ -11,14 +11,14 @@ from vsg.rules import utils as rules_utils
 
 class Rule(structure.Rule):
 
-    def __init__(self, name, identifier):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        structure.Rule.__init__(self)
         self.fixable = False
         self.disable = True
 
         self.min_height = 3
         self.configuration.append('min_height')
-        self.allow_indenting = True
+        self.allow_indenting = 'yes'
         self.configuration.append('allow_indenting')
         self.configuration_documentation_link = 'configuring_block_comments_link'
 
@@ -54,7 +54,7 @@ class Rule(structure.Rule):
 
     def calculate_leading_whitespace(self, oToken):
         if self.allow_indenting:
-            iWhitespace = self.indentSize * oToken.get_indent()
+            iWhitespace = self.indent_size * oToken.get_indent()
         else:
             iWhitespace = 0
         return iWhitespace

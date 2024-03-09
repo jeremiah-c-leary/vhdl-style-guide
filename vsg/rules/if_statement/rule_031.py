@@ -47,6 +47,6 @@ class rule_031(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'if', '031', lTokens)
+        previous_line.__init__(self, lTokens)
         self.lHierarchyLimits = [0]
         self.style = 'no_code'

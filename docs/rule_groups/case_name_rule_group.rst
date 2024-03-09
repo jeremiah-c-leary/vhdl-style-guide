@@ -38,6 +38,7 @@ Rules Enforcing Case::Name Rule Group
 * `procedure_501 <../procedure_rules.html#procedure-501>`_
 * `procedure_506 <../procedure_rules.html#procedure-506>`_
 * `signal_004 <../signal_rules.html#signal-004>`_
+* `subtype_501 <../subtype_rules.html#subtype-501>`_
 * `type_004 <../type_rules.html#type-004>`_
 * `type_500 <../type_rules.html#type-500>`_
 * `use_clause_500 <../use_clause_rules.html#use-clause-500>`_

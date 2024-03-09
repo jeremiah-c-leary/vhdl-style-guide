@@ -17,6 +17,7 @@ from .rule_015 import rule_015
 from .rule_016 import rule_016
 from .rule_017 import rule_017
 from .rule_018 import rule_018
+from .rule_019 import rule_019
 
 from .rule_100 import rule_100
 from .rule_101 import rule_101
@@ -28,6 +29,7 @@ from .rule_204 import rule_204
 
 from .rule_300 import rule_300
 
+from .rule_501 import rule_501
 from .rule_502 import rule_502
 from .rule_506 import rule_506
 

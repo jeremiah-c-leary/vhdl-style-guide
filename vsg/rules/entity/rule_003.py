@@ -27,4 +27,4 @@ class rule_003(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'entity', '003', [token.entity_keyword])
+        previous_line.__init__(self, [token.entity_keyword])

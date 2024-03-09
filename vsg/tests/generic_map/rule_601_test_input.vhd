@@ -29,6 +29,11 @@ begin
       PORT_3 => w_port_3
     );
 
+  U_INST2 : INST2
+    generic map (
+      W_GEN_1(W_GEN_1) => 3,
+      G_GEN_2(W_GEN_1) => 10
+    );
 
 end architecture ARCH;
 

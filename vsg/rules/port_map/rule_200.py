@@ -36,5 +36,5 @@ class rule_200(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'port_map', '200', lTokens)
+        Rule.__init__(self, lTokens)
         self.style = 'no_blank_line'

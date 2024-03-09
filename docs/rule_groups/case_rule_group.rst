@@ -20,6 +20,9 @@ Rules Enforcing Case Rule Group
 * `architecture_028 <../architecture_rules.html#architecture-028>`_
 * `architecture_600 <../architecture_rules.html#architecture-600>`_
 * `architecture_601 <../architecture_rules.html#architecture-601>`_
+* `assert_500 <../assert_rules.html#assert-500>`_
+* `assert_501 <../assert_rules.html#assert-501>`_
+* `assert_502 <../assert_rules.html#assert-502>`_
 * `attribute_500 <../attribute_rules.html#attribute-500>`_
 * `attribute_declaration_500 <../attribute_declaration_rules.html#attribute-declaration-500>`_
 * `attribute_declaration_501 <../attribute_declaration_rules.html#attribute-declaration-501>`_
@@ -87,6 +90,7 @@ Rules Enforcing Case Rule Group
 * `function_013 <../function_rules.html#function-013>`_
 * `function_014 <../function_rules.html#function-014>`_
 * `function_017 <../function_rules.html#function-017>`_
+* `function_501 <../function_rules.html#function-501>`_
 * `function_502 <../function_rules.html#function-502>`_
 * `function_506 <../function_rules.html#function-506>`_
 * `generate_005 <../generate_rules.html#generate-005>`_
@@ -147,7 +151,6 @@ Rules Enforcing Case Rule Group
 * `port_019 <../port_rules.html#port-019>`_
 * `port_map_001 <../port_map_rules.html#port-map-001>`_
 * `port_map_002 <../port_map_rules.html#port-map-002>`_
-* `procedure_007 <../procedure_rules.html#procedure-007>`_
 * `procedure_008 <../procedure_rules.html#procedure-008>`_
 * `procedure_009 <../procedure_rules.html#procedure-009>`_
 * `procedure_500 <../procedure_rules.html#procedure-500>`_
@@ -174,6 +177,7 @@ Rules Enforcing Case Rule Group
 * `record_type_definition_502 <../record_type_definition_rules.html#record-type-definition-502>`_
 * `report_statement_500 <../report_statement_rules.html#report-statement-500>`_
 * `report_statement_501 <../report_statement_rules.html#report-statement-501>`_
+* `return_statement_500 <../return_statement_rules.html#return-statement-500>`_
 * `selected_assignment_500 <../selected_assignment_rules.html#selected-assignment-500>`_
 * `selected_assignment_501 <../selected_assignment_rules.html#selected-assignment-501>`_
 * `selected_assignment_502 <../selected_assignment_rules.html#selected-assignment-502>`_
@@ -182,6 +186,9 @@ Rules Enforcing Case Rule Group
 * `signal_004 <../signal_rules.html#signal-004>`_
 * `signal_014 <../signal_rules.html#signal-014>`_
 * `subtype_002 <../subtype_rules.html#subtype-002>`_
+* `subtype_500 <../subtype_rules.html#subtype-500>`_
+* `subtype_501 <../subtype_rules.html#subtype-501>`_
+* `subtype_502 <../subtype_rules.html#subtype-502>`_
 * `type_002 <../type_rules.html#type-002>`_
 * `type_004 <../type_rules.html#type-004>`_
 * `type_013 <../type_rules.html#type-013>`_

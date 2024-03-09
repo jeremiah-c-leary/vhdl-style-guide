@@ -39,8 +39,8 @@ class multiline_simple_structure(structure.Rule):
                 '0';
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs):
+        structure.Rule.__init__(self)
         self.lTokenPairs = lTokenPairs
 
         self.new_line_after_assign = 'no'
@@ -63,6 +63,9 @@ class multiline_simple_structure(structure.Rule):
         return lReturn
 
     def _analyze(self, lToi):
+        self.new_line_after_assign = utils.convert_boolean_to_yes_no(self.new_line_after_assign)
+        self.ignore_single_line = utils.convert_boolean_to_yes_no(self.ignore_single_line)
+
         for oToi in lToi:
             if rules_utils.is_single_line(oToi) and self.ignore_single_line:
                 continue

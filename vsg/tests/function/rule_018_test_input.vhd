@@ -1,28 +1,48 @@
 
-architecture rtl of fifo is
+package fifo_pkg is
 
-  procedure proc is
+  function func_a (x : boolean) return boolean;
+
+  function func_b (x : boolean) return boolean;
+
+  procedure proc_a (x : boolean);
+
+  procedure proc_b (x : boolean);
+
+end package fifo_pkg;
+
+package body fifo_pkg is
+
+  function func_a (x : boolean) return integer is
   begin
-  end procedure proc;
+  end function func_a;
 
-  procedure proc is
+  function func_b (x : boolean) return integer is
   begin
-  end proc;
+  end function func_b;
 
-  function func return integer is
+  function func_a (x : boolean) return integer is
   begin
-  end function func;
+  end func_a;
 
-  function func return integer is
+  function func_b (x : boolean) return integer is
   begin
-  end func;
+  end func_b;
 
-  function func return integer;
-
-  procedure proc is
+  procedure proc_a (x : boolean) is
   begin
-  end procedure proc;
+  end procedure proc_a;
 
-begin
+  procedure proc_b (x : boolean) is
+  begin
+  end procedure proc_b;
 
-end architecture rtl;
+  procedure proc_a (x : boolean) is
+  begin
+  end proc_a;
+
+  procedure proc_b (x : boolean) is
+  begin
+  end proc_b;
+
+end package body fifo_pkg;

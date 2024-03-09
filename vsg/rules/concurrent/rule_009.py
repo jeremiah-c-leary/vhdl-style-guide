@@ -37,4 +37,4 @@ class rule_009(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'concurrent', '009', lTokenPairs)
+        Rule.__init__(self, lTokenPairs)

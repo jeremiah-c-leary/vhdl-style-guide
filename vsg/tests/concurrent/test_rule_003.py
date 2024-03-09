@@ -44,7 +44,20 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, 'concurrent')
         self.assertEqual(oRule.identifier, '003')
 
-        lExpected = [9, 13, 45, 48, 49, 52, 53, 56, 57, 58, 66, 67, 70, 71, 74, 75, 76]
+        lExpected = [9, 13, 45, 48, 49, 52, 53, 56, 57, 58, 66, 67, 70, 71, 74, 75, 76, 81]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_003_align_left_false_align_paren_true(self):
+        oRule = concurrent.rule_003()
+        oRule.align_left = False
+        oRule.align_paren = True
+        self.assertTrue(oRule)
+        self.assertEqual(oRule.name, 'concurrent')
+        self.assertEqual(oRule.identifier, '003')
+
+        lExpected = [9, 13, 45, 48, 49, 52, 53, 56, 57, 58, 66, 67, 70, 71, 74, 75, 76, 81]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -68,7 +81,17 @@ class test_rule(unittest.TestCase):
         oRule.align_left = 'yes'
         oRule.align_paren = 'no'
 
-        lExpected = [9, 12, 13, 16, 17, 20, 21, 22, 27, 30, 31, 34, 35, 38, 39, 40, 63, 67]
+        lExpected = [9, 12, 13, 16, 17, 20, 21, 22, 27, 30, 31, 34, 35, 38, 39, 40, 63, 67, 81]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_003_align_left_true_align_paren_false(self):
+        oRule = concurrent.rule_003()
+        oRule.align_left = True
+        oRule.align_paren = False
+
+        lExpected = [9, 12, 13, 16, 17, 20, 21, 22, 27, 30, 31, 34, 35, 38, 39, 40, 63, 67, 81]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -92,7 +115,17 @@ class test_rule(unittest.TestCase):
         oRule.align_left = 'yes'
         oRule.align_paren = 'yes'
 
-        lExpected = [9, 12, 13, 16, 17, 20, 21, 22, 30, 31, 34, 35, 38, 39, 40, 45, 49]
+        lExpected = [9, 12, 13, 16, 17, 20, 21, 22, 30, 31, 34, 35, 38, 39, 40, 45, 49, 81]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_003_align_left_true_align_paren_true(self):
+        oRule = concurrent.rule_003()
+        oRule.align_left = True
+        oRule.align_paren = True
+
+        lExpected = [9, 12, 13, 16, 17, 20, 21, 22, 30, 31, 34, 35, 38, 39, 40, 45, 49, 81]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -116,7 +149,17 @@ class test_rule(unittest.TestCase):
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
 
-        lExpected = [27, 31, 45, 48, 49, 52, 53, 56, 57, 58, 63, 66, 67, 70, 71, 74, 75, 76]
+        lExpected = [27, 31, 45, 48, 49, 52, 53, 56, 57, 58, 63, 66, 67, 70, 71, 74, 75, 76, 81]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_003_align_left_false_align_paren_false(self):
+        oRule = concurrent.rule_003()
+        oRule.align_left = False
+        oRule.align_paren = False
+
+        lExpected = [27, 31, 45, 48, 49, 52, 53, 56, 57, 58, 63, 66, 67, 70, 71, 74, 75, 76, 81]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

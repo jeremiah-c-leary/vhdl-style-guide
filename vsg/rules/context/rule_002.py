@@ -23,6 +23,6 @@ class rule_002(Rule):
        context c1 is
     '''
     def __init__(self):
-        Rule.__init__(self, 'context', '002')
+        Rule.__init__(self)
         self.left_token = token.context_keyword
         self.right_token = token.identifier

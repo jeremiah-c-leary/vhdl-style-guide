@@ -1,0 +1,22 @@
+file_list:
+  - vsg/tests/vsg/deprecated_option/example.vhd
+  - vsg/tests/vsg/deprecated_option/example.vhd:
+      rule:
+        architecture_001:
+           indentSize: 4
+  - vsg/tests/vsg/deprecated_option/example.vhd
+  - vsg/tests/vsg/deprecated_option/example.vhd:
+      rule:
+        architecture_003:
+           indentStyle: 'spaces'
+  - vsg/tests/vsg/deprecated_option/example.vhd
+  - vsg/tests/vsg/deprecated_option/example.vhd:
+      rule:
+        architecture_001:
+           indentSize : 4
+  - vsg/tests/vsg/deprecated_option/example.vhd
+  - vsg/tests/vsg/deprecated_option/example.vhd:
+      rule:
+        architecture_003:
+           indentStyle: 'spaces'
+

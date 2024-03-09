@@ -20,14 +20,6 @@ class colon(parser.colon):
         parser.colon.__init__(self)
 
 
-class subtype_indication(parser.subtype_indication):
-    '''
-    unique_id = interface_unknown_declaration : subtype_indication
-    '''
-    def __init__(self, sString):
-        parser.subtype_indication.__init__(self, sString)
-
-
 class bus_keyword(parser.keyword):
     '''
     unique_id = interface_unknown_declaration : bus_keyword

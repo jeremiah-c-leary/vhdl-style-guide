@@ -44,10 +44,12 @@
 10 |   -- Simple test case
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-11 |   LABEL1 : if a = 1 generate
+11 |   LABEL1 : if LABEL1A : a = 1 generate
 <class 'vsg.token.if_generate_statement.generate_label'>
 <class 'vsg.token.if_generate_statement.label_colon'>
 <class 'vsg.token.if_generate_statement.if_keyword'>
+<class 'vsg.token.if_generate_statement.alternative_label_name'>
+<class 'vsg.token.if_generate_statement.alternative_label_colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
@@ -56,8 +58,10 @@
 12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-13 |   elsif a = 0 generate
+13 |   elsif LABEL1B : a = 0 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
+<class 'vsg.token.if_generate_statement.alternative_label_name'>
+<class 'vsg.token.if_generate_statement.alternative_label_colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
@@ -66,8 +70,10 @@
 14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-15 |   elsif a = 1 generate
+15 |   elsif LABEL1C : a = 1 generate
 <class 'vsg.token.if_generate_statement.elsif_keyword'>
+<class 'vsg.token.if_generate_statement.alternative_label_name'>
+<class 'vsg.token.if_generate_statement.alternative_label_colon'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.todo'>
@@ -76,8 +82,10 @@
 16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-17 |   else generate
+17 |   else LABEL1D : generate
 <class 'vsg.token.if_generate_statement.else_keyword'>
+<class 'vsg.token.if_generate_statement.alternative_label_name'>
+<class 'vsg.token.if_generate_statement.alternative_label_colon'>
 <class 'vsg.token.if_generate_statement.generate_keyword'>
 --------------------------------------------------------------------------------
 18 |

@@ -34,5 +34,6 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'architecture', '400', lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
+        Rule.__init__(self, lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
         self.solution = 'Align colon.'
+        self.configuration.remove('separate_generic_port_alignment')

@@ -29,6 +29,6 @@ class rule_601(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, 'block', '601', lTokens)
+        token_prefix.__init__(self, lTokens)
         self.prefixes = ['blk_']
         self.solution = 'block label'

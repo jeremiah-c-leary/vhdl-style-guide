@@ -41,18 +41,16 @@ class testJunitClasses(unittest.TestCase):
         self.assertTrue(oTestcase)
         self.assertEqual(oTestcase.name, None)
         self.assertEqual(oTestcase.time, None)
-        self.assertEqual(oTestcase.classname, None)
         self.assertEqual(oTestcase.failures, None)
 
     def test_testcase_class_attribute_setting(self):
-        oTestcase = junit.testcase('Name', 'Time', 'classname')
+        oTestcase = junit.testcase('Name', 'Time')
         self.assertEqual(oTestcase.name, 'Name')
         self.assertEqual(oTestcase.time, 'Time')
-        self.assertEqual(oTestcase.classname, 'classname')
         self.assertEqual(oTestcase.failures, None)
 
     def test_testcase_class_add_failure(self):
-        oTestcase = junit.testcase('Name', 'Time', 'classname')
+        oTestcase = junit.testcase('Name', 'Time')
         oTestcase.add_failure(junit.failure('Type1'))
         oTestcase.add_failure(junit.failure('Type2'))
         oTestcase.add_failure(junit.failure('Type3'))
@@ -61,14 +59,14 @@ class testJunitClasses(unittest.TestCase):
         self.assertEqual(oTestcase.failures[2].type, 'Type3')
 
     def test_testcase_class_build_junit(self):
-        oTestcase = junit.testcase('Name', 'Time', 'Classname')
+        oTestcase = junit.testcase('Name', 'Time')
         for i in range(0, 3):
             oFailure = junit.failure('Type' + str(i))
             for j in range(0, 3):
                 oFailure.add_text('Text_' + str(i) + '_' + str(j))
             oTestcase.add_failure(oFailure)
         dExpected = []
-        dExpected.append('  <testcase name="Name" time="Time" classname="Classname">')
+        dExpected.append('  <testcase name="Name" time="Time">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -97,9 +95,9 @@ class testJunitClasses(unittest.TestCase):
 
     def test_testsuite_class_add_testcase(self):
         oTestsuite = junit.testsuite('Name', 'Time')
-        oTestsuite.add_testcase(junit.testcase('TC_Name0', 'TC_Time0', 'TC_Classname0'))
-        oTestsuite.add_testcase(junit.testcase('TC_Name1', 'TC_Time1', 'TC_Classname1'))
-        oTestsuite.add_testcase(junit.testcase('TC_Name2', 'TC_Time2', 'TC_Classname2'))
+        oTestsuite.add_testcase(junit.testcase('TC_Name0', 'TC_Time0'))
+        oTestsuite.add_testcase(junit.testcase('TC_Name1', 'TC_Time1'))
+        oTestsuite.add_testcase(junit.testcase('TC_Name2', 'TC_Time2'))
         self.assertEqual(oTestsuite.testcases[0].name, 'TC_Name0')
         self.assertEqual(oTestsuite.testcases[1].name, 'TC_Name1')
         self.assertEqual(oTestsuite.testcases[2].name, 'TC_Name2')
@@ -107,7 +105,7 @@ class testJunitClasses(unittest.TestCase):
     def test_testsuite_class_build_junit(self):
         oTestsuite = junit.testsuite('TS_Name', 'TS_Time')
         for k in range(0, 3):
-            oTestcase = junit.testcase('Name' + str(k), 'Time' + str(k), 'Classname' + str(k))
+            oTestcase = junit.testcase('Name' + str(k), 'Time' + str(k))
             for i in range(0, 3):
                 oFailure = junit.failure('Type' + str(i))
                 for j in range(0, 3):
@@ -121,7 +119,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('<testsuite errors="0" hostname="' + sHostname + '" failures="9" timestamp="' + oTestsuite.timestamp + '" tests="3" time="TS_Time" name="TS_Name">')
         dExpected.append('  <properties>')
         dExpected.append('  </properties>')
-        dExpected.append('  <testcase name="Name0" time="Time0" classname="Classname0">')
+        dExpected.append('  <testcase name="Name0" time="Time0">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -138,7 +136,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('      Text_2_2')
         dExpected.append('    </failure>')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name1" time="Time1" classname="Classname1">')
+        dExpected.append('  <testcase name="Name1" time="Time1">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -155,7 +153,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('      Text_2_2')
         dExpected.append('    </failure>')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name2" time="Time2" classname="Classname2">')
+        dExpected.append('  <testcase name="Name2" time="Time2">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -199,7 +197,7 @@ class testJunitClasses(unittest.TestCase):
         for x in range(0,2):
             oTestsuite = junit.testsuite('TS_Name' + str(x), 'TS_Time' + str(x))
             for k in range(0, 3):
-                oTestcase = junit.testcase('Name' + str(k), 'Time' + str(k), 'Classname' + str(k))
+                oTestcase = junit.testcase('Name' + str(k), 'Time' + str(k))
                 for i in range(0, 3):
                     oFailure = junit.failure('Type' + str(i))
                     for j in range(0, 3):
@@ -215,7 +213,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('<testsuite errors="0" hostname="' + sHostname + '" failures="9" timestamp="' + oTestsuite.timestamp + '" tests="3" time="TS_Time0" name="TS_Name0">')
         dExpected.append('  <properties>')
         dExpected.append('  </properties>')
-        dExpected.append('  <testcase name="Name0" time="Time0" classname="Classname0">')
+        dExpected.append('  <testcase name="Name0" time="Time0">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -232,7 +230,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('      Text_2_2')
         dExpected.append('    </failure>')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name1" time="Time1" classname="Classname1">')
+        dExpected.append('  <testcase name="Name1" time="Time1">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -249,7 +247,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('      Text_2_2')
         dExpected.append('    </failure>')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name2" time="Time2" classname="Classname2">')
+        dExpected.append('  <testcase name="Name2" time="Time2">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -274,7 +272,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('<testsuite errors="0" hostname="' + sHostname + '" failures="9" timestamp="' + oTestsuite.timestamp + '" tests="3" time="TS_Time1" name="TS_Name1">')
         dExpected.append('  <properties>')
         dExpected.append('  </properties>')
-        dExpected.append('  <testcase name="Name0" time="Time0" classname="Classname0">')
+        dExpected.append('  <testcase name="Name0" time="Time0">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -291,7 +289,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('      Text_2_2')
         dExpected.append('    </failure>')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name1" time="Time1" classname="Classname1">')
+        dExpected.append('  <testcase name="Name1" time="Time1">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -308,7 +306,7 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('      Text_2_2')
         dExpected.append('    </failure>')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name2" time="Time2" classname="Classname2">')
+        dExpected.append('  <testcase name="Name2" time="Time2">')
         dExpected.append('    <failure type="Type0">')
         dExpected.append('      Text_0_0')
         dExpected.append('      Text_0_1')
@@ -338,7 +336,7 @@ class testJunitClasses(unittest.TestCase):
         for x in range(0,2):
             oTestsuite = junit.testsuite('TS_Name' + str(x), 'TS_Time' + str(x))
             for k in range(0, 3):
-                oTestcase = junit.testcase('Name' + str(k), 'Time' + str(k), 'Classname' + str(k))
+                oTestcase = junit.testcase('Name' + str(k), 'Time' + str(k))
                 oTestsuite.add_testcase(oTestcase)
             oXmlfile.add_testsuite(oTestsuite)
 
@@ -349,11 +347,11 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('<testsuite errors="0" hostname="' + sHostname + '" failures="0" timestamp="' + oTestsuite.timestamp + '" tests="3" time="TS_Time0" name="TS_Name0">')
         dExpected.append('  <properties>')
         dExpected.append('  </properties>')
-        dExpected.append('  <testcase name="Name0" time="Time0" classname="Classname0">')
+        dExpected.append('  <testcase name="Name0" time="Time0">')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name1" time="Time1" classname="Classname1">')
+        dExpected.append('  <testcase name="Name1" time="Time1">')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name2" time="Time2" classname="Classname2">')
+        dExpected.append('  <testcase name="Name2" time="Time2">')
         dExpected.append('  </testcase>')
         dExpected.append('  <system-out>')
         dExpected.append('  </system-out>')
@@ -363,11 +361,11 @@ class testJunitClasses(unittest.TestCase):
         dExpected.append('<testsuite errors="0" hostname="' + sHostname + '" failures="0" timestamp="' + oTestsuite.timestamp + '" tests="3" time="TS_Time1" name="TS_Name1">')
         dExpected.append('  <properties>')
         dExpected.append('  </properties>')
-        dExpected.append('  <testcase name="Name0" time="Time0" classname="Classname0">')
+        dExpected.append('  <testcase name="Name0" time="Time0">')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name1" time="Time1" classname="Classname1">')
+        dExpected.append('  <testcase name="Name1" time="Time1">')
         dExpected.append('  </testcase>')
-        dExpected.append('  <testcase name="Name2" time="Time2" classname="Classname2">')
+        dExpected.append('  <testcase name="Name2" time="Time2">')
         dExpected.append('  </testcase>')
         dExpected.append('  <system-out>')
         dExpected.append('  </system-out>')

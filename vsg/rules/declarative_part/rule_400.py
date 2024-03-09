@@ -41,7 +41,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'declarative_part', '400', lAlign, None, None, lUnless)
+        Rule.__init__(self, lAlign, None, None, lUnless)
         self.solution = 'Align :='
         self.prerequisites.append(prerequisite.New('procedure_401'))
         self.prerequisites.append(prerequisite.New('architecture_026'))
@@ -49,6 +49,7 @@ class rule_400(Rule):
         self.configuration.remove('if_control_statements_ends_group')
         self.configuration.remove('case_control_statements_ends_group')
         self.configuration.remove('loop_control_statements_ends_group')
+        self.configuration.remove('separate_generic_port_alignment')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_in_declarative_parts()

@@ -17,25 +17,27 @@ lExpected.append('')
 utils.read_file(os.path.join(sTestDir, 'rule_600_test_input.fixed.vhd'), lExpected)
 
 
-class test_architecture_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
 
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
-    def test_rule_600(self):
+    def test_rule(self):
         oRule = architecture.rule_600()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'architecture')
         self.assertEqual(oRule.identifier, '600')
 
-        lExpected = [10, 14]
+        lExpected = [18, 20, 25, 27]
+        lExpected.extend([34, 36, 41, 43])
+        lExpected.extend([50, 52, 57, 59])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_600(self):
+    def test_fix(self):
         oRule = architecture.rule_600()
 
         oRule.fix(self.oFile)

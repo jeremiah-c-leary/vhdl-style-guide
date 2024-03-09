@@ -29,6 +29,6 @@ class rule_004(Rule):
         when 3 =>
     '''
     def __init__(self):
-        Rule.__init__(self, 'case', '004')
+        Rule.__init__(self)
         self.left_token = token.when_keyword
         self.right_token = parser.todo

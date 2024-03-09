@@ -29,7 +29,7 @@ class rule_001(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '001', oToken)
+        Rule.__init__(self, oToken)
         self.action = 'same_line'
         self.subphase = 3
         self.insert_whitespace = True

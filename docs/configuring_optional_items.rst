@@ -11,30 +11,75 @@ Using many of these optional items improves the readability of VHDL code.
 However, it may not fit the current style of existing code bases.
 The rules checking the optional items can be configured to add or remove them.
 
-Adding Optional Items
-#####################
+.. |action| replace::
+   :code:`action`
 
-This is the default behavior for these rules.
+.. |action__add| replace::
+   :code:`add` = Add the optional item.
 
-The configuration format to **add** the optional items is shown below:
+.. |action__remove| replace::
+   :code:`remove` = Remove the optional item.
+
+.. |values| replace::
+   :code:`add`, :code:`remove`
+
+.. |default_value| replace::
+   :code:`add`
+
++----------------------+----------+-----------------+----------------------------+
+| Option               | Values   | Default Value   | Description                |
++======================+==========+=================+============================+
+| |action|             | |values| | |default_value| | * |action__add|            |
+|                      |          |                 | * |action__remove|         |
++----------------------+----------+-----------------+----------------------------+
+
+This is an example of how to configure these options.
 
 .. code-block:: yaml
 
    rule :
-     <rule_id>:
+     architecture_010:
         action: 'add'
 
+.. NOTE:: The following examples are using rule architecture_010.
 
-Removing Optional Items
-#######################
+Example: |action| set to :code:`add`
+####################################
 
-The configuration format to **remove** the optional items is shown below:
+    **Violation**
 
-.. code-block:: yaml
+    .. code-block:: yaml
 
-   rule :
-     <rule_id>:
-        action: 'remove'
+       architecture rtl of fifo is
+       begin
+       end fifo;
+
+    **Violation**
+
+    .. code-block:: yaml
+
+       architecture rtl of fifo is
+       begin
+       end architecture fifo;
+
+Example: |action| set to :code:`remove`
+#######################################
+
+    **Violation**
+
+    .. code-block:: yaml
+
+       architecture rtl of fifo is
+       begin
+       end architecture fifo;
+
+    **Violation**
+
+    .. code-block:: yaml
+
+       architecture rtl of fifo is
+       begin
+       end fifo;
 
 Rules Enforcing Optional Items
 ##############################

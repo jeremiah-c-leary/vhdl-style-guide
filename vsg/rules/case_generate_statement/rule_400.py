@@ -40,11 +40,14 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'case_generate_statement', '400', lAlign, oStart, oEnd)
+        Rule.__init__(self, lAlign, oStart, oEnd)
         self.solution = 'Inconsistent alignment of "=>".'
         self.disable = True
-        self.compact_alignment = True
-        self.blank_line_ends_group = False
-        self.comment_line_ends_group = False
-        self.separate_generic_port_alignment = False
+        self.compact_alignment = 'yes'
+        self.blank_line_ends_group = 'no'
+        self.comment_line_ends_group = 'no'
+        self.separate_generic_port_alignment = 'no'
         self.configuration.remove('separate_generic_port_alignment')
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')

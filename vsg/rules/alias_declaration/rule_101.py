@@ -25,6 +25,6 @@ class rule_101(Rule):
        alias alias_designator   is name;
     '''
     def __init__(self):
-        Rule.__init__(self, 'alias_declaration', '101')
+        Rule.__init__(self)
         self.oFirstToken = token.is_keyword
         self.oExceptToken = token.colon

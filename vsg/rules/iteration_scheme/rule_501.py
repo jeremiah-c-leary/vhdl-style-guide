@@ -9,7 +9,7 @@ lTokens.append(token.iteration_scheme.for_keyword)
 
 class rule_501(Rule):
     '''
-    This rule checks the **while** keyword has proper case.
+    This rule checks the **for** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
@@ -27,5 +27,5 @@ class rule_501(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'iteration_scheme', '501', lTokens)
+        Rule.__init__(self, lTokens)
         self.groups.append('case::keyword')

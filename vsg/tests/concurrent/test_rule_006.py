@@ -34,7 +34,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_006(self):
         oRule = concurrent.rule_006()
-        oRule.generate_statement_ends_group = True
+        oRule.generate_statement_ends_group = 'yes'
 
         oRule.fix(self.oFile)
 

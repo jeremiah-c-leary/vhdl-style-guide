@@ -134,13 +134,13 @@ class test_architecture_rule(unittest.TestCase):
         oRule = architecture.rule_027()
 
         lExpected = []
-        lExpected.extend(range(4, 8))
-        lExpected.extend(range(10, 12))
-        lExpected.extend(range(13, 15))
-        lExpected.extend(range(16, 18))
-        lExpected.extend(range(19, 21))
-        lExpected.extend(range(22, 24))
-        lExpected.extend(range(25, 27))
+        lExpected.extend(range(3, 7))
+        lExpected.extend(range(9, 11))
+        lExpected.extend(range(12, 14))
+        lExpected.extend(range(15, 17))
+        lExpected.extend(range(18, 20))
+        lExpected.extend(range(21, 23))
+        lExpected.extend(range(24, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

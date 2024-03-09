@@ -29,5 +29,5 @@ class rule_004(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'comment', '004', lTokens)
+        Rule.__init__(self, lTokens)
         self.number_of_spaces = '>=1'

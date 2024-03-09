@@ -9,6 +9,7 @@ lAlign.append(token.simple_force_assignment.assignment)
 lAlign.append(token.simple_release_assignment.assignment)
 lAlign.append(token.simple_variable_assignment.assignment)
 lAlign.append(token.conditional_variable_assignment.assignment)
+lAlign.append(token.conditional_waveform_assignment.assignment)
 
 oStart = token.process_statement.begin_keyword
 oEnd = token.process_statement.end_keyword
@@ -47,9 +48,10 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'process', '400', lAlign, oStart, oEnd, lUnless)
+        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, lAlign, oStart, oEnd, lUnless)
         self.solution = 'Align identifer.'
-        self.if_control_statements_ends_group = True
-        self.case_control_statements_ends_group = True
-        self.case_keyword_statements_ends_group = True
-        self.loop_control_statements_ends_group = True
+        self.if_control_statements_ends_group = 'yes'
+        self.case_control_statements_ends_group = 'yes'
+        self.case_keyword_statements_ends_group = 'yes'
+        self.loop_control_statements_ends_group = 'yes'
+        self.configuration.remove('separate_generic_port_alignment')

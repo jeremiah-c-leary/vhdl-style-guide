@@ -104,13 +104,105 @@
 19 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-20 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+20 |   -- Example 4 : subtype in subtype declaration
+<class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-21 |
+21 |   subtype identifier is type_mark(type_mark(blah));
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.subtype_declaration.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-22 | end architecture RTL;
+23 |   subtype identifier is type_mark(type_mark
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.subtype_declaration.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.token.type_mark.name'>
+--------------------------------------------------------------------------------
+24 |     (
+<class 'vsg.token.index_constraint.open_parenthesis'>
+--------------------------------------------------------------------------------
+25 |      blah
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+26 |     )
+<class 'vsg.token.index_constraint.close_parenthesis'>
+--------------------------------------------------------------------------------
+27 |   );
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+28 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+29 |   subtype t_data_axi_stream_m2s is t_axi_stream_m2s(
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.subtype_declaration.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+--------------------------------------------------------------------------------
+30 |       st_keep(T_AXI_RANGE)
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+--------------------------------------------------------------------------------
+31 |   );
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+32 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+33 |   subtype t_data_axi_stream_m2s is t_axi_stream_m2s(
+<class 'vsg.token.subtype_declaration.subtype_keyword'>
+<class 'vsg.token.subtype_declaration.identifier'>
+<class 'vsg.token.subtype_declaration.is_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.record_constraint.open_parenthesis'>
+--------------------------------------------------------------------------------
+34 |       st_strb2(0 downto 0),
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.record_constraint.comma'>
+--------------------------------------------------------------------------------
+35 |       st_keep(T_AXI_RANGE)
+<class 'vsg.token.record_element_constraint.record_element_simple_name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+--------------------------------------------------------------------------------
+36 |   );
+<class 'vsg.token.record_constraint.close_parenthesis'>
+<class 'vsg.token.subtype_declaration.semicolon'>
+--------------------------------------------------------------------------------
+37 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+38 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+39 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

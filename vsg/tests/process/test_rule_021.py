@@ -27,6 +27,9 @@ class test_process_rule(unittest.TestCase):
 
     def test_rule_021_no_blank(self):
         oRule = process.rule_021()
+
+        self.assertEqual(oRule.style, 'no_blank_line')
+
         oRule.style = 'no_blank_line'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'process')

@@ -31,7 +31,7 @@ class rule_200(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, name='whitespace', identifier='200')
+        Rule.__init__(self)
         self.blank_lines_allowed = 1
         self.configuration.append('blank_lines_allowed')
         self.configuration_documentation_link = None

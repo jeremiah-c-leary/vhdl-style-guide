@@ -30,4 +30,4 @@ class rule_201(blank_line_below_line_ending_with_token):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'package_body', '201', lTokens)
+        blank_line_below_line_ending_with_token.__init__(self, lTokens)

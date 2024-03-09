@@ -30,4 +30,4 @@ class rule_032(Rule):
        INSTANCE_NAME : component ENTITY_NAME
     '''
     def __init__(self):
-        Rule.__init__(self, 'instantiation', '032', lTokens)
+        Rule.__init__(self, lTokens)

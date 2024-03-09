@@ -29,5 +29,5 @@ class rule_012(split_line_at_token_when_between_tokens):
     '''
 
     def __init__(self):
-        split_line_at_token_when_between_tokens.__init__(self, 'instantiation', '012', lTokens, oStart, oEnd)
+        split_line_at_token_when_between_tokens.__init__(self, lTokens, oStart, oEnd)
         self.solution = 'Place *generic map* keywords on the next line by itself'

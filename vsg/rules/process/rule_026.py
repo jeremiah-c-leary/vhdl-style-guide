@@ -42,7 +42,7 @@ class rule_026(blank_line.Rule):
     '''
 
     def __init__(self):
-        blank_line.Rule.__init__(self, 'process', '026')
+        blank_line.Rule.__init__(self)
         self.solution = 'Insert blank line below'
         self.style = 'require_blank_line'
         self.configuration.append('style')

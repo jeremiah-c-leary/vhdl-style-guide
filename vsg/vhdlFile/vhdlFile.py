@@ -1,4 +1,6 @@
 
+from vsg import config
+from vsg import exceptions
 from vsg import parser
 from vsg import token
 
@@ -14,10 +16,10 @@ from vsg.token import multiplying_operator
 from vsg.token import relational_operator
 from vsg.token import resolution_indication
 from vsg.token import sign
-from vsg.token import subtype_indication
 from vsg.token import type_mark
 from vsg.token import unary_logical_operator
 from vsg.token import choices
+from vsg.token import todo
 
 from vsg.token.ieee.std_logic_1164 import types
 from vsg.token.ieee.std_logic_1164 import function
@@ -38,6 +40,22 @@ from vsg.token_map import process_tokens
 
 from vsg.vhdlFile import code_tags
 
+class command_line_args():
+    ''' This is used as an input into the version command.'''
+    def __init__(self, version=False):
+        self.version = version
+        self.style = 'indent_only'
+        self.configuration = []
+        self.debug = False
+        self.fix_only = False
+        self.stdin = False
+        self.force_fix = False
+        self.fix = False
+
+default_cla = command_line_args()
+
+default_conf = config.New(default_cla)
+
 
 class vhdlFile():
     '''
@@ -54,7 +72,7 @@ class vhdlFile():
 
        fileobject
     '''
-    def __init__(self, filecontent, sFilename=None, eError=None):
+    def __init__(self, filecontent, commandLineArguments=default_cla, sFilename=None, eError=None, configuration=default_conf):
         self.filecontent = filecontent
         self.hasArchitecture = False
         self.hasEntity = False
@@ -66,6 +84,9 @@ class vhdlFile():
         self.dVars = {}
         self.dVars['pragma'] = False
         self.eError = eError
+        self.stdin = commandLineArguments.stdin
+        self.configuration = configuration
+        self.commandLineArguments = commandLineArguments
         self._processFile()
 
     def _processFile(self):
@@ -73,6 +94,7 @@ class vhdlFile():
         oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
+            self.dVars['line'] = sLine
             lTokens = tokens.create(sLine.rstrip('\n').rstrip('\r'))
             lObjects = []
             for sToken in lTokens:
@@ -82,7 +104,7 @@ class vhdlFile():
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects, oOptions)
             preprocessor.classify(lTokens, lObjects)
-            pragma.classify(lTokens, lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars)
+            pragma.classify(lTokens, lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars, self.configuration)
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
@@ -92,11 +114,23 @@ class vhdlFile():
         except IndexError:
             pass
 
-        design_file.tokenize(self.lAllObjects)
+        try:
+            design_file.tokenize(self.lAllObjects)
+        except exceptions.ClassifyError as e:
+            if self.commandLineArguments.force_fix and self.commandLineArguments.fix:
+                print(e.message)
+                print('')
+                print('INFO:  The --force_fix option was enabled.')
+                print('       Proceeding to analyze and apply fixes.')
+                print('')
+            else:
+               raise e
+
         post_token_assignments(self.lAllObjects)
-        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
+#        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
         set_token_hierarchy_value(self.lAllObjects)
+        set_todo_tokens(self.lAllObjects)
         set_aggregate_tokens(self.lAllObjects)
         set_code_tags(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
@@ -114,6 +148,9 @@ class vhdlFile():
             self.lAllObjects[iStart:iEnd] = lMyTokens
         if bUpdateMap:
             self.oTokenMap = process_tokens(self.lAllObjects)
+
+    def get_token_map(self):
+        return self.oTokenMap
 
     def update_token_map(self):
         self.oTokenMap = process_tokens(self.lAllObjects)
@@ -289,6 +326,9 @@ class vhdlFile():
     def get_blank_lines_above_line_starting_with_token(self, lTokens):
         return extract.get_blank_lines_above_line_starting_with_token(lTokens, self.lAllObjects, self.oTokenMap)
 
+    def get_blank_lines_above_line_starting_with_use_clause(self, lTokens):
+        return extract.get_blank_lines_above_line_starting_with_use_clause(lTokens, self.lAllObjects, self.oTokenMap)
+
     def get_blank_lines_above_line_starting_with_token_when_between_tokens(self, lTokens, lBetweenTokens):
         return extract.get_blank_lines_above_line_starting_with_token_when_between_tokens(lTokens, lBetweenTokens, self.lAllObjects, self.oTokenMap)
 
@@ -320,6 +360,15 @@ class vhdlFile():
     def get_tokens_in_declarative_parts(self):
         return extract.get_tokens_in_declarative_parts(self.lAllObjects, self.oTokenMap)
 
+    def get_subprogram_body(self):
+        return extract.get_subprogram_body(self.lAllObjects, self.oTokenMap)
+
+    def get_function_subprogram_body(self):
+        return extract.get_function_subprogram_body(self.lAllObjects, self.oTokenMap)
+
+    def get_procedure_subprogram_body(self):
+        return extract.get_procedure_subprogram_body(self.lAllObjects, self.oTokenMap)
+
 
 def split_on_carriage_return(lObjects):
     lReturn = []
@@ -343,7 +392,7 @@ def post_token_assignments(lTokens):
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
 
-        if isinstance(oToken, subtype_indication.type_mark) or isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name):
+        if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name) or isinstance(oToken, todo.name):
             sValue = oToken.get_value()
             ### IEEE values
             if sValue.lower() == 'std_logic_vector':
@@ -360,6 +409,9 @@ def post_token_assignments(lTokens):
 
             elif sValue.lower() == 'integer':
                 lTokens[iToken] = types.integer(sValue)
+
+            elif sValue.lower() == 'natural':
+                lTokens[iToken] = types.natural(sValue)
 
             elif sValue.lower() == 'signed':
                 lTokens[iToken] = types.signed(sValue)
@@ -594,29 +646,64 @@ def set_code_tags(lTokens):
 def set_aggregate_tokens(lTokens):
     lOpenParens = []
     for iToken, oToken in enumerate(lTokens):
-        if isinstance(oToken, parser.open_parenthesis):
+#        if isinstance(oToken, parser.open_parenthesis):
+        if type(oToken) == parser.open_parenthesis:
             lOpenParens.append(iToken)
-        if isinstance(oToken, parser.close_parenthesis):
+#        if isinstance(oToken, parser.close_parenthesis):
+        if type(oToken) == parser.close_parenthesis:
             iIndex = lOpenParens.pop()
             if isinstance(lTokens[iIndex], token.aggregate.open_parenthesis):
                 iId = oToken.iId
                 lTokens[iToken] = token.aggregate.close_parenthesis()
                 lTokens[iToken].iId = iId
-        if isinstance(oToken, token.element_association.assignment):
+#        if isinstance(oToken, token.element_association.assignment):
+        if len(lOpenParens) > 0 and (isinstance(oToken, token.element_association.assignment) or type(oToken) == parser.comma):
             iId = lTokens[lOpenParens[-1]].iId
             lTokens[lOpenParens[-1]] = token.aggregate.open_parenthesis()
             lTokens[lOpenParens[-1]].iId = iId
 
 
-def combine_use_clause_selected_name(lTokens):
-    lReturn = []
+def set_todo_tokens(lTokens):
+    lOpenParens = []
     for iToken, oToken in enumerate(lTokens):
-        if isinstance(oToken, token.use_clause.selected_name):
-            if isinstance(lReturn[-1], token.use_clause.selected_name):
-                lReturn[-1].value = lReturn[-1].value + oToken.value
-                continue
-        lReturn.append(oToken)
-    return lReturn
+        check_for_name(oToken, iToken, lTokens)
+        check_for_open_parenthesis(oToken, iToken, lTokens, lOpenParens)
+        check_for_close_parenthesis(oToken, iToken, lTokens, lOpenParens)
+
+
+def check_for_name(oToken, iToken, lTokens):
+    if type(oToken) == parser.todo:
+        if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
+            lTokens[iToken] = oToken.convert_to(todo.name)
+
+
+def check_for_open_parenthesis(oToken, iToken, lTokens, lOpenParens):
+    if type(oToken) == parser.open_parenthesis:
+        if utils.are_previous_consecutive_token_types_ignoring_whitespace([todo.name], iToken - 1, lTokens) or \
+           utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.type], iToken - 1, lTokens) or \
+           utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.function], iToken - 1, lTokens):
+            lTokens[iToken] = oToken.convert_to(todo.open_parenthesis)
+            lOpenParens.append(oToken)
+
+
+def check_for_close_parenthesis(oToken, iToken, lTokens, lOpenParens):
+    if type(oToken) == parser.close_parenthesis:
+        try:
+            if oToken.iId == lOpenParens[-1].iId:
+                lOpenParens.pop()
+                lTokens[iToken] = oToken.convert_to(todo.close_parenthesis)
+        except IndexError:
+            pass
+
+#def combine_use_clause_selected_name(lTokens):
+#    lReturn = []
+#    for iToken, oToken in enumerate(lTokens):
+#        if isinstance(oToken, token.use_clause.selected_name):
+#            if isinstance(lReturn[-1], token.use_clause.selected_name):
+#                lReturn[-1].value = lReturn[-1].value + oToken.value
+#                continue
+#        lReturn.append(oToken)
+#    return lReturn
 
 
 def remove_beginning_of_file_tokens(lTokens):

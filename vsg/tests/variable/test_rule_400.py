@@ -65,6 +65,20 @@ class test_variable_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_fix_rule_400__align_left_true__align_paren_false(self):
+        oRule = variable.rule_400()
+        oRule.align_left = True
+        oRule.align_paren = False
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected__align_left_yes__align_paren_no, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
     def test_rule_400__align_left_no__align_paren_no(self):
         oRule = variable.rule_400()
         oRule.align_left = 'no'
@@ -84,6 +98,20 @@ class test_variable_rule(unittest.TestCase):
         oRule = variable.rule_400()
         oRule.align_left = 'no'
         oRule.align_paren = 'no'
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected__align_left_no__align_paren_no, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_400__align_left_false__align_paren_false(self):
+        oRule = variable.rule_400()
+        oRule.align_left = False
+        oRule.align_paren = False
 
         oRule.fix(self.oFile)
 
@@ -123,6 +151,20 @@ class test_variable_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_fix_rule_400__align_left_false__align_paren_true(self):
+        oRule = variable.rule_400()
+        oRule.align_left = False
+        oRule.align_paren = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected__align_left_no__align_paren_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
     def test_rule_400__align_left_yes__align_paren_yes(self):
         oRule = variable.rule_400()
         oRule.align_left = 'yes'
@@ -152,3 +194,16 @@ class test_variable_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
 
+    def test_fix_rule_400__align_left_true__align_paren_true(self):
+        oRule = variable.rule_400()
+        oRule.align_left = True
+        oRule.align_paren = True
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected__align_left_yes__align_paren_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])

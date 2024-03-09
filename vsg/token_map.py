@@ -3,6 +3,7 @@ import bisect
 import pprint
 
 from vsg import parser
+from vsg import token
 
 
 class New():
@@ -41,6 +42,8 @@ class New():
         if iIndex == 0:
             return None
         iTemp = bisect.bisect_left(self.dMap['parser']['carriage_return'], iIndex) - 1
+        if iIndex < self.dMap['parser']['carriage_return'][iTemp]:
+            return iIndex
         return self.dMap['parser']['carriage_return'][iTemp]
 
     def get_index_of_token_after_index(self, oToken, iIndex):
@@ -123,6 +126,8 @@ class New():
     def is_token_at_index_whitespace_or_comment(self, iIndex):
         if self.is_token_at_index(parser.whitespace, iIndex):
             return True
+        if self.is_token_at_index(token.pragma.pragma, iIndex):
+            return True
         if self.is_token_at_index(parser.comment, iIndex):
             return True
         if self.is_token_at_index(parser.carriage_return, iIndex):
@@ -130,6 +135,10 @@ class New():
         if self.is_token_at_index(parser.blank_line, iIndex):
             return True
         return False
+
+    def is_previous_non_whitespace_token(self, iIndex, oToken):
+        index = self.get_index_of_previous_non_whitespace_token_before_index(iIndex)
+        return self.is_token_at_index(oToken, index)
 
     def pretty_print(self):
         pp=pprint.PrettyPrinter(indent=4)
@@ -150,7 +159,9 @@ def extract_unique_id(oToken):
 def process_tokens(lTokens):
     dMap = build_default_map()
     for iToken, oToken in enumerate(lTokens):
+#        print(oToken)
         sBase, sSub = oToken.get_unique_id()
+#        print(f'{sBase}:{sSub}')
         if sBase is not None:
            try:
                dMap[sBase][sSub].append(iToken)

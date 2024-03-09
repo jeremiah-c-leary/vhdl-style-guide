@@ -87,7 +87,7 @@
 19 |             d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 20 |
@@ -178,7 +178,7 @@
 38 |             d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 39 |
@@ -272,7 +272,7 @@
 57 |             d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 58 |
@@ -360,7 +360,7 @@
 76 |             d when others;
 <class 'vsg.parser.todo'>
 <class 'vsg.token.selected_waveforms.when_keyword'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.concurrent_selected_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 77 |
@@ -382,14 +382,14 @@
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
 <class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.comma'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
 83 |

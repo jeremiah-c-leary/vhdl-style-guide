@@ -138,7 +138,7 @@ This rule checks the **end** keyword has proper case.
 package_007
 ###########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks for the **package** keyword on the end package declaration.
 
@@ -291,7 +291,7 @@ This rule checks the **is** keyword has proper case.
 package_014
 ###########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |structure| |structure_optional|
 
 This rule checks the package name exists on the same line as the **end package** keywords.
 

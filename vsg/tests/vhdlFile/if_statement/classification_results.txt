@@ -95,16 +95,16 @@
 <class 'vsg.token.if_statement.if_label'>
 <class 'vsg.token.if_statement.label_colon'>
 <class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.character_literal'>
 --------------------------------------------------------------------------------
 20 |           then F := Operand_1 + Operand_2;
 <class 'vsg.token.if_statement.then_keyword'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.plus'>
@@ -113,16 +113,16 @@
 --------------------------------------------------------------------------------
 21 |         elsif Code_of_Operation(0) = '1'
 <class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.parser.character_literal'>
 --------------------------------------------------------------------------------
 22 |           then F := Operand_1 - Operand_2;
 <class 'vsg.token.if_statement.then_keyword'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.minus'>
@@ -131,7 +131,7 @@
 --------------------------------------------------------------------------------
 23 |           else F := "00000000";
 <class 'vsg.token.if_statement.else_keyword'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -164,7 +164,7 @@
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
 30 |             F := Operand_1 & Operand_2 ;
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.adding_operator.concat'>
@@ -175,7 +175,7 @@
 <class 'vsg.token.if_statement.else_keyword'>
 --------------------------------------------------------------------------------
 32 |             F := "00000000";
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -231,15 +231,61 @@
 42 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-43 |   end process;
+43 |     if a ?= b then
+<class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.question_equal'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+44 |     elsif a ?/= b then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.question_not_equal'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+45 |     elsif ?< b then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.relational_operator.question_less_than'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+46 |     elsif ?<= b then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.relational_operator.question_less_than_or_equal'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+47 |     elsif ?> b then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.relational_operator.question_greater_than'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+48 |     elsif ?>= b then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.relational_operator.question_greater_than_or_equal'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+49 |     end if;
+<class 'vsg.token.if_statement.end_keyword'>
+<class 'vsg.token.if_statement.end_if_keyword'>
+<class 'vsg.token.if_statement.semicolon'>
+--------------------------------------------------------------------------------
+50 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+51 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-44 |
+52 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-45 | end architecture RTL;
+53 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

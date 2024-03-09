@@ -8,19 +8,59 @@ There are two methods to instantiate components:  component or entity.
 
 VSG can check which method is being used and throw a violation if the incorrect method is detected.
 
-Overriding Type of Instantiation
-################################
+.. |method| replace::
+   :code:`method`
 
-The default setting is **component** instantiation.
-We can use the following configuration to change it to **entity** instantiation.
+.. |component_option| replace::
+   :code:`component`
+
+.. |entity_option| replace::
+   :code:`entity`
+
+.. |method__component| replace::
+   :code:`component` = Enforce component instantiation
+
+.. |method__entity| replace::
+   :code:`entity` = Enforce entity instantiation
+
+.. |values| replace::
+   :code:`component`, :code:`entity`
+
+.. |default_value| replace::
+   :code:`component`
+
++----------------------+----------+-----------------+----------------------------+
+| Option               | Values   | Default Value   | Description                |
++======================+==========+=================+============================+
+| |method|             | |values| | |default_value| | * |method__component|      |
+|                      |          |                 | * |method__entity|         |
++----------------------+----------+-----------------+----------------------------+
+
+This is an example of how to configure these options.
 
 .. code-block:: yaml
 
-   ---
-
    rule :
-     instantiation_034:
-        method: 'entity'
+     instantiation_010:
+        method: 'component'
+
+Example: |method| set to |component_option|
+###########################################
+
+The following code snippet would fail:
+
+.. code-block:: vhdl
+
+   U_FIFO : entity fifo_dsn.FIFO(RTL)
+
+Example: |method| set to |entity_option|
+########################################
+
+The following code snippet would fail:
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
 
 Rules Enforcing Type of Instantiations
 ######################################

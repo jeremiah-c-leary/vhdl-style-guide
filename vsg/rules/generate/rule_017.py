@@ -33,5 +33,5 @@ class rule_017(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, 'generate', '017', lTokens)
+        token_prefix.__init__(self, lTokens)
         self.prefixes = ['gen_']

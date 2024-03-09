@@ -23,6 +23,6 @@ class rule_032(Rule):
        architecture rtl of fifo is
     '''
     def __init__(self):
-        Rule.__init__(self, 'architecture', '032')
+        Rule.__init__(self)
         self.left_token = token.of_keyword
         self.right_token = token.entity_name

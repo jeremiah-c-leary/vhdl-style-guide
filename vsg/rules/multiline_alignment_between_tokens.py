@@ -26,8 +26,8 @@ class multiline_alignment_between_tokens(alignment.Rule):
        object type to apply the case check against
     '''
 
-    def __init__(self, name, identifier, lTokenPairs, bExcludeLastToken=False):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs, bExcludeLastToken=False):
+        alignment.Rule.__init__(self)
         self.phase = 4
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = bExcludeLastToken
@@ -40,6 +40,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
         self.iIndentAfterParen = 1
         self.override = False
         self.configuration_documentation_link = 'configuring_multiline_indent_rules_link'
+        self.check_for_array = True
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -49,7 +50,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
         lReturn = []
         for oToi in lToi:
-            if toi_is_an_array(oToi):
+            if self.check_for_array and toi_is_an_array(oToi):
                 continue
             iLine, lTokens = utils.get_toi_parameters(oToi)
             iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
@@ -127,22 +128,22 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
             iFirstTokenLength = len(lTokens[0].get_value())
 
-            if self.align_paren == 'no' and self.align_left == 'yes':
-                dExpectedIndent = _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, self.indentSize, dActualIndent, bStartsWithParen, self.bIgnoreStartParen, self.override)
-            if self.align_paren == 'yes' and self.align_left == 'no':
-                dExpectedIndent = _analyze_align_left_no_align_paren_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, iFirstTokenLength, self.bIgnoreStartParen, self.iIndentAfterParen)
-            if self.align_paren == 'yes' and self.align_left == 'yes':
-                dExpectedIndent = _analyze_align_paren_yes_align_left_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen, self.bConstraint)
-            if self.align_paren == 'no' and self.align_left == 'no':
-                dExpectedIndent = _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActualIndent, self.indentSize, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen)
+            if not align_paren(self) and align_left(self):
+                dExpectedIndent = _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, self.indent_size, dActualIndent, bStartsWithParen, self.bIgnoreStartParen, self.override)
+            elif align_paren(self) and not align_left(self):
+                dExpectedIndent = _analyze_align_left_no_align_paren_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_size, bStartsWithParen, iAssignColumn, iFirstTokenLength, self.bIgnoreStartParen, self.iIndentAfterParen)
+            elif align_paren(self) and align_left(self):
+                dExpectedIndent = _analyze_align_paren_yes_align_left_yes(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_size, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen, self.bConstraint)
+            elif not align_paren(self) and not align_left(self):
+                dExpectedIndent = _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActualIndent, self.indent_size, bStartsWithParen, iAssignColumn, self.bIgnoreStartParen)
 
 
 #            print(f'Actual = {dActualIndent}')
 #            print(f'Expect = {dExpectedIndent}')
 #            print(f'Index  = {dIndex}')
 
-            if self.indentStyle == 'smart_tabs':
-                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
+            if self.indent_style == 'smart_tabs':
+                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
 
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] is None:
@@ -164,6 +165,22 @@ class multiline_alignment_between_tokens(alignment.Rule):
             rules_utils.insert_new_whitespace(lTokens, 0, dAction['column'])
 
         oViolation.set_tokens(lTokens)
+
+
+def align_paren(self):
+    if self.align_paren == 'yes':
+        return True
+    if self.align_paren is True:
+        return True
+    return False
+
+
+def align_left(self):
+    if self.align_left == 'yes':
+        return True
+    if self.align_left is True:
+        return True
+    return False
 
 
 def build_violation(iLine, oToi, iToken, dExpectedIndent, dIndex, dActualIndent):
@@ -316,7 +333,7 @@ def _analyze_align_left_no_align_paren_yes(iFirstLine, iLastLine, lParens, dActu
                     iColumn = dTemp['column'] + iTemp - len(dActualIndent[iLine]) + iIndentStep - 1
                     if iParens == 1:
 #                        print('Got Here')
-                        iColumn -= iIndentAfterParen 
+                        iColumn -= iIndentAfterParen
 #                    print(f"iColumn = {dTemp['column']} + ({iTemp} - {len({dActualIndent[iLine]})}) + {iIndentStep} - 1 = {iColumn}")
                 lColumn.append(iColumn)
                 if bIgnoreStartParen:
@@ -510,8 +527,4 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
 
 
 def toi_is_an_array(oToi):
-    lTokens = oToi.get_tokens()
-    for oToken in lTokens:
-        if isinstance(oToken, token.aggregate.open_parenthesis):
-            return True
-    return False
+    return utils.are_next_consecutive_tokens_ignoring_whitespace(['<=', '('], 0, oToi.get_tokens())

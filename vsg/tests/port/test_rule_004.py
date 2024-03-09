@@ -30,7 +30,7 @@ class test_port_rule(unittest.TestCase):
 
     def test_rule_004_spaces(self):
         oRule = port.rule_004()
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '004')
@@ -42,7 +42,7 @@ class test_port_rule(unittest.TestCase):
 
     def test_fix_rule_004_spaces(self):
         oRule = port.rule_004()
-        oRule.indentStyle = 'spaces'
+        oRule.indent_style = 'spaces'
 
         oRule.fix(self.oFile)
 
@@ -55,7 +55,7 @@ class test_port_rule(unittest.TestCase):
 
     def test_rule_004_smart_tabs(self):
         oRule = port.rule_004()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, 'port')
         self.assertEqual(oRule.identifier, '004')
@@ -67,7 +67,7 @@ class test_port_rule(unittest.TestCase):
 
     def test_fix_rule_004_smart_tabs(self):
         oRule = port.rule_004()
-        oRule.indentStyle = 'smart_tabs'
+        oRule.indent_style = 'smart_tabs'
 
         oRule.fix(self.oFile)
 

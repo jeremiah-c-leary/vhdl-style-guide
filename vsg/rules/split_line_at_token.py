@@ -23,8 +23,8 @@ class split_line_at_token(structure.Rule):
        object type to split a line at
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        structure.Rule.__init__(self)
         self.lTokens = lTokens
         self.configuration_documentation_link = None
 

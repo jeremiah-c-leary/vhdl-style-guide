@@ -24,8 +24,8 @@ class previous_line(blank_line.Rule):
        token object that a blank line above should appear
     '''
 
-    def __init__(self, name, identifier, lTokens, lAllowTokens=None):
-        blank_line.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, lAllowTokens=None):
+        blank_line.Rule.__init__(self)
         self.solution = 'Insert blank line above'
         self.lTokens = lTokens
         self.lHierarchyLimits = None
@@ -52,6 +52,8 @@ class previous_line(blank_line.Rule):
 
         elif self.style == 'no_blank_line':
             return oFile.get_blank_lines_above_line_starting_with_token(self.lTokens)
+        elif self.style == 'no_blank_line_unless_different_library':
+            return oFile.get_blank_lines_above_line_starting_with_use_clause(self.lTokens)
         else:
 
             if self.lHierarchyLimits is None:
@@ -66,6 +68,8 @@ class previous_line(blank_line.Rule):
         self._set_allow_tokens()
         if self.style == 'no_blank_line':
             _analyze_no_blank_line(self, lToi, self.lAllowTokens)
+        elif self.style == 'no_blank_line_unless_different_library':
+            _analyze_no_blank_line_unless_different_library(self, lToi, self.lAllowTokens)
         elif self.style == 'require_blank_line':
             _analyze_require_blank_line(self, lToi, self.lAllowTokens)
         elif self.style == 'no_code':
@@ -106,6 +110,24 @@ def _analyze_no_blank_line(self, lToi, lAllowTokens):
             dAction['action'] = 'Remove'
             oViolation.set_action(dAction)
             self.add_violation(oViolation)
+
+
+def _analyze_no_blank_line_unless_different_library(self, lToi, lAllowTokens):
+        for oToi in lToi:
+            if oToi.get_meta_data('previous_library') == oToi.get_meta_data('current_library'):
+                sSolution = 'Remove blank lines'
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+                dAction = {}
+                dAction['action'] = 'Remove'
+                oViolation.set_action(dAction)
+                self.add_violation(oViolation)
+            elif oToi.get_meta_data('previous_library') is None:
+                sSolution = 'Remove blank lines'
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+                dAction = {}
+                dAction['action'] = 'Remove'
+                oViolation.set_action(dAction)
+                self.add_violation(oViolation)
 
 
 def _analyze_require_blank_line(self, lToi, lAllowTokens):

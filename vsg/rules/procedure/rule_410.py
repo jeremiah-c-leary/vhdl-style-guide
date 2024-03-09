@@ -7,6 +7,7 @@ lAlign = []
 lAlign.append(token.interface_signal_declaration.colon)
 lAlign.append(token.interface_constant_declaration.colon)
 lAlign.append(token.interface_variable_declaration.colon)
+lAlign.append(token.interface_file_declaration.colon)
 lAlign.append(token.interface_unknown_declaration.colon)
 
 
@@ -37,6 +38,9 @@ class rule_410(align_tokens_in_region_between_tokens):
 
     def __init__(self):
         align_tokens_in_region_between_tokens.__init__(
-            self, 'procedure', '410', lAlign,
-            token.procedure_specification.open_parenthesis, token.procedure_specification.close_parenthesis)
+            self, lAlign, token.procedure_specification.open_parenthesis,
+            token.procedure_specification.close_parenthesis)
         self.solution = 'Align :.'
+        self.configuration.remove('case_control_statements_ends_group')
+        self.configuration.remove('if_control_statements_ends_group')
+        self.configuration.remove('loop_control_statements_ends_group')

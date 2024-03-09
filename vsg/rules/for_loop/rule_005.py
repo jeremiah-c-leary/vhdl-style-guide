@@ -8,5 +8,5 @@ class rule_005(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self, 'for_loop', '005')
+        deprecated_rule.Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' move been moved to loop_statement_104.')

@@ -29,6 +29,6 @@ class rule_036(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, 'process', '036', lTokens)
+        token_prefix.__init__(self, lTokens)
         self.prefixes = ['proc_']
         self.solution = 'Process labels'

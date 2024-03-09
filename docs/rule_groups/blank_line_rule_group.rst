@@ -26,6 +26,7 @@ Rules Enforcing Blank Line Rule Group
 * `component_016 <../component_rules.html#component-016>`_
 * `component_018 <../component_rules.html#component-018>`_
 * `concurrent_010 <../concurrent_rules.html#concurrent-010>`_
+* `constant_200 <../constant_rules.html#constant-200>`_
 * `context_003 <../context_rules.html#context-003>`_
 * `context_023 <../context_rules.html#context-023>`_
 * `context_024 <../context_rules.html#context-024>`_
@@ -66,6 +67,10 @@ Rules Enforcing Blank Line Rule Group
 * `port_022 <../port_rules.html#port-022>`_
 * `port_024 <../port_rules.html#port-024>`_
 * `port_map_200 <../port_map_rules.html#port-map-200>`_
+* `pragma_400 <../pragma_rules.html#pragma-400>`_
+* `pragma_401 <../pragma_rules.html#pragma-401>`_
+* `pragma_402 <../pragma_rules.html#pragma-402>`_
+* `pragma_403 <../pragma_rules.html#pragma-403>`_
 * `procedure_200 <../procedure_rules.html#procedure-200>`_
 * `process_011 <../process_rules.html#process-011>`_
 * `process_015 <../process_rules.html#process-015>`_
@@ -76,6 +81,7 @@ Rules Enforcing Blank Line Rule Group
 * `process_027 <../process_rules.html#process-027>`_
 * `record_type_definition_200 <../record_type_definition_rules.html#record-type-definition-200>`_
 * `record_type_definition_201 <../record_type_definition_rules.html#record-type-definition-201>`_
+* `signal_200 <../signal_rules.html#signal-200>`_
 * `subprogram_body_201 <../subprogram_body_rules.html#subprogram-body-201>`_
 * `subprogram_body_202 <../subprogram_body_rules.html#subprogram-body-202>`_
 * `subprogram_body_203 <../subprogram_body_rules.html#subprogram-body-203>`_
@@ -83,5 +89,6 @@ Rules Enforcing Blank Line Rule Group
 * `subprogram_body_205 <../subprogram_body_rules.html#subprogram-body-205>`_
 * `type_010 <../type_rules.html#type-010>`_
 * `type_011 <../type_rules.html#type-011>`_
+* `type_200 <../type_rules.html#type-200>`_
 * `whitespace_200 <../whitespace_rules.html#whitespace-200>`_
 

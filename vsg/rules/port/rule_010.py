@@ -40,7 +40,7 @@ class rule_010(token_case_in_range_bounded_by_tokens):
     '''
 
     def __init__(self):
-        token_case_in_range_bounded_by_tokens.__init__(self, 'port', '010', lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
+        token_case_in_range_bounded_by_tokens.__init__(self, lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
         self.configuration.append('prefix_exceptions')
         self.configuration.append('suffix_exceptions')
         self.configuration.append('case_exceptions')

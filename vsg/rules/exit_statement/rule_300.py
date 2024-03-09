@@ -30,4 +30,4 @@ class rule_300(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'exit_statement', '300', lTokens)
+        token_indent.__init__(self, lTokens)

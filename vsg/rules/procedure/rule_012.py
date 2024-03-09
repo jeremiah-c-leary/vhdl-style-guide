@@ -37,7 +37,14 @@ class rule_012(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'procedure', '012', oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
+        Rule.__init__(self, oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
         self.solution = 'procedure keyword'
         self.groups.append('structure::optional')
         self.filter_tokens.append(token.subprogram_declaration.semicolon)
+
+    def _get_add_tokens_of_interest(self, oFile):
+        lToi = oFile.get_procedure_subprogram_body()
+        for oToi in lToi:
+            oToken = oToi.get_first_token_matching(oValueToken)
+            oToi.set_token_value(oToken.get_value())
+        return lToi

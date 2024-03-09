@@ -5,11 +5,13 @@ begin
 
   FOR_LABEL : for i in 0 to 7 generate
 
-    signal          sig1 : std_logic;
-    constant        con1 : std_logic;
-    shared variable var1 : std_logic;
-    alias           a    is name;
-    alias           a    : subtype_indication is name;
+    signal     sig1 : std_logic;
+    constant     con1 : std_logic;
+    -- Comment
+    shared variable       var1 : std_logic;
+    alias a    is name;
+
+    alias     a    : subtype_indication is name;
 
   begin
 
@@ -17,50 +19,36 @@ begin
 
   IF_LABEL : if a = '1' generate
 
-    signal          sig1 : std_logic;
+    signal               sig1 : std_logic;
+    constant   con1 : std_logic;
+    -- Comment
+    shared variable                var1 : std_logic;
+    alias    a    is name;
+
+    alias     a    : subtype_indication is name;
+
+    begin
+
+  elsif a = '0' generate
+
+    signal  sig1 : std_logic;
     constant        con1 : std_logic;
-    shared variable var1 : std_logic;
-    alias           a    is name;
-    alias           a    : subtype_indication is name;
+    -- Comment
+    shared variable        var1 : std_logic;
+    alias             a    is name;
 
-  begin
+    alias    a    : subtype_indication is name;
 
-  end generate;
+    begin
 
-  CASE_LABEL : case data generate
+  else generate
 
-    when a = 1 =>
-
-        signal          sig1 : std_logic;
-        constant        con1 : std_logic;
-        shared variable var1 : std_logic;
-        alias           a    is name;
-        alias           a    : subtype_indication is name;
-
-      begin
-
-  end generate;
-
-  -- Violations below
-
-  FOR_LABEL : for i in 0 to 7 generate
-
-    signal sig1 : std_logic;
+    signal       sig1 : std_logic;
     constant con1 : std_logic;
-    shared variable    var1 : std_logic;
-    alias a    is name;
-    alias a    : subtype_indication is name;
+    -- Comment
+    shared variable var1 : std_logic;
+    alias    a    is name;
 
-  begin
-
-  end generate;
-
-  IF_LABEL : if a = '1' generate
-
-    signal                sig1 : std_logic;
-    constant    con1 : std_logic;
-    shared variable    var1 : std_logic;
-    alias a    is name;
     alias a    : subtype_indication is name;
 
   begin
@@ -71,15 +59,28 @@ begin
 
     when a = 1 =>
 
-        signal  sig1 : std_logic;
-        constant             con1 : std_logic;
-        shared variable   var1 : std_logic;
-        alias a    is name;
+        signal       sig1 : std_logic;
+        constant   con1 : std_logic;
+        -- Comment
+        shared variable       var1 : std_logic;
+        alias    a    is name;
+
+        alias      a    : subtype_indication is name;
+
+    begin
+
+    when a = 0 =>
+
+        signal       sig1 : std_logic;
+        constant  con1 : std_logic;
+        -- Comment
+        shared variable var1 : std_logic;
+        alias        a    is name;
+
         alias a    : subtype_indication is name;
 
-      begin
+  begin
 
   end generate;
-
 
 end;

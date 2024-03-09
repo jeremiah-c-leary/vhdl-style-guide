@@ -23,6 +23,13 @@ class command_line_args():
     ''' This is used as an input into the version command.'''
     def __init__(self, version=False):
         self.version = version
+        self.style = 'indent_only'
+        self.configuration = []
+        self.debug = False
+        self.fix_only = False
+        self.stdin = False
+        self.force_fix = False
+        self.fix = False
 
 
 class testMain(unittest.TestCase):
@@ -198,8 +205,42 @@ class testMain(unittest.TestCase):
         for iLineNumber, sLine in enumerate(lExpected):
             if iLineNumber != 1:
                 self.assertEqual(sLine, lActual[iLineNumber])
+
+        self.assertTrue('failures="1"' in lActual[1])
+
         # Clean up
         utils.remove_file('vsg/tests/vsg/junit/parse_error.actual.xml')
+
+    @mock.patch('sys.stdout')
+    def test_junit_with_file_with_no_errors(self, mock_stderr):
+#    def test_invalid_configuration(self):
+        utils.remove_file('vsg/tests/vsg/junit/no_error.actual.xml')
+
+        sys.argv = ['vsg']
+        sys.argv.extend(['-f', 'vsg/tests/vsg/junit/no_error.vhd'])
+        sys.argv.extend(['--junit', 'vsg/tests/vsg/junit/no_error.actual.xml'])
+        sys.argv.extend(['-p 1'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        # Read in the expected JUnit XML file for comparison
+        lExpected = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','no_error.expected.xml'), lExpected)
+        # Read in the actual JUnit XML file for comparison
+        lActual = []
+        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','no_error.actual.xml'), lActual)
+        # Compare the two files, but skip the line with the timestamp (as it will never match)
+        for iLineNumber, sLine in enumerate(lExpected):
+            if iLineNumber != 1:
+                self.assertEqual(sLine, lActual[iLineNumber])
+
+        self.assertTrue('failures="0"' in lActual[1])
+
+        # Clean up
+        utils.remove_file('vsg/tests/vsg/junit/no_error.actual.xml')
 
     @mock.patch('sys.stdout')
     def test_local_rules(self,mock_stdout):
@@ -580,3 +621,29 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
+    @mock.patch('sys.stdout')
+    def test_deprecated_options(self, mock_stdout):
+
+        sys.argv = ['vsg', '-f', 'vsg/tests/vsg/deprecated_option/example.vhd', '-of', 'syntastic', '-p', '1']
+        sys.argv.extend(['-c', 'vsg/tests/vsg/deprecated_option/rule.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/global.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/group.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/file_list.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/file_rules.yaml'])
+        sys.argv.extend(['vsg/tests/vsg/deprecated_option/all.yaml'])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        sOutput = ''
+        sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentSize has been deprecated. Change to indent_size.'
+        sOutput += '\n'
+        sOutput += 'ERROR: configuration file vsg/tests/vsg/deprecated_option/rule.yaml: option indentStyle has been deprecated. Change to indent_style.'
+        sOutput += '\n'
+
+        lExpected = []
+        lExpected.append(mock.call(sOutput))
+
+        mock_stdout.write.assert_has_calls(lExpected)

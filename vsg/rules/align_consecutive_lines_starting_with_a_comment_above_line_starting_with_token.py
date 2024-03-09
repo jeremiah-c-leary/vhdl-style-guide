@@ -25,8 +25,8 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
        reference token to align comments with
     '''
 
-    def __init__(self, name, identifier, token, bIncrement=False):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, token, bIncrement=False):
+        alignment.Rule.__init__(self)
         self.phase = 4
         self.subphase = 2
         self.token = token
@@ -73,9 +73,9 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
 
 def expected_whitespace(self, oToi):
     iIndentLevel = oToi.get_meta_data('indentLevel')
-    if self.indentStyle == 'smart_tabs':
+    if self.indent_style == 'smart_tabs':
         return '\t' * iIndentLevel
-    return ' ' * iIndentLevel * self.indentSize
+    return ' ' * iIndentLevel * self.indent_size
 
 
 def actual_whitespace(iToken, lTokens):

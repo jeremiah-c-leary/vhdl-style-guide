@@ -40,8 +40,8 @@ class multiline_conditional_alignment(alignment.Rule):
                 '0';
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
-        alignment.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs):
+        alignment.Rule.__init__(self)
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.configuration_documentation_link = 'configuring_conditional_multiline_indent_rules_link'
@@ -76,6 +76,12 @@ class multiline_conditional_alignment(alignment.Rule):
     def analyze(self, oFile):
         lToi = self._get_tokens_of_interest(oFile)
 
+        self.align_left = utils.convert_boolean_to_yes_no(self.align_left)
+        self.align_paren = utils.convert_boolean_to_yes_no(self.align_paren)
+        self.wrap_at_when = utils.convert_boolean_to_yes_no(self.wrap_at_when)
+        self.align_when_keywords = utils.convert_boolean_to_yes_no(self.align_when_keywords)
+        self.align_else_keywords = utils.convert_boolean_to_yes_no(self.align_else_keywords)
+
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
 
@@ -95,27 +101,26 @@ class multiline_conditional_alignment(alignment.Rule):
             if iFirstLine == iLastLine:
                 continue
 
-            iFirstIndent = _find_first_indent(self.align_left, dActualIndent, self.indentSize, iAssignColumn)
+            iFirstIndent = _find_first_indent(self.align_left, dActualIndent, self.indent_size, iAssignColumn)
 
-            dExpectedIndent, lStructure = _apply_align_left_option(self.align_left, lStructure, dActualIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_align_when_keywords_option(self.align_when_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_wrap_at_when_option(self.wrap_at_when, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_left_option(self.align_left, lStructure, dActualIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_when_keywords_option(self.align_when_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_paren_option(self.align_paren, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_wrap_at_when_option(self.wrap_at_when, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
             if self.wrap_at_when == 'yes' and self.align_paren == 'yes':
-                dExpectedIndent, lStructure = _apply_align_paren_after_when(lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
-            dExpectedIndent, lStructure = _apply_align_else_keywords_option(self.align_else_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indentSize, iAssignColumn, iFirstIndent)
+                dExpectedIndent, lStructure = _apply_align_paren_after_when(lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
+            dExpectedIndent, lStructure = _apply_align_else_keywords_option(self.align_else_keywords, lStructure, dExpectedIndent, bStartsWithParen, self.indent_size, iAssignColumn, iFirstIndent)
 
-#            print(lStructure)
-#            print(lActualStructure)
+#            print(f'lStructure = {lStructure}')
+#            print(f'lActualStructure = {lActualStructure}')
 
 #            print(f'Actual = {dActualIndent}')
 #            print(f'Expect = {dExpectedIndent}')
-#            print(f'Index  = {dIndex}')
 #            print(f'dIndex = {dIndex}')
 
-            if self.indentStyle == 'smart_tabs':
-                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indentSize, iFirstLineIndent)
+            if self.indent_style == 'smart_tabs':
+                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
 
             for iLine in range(iFirstLine + 1, iLastLine + 1):
                 if dActualIndent[iLine] == dExpectedIndent[iLine]:
@@ -212,10 +217,8 @@ def is_token_before_carriage_return(tToken, lTokens):
 def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
 #    print('--> _apply_align_left_option  <-' + '-'*70)
     iFirstLine = alignment_utils.get_first_line(dActualIndent)
-
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
-
     bWhenFound = False
     iParens = 0
     iLine = iFirstLine
@@ -223,6 +226,8 @@ def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithPare
         if dStruct['type'] == 'when':
             bWhenFound = True
         elif dStruct['type'] == 'else':
+            bWhenFound = False
+        elif dStruct['type'] == 'comma':
             bWhenFound = False
         elif dStruct['type'] == 'return':
 #            print(f'iLine = {iLine} | bWhenFound = {bWhenFound} | iParens = {iParens}')
@@ -245,7 +250,7 @@ def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithPare
                 iIndent = iFirstIndent
             dExpectedIndent[iLine] = iIndent * ' '
         elif dStruct['type'] == 'open':
-            iParens +=1
+            iParens += 1
         elif dStruct['type'] == 'close':
             iParens -= 1
 
@@ -630,6 +635,14 @@ def _build_structure_list(iLine, iColumn, lTokens):
             dElse['column'] = iColumn - 4
             dElse['iToken'] = iToken
             lStructure.append(dElse)
+
+        if isinstance(oToken, token.selected_waveforms.comma):
+            dComma = {}
+            dComma['type'] = 'comma'
+            dComma['line'] = iLine
+            dComma['column'] = iColumn - 4
+            dComma['iToken'] = iToken
+            lStructure.append(dComma)
 
     return lStructure, iLine
 

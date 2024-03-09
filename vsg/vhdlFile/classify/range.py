@@ -14,6 +14,10 @@ def detect(iToken, lObjects):
 
 
 def check_for_range_attribute_name(iToken, lObjects):
+
+    if single_token_enclosed_in_parenthesis(iToken, lObjects):
+        return True
+
     iParens = 0
     for iIndex in range(iToken, len(lObjects)):
         iParens = utils.update_paren_counter(iIndex, lObjects, iParens)
@@ -24,6 +28,10 @@ def check_for_range_attribute_name(iToken, lObjects):
             return True
 
     return False
+
+
+def single_token_enclosed_in_parenthesis(iToken, lObjects):
+    return utils.are_next_consecutive_tokens([None, ')'], iToken, lObjects)
 
 
 def token_is_matching_close_parenthesis(iParens):

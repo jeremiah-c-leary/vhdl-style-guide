@@ -24,8 +24,8 @@ class Rule(WhitespaceRule):
        The tokens to check for a single space between
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        WhitespaceRule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        WhitespaceRule.__init__(self)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

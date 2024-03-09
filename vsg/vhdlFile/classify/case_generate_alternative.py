@@ -23,9 +23,13 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('when', token.when_keyword, iToken, lObjects)
 
+    if utils.are_next_consecutive_tokens([None, ':'], iCurrent, lObjects):
+        iCurrent = utils.assign_next_token(token.alternative_label_name, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token(token.alternative_label_colon, iCurrent, lObjects)
+
     iCurrent = choices.classify_until(['=>'], iCurrent, lObjects)
 
-    iCurrent = utils.assign_next_token_required('=>', token.assignment, iToken, lObjects)
+    iCurrent = utils.assign_next_token_required('=>', token.assignment, iCurrent, lObjects)
 
     iCurrent = generate_statement_body.classify(iCurrent, lObjects)
 

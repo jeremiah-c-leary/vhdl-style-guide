@@ -34,7 +34,8 @@ class rule_007(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'loop_statement', '007', oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
+        Rule.__init__(self, oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
         self.solution = 'a label for the "end loop".'
+        self.groups.append('structure::optional')
         self.subphase = 2
         self.disable = True

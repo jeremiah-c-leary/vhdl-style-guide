@@ -36,7 +36,7 @@ Replace the contents of the template file with the following...
         {
           "label": "vsg-check",
           "type": "shell",
-          "command": "vsg -f ${relativeFile}",
+          "command": "vsg -f \"${relativeFile}\"",
           "problemMatcher": {
             "owner": "vsg",
             "fileLocation": ["autoDetect", "${workspaceFolder}"],
@@ -86,10 +86,10 @@ Replace the contents of the template file with the following...
         {
           "label": "vsg-fix",
           "type": "shell",
-          "command": "vsg -f ${relativeFile} --fix",
+          "command": "vsg -f \"${relativeFile}\" --fix",
           "problemMatcher": {
             "owner": "vsg",
-            "fileLocation": ["autodetect", "${workspaceFolder}"],
+            "fileLocation": ["autoDetect", "${workspaceFolder}"],
             "pattern": [
               {
                 "regexp": "^File:  ([^\\s]*)\\s*$",

@@ -32,5 +32,5 @@ class rule_027(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'port', '027', lTokens)
+        Rule.__init__(self, lTokens)
         self.bInsertWhitespace = False

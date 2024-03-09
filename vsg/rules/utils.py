@@ -114,6 +114,21 @@ def get_index_of_token_in_list(oToken, lTokens):
     return None
 
 
+def get_last_index_of_token_in_list(oToken, lTokens):
+    iReturn = None
+    for iToken, token in enumerate(lTokens):
+        if isinstance(token, oToken):
+            iReturn = iToken
+    return iReturn
+
+
+def get_index_of_token_in_list_after_index(oToken, lTokens, iIndex):
+    for iToken, token in enumerate(lTokens):
+        if iToken > iIndex and isinstance(token, oToken):
+            return iToken
+    return None
+
+
 def get_indexes_of_token_in_list(oToken, lTokens):
     lReturn = []
     for iToken, token in enumerate(lTokens):
@@ -129,6 +144,17 @@ def get_number_of_carriage_returns_before_token(oStopToken, lTokens):
             iReturn += 1
         if isinstance(oToken, oStopToken):
             break
+    return iReturn
+
+
+def get_number_of_carriage_returns_before_last_token(oStopToken, lTokens):
+    iReturn = 0
+    iCarriage = 0
+    for oToken in lTokens:
+        if isinstance(oToken, parser.carriage_return):
+            iCarriage += 1
+        if isinstance(oToken, oStopToken):
+            iReturn = iCarriage
     return iReturn
 
 
@@ -256,14 +282,18 @@ def token_list_is_the_beginning_of_a_line(lTokens):
     return False
 
 
-def left_most_token_is_at_the_end_of_a_line(lTokens):
-    if token_is_carriage_return(lTokens[1]):
+def token_is_at_end_of_line(iToken, lTokens):
+    if token_is_carriage_return(lTokens[iToken + 1]):
         return True
-    if token_is_comment(lTokens[1]):
+    if token_is_comment(lTokens[iToken + 1]):
         return True
-    if token_is_whitespace(lTokens[1]) and token_is_comment(lTokens[2]):
+    if token_is_whitespace(lTokens[iToken + 1]) and token_is_comment(lTokens[iToken + 2]):
         return True
     return False
+    
+
+def left_most_token_is_at_the_end_of_a_line(lTokens):
+    return token_is_at_end_of_line(0, lTokens)
 
 
 def whitespace_is_larger_than_a_single_character(lTokens):
@@ -425,7 +455,7 @@ def open_paren_after_assignment_operator(assignment_operator, lTokens):
 def open_paren_after_assignment_operator_is_aggregate(assignment_operator, lTokens):
     iToken = get_index_of_token_in_list(assignment_operator, lTokens)
     if is_next_token_ignoring_whitespace(parser.open_parenthesis, iToken, lTokens):
-        iIndex = get_index_of_token_in_list(parser.open_parenthesis, lTokens)
+        iIndex = get_index_of_token_in_list_after_index(parser.open_parenthesis, lTokens, iToken)
         return isinstance(lTokens[iIndex], token.aggregate.open_parenthesis)
     return False
 
@@ -463,3 +493,19 @@ def close_paren_detected_at_end_of_tokens(lTokens):
         return True
     lTokens.reverse()
     return False
+
+
+def remove_tois_with_pragmas(lToi):
+    lReturn = []
+    for oToi in lToi:
+        if not oToi.token_type_exists(token.pragma.pragma):
+            lReturn.append(oToi)
+    return lReturn
+
+
+def get_index_of_matching_close_paren(iToken, lTokens):
+    for iIndex in range(iToken, len(lTokens)):
+        if isinstance(lTokens[iIndex], parser.close_parenthesis):
+            if lTokens[iIndex].iId == lTokens[iToken].iId:
+                return iIndex
+    return None

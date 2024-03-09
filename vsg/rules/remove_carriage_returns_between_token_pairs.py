@@ -27,8 +27,8 @@ class remove_carriage_returns_between_token_pairs(structure.Rule):
        acceptable prefixes
     '''
 
-    def __init__(self, name, identifier, lTokens, bInsertSpace=False):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, bInsertSpace=False):
+        structure.Rule.__init__(self)
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

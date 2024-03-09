@@ -55,7 +55,7 @@ package SOME_PKG is
 
   procedure PROC_1;
 
-  function FUNC_1 Return integer;
+  function FUNC_1 return integer;
 
 end package SOME_PKG;
 

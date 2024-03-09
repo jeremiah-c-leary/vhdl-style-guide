@@ -28,6 +28,6 @@ class rule_601(token_suffix):
     '''
 
     def __init__(self):
-        token_suffix.__init__(self, 'function', '601', lTokens)
+        token_suffix.__init__(self, lTokens)
         self.suffixes = ['_f']
         self.solution = 'Function designator'

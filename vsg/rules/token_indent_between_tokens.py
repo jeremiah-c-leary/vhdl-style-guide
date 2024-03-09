@@ -7,8 +7,8 @@ class token_indent_between_tokens(Rule):
     Checks the indent of tokens.
     '''
 
-    def __init__(self, name, identifier, lTokens, oStart, oEnd, bInclusive=False):
-        Rule.__init__(self, name=name, identifier=identifier, lTokens=lTokens)
+    def __init__(self, lTokens, oStart, oEnd, bInclusive=False):
+        Rule.__init__(self, lTokens=lTokens)
         self.oStart = oStart
         self.oEnd = oEnd
         self.bInclusive = bInclusive

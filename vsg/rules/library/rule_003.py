@@ -1,5 +1,6 @@
 
 from vsg.rules import previous_line
+from vsg.vhdlFile import utils
 
 from vsg import token
 
@@ -13,13 +14,13 @@ class rule_003(previous_line):
 
     |configuring_previous_line_rules_link|
 
-    There is an additional **allow_library_clause** option which can be set.
+    There is an additional :code:`allow_library_clause` option which can be set.
     Refer to section :ref:`reporting-single-rule-configuration` for details on finding configuration options for individual rules.
 
     allow_library_clause
     ^^^^^^^^^^^^^^^^^^^^
 
-    When set to **True**, it allows consecutive library clauses.
+    When set to :code:`yes`, it allows consecutive library clauses.
 
     **Violation**
 
@@ -42,12 +43,13 @@ class rule_003(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, 'library', '003', lTokens)
-        self.allow_library_clause = False
+        previous_line.__init__(self, lTokens)
+        self.allow_library_clause = 'no'
         self.configuration.append('allow_library_clause')
         self.style = 'require_blank_line'
 
     def _set_allow_tokens(self):
+        self.allow_library_clause = utils.convert_yes_no_option_to_boolean(self.allow_library_clause)
         if self.allow_library_clause:
             self.lAllowTokens = []
             self.lAllowTokens.append(token.library_clause.keyword)

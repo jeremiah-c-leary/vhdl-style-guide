@@ -1,6 +1,7 @@
 
 
 from vsg import parser
+from vsg import token
 from vsg import violation
 
 from vsg.rules import utils as rules_utils
@@ -28,8 +29,8 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
        The token which will be moved next to the anchor token.
     '''
 
-    def __init__(self, name, identifier, token_to_move):
-        structure.Rule.__init__(self, name, identifier)
+    def __init__(self, token_to_move):
+        structure.Rule.__init__(self)
         self.subphase = 2
         self.token_to_move = token_to_move
         self.bInsertWhitespace = True
@@ -45,6 +46,8 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             if skip_based_on_whitespace(self.bInsertWhitespace, lTokens):
+                continue
+            if oToi.token_type_exists(token.pragma.pragma):
                 continue
             lReturn.append(oToi)
         return lReturn

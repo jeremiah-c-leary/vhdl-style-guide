@@ -121,3 +121,29 @@ class test_use_clause_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_rule_502_upper_or_lower(self):
+        oRule = use_clause.rule_502()
+        oRule.case = 'upper_or_lower'
+
+        lExpected = [4]
+        oRule.analyze(self.oFile)
+        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
+
+    def test_fix_rule_502_upper_or_lower(self):
+        oRule = use_clause.rule_502()
+        oRule.case = 'upper_or_lower'
+
+        oRule.fix(self.oFile)
+
+        lExpected = []
+        lExpected.append('')
+        utils.read_file(os.path.join(sTestDir, 'rule_502_test_input.vhd'), lExpected)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        lExpected = [4]
+        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)

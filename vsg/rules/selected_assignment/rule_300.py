@@ -38,4 +38,4 @@ class rule_300(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'selected_assignment', '300', lTokens)
+        Rule.__init__(self, lTokens)

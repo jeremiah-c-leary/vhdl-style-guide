@@ -40,4 +40,4 @@ class rule_019(blank_line_below_line_ending_with_token):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'instantiation', '019', lTokens)
+        blank_line_below_line_ending_with_token.__init__(self, lTokens)

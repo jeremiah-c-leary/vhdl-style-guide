@@ -27,4 +27,4 @@ class rule_017(blank_line_below_line_ending_with_token):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, 'architecture', '017', [token.begin_keyword])
+        blank_line_below_line_ending_with_token.__init__(self, [token.begin_keyword])

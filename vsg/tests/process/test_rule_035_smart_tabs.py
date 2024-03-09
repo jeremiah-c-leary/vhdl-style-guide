@@ -28,8 +28,8 @@ class test_process_rule(unittest.TestCase):
     def test_fix_rule_035_smart_tabs_indent_2(self):
         self.maxDiff = None
         oRule = process.rule_035()
-        oRule.indentStyle = 'smart_tabs'
-        oRule.indentSize = 2
+        oRule.indent_style = 'smart_tabs'
+        oRule.indent_size = 2
 
         oRule.fix(self.oFile)
 
@@ -42,8 +42,8 @@ class test_process_rule(unittest.TestCase):
 
     def test_fix_rule_035_smart_tabs_indent_4(self):
         oRule = process.rule_035()
-        oRule.indentStyle = 'smart_tabs'
-        oRule.indentSize = 4
+        oRule.indent_style = 'smart_tabs'
+        oRule.indent_size = 4
 
         oRule.fix(self.oFile)
 

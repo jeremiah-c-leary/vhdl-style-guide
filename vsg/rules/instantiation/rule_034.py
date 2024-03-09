@@ -35,7 +35,7 @@ class rule_034(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self, name='instantiation', identifier='034')
+        structure.Rule.__init__(self)
         self.method = 'component'
         self.configuration.append('method')
         self.fixable = False

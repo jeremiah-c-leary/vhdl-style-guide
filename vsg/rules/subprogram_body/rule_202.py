@@ -44,4 +44,4 @@ class rule_202(blank_line_above_line_starting_with_token):
     '''
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, 'subprogram_body', '202', lTokens, lAllowTokens)
+        blank_line_above_line_starting_with_token.__init__(self, lTokens, lAllowTokens)

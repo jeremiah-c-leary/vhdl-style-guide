@@ -75,4 +75,12 @@ begin
             xor z and x or
             w and z;
 
+   -- Test detection of arrays
+
+   test <= my_function(    arg1      =>   input,
+                       arg2   =>   input2);
+
+   test <= (    arg1      =>   input,
+ arg2   =>   input2);
+
 end architecture RTL;

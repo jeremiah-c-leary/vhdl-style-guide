@@ -187,7 +187,7 @@
 <class 'vsg.token.choices.bar'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_statement_alternative.assignment'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -198,7 +198,7 @@
 <class 'vsg.token.choices.bar'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_statement_alternative.assignment'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -263,10 +263,10 @@
 --------------------------------------------------------------------------------
 48 |     case foo(i) is
 <class 'vsg.token.case_statement.case_keyword'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.case_statement.is_keyword'>
 --------------------------------------------------------------------------------
 49 |     end case;

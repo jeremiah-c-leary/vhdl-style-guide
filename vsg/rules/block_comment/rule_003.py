@@ -33,7 +33,7 @@ class rule_003(block_rule.Rule):
     '''
 
     def __init__(self):
-        block_rule.Rule.__init__(self, 'block_comment', '003')
+        block_rule.Rule.__init__(self)
         self.footer_left = None
         self.footer_left_repeat = '-'
         self.footer_string = None

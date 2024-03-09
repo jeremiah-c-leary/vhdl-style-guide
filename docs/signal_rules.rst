@@ -334,6 +334,101 @@ This rule checks the structure of signal constraints.
        element2(3 downto 0)
      );
 
+signal_100
+##########
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal    size : integer;
+   signal width : integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal size : integer;
+   signal width : integer;
+
+signal_101
+##########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the default assignment token.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal wr_en : std_logic      := '0';
+   signal rd_en : std_logic:= '1';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal wr_en : std_logic      := '0';
+   signal rd_en : std_logic := '1';
+
+signal_102
+##########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the default assignment token.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal wr_en : std_logic :=          '0';
+   signal rd_en : std_logic :='1';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal wr_en : std_logic := '0';
+   signal rd_en : std_logic := '1';
+
+signal_200
+##########
+
+|phase_3| |disabled| |error| |blank_line|
+
+This rule checks for a blank line below a signal declaration unless there is another signal definition.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal   width  : integer := 32;
+   signal   height : integer := 4;
+   constant length : integer := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal   width  : integer := 32;
+   signal   height : integer := 4;
+
+   constant length : integer := 32;
+
 signal_400
 ##########
 

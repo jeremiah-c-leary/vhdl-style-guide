@@ -28,4 +28,4 @@ class rule_301(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '301', [token.end_keyword])
+        Rule.__init__(self, [token.end_keyword])

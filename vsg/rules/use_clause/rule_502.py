@@ -27,6 +27,6 @@ class rule_502(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'use_clause', '502', lTokens)
+        Rule.__init__(self, lTokens)
         self.groups.append('case::name')
         self.configuration.append('case_exceptions')

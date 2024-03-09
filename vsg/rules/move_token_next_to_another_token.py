@@ -28,15 +28,16 @@ class move_token_next_to_another_token(structure.Rule):
        The token which will be moved next to the anchor token.
     '''
 
-    def __init__(self, name, identifier, anchor_token, token_to_move):
-        structure.Rule.__init__(self, name, identifier)
+    def __init__(self, anchor_token, token_to_move):
+        structure.Rule.__init__(self)
         self.subphase = 2
         self.anchor_token = anchor_token
         self.token_to_move = token_to_move
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_bounded_by(self.anchor_token, self.token_to_move, bIncludeTillEndOfLine=True)
+        lToi = oFile.get_tokens_bounded_by(self.anchor_token, self.token_to_move, bIncludeTillEndOfLine=True)
+        return rules_utils.remove_tois_with_pragmas(lToi)
 
     def _analyze(self, lToi):
         for oToi in lToi:

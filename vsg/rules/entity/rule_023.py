@@ -27,6 +27,6 @@ class rule_023(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'entity', '023', token.end_keyword, token.end_entity_keyword)
+        Rule.__init__(self, token.end_keyword, token.end_entity_keyword)
         self.subphase = 1
         self.solution = 'Move identifier next to *entity* keyword'

@@ -24,13 +24,15 @@ class token_suffix(naming.Rule):
        acceptable suffixes
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        naming.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        naming.Rule.__init__(self)
         self.lTokens = lTokens
         self.suffixes = None
         self.configuration.append('suffixes')
         self.fixable = False
         self.disable = True
+        self.exceptions = []
+        self.configuration.append('exceptions')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching(self.lTokens)
@@ -39,9 +41,18 @@ class token_suffix(naming.Rule):
         lSuffixLower = []
         for sSuffix in self.suffixes:
             lSuffixLower.append(sSuffix.lower())
+
+        lExceptionsLower = []
+        for sException in self.exceptions:
+            lExceptionsLower.append(sException.lower())
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_value().lower()
+
+            if sToken in lExceptionsLower:
+                continue
+
             bValid = False
             for sSuffix in lSuffixLower:
                 if sToken.endswith(sSuffix):

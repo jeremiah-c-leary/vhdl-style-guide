@@ -7,6 +7,9 @@ Configuring Multiline Assert Rule
 There is a rule which will check indent of multiline assert statements.
 The method of indenting can be configured using one of the following options:
 
+.. |alignment| replace::
+   :code:`alignment`
+
 .. |left_description| replace::
    The setting :code:`left` enforces multiline report statements using indents.
 
@@ -19,17 +22,31 @@ The method of indenting can be configured using one of the following options:
 .. |default_value| replace::
    :code:`left`
 
+.. |report| replace::
+   :code:'report`
+
+.. |left| replace::
+   :code:'left`
+
 +----------------------+----------+-----------------+----------------------------+
 | Option               | Values   | Default Value   | Description                |
 +======================+==========+=================+============================+
-| :code:`alignment`    | |values| | |default_value| | * |left_description|       |
+| |alignment|          | |values| | |default_value| | * |left_description|       |
 |                      |          |                 | * |report_description|     |
 +----------------------+----------+-----------------+----------------------------+
 
-Example: :code:`alignment` set to :code:`report`
-################################################
+This is an example of how to configure these options.
 
-Setting the :code:`alignment` option to :code:`report` will align report expressions with the report keyword.
+.. code-block:: yaml
+
+   rule :
+     report_statement_400:
+        alignment: 'left'
+
+Example: |alignment| set to |report|
+####################################
+
+Align report expressions with the report keyword.
 
 .. code-block:: vhdl
 
@@ -38,10 +55,10 @@ Setting the :code:`alignment` option to :code:`report` will align report express
             " to 16 bits."
      severity FAILURE;
 
-Example: :code:`alignment` set to :code:'left'
-##############################################
+Example: |alignment| set to |left|
+##################################
 
-Setting the :code:`alignment` option to :code:`left` will align report expressions an additional indent level form the report keyword.
+Align report expressions an additional indent level from the report keyword.
 
 .. code-block:: vhdl
 
@@ -49,4 +66,10 @@ Setting the :code:`alignment` option to :code:`left` will align report expressio
      report "FIFO width is limited" &
        " to 16 bits."
      severity FAILURE;
+
+Rules Enforcing Alignment
+#########################
+
+* `assert_400 <assert_rules.html#assert-400>`_
+* `report_statement_400 <report_statement_rules.html#report-statement-400>`_
 

@@ -34,5 +34,6 @@ class rule_402(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'block', '402', lAlign, token.block_statement.block_keyword, token.block_statement.begin_keyword, lUnless)
+        Rule.__init__(self, lAlign, token.block_statement.block_keyword, token.block_statement.begin_keyword, lUnless)
         self.solution = 'Align colon.'
+        self.configuration.remove('separate_generic_port_alignment')

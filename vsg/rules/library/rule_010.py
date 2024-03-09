@@ -26,5 +26,5 @@ class rule_010(split_line_at_token):
     '''
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'library', '010', lTokens)
+        split_line_at_token.__init__(self, lTokens)
         self.solution = 'Move *library* to it\'s own line.'

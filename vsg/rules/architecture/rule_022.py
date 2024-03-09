@@ -23,6 +23,6 @@ class rule_022(Rule):
        end architecture fifo;
     '''
     def __init__(self):
-        Rule.__init__(self, 'architecture', '022')
+        Rule.__init__(self)
         self.left_token = token.end_architecture_keyword
         self.right_token = token.architecture_simple_name

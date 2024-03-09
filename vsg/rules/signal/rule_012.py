@@ -3,6 +3,7 @@ from vsg import parser
 from vsg import token
 from vsg import violation
 
+from vsg.rules import alignment_utils
 from vsg.rules import utils as rules_utils
 from vsg.rule_group import alignment
 from vsg.vhdlFile import utils
@@ -33,7 +34,7 @@ class rule_012(alignment.Rule):
     '''
 
     def __init__(self):
-        alignment.Rule.__init__(self, 'signal', '012')
+        alignment.Rule.__init__(self)
         self.subphase = 2
         self.left_token = token.architecture_body.is_keyword
         self.right_token = token.architecture_body.begin_keyword
@@ -41,14 +42,22 @@ class rule_012(alignment.Rule):
         self.lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
         ## attributes below are configurable by the user
 
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
+        self.blank_line_ends_group = 'no'
+        self.configuration.append('blank_line_ends_group')
+        self.comment_line_ends_group = 'no'
+        self.configuration.append('comment_line_ends_group')
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(self.left_token, self.right_token)
 
     def _analyze(self, lToi):
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+        self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
+        self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
             iColumn = 0
@@ -62,6 +71,33 @@ class rule_012(alignment.Rule):
 
                if isinstance(oToken, parser.carriage_return):
                    iColumn = 0
+
+                   if self.comment_line_ends_group:
+                       if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iToken + 1, lTokens) or \
+                          utils.are_next_consecutive_token_types([parser.comment], iToken + 1, lTokens):
+                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                           for iKey in list(dAnalysis.keys()):
+                               if dAnalysis[iKey]['adjust'] != 0:
+                                   oLineTokens = oToi.extract_tokens(dAnalysis[iKey]['comma_index'], dAnalysis[iKey]['token_index'])
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                                   oViolation = violation.New(dAnalysis[iKey]['line_number'], oLineTokens, sSolution)
+                                   oViolation.set_action(dAnalysis[iKey])
+                                   self.add_violation(oViolation)
+                           dAnalysis = {}
+
+                   if self.blank_line_ends_group:
+                       if utils.are_next_consecutive_token_types([parser.blank_line], iToken + 1, lTokens):
+                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+
+                           for iKey in list(dAnalysis.keys()):
+                               if dAnalysis[iKey]['adjust'] != 0:
+                                   oLineTokens = oToi.extract_tokens(dAnalysis[iKey]['comma_index'], dAnalysis[iKey]['token_index'])
+                                   sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+                                   oViolation = violation.New(dAnalysis[iKey]['line_number'], oLineTokens, sSolution)
+                                   oViolation.set_action(dAnalysis[iKey])
+                                   self.add_violation(oViolation)
+
+                           dAnalysis = {}
                else:
                    iColumn += len(oToken.get_value())
 
@@ -143,7 +179,7 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
             dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['identifier_column'] + 1
     else:
         for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['identifier_column'] + 1
+            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['identifier_column']
 
 
 def check_for_exclusions(bSkip, oToken, lUnless):

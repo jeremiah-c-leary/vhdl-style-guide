@@ -9,9 +9,6 @@ VHDL Style Guide (VSG)
 .. image:: https://img.shields.io/pypi/v/vsg.svg?style=flat-square
    :target: https://pypi.python.org/pypi/vsg
    :alt: PyPI Version
-.. image:: https://img.shields.io/travis/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square
-   :target: https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide
-   :alt: Build Status
 .. image:: https://img.shields.io/codecov/c/github/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square
    :target: https://codecov.io/github/jeremiah-c-leary/vhdl-style-guide
    :alt: Test Coverage
@@ -24,17 +21,23 @@ VHDL Style Guide (VSG)
 
 Announcements
 -------------
-Update 04/01/2023
 
-Work is still demanding a lot of my free time, however I am planning on focusing some of my attention back on VSG.
+Update 02/10/2024
 
-Here is my plan going forward:
+For Release 3.22.0.
 
-1) Address issues requiring *User Validation*
-2) Address issues requiring *User Feedback*
-3) Triage new issues
-4) Prioritize parsing issues
-5) Begin working other issues
+In an attempt to be more consistent in the configuration files, the following options are changing from camelCase to snake_case:
+
++---------------+--------------+
+| option        |  Changed To  |
++===============+==============+
+| indentSize    | indent_size  |
++---------------+--------------+
+| indentStyle   | indent_style |
++---------------+--------------+
+
+An Error message will be generated if the old style is encountered.
+A reminder to change the option to snake_case will be given.
 
 Regards,
 
@@ -158,12 +161,16 @@ The command line tool can be invoked with:
    $ vsg
    usage: VHDL Style Guide (VSG) [-h] [-f FILENAME [FILENAME ...]] [-lr LOCAL_RULES] [-c CONFIGURATION [CONFIGURATION ...]] [--fix]
                                  [-fp FIX_PHASE] [-j JUNIT] [-js JSON] [-of {vsg,syntastic,summary}] [-b] [-oc OUTPUT_CONFIGURATION]
-                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--fix_only FIX_ONLY] [-p JOBS]
-                                 [--debug]
-   
+                                 [-rc RULE_CONFIGURATION] [--style {indent_only,jcl}] [-v] [-ap] [--fix_only FIX_ONLY] [--stdin]
+                                 [--quality_report QUALITY_REPORT] [-p JOBS] [--debug]
+                                 [FILENAME ...]
+
    Analyzes VHDL files for style guide violations. Reference documentation is located at: http://vhdl-style-guide.readthedocs.io/en/latest/index.html
-   
-   optional arguments:
+
+   positional arguments:
+     FILENAME              File to analyze
+
+   options:
      -h, --help            show this help message and exit
      -f FILENAME [FILENAME ...], --filename FILENAME [FILENAME ...]
                            File to analyze
@@ -190,12 +197,28 @@ The command line tool can be invoked with:
      -v, --version         Displays version information
      -ap, --all_phases     Do not stop when a violation is detected.
      --fix_only FIX_ONLY   Restrict fixing via JSON file.
+     --stdin               Read VHDL input from stdin, disables all other file selections, disables multiprocessing
+     --quality_report QUALITY_REPORT
+                           Create code quality report for GitLab
      -p JOBS, --jobs JOBS  number of parallel jobs to use, default is the number of cpu cores
      --debug               Displays verbose debug information
 
 Here is an example output running against a test file:
 
 .. image:: https://github.com/jeremiah-c-leary/vhdl-style-guide/blob/master/docs/img/fixing_single_file.gif
+
+pre-commit Integration
+----------------------
+
+Here is an example of ``.pre-commit-config.yaml`` file:
+
+.. code-block:: yaml
+
+  repos:
+    - repo: https://github.com/jeremiah-c-leary/vhdl-style-guide
+      rev: v3.18.0
+      hooks:
+        - id: vsg
 
 Documentation
 -------------

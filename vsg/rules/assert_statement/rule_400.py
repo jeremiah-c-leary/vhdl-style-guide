@@ -32,7 +32,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, name="assert", identifier="400")
+        Rule.__init__(self)
         self.lStartTokens = [assertion.report_keyword]
         self.lEndTokens = [assertion.severity_keyword, assertion_statement.semicolon, concurrent_assertion_statement.semicolon]
         self.configuration_documentation_link = None

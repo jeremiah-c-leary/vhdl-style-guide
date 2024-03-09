@@ -23,6 +23,6 @@ class rule_013(Rule):
        end component fifo;
     '''
     def __init__(self):
-        Rule.__init__(self, 'component', '013')
+        Rule.__init__(self)
         self.left_token = token.end_component_keyword
         self.right_token = token.component_simple_name

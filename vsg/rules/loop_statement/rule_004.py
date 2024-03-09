@@ -37,5 +37,5 @@ class rule_004(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'loop_statement', '004', oToken, lAnchorTokens, oStartToken, oEndToken)
+        Rule.__init__(self, oToken, lAnchorTokens, oStartToken, oEndToken)
         self.subphase = 3

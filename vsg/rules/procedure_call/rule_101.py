@@ -39,4 +39,4 @@ class rule_101(Rule):
        );
     '''
     def __init__(self):
-        Rule.__init__(self, 'procedure_call', '101', lTokens, oStart, oEnd)
+        Rule.__init__(self, lTokens, oStart, oEnd)

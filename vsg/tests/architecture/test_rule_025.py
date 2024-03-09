@@ -28,7 +28,7 @@ class test_architecture_rule(unittest.TestCase):
         lExpected = [3, 10, 17, 24]
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-        self.assertEqual('Architecture identifier must be from this list: ', oRule._get_solution(100))
+        self.assertEqual('Architecture identifier must be from this list: ', oRule._get_solution(None))
 
         oRule.violations = []
         oRule.names = []
@@ -36,47 +36,47 @@ class test_architecture_rule(unittest.TestCase):
         lExpected = [10, 17, 24]
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-        self.assertEqual('Architecture identifier must be from this list: rtl', oRule._get_solution(100))
+        self.assertEqual('Architecture identifier must be from this list: rtl', oRule._get_solution(None))
 
         oRule.violations = []
         oRule.names = ['ENTITY1']
         lExpected = [3, 17, 24]
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-        self.assertEqual('Architecture identifier must be from this list: ENTITY1', oRule._get_solution(100))
+        self.assertEqual('Architecture identifier must be from this list: ENTITY1', oRule._get_solution(None))
 
         oRule.violations = []
         oRule.names = ['BLUE']
         lExpected = [3, 10, 24]
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-        self.assertEqual('Architecture identifier must be from this list: BLUE', oRule._get_solution(100))
+        self.assertEqual('Architecture identifier must be from this list: BLUE', oRule._get_solution(None))
 
         oRule.violations = []
         oRule.names = ['CDC']
         lExpected = [3, 10, 17]
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-        self.assertEqual('Architecture identifier must be from this list: CDC', oRule._get_solution(100))
+        self.assertEqual('Architecture identifier must be from this list: CDC', oRule._get_solution(None))
 
         oRule.violations = []
         oRule.names = ['rtl', 'CDC']
         lExpected = [10, 17]
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-        self.assertEqual('Architecture identifier must be from this list: rtl, CDC', oRule._get_solution(100))
+        self.assertEqual('Architecture identifier must be from this list: rtl, CDC', oRule._get_solution(None))
 
         oRule.violations = []
         oRule.names = ['rtl', 'cdc', 'blue']
         lExpected = [10]
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-        self.assertEqual('Architecture identifier must be from this list: rtl, cdc, blue', oRule._get_solution(100))
+        self.assertEqual('Architecture identifier must be from this list: rtl, cdc, blue', oRule._get_solution(None))
 
         oRule.violations = []
         oRule.names = ['rtl', 'cdc', 'blue', 'entity1']
         lExpected = []
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
-        self.assertEqual('Architecture identifier must be from this list: rtl, cdc, blue, entity1', oRule._get_solution(100))
+        self.assertEqual('Architecture identifier must be from this list: rtl, cdc, blue, entity1', oRule._get_solution(None))
 

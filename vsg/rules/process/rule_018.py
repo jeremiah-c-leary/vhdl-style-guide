@@ -34,6 +34,7 @@ class rule_018(insert_token_left_of_token_if_it_does_not_exist_between_tokens_us
     '''
 
     def __init__(self):
-        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, 'process', '018', oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
+        insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token.__init__(self, oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
         self.solution = 'a label for the "end process".'
+        self.groups.append('structure::optional')
         self.subphase = 2

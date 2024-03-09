@@ -1,0 +1,20 @@
+---
+rule:
+  entity_008:
+    disable : True
+  entity_012:
+    disable : True
+  port_010:
+    disable : True
+  architecture_011:
+    disable : True
+  architecture_013:
+    disable : True
+  architecture_014:
+    disable : True
+file_rules:
+  - vsg/tests/vsg/entity1.vhd :
+      rule:
+         port_007:
+            disable : True
+...

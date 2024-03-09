@@ -684,3 +684,47 @@ The default suffix is *\_gen*.
 
    label_gen : case condition generate
 
+generate_601
+############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on generate parameter identifiers.
+The default generate prefix is *gv\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  gen_label : for index in t_range generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+  gen_label : for gv_index in t_range generate
+
+generate_602
+############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on generate parameter identifiers.
+The default generate suffix is *\_gv*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  gen_label : for index in t_range generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+  gen_label : for index_gv in t_range generate
+

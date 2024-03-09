@@ -29,6 +29,6 @@ class rule_101(Rule):
        end record t_record;
     '''
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '101')
+        Rule.__init__(self)
         self.left_token = token.end_record_keyword
         self.right_token = token.record_type_simple_name

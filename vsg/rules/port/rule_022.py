@@ -36,6 +36,6 @@ class rule_022(remove_excessive_blank_lines_below_line_ending_with_token):
        );
     '''
     def __init__(self):
-        remove_excessive_blank_lines_below_line_ending_with_token.__init__(self, 'port', '022', lTokens, iAllow=0)
+        remove_excessive_blank_lines_below_line_ending_with_token.__init__(self, lTokens, iAllow=0)
         self.solution = 'Remove blank lines below *port* keyword.'
         self.configuration_documentation_link = None

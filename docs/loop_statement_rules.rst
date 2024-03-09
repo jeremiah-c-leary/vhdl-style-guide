@@ -150,7 +150,7 @@ This rule checks that loop statements have a label.
 loop_statement_007
 ##################
 
-|phase_1| |disabled| |error| |structure|
+|phase_1| |disabled| |error| |structure| |structure_optional|
 
 This rule checks the **end loop_statement** line has a label.
 The closing label will be added if the opening loop_statement label exists.
@@ -647,4 +647,48 @@ The default prefix is *\_loop*.
 .. code-block:: vhdl
 
    label_loop : for index in 4 to 23 loop
+
+loop_statement_602
+##################
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on loop parameter identifiers.
+The default loop prefix is *lv\_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  for index in t_range loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+  for lv_index in t_range loop
+
+loop_statement_603
+##################
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on loop parameter identifiers.
+The default loop suffix is *\_lv*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  for index in t_range loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+  for index_lv in t_range loop
 

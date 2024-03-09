@@ -21,8 +21,6 @@ We can use the following configuration to change allowed prefix:
 
 .. code-block:: yaml
 
-   ---
-
     rule :
         variable_012:
             # Each prefix rule needs to be enabled explicitly.
@@ -38,45 +36,66 @@ We can use the following configuration to change allowed suffixes:
 
 .. code-block:: yaml
 
-   ---
-
     rule :
         port_025:
             # Each suffix rule needs to be enabled explicitly.
             disable: false
             suffixes: ['_i', '_o']
 
+Exceptions to Prefix and Suffix Enforcement
+###########################################
+
+Exceptions to enforcing prefixes and suffixes can be given using the :code:`exceptions` option:
+
+.. code-block:: yaml
+
+    rule :
+        port_025:
+            # Each suffix rule needs to be enabled explicitly.
+            disable: false
+            suffixes: ['_i', '_o']
+            exceptions: ['CLK']
+
+The exceptions option provides a list of keywords, that when matched, prevents the rule from validating the prefix or suffix.
+The keywords are treated as case insensitive.
+
 Rules Enforcing Prefixes and Suffixes
 #####################################
 
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| **Element**             | **Prefix Rule**                                                |  **Suffix Rule**                                               |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Block Label             | `block_601 <block_rules.html#block-601>`_                      | `block_600 <block_rules.html#block-600>`_                      |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Constant Identifier     | `constant_015 <constant_rules.html#constant-015>`_             | `constant_600 <constant_rules.html#constant-600>`_             |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Function Designator     | `function_600 <function_rules.html#function-600>`_             | `function_601 <function_rules.html#function-601>`_             |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Generate Label          | `generate_017 <generate_rules.html#generate-017>`_             | `generate_600 <generate_rules.html#generate-600>`_             |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Generic Identifier      | `generic_020 <generic_rules.html#generic-020>`_                | `generic_600 <generic_rules.html#generic-600>`_                |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Generic Map Identifier  | `generic_map_601 <generic_map_rules.html#generic-map-601>`_    | `generic_map_600 <generic_map_rules.html#generic-map-600>`_    |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Package Identifier      | `package_017 <package_rules.html#package-017>`_                | `package_016 <package_rules.html#package-016>`_                |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Package Body Identifier | `package_body_601 <package_body_rules.html#package-body-601>`_ | `package_body_600 <package_body_rules.html#package-body-600>`_ |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Port Identifier         | `port_011 <port_rules.html#port-011>`_                         | `port_025 <port_rules.html#port-025>`_                         |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Process Label           | `process_036 <process_rules.html#process-036>`_                | `process_600 <process_rules.html#process-600>`_                |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Signal Identifier       | `signal_008 <signal_rules.html#signal-008>`_                   | `signal_600 <signal_rules.html#signal-600>`_                   |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Subtype Identifier      | `subtype_004 <subtype_rules.html#subtype-004>`_                | `subtype_600 <subtype_rules.html#subtype-600>`_                |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Type Identifier         | `type_definition_015 <type_rules.html#type-015>`_              | `type_definition_600 <type_rules.html#type-600>`_              |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
-| Variable Identifier     | `variable_012 <variable_rules.html#variable-012>`_             | `variable_600 <variable_rules.html#variable-600>`_             |
-+-------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| **Element**                   | **Prefix Rule**                                                |  **Suffix Rule**                                               |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Block Label                   | `block_601 <block_rules.html#block-601>`_                      | `block_600 <block_rules.html#block-600>`_                      |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Constant Identifier           | `constant_015 <constant_rules.html#constant-015>`_             | `constant_600 <constant_rules.html#constant-600>`_             |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Function Designator           | `function_600 <function_rules.html#function-600>`_             | `function_601 <function_rules.html#function-601>`_             |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Generate Label                | `generate_017 <generate_rules.html#generate-017>`_             | `generate_600 <generate_rules.html#generate-600>`_             |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Generate Parameter Identifier | `generate_601 <generate_rules.html#generate-601>`_             | `generate_602 <generate_rules.html#generate-602>`_             |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Generic Identifier            | `generic_020 <generic_rules.html#generic-020>`_                | `generic_600 <generic_rules.html#generic-600>`_                |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Generic Map Identifier        | `generic_map_601 <generic_map_rules.html#generic-map-601>`_    | `generic_map_600 <generic_map_rules.html#generic-map-600>`_    |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Loop Label                    | `loop_600 <loop_statement_rules.html#loop-statement-600>`_     | `loop_601 <loop_statement_rules.html#loop-statement-601>`_     |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Loop Parameter Identifier     | `loop_602 <loop_statement_rules.html#loop-statement-602>`_     | `loop_603 <loop_statement_rules.html#loop-statement-603>`_     |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Package Identifier            | `package_017 <package_rules.html#package-017>`_                | `package_016 <package_rules.html#package-016>`_                |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Package Body Identifier       | `package_body_601 <package_body_rules.html#package-body-601>`_ | `package_body_600 <package_body_rules.html#package-body-600>`_ |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Port Identifier               | `port_011 <port_rules.html#port-011>`_                         | `port_025 <port_rules.html#port-025>`_                         |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Process Label                 | `process_036 <process_rules.html#process-036>`_                | `process_600 <process_rules.html#process-600>`_                |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Signal Identifier             | `signal_008 <signal_rules.html#signal-008>`_                   | `signal_600 <signal_rules.html#signal-600>`_                   |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Subtype Identifier            | `subtype_004 <subtype_rules.html#subtype-004>`_                | `subtype_600 <subtype_rules.html#subtype-600>`_                |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Type Identifier               | `type_definition_015 <type_rules.html#type-015>`_              | `type_definition_600 <type_rules.html#type-600>`_              |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+
+| Variable Identifier           | `variable_012 <variable_rules.html#variable-012>`_             | `variable_600 <variable_rules.html#variable-600>`_             |
++-------------------------------+----------------------------------------------------------------+----------------------------------------------------------------+

@@ -23,6 +23,6 @@ class rule_007(Rule):
        component fifo is
     '''
     def __init__(self):
-        Rule.__init__(self, 'component', '007')
+        Rule.__init__(self)
         self.left_token = token.identifier
         self.right_token = token.is_keyword

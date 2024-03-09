@@ -29,8 +29,8 @@ class Rule(WhitespaceRule):
        The end of the range
     '''
 
-    def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        WhitespaceRule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, oStart, oEnd):
+        WhitespaceRule.__init__(self)
         self.lTokens = lTokens
         self.oStart = oStart
         self.oEnd = oEnd

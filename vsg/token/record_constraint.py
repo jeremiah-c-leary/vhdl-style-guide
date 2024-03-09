@@ -2,15 +2,6 @@
 from vsg import parser
 
 
-class open_keyword(parser.keyword):
-    '''
-    unique_id = record_constraint : open_keyword
-    '''
-
-    def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
-
-
 class open_parenthesis(parser.open_parenthesis):
     '''
     unique_id = record_constraint : open_parenthesis

@@ -31,5 +31,5 @@ class rule_501(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'if_generate_statement', '501', lTokens)
+        Rule.__init__(self, lTokens)
         self.groups.append('case::keyword')

@@ -25,8 +25,8 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(structure.Rule):
        acceptable prefixes
     '''
 
-    def __init__(self, name, identifier, oStart, oEnd):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, oStart, oEnd):
+        structure.Rule.__init__(self)
         self.oStart = oStart
         self.oEnd = oEnd
         self.configuration_documentation_link = None

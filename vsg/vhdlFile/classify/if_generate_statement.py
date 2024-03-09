@@ -34,7 +34,9 @@ def classify(iToken, lObjects):
 
     iCurrent = utils.assign_next_token_required('if', token.if_keyword, iCurrent, lObjects)
 
-    ### Need to handle alternaive_label ###
+    if utils.are_next_consecutive_tokens([None, ':'], iCurrent, lObjects):
+        iCurrent = utils.assign_next_token(token.alternative_label_name, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token(token.alternative_label_colon, iCurrent, lObjects)
 
     iCurrent = condition.classify_until(['generate'], iCurrent, lObjects)
 
@@ -45,6 +47,10 @@ def classify(iToken, lObjects):
     while utils.is_next_token('elsif', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('elsif', token.elsif_keyword, iCurrent, lObjects)
 
+        if utils.are_next_consecutive_tokens([None, ':'], iCurrent, lObjects):
+            iCurrent = utils.assign_next_token(token.alternative_label_name, iCurrent, lObjects)
+            iCurrent = utils.assign_next_token(token.alternative_label_colon, iCurrent, lObjects)
+
         iCurrent = condition.classify_until(['generate'], iCurrent, lObjects)
 
         iCurrent = utils.assign_next_token_required('generate', token.generate_keyword, iCurrent, lObjects)
@@ -53,6 +59,11 @@ def classify(iToken, lObjects):
 
     if utils.is_next_token('else', iCurrent, lObjects):
         iCurrent = utils.assign_next_token_required('else', token.else_keyword, iCurrent, lObjects)
+
+        if utils.are_next_consecutive_tokens([None, ':'], iCurrent, lObjects):
+            iCurrent = utils.assign_next_token(token.alternative_label_name, iCurrent, lObjects)
+            iCurrent = utils.assign_next_token(token.alternative_label_colon, iCurrent, lObjects)
+
 
         iCurrent = utils.assign_next_token_required('generate', token.generate_keyword, iCurrent, lObjects)
 

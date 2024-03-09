@@ -36,8 +36,8 @@ class testRuleMethods(unittest.TestCase):
     def test_rule_id(self):
         oRule = rule.Rule()
         self.assertFalse(oRule.identifier)
-        oRule.id = 'rule id 001'
-        self.assertEqual(oRule.id, 'rule id 001')
+        oRule.identifier = 'rule id 001'
+        self.assertEqual(oRule.identifier, 'rule id 001')
 
     def test_rule_solution(self):
         oRule = rule.Rule()
@@ -73,7 +73,7 @@ class testRuleMethods(unittest.TestCase):
 
         lExpected = []
         lExpected.append(mock.call('INFO: This is a debug message'))
-        
+
         oRule._print_debug_message(sString)
 
         mock_stdout.write.assert_has_calls(lExpected)
@@ -86,8 +86,8 @@ class testRuleMethods(unittest.TestCase):
         dExpected = {}
         dExpected['disable'] = False
         dExpected['fixable'] = True
-        dExpected['indentSize'] = 2
-        dExpected['indentStyle'] = 'spaces'
+        dExpected['indent_size'] = 2
+        dExpected['indent_style'] = 'spaces'
         dExpected['phase'] = 3
         dExpected['severity'] = 'Error'
         dActual = oRule.get_configuration()
@@ -111,7 +111,9 @@ class testRuleMethods(unittest.TestCase):
         self.assertEqual(oRule._get_solution(1), 'Solution Line 1')
 
     def test_get_violations_w_vsg_output_method(self):
-        oRule = rule.Rule('xyz', '001')
+        oRule = rule.Rule()
+        oRule.name = 'xyz'
+        oRule.identifier = '001'
         oRule.solution = 'Solution'
 
         self.assertFalse(oRule.has_violations())
@@ -154,7 +156,8 @@ class testRuleMethods(unittest.TestCase):
 
 
     def test_deprecated_rule(self):
-        oRule = deprecated_rule.Rule('some_rule', '001')
+        oRule = deprecated_rule.Rule()
+        oRule.unique_id = 'some_rule_001'
         oRule.message = ['This has been deprecated.']
 
         oConfig = config.New(command_line_args())

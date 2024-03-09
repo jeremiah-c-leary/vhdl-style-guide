@@ -31,5 +31,6 @@ class rule_002(insert_tokens_right_of_token_if_it_does_not_exist_before_token):
     '''
 
     def __init__(self):
-        insert_tokens_right_of_token_if_it_does_not_exist_before_token.__init__(self, 'package_body', '002', lInsertTokens, token.end_keyword, token.semicolon)
+        insert_tokens_right_of_token_if_it_does_not_exist_before_token.__init__(self, lInsertTokens, token.end_keyword, token.semicolon)
         self.solution = '*package body* keywords'
+        self.groups.append('structure::optional')

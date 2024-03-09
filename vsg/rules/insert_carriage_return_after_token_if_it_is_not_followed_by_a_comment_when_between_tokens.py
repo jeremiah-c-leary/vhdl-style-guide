@@ -30,8 +30,8 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when
        The ending token which defines the range
     '''
 
-    def __init__(self, name, identifier, lTokens, lTokenPairs):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, lTokenPairs):
+        structure.Rule.__init__(self)
         self.lTokens = lTokens
         self.lTokenPairs = lTokenPairs
         self.configuration_documentation_link = None

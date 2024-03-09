@@ -34,8 +34,8 @@ class multiline_structure(structure.Rule):
        );
     '''
 
-    def __init__(self, name, identifier, lTokenPairs):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokenPairs):
+        structure.Rule.__init__(self)
         self.phase = 1
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = True
@@ -79,6 +79,15 @@ class multiline_structure(structure.Rule):
         return lMyReturn
 
     def _analyze(self, lToi):
+        self.first_paren_new_line = utils.convert_boolean_to_yes_no(self.first_paren_new_line)
+        self.last_paren_new_line = utils.convert_boolean_to_yes_no(self.last_paren_new_line)
+        self.open_paren_new_line = utils.convert_boolean_to_yes_no(self.open_paren_new_line)
+        self.close_paren_new_line = utils.convert_boolean_to_yes_no(self.close_paren_new_line)
+        self.new_line_after_comma = utils.convert_boolean_to_yes_no(self.new_line_after_comma)
+        self.assign_on_single_line = utils.convert_boolean_to_yes_no(self.assign_on_single_line)
+        self.ignore_single_line = utils.convert_boolean_to_yes_no(self.ignore_single_line)
+        self.move_last_comment = utils.convert_boolean_to_yes_no(self.move_last_comment)
+
         for oToi in lToi:
 
             _check_first_paren_new_line(self, oToi)
@@ -223,7 +232,7 @@ def _check_open_paren_new_line(self, oToi):
 
         oToken = lTokens[iToken]
 
-        if isinstance(oToken, parser.open_parenthesis):
+        if isinstance(oToken, token.aggregate.open_parenthesis):
             bFirstParenFound = True
             if utils.is_token_at_end_of_line(iToken, lTokens):
                 if self.open_paren_new_line == 'no':
@@ -286,10 +295,10 @@ def _check_close_paren_new_line(self, oToi):
 
         oToken = lTokens[iToken]
 
-        if isinstance(oToken, parser.open_parenthesis):
+        if isinstance(oToken, token.aggregate.open_parenthesis):
             bFirstParenFound = True
 
-        if isinstance(oToken, parser.close_parenthesis):
+        if isinstance(oToken, token.aggregate.close_parenthesis):
             if utils.does_token_start_line(iToken, lTokens):
                 if self.close_paren_new_line == 'no':
                     iStart = utils.find_previous_non_whitespace_token(iToken - 1, lTokens)

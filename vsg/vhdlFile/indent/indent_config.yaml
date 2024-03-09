@@ -428,7 +428,10 @@ indent:
         return_statement:
             return_keyword:
                 token : current
-                after : current
+                after : '+1'
+            semicolon:
+                token : current
+                after : '-1'
         selected_force_assignment:
             with_keyword:
                 token : current
@@ -467,9 +470,15 @@ indent:
                 token : current
                 after : current
         simple_variable_assignment:
-            target:
+            simple_name:
                 token : current
                 after : current
+            aggregate_open_parenthesis:
+                token : current
+                after : '+1'
+            aggregate_close_parenthesis:
+                token : '-1'
+                after : '-1'
         simple_waveform_assignment:
             target:
                 token : current
@@ -497,6 +506,7 @@ indent:
                 token : current
                 after : current
                 token_after_library_clause: '+1'
+                token_if_no_matching_library_clause: '+1'
         variable_assignment_statement:
             label:
                 token : current

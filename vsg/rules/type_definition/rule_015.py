@@ -29,6 +29,6 @@ class rule_015(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, 'type', '015', lTokens)
+        token_prefix.__init__(self, lTokens)
         self.prefixes = ['t_']
         self.solution = 'Type identifiers'

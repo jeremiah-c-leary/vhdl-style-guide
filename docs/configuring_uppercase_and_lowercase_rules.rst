@@ -4,27 +4,183 @@
 Configuring Uppercase and Lowercase Rules
 -----------------------------------------
 
-There are several rules that enforce either uppercase or lowercase.
-The default for all such rules is :code:`lowercase`.
-The decision was motivated by the fact, that the VHDL language is case insensitive.
-Having the same default for all case rules also results in less documentation and code to maintain.
-The default value for each of these case rules can be overridden using a configuration.
+There are several rules that enforce upper_or_lower, uppercase or lowercase.
 
-Overriding Default Lowercase Enforcement
-########################################
+There are several options to these rules:
 
-The default lowercase setting can be changed using a configuration.
+.. |case_option| replace::
+   :code:`case`
 
-For example the rule constant_002 can be changed to enforce uppercase using the following configuration:
+.. |upper_value| replace::
+   :code:`upper`
+
+.. |lower_value| replace::
+   :code:`lower`
+
+.. |upper_or_lower_value| replace::
+   :code:`upper_or_lower`
+
+.. |camelCase_value| replace::
+   :code:`camelCase`
+
+.. |PascalCase_value| replace::
+   :code:`PascalCase`
+
+.. |upper_snake_case_value| replace::
+   :code:`UPPER_SNAKE_CASE`
+
+.. |lower_snake_case_value| replace::
+   :code:`lower_snake_case`
+
+.. |case_option__upper| replace::
+   |upper_value| = Enforce upper case
+
+.. |case_option__lower| replace::
+   |lower_value| = Enforce lower case
+
+.. |case_option__upper_or_lower| replace::
+   |upper_or_lower_value| = Allow upper or lower case
+
+.. |case_option__camelCase| replace::
+   |camelCase_value| = Enforce camelCase
+
+.. |case_option__PascalCase| replace::
+   |PascalCase_value| = Enforce PascalCase
+
+.. |case_values| replace::
+   |upper_value|, |lower_value|, |upper_or_lower_value|, |camelCase_value|, |PascalCase_value|
+
+.. |case_default_value| replace::
+   |lower_value|
+
+.. |prefix_exceptions_option| replace::
+   :code:`prefix_exceptions`
+
+.. |pe_values| replace::
+   List of strings
+
+.. |pe_default_value| replace::
+   Empty list
+
+.. |pe_description| replace::
+   Enforce exception case on prefix if encountered.
+
+.. |suffix_exceptions_option| replace::
+   :code:`suffix_exceptions`
+
+.. |se_values| replace::
+   List of strings
+
+.. |se_default_value| replace::
+   Empty list
+
+.. |se_description| replace::
+   Enforce exception case on suffix if encountered.
+
+.. |case_exceptions_option| replace::
+   :code:`case_exceptions`
+
+.. |ce_values| replace::
+   List of strings
+
+.. |ce_default_value| replace::
+   Empty list
+
+.. |ce_description| replace::
+   Enforce case for items in the list.
+
++----------------------------+------------------------+----------------------+-----------------------------------+
+| Option                     | Values                 | Default Value        | Description                       |
++============================+========================+======================+===================================+
+| |case_option|              | |case_values|          | |case_default_value| | * |case_option__upper|            |
+|                            |                        |                      | * |case_option__lower|            |
+|                            |                        |                      | * |case_option__upper_or_lower|   |
+|                            |                        |                      | * |case_option__camelCase|        |
+|                            |                        |                      | * |case_option__PascalCase|       |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |prefix_exceptions_option| | |pe_values|            | |pe_default_value|   | |pe_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |suffix_exceptions_option| | |se_values|            | |se_default_value|   | |se_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+| |case_exceptions_option|   | |ce_values|            | |ce_default_value|   | |ce_description|                  |
++----------------------------+------------------------+----------------------+-----------------------------------+
+
+
+This is an example of how to configure these options.
 
 .. code-block:: yaml
 
    rule :
-     constant_002 :
-        case : 'upper'
+     architecture_004:
+        case: 'lower'
+        prefix_exceptions:
+          - 'G_'
+        suffix_exceptions:
+          - '_G'
+        case_exceptions:
+          = 'IEEE'
 
-Changing Multiple Case Rules
-############################
+The following code snippet is used in the following examples:
+
+.. code-block:: vhdl
+
+   constant c_DATA_width : positive := 32;
+   constant addr_WIDTH_c : positive := 8;
+
+.. NOTE:: The following examples use rule `constant_004`.
+
+Example: |case_option| set to |lower_value|
+###########################################
+
+.. code-block:: vhdl
+
+   constant c_data_width : positive := 32;
+   constant addr_width_c : positive := 8;
+
+Example: |case_option| set to |upper_value|
+###########################################
+
+.. code-block:: vhdl
+
+   constant C_DATA_WIDTH : positive := 32;
+   constant ADDR_WIDTH_C : positive := 8;
+
+Example: |case_option| set to |upper_or_lower_value|
+####################################################
+
+This option will not perform any updates to the code as the case could be either upper or lower.
+
+.. code-block:: vhdl
+
+   constant c_DATA_width : positive := 32;
+   constant addr_WIDTH_c : positive := 8;
+
+Example: |case_option| set to |upper_value| and |prefix_exceptions_option| set to :code:`c_`
+############################################################################################
+
+.. code-block:: vhdl
+
+   constant c_DATA_WIDTH : positive := 32;
+   constant ADDR_WIDTH_C : positive := 8;
+
+Example: |case_option| set to |upper_value| and |suffix_exceptions_option| set to :code:`_c`
+############################################################################################
+
+.. code-block:: vhdl
+
+   constant C_DATA_WIDTH : positive := 32;
+   constant ADDR_WIDTH_c : positive := 8;
+
+Example: |case_option| set to |upper_value| and |case_exceptions_option| set to :code:`addr_WIDTH_c`
+####################################################################################################
+
+.. code-block:: vhdl
+
+   constant C_DATA_WIDTH : positive := 32;
+   constant addr_WIDTH_c : positive := 8;
+
+Example: Changing Multiple Case Rules
+#####################################
 
 If there are a lot of case rules you want to change, you can use the global option to reduce the size of the configuration.
 For example, if you want to uppercase everything except the entity name, you could write the following configuration:
@@ -36,41 +192,6 @@ For example, if you want to uppercase everything except the entity name, you cou
        case : 'upper'
      entity_008 :
        case : 'lower'
-
-Adding Prefix and Suffix Exceptions
-###################################
-
-Some rules allow for prefixes and suffixes to be cased differently than the rest of the identifier.
-This is performed by changing the `prefix_exceptions` and `suffix_exceptions` parameters.
-The default values for these are an empty list.
-
-If they are set and if the prefix and/or suffix are encountered, then the exact prefix/suffix will be validated along with the case of the rest of the string.
-
-.. code-block:: yaml
-
-   rule :
-     constant_007 :
-        case : 'lower'
-        prefix_exceptions :
-          - 'G_'
-
-.. code-block:: yaml
-
-   rule :
-     constant_007 :
-        case : 'lower'
-        suffix_exceptions :
-          - '_G'
-
-.. code-block:: yaml
-
-   rule :
-     constant_007 :
-        case : 'lower'
-        prefix_exceptions :
-          - 'G_'
-        suffix_exceptions :
-          - '_G'
 
 Rules Enforcing Case
 ####################
@@ -88,6 +209,10 @@ Rules Enforcing Case
 * `architecture_020 <architecture_rules.html#architecture-020>`_
 * `architecture_021 <architecture_rules.html#architecture-021>`_
 * `architecture_028 <architecture_rules.html#architecture-028>`_
+
+* `assert_500 <assert_rules.html#assert-500>`_
+* `assert_501 <assert_rules.html#assert-501>`_
+* `assert_502 <assert_rules.html#assert-502>`_
 
 * `attribute_500 <attribute_rules.html#attribute-500>`_
 
@@ -171,6 +296,7 @@ Rules Enforcing Case
 * `function_013 <function_rules.html#function-013>`_
 * `function_014 <function_rules.html#function-014>`_
 * `function_017 <function_rules.html#function-017>`_
+* `function_501 <function_rules.html#function-501>`_
 * `function_502 <function_rules.html#function-502>`_
 * `function_506 <function_rules.html#function-506>`_
 
@@ -278,6 +404,8 @@ Rules Enforcing Case
 * `report_statement_500 <report_statement_rules.html#report-statement-500>`_
 * `report_statement_501 <report_statement_rules.html#report-statement-501>`_
 
+* `return_statement_500 <return_statement_rules.html#return-statement-500>`_
+
 * `selected_assignment_500 <selected_assignment_rules.html#selected-assignment-500>`_
 * `selected_assignment_501 <selected_assignment_rules.html#selected-assignment-501>`_
 * `selected_assignment_502 <selected_assignment_rules.html#selected-assignment-502>`_
@@ -285,6 +413,10 @@ Rules Enforcing Case
 
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_
+
+* `subtype_500 <../subtype_rules.html#subtype-500>`_
+* `subtype_501 <../subtype_rules.html#subtype-501>`_
+* `subtype_502 <../subtype_rules.html#subtype-502>`_
 
 * `type_002 <type_rules.html#type-002>`_
 * `type_004 <type_rules.html#type-004>`_

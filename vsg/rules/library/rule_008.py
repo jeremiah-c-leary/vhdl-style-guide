@@ -11,6 +11,8 @@ class rule_008(token_indent):
     '''
     This rule checks the indent of the **use** keyword.
 
+    |configuring_use_clause_indenting_link|
+
     **Violation**
 
     .. code-block:: vhdl
@@ -29,4 +31,4 @@ class rule_008(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, 'library', '008', lTokens)
+        token_indent.__init__(self, lTokens)

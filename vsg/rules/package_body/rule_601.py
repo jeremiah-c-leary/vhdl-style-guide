@@ -29,6 +29,6 @@ class rule_601(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, 'package_body', '601', lTokens)
+        token_prefix.__init__(self, lTokens)
         self.prefixes = ['pkg_']
         self.solution = 'Package identifier'

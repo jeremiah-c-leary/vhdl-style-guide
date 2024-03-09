@@ -60,7 +60,7 @@ class rule_002(alignment.Rule):
     '''
 
     def __init__(self):
-        alignment.Rule.__init__(self, 'after', '002')
+        alignment.Rule.__init__(self)
         self.solution = 'Align **after** keyword.'
         self.disable = True
         self.subphase = 2
@@ -69,15 +69,19 @@ class rule_002(alignment.Rule):
         self.lTokens = [token.waveform_element.after_keyword]
         ## Stuff below is from original keyword_alignment_rule
 
-        self.compact_alignment = True
+        self.compact_alignment = 'yes'
         self.configuration.append('compact_alignment')
-        self.blank_line_ends_group = True
+        self.blank_line_ends_group = 'yes'
         self.configuration.append('blank_line_ends_group')
-        self.comment_line_ends_group = True
+        self.comment_line_ends_group = 'yes'
         self.configuration.append('comment_line_ends_group')
 
 
     def analyze(self, oFile):
+        self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
+        self.blank_line_ends_group = utils.convert_yes_no_option_to_boolean(self.blank_line_ends_group)
+        self.comment_line_ends_group = utils.convert_yes_no_option_to_boolean(self.comment_line_ends_group)
+
         lPreToi = oFile.get_tokens_bounded_by(self.oStart, self.oEnd)
         lToi = []
 

@@ -32,4 +32,4 @@ class rule_007(Rule):
        type state_machine is (idle, write, read, done);
     '''
     def __init__(self):
-        Rule.__init__(self, 'type', '007', lTokens)
+        Rule.__init__(self, lTokens)

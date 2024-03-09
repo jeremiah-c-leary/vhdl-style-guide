@@ -31,6 +31,6 @@ class rule_502(token_case_in_range_bounded_by_tokens):
     '''
 
     def __init__(self):
-        token_case_in_range_bounded_by_tokens.__init__(self, 'attribute_declaration', '502', lTokens, oStartToken, oEndToken)
+        token_case_in_range_bounded_by_tokens.__init__(self, lTokens, oStartToken, oEndToken)
         self.groups.append('case::name')
         self.configuration.append('case_exceptions')

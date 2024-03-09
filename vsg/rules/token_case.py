@@ -21,8 +21,8 @@ class token_case(case.Rule):
        The token types to check the case on.
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        case.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        case.Rule.__init__(self)
         self.solution = None
         self.phase = 6
         self.case = 'lower'
@@ -48,5 +48,6 @@ class token_case(case.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lTokens[0].set_value(dAction['value'])
-        oViolation.set_tokens(lTokens)
+        if dAction['value'] is not None:
+            lTokens[0].set_value(dAction['value'])
+            oViolation.set_tokens(lTokens)

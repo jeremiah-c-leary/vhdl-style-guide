@@ -24,8 +24,8 @@ class Rule(WhitespaceRule):
        Token to use as an exclusion.
     '''
 
-    def __init__(self, name, identifier):
-        WhitespaceRule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        WhitespaceRule.__init__(self)
         self.lTokens = []
         self.oFirstToken = None
         self.oExceptToken = None

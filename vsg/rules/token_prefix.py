@@ -8,7 +8,7 @@ from vsg.rule_group import naming
 
 class token_prefix(naming.Rule):
     '''
-    Checks the case for words.
+    Checks the prefix for words.
 
     Parameters
     ----------
@@ -26,13 +26,15 @@ class token_prefix(naming.Rule):
        acceptable prefixes
     '''
 
-    def __init__(self, name, identifier, lTokens):
-        naming.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        naming.Rule.__init__(self)
         self.lTokens = lTokens
         self.prefixes = None
         self.configuration.append('prefixes')
         self.fixable = False
         self.disable = True
+        self.exceptions = []
+        self.configuration.append('exceptions')
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching(self.lTokens)
@@ -41,9 +43,17 @@ class token_prefix(naming.Rule):
         lPrefixLower = []
         for sPrefix in self.prefixes:
             lPrefixLower.append(sPrefix.lower())
+
+        lExceptionsLower = []
+        for sException in self.exceptions:
+            lExceptionsLower.append(sException.lower())
+
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_value().lower()
+            if sToken in lExceptionsLower:
+                continue
+
             bValid = False
             for sPrefix in lPrefixLower:
                 if sToken.startswith(sPrefix.lower()):
@@ -58,8 +68,8 @@ class token_prefix(naming.Rule):
         if oViolation.get_action() == 'remove_whitespace':
             oViolation.set_tokens([lTokens[1]])
         elif oViolation.get_action() == 'adjust_whitespace':
-            lTokens[0].set_value(lTokens[1].get_indent() * self.indentSize * ' ')
+            lTokens[0].set_value(lTokens[1].get_indent() * self.indent_size * ' ')
             oViolation.set_tokens(lTokens)
         elif oViolation.get_action() == 'add_whitespace':
-            rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent() * self.indentSize)
+            rules_utils.insert_whitespace(lTokens, 0, lTokens[0].get_indent() * self.indent_size)
             oViolation.set_tokens(lTokens)

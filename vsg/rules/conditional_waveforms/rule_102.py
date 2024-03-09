@@ -24,4 +24,4 @@ class rule_102(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'conditional_waveforms', '102', [token.else_keyword])
+        Rule.__init__(self, [token.else_keyword])

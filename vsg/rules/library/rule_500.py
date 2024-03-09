@@ -31,6 +31,6 @@ class rule_500(token_case):
     '''
 
     def __init__(self):
-        token_case.__init__(self, 'library', '500', lTokens)
+        token_case.__init__(self, lTokens)
         self.groups.append('case::name')
         self.configuration.append('case_exceptions')
