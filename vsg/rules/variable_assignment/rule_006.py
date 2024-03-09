@@ -5,7 +5,7 @@ from vsg import token
 from vsg.rules import remove_lines_starting_with_token_between_token_pairs
 
 lTokens = []
-lTokens.append([token.simple_variable_assignment.target, token.simple_variable_assignment.semicolon])
+lTokens.append([token.simple_variable_assignment.simple_name, token.simple_variable_assignment.semicolon])
 
 oRemoveToken = parser.comment
 

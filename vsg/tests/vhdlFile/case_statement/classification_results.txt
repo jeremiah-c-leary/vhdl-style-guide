@@ -187,7 +187,7 @@
 <class 'vsg.token.choices.bar'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_statement_alternative.assignment'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -198,7 +198,7 @@
 <class 'vsg.token.choices.bar'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_statement_alternative.assignment'>
-<class 'vsg.token.simple_variable_assignment.target'>
+<class 'vsg.token.simple_variable_assignment.simple_name'>
 <class 'vsg.token.simple_variable_assignment.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
