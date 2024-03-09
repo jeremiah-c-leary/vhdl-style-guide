@@ -80,7 +80,7 @@ This rule was deprecated and replaced with rules:
 subtype_004
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes in subtype identifiers.
 The default new subtype prefix is *st\_*.
@@ -198,7 +198,7 @@ This rule checks the **is** keyword has proper case.
 subtype_600
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes in subtype identifiers.
 The default new subtype suffix is *\_st*.

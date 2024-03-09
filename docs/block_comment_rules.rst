@@ -23,7 +23,7 @@ Block Comment Rules
 block_comment_001
 #################
 
-|phase_1| |disabled| |error| |structure|
+|phase_1| |disabled| |error| |unfixable| |structure|
 
 This rule checks the block comment header is correct.
 
@@ -50,7 +50,7 @@ This rule checks the block comment header is correct.
 block_comment_002
 #################
 
-|phase_1| |disabled| |error| |structure|
+|phase_1| |disabled| |error| |unfixable| |structure|
 
 This rule checks the **comment_left** attribute exists for all comments.
 
@@ -77,7 +77,7 @@ This rule checks the **comment_left** attribute exists for all comments.
 block_comment_003
 #################
 
-|phase_1| |disabled| |error| |structure|
+|phase_1| |disabled| |error| |unfixable| |structure|
 
 This rule checks the block comment footer is correct.
 

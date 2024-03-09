@@ -303,7 +303,7 @@ This rule checks the indent of multiline constants that do not contain arrays.
 constant_015
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on constant identifiers.
 The default constant prefix is *c\_*.
@@ -482,7 +482,7 @@ This rule checks the alignment of assignment keywords in constant declarations.
 constant_600
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on constant identifiers.
 The default constant suffix is *\_c*.

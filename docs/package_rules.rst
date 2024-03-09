@@ -335,7 +335,7 @@ This rule checks the indent of the end package declaration.
 package_016
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on package identifiers.
 The default package suffix is *_pkg*.
@@ -357,7 +357,7 @@ The default package suffix is *_pkg*.
 package_017
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on package identifiers.
 The default package prefix is *pkg_*.

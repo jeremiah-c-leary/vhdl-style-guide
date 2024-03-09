@@ -91,7 +91,7 @@ The indent of the comment will be set to the indent of the current line.
 comment_012
 ###########
 
-|phase_1| |disabled| |warning| |structure|
+|phase_1| |disabled| |warning| |unfixable| |structure|
 
 This rule checks for user defined keywords in comments.
 

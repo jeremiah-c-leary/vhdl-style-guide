@@ -368,7 +368,7 @@ This rule checks the indent of the **when** keyword in generate case statements.
 generate_017
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on generate statement labels.
 The default prefix is *gen\_*.
@@ -637,7 +637,7 @@ This rule checks the **end** keyword has the proper case.
 generate_600
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on generate statement labels.
 The default suffix is *\_gen*.
@@ -659,7 +659,7 @@ The default suffix is *\_gen*.
 generate_601
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on generate parameter identifiers.
 The default generate prefix is *gv\_*.
@@ -681,7 +681,7 @@ The default generate prefix is *gv\_*.
 generate_602
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on generate parameter identifiers.
 The default generate suffix is *\_gv*.

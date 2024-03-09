@@ -396,7 +396,7 @@ The default style is :code:`no_code`.
 process_016
 ###########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks the process has a label.
 
@@ -836,7 +836,7 @@ edge configuration
 process_030
 ###########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for a single signal per line in a sensitivity list that is not the last one.
 The sensitivity list is required by the compiler, but provides no useful information to the reader.
@@ -1008,7 +1008,7 @@ This rule checks the alignment of inline comments between the process begin and 
 process_036
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on process labels.
 The default prefix is *proc\_*.
@@ -1149,7 +1149,7 @@ This rule checks the colons are in the same column for all attribute specificati
 process_600
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on process labels.
 The default suffix is *\_proc*.

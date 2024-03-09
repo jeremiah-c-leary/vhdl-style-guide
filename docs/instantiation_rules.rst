@@ -491,7 +491,7 @@ This rule checks for the **component** keyword for a component instantiation.
 instantiation_034
 #################
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for component versus direct instantiations.
 
@@ -549,7 +549,7 @@ This rule checks the semicolon is not on its own line.
 instantiation_600
 #################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on instantiation labels.
 The default suffix is *_inst*.
@@ -571,7 +571,7 @@ The default suffix is *_inst*.
 instantiation_601
 #################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on instantiation labels.
 The default prefix is *inst_*.
