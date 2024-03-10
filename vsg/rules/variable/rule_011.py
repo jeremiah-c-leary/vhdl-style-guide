@@ -9,6 +9,7 @@ lTokens.append(token.variable_declaration.identifier)
 
 lNames = []
 lNames.append(parser.todo)
+lNames.append(token.simple_variable_assignment.simple_name)
 lNames.append(token.simple_variable_assignment.target)
 lNames.append(token.selected_variable_assignment.target)
 lNames.append(token.conditional_variable_assignment.target)
