@@ -322,23 +322,10 @@ This rule checks for a single space between the colon and the **for** keyword.
 generate_015
 ############
 
-|phase_1| |error| |structure|
+This rule has been replaced with the following rules:
 
-This rule checks the generate label and the **generate** keyword are on the same line.
-Keeping the label and generate on the same line reduces excessive indenting.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   ram_array :
-     for i in 0 to 7 generate
-
-**Fix**
-
-.. code-block:: vhdl
-
-   ram_array : for i in 0 to 7 generate
+* `generate_020 <generate_rules.html#generate-020>`_
+* `generate_021 <generate_rules.html#generate-021>`_
 
 generate_016
 ############
@@ -433,6 +420,47 @@ This rule checks the **end** keyword is on its own line.
    ram_array : for i in 0 to 7 generate
      a <= b;
    end generate;
+
+generate_020
+############
+
+|phase_1| |error| |structure|
+
+This rule checks a label and the colon are on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label
+   :
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label :
+
+generate_021
+############
+
+|phase_1| |error| |structure|
+
+This rule checks a label colon is on the same line as the **case**, **if**, and **for** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label :
+   case
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label
+   : case
 
 generate_400
 ############

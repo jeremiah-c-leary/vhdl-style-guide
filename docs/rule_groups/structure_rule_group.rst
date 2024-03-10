@@ -66,8 +66,9 @@ Rules Enforcing Structure Rule Group
 * `function_018 <../function_rules.html#function-018>`_
 * `function_019 <../function_rules.html#function-019>`_
 * `generate_011 <../generate_rules.html#generate-011>`_
-* `generate_015 <../generate_rules.html#generate-015>`_
 * `generate_019 <../generate_rules.html#generate-019>`_
+* `generate_020 <../generate_rules.html#generate-020>`_
+* `generate_021 <../generate_rules.html#generate-021>`_
 * `generic_010 <../generic_rules.html#generic-010>`_
 * `generic_013 <../generic_rules.html#generic-013>`_
 * `generic_016 <../generic_rules.html#generic-016>`_
