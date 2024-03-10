@@ -11,7 +11,7 @@ class rule_015(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self, 'generate', '015')
+        deprecated_rule.Rule.__init__(self)
         self.message.append('Rule ' + self.unique_id + ' has been replaced with the following rules:')
         self.message.append('  * generate_020')
         self.message.append('  * generate_021')

@@ -30,5 +30,5 @@ class rule_021(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, 'generate', '021', lTokens)
+        Rule.__init__(self, lTokens)
         self.subphase = 2
