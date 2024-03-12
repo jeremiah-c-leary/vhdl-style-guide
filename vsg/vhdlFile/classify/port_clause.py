@@ -15,7 +15,7 @@ def detect(iToken, lObjects):
         return classify(iToken, lObjects)
     return iToken
 
-
+@utils.tagged_production
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("port", token.port_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)

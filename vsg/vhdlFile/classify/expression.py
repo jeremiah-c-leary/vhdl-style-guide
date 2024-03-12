@@ -4,7 +4,7 @@ from vsg import parser
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import bit_string_literal, external_name
 
-
+@utils.tagged_production
 def classify(iToken, lObjects):
     """
     expression ::=
@@ -63,4 +63,5 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
                 continue
             utils.assign_special_tokens(lObjects, iCurrent, oType)
             iCurrent += 1
+    utils.tag_production(iToken, iCurrent, lObjects, __name__)
     return iCurrent
