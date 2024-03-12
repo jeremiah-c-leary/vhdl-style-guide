@@ -14,6 +14,41 @@ from vsg.token import (
 from vsg.token.ieee.std_logic_1164 import types
 
 
+def tag_production(iStart, iEnd, lObjects, sName, verbose=0):
+    """ Tag the first and last token in the token list to indicate
+    when we enter and leave the specified production rule.
+
+    Parameters:
+
+        iStart (int): index of the first token of the production `sName`
+
+        iEnd (int): index of the token **following  the last token** of the production `sName` (i.e. the last token is ``iEnd-1``)
+
+        lObjects (list): list of tokens indexed by `iStart` and `iEnd`
+
+        sName (str): name of the production rule. If the name contains a dot-separated path (i.e.
+            'item1.item2.name'), only the last element of the path will be used. This is useful when
+            using  the module ``__name__`` as `sName`.
+
+    """
+    sName = sName.rsplit('.')[-1]  # keep only last element of the module hierarchy
+    # Tag the starting token
+    oToken = lObjects[find_next_non_whitespace_token(iStart, lObjects)]  # skip leading comments and whitespaces to keep them out of the production
+    assert not oToken.enter_prod, f"Tried to add a enter_classify name {sName} on Token {oToken} which already has {oToken.enter_prod}"
+    oToken.enter_prod.insert(0, sName)
+    # Tag the ending token
+    oToken = lObjects[iEnd - 1]
+    if verbose and oToken.leave_prod:
+        print(f"Tried to add a leave_classify name {sName} on Token {oToken} which already has {oToken.leave_prod}")
+    oToken.leave_prod.insert(0, sName)
+
+def tagged_production(func):
+    def prod(iToken, lObjects):
+        iCurrent = func(iToken, lObjects)
+        tag_production(iToken, iCurrent, lObjects, func.__module__)
+        return iCurrent
+    return prod
+
 def assign_tokens_until(sToken, token, iToken, lObjects):
     iCurrent = iToken
     while not is_next_token(sToken, iCurrent, lObjects):
