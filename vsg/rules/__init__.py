@@ -133,6 +133,7 @@ from vsg.rules import ranges
 from vsg.rules import record_type_definition
 from vsg.rules import report_statement
 from vsg.rules import reserved
+from vsg.rules import return_statement
 from vsg.rules import selected_assignment
 from vsg.rules import sequential
 from vsg.rules import signal

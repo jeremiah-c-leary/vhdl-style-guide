@@ -333,7 +333,7 @@ This rule checks for consistent capitalization of type names.
 type_015
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes in user defined type identifiers.
 The default new type prefix is *t\_*.
@@ -551,7 +551,7 @@ This rule checks for consistent capitalization of enumerated types.
 type_600
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes in user defined type identifiers.
 The default new type suffix is *\_t*.

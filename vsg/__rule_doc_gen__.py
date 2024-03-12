@@ -161,6 +161,7 @@ def generate_icons(oRule):
     sIcons += create_phase_icon(oRule)
     sIcons += create_disabled_icon(oRule)
     sIcons += create_severity_icon(oRule)
+    sIcons += create_unfixable_icon(oRule)
     sIcons += create_group_icons(oRule)
     return [sIcons]
 
@@ -180,6 +181,14 @@ def create_disabled_icon(oRule):
 def create_severity_icon(oRule):
     sReturn = ' '
     sReturn += ('|' + oRule.severity.name.lower() + '|')
+    return sReturn
+
+
+def create_unfixable_icon(oRule):
+    sReturn = ''
+    if not oRule.fixable:
+        sReturn += (' ')
+        sReturn += ('|unfixable|')
     return sReturn
 
 

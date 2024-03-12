@@ -263,7 +263,7 @@ This rule checks for consistent capitalization of alias designators.
 alias_declaration_600
 #####################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on alias designators.
 
@@ -288,7 +288,7 @@ Default prefix is *a\_*.
 alias_declaration_601
 #####################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on alias designators.
 

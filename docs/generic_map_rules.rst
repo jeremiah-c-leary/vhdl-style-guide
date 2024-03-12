@@ -190,7 +190,7 @@ This rule checks for a single space after the **=>** keyword in generic maps.
 generic_map_008
 ###############
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for positional generics.
 Positional ports and generics are subject to problems when the position of the underlying component changes.
@@ -218,7 +218,7 @@ Use explicit port mapping.
 generic_map_600
 ###############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on generic identifiers in generic maps
 The default generic suffix is *\_g*.
@@ -248,7 +248,7 @@ The default generic suffix is *\_g*.
 generic_map_601
 ###############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on generic identifiers in generic maps
 The default generic suffix is *\g_*.

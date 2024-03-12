@@ -133,7 +133,7 @@ This rule checks for at least a single space before the colon.
 signal_007
 ##########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for default assignments in signal declarations.
 
@@ -154,7 +154,7 @@ This rule checks for default assignments in signal declarations.
 signal_008
 ##########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on signal identifiers.
 Default signal prefix is *s\_*.
@@ -459,7 +459,7 @@ This rule checks alignment of multiline constraints in signal declarations.
 signal_600
 ##########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on signal identifiers.
 Default signal suffix is *\_s*.
