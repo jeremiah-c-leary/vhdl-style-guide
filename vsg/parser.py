@@ -20,6 +20,8 @@ class item:
         self.base_token, self.sub_token = self.update_token_types()
         self.filename = None
         self.iId = None
+        self.enter_prod = []  # list of productions that start at this token
+        self.leave_prod = []  # list of productions that exit at this token
 
     def update_token_types(self):
         try:
