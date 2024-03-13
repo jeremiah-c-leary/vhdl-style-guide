@@ -1,7 +1,7 @@
 - id: vsg
   name: fix VHDL style
   description: VHDL Style Guide
-  entry: vsg --fix --jobs=1
+  entry: vsg
   language: python
   types:
     - file
