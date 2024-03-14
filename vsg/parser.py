@@ -100,13 +100,22 @@ class item:
         return self.filename
 
     def convert_to(self, token):
-        oReturn = token(self.value)
+        # If we are given an token instance, just copy over the attributes from the original token
+        if isinstance(token, item):
+            oReturn = token
+        # If we are given a token class, create an instance from it and then copy the attributes
+        elif issubclass(token, item):
+            oReturn = token(self.value)
+        else:
+            raise RuntimeError('Invalid replacement token')
         oReturn.indent = self.indent
         oReturn.hierarchy = self.hierarchy
         oReturn.context = self.context
         oReturn.code_tags = self.code_tags
         oReturn.base_token, self.sub_token = self.update_token_types()
         oReturn.filename = self.filename
+        oReturn.enter_prod = self.enter_prod
+        oReturn.leave_prod = self.leave_prod
         oReturn.iId = self.iId
         oReturn.base_token, oReturn.sub_token = oReturn.update_token_types()
         return oReturn
