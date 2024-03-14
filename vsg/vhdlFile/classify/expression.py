@@ -63,5 +63,5 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
                 continue
             utils.assign_special_tokens(lObjects, iCurrent, oType)
             iCurrent += 1
-    utils.tag_production(iToken, iCurrent, lObjects, __name__)
+    # utils.tag_production(iToken, iCurrent, lObjects, __name__)
     return iCurrent
