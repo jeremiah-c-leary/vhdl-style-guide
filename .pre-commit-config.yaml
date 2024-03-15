@@ -1,0 +1,65 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks: []
+      #- id: black
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks: []
+      #- id: isort
+
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.1.0
+    hooks: []
+      #- id: add-trailing-comma
+
+  # repeat as above changes may cause rework
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks: []
+      #- id: black
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.4
+    hooks: []
+      #- id: forbid-tabs
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      #- id: check-json
+      #- id: check-executables-have-shebangs
+      #- id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: fix-byte-order-marker
+      #- id: end-of-file-fixer
+      #- id: trailing-whitespace
+      #- id: fix-encoding-pragma
+
+  - repo: https://github.com/mgedmin/check-manifest
+    rev: "0.49"
+    hooks:
+      - id: check-manifest
+        additional_dependencies:
+          - setuptools-git-versioning
+        args:
+          - --no-build-isolation
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks: []
+      #- id: codespell
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks: []
+      #- id: flake8
