@@ -13,6 +13,7 @@ from vsg.token import exponent
 from vsg.token import logical_operator
 from vsg.token import miscellaneous_operator
 from vsg.token import multiplying_operator
+from vsg.token import predefined_attribute
 from vsg.token import relational_operator
 from vsg.token import resolution_indication
 from vsg.token import sign
@@ -415,6 +416,14 @@ def post_token_assignments(lTokens):
 
             elif sValue.lower() == 'signed':
                 lTokens[iToken] = types.signed(sValue)
+
+            elif sValue.lower() == 'unsigned':
+                lTokens[iToken] = types.unsigned(sValue)
+
+        elif isinstance(oToken, type_mark.attribute):
+            sValue = oToken.get_value()
+            if sValue.lower() in predefined_attribute.values:
+                lTokens[iToken] = predefined_attribute.keyword(sValue)
 
         elif isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
