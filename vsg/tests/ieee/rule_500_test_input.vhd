@@ -2,10 +2,10 @@
 entity FIFO is
 
   generic (
-    G_GEN1 : std_logic,
-    G_GEN2 : std_logic_vector(3 downto 0),
-    G_GEN3 : integer,
-    G_GEN4 : signed(15 downto 0),
+    G_GEN1 : std_logic;
+    G_GEN2 : std_logic_vector(3 downto 0);
+    G_GEN3 : integer;
+    G_GEN4 : signed(15 downto 0);
     G_GEN5 : unsigned(7 downto 0)
   );
   port (
@@ -36,10 +36,10 @@ architecture rtl of fifo is
 
   component MY_COMP is
     generic (
-      G_GEN1 : std_logic,
-      G_GEN2 : std_logic_vector(3 downto 0),
-      G_GEN3 : integer,
-      G_GEN4 : signed(15 downto 0),
+      G_GEN1 : std_logic;
+      G_GEN2 : std_logic_vector(3 downto 0);
+      G_GEN3 : integer;
+      G_GEN4 : signed(15 downto 0);
       G_GEN5 : unsigned(7 downto 0)
     );
     port (
@@ -63,10 +63,10 @@ end architecture rtl;
 entity FIFO is
 
   generic (
-    G_GEN1 : STD_LOGIC,
-    G_GEN2 : STD_LOGIC_VECTOR(3 downto 0),
-    G_GEN3 : INTEGER,
-    G_GEN4 : SIGNED(15 downto 0),
+    G_GEN1 : STD_LOGIC;
+    G_GEN2 : STD_LOGIC_VECTOR(3 downto 0);
+    G_GEN3 : INTEGER;
+    G_GEN4 : SIGNED(15 downto 0);
     G_GEN5 : UNSIGNED(7 downto 0)
   );
   port (
@@ -97,10 +97,10 @@ architecture rtl of fifo is
 
   component MY_COMP is
     generic (
-      G_GEN1 : STD_LOGIC,
-      G_GEN2 : STD_LOGIC_VECTOR(3 downto 0),
-      G_GEN3 : INTEGER,
-      G_GEN4 : SIGNED(15 downto 0),
+      G_GEN1 : STD_LOGIC;
+      G_GEN2 : STD_LOGIC_VECTOR(3 downto 0);
+      G_GEN3 : INTEGER;
+      G_GEN4 : SIGNED(15 downto 0);
       G_GEN5 : UNSIGNED(7 downto 0)
     );
     port (
