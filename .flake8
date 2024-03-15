@@ -1,0 +1,7 @@
+[flake8]
+max-line-length = 160
+ignore =
+    # Whitespace before ':': conflict with black
+    E203
+    # Line break occurred before a binary operator: conflict with black
+    W503
