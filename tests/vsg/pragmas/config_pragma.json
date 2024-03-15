@@ -1,0 +1,28 @@
+{
+  "file_list":[
+    "tests/vsg/pragmas/pragmas.vhd"
+  ],
+  "pragma": {
+    "patterns": {
+      "open": [
+          "^\\s*--\\s+synthesis\\s+\\w+_on\\s*$",
+          "^\\s*--vhdl_comp_on\\s*$",
+          "^\\s*--\\s+RTL_SYNTHESIS\\s+ON\\s*$"
+      ],
+      "close": [
+          "^\\s*--\\s+synthesis\\s+\\w+_off\\s*$",
+          "^\\s*--vhdl_comp_off\\s*$",
+          "^\\s*--\\s+RTL_SYNTHESIS\\s+OFF\\s*$"
+      ],
+      "single": [
+          "^\\s*--\\s+synthesis\\s+\\w+\\s*$",
+          "^\\s*--\\s+synthesis\\s+\\w+\\s+\\w+\\s*$",
+          "^\\s*--\\s+pragma\\s+\\w+\\s*$",
+          "^\\s*--\\s+pragma\\s+\\w+\\s+\\w+\\s*$",
+          "^\\s*--\\s+altera\\s+\\w+\\s*$",
+          "^\\s*--\\s+synopsys\\s+\\w+\\s*$",
+          "^\\s*--\\s+synopsys\\s+\\w+\\s+\\w+\\s*$"
+      ]
+    }
+  }
+}

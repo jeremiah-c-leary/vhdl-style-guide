@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" hostname="Rimmer" failures="0" timestamp="2018-12-07T03:10:28" tests="1" time="0" name="vhdl-style-guide">
+  <properties>
+  </properties>
+  <testcase name="tests/vsg/junit/no_error.vhd" time="0">
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

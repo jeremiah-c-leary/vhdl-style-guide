@@ -16,5 +16,5 @@ vsg/version_info.*
 .vscode/
 
 # Ignore external repos used for tests
-vsg/tests/external_repos/repos
+tests/external_repos/repos
 

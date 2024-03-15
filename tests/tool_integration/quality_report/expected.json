@@ -1,0 +1,46 @@
+[
+  {
+    "description": "architecture_010 :: Add architecture keyword.",
+    "fingerprint": "d7d7dbe3e621c8b1b24736d6129912c0",
+    "severity": "critical",
+    "location": {
+      "path": "tests/tool_integration/quality_report/example.vhd",
+      "lines": {
+        "begin": 8
+      }
+    }
+  },
+  {
+    "description": "architecture_024 :: Add architecture simple name",
+    "fingerprint": "f211d13f445df7b18a06fd3e2d8edc38",
+    "severity": "critical",
+    "location": {
+      "path": "tests/tool_integration/quality_report/example.vhd",
+      "lines": {
+        "begin": 8
+      }
+    }
+  },
+  {
+    "description": "entity_015 :: Add *entity* keyword",
+    "fingerprint": "b487db29265bab5d6e0e2de973dd1ec6",
+    "severity": "critical",
+    "location": {
+      "path": "tests/tool_integration/quality_report/example.vhd",
+      "lines": {
+        "begin": 4
+      }
+    }
+  },
+  {
+    "description": "entity_019 :: Add entity simple name",
+    "fingerprint": "bb107b1e1208974f3bb3fa17e6b461cb",
+    "severity": "critical",
+    "location": {
+      "path": "tests/tool_integration/quality_report/example.vhd",
+      "lines": {
+        "begin": 4
+      }
+    }
+  }
+]

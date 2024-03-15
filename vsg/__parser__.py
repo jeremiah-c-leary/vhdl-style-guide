@@ -6,7 +6,7 @@ import sys
 from . import config
 from . import vhdlFile
 
-from vsg.tests import utils
+from tests import utils
 from .CustomArgumentParser import CustomArgumentParser
 
 

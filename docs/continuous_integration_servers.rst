@@ -91,7 +91,7 @@ An example of a code quality report is shown below:
        "fingerprint": "323039ccd1801791163d7a302cfd5b25",
        "severity": "critical",
        "location": {
-         "path": "vsg/tests/tool_integration/quality_report/example.vhd",
+         "path": "tests/tool_integration/quality_report/example.vhd",
          "lines": {
            "begin": 8
          }
