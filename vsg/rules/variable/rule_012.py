@@ -28,6 +28,6 @@ class rule_012(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.prefixes = ['v_']
         self.solution = 'Variable identifiers'

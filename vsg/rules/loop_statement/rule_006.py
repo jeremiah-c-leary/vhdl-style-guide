@@ -33,7 +33,7 @@ class rule_006(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, oFirstToken, oSecondToken)
+        super().__init__(oFirstToken, oSecondToken)
         self.solution = 'Add label for loop statement'
         self.fixable = False
         self.disable = True

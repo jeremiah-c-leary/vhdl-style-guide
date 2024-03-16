@@ -31,6 +31,6 @@ class rule_500(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.groups.append('case::name')
         self.configuration.append('case_exceptions')

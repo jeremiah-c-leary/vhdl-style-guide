@@ -33,7 +33,7 @@ class rule_014(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)
         self.subphase = 3
         self.phase = 5
         self.iIndentAfterParen = 0

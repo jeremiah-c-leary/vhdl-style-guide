@@ -29,7 +29,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(Rule):
     '''
 
     def __init__(self, lTokens, left_token, right_token, lUnless):
-        Rule.__init__(self, lTokens=lTokens, left_token=left_token, right_token=right_token)
+        super().__init__(lTokens=lTokens, left_token=left_token, right_token=right_token)
         self.lUnless = lUnless
 
     def _get_tokens_of_interest(self, oFile):

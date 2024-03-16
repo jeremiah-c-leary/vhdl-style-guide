@@ -26,4 +26,4 @@ class rule_101(Rule):
        a <= (others => (others => '0'));
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

@@ -37,6 +37,6 @@ class rule_200(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lAllowTokens)
+        super().__init__(lTokens, lAllowTokens)
         self.disable = True
         self.configuration.remove('style')

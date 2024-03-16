@@ -24,7 +24,7 @@ class blank_line_below_line_ending_with_several_possible_tokens(Rule):
     '''
 
     def __init__(self, lTokens, lAllowTokens=None):
-        Rule.__init__(self, lTokens, lAllowTokens)
+        super().__init__(lTokens, lAllowTokens)
 
     def _get_tokens_of_interest(self, oFile):
         if self.style.startswith('require_blank_line'):

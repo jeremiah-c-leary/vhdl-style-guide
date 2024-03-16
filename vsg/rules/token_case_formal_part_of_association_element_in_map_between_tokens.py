@@ -26,7 +26,7 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
     '''
 
     def __init__(self, sMapType, oStart, oEnd):
-        case.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 6
         self.case = 'lower'

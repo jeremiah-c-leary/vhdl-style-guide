@@ -36,6 +36,6 @@ class rule_401(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lAlign, oStart, oEnd, lUnless)
+        super().__init__(lAlign, oStart, oEnd, lUnless)
         self.solution = 'Align colon.'
         self.configuration.remove('separate_generic_port_alignment')

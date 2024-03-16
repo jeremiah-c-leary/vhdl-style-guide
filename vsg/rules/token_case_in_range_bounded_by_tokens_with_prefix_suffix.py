@@ -24,7 +24,7 @@ class token_case_in_range_bounded_by_tokens_with_prefix_suffix(rules.token_case_
     '''
 
     def __init__(self, lTokens, oStart, oEnd):
-        rules.token_case_with_prefix_suffix.__init__(self, lTokens=lTokens)
+        super().__init__(lTokens=lTokens)
         self.oStart = oStart
         self.oEnd = oEnd
 

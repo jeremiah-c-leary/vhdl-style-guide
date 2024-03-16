@@ -20,7 +20,7 @@ class Rule(rule):
     '''
 
     def __init__(self, lTokens, lAllowTokens=None):
-        rule.__init__(self, lTokens=lTokens, lAllowTokens=lAllowTokens)
+        super().__init__(lTokens=lTokens, lAllowTokens=lAllowTokens)
         self.lBetweenTokenPairs = None
 
     def _get_tokens_of_interest(self, oFile):

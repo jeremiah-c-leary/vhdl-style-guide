@@ -8,7 +8,7 @@ class mode(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class in_keyword(mode):
@@ -17,7 +17,7 @@ class in_keyword(mode):
     '''
 
     def __init__(self, sString):
-        mode.__init__(self, sString)
+        super().__init__(sString)
 
 
 class out_keyword(mode):
@@ -26,7 +26,7 @@ class out_keyword(mode):
     '''
 
     def __init__(self, sString):
-        mode.__init__(self, sString)
+        super().__init__(sString)
 
 
 class inout_keyword(mode):
@@ -35,7 +35,7 @@ class inout_keyword(mode):
     '''
 
     def __init__(self, sString):
-        mode.__init__(self, sString)
+        super().__init__(sString)
 
 
 class buffer_keyword(mode):
@@ -44,7 +44,7 @@ class buffer_keyword(mode):
     '''
 
     def __init__(self, sString):
-        mode.__init__(self, sString)
+        super().__init__(sString)
 
 
 class linkage_keyword(mode):
@@ -53,4 +53,4 @@ class linkage_keyword(mode):
     '''
 
     def __init__(self, sString):
-        mode.__init__(self, sString)
+        super().__init__(sString)

@@ -24,5 +24,5 @@ class rule_019(token_case):
     '''
 
     def __init__(self):
-        token_case.__init__(self, [token.of_keyword])
+        super().__init__([token.of_keyword])
         self.groups.append('case::keyword')

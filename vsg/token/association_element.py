@@ -8,7 +8,7 @@ class assignment(parser.assignment):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class formal_part(parser.item):
@@ -17,7 +17,7 @@ class formal_part(parser.item):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class actual_part(parser.item):
@@ -26,4 +26,4 @@ class actual_part(parser.item):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)

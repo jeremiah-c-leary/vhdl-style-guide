@@ -101,7 +101,7 @@ class rule_001(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.configuration.append('standard')
         self.standard = 'all'
         self.fixable = False

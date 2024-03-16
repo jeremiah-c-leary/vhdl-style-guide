@@ -19,7 +19,7 @@ class rule_001(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         # These are filled out when creating a new rule
         self.fixable = False
         self.solution = 'File empty.'

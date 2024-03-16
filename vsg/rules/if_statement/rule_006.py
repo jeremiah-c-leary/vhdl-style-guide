@@ -36,5 +36,5 @@ class rule_006(remove_excessive_blank_lines_below_line_ending_with_token):
         b <= '0'
     '''
     def __init__(self):
-        remove_excessive_blank_lines_below_line_ending_with_token.__init__(self, lTokens, iAllow=0, lOverrides=lOverrides)
+        super().__init__(lTokens, iAllow=0, lOverrides=lOverrides)
         self.configuration_documentation_link = None

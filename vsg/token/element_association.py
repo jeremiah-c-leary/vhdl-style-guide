@@ -8,4 +8,4 @@ class assignment(parser.assignment):
     '''
 
     def __init__(self, sString):
-        parser.assignment.__init__(self, sString)
+        super().__init__(sString)

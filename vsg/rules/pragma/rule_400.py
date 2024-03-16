@@ -31,5 +31,5 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, [token.open])
+        super().__init__([token.open])
         self.style = 'no_code'

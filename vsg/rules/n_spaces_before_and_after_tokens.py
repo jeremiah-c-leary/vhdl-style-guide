@@ -26,7 +26,7 @@ class n_spaces_before_and_after_tokens(whitespace.Rule):
     '''
 
     def __init__(self, iSpaces, lTokens, bNIsMinimum=False):
-        whitespace.Rule.__init__(self)
+        super().__init__()
         self.iSpaces = iSpaces
         self.lTokens = lTokens
         self.bNIsMinimum = bNIsMinimum

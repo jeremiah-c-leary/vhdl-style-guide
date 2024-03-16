@@ -42,5 +42,5 @@ class rule_011(token_prefix_between_tokens):
     '''
 
     def __init__(self):
-        token_prefix_between_tokens.__init__(self, lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
+        super().__init__(lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
         self.prefixes = ['i_', 'o_', 'io_']

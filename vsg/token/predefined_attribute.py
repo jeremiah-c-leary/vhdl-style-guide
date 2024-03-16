@@ -8,7 +8,7 @@ class keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class event_keyword(keyword):
@@ -16,7 +16,7 @@ class event_keyword(keyword):
     unique_id = predefined_attribute : event_keyword
     '''
     def __init__(self, sString):
-        keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 values = []

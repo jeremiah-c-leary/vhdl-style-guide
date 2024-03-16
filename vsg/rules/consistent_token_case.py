@@ -29,7 +29,7 @@ class consistent_token_case(case.Rule):
     '''
 
     def __init__(self, lTokens, lNames, lIgnore=None):
-        case.Rule.__init__(self)
+        super().__init__()
         self.subphase = 2
         self.lTokens = lTokens
         self.lNames = lNames

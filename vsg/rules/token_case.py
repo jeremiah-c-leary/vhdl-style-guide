@@ -22,7 +22,7 @@ class token_case(case.Rule):
     '''
 
     def __init__(self, lTokens):
-        case.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 6
         self.case = 'lower'

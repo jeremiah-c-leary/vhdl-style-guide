@@ -32,6 +32,6 @@ class rule_007(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.bInsertWhitespace = False
         self.subphase = 3

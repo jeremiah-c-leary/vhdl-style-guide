@@ -50,6 +50,6 @@ class rule_010(token_indent_unless_between_tokens):
     '''
 
     def __init__(self):
-        token_indent_unless_between_tokens.__init__(self, lTokens, lUnless)
+        super().__init__(lTokens, lUnless)
         self.phase = 4
         self.subphase = 3

@@ -25,5 +25,5 @@ class rule_017(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, token.type_keyword, token.identifier)
+        super().__init__(token.type_keyword, token.identifier)
         self.solution = 'Ensure identifier is on the same line as the *type* keyword.'

@@ -29,4 +29,4 @@ class rule_009(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, lTokens)
+        super().__init__(lTokens)

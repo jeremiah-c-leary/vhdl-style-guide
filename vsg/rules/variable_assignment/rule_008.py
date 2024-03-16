@@ -32,6 +32,6 @@ class rule_008(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)
         self.assignment_operator = token.simple_variable_assignment.assignment
         self.semicolon = token.simple_variable_assignment.semicolon

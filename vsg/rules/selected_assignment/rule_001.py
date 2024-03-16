@@ -35,5 +35,5 @@ class rule_001(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, bInsertSpace=True)
+        super().__init__(lTokens, bInsertSpace=True)
         self.solution = 'Removed carraige returns after with keyword'

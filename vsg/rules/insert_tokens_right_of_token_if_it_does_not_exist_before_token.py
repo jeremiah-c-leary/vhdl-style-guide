@@ -31,7 +31,7 @@ class insert_tokens_right_of_token_if_it_does_not_exist_before_token(structure.R
     '''
 
     def __init__(self, insert_tokens, anchor_token, end_token):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.insert_tokens = insert_tokens
         self.anchor_token = anchor_token
         self.end_token = end_token

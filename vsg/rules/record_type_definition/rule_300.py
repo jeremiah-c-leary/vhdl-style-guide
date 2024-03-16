@@ -30,4 +30,4 @@ class rule_300(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, [token.record_keyword])
+        super().__init__([token.record_keyword])

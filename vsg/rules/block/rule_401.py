@@ -41,7 +41,7 @@ class rule_401(align_tokens_in_region_between_tokens_unless_between_tokens):
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, lAlign, token.block_statement.block_keyword, token.block_statement.begin_keyword, lUnless)
+        super().__init__(lAlign, token.block_statement.block_keyword, token.block_statement.begin_keyword, lUnless)
         self.solution = 'Align colon.'
         self.subphase = 2
         self.configuration.remove('separate_generic_port_alignment')

@@ -12,4 +12,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

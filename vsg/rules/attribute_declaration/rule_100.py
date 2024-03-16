@@ -27,4 +27,4 @@ class rule_100(Rule):
        attribute max_delay : time;
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

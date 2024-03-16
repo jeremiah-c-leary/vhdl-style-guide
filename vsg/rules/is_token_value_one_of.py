@@ -11,7 +11,7 @@ class is_token_value_one_of(naming.Rule):
     '''
 
     def __init__(self, token):
-        naming.Rule.__init__(self)
+        super().__init__()
         self.names = []
         self.fixable = False
         self.disable = True

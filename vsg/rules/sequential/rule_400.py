@@ -38,7 +38,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lAlign, oStart, oEnd)
+        super().__init__(lAlign, oStart, oEnd)
         self.phase = 5
         self.subphase = 3
         self.solution = 'Align =>'

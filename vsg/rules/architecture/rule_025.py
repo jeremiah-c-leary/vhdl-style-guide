@@ -37,7 +37,7 @@ class rule_025(is_token_value_one_of):
     '''
 
     def __init__(self):
-        is_token_value_one_of.__init__(self, token.identifier)
+        super().__init__(token.identifier)
 
     def _get_solution(self, iLineNumber):
         return 'Architecture identifier must be from this list: ' + ', '.join(self.names)

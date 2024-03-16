@@ -30,5 +30,5 @@ class rule_101(Rule):
        attribute coordinate of comp_1     : component is (0.0, 17.5);
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.number_of_spaces = '>=1'

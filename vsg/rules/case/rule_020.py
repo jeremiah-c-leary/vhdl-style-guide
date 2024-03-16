@@ -29,5 +29,5 @@ class rule_020(remove_tokens):
     '''
 
     def __init__(self):
-        remove_tokens.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.solution = 'Remove Label'

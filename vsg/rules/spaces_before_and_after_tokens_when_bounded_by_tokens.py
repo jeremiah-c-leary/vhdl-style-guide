@@ -26,7 +26,7 @@ class spaces_before_and_after_tokens_when_bounded_by_tokens(whitespace.Rule):
     '''
 
     def __init__(self, lTokens, lBetween):
-        whitespace.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
         self.spaces_before = 1
         self.configuration.append('spaces_before')

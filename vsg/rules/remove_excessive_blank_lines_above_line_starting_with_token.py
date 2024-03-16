@@ -30,7 +30,7 @@ class remove_excessive_blank_lines_above_line_starting_with_token(blank_line.Rul
     '''
 
     def __init__(self, lTokens, iAllow=1, lOverrides=None):
-        blank_line.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Remove blank lines above'
         self.lTokens = lTokens
         self.iAllow = iAllow

@@ -41,5 +41,5 @@ class rule_025(token_suffix_between_tokens):
     '''
 
     def __init__(self):
-        token_suffix_between_tokens.__init__(self, lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
+        super().__init__(lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
         self.suffixes = ['_i', '_o', '_io']

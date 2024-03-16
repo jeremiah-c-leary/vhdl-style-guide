@@ -24,4 +24,4 @@ class rule_007(token_indent):
     '''
 
     def __init__(self):
-        token_indent.__init__(self, [token.begin_keyword])
+        super().__init__([token.begin_keyword])

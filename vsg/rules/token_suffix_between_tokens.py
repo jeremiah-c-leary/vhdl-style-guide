@@ -25,7 +25,7 @@ class token_suffix_between_tokens(Rule):
     '''
 
     def __init__(self, lTokens, oStart, oEnd):
-        Rule.__init__(self, lTokens=lTokens)
+        super().__init__(lTokens=lTokens)
         self.oStart = oStart
         self.oEnd = oEnd
 

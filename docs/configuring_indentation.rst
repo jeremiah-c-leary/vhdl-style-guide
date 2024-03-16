@@ -190,7 +190,7 @@ In this case, there is a file named `component_instantiation_statement.py` file:
        '''
    
        def __init__(self, sString):
-           parser.label.__init__(self, sString)
+           super().__init__(sString)
    
    
    class label_colon(parser.label_colon):
@@ -199,7 +199,7 @@ In this case, there is a file named `component_instantiation_statement.py` file:
        '''
    
        def __init__(self):
-           parser.label_colon.__init__(self)
+           super().__init__()
    
    
    class semicolon(parser.semicolon):
@@ -208,7 +208,7 @@ In this case, there is a file named `component_instantiation_statement.py` file:
        '''
    
        def __init__(self, sString=None):
-           parser.semicolon.__init__(self)
+           super().__init__()
 
 Export indent configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

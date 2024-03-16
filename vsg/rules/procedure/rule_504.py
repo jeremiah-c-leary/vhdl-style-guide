@@ -30,5 +30,5 @@ class rule_504(token_case_in_range_bounded_by_tokens):
     '''
 
     def __init__(self):
-        token_case_in_range_bounded_by_tokens.__init__(self, lTokens, oStartToken, oEndToken)
+        super().__init__(lTokens, oStartToken, oEndToken)
         self.groups.append('case::keyword')

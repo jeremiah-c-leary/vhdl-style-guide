@@ -60,7 +60,7 @@ class rule_002(alignment.Rule):
     '''
 
     def __init__(self):
-        alignment.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Align **after** keyword.'
         self.disable = True
         self.subphase = 2

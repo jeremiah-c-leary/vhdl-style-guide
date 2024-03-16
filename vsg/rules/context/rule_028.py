@@ -30,4 +30,4 @@ class rule_028(proposed_rule.Rule):
     '''
 
     def __init__(self):
-        proposed_rule.Rule.__init__(self)
+        super().__init__()

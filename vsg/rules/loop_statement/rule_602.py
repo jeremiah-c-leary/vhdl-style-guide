@@ -28,5 +28,5 @@ class rule_602(token_prefix_between_tokens):
     '''
 
     def __init__(self):
-        token_prefix_between_tokens.__init__(self, lTokens, token.iteration_scheme.for_keyword, token.parameter_specification.in_keyword)
+        super().__init__(lTokens, token.iteration_scheme.for_keyword, token.parameter_specification.in_keyword)
         self.prefixes = ['lv_']

@@ -32,7 +32,7 @@ class rule_100(whitespace.Rule):
     '''
 
     def __init__(self):
-        whitespace.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Undefined'
         self.phase = 2
         self.disable = False

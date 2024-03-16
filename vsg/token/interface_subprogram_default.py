@@ -7,7 +7,7 @@ class subprogram_name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class undefined_range(parser.undefined_range):
@@ -16,4 +16,4 @@ class undefined_range(parser.undefined_range):
     '''
 
     def __init__(self, sString='<>'):
-        parser.undefined_range.__init__(self)
+        super().__init__()

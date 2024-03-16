@@ -28,4 +28,4 @@ class rule_005(Rule):
        variable counter : integer;
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

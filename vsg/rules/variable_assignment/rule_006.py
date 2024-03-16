@@ -31,6 +31,6 @@ class rule_006(remove_lines_starting_with_token_between_token_pairs):
     '''
 
     def __init__(self):
-        remove_lines_starting_with_token_between_token_pairs.__init__(self, oRemoveToken, lTokens)
+        super().__init__(oRemoveToken, lTokens)
         self.solution = 'Remove comments inside variable assignment'
         self.fixable = False

@@ -28,6 +28,6 @@ class rule_600(token_suffix):
     '''
 
     def __init__(self):
-        token_suffix.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.suffixes = ['_v']
         self.solution = 'Variable identifiers'

@@ -23,7 +23,7 @@ class token_case_subtype_indication(rules.token_case):
     '''
 
     def __init__(self, lTokens, lEndTokens):
-        rules.token_case.__init__(self, lTokens=lTokens)
+        super().__init__(lTokens=lTokens)
         self.lEndTokens = lEndTokens
 
     def _get_tokens_of_interest(self, oFile):

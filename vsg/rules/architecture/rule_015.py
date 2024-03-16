@@ -29,4 +29,4 @@ class rule_015(blank_line_below_line_ending_with_token):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, [token.is_keyword])
+        super().__init__([token.is_keyword])

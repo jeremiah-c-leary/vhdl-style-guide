@@ -28,7 +28,7 @@ class remove_carriage_returns_between_token_pairs(structure.Rule):
     '''
 
     def __init__(self, lTokens, bInsertSpace=False):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

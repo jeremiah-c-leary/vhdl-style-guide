@@ -23,5 +23,5 @@ class rule_021(move_token_next_to_another_token):
     '''
 
     def __init__(self):
-        move_token_next_to_another_token.__init__(self, token.port_keyword, token.open_parenthesis)
+        super().__init__(token.port_keyword, token.open_parenthesis)
         self.solution = 'Move the ( to the same line as the *port* keyword.'

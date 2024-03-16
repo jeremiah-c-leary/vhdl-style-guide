@@ -28,4 +28,4 @@ class rule_104(Rule):
          label : for index in 0 to 100 loop
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

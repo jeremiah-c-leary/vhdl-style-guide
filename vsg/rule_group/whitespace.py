@@ -17,7 +17,7 @@ class Rule(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self)
+        super().__init__()
         self.phase = 2
         self.groups.append('whitespace')
         self.configuration_documentation_link = 'configuring_whitespace_rules_link'

@@ -24,7 +24,7 @@ class split_line_at_token(structure.Rule):
     '''
 
     def __init__(self, lTokens):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
         self.configuration_documentation_link = None
 

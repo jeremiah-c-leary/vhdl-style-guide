@@ -7,7 +7,7 @@ from vsg import violation
 class rule_001(rule.Rule):
 
   def __init__(self):
-      rule.Rule.__init__(self)
+      super().__init__()
       self.name = 'localized' # Force the rule's name, because it can't be extracted from the module
       self.phase = 1
       self.fixable = False  # User must split the file

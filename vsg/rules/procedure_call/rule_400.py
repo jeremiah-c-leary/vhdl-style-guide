@@ -31,5 +31,5 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)
         self.phase = 5

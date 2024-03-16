@@ -25,7 +25,7 @@ class token_suffix(naming.Rule):
     '''
 
     def __init__(self, lTokens):
-        naming.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
         self.suffixes = None
         self.configuration.append('suffixes')

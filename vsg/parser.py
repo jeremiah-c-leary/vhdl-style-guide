@@ -114,7 +114,7 @@ class todo(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 ###############################################################################
 # Base VHDL type classes
@@ -126,7 +126,7 @@ class preprocessor(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class type(item):
@@ -135,7 +135,7 @@ class type(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class function(item):
@@ -144,7 +144,7 @@ class function(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class tic(item):
@@ -153,7 +153,7 @@ class tic(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class attribute(item):
@@ -162,7 +162,7 @@ class attribute(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class event_keyword(item):
@@ -171,7 +171,7 @@ class event_keyword(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class bar(item):
@@ -180,7 +180,7 @@ class bar(item):
     '''
 
     def __init__(self, sString='|'):
-        item.__init__(self, '|' )
+        super().__init__('|' )
 
 
 class open_bracket(item):
@@ -189,7 +189,7 @@ class open_bracket(item):
     '''
 
     def __init__(self, sString='['):
-        item.__init__(self, '[')
+        super().__init__('[')
 
 
 class close_bracket(item):
@@ -198,7 +198,7 @@ class close_bracket(item):
     '''
 
     def __init__(self, sString=']'):
-        item.__init__(self, ']')
+        super().__init__(']')
 
 
 class question_mark(item):
@@ -207,7 +207,7 @@ class question_mark(item):
     '''
 
     def __init__(self):
-        item.__init__(self, '?')
+        super().__init__('?')
 
 
 class undefined_range(item):
@@ -216,7 +216,7 @@ class undefined_range(item):
     '''
 
     def __init__(self):
-        item.__init__(self, '<>')
+        super().__init__('<>')
 
 
 class error(item):
@@ -225,7 +225,7 @@ class error(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class carriage_return(item):
@@ -234,7 +234,7 @@ class carriage_return(item):
     '''
 
     def __init__(self):
-        item.__init__(self, '\n')
+        super().__init__('\n')
 
 
 class blank_line(item):
@@ -243,7 +243,7 @@ class blank_line(item):
     '''
 
     def __init__(self):
-        item.__init__(self, '')
+        super().__init__('')
 
 
 class none(item):
@@ -252,7 +252,7 @@ class none(item):
     '''
 
     def __init__(self):
-        item.__init__(self, None)
+        super().__init__(None)
 
 
 class keyword(item):
@@ -261,7 +261,7 @@ class keyword(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class identifier(item):
@@ -270,7 +270,7 @@ class identifier(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class designator(item):
@@ -279,7 +279,7 @@ class designator(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class colon(item):
@@ -288,7 +288,7 @@ class colon(item):
     '''
 
     def __init__(self, sString=':'):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class comma(item):
@@ -297,7 +297,7 @@ class comma(item):
     '''
 
     def __init__(self, sString=','):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class dot(item):
@@ -306,7 +306,7 @@ class dot(item):
     '''
 
     def __init__(self, sString='.'):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(item):
@@ -315,7 +315,7 @@ class semicolon(item):
     '''
 
     def __init__(self, sString=';'):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class whitespace(item):
@@ -324,7 +324,7 @@ class whitespace(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
         self.has_tab = False
 
 
@@ -334,7 +334,7 @@ class comment(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
         self.is_block_comment = False
         self.block_comment_indent = None
         self.has_tab = False
@@ -346,7 +346,7 @@ class logical_name(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class selected_name(item):
@@ -355,7 +355,7 @@ class selected_name(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class name(item):
@@ -364,7 +364,7 @@ class name(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class simple_name(item):
@@ -373,7 +373,7 @@ class simple_name(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class subtype_indication(item):
@@ -382,7 +382,7 @@ class subtype_indication(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class condition(item):
@@ -391,7 +391,7 @@ class condition(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class expression(item):
@@ -400,7 +400,7 @@ class expression(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class static_expression(expression):
@@ -409,7 +409,7 @@ class static_expression(expression):
     '''
 
     def __init__(self, sString):
-        expression.__init__(self, sString)
+        super().__init__(sString)
 
 
 class label(item):
@@ -418,7 +418,7 @@ class label(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class label_colon(colon):
@@ -427,7 +427,7 @@ class label_colon(colon):
     '''
 
     def __init__(self):
-        colon.__init__(self)
+        super().__init__()
 
 
 class open_parenthesis(item):
@@ -436,7 +436,7 @@ class open_parenthesis(item):
     '''
 
     def __init__(self):
-        item.__init__(self, '(')
+        super().__init__('(')
 
 
 class close_parenthesis(item):
@@ -445,7 +445,7 @@ class close_parenthesis(item):
     '''
 
     def __init__(self):
-        item.__init__(self, ')')
+        super().__init__(')')
 
 
 class equal_sign(item):
@@ -454,7 +454,7 @@ class equal_sign(item):
     '''
 
     def __init__(self):
-        item.__init__(self, '=')
+        super().__init__('=')
 
 
 class character_literal(item):
@@ -463,7 +463,7 @@ class character_literal(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class string_literal(item):
@@ -472,7 +472,7 @@ class string_literal(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class operator_symbol(string_literal):
@@ -481,7 +481,7 @@ class operator_symbol(string_literal):
     '''
 
     def __init__(self, sString):
-        string_literal.__init__(self, sString)
+        super().__init__(sString)
 
 
 class signature(item):
@@ -490,7 +490,7 @@ class signature(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class type_mark(item):
@@ -499,7 +499,7 @@ class type_mark(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class subtype_definition(item):
@@ -508,7 +508,7 @@ class subtype_definition(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class target(item):
@@ -517,7 +517,7 @@ class target(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class assignment(item):
@@ -526,7 +526,7 @@ class assignment(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class choices(item):
@@ -535,7 +535,7 @@ class choices(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class beginning_of_file(item):
@@ -544,7 +544,7 @@ class beginning_of_file(item):
     '''
 
     def __init__(self):
-        item.__init__(self, 'beginning_of_file')
+        super().__init__('beginning_of_file')
 
 
 class slice_name():
@@ -565,4 +565,4 @@ class integer(item):
     '''
 
     def __init__(self, sString):
-        item.__init__(self, sString)
+        super().__init__(sString)

@@ -24,4 +24,4 @@ class rule_100(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, [token.when_keyword])
+        super().__init__([token.when_keyword])

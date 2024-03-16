@@ -8,7 +8,7 @@ class token_indent_between_tokens(Rule):
     '''
 
     def __init__(self, lTokens, oStart, oEnd, bInclusive=False):
-        Rule.__init__(self, lTokens=lTokens)
+        super().__init__(lTokens=lTokens)
         self.oStart = oStart
         self.oEnd = oEnd
         self.bInclusive = bInclusive

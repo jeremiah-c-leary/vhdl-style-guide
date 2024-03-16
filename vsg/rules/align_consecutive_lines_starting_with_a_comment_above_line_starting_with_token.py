@@ -26,7 +26,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
     '''
 
     def __init__(self, token, bIncrement=False):
-        alignment.Rule.__init__(self)
+        super().__init__()
         self.phase = 4
         self.subphase = 2
         self.token = token

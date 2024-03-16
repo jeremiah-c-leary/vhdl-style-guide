@@ -29,7 +29,7 @@ class rule_001(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, oToken)
+        super().__init__(oToken)
         self.action = 'same_line'
         self.subphase = 3
         self.insert_whitespace = True

@@ -8,7 +8,7 @@ class identifier(parser.identifier):
     '''
 
     def __init__(self, sString):
-        parser.identifier.__init__(self, sString)
+        super().__init__(sString)
 
 
 class equal_sign(parser.item):
@@ -17,7 +17,7 @@ class equal_sign(parser.item):
     '''
 
     def __init__(self):
-        parser.item.__init__(self, '=')
+        super().__init__('=')
 
 
 class physical_literal(parser.item):
@@ -26,7 +26,7 @@ class physical_literal(parser.item):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -35,4 +35,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self):
-        parser.semicolon.__init__(self)
+        super().__init__()

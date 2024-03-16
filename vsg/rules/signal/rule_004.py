@@ -27,5 +27,5 @@ class rule_004(token_case_with_prefix_suffix):
     '''
 
     def __init__(self):
-        token_case_with_prefix_suffix.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.groups.append('case::name')

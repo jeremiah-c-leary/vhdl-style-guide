@@ -8,7 +8,7 @@ class target(parser.target):
     '''
 
     def __init__(self, sString):
-        parser.target.__init__(self, sString)
+        super().__init__(sString)
 
 
 class simple_name(parser.simple_name):
@@ -17,7 +17,7 @@ class simple_name(parser.simple_name):
     '''
 
     def __init__(self, sString):
-        parser.simple_name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class assignment(parser.assignment):
@@ -26,7 +26,7 @@ class assignment(parser.assignment):
     '''
 
     def __init__(self, sString):
-        parser.assignment.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -35,7 +35,7 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()
 
 
 class aggregate_open_parenthesis(parser.open_parenthesis):
@@ -44,7 +44,7 @@ class aggregate_open_parenthesis(parser.open_parenthesis):
     '''
 
     def __init__(self, sString):
-        parser.open_parenthesis.__init__(self)
+        super().__init__()
 
 
 class aggregate_comma(parser.comma):
@@ -53,7 +53,7 @@ class aggregate_comma(parser.comma):
     '''
 
     def __init__(self, sString):
-        parser.comma.__init__(self)
+        super().__init__()
 
 
 class aggregate_close_parenthesis(parser.close_parenthesis):
@@ -62,4 +62,4 @@ class aggregate_close_parenthesis(parser.close_parenthesis):
     '''
 
     def __init__(self, sString):
-        parser.close_parenthesis.__init__(self)
+        super().__init__()

@@ -26,7 +26,7 @@ class formal_part_in_association_element_between_tokens(structure.Rule):
     '''
 
     def __init__(self, oStart, oEnd):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.fixable = False
         self.oStart = oStart
         self.oEnd = oEnd

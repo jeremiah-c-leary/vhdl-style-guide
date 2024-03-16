@@ -24,7 +24,7 @@ class token_indent(indent.Rule):
     '''
 
     def __init__(self, lTokens):
-        indent.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

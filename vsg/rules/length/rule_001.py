@@ -10,4 +10,4 @@ class rule_001(line_length):
     '''
 
     def __init__(self):
-        line_length.__init__(self)
+        super().__init__()

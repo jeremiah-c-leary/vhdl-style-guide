@@ -17,6 +17,6 @@ class Rule(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self)
+        super().__init__()
         self.phase = 4
         self.groups.append('indent')

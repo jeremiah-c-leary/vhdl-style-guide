@@ -35,5 +35,5 @@ class rule_009(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lTokenPairs)
+        super().__init__(lTokens, lTokenPairs)
         self.solution = 'Move multiple port assignments to their own lines.'

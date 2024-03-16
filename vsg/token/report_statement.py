@@ -8,7 +8,7 @@ class label(parser.label):
     '''
 
     def __init__(self, sString):
-        parser.label.__init__(self, sString)
+        super().__init__(sString)
 
 
 class label_colon(parser.label_colon):
@@ -17,7 +17,7 @@ class label_colon(parser.label_colon):
     '''
 
     def __init__(self):
-        parser.label_colon.__init__(self)
+        super().__init__()
 
 
 class report_keyword(parser.keyword):
@@ -26,7 +26,7 @@ class report_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class severity_keyword(parser.keyword):
@@ -35,7 +35,7 @@ class severity_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -44,4 +44,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

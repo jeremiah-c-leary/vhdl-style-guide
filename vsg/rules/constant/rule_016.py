@@ -34,7 +34,7 @@ class rule_016(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)
         self.assignment_operator = token.constant_declaration.assignment_operator
         self.semicolon = token.constant_declaration.semicolon
         self.phase = 5

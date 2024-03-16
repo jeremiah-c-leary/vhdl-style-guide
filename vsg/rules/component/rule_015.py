@@ -9,5 +9,5 @@ class rule_015(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self)
+        super().__init__()
         self.message.append('Rule ' + self.unique_id + ' is required per the LRM.')

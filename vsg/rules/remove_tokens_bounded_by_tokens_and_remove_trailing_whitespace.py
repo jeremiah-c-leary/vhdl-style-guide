@@ -25,7 +25,7 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(structure.R
     '''
 
     def __init__(self, left_token, right_token):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.left_token = left_token
         self.right_token = right_token
         self.configuration_documentation_link = None

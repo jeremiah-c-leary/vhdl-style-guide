@@ -8,7 +8,7 @@ class record_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_keyword(parser.keyword):
@@ -17,7 +17,7 @@ class end_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_record_keyword(parser.keyword):
@@ -26,7 +26,7 @@ class end_record_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class record_type_simple_name(parser.simple_name):
@@ -35,4 +35,4 @@ class record_type_simple_name(parser.simple_name):
     '''
 
     def __init__(self, sString):
-        parser.simple_name.__init__(self, sString)
+        super().__init__(sString)

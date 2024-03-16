@@ -17,7 +17,7 @@ class Rule(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self)
+        super().__init__()
         self.phase = 3
         self.groups.append('blank_line')
         self.configuration_documentation_link = 'configuring_blank_lines_link'

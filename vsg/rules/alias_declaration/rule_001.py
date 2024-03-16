@@ -26,5 +26,5 @@ class rule_001(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.solution = 'Move *alias* keyword and code after end to the next line'

@@ -44,7 +44,7 @@ class rule_002(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.parenthesis = 'insert'
         self.configuration.append('parenthesis')
         self.subphase = 2

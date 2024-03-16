@@ -7,7 +7,7 @@ class procedure_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class function_keyword(parser.keyword):
@@ -16,4 +16,4 @@ class function_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)

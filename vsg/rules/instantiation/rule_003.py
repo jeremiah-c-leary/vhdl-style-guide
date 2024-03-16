@@ -26,4 +26,4 @@ class rule_003(Rule):
        U_FIFO : FIFO
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

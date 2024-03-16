@@ -8,7 +8,7 @@ class shift_operator(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class sll(shift_operator):
@@ -17,7 +17,7 @@ class sll(shift_operator):
     '''
 
     def __init__(self, sString):
-        shift_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class srl(shift_operator):
@@ -26,7 +26,7 @@ class srl(shift_operator):
     '''
 
     def __init__(self, sString):
-        shift_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class sla(shift_operator):
@@ -35,7 +35,7 @@ class sla(shift_operator):
     '''
 
     def __init__(self, sString):
-        shift_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class sra(shift_operator):
@@ -44,7 +44,7 @@ class sra(shift_operator):
     '''
 
     def __init__(self, sString):
-        shift_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class rol(shift_operator):
@@ -53,7 +53,7 @@ class rol(shift_operator):
     '''
 
     def __init__(self, sString):
-        shift_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class ror(shift_operator):
@@ -62,4 +62,4 @@ class ror(shift_operator):
     '''
 
     def __init__(self, sString):
-        shift_operator.__init__(self, sString)
+        super().__init__(sString)

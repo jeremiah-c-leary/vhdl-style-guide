@@ -33,6 +33,6 @@ class rule_007(remove_excessive_blank_lines_above_line_starting_with_token):
       elsif (c = '1') then
     '''
     def __init__(self):
-        remove_excessive_blank_lines_above_line_starting_with_token.__init__(self, lTokens, iAllow=0, lOverrides=lOverrides)
+        super().__init__(lTokens, iAllow=0, lOverrides=lOverrides)
         self.solution = 'Remove blank line(s) before the *elsif* keyword.'
         self.configuration_documentation_link = None

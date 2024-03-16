@@ -8,7 +8,7 @@ class logical_operator(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class and_operator(logical_operator):
@@ -17,7 +17,7 @@ class and_operator(logical_operator):
     '''
 
     def __init__(self, sString):
-        logical_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class or_operator(logical_operator):
@@ -26,7 +26,7 @@ class or_operator(logical_operator):
     '''
 
     def __init__(self, sString):
-        logical_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class nand_operator(logical_operator):
@@ -35,7 +35,7 @@ class nand_operator(logical_operator):
     '''
 
     def __init__(self, sString):
-        logical_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class nor_operator(logical_operator):
@@ -44,7 +44,7 @@ class nor_operator(logical_operator):
     '''
 
     def __init__(self, sString):
-        logical_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class xor_operator(logical_operator):
@@ -53,7 +53,7 @@ class xor_operator(logical_operator):
     '''
 
     def __init__(self, sString):
-        logical_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class xnor_operator(logical_operator):
@@ -62,4 +62,4 @@ class xnor_operator(logical_operator):
     '''
 
     def __init__(self, sString):
-        logical_operator.__init__(self, sString)
+        super().__init__(sString)

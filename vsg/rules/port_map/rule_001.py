@@ -31,5 +31,5 @@ class rule_001(token_case_in_range_bounded_by_tokens):
     '''
 
     def __init__(self):
-        token_case_in_range_bounded_by_tokens.__init__(self, lTokens, oStart, oEnd)
+        super().__init__(lTokens, oStart, oEnd)
         self.groups.append('case::keyword')

@@ -8,7 +8,7 @@ class begin_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_keyword(parser.keyword):
@@ -17,7 +17,7 @@ class end_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class alternative_label(parser.label):
@@ -26,7 +26,7 @@ class alternative_label(parser.label):
     '''
 
     def __init__(self, sString):
-        parser.label.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -35,4 +35,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

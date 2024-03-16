@@ -19,7 +19,7 @@ class number_of_lines_between_tokens(length.Rule):
     '''
 
     def __init__(self, oLeftToken, oRightToken, iLines):
-        length.Rule.__init__(self)
+        super().__init__()
         self.length = iLines
         self.oLeftToken = oLeftToken
         self.oRightToken = oRightToken

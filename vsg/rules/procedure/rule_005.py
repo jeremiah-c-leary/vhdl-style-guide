@@ -45,4 +45,4 @@ class rule_005(token_indent_between_tokens):
     '''
 
     def __init__(self):
-        token_indent_between_tokens.__init__(self, lTokens, oStart, oEnd)
+        super().__init__(lTokens, oStart, oEnd)

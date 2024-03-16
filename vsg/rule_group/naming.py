@@ -17,7 +17,7 @@ class Rule(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self)
+        super().__init__()
         self.phase = 7
         self.groups.append('naming')
         self.configuration_documentation_link = 'configuring_prefix_and_suffix_rules_link'

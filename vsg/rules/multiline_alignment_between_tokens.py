@@ -27,7 +27,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
     '''
 
     def __init__(self, lTokenPairs, bExcludeLastToken=False):
-        alignment.Rule.__init__(self)
+        super().__init__()
         self.phase = 4
         self.lTokenPairs = lTokenPairs
         self.bExcludeLastToken = bExcludeLastToken

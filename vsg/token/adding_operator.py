@@ -8,7 +8,7 @@ class operator(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class plus(operator):
@@ -17,7 +17,7 @@ class plus(operator):
     '''
 
     def __init__(self, sString='+'):
-        operator.__init__(self, '+')
+        super().__init__('+')
 
 
 class minus(operator):
@@ -26,7 +26,7 @@ class minus(operator):
     '''
 
     def __init__(self, sString='-'):
-        operator.__init__(self, '-')
+        super().__init__('-')
 
 
 class concat(operator):
@@ -35,4 +35,4 @@ class concat(operator):
     '''
 
     def __init__(self, sString='&'):
-        operator.__init__(self, '&')
+        super().__init__('&')

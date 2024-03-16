@@ -34,7 +34,7 @@ class rule_001(block_rule.Rule):
     '''
 
     def __init__(self):
-        block_rule.Rule.__init__(self)
+        super().__init__()
         self.header_left = None
         self.header_left_repeat = '-'
         self.header_string = None

@@ -37,7 +37,7 @@ class rule_005(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
+        super().__init__(oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
         self.subphase = 1
         self.solution = 'record type simple name'
         self.groups.append('structure::optional')

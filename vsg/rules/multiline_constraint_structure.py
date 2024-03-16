@@ -18,7 +18,7 @@ class multiline_constraint_structure(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.phase = 1
         self.lTokenPairs = None
         self.configuration_documentation_link = 'configuring_multiline_constraint_rules_link'

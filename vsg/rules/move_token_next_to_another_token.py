@@ -29,7 +29,7 @@ class move_token_next_to_another_token(structure.Rule):
     '''
 
     def __init__(self, anchor_token, token_to_move):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.subphase = 2
         self.anchor_token = anchor_token
         self.token_to_move = token_to_move

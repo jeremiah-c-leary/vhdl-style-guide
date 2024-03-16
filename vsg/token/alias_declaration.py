@@ -8,7 +8,7 @@ class alias_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class alias_designator(parser.designator):
@@ -17,7 +17,7 @@ class alias_designator(parser.designator):
     '''
 
     def __init__(self, sString):
-        parser.designator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class colon(parser.colon):
@@ -26,7 +26,7 @@ class colon(parser.colon):
     '''
 
     def __init__(self, sString=':'):
-        parser.colon.__init__(self)
+        super().__init__()
 
 
 class is_keyword(parser.keyword):
@@ -35,7 +35,7 @@ class is_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -44,4 +44,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

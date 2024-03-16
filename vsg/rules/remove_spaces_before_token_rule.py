@@ -24,7 +24,7 @@ class remove_spaces_before_token_rule(whitespace.Rule):
 
     def __init__(self, oToken, bIgnoreIfLineStart=False):
 
-        whitespace.Rule.__init__(self)
+        super().__init__()
         self.oToken = oToken
         self.bIgnoreIfLineStart = bIgnoreIfLineStart
 

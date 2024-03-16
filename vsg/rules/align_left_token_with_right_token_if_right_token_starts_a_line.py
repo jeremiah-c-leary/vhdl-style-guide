@@ -31,7 +31,7 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(alignment.R
     '''
 
     def __init__(self, left_token, right_token):
-        alignment.Rule.__init__(self)
+        super().__init__()
         self.left_token = left_token
         self.right_token = right_token
         self.configuration.append('align_to')

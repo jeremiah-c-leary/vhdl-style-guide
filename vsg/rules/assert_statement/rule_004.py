@@ -42,5 +42,5 @@ class rule_004(split_line_at_token_when_between_tokens_unless_token_is_found):
     '''
 
     def __init__(self):
-        split_line_at_token_when_between_tokens_unless_token_is_found.__init__(self, lTokens, oStart, oEnd, oStop)
+        super().__init__(lTokens, oStart, oEnd, oStop)
         self.solution = "Place **severity** keyword on its own line."

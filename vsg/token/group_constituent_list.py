@@ -8,7 +8,7 @@ class comma(parser.comma):
     '''
 
     def __init__(self, sString=','):
-        parser.comma.__init__(self)
+        super().__init__()
 
 
 class group_constituent(parser.item):
@@ -17,5 +17,5 @@ class group_constituent(parser.item):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)
 

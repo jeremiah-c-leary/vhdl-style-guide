@@ -8,7 +8,7 @@ class process_label(parser.label):
     '''
 
     def __init__(self, sString):
-        parser.label.__init__(self, sString)
+        super().__init__(sString)
 
 
 class label_colon(parser.label_colon):
@@ -17,7 +17,7 @@ class label_colon(parser.label_colon):
     '''
 
     def __init__(self):
-        parser.label_colon.__init__(self)
+        super().__init__()
 
 
 class postponed_keyword(parser.keyword):
@@ -26,7 +26,7 @@ class postponed_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class process_keyword(parser.keyword):
@@ -35,7 +35,7 @@ class process_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class open_parenthesis(parser.open_parenthesis):
@@ -44,7 +44,7 @@ class open_parenthesis(parser.open_parenthesis):
     '''
 
     def __init__(self, sString='('):
-        parser.open_parenthesis.__init__(self)
+        super().__init__()
 
 
 class close_parenthesis(parser.close_parenthesis):
@@ -53,7 +53,7 @@ class close_parenthesis(parser.close_parenthesis):
     '''
 
     def __init__(self, sString=')'):
-        parser.close_parenthesis.__init__(self)
+        super().__init__()
 
 
 class is_keyword(parser.keyword):
@@ -62,7 +62,7 @@ class is_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class begin_keyword(parser.keyword):
@@ -71,7 +71,7 @@ class begin_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_keyword(parser.keyword):
@@ -80,7 +80,7 @@ class end_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_postponed_keyword(parser.keyword):
@@ -89,7 +89,7 @@ class end_postponed_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_process_keyword(parser.keyword):
@@ -98,7 +98,7 @@ class end_process_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_process_label(parser.label):
@@ -107,7 +107,7 @@ class end_process_label(parser.label):
     '''
 
     def __init__(self, sString):
-        parser.label.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -116,4 +116,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

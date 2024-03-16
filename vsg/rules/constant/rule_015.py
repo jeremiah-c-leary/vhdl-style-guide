@@ -28,5 +28,5 @@ class rule_015(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.prefixes = ['c_']

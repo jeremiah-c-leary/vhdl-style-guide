@@ -44,5 +44,5 @@ class rule_011(move_token_to_the_right_of_several_possible_tokens_if_it_exists_b
     '''
 
     def __init__(self):
-        move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens.__init__(self, oToken, lAnchorTokens, oStartToken, oEndToken)
+        super().__init__(oToken, lAnchorTokens, oStartToken, oEndToken)
         self.subphase = 3

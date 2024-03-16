@@ -41,7 +41,7 @@ class multiline_conditional_alignment(alignment.Rule):
     '''
 
     def __init__(self, lTokenPairs):
-        alignment.Rule.__init__(self)
+        super().__init__()
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
         self.configuration_documentation_link = 'configuring_conditional_multiline_indent_rules_link'

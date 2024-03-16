@@ -31,5 +31,5 @@ class rule_600(token_suffix_between_tokens):
     '''
 
     def __init__(self):
-        token_suffix_between_tokens.__init__(self, lTokens, token.generic_clause.open_parenthesis, token.generic_clause.close_parenthesis)
+        super().__init__(lTokens, token.generic_clause.open_parenthesis, token.generic_clause.close_parenthesis)
         self.suffixes = ['_g']

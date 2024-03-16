@@ -32,6 +32,6 @@ class rule_010(move_token_to_the_right_of_several_possible_tokens_if_it_exists_b
     '''
 
     def __init__(self):
-        move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens.__init__(self, oToken, lAnchorTokens, oStartToken, oEndToken, bInsertWhitespace=True)
+        super().__init__(oToken, lAnchorTokens, oStartToken, oEndToken, bInsertWhitespace=True)
         self.subphase = 2
         self.solution = 'Move context_simple_name next to *context* keyword'

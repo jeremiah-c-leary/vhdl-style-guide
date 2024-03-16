@@ -28,5 +28,5 @@ class rule_006(Rule):
        constant width     : integer := 32;
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.number_of_spaces = '>=1'

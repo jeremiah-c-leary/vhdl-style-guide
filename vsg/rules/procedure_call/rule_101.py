@@ -39,4 +39,4 @@ class rule_101(Rule):
        );
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens, oStart, oEnd)
+        super().__init__(lTokens, oStart, oEnd)

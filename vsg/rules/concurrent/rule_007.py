@@ -8,5 +8,5 @@ class rule_007(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self)
+        super().__init__()
         self.message.append('Rule ' + self.unique_id + ' has been renamed to conditional_waveforms_001.')

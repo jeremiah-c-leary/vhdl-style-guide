@@ -35,4 +35,4 @@ class rule_201(blank_line_below_line_ending_with_several_possible_tokens):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_several_possible_tokens.__init__(self, lTokens, lAllowTokens)
+        super().__init__(lTokens, lAllowTokens)

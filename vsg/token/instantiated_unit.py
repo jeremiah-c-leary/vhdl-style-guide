@@ -8,7 +8,7 @@ class component_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class component_name(parser.name):
@@ -17,7 +17,7 @@ class component_name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class entity_keyword(parser.keyword):
@@ -26,7 +26,7 @@ class entity_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class library_name(parser.name):
@@ -35,7 +35,7 @@ class library_name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class dot(parser.dot):
@@ -44,7 +44,7 @@ class dot(parser.dot):
     '''
 
     def __init__(self, sString):
-        parser.dot.__init__(self, sString)
+        super().__init__(sString)
 
 
 class entity_name(parser.name):
@@ -53,7 +53,7 @@ class entity_name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class open_parenthesis(parser.open_parenthesis):
@@ -62,7 +62,7 @@ class open_parenthesis(parser.open_parenthesis):
     '''
 
     def __init__(self, sString='('):
-        parser.open_parenthesis.__init__(self)
+        super().__init__()
 
 
 class architecture_identifier(parser.identifier):
@@ -71,7 +71,7 @@ class architecture_identifier(parser.identifier):
     '''
 
     def __init__(self, sString):
-        parser.identifier.__init__(self, sString)
+        super().__init__(sString)
 
 
 class close_parenthesis(parser.close_parenthesis):
@@ -80,7 +80,7 @@ class close_parenthesis(parser.close_parenthesis):
     '''
 
     def __init__(self, sString=')'):
-        parser.close_parenthesis.__init__(self)
+        super().__init__()
 
 
 class configuration_keyword(parser.keyword):
@@ -89,7 +89,7 @@ class configuration_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class configuration_name(parser.name):
@@ -98,5 +98,5 @@ class configuration_name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)
 

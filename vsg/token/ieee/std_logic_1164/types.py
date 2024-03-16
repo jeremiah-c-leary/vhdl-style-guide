@@ -8,7 +8,7 @@ class std_logic_vector(parser.type):
     '''
 
     def __init__(self, sString):
-        parser.type.__init__(self, sString)
+        super().__init__(sString)
 
 
 class std_ulogic_vector(parser.type):
@@ -17,7 +17,7 @@ class std_ulogic_vector(parser.type):
     '''
 
     def __init__(self, sString):
-        parser.type.__init__(self, sString)
+        super().__init__(sString)
 
 
 class std_ulogic(parser.type):
@@ -26,7 +26,7 @@ class std_ulogic(parser.type):
     '''
 
     def __init__(self, sString):
-        parser.type.__init__(self, sString)
+        super().__init__(sString)
 
 
 class std_logic(parser.type):
@@ -35,7 +35,7 @@ class std_logic(parser.type):
     '''
 
     def __init__(self, sString):
-        parser.type.__init__(self, sString)
+        super().__init__(sString)
 
 
 class integer(parser.type):
@@ -44,7 +44,7 @@ class integer(parser.type):
     '''
 
     def __init__(self, sString):
-        parser.type.__init__(self, sString)
+        super().__init__(sString)
 
 
 class signed(parser.type):
@@ -53,7 +53,7 @@ class signed(parser.type):
     '''
 
     def __init__(self, sString):
-        parser.type.__init__(self, sString)
+        super().__init__(sString)
 
 
 class unsigned(parser.type):
@@ -62,7 +62,7 @@ class unsigned(parser.type):
     '''
 
     def __init__(self, sString):
-        parser.type.__init__(self, sString)
+        super().__init__(sString)
 
 
 class natural(parser.type):
@@ -71,4 +71,4 @@ class natural(parser.type):
     '''
 
     def __init__(self, sString):
-        parser.type.__init__(self, sString)
+        super().__init__(sString)

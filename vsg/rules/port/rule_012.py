@@ -42,7 +42,7 @@ class rule_012(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Remove assignment'
         self.lTokens = lTokens
         self.oStart = token.port_clause.open_parenthesis

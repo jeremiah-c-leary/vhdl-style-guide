@@ -25,7 +25,7 @@ class remove_blank_lines_above_line_starting_with_token(blank_line.Rule):
     '''
 
     def __init__(self, lTokens):
-        blank_line.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

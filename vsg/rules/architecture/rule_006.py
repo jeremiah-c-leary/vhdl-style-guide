@@ -27,5 +27,5 @@ class rule_006(move_token_next_to_another_token):
     '''
 
     def __init__(self):
-        move_token_next_to_another_token.__init__(self, token.entity_name, token.is_keyword)
+        super().__init__(token.entity_name, token.is_keyword)
         self.solution = 'Ensure *is* keyword is on the same line as the entity name.'

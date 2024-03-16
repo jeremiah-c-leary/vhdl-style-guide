@@ -33,7 +33,7 @@ class align_tokens_in_region_between_tokens(alignment.Rule):
     '''
 
     def __init__(self, lTokens, left_token, right_token):
-        alignment.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
         self.left_token = left_token
         self.right_token = right_token

@@ -29,5 +29,5 @@ class rule_001(blank_line_above_line_starting_with_token):
          port (
     '''
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.style = 'no_blank_line'

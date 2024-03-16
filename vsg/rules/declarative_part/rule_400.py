@@ -41,7 +41,7 @@ class rule_400(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lAlign, None, None, lUnless)
+        super().__init__(lAlign, None, None, lUnless)
         self.solution = 'Align :='
         self.prerequisites.append(prerequisite.New('procedure_401'))
         self.prerequisites.append(prerequisite.New('architecture_026'))

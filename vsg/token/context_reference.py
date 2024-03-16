@@ -8,7 +8,7 @@ class keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class library_name(parser.selected_name):
@@ -17,7 +17,7 @@ class library_name(parser.selected_name):
     '''
 
     def __init__(self, sString):
-        parser.selected_name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class context_name(parser.selected_name):
@@ -26,7 +26,7 @@ class context_name(parser.selected_name):
     '''
 
     def __init__(self, sString):
-        parser.selected_name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class comma(parser.comma):
@@ -35,7 +35,7 @@ class comma(parser.comma):
     '''
 
     def __init__(self, sString=','):
-        parser.comma.__init__(self)
+        super().__init__()
 
 
 class dot(parser.dot):
@@ -44,7 +44,7 @@ class dot(parser.dot):
     '''
 
     def __init__(self, sString='.'):
-        parser.dot.__init__(self)
+        super().__init__()
 
 
 class semicolon(parser.semicolon):
@@ -53,4 +53,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

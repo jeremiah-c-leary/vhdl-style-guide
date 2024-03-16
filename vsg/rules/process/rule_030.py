@@ -38,7 +38,7 @@ class rule_030(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Compact sensitivity list to reduce the number of lines it uses.'
         self.fixable = False
         self.configuration_documentation_link = None

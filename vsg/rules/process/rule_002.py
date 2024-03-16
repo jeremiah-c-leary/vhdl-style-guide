@@ -32,4 +32,4 @@ class rule_002(Rule):
        proc_a : process (rd_en, wr_en, data_in, data_out,
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

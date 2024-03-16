@@ -30,6 +30,6 @@ class rule_024(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.subphase = 2
         self.bRemoveTrailingWhitespace = False

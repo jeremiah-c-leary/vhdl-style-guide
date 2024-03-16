@@ -36,5 +36,5 @@ class rule_005(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, bInsertSpace=True)
+        super().__init__(lTokens, bInsertSpace=True)
         self.solution = 'Merge line below with label.'

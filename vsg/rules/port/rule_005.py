@@ -8,5 +8,5 @@ class rule_005(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self)
+        super().__init__()
         self.message.append('Rule ' + self.unique_id + ' has been included in rules port_007, port_008 and port_009.')

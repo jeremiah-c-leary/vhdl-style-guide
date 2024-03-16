@@ -24,6 +24,6 @@ class rule_018(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, token.identifier, token.is_keyword)
+        super().__init__(token.identifier, token.is_keyword)
         self.solution = 'Ensure *is* keyword is on the same line as the identifier.'
         self.subphase = 2

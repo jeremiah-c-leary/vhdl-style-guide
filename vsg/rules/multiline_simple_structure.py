@@ -40,7 +40,7 @@ class multiline_simple_structure(structure.Rule):
     '''
 
     def __init__(self, lTokenPairs):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.lTokenPairs = lTokenPairs
 
         self.new_line_after_assign = 'no'

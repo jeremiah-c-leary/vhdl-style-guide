@@ -18,7 +18,7 @@ class Rule(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self)
+        super().__init__()
         self.phase = 7
         self.fixable = False
         self.groups.append('length')

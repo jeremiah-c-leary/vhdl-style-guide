@@ -51,6 +51,6 @@ class rule_020(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
     '''
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(self, lAlign, token.entity_declaration.entity_keyword, token.entity_declaration.end_keyword, lSkip)
+        super().__init__(lAlign, token.entity_declaration.entity_keyword, token.entity_declaration.end_keyword, lSkip)
         self.solution = 'Align comment.'
         self.subphase = 4

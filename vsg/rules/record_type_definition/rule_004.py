@@ -30,6 +30,6 @@ class rule_004(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, token.end_keyword, token.end_record_keyword)
+        super().__init__(token.end_keyword, token.end_record_keyword)
         self.subphase = 1
         self.solution = 'Move *record* next to *end* keyword'

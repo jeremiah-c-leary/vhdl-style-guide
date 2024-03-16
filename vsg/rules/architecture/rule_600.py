@@ -63,7 +63,7 @@ class rule_600(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lNames)
+        super().__init__(lTokens, lNames)
 
     def _get_tokens_of_interest(self, oFile):
 

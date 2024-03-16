@@ -25,7 +25,7 @@ class blank_lines_between_token_pairs(blank_line.Rule):
     '''
 
     def __init__(self, lTokenPairs):
-        blank_line.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Remove blank line'
         self.lTokenPairs = lTokenPairs
 

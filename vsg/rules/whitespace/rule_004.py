@@ -24,6 +24,6 @@ class rule_004(remove_spaces_before_token_rule):
     '''
 
     def __init__(self):
-        remove_spaces_before_token_rule.__init__(self, parser.comma)
+        super().__init__(parser.comma)
         self.solution = 'Remove spaces before commas.'
         self.configuration_documentation_link = None

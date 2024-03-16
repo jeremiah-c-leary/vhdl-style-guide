@@ -27,4 +27,4 @@ class rule_010(blank_line_below_line_ending_with_token):
     '''
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, [token.semicolon])
+        super().__init__([token.semicolon])

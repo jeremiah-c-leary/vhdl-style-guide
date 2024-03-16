@@ -10,7 +10,7 @@ class Rule(structure.Rule):
     '''
 
     def __init__(self, oFirstToken, oSecondToken):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.oFirstToken = oFirstToken
         self.oSecondToken = oSecondToken
         self.configuration_documentation_link = None

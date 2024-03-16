@@ -8,7 +8,7 @@ class colon(parser.colon):
     '''
 
     def __init__(self, sString):
-        parser.colon.__init__(self, sString)
+        super().__init__(sString)
 
 
 class component_name(parser.name):
@@ -17,4 +17,4 @@ class component_name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)

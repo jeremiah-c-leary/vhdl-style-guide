@@ -8,7 +8,7 @@ class e_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class plus_sign(parser.item):
@@ -17,7 +17,7 @@ class plus_sign(parser.item):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class minus_sign(parser.item):
@@ -26,7 +26,7 @@ class minus_sign(parser.item):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class integer(parser.integer):
@@ -35,4 +35,4 @@ class integer(parser.integer):
     '''
 
     def __init__(self, sString):
-        parser.integer.__init__(self, sString)
+        super().__init__(sString)

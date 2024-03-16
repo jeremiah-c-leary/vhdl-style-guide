@@ -36,7 +36,7 @@ class rule_608(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.suffixes = ['_b']
 
     def _get_tokens_of_interest(self, oFile):

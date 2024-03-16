@@ -34,6 +34,6 @@ class rule_014(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lNames)
+        super().__init__(lTokens, lNames)
         self.bIncludeDeclarativePartNames = True
         self.bIncludeArchitectureBodyDeclarationsInSubprogramBody = True

@@ -35,4 +35,4 @@ class rule_004(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, oToken)
+        super().__init__(oToken)

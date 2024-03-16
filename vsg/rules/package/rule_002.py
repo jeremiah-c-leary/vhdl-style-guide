@@ -27,4 +27,4 @@ class rule_002(Rule):
        package FIFO_PKG is
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

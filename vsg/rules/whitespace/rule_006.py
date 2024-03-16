@@ -26,6 +26,6 @@ class rule_006(remove_spaces_before_token_rule):
     '''
 
     def __init__(self):
-        remove_spaces_before_token_rule.__init__(self, parser.close_parenthesis, bIgnoreIfLineStart=True)
+        super().__init__(parser.close_parenthesis, bIgnoreIfLineStart=True)
         self.solution = 'Remove spaces before close ).'
         self.configuration_documentation_link = None

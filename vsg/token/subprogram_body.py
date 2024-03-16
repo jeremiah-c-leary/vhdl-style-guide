@@ -7,7 +7,7 @@ class is_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class begin_keyword(parser.keyword):
@@ -16,7 +16,7 @@ class begin_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_keyword(parser.keyword):
@@ -25,7 +25,7 @@ class end_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class designator(parser.designator):
@@ -34,7 +34,7 @@ class designator(parser.designator):
     '''
 
     def __init__(self, sString):
-        parser.designator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -43,4 +43,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

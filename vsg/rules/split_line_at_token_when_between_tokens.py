@@ -31,7 +31,7 @@ class split_line_at_token_when_between_tokens(structure.Rule):
     '''
 
     def __init__(self, lTokens, oStart, oEnd):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

@@ -27,7 +27,7 @@ class rule_012(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Move inline comment to previous line.'
         self.disable = True
         self.fixable = False

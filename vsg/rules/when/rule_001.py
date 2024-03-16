@@ -43,7 +43,7 @@ class rule_001(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.lMoveTokens = lMoveTokens
         self.lTokenPairs = lTokenPairs
         self.configuration_documentation_link = None

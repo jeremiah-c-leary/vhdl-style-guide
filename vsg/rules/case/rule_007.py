@@ -37,5 +37,5 @@ class rule_007(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, [token.case_keyword])
+        super().__init__([token.case_keyword])
         self.style = 'no_code'

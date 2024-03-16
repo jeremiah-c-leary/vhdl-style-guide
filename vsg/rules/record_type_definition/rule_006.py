@@ -30,6 +30,6 @@ class rule_006(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, token.end_record_keyword, token.record_type_simple_name)
+        super().__init__(token.end_record_keyword, token.record_type_simple_name)
         self.subphase = 2
         self.solution = 'Move simple name next to *record* keyword'

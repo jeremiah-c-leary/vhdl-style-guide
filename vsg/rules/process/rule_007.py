@@ -27,4 +27,4 @@ class rule_007(Rule):
        end process proc_a;
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

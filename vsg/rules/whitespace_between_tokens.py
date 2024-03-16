@@ -30,7 +30,7 @@ class Rule(whitespace.Rule):
     '''
 
     def __init__(self):
-        whitespace.Rule.__init__(self)
+        super().__init__()
         self.left_token = None
         self.right_token = None
         self.number_of_spaces = 1

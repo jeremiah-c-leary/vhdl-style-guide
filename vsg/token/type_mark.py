@@ -7,7 +7,7 @@ class name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class tic(parser.tic):
@@ -16,7 +16,7 @@ class tic(parser.tic):
     '''
 
     def __init__(self, sString):
-        parser.tic.__init__(self, sString)
+        super().__init__(sString)
 
 
 class attribute(parser.attribute):
@@ -25,5 +25,5 @@ class attribute(parser.attribute):
     '''
 
     def __init__(self, sString):
-        parser.attribute.__init__(self, sString)
+        super().__init__(sString)
 

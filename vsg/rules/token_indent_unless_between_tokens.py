@@ -8,7 +8,7 @@ class token_indent_unless_between_tokens(Rule):
     '''
 
     def __init__(self, lTokens, lUnless):
-        Rule.__init__(self, lTokens=lTokens)
+        super().__init__(lTokens=lTokens)
         self.lUnless = lUnless
 
     def _get_tokens_of_interest(self, oFile):

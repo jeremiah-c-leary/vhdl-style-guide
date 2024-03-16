@@ -7,7 +7,7 @@ class range_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class undefined_range(parser.undefined_range):
@@ -16,4 +16,4 @@ class undefined_range(parser.undefined_range):
     '''
 
     def __init__(self, sString='<>'):
-        parser.undefined_range.__init__(self)
+        super().__init__()

@@ -34,5 +34,5 @@ class rule_007(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lTokenPairs)
+        super().__init__(lTokens, lTokenPairs)
         self.solution = 'Move code after the force mode keyword to the next line.'

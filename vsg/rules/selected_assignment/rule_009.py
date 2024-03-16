@@ -35,5 +35,5 @@ class rule_009(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lTokenPairs)
+        super().__init__(lTokens, lTokenPairs)
         self.solution = 'Move code after the delay mechanism keyword to the next line.'

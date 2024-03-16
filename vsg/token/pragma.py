@@ -8,7 +8,7 @@ class ignore(parser.item):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)
 
 
 class pragma(parser.comment):
@@ -17,7 +17,7 @@ class pragma(parser.comment):
     '''
 
     def __init__(self, sString):
-        parser.comment.__init__(self, sString)
+        super().__init__(sString)
 
 
 class open(pragma):
@@ -26,7 +26,7 @@ class open(pragma):
     '''
 
     def __init__(self, sString):
-        pragma.__init__(self, sString)
+        super().__init__(sString)
 
 
 class close(pragma):
@@ -35,7 +35,7 @@ class close(pragma):
     '''
 
     def __init__(self, sString):
-        pragma.__init__(self, sString)
+        super().__init__(sString)
 
 
 class single(pragma):
@@ -44,5 +44,5 @@ class single(pragma):
     '''
 
     def __init__(self, sString):
-        pragma.__init__(self, sString)
+        super().__init__(sString)
 

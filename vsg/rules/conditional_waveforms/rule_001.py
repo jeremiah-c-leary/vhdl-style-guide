@@ -60,7 +60,7 @@ class rule_001(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = 'move code after else to next line.'
         self.subphase = 2
         self.lSplitTokens = lSplitTokens

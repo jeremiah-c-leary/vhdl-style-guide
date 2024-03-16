@@ -31,7 +31,7 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.insert_token = None
         self.anchor_token = None
         self.left_token = None

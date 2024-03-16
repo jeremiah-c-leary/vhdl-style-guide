@@ -28,6 +28,6 @@ class rule_015(insert_token_right_of_token_if_it_does_not_exist_before_token):
     '''
 
     def __init__(self):
-        insert_token_right_of_token_if_it_does_not_exist_before_token.__init__(self, token.end_entity_keyword('entity'), token.end_keyword, token.semicolon)
+        super().__init__(token.end_entity_keyword('entity'), token.end_keyword, token.semicolon)
         self.solution = '*entity* keyword'
         self.groups.append('structure::optional')

@@ -28,5 +28,5 @@ class rule_006(Rule):
        signal rd_en   : std_logic;
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.number_of_spaces = '>=1'

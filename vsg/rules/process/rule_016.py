@@ -31,6 +31,6 @@ class rule_016(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, oFirstToken, oSecondToken)
+        super().__init__(oFirstToken, oSecondToken)
         self.solution = 'Add label for process statement'
         self.fixable = False

@@ -35,7 +35,7 @@ class rule_034(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.method = 'component'
         self.configuration.append('method')
         self.fixable = False

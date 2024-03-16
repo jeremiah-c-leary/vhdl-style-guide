@@ -22,7 +22,7 @@ class blank_line_above_line_starting_with_token(blank_line.Rule):
     '''
 
     def __init__(self, lTokens, lAllowTokens=None):
-        blank_line.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
         if lAllowTokens is None:
             self.lAllowTokens = []

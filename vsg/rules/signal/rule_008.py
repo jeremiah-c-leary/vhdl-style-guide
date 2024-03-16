@@ -30,6 +30,6 @@ class rule_008(token_prefix):
     '''
 
     def __init__(self):
-        token_prefix.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.prefixes = ['s_']
         self.solution = 'Signal identifiers'

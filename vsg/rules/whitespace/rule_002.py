@@ -26,7 +26,7 @@ class rule_002(ws_group.Rule):
 
     def __init__(self):
 
-        ws_group.Rule.__init__(self)
+        super().__init__()
         self.phase = 1
         self.solution = 'Remove tab'
         self.configuration_documentation_link = None

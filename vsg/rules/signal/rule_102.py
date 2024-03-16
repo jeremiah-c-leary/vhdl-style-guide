@@ -28,4 +28,4 @@ class rule_102(Rule):
        signal rd_en : std_logic := '1';
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

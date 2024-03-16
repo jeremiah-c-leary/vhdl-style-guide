@@ -8,4 +8,4 @@ class record_element_simple_name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)

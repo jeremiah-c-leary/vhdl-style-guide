@@ -32,6 +32,6 @@ class rule_200(Rule):
          generic (
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.style = 'no_blank_line'
         self.lBetweenTokenPairs = [between.entity_keyword, between.semicolon]

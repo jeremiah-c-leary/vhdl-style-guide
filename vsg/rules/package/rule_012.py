@@ -30,4 +30,4 @@ class rule_012(blank_line_above_line_starting_with_token):
     '''
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, lTokens)
+        super().__init__(lTokens)

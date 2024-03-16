@@ -25,5 +25,5 @@ class rule_007(existence_of_tokens_which_should_not_occur):
     '''
 
     def __init__(self):
-        existence_of_tokens_which_should_not_occur.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.solution = 'Remove default assignment.'

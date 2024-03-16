@@ -17,7 +17,7 @@ class Rule(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self)
+        super().__init__()
         self.phase = 5
         self.groups.append('alignment')
         self.configuration_documentation_link = 'configuring_keyword_alignment_rules_link'

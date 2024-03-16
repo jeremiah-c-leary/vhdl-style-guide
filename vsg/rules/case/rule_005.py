@@ -27,4 +27,4 @@ class rule_005(Rule):
         when 3 =>
     '''
     def __init__(self):
-        Rule.__init__(self, [token.assignment])
+        super().__init__([token.assignment])

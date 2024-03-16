@@ -29,7 +29,7 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
     '''
 
     def __init__(self, oMoveToken, lAnchorTokens, oStartToken, oEndToken, bInsertWhitespace=False):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.oMoveToken = oMoveToken
         self.lAnchorTokens = lAnchorTokens
         self.oStartToken = oStartToken

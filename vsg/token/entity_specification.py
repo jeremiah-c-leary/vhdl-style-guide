@@ -8,7 +8,7 @@ class entity_class(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class colon(parser.colon):
@@ -17,4 +17,4 @@ class colon(parser.colon):
     '''
 
     def __init__(self, sString=':'):
-        parser.colon.__init__(self)
+        super().__init__()

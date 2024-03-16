@@ -8,7 +8,7 @@ class open_bracket(parser.open_bracket):
     '''
 
     def __init__(self, sString='['):
-        parser.open_bracket.__init__(self, '[')
+        super().__init__('[')
 
 
 class return_keyword(parser.keyword):
@@ -17,7 +17,7 @@ class return_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class comma(parser.comma):
@@ -26,7 +26,7 @@ class comma(parser.comma):
     '''
 
     def __init__(self, sString=','):
-        parser.comma.__init__(self)
+        super().__init__()
 
 
 class close_bracket(parser.close_bracket):
@@ -35,4 +35,4 @@ class close_bracket(parser.close_bracket):
     '''
 
     def __init__(self, sString=']'):
-        parser.close_bracket.__init__(self, ']')
+        super().__init__(']')

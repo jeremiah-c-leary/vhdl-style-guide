@@ -11,7 +11,7 @@ class rule_004(deprecated_rule.Rule):
     '''
 
     def __init__(self):
-        deprecated_rule.Rule.__init__(self)
+        super().__init__()
         self.message.append('Rule ' + self.unique_id + ' has been split into the following rules:')
         self.message.append('  context_ref_500')
         self.message.append('  context_ref_501')

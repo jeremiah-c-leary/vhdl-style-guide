@@ -8,7 +8,7 @@ class architecture_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class identifier(parser.identifier):
@@ -17,7 +17,7 @@ class identifier(parser.identifier):
     '''
 
     def __init__(self, sString):
-        parser.identifier.__init__(self, sString)
+        super().__init__(sString)
 
 
 class of_keyword(parser.keyword):
@@ -26,7 +26,7 @@ class of_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class entity_name(parser.name):
@@ -35,7 +35,7 @@ class entity_name(parser.name):
     '''
 
     def __init__(self, sString):
-        parser.name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class is_keyword(parser.keyword):
@@ -44,7 +44,7 @@ class is_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class begin_keyword(parser.keyword):
@@ -53,7 +53,7 @@ class begin_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_keyword(parser.keyword):
@@ -62,7 +62,7 @@ class end_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_architecture_keyword(parser.keyword):
@@ -71,7 +71,7 @@ class end_architecture_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class architecture_simple_name(parser.simple_name):
@@ -80,7 +80,7 @@ class architecture_simple_name(parser.simple_name):
     '''
 
     def __init__(self, sString):
-        parser.simple_name.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -89,4 +89,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

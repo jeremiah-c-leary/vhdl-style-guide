@@ -31,5 +31,5 @@ class rule_003(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.solution = 'Move *end* keyword and code after it to the next line'

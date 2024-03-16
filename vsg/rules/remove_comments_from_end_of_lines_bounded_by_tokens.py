@@ -26,7 +26,7 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(structure.Rule):
     '''
 
     def __init__(self, oStart, oEnd):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.oStart = oStart
         self.oEnd = oEnd
         self.configuration_documentation_link = None

@@ -25,4 +25,4 @@ class rule_100(Rule):
        alias alias_designator : subtype_indication is name;
     '''
     def __init__(self):
-        Rule.__init__(self, [token.colon])
+        super().__init__([token.colon])

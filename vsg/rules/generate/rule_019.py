@@ -30,5 +30,5 @@ class rule_019(split_line_at_token):
     '''
 
     def __init__(self):
-        split_line_at_token.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.solution = 'Move end keyword and any code after it to the next line'

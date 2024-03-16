@@ -12,7 +12,7 @@ class rule_003(deprecated_rule.Rule):
     * `architecture_029 <architecture_rules.html#architecture-029>`_
     '''
     def __init__(self):
-        deprecated_rule.Rule.__init__(self)
+        super().__init__()
         self.message.append('Rule ' + self.unique_id + ' has been replaced with the following rules:')
         self.message.append('  function_015')
         self.message.append('  package_019')

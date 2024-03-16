@@ -37,7 +37,7 @@ class rule_018(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
+        super().__init__(oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
         self.solution = 'function keyword'
         self.groups.append('structure::optional')
         self.filter_tokens.append(token.subprogram_declaration.semicolon)

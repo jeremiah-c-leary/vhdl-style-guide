@@ -29,5 +29,5 @@ class rule_003(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, [token.component_keyword])
+        super().__init__([token.component_keyword])
         self.style = 'no_code'

@@ -8,7 +8,7 @@ class transport_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class inertial_keyword(parser.keyword):
@@ -17,7 +17,7 @@ class inertial_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class reject_keyword(parser.keyword):
@@ -26,4 +26,4 @@ class reject_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)

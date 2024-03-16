@@ -25,7 +25,7 @@ class previous_line(blank_line.Rule):
     '''
 
     def __init__(self, lTokens, lAllowTokens=None):
-        blank_line.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Insert blank line above'
         self.lTokens = lTokens
         self.lHierarchyLimits = None

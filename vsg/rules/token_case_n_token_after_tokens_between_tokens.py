@@ -30,7 +30,7 @@ class token_case_n_token_after_tokens_between_tokens(case.Rule):
     '''
 
     def __init__(self, iToken, lTokens, oStart, oEnd, bLimitToVhdlKeywords=False):
-        case.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 6
         self.case = 'lower'

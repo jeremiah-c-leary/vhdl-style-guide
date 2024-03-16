@@ -17,7 +17,7 @@ class Rule(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self)
+        super().__init__()
         self.phase = 6
         self.groups.append('case')
         self.configuration_documentation_link = 'configuring_uppercase_and_lowercase_rules_link'

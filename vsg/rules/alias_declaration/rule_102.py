@@ -26,4 +26,4 @@ class rule_102(Rule):
        alias alias_designator is name;
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

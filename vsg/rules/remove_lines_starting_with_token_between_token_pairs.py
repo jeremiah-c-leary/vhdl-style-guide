@@ -24,7 +24,7 @@ class remove_lines_starting_with_token_between_token_pairs(structure.Rule):
     '''
 
     def __init__(self, oRemoveToken, lTokens):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 2
         self.oRemoveToken = oRemoveToken

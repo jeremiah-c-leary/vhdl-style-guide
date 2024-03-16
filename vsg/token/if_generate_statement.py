@@ -8,7 +8,7 @@ class generate_label(parser.label):
     '''
 
     def __init__(self, sString):
-        parser.label.__init__(self, sString)
+        super().__init__(sString)
 
 
 class label_colon(parser.label_colon):
@@ -17,7 +17,7 @@ class label_colon(parser.label_colon):
     '''
 
     def __init__(self):
-        parser.label_colon.__init__(self)
+        super().__init__()
 
 
 class if_keyword(parser.keyword):
@@ -26,7 +26,7 @@ class if_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class alternative_label_name(parser.label):
@@ -35,7 +35,7 @@ class alternative_label_name(parser.label):
     '''
 
     def __init__(self, sString):
-        parser.label.__init__(self, sString)
+        super().__init__(sString)
 
 
 class alternative_label_colon(parser.label_colon):
@@ -44,7 +44,7 @@ class alternative_label_colon(parser.label_colon):
     '''
 
     def __init__(self):
-        parser.label_colon.__init__(self)
+        super().__init__()
 
 
 class generate_keyword(parser.keyword):
@@ -53,7 +53,7 @@ class generate_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class elsif_keyword(parser.keyword):
@@ -62,7 +62,7 @@ class elsif_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class else_keyword(parser.keyword):
@@ -71,7 +71,7 @@ class else_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_keyword(parser.keyword):
@@ -80,7 +80,7 @@ class end_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_generate_keyword(parser.keyword):
@@ -89,7 +89,7 @@ class end_generate_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class end_generate_label(parser.label):
@@ -98,7 +98,7 @@ class end_generate_label(parser.label):
     '''
 
     def __init__(self, sString):
-        parser.label.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -107,4 +107,4 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()

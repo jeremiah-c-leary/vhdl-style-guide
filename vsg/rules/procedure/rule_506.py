@@ -30,5 +30,5 @@ class rule_506(token_case_in_range_bounded_by_tokens_with_prefix_suffix):
     '''
 
     def __init__(self):
-        token_case_in_range_bounded_by_tokens_with_prefix_suffix.__init__(self, lTokens, oStartToken, oEndToken)
+        super().__init__(lTokens, oStartToken, oEndToken)
         self.groups.append('case::name')

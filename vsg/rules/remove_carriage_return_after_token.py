@@ -28,7 +28,7 @@ class remove_carriage_return_after_token(structure.Rule):
     '''
 
     def __init__(self, lTokens, bInsertSpace=False):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
         self.bInsertSpace = bInsertSpace
         self.configuration_documentation_link = None

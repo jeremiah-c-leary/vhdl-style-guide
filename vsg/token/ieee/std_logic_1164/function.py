@@ -8,7 +8,7 @@ class rising_edge(parser.function):
     '''
 
     def __init__(self, sString):
-        parser.function.__init__(self, sString)
+        super().__init__(sString)
 
 
 class falling_edge(parser.function):
@@ -17,4 +17,4 @@ class falling_edge(parser.function):
     '''
 
     def __init__(self, sString):
-        parser.function.__init__(self, sString)
+        super().__init__(sString)

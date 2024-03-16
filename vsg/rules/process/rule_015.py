@@ -39,5 +39,5 @@ class rule_015(previous_line):
     '''
 
     def __init__(self):
-        previous_line.__init__(self, lTokens)
+        super().__init__(lTokens)
         self.style = 'no_code'

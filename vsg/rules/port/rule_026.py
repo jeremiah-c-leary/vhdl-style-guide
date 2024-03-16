@@ -41,7 +41,7 @@ class rule_026(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.subphase = 2
         self.configuration_documentation_link = None
 

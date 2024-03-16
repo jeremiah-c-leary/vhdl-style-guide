@@ -18,7 +18,7 @@ class Rule(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.phase = 1
         self.lTokenPairs = None
 

@@ -8,7 +8,7 @@ class beginning(parser.comment):
     '''
 
     def __init__(self, sString='/*'):
-        parser.comment.__init__(self, sString)
+        super().__init__(sString)
 
 
 class ending(parser.comment):
@@ -17,7 +17,7 @@ class ending(parser.comment):
     '''
 
     def __init__(self, sString='*/'):
-        parser.comment.__init__(self, sString)
+        super().__init__(sString)
 
 
 class text(parser.item):
@@ -26,4 +26,4 @@ class text(parser.item):
     '''
 
     def __init__(self, sString):
-        parser.item.__init__(self, sString)
+        super().__init__(sString)

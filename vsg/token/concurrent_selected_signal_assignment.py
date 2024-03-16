@@ -8,7 +8,7 @@ class with_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class select_keyword(parser.keyword):
@@ -17,7 +17,7 @@ class select_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class target(parser.target):
@@ -26,7 +26,7 @@ class target(parser.target):
     '''
 
     def __init__(self, sString):
-        parser.target.__init__(self, sString)
+        super().__init__(sString)
 
 
 class assignment(parser.assignment):
@@ -35,7 +35,7 @@ class assignment(parser.assignment):
     '''
 
     def __init__(self, sString):
-        parser.assignment.__init__(self, sString)
+        super().__init__(sString)
 
 
 class guarded_keyword(parser.keyword):
@@ -44,7 +44,7 @@ class guarded_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class semicolon(parser.semicolon):
@@ -53,7 +53,7 @@ class semicolon(parser.semicolon):
     '''
 
     def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+        super().__init__()
 
 
 class question_mark(parser.question_mark):
@@ -62,4 +62,4 @@ class question_mark(parser.question_mark):
     '''
 
     def __init__(self, sString='?'):
-        parser.question_mark.__init__(self)
+        super().__init__()

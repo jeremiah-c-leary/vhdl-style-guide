@@ -36,7 +36,7 @@ class rule_023(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = 'Add mode'
         self.fixable = False
         self.configuration_documentation_link = None

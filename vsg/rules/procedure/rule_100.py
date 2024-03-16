@@ -36,4 +36,4 @@ class rule_100(Rule):
        procedure average_samples is
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

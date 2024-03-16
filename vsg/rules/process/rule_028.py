@@ -32,4 +32,4 @@ class rule_028(align_left_token_with_right_token_if_right_token_starts_a_line):
     '''
 
     def __init__(self):
-        align_left_token_with_right_token_if_right_token_starts_a_line.__init__(self, oLeftToken, oRightToken)
+        super().__init__(oLeftToken, oRightToken)

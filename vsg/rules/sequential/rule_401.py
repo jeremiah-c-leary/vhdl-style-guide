@@ -37,4 +37,4 @@ class rule_401(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)

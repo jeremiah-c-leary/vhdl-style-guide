@@ -17,7 +17,7 @@ class Rule(rule.Rule):
     '''
 
     def __init__(self):
-        rule.Rule.__init__(self)
+        super().__init__()
         self.phase = 1
         self.groups.append('structure')
         self.configuration_documentation_link = 'configuring_simple_multiline_structure_rules_link'

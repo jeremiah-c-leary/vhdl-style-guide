@@ -31,5 +31,5 @@ class rule_501(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokens, oStartToken, oEndToken)
+        super().__init__(lTokens, oStartToken, oEndToken)
         self.groups.append('case::keyword')

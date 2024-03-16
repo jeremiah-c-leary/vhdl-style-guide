@@ -70,7 +70,7 @@ class rule_001(structure.Rule):
     '''
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.disable = True
         self.oStart = oStart
         self.oEnd = oEnd

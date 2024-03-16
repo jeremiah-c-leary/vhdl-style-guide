@@ -39,6 +39,6 @@ class rule_017(token_case_n_token_after_tokens_between_tokens):
     '''
 
     def __init__(self):
-        token_case_n_token_after_tokens_between_tokens.__init__(self, 1, lTokens, oStart, oEnd, True)
+        super().__init__(1, lTokens, oStart, oEnd, True)
         self.disabled = True
         self.groups.append('case::keyword')

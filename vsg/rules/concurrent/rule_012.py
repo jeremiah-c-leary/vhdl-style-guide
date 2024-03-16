@@ -32,6 +32,6 @@ class rule_012(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)
         self.assignment_operator = token.concurrent_simple_signal_assignment.assignment
         self.semicolon = token.concurrent_simple_signal_assignment.semicolon

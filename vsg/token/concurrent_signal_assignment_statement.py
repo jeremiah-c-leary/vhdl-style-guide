@@ -8,7 +8,7 @@ class postponed_keyword(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 class label_name(parser.label):
     '''
@@ -16,7 +16,7 @@ class label_name(parser.label):
     '''
 
     def __init__(self, sString):
-        parser.label.__init__(self, sString)
+        super().__init__(sString)
 
 class label_colon(parser.colon):
     '''
@@ -24,4 +24,4 @@ class label_colon(parser.colon):
     '''
 
     def __init__(self, sString=';'):
-        parser.colon.__init__(self, sString)
+        super().__init__(sString)

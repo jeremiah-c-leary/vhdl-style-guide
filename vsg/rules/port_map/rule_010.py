@@ -31,5 +31,5 @@ class rule_010(remove_comments_from_end_of_lines_bounded_by_tokens):
     '''
 
     def __init__(self):
-        remove_comments_from_end_of_lines_bounded_by_tokens.__init__(self, oStart, oEnd)
+        super().__init__(oStart, oEnd)
         self.solution = 'Remove comment.'

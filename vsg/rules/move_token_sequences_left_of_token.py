@@ -25,7 +25,7 @@ class move_token_sequences_left_of_token(structure.Rule):
     '''
 
     def __init__(self, lSequences, oLeftToken):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.lSequences = lSequences
         self.oLeftToken = oLeftToken
         self.configuration_documentation_link = None

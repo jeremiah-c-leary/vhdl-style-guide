@@ -40,7 +40,7 @@ class rule_401(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, lAlign, oBegin, oEnd)
+        super().__init__(lAlign, oBegin, oEnd)
         self.solution = 'Align =>.'
         self.subphase = 2
         self.bIncludeTillBeginningOfLine = True

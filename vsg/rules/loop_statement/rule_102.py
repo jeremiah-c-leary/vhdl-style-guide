@@ -28,4 +28,4 @@ class rule_102(Rule):
       for x in (0 to 30) loop
     '''
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

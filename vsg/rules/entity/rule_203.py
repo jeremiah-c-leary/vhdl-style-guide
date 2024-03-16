@@ -27,4 +27,4 @@ class rule_203(Rule):
     '''
 
     def __init__(self):
-        Rule.__init__(self, [token.semicolon])
+        super().__init__([token.semicolon])

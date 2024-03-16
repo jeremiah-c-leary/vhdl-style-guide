@@ -26,7 +26,7 @@ class move_token(structure.Rule):
     '''
 
     def __init__(self, oToken):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 1
         self.oToken = oToken

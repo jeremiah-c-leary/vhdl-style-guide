@@ -8,7 +8,7 @@ class multiplying_operator(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class star(multiplying_operator):
@@ -17,7 +17,7 @@ class star(multiplying_operator):
     '''
 
     def __init__(self, sString='*'):
-        multiplying_operator.__init__(self, '*')
+        super().__init__('*')
 
 
 class slash(multiplying_operator):
@@ -26,7 +26,7 @@ class slash(multiplying_operator):
     '''
 
     def __init__(self, sString='/'):
-        multiplying_operator.__init__(self, '/')
+        super().__init__('/')
 
 
 class mod_operator(multiplying_operator):
@@ -35,7 +35,7 @@ class mod_operator(multiplying_operator):
     '''
 
     def __init__(self, sString):
-        multiplying_operator.__init__(self, sString)
+        super().__init__(sString)
 
 
 class rem_operator(multiplying_operator):
@@ -44,4 +44,4 @@ class rem_operator(multiplying_operator):
     '''
 
     def __init__(self, sString):
-        multiplying_operator.__init__(self, sString)
+        super().__init__(sString)

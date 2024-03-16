@@ -8,7 +8,7 @@ class sign(parser.keyword):
     '''
 
     def __init__(self, sString):
-        parser.keyword.__init__(self, sString)
+        super().__init__(sString)
 
 
 class plus(sign):
@@ -17,7 +17,7 @@ class plus(sign):
     '''
 
     def __init__(self, sString='+'):
-        sign.__init__(self, '+')
+        super().__init__('+')
 
 
 class minus(sign):
@@ -26,4 +26,4 @@ class minus(sign):
     '''
 
     def __init__(self, sString='-'):
-        sign.__init__(self, '-')
+        super().__init__('-')

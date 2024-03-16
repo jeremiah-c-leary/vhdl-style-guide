@@ -20,7 +20,7 @@ class line_length(length.Rule):
     '''
 
     def __init__(self):
-        length.Rule.__init__(self)
+        super().__init__()
         self.disable = False
         self.length = 120
 
