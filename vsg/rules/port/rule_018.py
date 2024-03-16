@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import token_case_n_token_after_tokens_between_tokens
 

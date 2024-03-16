@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import is_token_value_one_of
 

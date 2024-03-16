@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import split_line_at_token_when_between_tokens_unless_token_is_found
 

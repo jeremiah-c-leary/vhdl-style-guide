@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import multiline_procedure_call_structure as Rule
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from .token_indent import token_indent
 from .token_indent_between_tokens import token_indent_between_tokens

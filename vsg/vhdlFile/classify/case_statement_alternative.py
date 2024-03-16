@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import case_statement_alternative as token
 

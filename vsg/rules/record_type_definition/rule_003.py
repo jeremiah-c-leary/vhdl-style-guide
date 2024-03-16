@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import split_line_at_token as Rule
 

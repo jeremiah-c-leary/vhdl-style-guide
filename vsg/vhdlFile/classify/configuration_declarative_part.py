@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import configuration_declarative_item
 

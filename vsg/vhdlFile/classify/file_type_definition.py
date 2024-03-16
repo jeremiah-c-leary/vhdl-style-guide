@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import file_type_definition as token
 

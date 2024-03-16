@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import context_clause
 from vsg.vhdlFile.classify import library_unit

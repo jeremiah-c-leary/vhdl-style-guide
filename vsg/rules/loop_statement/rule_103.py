@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules.whitespace_between_tokens import Rule
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import align_left_token_with_right_token_if_right_token_starts_a_line
 

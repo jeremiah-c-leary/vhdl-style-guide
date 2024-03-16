@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import concurrent_procedure_call_statement as token
 

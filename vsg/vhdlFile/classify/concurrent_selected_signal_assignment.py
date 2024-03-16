@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import concurrent_selected_signal_assignment as token
 

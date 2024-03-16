@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 
 from vsg.rules import move_token_right_to_next_non_whitespace_token as Rule

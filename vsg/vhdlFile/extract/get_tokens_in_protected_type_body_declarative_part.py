@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import protected_type_body as token
 

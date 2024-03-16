@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import primary_unit
 from vsg.vhdlFile.classify import secondary_unit

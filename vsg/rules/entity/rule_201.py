@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import remove_excessive_blank_lines_below_line_ending_with_token as Rule
 

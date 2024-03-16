@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import case_generate_statement
 from vsg.vhdlFile.classify import for_generate_statement

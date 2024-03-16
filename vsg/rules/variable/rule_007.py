@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import existence_of_tokens_which_should_not_occur
 

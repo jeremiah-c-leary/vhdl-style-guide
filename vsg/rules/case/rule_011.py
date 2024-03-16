@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token as Rule
 

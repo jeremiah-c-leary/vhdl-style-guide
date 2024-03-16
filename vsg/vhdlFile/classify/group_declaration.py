@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import group_declaration as token
 

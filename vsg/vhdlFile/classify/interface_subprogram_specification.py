@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import interface_function_specification
 from vsg.vhdlFile.classify import interface_procedure_specification

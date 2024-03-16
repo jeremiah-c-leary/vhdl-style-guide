@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import range_constraint
 from vsg.vhdlFile.classify import array_constraint

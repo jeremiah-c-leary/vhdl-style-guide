@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import block_statement
 from vsg.vhdlFile.classify import component_instantiation_statement

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rule_group import blank_line
 from vsg import parser

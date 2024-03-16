@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import token_case_in_range_bounded_by_tokens
 
