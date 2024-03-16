@@ -1,19 +1,19 @@
 {
-  "rule":{
-    "port_004":{
-       "disable":true
+  "rule": {
+    "port_004": {
+       "disable": true
     },
-    "port_002":{
-       "disable":true
+    "port_002": {
+       "disable": true
     },
-    "port_015":{
-       "disable":true
+    "port_015": {
+       "disable": true
     },
-    "port_007":{
-        "disable":false
+    "port_007": {
+        "disable": false
     },
-    "global":{
-       "indent_size":4
+    "global": {
+       "indent_size": 4
     }
   }
 }
