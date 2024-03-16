@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from .get_sequence_of_tokens_matching import get_sequence_of_tokens_matching
 from .get_sequence_of_tokens_matching_bounded_by_tokens import get_sequence_of_tokens_matching_bounded_by_tokens

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import attribute_specification
 from vsg.vhdlFile.classify import group_declaration

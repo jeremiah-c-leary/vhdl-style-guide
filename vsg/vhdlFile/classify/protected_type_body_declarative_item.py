@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import alias_declaration
 from vsg.vhdlFile.classify import attribute_declaration

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg import config
 from vsg import exceptions

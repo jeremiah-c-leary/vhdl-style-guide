@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import block_configuration
 from vsg.vhdlFile.classify import component_configuration

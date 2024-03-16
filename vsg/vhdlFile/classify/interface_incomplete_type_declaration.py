@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import interface_incomplete_type_declaration as token
 

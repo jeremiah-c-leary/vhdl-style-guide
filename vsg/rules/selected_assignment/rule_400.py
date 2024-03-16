@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import multiline_alignment_between_tokens as Rule
 

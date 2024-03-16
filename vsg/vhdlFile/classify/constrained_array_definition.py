@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import constrained_array_definition as token
 

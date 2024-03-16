@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules.whitespace_before_token_if_on_same_line_as_token import Rule
 

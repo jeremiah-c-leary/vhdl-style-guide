@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rule_group import case
 from vsg import violation

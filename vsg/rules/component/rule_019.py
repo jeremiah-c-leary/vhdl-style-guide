@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import remove_comments_from_end_of_lines_bounded_by_tokens
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from .rule_004 import rule_004
 

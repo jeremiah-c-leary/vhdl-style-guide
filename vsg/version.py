@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import importlib.metadata
 from pathlib import Path
 

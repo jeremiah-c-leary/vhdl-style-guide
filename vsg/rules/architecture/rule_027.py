@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens
 

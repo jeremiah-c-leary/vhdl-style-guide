@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import entity_specification as token
 

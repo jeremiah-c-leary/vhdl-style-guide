@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import procedure_specification
 from vsg.vhdlFile.classify import function_specification

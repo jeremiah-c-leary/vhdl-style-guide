@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import access_type_definition
 from vsg.vhdlFile.classify import composite_type_definition

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import architecture_body
 from vsg.vhdlFile.classify import package_body

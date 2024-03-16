@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 
 from vsg.vhdlFile.classify import enumeration_type_definition

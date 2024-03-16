@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace
 

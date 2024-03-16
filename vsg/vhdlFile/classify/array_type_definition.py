@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import constrained_array_definition
 from vsg.vhdlFile.classify import unbounded_array_definition

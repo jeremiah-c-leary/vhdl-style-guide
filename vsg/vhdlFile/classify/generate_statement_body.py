@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import generate_statement_body as token
 

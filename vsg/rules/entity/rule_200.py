@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules.blank_line_above_line_starting_with_token_when_between_tokens import Rule
 

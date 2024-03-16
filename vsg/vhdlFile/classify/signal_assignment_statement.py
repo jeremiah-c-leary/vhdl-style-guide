@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import signal_assignment_statement as token
 

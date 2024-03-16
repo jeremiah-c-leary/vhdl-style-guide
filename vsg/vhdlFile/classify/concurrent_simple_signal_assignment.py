@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import concurrent_simple_signal_assignment as token
 

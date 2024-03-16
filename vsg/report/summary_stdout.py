@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def print_output(dRunInfo):
     '''
     Displays results to stdout in a compact format.

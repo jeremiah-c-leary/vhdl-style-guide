@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import shutil
 import os
 import subprocess

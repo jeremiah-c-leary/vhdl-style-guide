@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import token_does_not_exist_before_token as Rule
 from vsg.token import loop_statement as token

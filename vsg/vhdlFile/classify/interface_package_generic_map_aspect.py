@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import interface_package_generic_map_aspect as token
 

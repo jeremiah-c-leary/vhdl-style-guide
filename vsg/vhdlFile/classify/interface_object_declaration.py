@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import interface_constant_declaration
 from vsg.vhdlFile.classify import interface_file_declaration

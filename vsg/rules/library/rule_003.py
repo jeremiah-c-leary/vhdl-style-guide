@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import previous_line
 from vsg.vhdlFile import utils

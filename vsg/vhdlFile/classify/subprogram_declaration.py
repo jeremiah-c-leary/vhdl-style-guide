@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import subprogram_declaration as token
 

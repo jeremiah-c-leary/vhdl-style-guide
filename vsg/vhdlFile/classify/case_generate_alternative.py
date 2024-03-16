@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import case_generate_alternative as token
 

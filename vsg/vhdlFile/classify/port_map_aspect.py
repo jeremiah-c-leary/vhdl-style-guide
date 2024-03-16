@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import port_map_aspect as token
 

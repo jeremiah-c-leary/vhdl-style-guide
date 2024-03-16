@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg import deprecated_rule
 

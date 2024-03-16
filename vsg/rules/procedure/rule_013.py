@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import multiline_subprogram_specification_structure as Rule
 

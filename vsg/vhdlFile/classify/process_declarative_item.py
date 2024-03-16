@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import subprogram_declaration
 from vsg.vhdlFile.classify import subprogram_body
