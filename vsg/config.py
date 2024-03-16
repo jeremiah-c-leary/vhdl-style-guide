@@ -247,25 +247,25 @@ dPragmas['open'] = []
 dPragmas['close'] = []
 dPragmas['single'] = []
 
-dPragmas['open'].append('^\s*--\s+synthesis\s+translate_off\s*$')
-dPragmas['close'].append('^\s*--\s+synthesis\s+translate_on\s*$')
+dPragmas['open'].append('^\\s*--\\s+synthesis\\s+translate_off\\s*$')
+dPragmas['close'].append('^\\s*--\\s+synthesis\\s+translate_on\\s*$')
 
-dPragmas['single'].append('^\s*--\s+synthesis\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+synthesis\s+\w+\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+pragma\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+pragma\s+\w+\s+\w+\s*$')
-dPragmas['open'].append('^\s*--vhdl_comp_off\s*$')
-dPragmas['close'].append('^\s*--vhdl_comp_on\s*$')
+dPragmas['single'].append('^\\s*--\\s+synthesis\\s+\\w+\\s*$')
+dPragmas['single'].append('^\\s*--\\s+synthesis\\s+\\w+\\s+\\w+\\s*$')
+dPragmas['single'].append('^\\s*--\\s+pragma\\s+\\w+\\s*$')
+dPragmas['single'].append('^\\s*--\\s+pragma\\s+\\w+\\s+\\w+\\s*$')
+dPragmas['open'].append('^\\s*--vhdl_comp_off\\s*$')
+dPragmas['close'].append('^\\s*--vhdl_comp_on\\s*$')
 
-dPragmas['single'].append('^\s*--\s+altera\s+\w+\s*$' )
+dPragmas['single'].append('^\\s*--\\s+altera\\s+\\w+\\s*$' )
 
-dPragmas['open'].append('^\s*--\s+RTL_SYNTHESIS\s+OFF\s*$' )
-dPragmas['close'].append('^\s*--\s+RTL_SYNTHESIS\s+ON\s*$' )
+dPragmas['open'].append('^\\s*--\\s+RTL_SYNTHESIS\\s+OFF\\s*$' )
+dPragmas['close'].append('^\\s*--\\s+RTL_SYNTHESIS\\s+ON\\s*$' )
 
-dPragmas['single'].append('^\s*--\s+synopsys\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+synopsys\s+\w+\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+xilinx\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+xilinx\s+\w+\s+\w+\s*$')
+dPragmas['single'].append('^\\s*--\\s+synopsys\\s+\\w+\\s*$')
+dPragmas['single'].append('^\\s*--\\s+synopsys\\s+\\w+\\s+\\w+\\s*$')
+dPragmas['single'].append('^\\s*--\\s+xilinx\\s+\\w+\\s*$')
+dPragmas['single'].append('^\\s*--\\s+xilinx\\s+\\w+\\s+\\w+\\s*$')
 
 
 def add_pragma_regular_expressions(dStyle):
