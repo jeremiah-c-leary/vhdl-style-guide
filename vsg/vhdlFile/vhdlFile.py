@@ -630,7 +630,7 @@ def set_aggregate_tokens(lTokens):
                 replace_token(iToken, lTokens, token.aggregate.close_parenthesis(), iId=oToken.iId)
 #        if isinstance(oToken, token.element_association.assignment):
         if len(lOpenParens) > 0 and (isinstance(oToken, token.element_association.assignment) or type(oToken) == parser.comma):
-            replace_token(lOpenParens[-1], lTokens, token.aggregate.open_parenthesis(), iId=lTokens[lOpenParens[-1]])
+            replace_token(lOpenParens[-1], lTokens, token.aggregate.open_parenthesis(), iId=lTokens[lOpenParens[-1]].iId)
 
 
 
