@@ -11,7 +11,7 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 
 
 class rule_020(token_prefix_between_tokens):
-    '''
+    """
     This rule checks for valid prefixes on generic identifiers.
     The default generic prefix is *g_*.
 
@@ -28,8 +28,8 @@ class rule_020(token_prefix_between_tokens):
     .. code-block:: vhdl
 
        generic(g_my_generic : integer);
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, token.generic_clause.open_parenthesis, token.generic_clause.close_parenthesis)
-        self.prefixes = ['g_']
+        self.prefixes = ["g_"]

@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 
 
 class rule_002(block_rule.Rule):
-    '''
+    """
     This rule checks the **comment_left** attribute exists for all comments.
 
     |configuring_block_comments_link|
@@ -27,12 +27,12 @@ class rule_002(block_rule.Rule):
        --|  Comment
        --|  Comment
        ----------------------------------------
-    '''
+    """
 
     def __init__(self):
         super().__init__()
         self.comment_left = None
-        self.configuration.append('comment_left')
+        self.configuration.append("comment_left")
 
     def analyze_comments(self, oToi):
         iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -55,7 +55,6 @@ def middle_comment(iComment, iComments, oToken):
 
 
 def analyze_middle_comment(self, oToken, oToi, iLine):
-
     self.set_token_indent(oToken)
 
     if self.comment_left is None:
@@ -64,6 +63,6 @@ def analyze_middle_comment(self, oToken, oToi, iLine):
     sHeader = self.build_comment(oToken)
     sComment = oToken.get_value()
     if not sComment.startswith(sHeader):
-        sSolution = 'Comment must start with ' + sHeader
+        sSolution = "Comment must start with " + sHeader
         oViolation = violation.New(iLine, oToi, sSolution)
         self.add_violation(oViolation)

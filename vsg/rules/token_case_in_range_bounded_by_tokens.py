@@ -5,7 +5,7 @@ from vsg.rules import utils
 
 
 class token_case_in_range_bounded_by_tokens(rules.token_case):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -22,7 +22,7 @@ class token_case_in_range_bounded_by_tokens(rules.token_case):
     oStart : token type
 
     oEnd : token type
-    '''
+    """
 
     def __init__(self, lTokens, oStart, oEnd):
         super().__init__(lTokens=lTokens)

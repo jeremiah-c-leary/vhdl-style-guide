@@ -9,7 +9,7 @@ lTokens.append(token.process_statement.end_process_label)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes on process labels.
     The default suffix is *_proc*.
 
@@ -26,9 +26,9 @@ class rule_600(token_suffix):
     .. code-block:: vhdl
 
        main_proc: process () is
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_proc']
-        self.solution = 'Process labels'
+        self.suffixes = ["_proc"]
+        self.solution = "Process labels"

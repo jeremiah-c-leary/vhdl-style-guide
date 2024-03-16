@@ -9,7 +9,7 @@ lTokens.append(token.package_body.end_package_simple_name)
 
 
 class rule_601(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on package body identifiers.
     The default package prefix is *pkg_*.
 
@@ -26,9 +26,9 @@ class rule_601(token_prefix):
     .. code-block:: vhdl
 
        package body pkg_foo is
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['pkg_']
-        self.solution = 'Package identifier'
+        self.prefixes = ["pkg_"]
+        self.solution = "Package identifier"

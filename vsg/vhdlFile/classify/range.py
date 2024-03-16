@@ -4,18 +4,17 @@ from vsg.vhdlFile import utils
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     range ::=
         range_attribute_name
       | simple_expression direction simple_expression
-    '''
+    """
     if check_for_range_attribute_name(iToken, lObjects):
         return True
     return detect_direction(iToken, lObjects)
 
 
 def check_for_range_attribute_name(iToken, lObjects):
-
     if single_token_enclosed_in_parenthesis(iToken, lObjects):
         return True
 
@@ -32,7 +31,7 @@ def check_for_range_attribute_name(iToken, lObjects):
 
 
 def single_token_enclosed_in_parenthesis(iToken, lObjects):
-    return utils.are_next_consecutive_tokens([None, ')'], iToken, lObjects)
+    return utils.are_next_consecutive_tokens([None, ")"], iToken, lObjects)
 
 
 def token_is_matching_close_parenthesis(iParens):
@@ -64,6 +63,6 @@ def detect_direction(iToken, lObjects):
 
 
 def check_for_direction(iParens, iIndex, lObjects):
-    if iParens == 0 and utils.is_next_token_one_of(['downto', 'to'], iIndex, lObjects):
+    if iParens == 0 and utils.is_next_token_one_of(["downto", "to"], iIndex, lObjects):
         return True
     return False

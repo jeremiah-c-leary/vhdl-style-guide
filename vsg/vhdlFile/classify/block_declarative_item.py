@@ -23,7 +23,7 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     block_declarative_item ::=
         subprogram_declaration
       | subprogram_body
@@ -49,7 +49,7 @@ def detect(iToken, lObjects):
       | PSL_Property_Declaration
       | PSL_Sequence_Declaration
       | PSL_Clock_Declaration
-    '''
+    """
 
     iReturn = subprogram_declaration.detect(iToken, lObjects)
     if iReturn != iToken:

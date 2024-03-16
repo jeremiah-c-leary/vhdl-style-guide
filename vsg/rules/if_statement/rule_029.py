@@ -8,7 +8,7 @@ lTokens.append(token.if_statement.then_keyword)
 
 
 class rule_029(token_case):
-    '''
+    """
     This rule checks the **then** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_029(token_case):
     .. code-block:: vhdl
 
        if (a = '1') then
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

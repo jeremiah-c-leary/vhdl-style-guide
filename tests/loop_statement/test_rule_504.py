@@ -9,18 +9,18 @@ from vsg.rules import loop_statement
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_504_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_504_test_input.vhd"))
 
 lExpected_lower = []
-lExpected_lower.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_504_test_input.fixed_lower.vhd'), lExpected_lower)
+lExpected_lower.append("")
+utils.read_file(os.path.join(sTestDir, "rule_504_test_input.fixed_lower.vhd"), lExpected_lower)
 
 lExpected_upper = []
-lExpected_upper.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_504_test_input.fixed_upper.vhd'), lExpected_upper)
+lExpected_upper.append("")
+utils.read_file(os.path.join(sTestDir, "rule_504_test_input.fixed_upper.vhd"), lExpected_upper)
+
 
 class test_loop_statement_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -28,8 +28,8 @@ class test_loop_statement_rule(unittest.TestCase):
     def test_rule_504_lower(self):
         oRule = loop_statement.rule_504()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'loop_statement')
-        self.assertEqual(oRule.identifier, '504')
+        self.assertEqual(oRule.name, "loop_statement")
+        self.assertEqual(oRule.identifier, "504")
 
         lExpected = [15, 19]
 
@@ -38,10 +38,10 @@ class test_loop_statement_rule(unittest.TestCase):
 
     def test_rule_504_upper(self):
         oRule = loop_statement.rule_504()
-        oRule.case = 'upper'
+        oRule.case = "upper"
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'loop_statement')
-        self.assertEqual(oRule.identifier, '504')
+        self.assertEqual(oRule.name, "loop_statement")
+        self.assertEqual(oRule.identifier, "504")
 
         lExpected = [11, 19]
         oRule.analyze(self.oFile)
@@ -61,7 +61,7 @@ class test_loop_statement_rule(unittest.TestCase):
 
     def test_fix_rule_504_upper(self):
         oRule = loop_statement.rule_504()
-        oRule.case = 'upper'
+        oRule.case = "upper"
 
         oRule.fix(self.oFile)
 
@@ -71,4 +71,3 @@ class test_loop_statement_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

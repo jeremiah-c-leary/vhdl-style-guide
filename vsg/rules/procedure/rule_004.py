@@ -19,7 +19,7 @@ oEnd = token.procedure_specification.close_parenthesis
 
 
 class rule_004(token_indent_between_tokens):
-    '''
+    """
     This rule checks the indent of parameters.
 
     **Violation**
@@ -45,7 +45,7 @@ class rule_004(token_indent_between_tokens):
          signal d : out std_logic ) is
        begin
        end procedure average_samples;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)

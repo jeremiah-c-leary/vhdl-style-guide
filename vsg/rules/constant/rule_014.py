@@ -13,7 +13,7 @@ lTokenPairs.append([token.constant_declaration.assignment_operator, token.consta
 
 
 class rule_014(Rule):
-    '''
+    """
     This rule checks the indent of multiline constants that do not contain arrays.
 
     |configuring_multiline_indent_rules_link|
@@ -31,7 +31,7 @@ class rule_014(Rule):
 
        constant width : integer := a + b +
                                    c + d;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)
@@ -48,12 +48,12 @@ class rule_014(Rule):
             iLine, lTokens = utils.get_toi_parameters(oToi)
             iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
             iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
-            oToi.set_meta_data('iIndent', _get_indent_of_line(iLine, oFile))
-            oToi.set_meta_data('iFirstLine', iFirstLine)
-            oToi.set_meta_data('iFirstLineIndent', iFirstLineIndent)
-            oToi.set_meta_data('iAssignColumn', iAssignColumn)
-            oToi.set_meta_data('indent_size', self.indent_size)
-            oToi.set_meta_data('bStartsWithParen', alignment_utils.starts_with_paren(lTokens))
+            oToi.set_meta_data("iIndent", _get_indent_of_line(iLine, oFile))
+            oToi.set_meta_data("iFirstLine", iFirstLine)
+            oToi.set_meta_data("iFirstLineIndent", iFirstLineIndent)
+            oToi.set_meta_data("iAssignColumn", iAssignColumn)
+            oToi.set_meta_data("indent_size", self.indent_size)
+            oToi.set_meta_data("bStartsWithParen", alignment_utils.starts_with_paren(lTokens))
 
         return lToi
 

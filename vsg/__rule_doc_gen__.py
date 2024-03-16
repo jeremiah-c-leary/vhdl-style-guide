@@ -7,17 +7,15 @@ from . import config, rule_list, vhdlFile
 
 
 def parse_command_line_arguments():
-    '''Parses the command line arguments and returns them.'''
+    """Parses the command line arguments and returns them."""
 
-    parser = argparse.ArgumentParser(
-      prog='VHDL Style Guide (VSG) Parser',
-      description='''Outputs formatted rule documentation.''')
+    parser = argparse.ArgumentParser(prog="VHDL Style Guide (VSG) Parser", description="""Outputs formatted rule documentation.""")
 
     return parser.parse_args()
 
 
 def main():
-    '''Main routine of parser output'''
+    """Main routine of parser output"""
 
     fExitStatus = 0
 
@@ -29,7 +27,6 @@ def main():
 
 
 def create_rule_documentation(path):
-
     oRuleList = build_rule_list()
 
     dRules = build_rule_dictionary(oRuleList)
@@ -37,32 +34,33 @@ def create_rule_documentation(path):
     for sRuleName in lRuleNames:
         build_rule_class_doc(path, sRuleName, dRules)
 
+
 def build_rule_class_doc(path, sRuleName, dRules):
-#    for sRuleName in lRuleName:
+    #    for sRuleName in lRuleName:
     lRuleClassDoc = []
-    lRuleClassDoc.append('.. include:: includes.rst')
+    lRuleClassDoc.append(".. include:: includes.rst")
     lRuleClassDoc.extend(blank_line())
-    if sRuleName == 'context_ref':
-        sTitle = 'Context Reference Rules'
-    elif sRuleName == 'exit_statement':
-        sTitle = 'Exit Rules'
+    if sRuleName == "context_ref":
+        sTitle = "Context Reference Rules"
+    elif sRuleName == "exit_statement":
+        sTitle = "Exit Rules"
     else:
-        sTitle = (sRuleName.title() + ' Rules').replace('_', ' ')
+        sTitle = (sRuleName.title() + " Rules").replace("_", " ")
     lRuleClassDoc.append(sTitle)
-    lRuleClassDoc.append('-'*len(sTitle))
+    lRuleClassDoc.append("-" * len(sTitle))
     lRuleClassDoc.extend(blank_line())
     lRuleClassDoc.extend(import_preamble_doc(sRuleName))
     lRuleClassDoc.extend(do_something(list(dRules[sRuleName])))
 
-    write_file(path, f'{sRuleName}_rules.rst', lRuleClassDoc)
+    write_file(path, f"{sRuleName}_rules.rst", lRuleClassDoc)
 
 
 def import_preamble_doc(sRuleName):
     lReturn = []
-    if sRuleName == 'range':
-        sFileName = f'vsg/rules/ranges/preamble_doc.rst'
+    if sRuleName == "range":
+        sFileName = f"vsg/rules/ranges/preamble_doc.rst"
     else:
-        sFileName = f'vsg/rules/{sRuleName}/preamble_doc.rst'
+        sFileName = f"vsg/rules/{sRuleName}/preamble_doc.rst"
     if os.path.exists(sFileName):
         lReturn = read_file(sFileName)
         lReturn.extend(blank_line())
@@ -70,7 +68,7 @@ def import_preamble_doc(sRuleName):
 
 
 def build_rule_list():
-    oVhdlFile = vhdlFile.vhdlFile([''])
+    oVhdlFile = vhdlFile.vhdlFile([""])
     oConfig = config.config()
     return rule_list.rule_list(oVhdlFile, oConfig)
 
@@ -112,16 +110,17 @@ def add_doc_string(oRule):
     sReturn = oRule.__doc__
     iFirstCharacter = find_index_of_first_character(sReturn)
     sReturn = sReturn[iFirstCharacter:]
-    sReturn = sReturn.replace('\n' + ' '*(iFirstCharacter-1), '\n')
-    sReturn = sReturn.replace('\n' + ' '*(iFirstCharacter-2) + '\n', '\n\n')
-    sReturn = sReturn.replace('[Violation]', '**Violation**\n\n.. code-block:: vhdl')
-    sReturn = sReturn.replace('[Fix]', '**Fix**\n\n.. code-block:: vhdl')
+    sReturn = sReturn.replace("\n" + " " * (iFirstCharacter - 1), "\n")
+    sReturn = sReturn.replace("\n" + " " * (iFirstCharacter - 2) + "\n", "\n\n")
+    sReturn = sReturn.replace("[Violation]", "**Violation**\n\n.. code-block:: vhdl")
+    sReturn = sReturn.replace("[Fix]", "**Fix**\n\n.. code-block:: vhdl")
     lReturn.append(sReturn)
     return lReturn
 
+
 def find_index_of_first_character(sReturn):
     for iChar, sChar in enumerate(sReturn):
-        if sChar != ' ' and sChar != '\n':
+        if sChar != " " and sChar != "\n":
             return iChar
     return None
 
@@ -129,20 +128,20 @@ def find_index_of_first_character(sReturn):
 def generate_rule_header(oRule):
     lReturn = []
     lReturn.append(oRule.unique_id)
-    lReturn.append('#'*len(oRule.unique_id))
+    lReturn.append("#" * len(oRule.unique_id))
     return lReturn
 
 
 def blank_line():
     lReturn = []
-    lReturn.append('')
+    lReturn.append("")
     return lReturn
 
 
 def write_file(path, sFilename, lLines):
-    with open(os.path.join(path, sFilename), 'w') as oFile:
+    with open(os.path.join(path, sFilename), "w") as oFile:
         for sLine in lLines:
-            oFile.write(sLine + '\n')
+            oFile.write(sLine + "\n")
 
 
 def read_file(sFileName):
@@ -154,7 +153,7 @@ def read_file(sFileName):
 
 
 def generate_icons(oRule):
-    sIcons = ''
+    sIcons = ""
     sIcons += create_phase_icon(oRule)
     sIcons += create_disabled_icon(oRule)
     sIcons += create_severity_icon(oRule)
@@ -163,30 +162,30 @@ def generate_icons(oRule):
 
 
 def create_phase_icon(oRule):
-    return '|phase_' + str(oRule.phase) + '|'
+    return "|phase_" + str(oRule.phase) + "|"
 
 
 def create_disabled_icon(oRule):
-    sReturn = ''
+    sReturn = ""
     if oRule.disable:
-        sReturn += (' ')
-        sReturn += ('|disabled|')
+        sReturn += " "
+        sReturn += "|disabled|"
     return sReturn
 
 
 def create_severity_icon(oRule):
-    sReturn = ' '
-    sReturn += ('|' + oRule.severity.name.lower() + '|')
+    sReturn = " "
+    sReturn += "|" + oRule.severity.name.lower() + "|"
     return sReturn
 
 
 def create_group_icons(oRule):
-    sReturn = ''
+    sReturn = ""
     for sGroup in oRule.groups:
-        sReturn += ' '
-        sReturn += '|' + sGroup.replace('::', '_') + '|'
+        sReturn += " "
+        sReturn += "|" + sGroup.replace("::", "_") + "|"
     return sReturn
 
 
-if __name__ == '__rule_doc_gen__':
+if __name__ == "__rule_doc_gen__":
     main()

@@ -8,7 +8,7 @@ lTokens.append(token.enumeration_type_definition.enumeration_literal)
 
 
 class rule_005(token_indent):
-    '''
+    """
     This rule checks the indent of multiline enumerated types.
 
     **Violation**
@@ -30,8 +30,8 @@ class rule_005(token_indent):
          write,
          read,
          done);
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Ensure proper indentation.'
+        self.solution = "Ensure proper indentation."

@@ -5,7 +5,7 @@ from vsg.token import record_type_definition as token
 
 
 class rule_300(Rule):
-    '''
+    """
     This rule checks the indent of the **record** keyword if it is on its own line.
 
     **Violation**
@@ -27,7 +27,7 @@ class rule_300(Rule):
          a : std_logic;
          b : std_logic;
        end record t_record;
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.record_keyword])

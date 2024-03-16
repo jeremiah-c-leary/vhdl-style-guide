@@ -12,7 +12,7 @@ oStop = token.assertion_statement.semicolon
 
 
 class rule_004(split_line_at_token_when_between_tokens_unless_token_is_found):
-    '''
+    """
     This rule checks the **severity** keyword is on its own line for concurrent assertion statements.
 
     **Violation**
@@ -39,7 +39,7 @@ class rule_004(split_line_at_token_when_between_tokens_unless_token_is_found):
            severity FAILURE;
 
        end architecture rtl;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd, oStop)

@@ -9,7 +9,7 @@ lTokens.append(token.iteration_scheme.for_keyword)
 
 
 class rule_301(token_indent):
-    '''
+    """
     This rule checks the indentation of the **for** keyword.
 
     **Violation**
@@ -37,7 +37,7 @@ class rule_301(token_indent):
          end loop;
 
        end process;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

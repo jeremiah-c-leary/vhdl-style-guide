@@ -4,9 +4,9 @@ from vsg.rules import token_indent as Rule
 
 
 class token_indent_unless_between_tokens(Rule):
-    '''
+    """
     Checks the indent of tokens.
-    '''
+    """
 
     def __init__(self, lTokens, lUnless):
         super().__init__(lTokens=lTokens)

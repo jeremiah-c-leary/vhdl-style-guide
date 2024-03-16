@@ -10,12 +10,12 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     variable_assignment_statement ::=
         [ label : ] simple_variable_assignment
       | [ label : ] conditional_variable_assignment
       | [ label : ] selected_variable_assignment
-    '''
+    """
     iCurrent = iToken
     if selected_variable_assignment.detect(iToken, lObjects):
         iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)

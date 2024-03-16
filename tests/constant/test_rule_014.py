@@ -9,19 +9,18 @@ from vsg.rules import constant
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_014_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_014_test_input.vhd"))
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_014_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_014_test_input.fixed.vhd"), lExpected)
 
 lExpected_align_left_true_align_paren_false = []
-lExpected_align_left_true_align_paren_false.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_014_test_input.fixed_align_left_true_align_paren_false.vhd'), lExpected_align_left_true_align_paren_false)
+lExpected_align_left_true_align_paren_false.append("")
+utils.read_file(os.path.join(sTestDir, "rule_014_test_input.fixed_align_left_true_align_paren_false.vhd"), lExpected_align_left_true_align_paren_false)
 
 
 class test_constant_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -29,9 +28,9 @@ class test_constant_rule(unittest.TestCase):
     def test_rule_014(self):
         oRule = constant.rule_014()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'constant')
-        self.assertEqual(oRule.identifier, '014')
-        self.assertEqual(oRule.groups, ['alignment'])
+        self.assertEqual(oRule.name, "constant")
+        self.assertEqual(oRule.identifier, "014")
+        self.assertEqual(oRule.groups, ["alignment"])
 
         lExpected = [31, 34, 37]
 

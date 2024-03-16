@@ -4,12 +4,12 @@ from vsg.vhdlFile.classify import attribute_specification, group_declaration, us
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     configuration_declarative_item ::=
         use_clause
       | attribute_specification
       | group_declaration
-    '''
+    """
 
     iReturn = use_clause.detect(iToken, lObjects)
     if iReturn != iToken:

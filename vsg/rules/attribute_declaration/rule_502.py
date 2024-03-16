@@ -12,7 +12,7 @@ oEndToken = token.attribute_declaration.semicolon
 
 
 class rule_502(token_case_in_range_bounded_by_tokens):
-    '''
+    """
     This rule checks the *type_mark* has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -28,9 +28,9 @@ class rule_502(token_case_in_range_bounded_by_tokens):
     .. code-block:: vhdl
 
        attribute max_delay : time;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStartToken, oEndToken)
-        self.groups.append('case::name')
-        self.configuration.append('case_exceptions')
+        self.groups.append("case::name")
+        self.configuration.append("case_exceptions")

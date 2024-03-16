@@ -4,7 +4,6 @@ from vsg.vhdlFile.extract import tokens
 
 
 def get_tokens_matching(lTokens, lAllTokens, oTokenMap):
-
     lReturn = []
     lIndexes = []
 

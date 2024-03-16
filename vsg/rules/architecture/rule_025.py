@@ -5,7 +5,7 @@ from vsg.token import architecture_body as token
 
 
 class rule_025(is_token_value_one_of):
-    '''
+    """
     This rule checks for valid names for the architecture.
     Typical architecture names are:  RTL, EMPTY, and BEHAVE.
     This rule allows the user to restrict what can be used for an architecture name.
@@ -34,10 +34,10 @@ class rule_025(is_token_value_one_of):
     **Fix**
 
     The user is required to decide which is the correct architecture name.
-    '''
+    """
 
     def __init__(self):
         super().__init__(token.identifier)
 
     def _get_solution(self, iLineNumber):
-        return 'Architecture identifier must be from this list: ' + ', '.join(self.names)
+        return "Architecture identifier must be from this list: " + ", ".join(self.names)

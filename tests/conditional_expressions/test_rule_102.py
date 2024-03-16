@@ -9,17 +9,16 @@ from vsg.rules import conditional_expressions
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_102_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_102_test_input.vhd"))
 
 dIndentMap = utils.read_indent_file()
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_102_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_102_test_input.fixed.vhd"), lExpected)
 
 
 class test_conditional_expressions_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -28,8 +27,8 @@ class test_conditional_expressions_rule(unittest.TestCase):
     def test_rule_102(self):
         oRule = conditional_expressions.rule_102()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'conditional_expressions')
-        self.assertEqual(oRule.identifier, '102')
+        self.assertEqual(oRule.name, "conditional_expressions")
+        self.assertEqual(oRule.identifier, "102")
 
         lExpected = [9, 13]
 

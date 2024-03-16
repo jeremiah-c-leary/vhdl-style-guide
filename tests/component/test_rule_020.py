@@ -9,11 +9,10 @@ from vsg.rules import component
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_020_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_020_test_input.vhd"))
 
 
 class test_component_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -22,8 +21,8 @@ class test_component_rule(unittest.TestCase):
         oRule = component.rule_020()
         oRule.separate_generic_port_alignment = False
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'component')
-        self.assertEqual(oRule.identifier, '020')
+        self.assertEqual(oRule.name, "component")
+        self.assertEqual(oRule.identifier, "020")
 
         lExpected = [11, 12, 13, 18, 20, 22, 25, 26, 27]
 
@@ -37,8 +36,8 @@ class test_component_rule(unittest.TestCase):
         oRule.fix(self.oFile)
 
         lExpected = []
-        lExpected.append('')
-        utils.read_file(os.path.join(sTestDir, 'rule_020_test_input.fixed_combined_generic.vhd'), lExpected)
+        lExpected.append("")
+        utils.read_file(os.path.join(sTestDir, "rule_020_test_input.fixed_combined_generic.vhd"), lExpected)
 
         lActual = self.oFile.get_lines()
 
@@ -50,8 +49,8 @@ class test_component_rule(unittest.TestCase):
     def test_rule_020_with_seperate_generic(self):
         oRule = component.rule_020()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'component')
-        self.assertEqual(oRule.identifier, '020')
+        self.assertEqual(oRule.name, "component")
+        self.assertEqual(oRule.identifier, "020")
 
         lExpected = [18, 20, 22, 26, 27]
 
@@ -64,8 +63,8 @@ class test_component_rule(unittest.TestCase):
         oRule.fix(self.oFile)
 
         lExpected = []
-        lExpected.append('')
-        utils.read_file(os.path.join(sTestDir, 'rule_020_test_input.fixed_seperate_generic.vhd'), lExpected)
+        lExpected.append("")
+        utils.read_file(os.path.join(sTestDir, "rule_020_test_input.fixed_seperate_generic.vhd"), lExpected)
 
         lActual = self.oFile.get_lines()
 
@@ -73,4 +72,3 @@ class test_component_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

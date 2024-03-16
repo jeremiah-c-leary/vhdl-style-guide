@@ -8,7 +8,7 @@ lTokens.append(token.library_clause.keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of the **library** keyword.
     Indenting helps in comprehending the code.
 
@@ -26,7 +26,7 @@ class rule_001(token_indent):
 
        library ieee;
        library fifo_dsn;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

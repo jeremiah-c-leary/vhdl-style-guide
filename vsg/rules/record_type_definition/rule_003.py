@@ -8,7 +8,7 @@ lTokens.append(token.record_type_definition.end_keyword)
 
 
 class rule_003(Rule):
-    '''
+    """
     This rule checks the **end** keyword is on its own line.
 
     **Violation**
@@ -28,8 +28,8 @@ class rule_003(Rule):
          a : std_logic;
          b : std_logic;
        end record;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move *end* keyword and code after it to the next line'
+        self.solution = "Move *end* keyword and code after it to the next line"

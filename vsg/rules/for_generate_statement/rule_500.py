@@ -8,7 +8,7 @@ lTokens.append(token.for_generate_statement.for_keyword)
 
 
 class rule_500(Rule):
-    '''
+    """
     This rule checks the *for* keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_500(Rule):
     .. code-block:: vhdl
 
        for x in range (3 downto 0) generate
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

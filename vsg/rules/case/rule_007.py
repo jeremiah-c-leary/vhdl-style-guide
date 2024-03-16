@@ -5,7 +5,7 @@ from vsg.token import case_statement as token
 
 
 class rule_007(previous_line):
-    '''
+    """
     This rule checks for blank lines or comments above the **case** keyword.
 
     |configuring_previous_line_rules_link|
@@ -34,8 +34,8 @@ class rule_007(previous_line):
 
        -- This is a comment
        case data is
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.case_keyword])
-        self.style = 'no_code'
+        self.style = "no_code"

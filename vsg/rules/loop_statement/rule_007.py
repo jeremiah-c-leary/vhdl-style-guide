@@ -16,7 +16,7 @@ oValueToken = token.loop_label
 
 
 class rule_007(Rule):
-    '''
+    """
     This rule checks the **end loop_statement** line has a label.
     The closing label will be added if the opening loop_statement label exists.
 
@@ -33,11 +33,11 @@ class rule_007(Rule):
     .. code-block:: vhdl
 
        end loop LOOP_LABEL;
-    '''
+    """
 
     def __init__(self):
         super().__init__(oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
         self.solution = 'a label for the "end loop".'
-        self.groups.append('structure::optional')
+        self.groups.append("structure::optional")
         self.subphase = 2
         self.disable = True

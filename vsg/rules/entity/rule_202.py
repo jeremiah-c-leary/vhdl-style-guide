@@ -8,7 +8,7 @@ lTokens.append(token.port_keyword)
 
 
 class rule_202(Rule):
-    '''
+    """
     This rule checks for blank lines above the **port** keyword in entity specifications.
 
     |configuring_blank_lines_link|
@@ -29,8 +29,9 @@ class rule_202(Rule):
 
        entity fifo is
          port (
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)
-        self.style = 'no_blank_line'
+        self.style = "no_blank_line"
         self.lBetweenTokenPairs = [between.entity_keyword, between.semicolon]

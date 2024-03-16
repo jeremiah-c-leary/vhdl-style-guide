@@ -19,7 +19,7 @@ oEnd = token.port_clause.close_parenthesis
 
 
 class rule_004(token_indent_between_tokens):
-    '''
+    """
     This rule checks the indent of port declarations.
 
     **Violation**
@@ -41,7 +41,7 @@ class rule_004(token_indent_between_tokens):
          RD_EN    : in    std_logic;
          OVERFLOW : out   std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)

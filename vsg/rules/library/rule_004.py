@@ -8,7 +8,7 @@ lTokens.append(token.library_clause.keyword)
 
 
 class rule_004(token_case):
-    '''
+    """
     This rule checks the **library** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -28,8 +28,8 @@ class rule_004(token_case):
        library ieee;
 
        library fifo_dsn;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

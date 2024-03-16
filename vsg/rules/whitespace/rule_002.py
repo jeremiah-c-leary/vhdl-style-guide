@@ -6,7 +6,7 @@ from vsg.vhdlFile import utils
 
 
 class rule_002(ws_group.Rule):
-    '''
+    """
     This rule will check for the existence of tabs in the middle of a line.
 
     **Violation**
@@ -20,13 +20,12 @@ class rule_002(ws_group.Rule):
     .. code-block:: text
 
        \\t\\tsignal wr_en : std_logic;  -- Write Enable
-    '''
+    """
 
     def __init__(self):
-
         super().__init__()
         self.phase = 1
-        self.solution = 'Remove tab'
+        self.solution = "Remove tab"
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
@@ -53,7 +52,7 @@ class rule_002(ws_group.Rule):
 
     def _fix_violation(self, oViolation):
         dAction = oViolation.get_action()
-        if dAction['action'] == 'remove_tab_from_comment':
+        if dAction["action"] == "remove_tab_from_comment":
             remove_tab_from_comment(oViolation)
         else:
             remove_tab(oViolation)
@@ -77,14 +76,14 @@ def whitespace_exists(oToi):
 def define_action(lTokens):
     dAction = {}
     if isinstance(lTokens[0], parser.comment):
-        dAction['action'] = 'remove_tab_from_comment'
+        dAction["action"] = "remove_tab_from_comment"
     else:
-        dAction['action'] = 'remove_tab'
+        dAction["action"] = "remove_tab"
     return dAction
 
 
 def need_to_remove_whitespace(dAction):
-    if dAction['action'] == 'remove':
+    if dAction["action"] == "remove":
         return True
     return False
 
@@ -93,7 +92,7 @@ def remove_tab(oViolation):
     lTokens = oViolation.get_tokens()
     myToken = lTokens.pop()
     sValue = myToken.get_value()
-    sValue = sValue.replace('\t', '  ')
+    sValue = sValue.replace("\t", "  ")
     lTokens.append(parser.whitespace(sValue))
     lTokens[0].has_tab = False
 
@@ -102,6 +101,6 @@ def remove_tab_from_comment(oViolation):
     lTokens = oViolation.get_tokens()
     myToken = lTokens.pop()
     sValue = myToken.get_value()
-    sValue = sValue.replace('\t', '  ')
+    sValue = sValue.replace("\t", "  ")
     lTokens.append(parser.comment(sValue))
     lTokens[0].has_tab = False

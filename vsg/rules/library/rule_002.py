@@ -8,7 +8,7 @@ lTokens.append([token.library_clause.keyword, token.logical_name_list.logical_na
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for excessive spaces after the **library** keyword.
 
     |configuring_whitespace_rules_link|
@@ -24,6 +24,7 @@ class rule_002(Rule):
     .. code-block:: vhdl
 
        library ieee;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

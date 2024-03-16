@@ -8,7 +8,7 @@ lTokens.append(token.port_clause.close_parenthesis)
 
 
 class rule_015(token_indent):
-    '''
+    """
     This rule checks the indent of the closing parenthesis for port maps.
 
     **Violation**
@@ -32,7 +32,7 @@ class rule_015(token_indent):
          OVERFLOW : out   std_logic;
          DATA     : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

@@ -11,7 +11,7 @@ lNames.append(parser.todo)
 
 
 class rule_501(Rule):
-    '''
+    """
     This rule checks for consistent capitalization of enumerated types.
 
     **Violation**
@@ -33,7 +33,7 @@ class rule_501(Rule):
        state <= IDLE;
        state <= WRITE;
        state <= READ;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lNames)

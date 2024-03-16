@@ -11,7 +11,7 @@ from vsg.vhdlFile import utils
 
 
 class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(Rule):
-    '''
+    """
     Checks for the existence of a token and will insert it if it does not exist.
 
     Parameters
@@ -31,7 +31,7 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
 
     value_token : token object
        token to pull the value from
-    '''
+    """
 
     def __init__(self, insert_token, anchor_token, left_token, right_token, value_token):
         Rule.__init__(self)
@@ -40,4 +40,4 @@ class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value
         self.left_token = left_token
         self.right_token = right_token
         self.value_token = value_token
-        self.direction = 'left'
+        self.direction = "left"

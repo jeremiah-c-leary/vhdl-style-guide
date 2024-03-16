@@ -5,7 +5,7 @@ from vsg.token import pragma as token
 
 
 class rule_402(Rule):
-    '''
+    """
     This rule checks for blank lines or comments above closing pragmas.
 
     |configuring_previous_line_rules_link|
@@ -28,8 +28,8 @@ class rule_402(Rule):
 
        end component;
        -- synthesis translate_off
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.close])
-        self.style = 'no_blank_line'
+        self.style = "no_blank_line"

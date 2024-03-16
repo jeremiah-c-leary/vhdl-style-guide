@@ -5,7 +5,7 @@ from vsg.token import record_type_definition as token
 
 
 class rule_006(Rule):
-    '''
+    """
     This rule checks the optional simple name is on the same line as the **record** keyword.
 
     **Violation**
@@ -27,9 +27,9 @@ class rule_006(Rule):
          b : std_logic;
        end record t_record
        ;
-    '''
+    """
 
     def __init__(self):
         super().__init__(token.end_record_keyword, token.record_type_simple_name)
         self.subphase = 2
-        self.solution = 'Move simple name next to *record* keyword'
+        self.solution = "Move simple name next to *record* keyword"

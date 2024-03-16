@@ -8,7 +8,7 @@ lTokens.append(token.subprogram_body.begin_keyword)
 
 
 class rule_002(token_indent):
-    '''
+    """
     This rule checks the indent of the **begin** keyword.
 
     **Violation**
@@ -34,7 +34,7 @@ class rule_002(token_indent):
          signal d : out std_logic ) is
        begin
        end procedure average_samples;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

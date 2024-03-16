@@ -11,7 +11,7 @@ oEnd = token.component_instantiation_statement.semicolon
 
 
 class rule_010(align_tokens_in_region_between_tokens):
-    '''
+    """
     This rule checks the alignment of the **=>** operator for each generic and port in the instantiation.
 
     Following extra configurations are supported:
@@ -49,11 +49,11 @@ class rule_010(align_tokens_in_region_between_tokens):
            rd_en    => rd_en,
            overflow => overflow
          );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lAlign, oStart, oEnd)
         self.solution = 'Inconsistent alignment of "=>" in generic or port assignments of instantiation.'
-        self.configuration.remove('case_control_statements_ends_group')
-        self.configuration.remove('if_control_statements_ends_group')
-        self.configuration.remove('loop_control_statements_ends_group')
+        self.configuration.remove("case_control_statements_ends_group")
+        self.configuration.remove("if_control_statements_ends_group")
+        self.configuration.remove("loop_control_statements_ends_group")

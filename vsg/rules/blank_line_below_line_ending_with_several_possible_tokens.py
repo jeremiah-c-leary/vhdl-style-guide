@@ -8,7 +8,7 @@ from vsg.rules import (
 
 
 class blank_line_below_line_ending_with_several_possible_tokens(Rule):
-    '''
+    """
     Checks for a blank line below a line ending with a given token
 
     Parameters
@@ -22,13 +22,13 @@ class blank_line_below_line_ending_with_several_possible_tokens(Rule):
 
     token: token object type list
        token object that a blank line below should appear
-    '''
+    """
 
     def __init__(self, lTokens, lAllowTokens=None):
         super().__init__(lTokens, lAllowTokens)
 
     def _get_tokens_of_interest(self, oFile):
-        if self.style.startswith('require_blank_line'):
+        if self.style.startswith("require_blank_line"):
             return oFile.get_line_below_line_ending_with_several_possible_tokens(self.lTokens)
-        elif self.style == 'no_blank_line':
+        elif self.style == "no_blank_line":
             return oFile.get_blank_lines_below_line_ending_with_several_possible_tokens(self.lTokens)

@@ -9,15 +9,14 @@ from vsg.rules import function
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_100_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_100_test_input.vhd"))
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_100_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_100_test_input.fixed.vhd"), lExpected)
 
 
 class test_function_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -25,8 +24,8 @@ class test_function_rule(unittest.TestCase):
     def test_rule_100(self):
         oRule = function.rule_100()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'function')
-        self.assertEqual(oRule.identifier, '100')
+        self.assertEqual(oRule.name, "function")
+        self.assertEqual(oRule.identifier, "100")
 
         lExpected = [30, 34, 38, 42, 46, 50, 54, 58, 62, 66, 70, 74, 78, 82, 86, 90, 94, 98, 102]
 

@@ -5,7 +5,7 @@ from vsg.token import case_statement as token
 
 
 class rule_009(blank_line_above_line_starting_with_token):
-    '''
+    """
     This rule checks for blank lines or comments above the **end** keyword.
 
     |configuring_blank_lines_link|
@@ -26,7 +26,7 @@ class rule_009(blank_line_above_line_starting_with_token):
            null;
 
        end case;
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.end_keyword])

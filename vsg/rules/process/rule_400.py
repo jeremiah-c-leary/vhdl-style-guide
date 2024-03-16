@@ -18,7 +18,7 @@ lUnless = []
 
 
 class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
-    '''
+    """
     This rule checks the alignment of the **<=** and **:=** operators over consecutive sequential assignments in the process_statement_part.
 
     Following extra configurations are supported:
@@ -45,13 +45,13 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
        wr_en      <= '1';
        rd_en      <= '0';
        v_variable := 10;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lAlign, oStart, oEnd, lUnless)
-        self.solution = 'Align identifier.'
-        self.if_control_statements_ends_group = 'yes'
-        self.case_control_statements_ends_group = 'yes'
-        self.case_keyword_statements_ends_group = 'yes'
-        self.loop_control_statements_ends_group = 'yes'
-        self.configuration.remove('separate_generic_port_alignment')
+        self.solution = "Align identifier."
+        self.if_control_statements_ends_group = "yes"
+        self.case_control_statements_ends_group = "yes"
+        self.case_keyword_statements_ends_group = "yes"
+        self.loop_control_statements_ends_group = "yes"
+        self.configuration.remove("separate_generic_port_alignment")

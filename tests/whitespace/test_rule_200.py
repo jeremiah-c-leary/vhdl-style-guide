@@ -9,14 +9,13 @@ from vsg.rules import whitespace
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_200_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_200_test_input.vhd"))
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_200_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_200_test_input.fixed.vhd"), lExpected)
 
 
 class test(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -24,9 +23,9 @@ class test(unittest.TestCase):
     def test_rule_200(self):
         oRule = whitespace.rule_200()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'whitespace')
-        self.assertEqual(oRule.identifier, '200')
-        self.assertEqual(oRule.groups, ['blank_line'])
+        self.assertEqual(oRule.name, "whitespace")
+        self.assertEqual(oRule.identifier, "200")
+        self.assertEqual(oRule.groups, ["blank_line"])
 
         lExpected = [1, 4, 7, 11, 16, 21, 25, 28, 31, 34, 38, 41, 44, 47, 50, 54, 57, 62]
 
@@ -44,4 +43,3 @@ class test(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

@@ -1,25 +1,22 @@
 # -*- coding: utf-8 -*-
 
-error_type = 'error'
-warning_type = 'warning'
+error_type = "error"
+warning_type = "warning"
 
 
-class error():
-
+class error:
     def __init__(self, name):
         self.name = name
         self.type = error_type
 
 
-class warning():
-
+class warning:
     def __init__(self, name):
         self.name = name
         self.type = warning_type
 
 
-class create_list():
-
+class create_list:
     def __init__(self, dConfiguration):
         self.iMaxNameLength = 0
         self.lSeverities = _add_built_in_severities(self)
@@ -39,22 +36,22 @@ class create_list():
 
 
 def _add_built_in_severities(self):
-    '''
+    """
     Creates the built in severity types.
 
     Parameters: (None)
 
     Returns: (list of severity objects)
-    '''
+    """
     lReturn = []
-    lReturn.append(error('Error'))
-    lReturn.append(warning('Warning'))
-    self.iMaxNameLength = max(self.iMaxNameLength, len('Warning'))
+    lReturn.append(error("Error"))
+    lReturn.append(warning("Warning"))
+    self.iMaxNameLength = max(self.iMaxNameLength, len("Warning"))
     return lReturn
 
 
 def _extract_severities_from_configuration(dConfiguration):
-    '''
+    """
     Creates a list of severities from a configuration.
 
     Parameters:
@@ -62,19 +59,19 @@ def _extract_severities_from_configuration(dConfiguration):
         dConfiguration: (Configuration dictionary)
 
     Returns: (list of severity objects)
-    '''
+    """
     lReturn = []
-    if 'severity' in dConfiguration:
-        for sKey in list(dConfiguration['severity']):
-            if dConfiguration['severity'][sKey]['type'] == error_type:
+    if "severity" in dConfiguration:
+        for sKey in list(dConfiguration["severity"]):
+            if dConfiguration["severity"][sKey]["type"] == error_type:
                 lReturn.append(error(sKey))
-            elif dConfiguration['severity'][sKey]['type'] == warning_type:
+            elif dConfiguration["severity"][sKey]["type"] == warning_type:
                 lReturn.append(warning(sKey))
     return lReturn
 
 
 def _update_severities_from_configuration(self, dConfiguration):
-    '''
+    """
     Adds user defined severities to the build in severities.
 
     Parameters:
@@ -82,9 +79,8 @@ def _update_severities_from_configuration(self, dConfiguration):
         dConfiguration: (Configuration dictionary)
 
     Returns: (Nothing)
-    '''
+    """
     lUserSeverities = _extract_severities_from_configuration(dConfiguration)
     for oSeverity in lUserSeverities:
         self.add_severity(oSeverity)
         self.iMaxNameLength = max(self.iMaxNameLength, len(oSeverity.name))
-

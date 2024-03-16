@@ -10,7 +10,7 @@ lTokens.append(token.concurrent_selected_signal_assignment.assignment)
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for a single space after the **<=** operator.
 
     |configuring_whitespace_rules_link|
@@ -28,7 +28,7 @@ class rule_002(Rule):
 
        wr_en <= '0';
        rd_en <= '1';
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

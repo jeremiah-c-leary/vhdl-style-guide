@@ -8,7 +8,7 @@ lTokens.append(token.for_keyword)
 
 
 class rule_101(Rule):
-    '''
+    """
     This rule checks that a single space exists after the **for** keyword.
 
     |configuring_whitespace_rules_link|
@@ -24,7 +24,8 @@ class rule_101(Rule):
     .. code-block:: vhdl
 
        for x in (31 downto 0) loop
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Ensure a single space after for keyword.'
+        self.solution = "Ensure a single space after for keyword."

@@ -6,7 +6,7 @@ from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
 
 class Rule(WhitespaceRule):
-    '''
+    """
     Checks for at least a single space before a token.
 
     Parameters
@@ -26,7 +26,7 @@ class Rule(WhitespaceRule):
 
     oEnd : token object type
        The end of the range
-    '''
+    """
 
     def __init__(self, lTokens, oStart, oEnd):
         WhitespaceRule.__init__(self)

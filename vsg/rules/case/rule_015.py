@@ -8,7 +8,7 @@ lTokens.append(token.case_statement.is_keyword)
 
 
 class rule_015(token_case):
-    '''
+    """
     This rule checks the **is** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -32,8 +32,8 @@ class rule_015(token_case):
          case address is
 
          case address is
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

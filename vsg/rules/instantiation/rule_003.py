@@ -8,7 +8,7 @@ lTokens.append([token.component_instantiation_statement.instantiation_label, tok
 
 
 class rule_003(Rule):
-    '''
+    """
     This rule checks for a single space before the colon.
 
     |configuring_whitespace_rules_link|
@@ -24,6 +24,7 @@ class rule_003(Rule):
     .. code-block:: vhdl
 
        U_FIFO : FIFO
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

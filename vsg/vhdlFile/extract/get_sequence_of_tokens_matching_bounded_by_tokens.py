@@ -4,7 +4,6 @@ from vsg.vhdlFile.extract import tokens
 
 
 def get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, lAllTokens, oTokenMap):
-
     lReturn = []
 
     lStart = oTokenMap.get_token_indexes(oStart)
@@ -21,6 +20,6 @@ def get_sequence_of_tokens_matching_bounded_by_tokens(lTokens, oStart, oEnd, lAl
             if not isinstance(lAllTokens[iToken + iIndex], oToken):
                 break
         else:
-            lReturn.append(tokens.New(iIndex, iLine, lAllTokens[iIndex:iIndex + len(lTokens)]))
+            lReturn.append(tokens.New(iIndex, iLine, lAllTokens[iIndex : iIndex + len(lTokens)]))
 
     return lReturn

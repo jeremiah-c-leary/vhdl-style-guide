@@ -9,19 +9,18 @@ from vsg.rules import port
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_014_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_014_test_input.vhd"))
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_014_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_014_test_input.fixed.vhd"), lExpected)
 
 lExpected_move_left = []
-lExpected_move_left.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_014_test_input.fixed_move_left.vhd'), lExpected_move_left)
+lExpected_move_left.append("")
+utils.read_file(os.path.join(sTestDir, "rule_014_test_input.fixed_move_left.vhd"), lExpected_move_left)
 
 
 class test_port_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -29,8 +28,8 @@ class test_port_rule(unittest.TestCase):
     def test_rule_014(self):
         oRule = port.rule_014()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'port')
-        self.assertEqual(oRule.identifier, '014')
+        self.assertEqual(oRule.name, "port")
+        self.assertEqual(oRule.identifier, "014")
 
         lExpected = [17]
 

@@ -4,7 +4,6 @@ from vsg.vhdlFile import utils
 
 
 def classify_until(lUntils, iToken, lObjects):
-
     iCurrent = iToken
     iLast = 0
     while iLast != iCurrent:

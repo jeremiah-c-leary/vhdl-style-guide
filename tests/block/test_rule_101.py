@@ -9,15 +9,14 @@ from vsg.rules import block
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_101_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_101_test_input.vhd"))
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_101_test_input.fixed.vhd'), lExpected, False)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_101_test_input.fixed.vhd"), lExpected, False)
 
 
 class test_block_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -25,8 +24,8 @@ class test_block_rule(unittest.TestCase):
     def test_rule_101(self):
         oRule = block.rule_101()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'block')
-        self.assertEqual(oRule.identifier, '101')
+        self.assertEqual(oRule.name, "block")
+        self.assertEqual(oRule.identifier, "101")
 
         lExpected = [10, 10]
 

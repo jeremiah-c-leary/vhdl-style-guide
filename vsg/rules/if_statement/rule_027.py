@@ -8,7 +8,7 @@ lTokens.append(token.if_statement.else_keyword)
 
 
 class rule_027(token_case):
-    '''
+    """
     This rule checks the **else** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_027(token_case):
     .. code-block:: vhdl
 
        else
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

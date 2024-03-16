@@ -9,8 +9,9 @@ lTokens.append([token.procedure_specification.designator, token.subprogram_body.
 lTokens.append([token.procedure_specification.designator, token.procedure_specification.open_parenthesis])
 lTokens.append([token.procedure_specification.close_parenthesis, token.subprogram_body.is_keyword])
 
+
 class rule_100(Rule):
-    '''
+    """
     This rule checks for a single space between the following procedure elements:  **procedure** keyword, procedure designator, open parenthesis, close parenthesis, and **is** keywords.
 
     |configuring_whitespace_rules_link|
@@ -34,6 +35,7 @@ class rule_100(Rule):
            signal d : out std_logic
          ) is
        procedure average_samples is
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

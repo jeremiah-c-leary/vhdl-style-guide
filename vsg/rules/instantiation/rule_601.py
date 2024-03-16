@@ -8,7 +8,7 @@ lTokens.append(token.component_instantiation_statement.instantiation_label)
 
 
 class rule_601(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on instantiation labels.
     The default prefix is *inst_*.
 
@@ -25,9 +25,9 @@ class rule_601(token_prefix):
     .. code-block:: vhdl
 
        inst_fifo_32x2k : FIFO
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['inst_']
-        self.solution = 'instantiation label'
+        self.prefixes = ["inst_"]
+        self.solution = "instantiation label"

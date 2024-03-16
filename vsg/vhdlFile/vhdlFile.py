@@ -32,11 +32,12 @@ from vsg.vhdlFile.classify import (
 from vsg.vhdlFile.indent.set_token_indent import set_token_indent
 
 
-class command_line_args():
-    ''' This is used as an input into the version command.'''
+class command_line_args:
+    """This is used as an input into the version command."""
+
     def __init__(self, version=False):
         self.version = version
-        self.style = 'indent_only'
+        self.style = "indent_only"
         self.configuration = []
         self.debug = False
         self.fix_only = False
@@ -44,13 +45,14 @@ class command_line_args():
         self.force_fix = False
         self.fix = False
 
+
 default_cla = command_line_args()
 
 default_conf = config.New(default_cla)
 
 
-class vhdlFile():
-    '''
+class vhdlFile:
+    """
     Holds contents of a VHDL file.
     When a vhdlFile object is created, the contents of the file must be passed to it.
     A line object is created for each line read in.
@@ -63,7 +65,8 @@ class vhdlFile():
     Returns:
 
        fileobject
-    '''
+    """
+
     def __init__(self, filecontent, commandLineArguments=default_cla, sFilename=None, eError=None, configuration=default_conf):
         self.filecontent = filecontent
         self.hasArchitecture = False
@@ -71,10 +74,10 @@ class vhdlFile():
         self.lAllObjects = []
         self.filename = sFilename
         self.dIndentMap = None
-        self.lOpenPragmas = ['--vhdl_comp_off']
-        self.lClosePragmas = ['--vhdl_comp_on']
+        self.lOpenPragmas = ["--vhdl_comp_off"]
+        self.lClosePragmas = ["--vhdl_comp_on"]
         self.dVars = {}
-        self.dVars['pragma'] = False
+        self.dVars["pragma"] = False
         self.eError = eError
         self.stdin = commandLineArguments.stdin
         self.configuration = configuration
@@ -82,12 +85,11 @@ class vhdlFile():
         self._processFile()
 
     def _processFile(self):
-
         oOptions = options()
         self.lAllObjects = []
         for sLine in self.filecontent:
-            self.dVars['line'] = sLine
-            lTokens = tokens.create(sLine.rstrip('\n').rstrip('\r'))
+            self.dVars["line"] = sLine
+            lTokens = tokens.create(sLine.rstrip("\n").rstrip("\r"))
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
@@ -111,15 +113,15 @@ class vhdlFile():
         except exceptions.ClassifyError as e:
             if self.commandLineArguments.force_fix and self.commandLineArguments.fix:
                 print(e.message)
-                print('')
-                print('INFO:  The --force_fix option was enabled.')
-                print('       Proceeding to analyze and apply fixes.')
-                print('')
+                print("")
+                print("INFO:  The --force_fix option was enabled.")
+                print("       Proceeding to analyze and apply fixes.")
+                print("")
             else:
-               raise e
+                raise e
 
         post_token_assignments(self.lAllObjects)
-#        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
+        #        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
         set_token_hierarchy_value(self.lAllObjects)
         set_todo_tokens(self.lAllObjects)
@@ -128,7 +130,6 @@ class vhdlFile():
         self.oTokenMap = process_tokens(self.lAllObjects)
 
     def update(self, lUpdates):
-
         if len(lUpdates) == 0:
             return
         bUpdateMap = True
@@ -156,14 +157,14 @@ class vhdlFile():
 
     def get_object_lines(self):
         lReturn = []
-        lReturn.append('')
+        lReturn.append("")
         for lLine in split_on_carriage_return(self.lAllObjects):
             lReturn.append(lLine)
         return lReturn
 
     def get_lines(self):
         lReturn = []
-        lReturn.append('')
+        lReturn.append("")
         for lLine in split_on_carriage_return(self.lAllObjects):
             lReturn.append(utils.convert_token_list_to_string(lLine))
         return lReturn
@@ -222,11 +223,36 @@ class vhdlFile():
     def get_tokens_matching_in_range_bounded_by_tokens(self, lTokens, oStart, oEnd):
         return extract.get_tokens_matching_in_range_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
-    def get_tokens_bounded_by(self, oLeft, oRight, include_trailing_whitespace=False, bExcludeLastToken=False, bIncludeTillEndOfLine=False, bIncludeTillBeginningOfLine=False):
-        return extract.get_tokens_bounded_by(oLeft, oRight, self.lAllObjects, self.oTokenMap, include_trailing_whitespace=include_trailing_whitespace, bExcludeLastToken=bExcludeLastToken, bIncludeTillEndOfLine=bIncludeTillEndOfLine, bIncludeTillBeginningOfLine=bIncludeTillBeginningOfLine)
+    def get_tokens_bounded_by(
+        self,
+        oLeft,
+        oRight,
+        include_trailing_whitespace=False,
+        bExcludeLastToken=False,
+        bIncludeTillEndOfLine=False,
+        bIncludeTillBeginningOfLine=False,
+    ):
+        return extract.get_tokens_bounded_by(
+            oLeft,
+            oRight,
+            self.lAllObjects,
+            self.oTokenMap,
+            include_trailing_whitespace=include_trailing_whitespace,
+            bExcludeLastToken=bExcludeLastToken,
+            bIncludeTillEndOfLine=bIncludeTillEndOfLine,
+            bIncludeTillBeginningOfLine=bIncludeTillBeginningOfLine,
+        )
 
     def get_tokens_bounded_by_token_when_between_tokens(self, oLeft, oRight, oStart, oEnd, include_trailing_whitespace=False):
-        return extract.get_tokens_bounded_by_token_when_between_tokens(oLeft, oRight, oStart, oEnd, self.lAllObjects, self.oTokenMap, include_trailing_whitespace)
+        return extract.get_tokens_bounded_by_token_when_between_tokens(
+            oLeft,
+            oRight,
+            oStart,
+            oEnd,
+            self.lAllObjects,
+            self.oTokenMap,
+            include_trailing_whitespace,
+        )
 
     def get_tokens_bounded_by_tokens_if_token_is_between_them(self, oLeft, oRight, oToken):
         return extract.get_tokens_bounded_by_tokens_if_token_is_between_them(oLeft, oRight, oToken, self.lAllObjects, self.oTokenMap)
@@ -277,7 +303,13 @@ class vhdlFile():
         return extract.get_sequence_of_tokens_not_matching(lTokens, self.lAllObjects, self.oTokenMap)
 
     def get_tokens_between_tokens_inclusive_while_storing_value_from_token(self, left_token, right_token, value_token):
-        return extract.get_tokens_between_tokens_inclusive_while_storing_value_from_token(left_token, right_token, value_token, self.lAllObjects, self.oTokenMap)
+        return extract.get_tokens_between_tokens_inclusive_while_storing_value_from_token(
+            left_token,
+            right_token,
+            value_token,
+            self.lAllObjects,
+            self.oTokenMap,
+        )
 
     def get_tokens_between_non_whitespace_token_and_token(self, right_token):
         return extract.get_tokens_between_non_whitespace_token_and_token(right_token, self.lAllObjects, self.oTokenMap)
@@ -289,7 +321,12 @@ class vhdlFile():
         return extract.get_consecutive_lines_starting_with_token(search_token, min_num_lines, self.lAllObjects, self.oTokenMap)
 
     def get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(self, search_token, stop_token):
-        return extract.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(search_token, stop_token, self.lAllObjects, self.oTokenMap)
+        return extract.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(
+            search_token,
+            stop_token,
+            self.lAllObjects,
+            self.oTokenMap,
+        )
 
     def get_tokens_where_line_starts_with_token_until_ending_token_is_found(self, start_token, stop_token):
         return extract.get_tokens_where_line_starts_with_token_until_ending_token_is_found(start_token, stop_token, self.lAllObjects, self.oTokenMap)
@@ -301,7 +338,15 @@ class vhdlFile():
         return extract.get_token_and_n_tokens_before_it_in_between_tokens(lTokens, iTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_token_and_n_tokens_before_it_in_between_tokens_unless_token_is_found(self, lTokens, iTokens, oStart, oEnd, oStop):
-        return extract.get_token_and_n_tokens_before_it_in_between_tokens_unless_token_is_found(lTokens, iTokens, oStart, oEnd, oStop, self.lAllObjects, self.oTokenMap)
+        return extract.get_token_and_n_tokens_before_it_in_between_tokens_unless_token_is_found(
+            lTokens,
+            iTokens,
+            oStart,
+            oEnd,
+            oStop,
+            self.lAllObjects,
+            self.oTokenMap,
+        )
 
     def get_token_and_n_tokens_after_it(self, lTokens, iTokens):
         return extract.get_token_and_n_tokens_after_it(lTokens, iTokens, self.lAllObjects, self.oTokenMap)
@@ -333,8 +378,23 @@ class vhdlFile():
     def get_lines_with_length_that_exceed_column(self, iColumn):
         return extract.get_lines_with_length_that_exceed_column(iColumn, self.lAllObjects, self.oTokenMap)
 
-    def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(self, lStartTokens, lEndTokens, bIncludeStartToken=False, bIncludeEndToken=True, bEarliestDetect=False):
-        return extract.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(lStartTokens, lEndTokens, self.lAllObjects, self.oTokenMap, bIncludeStartToken, bIncludeEndToken, bEarliestDetect)
+    def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(
+        self,
+        lStartTokens,
+        lEndTokens,
+        bIncludeStartToken=False,
+        bIncludeEndToken=True,
+        bEarliestDetect=False,
+    ):
+        return extract.get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(
+            lStartTokens,
+            lEndTokens,
+            self.lAllObjects,
+            self.oTokenMap,
+            bIncludeStartToken,
+            bIncludeEndToken,
+            bEarliestDetect,
+        )
 
     def get_tokens_between_indexes(self, iStartIndex, iEndIndex):
         return extract.get_tokens_between_indexes(iStartIndex, iEndIndex, self.lAllObjects)
@@ -383,32 +443,31 @@ def post_token_assignments(lTokens):
     iParenId = 0
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
-
         if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name) or isinstance(oToken, todo.name):
             sValue = oToken.get_value()
             ### IEEE values
-            if sValue.lower() == 'std_logic_vector':
+            if sValue.lower() == "std_logic_vector":
                 lTokens[iToken] = types.std_logic_vector(sValue)
 
-            elif sValue.lower() == 'std_ulogic_vector':
+            elif sValue.lower() == "std_ulogic_vector":
                 lTokens[iToken] = types.std_ulogic_vector(sValue)
 
-            elif sValue.lower() == 'std_ulogic':
+            elif sValue.lower() == "std_ulogic":
                 lTokens[iToken] = types.std_ulogic(sValue)
 
-            elif sValue.lower() == 'std_logic':
+            elif sValue.lower() == "std_logic":
                 lTokens[iToken] = types.std_logic(sValue)
 
-            elif sValue.lower() == 'integer':
+            elif sValue.lower() == "integer":
                 lTokens[iToken] = types.integer(sValue)
 
-            elif sValue.lower() == 'natural':
+            elif sValue.lower() == "natural":
                 lTokens[iToken] = types.natural(sValue)
 
-            elif sValue.lower() == 'signed':
+            elif sValue.lower() == "signed":
                 lTokens[iToken] = types.signed(sValue)
 
-            elif sValue.lower() == 'unsigned':
+            elif sValue.lower() == "unsigned":
                 lTokens[iToken] = types.unsigned(sValue)
 
         elif isinstance(oToken, type_mark.attribute):
@@ -418,10 +477,10 @@ def post_token_assignments(lTokens):
 
         elif isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
-            if sValue == '&':
+            if sValue == "&":
                 lTokens[iToken] = adding_operator.concat()
 
-            elif sValue  == '+':
+            elif sValue == "+":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = sign.plus()
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
@@ -435,7 +494,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = adding_operator.plus()
 
-            elif sValue  == '-':
+            elif sValue == "-":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = sign.minus()
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
@@ -449,26 +508,26 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = adding_operator.minus()
 
-            elif sValue == '(':
+            elif sValue == "(":
                 lTokens[iToken] = parser.open_parenthesis()
                 iParenId += 1
                 lParenId.append(iParenId)
                 lTokens[iToken].iId = iParenId
 
-            elif sValue == ')':
+            elif sValue == ")":
                 lTokens[iToken] = parser.close_parenthesis()
                 lTokens[iToken].iId = lParenId.pop()
 
-            elif sValue == ',':
+            elif sValue == ",":
                 lTokens[iToken] = parser.comma()
 
-            elif sValue.lower() == 'to':
+            elif sValue.lower() == "to":
                 lTokens[iToken] = direction.to(sValue)
 
-            elif sValue.lower() == 'downto':
+            elif sValue.lower() == "downto":
                 lTokens[iToken] = direction.downto(sValue)
 
-            elif sValue.lower() == 'and':
+            elif sValue.lower() == "and":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.and_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -478,7 +537,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.and_operator(sValue)
 
-            elif sValue.lower() == 'or':
+            elif sValue.lower() == "or":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.or_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -488,7 +547,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.or_operator(sValue)
 
-            elif sValue.lower() == 'nand':
+            elif sValue.lower() == "nand":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -498,7 +557,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.nand_operator(sValue)
 
-            elif sValue.lower() == 'nor':
+            elif sValue.lower() == "nor":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -508,7 +567,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.nor_operator(sValue)
 
-            elif sValue.lower() == 'xor':
+            elif sValue.lower() == "xor":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -518,7 +577,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.xor_operator(sValue)
 
-            elif sValue.lower() == 'xnor':
+            elif sValue.lower() == "xnor":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -528,58 +587,58 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.xnor_operator(sValue)
 
-            elif sValue.lower() == '**':
+            elif sValue.lower() == "**":
                 lTokens[iToken] = miscellaneous_operator.double_star(sValue)
 
-            elif sValue.lower() == 'abs':
+            elif sValue.lower() == "abs":
                 lTokens[iToken] = miscellaneous_operator.abs_operator(sValue)
 
-            elif sValue.lower() == 'not':
+            elif sValue.lower() == "not":
                 lTokens[iToken] = miscellaneous_operator.not_operator(sValue)
 
-            elif sValue.lower() == '*':
+            elif sValue.lower() == "*":
                 lTokens[iToken] = multiplying_operator.star(sValue)
 
-            elif sValue.lower() == '/':
+            elif sValue.lower() == "/":
                 lTokens[iToken] = multiplying_operator.slash(sValue)
 
-            elif sValue.lower() == 'mod':
+            elif sValue.lower() == "mod":
                 lTokens[iToken] = multiplying_operator.mod_operator(sValue)
 
-            elif sValue.lower() == 'rem':
+            elif sValue.lower() == "rem":
                 lTokens[iToken] = multiplying_operator.rem_operator(sValue)
 
-            elif sValue == '=':
+            elif sValue == "=":
                 lTokens[iToken] = relational_operator.equal(sValue)
 
             elif sValue == "'":
                 lTokens[iToken] = parser.tic(sValue)
                 utils.classify_predefined_types(lTokens, iToken + 1)
 
-            elif sValue.lower() == 'event':
+            elif sValue.lower() == "event":
                 lTokens[iToken] = parser.event_keyword(sValue)
 
             ### IEEE values
-            elif sValue.lower() == 'rising_edge':
+            elif sValue.lower() == "rising_edge":
                 lTokens[iToken] = function.rising_edge(sValue)
 
-            elif sValue.lower() == 'falling_edge':
+            elif sValue.lower() == "falling_edge":
                 lTokens[iToken] = function.falling_edge(sValue)
 
-            elif sValue.lower() == 'std_logic_vector':
+            elif sValue.lower() == "std_logic_vector":
                 lTokens[iToken] = types.std_logic_vector(sValue)
 
-            elif sValue.lower() == 'std_ulogic_vector':
+            elif sValue.lower() == "std_ulogic_vector":
                 lTokens[iToken] = types.std_ulogic_vector(sValue)
 
-            elif sValue.lower() == 'std_ulogic':
+            elif sValue.lower() == "std_ulogic":
                 lTokens[iToken] = types.std_ulogic(sValue)
 
             elif len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
                 lTokens[iToken] = parser.character_literal(sValue)
         else:
             sValue = oToken.get_value()
-            if sValue  == '+':
+            if sValue == "+":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = sign.plus()
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
@@ -588,7 +647,7 @@ def post_token_assignments(lTokens):
                     lTokens[iToken] = sign.plus()
                 else:
                     lTokens[iToken] = adding_operator.plus()
-            elif sValue  == '-':
+            elif sValue == "-":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = sign.minus()
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
@@ -597,17 +656,17 @@ def post_token_assignments(lTokens):
                     lTokens[iToken] = sign.minus()
                 else:
                     lTokens[iToken] = adding_operator.minus()
-            elif sValue.lower() == '*':
+            elif sValue.lower() == "*":
                 lTokens[iToken] = multiplying_operator.star(sValue)
-            elif sValue.lower() == '/':
+            elif sValue.lower() == "/":
                 lTokens[iToken] = multiplying_operator.slash(sValue)
-            elif sValue.lower() == '**':
+            elif sValue.lower() == "**":
                 lTokens[iToken] = miscellaneous_operator.double_star(sValue)
-            elif sValue == '(':
+            elif sValue == "(":
                 iParenId += 1
                 lParenId.append(iParenId)
                 oToken.iId = iParenId
-            elif sValue == ')':
+            elif sValue == ")":
                 oToken.iId = lParenId.pop()
 
 
@@ -646,17 +705,17 @@ def set_code_tags(lTokens):
 def set_aggregate_tokens(lTokens):
     lOpenParens = []
     for iToken, oToken in enumerate(lTokens):
-#        if isinstance(oToken, parser.open_parenthesis):
+        #        if isinstance(oToken, parser.open_parenthesis):
         if type(oToken) == parser.open_parenthesis:
             lOpenParens.append(iToken)
-#        if isinstance(oToken, parser.close_parenthesis):
+        #        if isinstance(oToken, parser.close_parenthesis):
         if type(oToken) == parser.close_parenthesis:
             iIndex = lOpenParens.pop()
             if isinstance(lTokens[iIndex], token.aggregate.open_parenthesis):
                 iId = oToken.iId
                 lTokens[iToken] = token.aggregate.close_parenthesis()
                 lTokens[iToken].iId = iId
-#        if isinstance(oToken, token.element_association.assignment):
+        #        if isinstance(oToken, token.element_association.assignment):
         if len(lOpenParens) > 0 and (isinstance(oToken, token.element_association.assignment) or type(oToken) == parser.comma):
             iId = lTokens[lOpenParens[-1]].iId
             lTokens[lOpenParens[-1]] = token.aggregate.open_parenthesis()
@@ -679,9 +738,11 @@ def check_for_name(oToken, iToken, lTokens):
 
 def check_for_open_parenthesis(oToken, iToken, lTokens, lOpenParens):
     if type(oToken) == parser.open_parenthesis:
-        if utils.are_previous_consecutive_token_types_ignoring_whitespace([todo.name], iToken - 1, lTokens) or \
-           utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.type], iToken - 1, lTokens) or \
-           utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.function], iToken - 1, lTokens):
+        if (
+            utils.are_previous_consecutive_token_types_ignoring_whitespace([todo.name], iToken - 1, lTokens)
+            or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.type], iToken - 1, lTokens)
+            or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.function], iToken - 1, lTokens)
+        ):
             lTokens[iToken] = oToken.convert_to(todo.open_parenthesis)
             lOpenParens.append(oToken)
 
@@ -695,7 +756,8 @@ def check_for_close_parenthesis(oToken, iToken, lTokens, lOpenParens):
         except IndexError:
             pass
 
-#def combine_use_clause_selected_name(lTokens):
+
+# def combine_use_clause_selected_name(lTokens):
 #    lReturn = []
 #    for iToken, oToken in enumerate(lTokens):
 #        if isinstance(oToken, token.use_clause.selected_name):
@@ -714,8 +776,7 @@ def remove_beginning_of_file_tokens(lTokens):
     return lReturn
 
 
-class options():
-
+class options:
     def __init__(self):
         self.bInsideDelimitedComment = False
 

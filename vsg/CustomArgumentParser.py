@@ -12,5 +12,5 @@ class CustomArgumentParser(argparse.ArgumentParser):
 
     def error(self, message):
         self.print_usage(sys.stderr)
-        args = {'prog': self.prog, 'message': message}
-        self.exit(1, _('%(prog)s: error: %(message)s\n') % args)
+        args = {"prog": self.prog, "message": message}
+        self.exit(1, _("%(prog)s: error: %(message)s\n") % args)

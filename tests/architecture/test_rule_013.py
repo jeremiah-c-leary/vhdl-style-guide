@@ -9,18 +9,18 @@ from vsg.rules import architecture
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_013_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_013_test_input.vhd"))
 
 lExpected_lower = []
-lExpected_lower.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_013_test_input.fixed_lower.vhd'), lExpected_lower)
+lExpected_lower.append("")
+utils.read_file(os.path.join(sTestDir, "rule_013_test_input.fixed_lower.vhd"), lExpected_lower)
 
 lExpected_upper = []
-lExpected_upper.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_013_test_input.fixed_upper.vhd'), lExpected_upper)
+lExpected_upper.append("")
+utils.read_file(os.path.join(sTestDir, "rule_013_test_input.fixed_upper.vhd"), lExpected_upper)
+
 
 class test_architecture_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -28,9 +28,9 @@ class test_architecture_rule(unittest.TestCase):
     def test_rule_013_lower(self):
         oRule = architecture.rule_013()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '013')
-        self.assertEqual(oRule.groups, ['case', 'case::name'])
+        self.assertEqual(oRule.name, "architecture")
+        self.assertEqual(oRule.identifier, "013")
+        self.assertEqual(oRule.groups, ["case", "case::name"])
 
         lExpected = [2, 10, 14, 18]
 
@@ -39,10 +39,10 @@ class test_architecture_rule(unittest.TestCase):
 
     def test_rule_013_upper(self):
         oRule = architecture.rule_013()
-        oRule.case = 'upper'
+        oRule.case = "upper"
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'architecture')
-        self.assertEqual(oRule.identifier, '013')
+        self.assertEqual(oRule.name, "architecture")
+        self.assertEqual(oRule.identifier, "013")
 
         lExpected = [6, 10]
         oRule.analyze(self.oFile)
@@ -62,7 +62,7 @@ class test_architecture_rule(unittest.TestCase):
 
     def test_fix_rule_013_upper(self):
         oRule = architecture.rule_013()
-        oRule.case = 'upper'
+        oRule.case = "upper"
 
         oRule.fix(self.oFile)
 
@@ -72,4 +72,3 @@ class test_architecture_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

@@ -15,7 +15,7 @@ oEnd = token.port_clause.close_parenthesis
 
 
 class rule_019(token_case_in_range_bounded_by_tokens):
-    '''
+    """
     This rule checks the port direction has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -41,8 +41,8 @@ class rule_019(token_case_in_range_bounded_by_tokens):
          OVERFLOW : out   std_logic;
          DATA     : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

@@ -8,7 +8,7 @@ lTokenPairs.append([token.procedure_call.procedure_name, token.procedure_call.cl
 
 
 class rule_400(Rule):
-    '''
+    """
     This rule checks the alignment of multiline procedure calls.
 
     |configuring_multiline_indent_rules_link|
@@ -28,7 +28,7 @@ class rule_400(Rule):
        connect_ports(port_1, port_2, port_3,
                      port_4, port_5,
                      port_6, port_7);
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)

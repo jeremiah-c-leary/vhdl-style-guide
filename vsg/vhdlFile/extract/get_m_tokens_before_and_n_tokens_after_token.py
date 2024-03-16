@@ -16,11 +16,11 @@ def get_m_tokens_before_and_n_tokens_after_token(iM, iN, lTokens, lAllTokens, oT
         if start_index_exceeds_beginning_of_file(iStart):
             lMyTokens = []
             lMyTokens.append(parser.beginning_of_file())
-            lMyTokens.extend(lAllTokens[0:iEnd + 1])
+            lMyTokens.extend(lAllTokens[0 : iEnd + 1])
             oTokens = tokens.New(0, iLine, lMyTokens)
             lReturn.append(oTokens)
         else:
-            lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart:iEnd + 1]))
+            lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart : iEnd + 1]))
 
     return lReturn
 

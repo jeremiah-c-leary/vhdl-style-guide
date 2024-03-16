@@ -4,7 +4,7 @@ from vsg import proposed_rule
 
 
 class rule_006(proposed_rule.Rule):
-    '''
+    """
     This rule checks the semicolon is on the same line as the context selected name.
 
     .. NOTE:: This rule has not been implemented yet.
@@ -28,7 +28,7 @@ class rule_006(proposed_rule.Rule):
 
        context
        c1;
-    '''
+    """
 
     def __init__(self):
         super().__init__()

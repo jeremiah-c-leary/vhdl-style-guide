@@ -9,7 +9,7 @@ oSecondToken = token.process_keyword
 
 
 class rule_016(Rule):
-    '''
+    """
     This rule checks the process has a label.
 
     **Violation**
@@ -29,9 +29,9 @@ class rule_016(Rule):
                          rd_full, wr_full
                         ) is
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(oFirstToken, oSecondToken)
-        self.solution = 'Add label for process statement'
+        self.solution = "Add label for process statement"
         self.fixable = False

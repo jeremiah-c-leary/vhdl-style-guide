@@ -11,7 +11,7 @@ lTokens.append(token.if_generate_statement.label_colon)
 
 
 class rule_021(Rule):
-    '''
+    """
     This rule checks a label colon is on the same line as the **case**, **if**, and **for** keywords.
 
     **Violation**
@@ -27,7 +27,7 @@ class rule_021(Rule):
 
        label
        : case
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

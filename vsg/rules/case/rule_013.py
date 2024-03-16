@@ -9,7 +9,7 @@ lTokens.append(token.null_statement.null_keyword)
 
 
 class rule_013(token_indent):
-    '''
+    """
     This rule checks the indent of the **null** keyword.
 
     **Violation**
@@ -31,7 +31,7 @@ class rule_013(token_indent):
 
        when others =>
          null;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

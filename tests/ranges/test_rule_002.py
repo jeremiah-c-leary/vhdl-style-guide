@@ -9,18 +9,18 @@ from vsg.rules import ranges
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_002_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_002_test_input.vhd"))
 
 lExpected_lower = []
-lExpected_lower.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_002_test_input.fixed_lower.vhd'), lExpected_lower)
+lExpected_lower.append("")
+utils.read_file(os.path.join(sTestDir, "rule_002_test_input.fixed_lower.vhd"), lExpected_lower)
 
 lExpected_upper = []
-lExpected_upper.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_002_test_input.fixed_upper.vhd'), lExpected_upper)
+lExpected_upper.append("")
+utils.read_file(os.path.join(sTestDir, "rule_002_test_input.fixed_upper.vhd"), lExpected_upper)
+
 
 class test_ranges_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -28,8 +28,8 @@ class test_ranges_rule(unittest.TestCase):
     def test_rule_002_lower(self):
         oRule = ranges.rule_002()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'range')
-        self.assertEqual(oRule.identifier, '002')
+        self.assertEqual(oRule.name, "range")
+        self.assertEqual(oRule.identifier, "002")
 
         lExpected = [18, 22, 30, 35]
 
@@ -38,10 +38,10 @@ class test_ranges_rule(unittest.TestCase):
 
     def test_rule_002_upper(self):
         oRule = ranges.rule_002()
-        oRule.case = 'upper'
+        oRule.case = "upper"
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'range')
-        self.assertEqual(oRule.identifier, '002')
+        self.assertEqual(oRule.name, "range")
+        self.assertEqual(oRule.identifier, "002")
 
         lExpected = [6, 10, 22, 30, 31, 36]
         oRule.analyze(self.oFile)
@@ -61,7 +61,7 @@ class test_ranges_rule(unittest.TestCase):
 
     def test_fix_rule_002_upper(self):
         oRule = ranges.rule_002()
-        oRule.case = 'upper'
+        oRule.case = "upper"
 
         oRule.fix(self.oFile)
 
@@ -71,4 +71,3 @@ class test_ranges_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

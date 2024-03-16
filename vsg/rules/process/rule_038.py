@@ -9,7 +9,7 @@ lTokens.append(token.process_statement.label_colon)
 
 
 class rule_038(Rule):
-    '''
+    """
     This rule checks a label colon is on the same line as the **process** or **postponed** keyword.
 
     **Violation**
@@ -25,7 +25,7 @@ class rule_038(Rule):
 
        label
        : process
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

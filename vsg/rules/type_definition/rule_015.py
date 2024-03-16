@@ -9,7 +9,7 @@ lTokens.append(token.full_type_declaration.identifier)
 
 
 class rule_015(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes in user defined type identifiers.
     The default new type prefix is *t_*.
 
@@ -26,9 +26,9 @@ class rule_015(token_prefix):
     .. code-block:: vhdl
 
        type t_my_type is range -5 to 5 ;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['t_']
-        self.solution = 'Type identifiers'
+        self.prefixes = ["t_"]
+        self.solution = "Type identifiers"

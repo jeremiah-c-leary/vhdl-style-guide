@@ -9,7 +9,7 @@ oEnd = token.component_declaration.semicolon
 
 
 class rule_019(remove_comments_from_end_of_lines_bounded_by_tokens):
-    '''
+    """
     This rule checks for comments at the end of the port and generic clauses in component declarations.
     These comments represent additional maintenance.
     They will be out of sync with the entity at some point.
@@ -28,8 +28,8 @@ class rule_019(remove_comments_from_end_of_lines_bounded_by_tokens):
 
        wr_en : in    std_logic;
        rd_en : out   std_logic;
-    '''
+    """
 
     def __init__(self):
         super().__init__(oStart, oEnd)
-        self.solution = 'Remove comment.'
+        self.solution = "Remove comment."

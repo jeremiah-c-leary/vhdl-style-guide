@@ -8,7 +8,7 @@ lTokens.append(token.context_reference.keyword)
 
 
 class rule_005(split_line_at_token):
-    '''
+    """
     This rule checks the **context** keyword is on its own line.
 
     **Violation**
@@ -28,8 +28,8 @@ class rule_005(split_line_at_token):
 
        library ieee;
        context con2;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move context and code after context to the next line'
+        self.solution = "Move context and code after context to the next line"

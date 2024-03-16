@@ -9,7 +9,7 @@ lTokens.append(token.full_type_declaration.type_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of the **type** declaration.
 
     **Violation**
@@ -31,7 +31,7 @@ class rule_001(token_indent):
          type state_machine is (idle, write, read, done);
 
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

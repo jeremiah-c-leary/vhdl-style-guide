@@ -11,7 +11,7 @@ oEndToken = token.subprogram_body.semicolon
 
 
 class rule_506(token_case_in_range_bounded_by_tokens_with_prefix_suffix):
-    '''
+    """
     This rule checks the function designator has proper case on the end function declaration.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -27,8 +27,8 @@ class rule_506(token_case_in_range_bounded_by_tokens_with_prefix_suffix):
     .. code-block:: vhdl
 
        end function overflow;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStartToken, oEndToken)
-        self.groups.append('case::name')
+        self.groups.append("case::name")

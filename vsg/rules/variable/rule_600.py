@@ -8,7 +8,7 @@ lTokens.append(token.variable_declaration.identifier)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffix on variable identifiers.
     The default variable suffix is *_v*.
 
@@ -25,9 +25,9 @@ class rule_600(token_suffix):
     .. code-block:: vhdl
 
        variable my_var_v : natural;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_v']
-        self.solution = 'Variable identifiers'
+        self.suffixes = ["_v"]
+        self.solution = "Variable identifiers"

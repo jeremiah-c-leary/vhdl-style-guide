@@ -8,7 +8,7 @@ lTokens.append(token.loop_statement.end_keyword)
 
 
 class rule_501(Rule):
-    '''
+    """
     This rule checks the **end** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -28,8 +28,8 @@ class rule_501(Rule):
        while (condition) loop
 
        end loop;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

@@ -10,12 +10,12 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     signal_assignment_statement ::=
         [ label : ] simple_signal_assignment
       | [ label : ] conditional_signal_assignment
       | [ label : ] selected_signal_assignment
-    '''
+    """
 
     iCurrent = iToken
 

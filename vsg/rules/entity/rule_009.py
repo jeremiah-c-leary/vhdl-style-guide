@@ -8,7 +8,7 @@ lTokens.append(token.entity_declaration.end_keyword)
 
 
 class rule_009(token_indent):
-    '''
+    """
     This rule checks the indent of the **end** keyword.
 
     **Violation**
@@ -28,7 +28,7 @@ class rule_009(token_indent):
            rd_en : in    std_logic
          );
        end entity fifo;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

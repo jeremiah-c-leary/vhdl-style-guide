@@ -7,11 +7,11 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     array_type_definition ::=
         unbounded_array_definition
       | constrained_array_definition
-    '''
+    """
 
     iCurrent = unbounded_array_definition.detect(iToken, lObjects)
     if iCurrent != iToken:

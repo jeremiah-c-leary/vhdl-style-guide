@@ -4,7 +4,7 @@ from vsg.rules import align_tokens_in_region_between_tokens as Rule
 
 
 class align_tokens_in_region_between_tokens_unless_between_tokens(Rule):
-    '''
+    """
     Aligns tokens in a region.
 
     Parameters
@@ -27,7 +27,7 @@ class align_tokens_in_region_between_tokens_unless_between_tokens(Rule):
 
     lUnless : token object pairs list
        A list of pairs of tokens in which to exclude alignment
-    '''
+    """
 
     def __init__(self, lTokens, left_token, right_token, lUnless):
         super().__init__(lTokens=lTokens, left_token=left_token, right_token=right_token)

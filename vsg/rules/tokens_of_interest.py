@@ -13,7 +13,7 @@ def get_tokens_bounded_by(lTokenPairs, oFile):
 
 
 def adjust_start_index_based_on_whitespace(oToi, iAdjustment):
-    iStart = oToi.get_meta_data('iStart')
+    iStart = oToi.get_meta_data("iStart")
     lTokens = oToi.get_tokens()
     if isinstance(lTokens[iStart - 1], parser.whitespace):
-        oToi.set_meta_data('iStart', iStart + iAdjustment)
+        oToi.set_meta_data("iStart", iStart + iAdjustment)

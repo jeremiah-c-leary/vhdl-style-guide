@@ -5,7 +5,7 @@ from vsg.token import component_declaration as token
 
 
 class rule_011(Rule):
-    '''
+    """
     This rule checks for single space after the **end** keyword.
 
     |configuring_whitespace_rules_link|
@@ -21,7 +21,8 @@ class rule_011(Rule):
     .. code-block:: vhdl
 
        end component fifo;
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.left_token = token.end_keyword

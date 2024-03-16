@@ -11,7 +11,7 @@ oEnd = token.report_statement.semicolon
 
 
 class rule_002(split_line_at_token_when_between_tokens):
-    '''
+    """
     This rule checks the **severity** keyword is on its own line.
 
     **Violation**
@@ -26,7 +26,7 @@ class rule_002(split_line_at_token_when_between_tokens):
 
         report "FIFO width is limited to 16 bits."
           severity FAILURE;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)

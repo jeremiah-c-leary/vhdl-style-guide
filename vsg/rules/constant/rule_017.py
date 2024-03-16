@@ -8,7 +8,7 @@ lTokenPairs.append([token.constant_declaration.constant_keyword, token.constant_
 
 
 class rule_017(Rule):
-    '''
+    """
     This rule checks the structure of constant constraints.
 
     |configuring_multiline_constraint_rules_link|
@@ -27,7 +27,7 @@ class rule_017(Rule):
            element1(7 downto 0),
            element2(3 downto 0)
          );
-    '''
+    """
 
     def __init__(self):
         Rule.__init__(self)

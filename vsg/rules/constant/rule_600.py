@@ -8,7 +8,7 @@ lTokens.append(token.constant_declaration.identifier)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes on constant identifiers.
     The default constant suffix is *_c*.
 
@@ -25,8 +25,8 @@ class rule_600(token_suffix):
     .. code-block:: vhdl
 
        constant my_const_c : integer;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_c']
+        self.suffixes = ["_c"]

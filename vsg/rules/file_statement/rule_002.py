@@ -8,7 +8,7 @@ lTokens.append(token.file_declaration.file_keyword)
 
 
 class rule_002(token_case):
-    '''
+    """
     This rule checks the **file** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -32,8 +32,8 @@ class rule_002(token_case):
          file defaultImage : load_file_type open read_mode is load_file_name;
 
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

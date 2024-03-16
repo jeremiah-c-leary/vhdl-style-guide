@@ -11,7 +11,7 @@ lEnd = token.generic_map_aspect.close_parenthesis
 
 
 class rule_600(token_suffix_between_tokens):
-    '''
+    """
     This rule checks for valid suffixes on generic identifiers in generic maps
     The default generic suffix is *_g*.
 
@@ -36,8 +36,8 @@ class rule_600(token_suffix_between_tokens):
          WIDTH_G => 32,
          DEPTH_G => 512
        )
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lStart, lEnd)
-        self.suffixes = ['_g']
+        self.suffixes = ["_g"]

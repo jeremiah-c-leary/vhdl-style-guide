@@ -13,7 +13,7 @@ lTokens.append(token.if_generate_statement.end_generate_label)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes on generate statement labels.
     The default suffix is *_gen*.
 
@@ -26,8 +26,8 @@ class rule_600(token_suffix):
     [Fix]
 
        label_gen : case condition generate
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_gen']
+        self.suffixes = ["_gen"]

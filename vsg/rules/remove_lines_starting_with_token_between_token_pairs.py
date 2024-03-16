@@ -6,7 +6,7 @@ from vsg.vhdlFile import utils
 
 
 class remove_lines_starting_with_token_between_token_pairs(structure.Rule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -20,7 +20,7 @@ class remove_lines_starting_with_token_between_token_pairs(structure.Rule):
 
     lTokens : list of token type pairs
        The tokens to check for a single space between
-    '''
+    """
 
     def __init__(self, oRemoveToken, lTokens):
         super().__init__()

@@ -10,7 +10,7 @@ lTokens.append(token.function_specification.function_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indentation of the **function** keyword.
 
     **Violation**
@@ -37,7 +37,7 @@ class rule_001(token_indent):
          function underflow (a: integer) return integer is
 
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

@@ -9,7 +9,7 @@ oSecondToken = token.loop_keyword
 
 
 class rule_006(Rule):
-    '''
+    """
     This rule checks that loop statements have a label.
 
     **Violation**
@@ -31,10 +31,10 @@ class rule_006(Rule):
        LOOP_LABEL : while (condition) loop
 
        LOOP_LABEL : for x in range (31 downto 0) loop
-    '''
+    """
 
     def __init__(self):
         super().__init__(oFirstToken, oSecondToken)
-        self.solution = 'Add label for loop statement'
+        self.solution = "Add label for loop statement"
         self.fixable = False
         self.disable = True

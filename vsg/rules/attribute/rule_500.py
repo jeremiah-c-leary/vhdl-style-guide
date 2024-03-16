@@ -8,7 +8,7 @@ lTokens.append(token.keyword)
 
 
 class rule_500(Rule):
-    '''
+    """
     This rule checks predefined attributes have the proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_500(Rule):
     .. code-block:: vhdl
 
        signal data : std_logic_vector(g_width'range);
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

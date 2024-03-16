@@ -8,7 +8,7 @@ lTokens.append(token.attribute_declaration.identifier)
 
 
 class rule_501(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the *identifier* has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_501(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
        attribute max_delay : time;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::name')
+        self.groups.append("case::name")

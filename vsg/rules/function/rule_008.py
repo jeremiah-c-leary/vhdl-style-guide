@@ -19,7 +19,7 @@ oEnd = token.function_specification.close_parenthesis
 
 
 class rule_008(token_indent_between_tokens):
-    '''
+    """
     This rule checks the indent of function parameters on multiple lines.
 
     **Violation**
@@ -45,7 +45,7 @@ class rule_008(token_indent_between_tokens):
        begin
 
        end;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)

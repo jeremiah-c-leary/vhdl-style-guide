@@ -11,7 +11,7 @@ lTokens.append(token.selected_waveform_assignment.with_keyword)
 
 
 class rule_001(Rule):
-    '''
+    """
     This rule checks the **with** keyword is on the same line as the expression.
 
     **Violation**
@@ -32,8 +32,8 @@ class rule_001(Rule):
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, bInsertSpace=True)
-        self.solution = 'Removed carraige returns after with keyword'
+        self.solution = "Removed carraige returns after with keyword"

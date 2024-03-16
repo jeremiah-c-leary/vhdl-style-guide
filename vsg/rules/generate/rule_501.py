@@ -8,7 +8,7 @@ lTokens.append(token.generate_statement_body.end_keyword)
 
 
 class rule_501(token_case):
-    '''
+    """
     This rule checks the **end** keyword has the proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -30,8 +30,8 @@ class rule_501(token_case):
          begin
          end
        end generate;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

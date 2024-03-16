@@ -24,7 +24,7 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 
 class rule_003(structure.Rule):
-    '''
+    """
     This rule checks the *after* keywords do not exist in the reset portion of a clock process.
 
     **Violation**
@@ -56,7 +56,7 @@ class rule_003(structure.Rule):
            b <= c  after 1 ns;
          end if;
        end process clk_proc;
-    '''
+    """
 
     def __init__(self):
         super().__init__()
@@ -64,8 +64,8 @@ class rule_003(structure.Rule):
         self.oStart = oStart
         self.oEnd = oEnd
         self.magnitude = 1
-        self.units = 'ns'
-        self.configuration.extend(['magnitude', 'units'])
+        self.units = "ns"
+        self.configuration.extend(["magnitude", "units"])
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
@@ -107,7 +107,7 @@ class rule_003(structure.Rule):
                 if bAfterFound:
                     if detect_end_signal_assignment(oToken):
                         oNewToi = oToi.extract_tokens(iStartIndex, iToken)
-                        sSolution = 'Remove *after* from signals in reset portion of a clock process'
+                        sSolution = "Remove *after* from signals in reset portion of a clock process"
                         oViolation = violation.New(iLine, oNewToi, sSolution)
                         self.add_violation(oViolation)
                         bInsideAssignment = False
@@ -131,12 +131,38 @@ def detect_clock_definition(iToken, oToken, lTokens):
     if isinstance(oToken, token.if_statement.if_keyword) or isinstance(oToken, token.if_statement.elsif_keyword):
         if oToken.get_hierarchy() != 0:
             return False
-        if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens):
+        if (
+            utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [parser.open_parenthesis, token.ieee.std_logic_1164.function.rising_edge],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens)
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [parser.open_parenthesis, token.ieee.std_logic_1164.function.falling_edge],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens)
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [
+                    parser.open_parenthesis,
+                    None,
+                    parser.tic,
+                    token.predefined_attribute.event_keyword,
+                    token.logical_operator.and_operator,
+                    None,
+                    token.relational_operator.equal,
+                ],
+                iToken + 1,
+                lTokens,
+            )
+        ):
             return True
     return False
 

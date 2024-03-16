@@ -23,7 +23,7 @@ oEndToken = token.architecture_body.end_keyword
 
 
 class rule_601(case.Rule):
-    '''
+    """
     This rule checks for consistent capitalization of port names in an architecture body.
 
     **Violation**
@@ -61,7 +61,7 @@ class rule_601(case.Rule):
           register <= I_DATA;
 
        end architecture rtl;
-    '''
+    """
 
     def __init__(self):
         super().__init__()
@@ -86,7 +86,7 @@ class rule_601(case.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dActions = oViolation.get_action()
-        lTokens[0].set_value(dActions['value'])
+        lTokens[0].set_value(dActions["value"])
         oViolation.set_tokens(lTokens)
 
 
@@ -163,11 +163,11 @@ def validate_port_name_in_token_list(self, lMyPorts, oToi):
 
 
 def create_violation(sToken, iToken, dPortMap, oToi):
-    sSolution = 'Port case mismatch:  Change ' + sToken + ' to ' + dPortMap[sToken.lower()]
+    sSolution = "Port case mismatch:  Change " + sToken + " to " + dPortMap[sToken.lower()]
     oNewToi = oToi.extract_tokens(iToken, iToken)
     oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
     dAction = {}
-    dAction['value'] = dPortMap[sToken.lower()]
+    dAction["value"] = dPortMap[sToken.lower()]
     oViolation.set_action(dAction)
     return oViolation
 

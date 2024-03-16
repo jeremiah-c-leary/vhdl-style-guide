@@ -9,7 +9,7 @@ lTokenPairs.append([token.procedure_call.procedure_name, token.procedure_call_st
 
 
 class rule_003(Rule):
-    '''
+    """
     This rule checks the structure of procedure calls.
 
     |configuring_multiline_procedure_call_statement_rules_link|
@@ -32,7 +32,7 @@ class rule_003(Rule):
        );
 
     .. _procedure_call_whitespacing_rules:
-    '''
+    """
 
     def __init__(self):
         Rule.__init__(self)

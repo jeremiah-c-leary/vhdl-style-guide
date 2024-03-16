@@ -11,26 +11,26 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     block_header ::=
         [ generic_clause
         [ generic_map_aspect ; ] ]
         [ port_clause
         [ port_map_aspect ; ] ]
-    '''
+    """
 
     iCurrent = generic_clause.detect(iToken, lObjects)
 
     iLast = iCurrent
     iCurrent = generic_map_aspect.detect(iCurrent, lObjects)
     if iLast != iCurrent:
-        iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
 
     iCurrent = port_clause.detect(iCurrent, lObjects)
 
     iLast = iCurrent
     iCurrent = port_map_aspect.detect(iCurrent, lObjects)
     if iLast != iCurrent:
-        iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
 
     return iCurrent

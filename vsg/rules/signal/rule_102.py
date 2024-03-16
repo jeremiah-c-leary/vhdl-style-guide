@@ -8,7 +8,7 @@ lTokens.append(token.signal_declaration.assignment_operator)
 
 
 class rule_102(Rule):
-    '''
+    """
     This rule checks for a single space after the default assignment token.
 
     |configuring_whitespace_rules_link|
@@ -26,6 +26,7 @@ class rule_102(Rule):
 
        signal wr_en : std_logic := '0';
        signal rd_en : std_logic := '1';
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

@@ -7,7 +7,7 @@ from vsg.vhdlFile import utils
 
 
 class move_token_sequences_left_of_token(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -21,7 +21,7 @@ class move_token_sequences_left_of_token(structure.Rule):
 
     lTokens : list of parser object types
        object type to split a line at
-    '''
+    """
 
     def __init__(self, lSequences, oLeftToken):
         super().__init__()
@@ -51,10 +51,10 @@ class move_token_sequences_left_of_token(structure.Rule):
                             break
                         if utils.are_next_consecutive_token_types(lSequence[:-1], iToken, lTokens):
                             dAction = {}
-                            dAction['num_tokens'] = len(lSequence) - 1
+                            dAction["num_tokens"] = len(lSequence) - 1
                         elif utils.are_next_consecutive_token_types(lSequence[:-2], iToken, lTokens):
                             dAction = {}
-                            dAction['num_tokens'] = len(lSequence) - 2
+                            dAction["num_tokens"] = len(lSequence) - 2
 
                 if bFound:
                     break
@@ -73,9 +73,9 @@ class move_token_sequences_left_of_token(structure.Rule):
         if isinstance(lTokens[0], parser.whitespace):
             lTokens = lTokens[1:]
             bInsertBlankLine = True
-        lMoveTokens = lTokens[0:dAction['num_tokens']]
-        lTokens = lTokens[dAction['num_tokens']:]
-        lTokens = lTokens[:-1] + lMoveTokens + [parser.whitespace(' ')] + [lTokens[-1]]
+        lMoveTokens = lTokens[0 : dAction["num_tokens"]]
+        lTokens = lTokens[dAction["num_tokens"] :]
+        lTokens = lTokens[:-1] + lMoveTokens + [parser.whitespace(" ")] + [lTokens[-1]]
         lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         if bInsertBlankLine:
             rules_utils.insert_blank_line(lTokens, 0)

@@ -8,7 +8,7 @@ lTokens.append(token.alias_declaration.alias_designator)
 
 
 class rule_600(Rule):
-    '''
+    """
     This rule checks for valid prefixes on alias designators.
 
     Default prefix is *a_*.
@@ -28,9 +28,9 @@ class rule_600(Rule):
 
        alias a_header is name;
        alias a_footer is name;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['a_']
-        self.solution = 'Alias designators'
+        self.prefixes = ["a_"]
+        self.solution = "Alias designators"

@@ -13,7 +13,7 @@ lSkip.append(parser.comment)
 
 
 class rule_027(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
-    '''
+    """
     This rule checks the alignment of inline comments in the architecture declarative part.
 
     |configuring_keyword_alignment_rules_link|
@@ -41,9 +41,9 @@ class rule_027(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
          constant c_period : time;      -- Comment 3
 
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lSkip)
-        self.solution = 'Align comments.'
+        self.solution = "Align comments."
         self.subphase = 5

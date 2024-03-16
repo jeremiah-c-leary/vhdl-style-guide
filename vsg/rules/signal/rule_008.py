@@ -8,7 +8,7 @@ lTokens.append(token.signal_declaration.identifier)
 
 
 class rule_008(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on signal identifiers.
     Default signal prefix is *s_*.
 
@@ -27,9 +27,9 @@ class rule_008(token_prefix):
 
        signal s_wr_en : std_logic;
        signal s_rd_en : std_logic;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['s_']
-        self.solution = 'Signal identifiers'
+        self.prefixes = ["s_"]
+        self.solution = "Signal identifiers"

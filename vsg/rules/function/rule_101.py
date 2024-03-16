@@ -10,7 +10,7 @@ lTokens.append([token.subprogram_kind.function_keyword, token.subprogram_body.de
 
 
 class rule_101(Rule):
-    '''
+    """
     This rule checks for a single space between the **end** and **function** keywords and function designator.
 
     |configuring_whitespace_rules_link|
@@ -30,6 +30,7 @@ class rule_101(Rule):
        end function overflow;
        end function;
        end overflow;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

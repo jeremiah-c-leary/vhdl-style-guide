@@ -4,7 +4,6 @@ from vsg import parser
 
 
 def get_column_of_token_index(iToken, lAllTokens, oTokenMap):
-
     oToken = lAllTokens[iToken]
     iLine = oTokenMap.get_line_number_of_index(iToken) - 1
     lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)

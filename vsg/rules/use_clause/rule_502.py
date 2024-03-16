@@ -8,7 +8,7 @@ lTokens.append(token.use_clause.item_name)
 
 
 class rule_502(Rule):
-    '''
+    """
     This rule checks the item name called out in the selected name has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,9 +24,9 @@ class rule_502(Rule):
     .. code-block:: vhdl
 
        use my_lib.increment;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::name')
-        self.configuration.append('case_exceptions')
+        self.groups.append("case::name")
+        self.configuration.append("case_exceptions")

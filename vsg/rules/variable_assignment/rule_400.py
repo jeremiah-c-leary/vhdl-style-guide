@@ -8,7 +8,7 @@ lTokenPairs.append([token.conditional_variable_assignment.assignment, token.cond
 
 
 class rule_400(Rule):
-    '''
+    """
     This rule checks alignment of multiline conditional variable assignments.
 
     |configuring_conditional_multiline_indent_rules_link|
@@ -34,7 +34,7 @@ class rule_400(Rule):
        w_foo := I_FOO when ((I_BAR = '1') and
                             (I_CRUFT = '1')) else
                 '0';
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)

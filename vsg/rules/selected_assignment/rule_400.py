@@ -11,7 +11,7 @@ lTokenPairs.append([token.selected_waveform_assignment.with_keyword, token.selec
 
 
 class rule_400(Rule):
-    '''
+    """
     This rule checks the alignment of multiline selected assignment statements.
 
     |configuring_multiline_indent_rules_link|
@@ -33,14 +33,14 @@ class rule_400(Rule):
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)
         self.phase = 5
-        self.configuration.remove('align_left')
-        self.configuration.remove('align_paren')
-        self.align_left = 'yes'
-        self.align_paren = 'no'
+        self.configuration.remove("align_left")
+        self.configuration.remove("align_paren")
+        self.align_left = "yes"
+        self.align_paren = "no"
         self.override = True
         self.check_for_array = False

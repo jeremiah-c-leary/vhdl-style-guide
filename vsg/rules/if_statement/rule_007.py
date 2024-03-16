@@ -12,7 +12,7 @@ lOverrides.append(token.loop_statement.semicolon)
 
 
 class rule_007(remove_excessive_blank_lines_above_line_starting_with_token):
-    '''
+    """
     This rule checks for blank lines before the **elsif** keyword.
 
     **Violation**
@@ -31,8 +31,9 @@ class rule_007(remove_excessive_blank_lines_above_line_starting_with_token):
 
         b <= '0'
       elsif (c = '1') then
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens, iAllow=0, lOverrides=lOverrides)
-        self.solution = 'Remove blank line(s) before the *elsif* keyword.'
+        self.solution = "Remove blank line(s) before the *elsif* keyword."
         self.configuration_documentation_link = None

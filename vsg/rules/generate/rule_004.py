@@ -10,7 +10,7 @@ lTokens.append(token.if_generate_statement.generate_label)
 
 
 class rule_004(previous_line):
-    '''
+    """
     This rule checks for blank lines or comments before the **generate** label.
 
     |configuring_previous_line_rules_link|
@@ -29,7 +29,7 @@ class rule_004(previous_line):
        wr_en <= '1';
 
        ram_array : for i in 0 to 7 generate
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

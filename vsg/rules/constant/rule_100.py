@@ -8,7 +8,7 @@ lTokens.append(token.constant_declaration.assignment_operator)
 
 
 class rule_100(Rule):
-    '''
+    """
     This rule checks for a single space after the := assignment in constant declarations.
     Having a space makes it clearer where the assignment occurs on the line.
 
@@ -27,7 +27,7 @@ class rule_100(Rule):
 
        constant size : integer := 1;
        constant width : t_type := (
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

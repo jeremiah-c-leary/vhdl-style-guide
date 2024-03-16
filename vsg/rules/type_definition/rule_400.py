@@ -12,7 +12,7 @@ oEndToken = token.record_type_definition.end_keyword
 
 
 class rule_400(align_tokens_in_region_between_tokens):
-    '''
+    """
     This rule checks the colons are in the same column for all elements in the block declarative part.
 
     |configuring_keyword_alignment_rules_link|
@@ -36,10 +36,10 @@ class rule_400(align_tokens_in_region_between_tokens):
          some_other_element  : natural;
          yet_another_element : natural;
        end record;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lAlign, oStartToken, oEndToken)
-        self.configuration.remove('case_control_statements_ends_group')
-        self.configuration.remove('if_control_statements_ends_group')
-        self.configuration.remove('loop_control_statements_ends_group')
+        self.configuration.remove("case_control_statements_ends_group")
+        self.configuration.remove("if_control_statements_ends_group")
+        self.configuration.remove("loop_control_statements_ends_group")

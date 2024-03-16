@@ -7,7 +7,7 @@ lTokens = []
 
 
 class rule_606(Rule):
-    '''
+    """
     This rule checks for valid suffixes on port identifiers for output ports.
 
     The default suffix is: *_o*.
@@ -31,11 +31,11 @@ class rule_606(Rule):
          wr_en_o    : out    std_logic;
          rd_en_o    : out    std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_o']
+        self.suffixes = ["_o"]
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []

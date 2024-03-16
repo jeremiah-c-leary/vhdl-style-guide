@@ -8,7 +8,7 @@ lTokens.append(token.context_reference.keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of the **context** keyword.
 
     **Violation**
@@ -24,7 +24,7 @@ class rule_001(token_indent):
 
        library ieee;
          context c1;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

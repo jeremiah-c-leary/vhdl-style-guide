@@ -7,7 +7,7 @@ oToken = token.generic_clause.close_parenthesis
 
 
 class rule_010(Rule):
-    '''
+    """
     This rule checks the location of the closing ")" character for the generic clause.
 
     The default location is on a line by itself.
@@ -26,7 +26,7 @@ class rule_010(Rule):
 
          g_depth : integer := 512
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(oToken)

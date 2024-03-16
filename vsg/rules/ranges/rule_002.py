@@ -8,7 +8,7 @@ lTokens.append(token.direction.to)
 
 
 class rule_002(token_case):
-    '''
+    """
     This rule checks the case of the **to** keyword.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -26,8 +26,8 @@ class rule_002(token_case):
 
        signal sig1 : std_logic_vector(3 to 0);
        signal sig2 : std_logic_vector(16 to 1);
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

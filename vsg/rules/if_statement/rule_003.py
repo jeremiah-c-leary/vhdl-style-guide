@@ -8,7 +8,7 @@ lTokens.append([token.if_statement.if_keyword, parser.open_parenthesis])
 
 
 class rule_003(Rule):
-    '''
+    """
     This rule checks for a single space between the **if** keyword and the (.
 
     |configuring_whitespace_rules_link|
@@ -28,6 +28,7 @@ class rule_003(Rule):
       if (a = '1') then
 
       if (a = '1') then
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

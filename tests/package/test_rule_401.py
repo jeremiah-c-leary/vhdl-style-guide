@@ -9,17 +9,16 @@ from vsg.rules import package
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_401_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_401_test_input.vhd"))
 
 dIndentMap = utils.read_indent_file()
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_401_test_input.fixed.vhd'), lExpected, bStrip=False)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_401_test_input.fixed.vhd"), lExpected, bStrip=False)
 
 
 class test_package_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -28,8 +27,8 @@ class test_package_rule(unittest.TestCase):
     def test_rule_401(self):
         oRule = package.rule_401()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'package')
-        self.assertEqual(oRule.identifier, '401')
+        self.assertEqual(oRule.name, "package")
+        self.assertEqual(oRule.identifier, "401")
 
         lExpected = [8, 9, 10]
 

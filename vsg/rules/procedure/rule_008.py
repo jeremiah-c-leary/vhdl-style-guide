@@ -11,7 +11,7 @@ oEndToken = token.subprogram_body.semicolon
 
 
 class rule_008(token_case_in_range_bounded_by_tokens):
-    '''
+    """
     This rule checks the **end** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -31,8 +31,8 @@ class rule_008(token_case_in_range_bounded_by_tokens):
        end;
 
        end procedure proc;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStartToken, oEndToken)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

@@ -7,7 +7,7 @@ lTokens = []
 
 
 class rule_603(Rule):
-    '''
+    """
     This rule checks for valid prefixes on port identifiers for buffer ports.
 
     The default prefix is: *b_*.
@@ -32,11 +32,11 @@ class rule_603(Rule):
          b_wr_en    : buffer    std_logic;
          b_rd_en    : buffer    std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['b_']
+        self.prefixes = ["b_"]
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []

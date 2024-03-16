@@ -11,7 +11,7 @@ lTokens.append(token.selected_waveform_assignment.with_keyword)
 
 
 class rule_500(Rule):
-    '''
+    """
     This rule checks the **with** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -33,8 +33,8 @@ class rule_500(Rule):
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

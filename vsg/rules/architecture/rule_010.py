@@ -5,7 +5,7 @@ from vsg.token import architecture_body as token
 
 
 class rule_010(insert_token_right_of_token_if_it_does_not_exist_before_token):
-    '''
+    """
     This rule checks for the keyword **architecture** in the **end architecture** statement.
     It is clearer to the reader to state what is ending.
 
@@ -22,8 +22,9 @@ class rule_010(insert_token_right_of_token_if_it_does_not_exist_before_token):
     .. code-block:: vhdl
 
        end architecture architecture_name;
-    '''
+    """
+
     def __init__(self):
-        super().__init__(token.end_architecture_keyword('architecture'), token.end_keyword, token.semicolon)
-        self.solution = 'architecture keyword.'
-        self.groups.append('structure::optional')
+        super().__init__(token.end_architecture_keyword("architecture"), token.end_keyword, token.semicolon)
+        self.solution = "architecture keyword."
+        self.groups.append("structure::optional")

@@ -26,7 +26,7 @@ class TestParser(unittest.TestCase):
         argparse_mock = unittest.mock.MagicMock()
         sys.argv[1:] = ["-p", "-3"]
 
-        with patch('argparse.ArgumentParser._print_message', argparse_mock):
+        with patch("argparse.ArgumentParser._print_message", argparse_mock):
             with self.assertRaises(SystemExit) as cm:
                 result = cmd_line_args.parse_command_line_arguments()
 
@@ -36,7 +36,7 @@ class TestParser(unittest.TestCase):
         argparse_mock = unittest.mock.MagicMock()
         sys.argv[1:] = ["--jobs", "0"]
 
-        with patch('argparse.ArgumentParser._print_message', argparse_mock):
+        with patch("argparse.ArgumentParser._print_message", argparse_mock):
             with self.assertRaises(SystemExit) as cm:
                 cmd_line_args.parse_command_line_arguments()
 
@@ -46,7 +46,7 @@ class TestParser(unittest.TestCase):
         argparse_mock = unittest.mock.MagicMock()
         sys.argv[1:] = ["--jobs", "3.5"]
 
-        with patch('argparse.ArgumentParser._print_message', argparse_mock):
+        with patch("argparse.ArgumentParser._print_message", argparse_mock):
             with self.assertRaises(SystemExit) as cm:
                 cmd_line_args.parse_command_line_arguments()
 
@@ -56,7 +56,7 @@ class TestParser(unittest.TestCase):
         argparse_mock = unittest.mock.MagicMock()
         sys.argv[1:] = ["--jobs", "notanumber"]
 
-        with patch('argparse.ArgumentParser._print_message', argparse_mock):
+        with patch("argparse.ArgumentParser._print_message", argparse_mock):
             with self.assertRaises(SystemExit) as cm:
                 cmd_line_args.parse_command_line_arguments()
 

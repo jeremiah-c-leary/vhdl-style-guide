@@ -17,7 +17,7 @@ def get_if_statement_conditions(lAllTokens, oTokenMap, fRemoveWhitespace=True):
         lEnd.append(oTokenMap.get_index_of_token_after_index(token.then_keyword, iStart))
 
     for iStart, iEnd in zip(lStart, lEnd):
-        lTemp = lAllTokens[iStart + 1: iEnd]
+        lTemp = lAllTokens[iStart + 1 : iEnd]
         iStartIndex = iStart + 1
         if fRemoveWhitespace:
             iStartIndex, lTemp = utils.remove_leading_whitespace_and_comments(iStart, lTemp)

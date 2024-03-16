@@ -12,7 +12,7 @@ lTokens.append(token.concurrent_selected_signal_assignment.with_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of concurrent assignments.
 
     **Violation**
@@ -34,7 +34,7 @@ class rule_001(token_indent):
 
          wr_en <= '0';
          rd_en <= '1';
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

@@ -8,7 +8,7 @@ lTokens.append(token.process_statement.end_process_label)
 
 
 class rule_019(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the **end process** label has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_019(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
        end process proc_a;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::label')
+        self.groups.append("case::label")

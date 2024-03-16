@@ -8,7 +8,7 @@ lTokenPairs.append([token.concurrent_simple_signal_assignment.target, token.conc
 
 
 class rule_012(Rule):
-    '''
+    """
     This rule checks the structure of multiline concurrent simple signal assignments that contain arrays.
 
     |configuring_array_multiline_structure_rules_link|
@@ -29,7 +29,7 @@ class rule_012(Rule):
          65535,
          32768
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)

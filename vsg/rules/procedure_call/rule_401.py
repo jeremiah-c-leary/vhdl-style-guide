@@ -11,7 +11,7 @@ oEnd = token.procedure_call.close_parenthesis
 
 
 class rule_401(Rule):
-    '''
+    """
     This rule checks the alignment of :code:`=>` keywords in procedure calls.
 
     |configuring_keyword_alignment_rules_link|
@@ -37,13 +37,13 @@ class rule_401(Rule):
          port_3 => overflow,
          port_4 => underflow
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lAlign, oBegin, oEnd)
-        self.solution = 'Align =>.'
+        self.solution = "Align =>."
         self.subphase = 2
         self.bIncludeTillBeginningOfLine = True
-        self.configuration.remove('case_control_statements_ends_group')
-        self.configuration.remove('if_control_statements_ends_group')
-        self.configuration.remove('loop_control_statements_ends_group')
+        self.configuration.remove("case_control_statements_ends_group")
+        self.configuration.remove("if_control_statements_ends_group")
+        self.configuration.remove("loop_control_statements_ends_group")

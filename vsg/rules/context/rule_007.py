@@ -8,7 +8,7 @@ lTokens.append(token.library_clause.keyword)
 
 
 class rule_007(split_line_at_token):
-    '''
+    """
     This rule checks for code after the **is** keyword.
 
     **Violation**
@@ -27,8 +27,8 @@ class rule_007(split_line_at_token):
 
        context c1 is
          library ieee; -- This is not allowed
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move library and code after library to the next line'
+        self.solution = "Move library and code after library to the next line"

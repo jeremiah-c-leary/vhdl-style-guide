@@ -9,15 +9,14 @@ from vsg.rules import generate
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_403_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_403_test_input.vhd"))
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_403_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_403_test_input.fixed.vhd"), lExpected)
 
 
 class test_generate_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -25,8 +24,8 @@ class test_generate_rule(unittest.TestCase):
     def test_rule_403(self):
         oRule = generate.rule_403()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'generate')
-        self.assertEqual(oRule.identifier, '403')
+        self.assertEqual(oRule.name, "generate")
+        self.assertEqual(oRule.identifier, "403")
 
         lExpected = []
         lExpected.extend(range(42, 47))

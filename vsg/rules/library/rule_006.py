@@ -8,7 +8,7 @@ lTokens.append([token.use_clause.keyword, token.use_clause.library_name])
 
 
 class rule_006(Rule):
-    '''
+    """
     This rule checks for excessive spaces after the **use** keyword.
 
     |configuring_whitespace_rules_link|
@@ -28,6 +28,7 @@ class rule_006(Rule):
        library ieee;
          use ieee.std_logic_1164.all;
          use ieee.std_logic_unsigned.all;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

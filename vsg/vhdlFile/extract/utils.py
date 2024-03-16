@@ -109,12 +109,12 @@ def filter_tokens_between_tokens_unless_token_exists_between_them(lTokens, oStar
 
 
 def get_indexes_of_tokens_between(lStartToken, lEndTokens, oTokenMap):
-    '''
+    """
     This function will take a list of start tokens and a list of end tokens.
     It will return a list of indexes of either a start token or an end token.
     A start token index will be returned if another start token was found before an end token.
     An end token index will be returned if the next token index is a start token.
-    '''
+    """
     lReturn = []
     lStartIndexes = oTokenMap.get_token_indexes(lStartToken)
     lEndIndexes = get_indexes_of_token_list(lEndTokens, oTokenMap)

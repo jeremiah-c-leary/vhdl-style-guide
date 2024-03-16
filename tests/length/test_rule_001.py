@@ -9,11 +9,10 @@ from vsg.rules import length
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_001_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_001_test_input.vhd"))
 
 
 class test_length_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -21,8 +20,8 @@ class test_length_rule(unittest.TestCase):
     def test_rule_001_default(self):
         oRule = length.rule_001()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'length')
-        self.assertEqual(oRule.identifier, '001')
+        self.assertEqual(oRule.name, "length")
+        self.assertEqual(oRule.identifier, "001")
 
         lExpected = [3, 7, 9]
 
@@ -39,4 +38,4 @@ class test_length_rule(unittest.TestCase):
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
         oViolation = oRule.violations[0]
-        self.assertEqual('Reduce line to less than 125 characters', oViolation.sSolution)
+        self.assertEqual("Reduce line to less than 125 characters", oViolation.sSolution)

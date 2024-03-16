@@ -7,7 +7,7 @@ from vsg.vhdlFile import utils
 
 
 class Rule(WhitespaceRule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -21,7 +21,7 @@ class Rule(WhitespaceRule):
 
     lTokens : list of token type pairs
        The tokens to check for a single space between
-    '''
+    """
 
     def __init__(self, lTokens, oStart, oEnd):
         WhitespaceRule.__init__(self)

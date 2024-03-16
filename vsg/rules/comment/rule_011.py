@@ -6,7 +6,7 @@ from vsg.rules import utils
 
 
 class rule_011(structure.Rule):
-    '''
+    """
     This rule checks for in-line comments and moves them to the line above.
     The indent of the comment will be set to the indent of the current line.
 
@@ -24,11 +24,11 @@ class rule_011(structure.Rule):
 
        -- Assign signal
        a <= b;
-    '''
+    """
 
     def __init__(self):
         super().__init__()
-        self.solution = 'Move inline comment to previous line.'
+        self.solution = "Move inline comment to previous line."
         self.disable = True
         self.lTokens = [parser.comment]
         self.configuration_documentation_link = None
@@ -46,10 +46,10 @@ class rule_011(structure.Rule):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
 
-        lTemp = lTokens[dAction['iToken']:]
+        lTemp = lTokens[dAction["iToken"] :]
         lTemp.append(parser.carriage_return())
-        lTemp.extend(lTokens[:dAction['iToken']])
-#        lTemp[dAction['index']].set_indent(dAction['indent'])
+        lTemp.extend(lTokens[: dAction["iToken"]])
+        #        lTemp[dAction['index']].set_indent(dAction['indent'])
 
         oViolation.set_tokens(lTemp)
 
@@ -77,12 +77,12 @@ def line_has_inline_comment(lTokens, iToken):
 def create_action(lTokens, iToken):
     dAction = {}
     if isinstance(lTokens[iToken - 1], parser.whitespace):
-        dAction['iToken'] = iToken - 1
-        dAction['index'] = 1
+        dAction["iToken"] = iToken - 1
+        dAction["index"] = 1
     else:
-        dAction['iToken'] = iToken
-        dAction['index'] = 0
-#    dAction['indent'] = utils.get_indent_of_line(lTokens)
+        dAction["iToken"] = iToken
+        dAction["index"] = 0
+    #    dAction['indent'] = utils.get_indent_of_line(lTokens)
     return dAction
 
 

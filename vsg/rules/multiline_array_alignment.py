@@ -7,7 +7,7 @@ from vsg.vhdlFile import utils
 
 
 class multiline_array_alignment(alignment.Rule):
-    '''
+    """
     This rule checks the alignment of multiline constants that contain arrays.
 
     |configuring_multiline_indent_rules_link|
@@ -35,18 +35,18 @@ class multiline_array_alignment(alignment.Rule):
          65535,
          32768
        );
-    '''
+    """
 
     def __init__(self, lTokenPairs):
         super().__init__()
         self.subphase = 2
         self.lTokenPairs = lTokenPairs
-        self.align_left = 'no'
-        self.configuration.append('align_left')
-        self.align_paren = 'yes'
-        self.configuration.append('align_paren')
+        self.align_left = "no"
+        self.configuration.append("align_left")
+        self.align_paren = "yes"
+        self.configuration.append("align_paren")
         self.assignment_operator = None
-        self.configuration_documentation_link = 'configuring_multiline_indent_rules_link'
+        self.configuration_documentation_link = "configuring_multiline_indent_rules_link"
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -59,7 +59,6 @@ class multiline_array_alignment(alignment.Rule):
         return lToi
 
     def _analyze(self, lToi):
-
         self.align_left = utils.convert_boolean_to_yes_no(self.align_left)
         self.align_paren = utils.convert_boolean_to_yes_no(self.align_paren)
 
@@ -72,10 +71,10 @@ class multiline_array_alignment(alignment.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        if dAction['action'] == 'adjust':
-            lTokens[0].set_value(dAction['whitespace'])
+        if dAction["action"] == "adjust":
+            lTokens[0].set_value(dAction["whitespace"])
         else:
-            rules_utils.insert_new_whitespace(lTokens, 0, dAction['whitespace'])
+            rules_utils.insert_new_whitespace(lTokens, 0, dAction["whitespace"])
 
         oViolation.set_tokens(lTokens)
 
@@ -103,7 +102,6 @@ class multiline_array_alignment(alignment.Rule):
             oLines.iParens += oLine.get_delta_parens()
 
     def analyze_align_left_false_align_paren_true(self, oToi, oLines):
-
         for oLine in oLines.lLines:
             if oLine.isFirst:
                 check_first_line(oLine, oLines, oToi, self.indent_size)
@@ -113,7 +111,6 @@ class multiline_array_alignment(alignment.Rule):
                 check_middle_line(oLine, oLines, self.indent_size)
 
     def analyze_align_left_true_align_paren_true(self, oToi, oLines):
-
         for oLine in oLines.lLines:
             if oLine.isFirst:
                 check_my_first_line(oLine, oLines, oToi, self.indent_size)
@@ -181,10 +178,10 @@ def check_my_first_line(oLine, oLines, oToi, iIndentStep):
     if oLines.no_parens():
         oLines.iNextIndent = iIndent
     else:
-        oLines.iNextIndent = len(oLines.lParens)*iIndentStep + iIndent
+        oLines.iNextIndent = len(oLines.lParens) * iIndentStep + iIndent
 
     for iParen, oParen in enumerate(oLine.parens):
-        oParen.iExpectedColumn = iParen*iIndentStep + iIndent + iIndentStep
+        oParen.iExpectedColumn = iParen * iIndentStep + iIndent + iIndentStep
 
 
 def remove_non_arrays(assignment_operator, lToi):
@@ -206,7 +203,6 @@ def remove_single_line_assignments(lToi):
 def set_last_line_number(oToi):
     iLine, lTokens = utils.get_toi_parameters(oToi)
     for oToken in lTokens:
-
         iLine = utils.increment_line_number(iLine, oToken)
 
     oToi.iLastLine = iLine
@@ -237,12 +233,12 @@ def check_indents(self, oToi, oLines):
 
 
 def convert_column_index_to_whitespace(self, iColumn, iFirstLineIndent, iFirstLineIndentIndex):
-    if self.indent_style == 'smart_tabs':
-        sIndent = '\t' * iFirstLineIndentIndex
-        sAlignment = ' ' * (iColumn - iFirstLineIndent)
+    if self.indent_style == "smart_tabs":
+        sIndent = "\t" * iFirstLineIndentIndex
+        sAlignment = " " * (iColumn - iFirstLineIndent)
     else:
-        sIndent = ' ' * self.indent_size * iFirstLineIndentIndex
-        sAlignment = ' ' * (iColumn - len(sIndent))
+        sIndent = " " * self.indent_size * iFirstLineIndentIndex
+        sAlignment = " " * (iColumn - len(sIndent))
     sLeadingWhitespace = sIndent + sAlignment
     return sLeadingWhitespace
 
@@ -261,19 +257,18 @@ def create_violation(oToi, oLine):
 
 def create_action_dict(oLine):
     dAction = {}
-    dAction['line'] = oLine.number
-    dAction['column'] = oLine.iExpectedIndent
-    dAction['whitespace'] = oLine.sExpectedIndent
+    dAction["line"] = oLine.number
+    dAction["column"] = oLine.iExpectedIndent
+    dAction["whitespace"] = oLine.sExpectedIndent
 
     if isinstance(oLine.tokens[0], parser.whitespace):
-        dAction['action'] = 'adjust'
+        dAction["action"] = "adjust"
     else:
-        dAction['action'] = 'insert'
+        dAction["action"] = "insert"
     return dAction
 
 
-class lines():
-
+class lines:
     def __init__(self, oToi):
         self.oToi = oToi
         self.lParens = []
@@ -320,8 +315,7 @@ class lines():
         self.lParens = oLine.update_parens(self.lParens, iIndentStep, iAdjust)
 
 
-class line():
-
+class line:
     def __init__(self, lLine, iLine, iToken, iIndent=0):
         self.number = iLine
         self.tokens = lLine
@@ -340,10 +334,10 @@ class line():
         for oToken in self.tokens:
             iColumn += len(oToken.get_value())
             if rules_utils.token_is_open_paren(oToken):
-                oParen = paren('open', iColumn)
+                oParen = paren("open", iColumn)
                 self.parens.append(oParen)
             if rules_utils.token_is_close_paren(oToken):
-                oParen = paren('close', iColumn)
+                oParen = paren("close", iColumn)
                 self.parens.append(oParen)
 
     def set_actual_indent(self):
@@ -354,7 +348,7 @@ class line():
 
     def set_actual_leading_whitespace(self):
         oToken = self.tokens[0]
-        self.actual_leading_whitespace = ''
+        self.actual_leading_whitespace = ""
         if rules_utils.token_is_whitespace(oToken):
             self.actual_leading_whitespace = oToken.get_value()
 
@@ -398,8 +392,7 @@ def remove_matching_parens(lParens):
     return lReturn
 
 
-class paren():
-
+class paren:
     def __init__(self, sType, iColumn, iId=None):
         self.sType = sType
         self.iColumn = iColumn
@@ -407,23 +400,23 @@ class paren():
         self.iExpectedColumn = iColumn
 
     def is_open(self):
-        if self.sType == 'open':
+        if self.sType == "open":
             return True
         return False
 
     def is_close(self):
-        if self.sType == 'close':
+        if self.sType == "close":
             return True
         return False
 
 
 def align_left(self):
-    if self.align_left == 'yes':
+    if self.align_left == "yes":
         return True
     return False
 
 
 def align_paren(self):
-    if self.align_paren == 'yes':
+    if self.align_paren == "yes":
         return True
     return False

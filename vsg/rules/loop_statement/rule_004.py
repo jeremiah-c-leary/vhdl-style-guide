@@ -16,7 +16,7 @@ oEndToken = token.loop_statement.semicolon
 
 
 class rule_004(Rule):
-    '''
+    """
     This rule checks the semicolon is on the same line as the **end loop** keyword.
 
     **Violation**
@@ -36,7 +36,7 @@ class rule_004(Rule):
        end loop;
 
        end loop LOOP_LABEL;
-    '''
+    """
 
     def __init__(self):
         super().__init__(oToken, lAnchorTokens, oStartToken, oEndToken)
