@@ -13,7 +13,7 @@ oEnd = token.subprogram_body.begin_keyword
 
 
 class rule_005(token_indent_between_tokens):
-    '''
+    """
     This rule checks the indent of lines between the **is** and **begin** keywords
 
     **Violation**
@@ -42,7 +42,7 @@ class rule_005(token_indent_between_tokens):
          variable var_1 : integer;
        begin
        end procedure average_samples;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)

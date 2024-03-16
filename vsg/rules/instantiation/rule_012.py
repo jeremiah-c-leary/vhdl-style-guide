@@ -11,7 +11,7 @@ oEnd = token.component_instantiation_statement.semicolon
 
 
 class rule_012(split_line_at_token_when_between_tokens):
-    '''
+    """
     This rule checks the instantiation declaration and the **generic map** keywords are not on the same line.
 
     **Violation**
@@ -26,8 +26,8 @@ class rule_012(split_line_at_token_when_between_tokens):
 
        U_FIFO : FIFO
          generic map (
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)
-        self.solution = 'Place *generic map* keywords on the next line by itself'
+        self.solution = "Place *generic map* keywords on the next line by itself"

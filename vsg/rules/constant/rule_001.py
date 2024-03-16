@@ -8,7 +8,7 @@ lTokens.append(token.constant_declaration.constant_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of a constant declaration.
 
     **Violation**
@@ -28,7 +28,7 @@ class rule_001(token_indent):
 
          constant size : integer := 1;
          constant width : integer := 32
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

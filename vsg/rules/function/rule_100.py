@@ -17,7 +17,7 @@ lTokens.append([token.type_mark.name, token.subprogram_body.is_keyword])
 
 
 class rule_100(Rule):
-    '''
+    """
     This rule checks for a single space between the following function elements:  **function** keyword, function designator, open parenthesis, close parenthesis, **return** keyword, return type and **is** keyword.
 
     |configuring_whitespace_rules_link|
@@ -33,6 +33,7 @@ class rule_100(Rule):
     .. code-block:: vhdl
 
        function overflow (a: integer) return integer is
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

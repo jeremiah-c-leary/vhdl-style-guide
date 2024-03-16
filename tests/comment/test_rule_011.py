@@ -9,17 +9,16 @@ from vsg.rules import comment
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_011_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_011_test_input.vhd"))
 
 dIndentMap = utils.read_indent_file()
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_011_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_011_test_input.fixed.vhd"), lExpected)
 
 
 class test_comment_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -28,9 +27,9 @@ class test_comment_rule(unittest.TestCase):
     def test_rule_011(self):
         oRule = comment.rule_011()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'comment')
-        self.assertEqual(oRule.identifier, '011')
-        self.assertEqual(oRule.groups, ['structure'])
+        self.assertEqual(oRule.name, "comment")
+        self.assertEqual(oRule.identifier, "011")
+        self.assertEqual(oRule.groups, ["structure"])
 
         lExpected = [5, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23]
 
@@ -52,6 +51,5 @@ class test_comment_rule(unittest.TestCase):
         oAllTokens = self.oFile.get_all_tokens()
         for oToken in oAllTokens.lTokens:
             if isinstance(oToken, parser.comment):
-#                print(f'{oToken} | {oToken.indent}')
+                #                print(f'{oToken} | {oToken.indent}')
                 self.assertIsNotNone(oToken.indent)
-

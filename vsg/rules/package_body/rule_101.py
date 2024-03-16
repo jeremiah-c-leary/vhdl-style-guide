@@ -10,7 +10,7 @@ lTokens.append([token.package_body.end_body_keyword, token.package_body.end_pack
 
 
 class rule_101(Rule):
-    '''
+    """
     This rule checks for a single space between the **end**, **package** and **body** keywords and package name.
 
     |configuring_whitespace_rules_link|
@@ -26,6 +26,7 @@ class rule_101(Rule):
     .. code-block:: vhdl
 
        end package  body   FIFO_PKG;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

@@ -5,7 +5,7 @@ from vsg.token import entity_declaration as token
 
 
 class rule_203(Rule):
-    '''
+    """
     This rule checks for blank lines below the semicolon in entity specifications.
 
     |configuring_blank_lines_link|
@@ -24,7 +24,7 @@ class rule_203(Rule):
        end entity;
 
        library ieee;
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.semicolon])

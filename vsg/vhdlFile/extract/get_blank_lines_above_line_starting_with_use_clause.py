@@ -5,7 +5,6 @@ from vsg.vhdlFile.extract import utils
 
 
 def get_blank_lines_above_line_starting_with_use_clause(lTokens, lAllTokens, oTokenMap):
-
     lIndexes = get_list_of_indexes(lTokens, oTokenMap)
     lToi = utils.get_all_blank_lines_above_indexes(lIndexes, lAllTokens, oTokenMap)
     lToi = filter_design_unit(lToi, oTokenMap)
@@ -21,10 +20,10 @@ def update_previous_library(oToi, lAllTokens, oTokenMap):
     iStartIndex = oTokenMap.get_index_of_line(iLineNumber)
     lTokenIndex = oTokenMap.get_token_indexes_between_indexes(token.use_clause.library_name, iStartIndex, iEndIndex)
     if len(lTokenIndex) == 0:
-        oToi.set_meta_data('previous_library', None)
+        oToi.set_meta_data("previous_library", None)
     else:
         oToken = lAllTokens[lTokenIndex[0]]
-        oToi.set_meta_data('previous_library', oToken.get_value().lower())
+        oToi.set_meta_data("previous_library", oToken.get_value().lower())
 
 
 def update_current_library(oToi, lAllTokens, oTokenMap):
@@ -34,7 +33,7 @@ def update_current_library(oToi, lAllTokens, oTokenMap):
     iEndIndex = oTokenMap.get_index_of_line(iLineNumber)
     lTokenIndex = oTokenMap.get_token_indexes_between_indexes(token.use_clause.library_name, iStartIndex, iEndIndex)
     oToken = lAllTokens[lTokenIndex[0]]
-    oToi.set_meta_data('current_library', oToken.get_value().lower())
+    oToi.set_meta_data("current_library", oToken.get_value().lower())
 
 
 def get_list_of_indexes(lTokens, oTokenMap):
@@ -109,7 +108,7 @@ def filter_context_reference(lToi, oTokenMap):
 def filter_based_on_token(lToi, oTokenMap, oToken):
     lReturn = []
     for oToi in lToi:
-       iIndex = oToi.iStartIndex
-       if not oTokenMap.is_previous_non_whitespace_token(iIndex, oToken):
-           lReturn.append(oToi)
+        iIndex = oToi.iStartIndex
+        if not oTokenMap.is_previous_non_whitespace_token(iIndex, oToken):
+            lReturn.append(oToi)
     return lReturn

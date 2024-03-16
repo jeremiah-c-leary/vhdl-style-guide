@@ -8,7 +8,7 @@ lTokens.append(token.component_instantiation_statement.instantiation_label)
 
 
 class rule_004(previous_line):
-    '''
+    """
     This rule checks for blank lines or comments above the instantiation.
 
     |configuring_previous_line_rules_link|
@@ -35,8 +35,8 @@ class rule_004(previous_line):
 
        -- Instantiate another FIFO
        U_FIFO2 : FIFO
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.style = 'no_code'
+        self.style = "no_code"

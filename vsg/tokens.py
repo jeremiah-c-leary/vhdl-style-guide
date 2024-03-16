@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
-lSingleCharacterSymbols = [',', ':', '(', ')', '\'', '"', '+', '&', '-', '*', '/', '<', '>', ';', '=', '[', ']', '?']
-lTwoCharacterSymbols = ['=>','**', ':=', '/=', '>=', '<=', '<>', '??', '?=', '?<', '?>', '<<', '>>', '--', '/*', '*/']
-lThreeCharacterSymbols = ['?/=', '?<=', '?>=']
-lFourCharacterSymbols = ['\\?=\\']
+lSingleCharacterSymbols = [",", ":", "(", ")", "'", '"', "+", "&", "-", "*", "/", "<", ">", ";", "=", "[", "]", "?"]
+lTwoCharacterSymbols = ["=>", "**", ":=", "/=", ">=", "<=", "<>", "??", "?=", "?<", "?>", "<<", ">>", "--", "/*", "*/"]
+lThreeCharacterSymbols = ["?/=", "?<=", "?>="]
+lFourCharacterSymbols = ["\\?=\\"]
 
-lStopChars = [' ', '(', ';']
+lStopChars = [" ", "(", ";"]
 
 
 def create(sString):
-    '''
+    """
     This function takes a string and returns a list of tokens.
-    '''
+    """
 
     oLine = New(sString)
     oLine.combine_whitespace()
@@ -26,20 +26,20 @@ def create(sString):
     return oLine.lChars
 
 
-class New():
+class New:
     def __init__(self, sLine):
         self.lChars = convert_string_to_chars(sLine)
 
     def combine_whitespace(self):
         lReturn = []
-        sSpace = ''
+        sSpace = ""
         for sChar in self.lChars:
             if sChar.isspace():
                 sSpace += sChar
             else:
                 if sSpace.isspace():
                     lReturn.append(sSpace)
-                    sSpace = ''
+                    sSpace = ""
                 lReturn.append(sChar)
 
         lReturn.append(sSpace)
@@ -48,13 +48,13 @@ class New():
 
     def combine_backslash_characters_into_symbols(self):
         lReturn = []
-        sSymbol = ''
+        sSymbol = ""
         bSymbol = False
         for sChar in self.lChars:
             if stop_character_found(sChar, bSymbol):
                 bSymbol = False
                 lReturn.append(sSymbol)
-                sSymbol = ''
+                sSymbol = ""
             bSymbol = inside_backslash_symbol(bSymbol, sChar)
             sSymbol = append_to_symbol(bSymbol, sSymbol, sChar)
             lReturn = append_to_list(bSymbol, lReturn, sChar)
@@ -65,7 +65,7 @@ class New():
         lReturn = []
         i = 0
         while i < len(self.lChars):
-            sChars = ''.join(self.lChars[i:i+3])
+            sChars = "".join(self.lChars[i : i + 3])
             if sChars in lThreeCharacterSymbols:
                 lReturn.append(sChars)
                 i += 3
@@ -79,7 +79,7 @@ class New():
         lReturn = []
         i = 0
         while i < len(self.lChars):
-            sChars = ''.join(self.lChars[i:i+2])
+            sChars = "".join(self.lChars[i : i + 2])
             if sChars in lTwoCharacterSymbols:
                 lReturn.append(sChars)
                 i += 2
@@ -91,15 +91,15 @@ class New():
 
     def combine_characters_into_words(self):
         lReturn = []
-        sTemp = ''
+        sTemp = ""
         for sChar in self.lChars:
             if character_is_part_of_word(sChar):
                 sTemp += sChar
             else:
-                if sTemp != '':
+                if sTemp != "":
                     lReturn.append(sTemp)
                 lReturn.append(sChar)
-                sTemp = ''
+                sTemp = ""
 
         if len(sTemp) != 0:
             lReturn.append(sTemp)
@@ -140,8 +140,8 @@ class New():
 
 
 def is_natural_number(sString):
-    lString = sString.lower().split('e')
-    lBase = lString[0].split('.')
+    lString = sString.lower().split("e")
+    lBase = lString[0].split(".")
     lBase.extend(lString[1:])
     for sNum in lBase[0:-1]:
         if not sNum.isdigit():
@@ -151,12 +151,12 @@ def is_natural_number(sString):
 
 def parse_natural_number(sString):
     lReturn = []
-    sTemp = ''
+    sTemp = ""
     for sChar in sString:
-        if sChar.lower() == 'e':
+        if sChar.lower() == "e":
             lReturn.append(sTemp)
             lReturn.append(sChar)
-            sTemp = ''
+            sTemp = ""
         else:
             sTemp += sChar
     if len(sTemp) > 0:
@@ -169,7 +169,7 @@ def combine_quote_pairs(lQuotePairs, self):
         iLeft = lPair[0]
         iRight = lPair[1] + 1
         lReturn = self.lChars[0:iLeft]
-        lReturn.append(''.join(self.lChars[iLeft:iRight]))
+        lReturn.append("".join(self.lChars[iLeft:iRight]))
         lReturn.extend(self.lChars[iRight:])
         self.lChars = lReturn
 
@@ -184,9 +184,11 @@ def find_character_literal_candidates(lQuotes, lChars):
 
 def is_character_literal_candidate(iIndex, lQuotes, lChars):
     iQuote = lQuotes[iIndex]
-    if there_is_a_single_token_between_quotes(iIndex, lQuotes) and \
-       token_between_quotes_is_a_single_character(iQuote, lChars) and \
-       token_is_not_a_parenthesis(iQuote, lChars):
+    if (
+        there_is_a_single_token_between_quotes(iIndex, lQuotes)
+        and token_between_quotes_is_a_single_character(iQuote, lChars)
+        and token_is_not_a_parenthesis(iQuote, lChars)
+    ):
         return True
     return False
 
@@ -204,9 +206,10 @@ def token_between_quotes_is_a_single_character(iQuote, lChars):
 
 
 def token_is_not_a_parenthesis(iQuote, lChars):
-    if lChars[iQuote + 1] == '(':
+    if lChars[iQuote + 1] == "(":
         return False
     return True
+
 
 def filter_character_literal_candidates(lLiterals):
     lReturn = []
@@ -221,45 +224,45 @@ def filter_character_literal_candidates(lLiterals):
 
 
 def combine_comment_with_trailing_whitespace(self):
-    if self.lChars.count('--') > 0:
-        iIndex = self.lChars.index('--')
+    if self.lChars.count("--") > 0:
+        iIndex = self.lChars.index("--")
         lReturn = self.lChars[0:iIndex]
-        lReturn.append(''.join(self.lChars[iIndex:-1]))
+        lReturn.append("".join(self.lChars[iIndex:-1]))
         lReturn.append(self.lChars[-1])
         self.lChars = lReturn
 
 
 def combine_comment(self):
-    if self.lChars.count('--') > 0:
-        iIndex = self.lChars.index('--')
+    if self.lChars.count("--") > 0:
+        iIndex = self.lChars.index("--")
         lReturn = self.lChars[0:iIndex]
         if has_beginning_delimited_comment(self.lChars) and beginning_delimited_comment_after_comment(self.lChars):
-            lReturn.append(''.join(self.lChars[iIndex::]))
+            lReturn.append("".join(self.lChars[iIndex::]))
         elif has_ending_delimited_comment(self.lChars):
-            iStopIndex = self.lChars.index('*/')
-            lReturn.append(''.join(self.lChars[iIndex:iStopIndex]))
+            iStopIndex = self.lChars.index("*/")
+            lReturn.append("".join(self.lChars[iIndex:iStopIndex]))
             lReturn.append(self.lChars[iStopIndex])
         else:
-            lReturn.append(''.join(self.lChars[iIndex::]))
+            lReturn.append("".join(self.lChars[iIndex::]))
         self.lChars = lReturn
 
 
 def has_ending_delimited_comment(lTokens):
-    if lTokens.count('*/') > 0:
+    if lTokens.count("*/") > 0:
         return True
     return False
 
 
 def has_beginning_delimited_comment(lTokens):
-    if lTokens.count('*/') > 0:
+    if lTokens.count("*/") > 0:
         return True
     return False
 
 
 def beginning_delimited_comment_after_comment(lTokens):
-    iCommentIndex = lTokens.index('--')
+    iCommentIndex = lTokens.index("--")
     try:
-        iBeginningDelimitedCommentIndex = lTokens.index('/*')
+        iBeginningDelimitedCommentIndex = lTokens.index("/*")
     except ValueError:
         iBeginningDelimitedCommentIndex = 0
     if iCommentIndex < iBeginningDelimitedCommentIndex:
@@ -295,13 +298,13 @@ def append_to_list(bSymbol, lChars, sChar):
 
 
 def backslash_character_found(sChar):
-    if sChar == '\\':
+    if sChar == "\\":
         return True
     return False
 
 
 def stop_character_found(sChar, bLiteral):
-    if (sChar in lStopChars or ' ' in sChar) and bLiteral:
+    if (sChar in lStopChars or " " in sChar) and bLiteral:
         return True
     return False
 

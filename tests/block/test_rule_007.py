@@ -9,19 +9,18 @@ from vsg.rules import block
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_007_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_007_test_input.vhd"))
 
 lExpected_add = []
-lExpected_add.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed_add.vhd'), lExpected_add)
+lExpected_add.append("")
+utils.read_file(os.path.join(sTestDir, "rule_007_test_input.fixed_add.vhd"), lExpected_add)
 
 lExpected_remove = []
-lExpected_remove.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_007_test_input.fixed_remove.vhd'), lExpected_remove)
+lExpected_remove.append("")
+utils.read_file(os.path.join(sTestDir, "rule_007_test_input.fixed_remove.vhd"), lExpected_remove)
 
 
 class test_block_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -29,8 +28,8 @@ class test_block_rule(unittest.TestCase):
     def test_rule_007_add(self):
         oRule = block.rule_007()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'block')
-        self.assertEqual(oRule.identifier, '007')
+        self.assertEqual(oRule.name, "block")
+        self.assertEqual(oRule.identifier, "007")
 
         lExpected = [17, 22, 24]
 
@@ -52,7 +51,7 @@ class test_block_rule(unittest.TestCase):
 
     def test_rule_007_remove(self):
         oRule = block.rule_007()
-        oRule.action = 'remove'
+        oRule.action = "remove"
 
         lExpected = [6, 11, 13]
 
@@ -61,7 +60,7 @@ class test_block_rule(unittest.TestCase):
 
     def test_fix_rule_007_remove(self):
         oRule = block.rule_007()
-        oRule.action = 'remove'
+        oRule.action = "remove"
 
         oRule.fix(self.oFile)
 

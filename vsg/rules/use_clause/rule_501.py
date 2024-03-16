@@ -8,7 +8,7 @@ lTokens.append(token.use_clause.package_name)
 
 
 class rule_501(Rule):
-    '''
+    """
     This rule checks the package name called out in the selected name has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,9 +24,9 @@ class rule_501(Rule):
     .. code-block:: vhdl
 
        use ieee.std_logic_1164.all;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::name')
-        self.configuration.append('case_exceptions')
+        self.groups.append("case::name")
+        self.configuration.append("case_exceptions")

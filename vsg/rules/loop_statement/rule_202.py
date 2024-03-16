@@ -8,7 +8,7 @@ lTokens.append(token.end_keyword)
 
 
 class rule_202(previous_line):
-    '''
+    """
     This rule checks for blank lines or comments above the **end** keyword.
 
     |configuring_previous_line_rules_link|
@@ -29,6 +29,7 @@ class rule_202(previous_line):
          a <= b;
 
        end loop;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

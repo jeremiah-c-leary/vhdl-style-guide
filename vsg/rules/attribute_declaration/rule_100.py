@@ -9,7 +9,7 @@ lTokens.append(token.attribute_declaration.colon)
 
 
 class rule_100(Rule):
-    '''
+    """
     This rule checks for a single space after the following elements:  **attribute** keyword and colon.
 
     |configuring_whitespace_rules_link|
@@ -25,6 +25,7 @@ class rule_100(Rule):
     .. code-block:: vhdl
 
        attribute max_delay : time;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

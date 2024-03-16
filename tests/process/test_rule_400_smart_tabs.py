@@ -9,19 +9,18 @@ from vsg.rules import process
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_400_test_input_smart_tabs.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_400_test_input_smart_tabs.vhd"))
 
 lExpected_indent_2 = []
-lExpected_indent_2.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_400_test_input_smart_tabs.fixed_indent_2.vhd'), lExpected_indent_2)
+lExpected_indent_2.append("")
+utils.read_file(os.path.join(sTestDir, "rule_400_test_input_smart_tabs.fixed_indent_2.vhd"), lExpected_indent_2)
 
 lExpected_indent_4 = []
-lExpected_indent_4.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_400_test_input_smart_tabs.fixed_indent_4.vhd'), lExpected_indent_4)
+lExpected_indent_4.append("")
+utils.read_file(os.path.join(sTestDir, "rule_400_test_input_smart_tabs.fixed_indent_4.vhd"), lExpected_indent_4)
 
 
 class test_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

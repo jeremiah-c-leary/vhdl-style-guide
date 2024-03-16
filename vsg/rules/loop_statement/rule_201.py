@@ -5,7 +5,7 @@ from vsg.token import loop_statement as token
 
 
 class rule_201(blank_line_below_line_ending_with_token):
-    '''
+    """
     This rule checks for blank lines below the **loop** keyword.
 
     |configuring_blank_lines_link|
@@ -24,7 +24,7 @@ class rule_201(blank_line_below_line_ending_with_token):
        loop
 
          a <= b;
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.loop_keyword])

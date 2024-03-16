@@ -3,8 +3,7 @@
 from vsg.rules import create_violation
 
 
-class New():
-
+class New:
     def __init__(self, sName):
         self.name = sName
         self.value = None

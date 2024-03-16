@@ -12,7 +12,7 @@ lTokens.append(token.assertion_statement.label)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks indent of multiline assert statements.
 
     **Violation**
@@ -30,7 +30,7 @@ class rule_001(token_indent):
        assert WIDTH > 16
          report "FIFO width is limited to 16 bits."
          severity FAILURE;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

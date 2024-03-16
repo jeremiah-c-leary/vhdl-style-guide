@@ -6,7 +6,7 @@ from vsg.token import case_statement as token
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for a single space after the **case** keyword.
 
     |configuring_whitespace_rules_link|
@@ -23,7 +23,8 @@ class rule_002(Rule):
     .. code-block:: vhdl
 
        case data is
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.left_token = token.case_keyword

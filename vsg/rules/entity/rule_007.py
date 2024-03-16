@@ -5,7 +5,7 @@ from vsg.token import entity_declaration as token
 
 
 class rule_007(Rule):
-    '''
+    """
     This rule checks for a single space before the **is** keyword.
 
     |configuring_whitespace_rules_link|
@@ -21,7 +21,8 @@ class rule_007(Rule):
     .. code-block:: vhdl
 
        entity fifo is
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.left_token = token.identifier

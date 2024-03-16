@@ -7,7 +7,7 @@ oToken = token.port_clause.close_parenthesis
 
 
 class rule_014(Rule):
-    '''
+    """
     This rule checks the location of the closing ")" character for the port clause.
 
     The default location is on a line by itself.
@@ -34,7 +34,7 @@ class rule_014(Rule):
          OVERFLOW : out   std_logic;
          DATA     : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(oToken)

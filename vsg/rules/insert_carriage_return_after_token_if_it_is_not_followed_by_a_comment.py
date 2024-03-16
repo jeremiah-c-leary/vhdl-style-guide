@@ -8,7 +8,7 @@ from vsg.vhdlFile import utils
 
 
 class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment(structure.Rule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -22,7 +22,7 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment(stru
 
     token : token object
        The token to insert a carriage return after.
-    '''
+    """
 
     def __init__(self, lTokens):
         super().__init__()
@@ -34,15 +34,15 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment(stru
 
     def _analyze(self, lToi):
         for oToi in lToi:
-           lTokens = oToi.get_tokens()
-           if utils.are_next_consecutive_token_types([parser.carriage_return], 1, lTokens):
-               continue
-           if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], 1, lTokens):
-               continue
-           if utils.are_next_consecutive_token_types([parser.comment], 1, lTokens):
-               continue
-           else:
-               self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+            lTokens = oToi.get_tokens()
+            if utils.are_next_consecutive_token_types([parser.carriage_return], 1, lTokens):
+                continue
+            if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], 1, lTokens):
+                continue
+            if utils.are_next_consecutive_token_types([parser.comment], 1, lTokens):
+                continue
+            else:
+                self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

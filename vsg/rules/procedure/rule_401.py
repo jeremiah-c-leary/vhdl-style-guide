@@ -20,7 +20,7 @@ lUnless.append([token.function_specification.function_keyword, token.subprogram_
 
 
 class rule_401(Rule):
-    '''
+    """
     This rule checks the colons are in the same column for all declarations in the procedure declarative part.
 
     |configuring_keyword_alignment_rules_link|
@@ -42,10 +42,10 @@ class rule_401(Rule):
        variable var2      : natural;
        constant c_period  : time;
        file my_test_input : my_file_type;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lAlign, oStartToken, oEndToken, lUnless)
-        self.solution = 'Align :.'
+        self.solution = "Align :."
         self.subphase = 2
-        self.configuration.remove('separate_generic_port_alignment')
+        self.configuration.remove("separate_generic_port_alignment")

@@ -12,6 +12,6 @@ def get_token_and_n_tokens_before_it_in_between_tokens_unless_token_is_found(lTo
         iStart = iIndex - iTokens
         if iStart >= 0:
             iLine = oTokenMap.get_line_number_of_index(iStart)
-            lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart:iIndex + 1]))
+            lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart : iIndex + 1]))
 
     return lReturn

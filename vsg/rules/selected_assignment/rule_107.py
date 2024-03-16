@@ -9,7 +9,7 @@ lTokens.append(token.selected_waveforms.when_keyword)
 
 
 class rule_107(Rule):
-    '''
+    """
     This rule checks for a single space after the **when** keyword.
 
     |configuring_whitespace_rules_link|
@@ -31,7 +31,7 @@ class rule_107(Rule):
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

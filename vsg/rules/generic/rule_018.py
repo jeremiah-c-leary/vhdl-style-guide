@@ -5,7 +5,7 @@ from vsg.token import generic_clause as token
 
 
 class rule_018(move_token_next_to_another_token):
-    '''
+    """
     This rule checks the **generic** keyword is on the same line as the (.
 
     **Violation**
@@ -20,8 +20,8 @@ class rule_018(move_token_next_to_another_token):
     .. code-block:: vhdl
 
       generic (
-    '''
+    """
 
     def __init__(self):
         super().__init__(token.generic_keyword, token.open_parenthesis)
-        self.solution = 'Move the ( to the same line as the *generic* keyword.'
+        self.solution = "Move the ( to the same line as the *generic* keyword."

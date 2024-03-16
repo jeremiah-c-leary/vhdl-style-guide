@@ -10,12 +10,12 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     concurrent_signal_assignment_statement ::=
         [ label : ] [ postponed ] concurrent_simple_signal_assignment
       | [ label : ] [ postponed ] concurrent_conditional_signal_assignment
       | [ label : ] [ postponed ] concurrent_selected_signal_assignment
-    '''
+    """
 
     iCurrent = iToken
     if concurrent_selected_signal_assignment.detect(iToken, lObjects):

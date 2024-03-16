@@ -8,7 +8,7 @@ lTokens.append(token.entity_declaration.semicolon)
 
 
 class rule_025(Rule):
-    '''
+    """
     This rule checks the semicolon is not on its own line.
 
     **Violation**
@@ -27,7 +27,7 @@ class rule_025(Rule):
        end entity;
 
        end entity;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

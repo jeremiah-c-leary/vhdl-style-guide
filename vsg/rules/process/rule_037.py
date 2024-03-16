@@ -9,7 +9,7 @@ lTokens.append(token.process_statement.process_label)
 
 
 class rule_037(Rule):
-    '''
+    """
     This rule checks a label and the colon are on the same line.
 
     **Violation**
@@ -24,7 +24,7 @@ class rule_037(Rule):
     .. code-block:: vhdl
 
        label :
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

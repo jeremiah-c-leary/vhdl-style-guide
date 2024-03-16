@@ -8,11 +8,11 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
-    '''
+    """
     configuration_item ::=
         block_configuration
       | component_configuration
-    '''
+    """
 
     iCurrent = component_configuration.detect(iToken, lObjects)
     if iCurrent != iToken:

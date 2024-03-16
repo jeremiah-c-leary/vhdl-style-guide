@@ -11,7 +11,7 @@ lTokenPairs.append([token.conditional_force_assignment.assignment, token.conditi
 
 
 class rule_004(multiline_alignment_between_tokens):
-    '''
+    """
     This rule checks the alignment of multiline sequential statements.
 
     |configuring_multiline_indent_rules_link|
@@ -29,7 +29,7 @@ class rule_004(multiline_alignment_between_tokens):
 
        overflow <= wr_en and
                    rd_en;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)

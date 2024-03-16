@@ -8,7 +8,7 @@ lTokens.append([token.process_statement.label_colon, token.process_statement.pro
 
 
 class rule_025(Rule):
-    '''
+    """
     This rule checks for a single space after the colon and before the **process** keyword.
 
     |configuring_whitespace_rules_link|
@@ -29,6 +29,7 @@ class rule_025(Rule):
                          rd_full, wr_full
                         ) is
        begin
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

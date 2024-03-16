@@ -10,7 +10,7 @@ lTokens.append(token.is_keyword)
 
 
 class rule_026(Rule):
-    '''
+    """
     This rule checks for code after the **is** keyword.
 
     **Violation**
@@ -25,8 +25,8 @@ class rule_026(Rule):
 
        entity FIFO is
          port (
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move code after the **is** keyword to the next line.'
+        self.solution = "Move code after the **is** keyword to the next line."

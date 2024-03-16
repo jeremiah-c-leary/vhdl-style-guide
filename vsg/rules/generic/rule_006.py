@@ -14,7 +14,7 @@ oEnd = token.generic_clause.close_parenthesis
 
 
 class rule_006(Rule):
-    '''
+    """
     This rule checks for a single space after the default assignment.
 
     |configuring_whitespace_rules_link|
@@ -32,6 +32,7 @@ class rule_006(Rule):
 
        g_width : integer := 32;
        g_depth : integer := 512;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)

@@ -7,7 +7,7 @@ oToken = token.record_type_definition.record_keyword
 
 
 class rule_001(Rule):
-    '''
+    """
     This rule checks the location of the **record** keyword.
 
     The default location is not on a line by itself.
@@ -26,10 +26,10 @@ class rule_001(Rule):
     .. code-block:: vhdl
 
        type t_record is record
-    '''
+    """
 
     def __init__(self):
         super().__init__(oToken)
-        self.action = 'same_line'
+        self.action = "same_line"
         self.subphase = 3
         self.insert_whitespace = True

@@ -5,9 +5,9 @@ from vsg.rule_group import structure
 
 
 class Rule(structure.Rule):
-    '''
+    """
     This rule checks if a token pair does not exist.
-    '''
+    """
 
     def __init__(self, oFirstToken, oSecondToken):
         super().__init__()

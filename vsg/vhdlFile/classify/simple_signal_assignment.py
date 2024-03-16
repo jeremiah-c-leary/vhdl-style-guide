@@ -9,26 +9,25 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     simple_signal_assignment ::=
         simple_waveform_assignment
       | simple_force_assignment
       | simple_release_assignment
-    '''
+    """
 
-    if utils.find_in_next_n_tokens('if', 3, iToken, lObjects):
+    if utils.find_in_next_n_tokens("if", 3, iToken, lObjects):
         return False
-    if utils.find_in_range('<=', iToken, ';', lObjects):
-        if utils.find_in_range('when', iToken, ';', lObjects):
+    if utils.find_in_range("<=", iToken, ";", lObjects):
+        if utils.find_in_range("when", iToken, ";", lObjects):
             return False
-        if utils.find_in_range('with', iToken, ';', lObjects):
+        if utils.find_in_range("with", iToken, ";", lObjects):
             return False
         return True
     return False
 
 
 def classify(iToken, lObjects):
-
     iCurrent = iToken
     iCurrent = simple_force_assignment.detect(iToken, lObjects)
     if iCurrent != iToken:

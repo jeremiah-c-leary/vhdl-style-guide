@@ -10,14 +10,14 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     type_definition ::=
         scalar_type_definition
       | composite_type_definition
       | access_type_definition
       | file_type_definition
       | protected_type_definition
-    '''
+    """
 
     iReturn = scalar_type_definition.detect(iToken, lObjects)
     if iReturn != iToken:

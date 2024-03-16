@@ -8,7 +8,7 @@ lTokens.append(token.loop_statement.end_keyword)
 
 
 class rule_302(token_indent):
-    '''
+    """
     This rule checks the indentation of the **end** keyword.
 
     **Violation**
@@ -36,7 +36,7 @@ class rule_302(token_indent):
          end loop;
 
        end process;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

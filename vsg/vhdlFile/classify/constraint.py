@@ -4,12 +4,12 @@ from vsg.vhdlFile.classify import array_constraint, range_constraint, record_con
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     constraint ::=
         range_constraint
       | array_constraint
       | record_constraint
-    '''
+    """
 
     iReturn = range_constraint.detect(iToken, lObjects)
     if iReturn != iToken:

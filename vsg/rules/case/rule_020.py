@@ -8,7 +8,7 @@ lTokens.append(token.end_case_label)
 
 
 class rule_020(remove_tokens):
-    '''
+    """
     This rule checks for labels after the **end case** keywords.
     The label should be removed.
     The preference is to have comments above the case statement.
@@ -26,8 +26,8 @@ class rule_020(remove_tokens):
 
           end case;
           end case;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Remove Label'
+        self.solution = "Remove Label"

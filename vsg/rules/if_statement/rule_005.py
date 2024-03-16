@@ -8,7 +8,7 @@ lTokens.append(token.if_statement.elsif_keyword)
 
 
 class rule_005(Rule):
-    '''
+    """
     This rule checks for a single space after the **elsif** keyword.
 
     |configuring_whitespace_rules_link|
@@ -32,6 +32,7 @@ class rule_005(Rule):
       elsif (c = '1') then
 
       elsif b = '0' then
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

@@ -8,7 +8,7 @@ lTokens.append(token.package_body.end_keyword)
 
 
 class rule_301(token_indent):
-    '''
+    """
     This rule checks the indent of the end package declaration.
 
     **Violation**
@@ -26,7 +26,7 @@ class rule_301(token_indent):
        package body fifo_pkg is
 
        end package body fifo_pkg;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

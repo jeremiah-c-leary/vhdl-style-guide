@@ -8,7 +8,7 @@ lTokens.append(token.entity_declaration.end_keyword)
 
 
 class rule_021(split_line_at_token):
-    '''
+    """
     This rule checks the **end** keyword is on its own line.
 
     **Violation**
@@ -27,8 +27,8 @@ class rule_021(split_line_at_token):
           ...
        );
        end entity;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move the **end** keyword to the next line.'
+        self.solution = "Move the **end** keyword to the next line."

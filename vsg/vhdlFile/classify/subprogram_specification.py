@@ -4,11 +4,11 @@ from vsg.vhdlFile.classify import function_specification, procedure_specificatio
 
 
 def detect(iCurrent, lObjects):
-    '''
+    """
     subprogram_specification ::=
         procedure_specification
       | function_specification
-    '''
+    """
 
     iReturn = procedure_specification.detect(iCurrent, lObjects)
     if iReturn != iCurrent:

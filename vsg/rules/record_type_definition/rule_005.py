@@ -13,7 +13,7 @@ oValueToken = ft_token.identifier
 
 
 class rule_005(Rule):
-    '''
+    """
     This rule checks for the optional simple name in the **end record** statement.
 
     |configuring_optional_items_link|
@@ -35,10 +35,10 @@ class rule_005(Rule):
          a : std_logic;
          b : std_logic;
        end record t_record;
-    '''
+    """
 
     def __init__(self):
         super().__init__(oInsertToken, oAnchorToken, oLeftToken, oRightToken, oValueToken)
         self.subphase = 1
-        self.solution = 'record type simple name'
-        self.groups.append('structure::optional')
+        self.solution = "record type simple name"
+        self.groups.append("structure::optional")

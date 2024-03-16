@@ -11,7 +11,7 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 
 
 class rule_600(token_suffix_between_tokens):
-    '''
+    """
     This rule checks for valid suffixes on generic identifiers.
     The default generic suffix is *_g*.
 
@@ -28,8 +28,8 @@ class rule_600(token_suffix_between_tokens):
     .. code-block:: vhdl
 
        generic(my_generic_g : integer);
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, token.generic_clause.open_parenthesis, token.generic_clause.close_parenthesis)
-        self.suffixes = ['_g']
+        self.suffixes = ["_g"]

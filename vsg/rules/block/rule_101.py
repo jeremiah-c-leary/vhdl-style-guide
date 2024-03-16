@@ -9,7 +9,7 @@ lTokens.append([token.block_statement.end_block_keyword, token.block_statement.e
 
 
 class rule_101(Rule):
-    '''
+    """
     This rule checks for a single space between the **end** and **block** keywords and label.
 
     |configuring_whitespace_rules_link|
@@ -25,6 +25,7 @@ class rule_101(Rule):
     .. code-block:: vhdl
 
        end block block_label;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

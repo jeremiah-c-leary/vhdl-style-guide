@@ -10,7 +10,7 @@ def get_association_elements_between_tokens(oStart, oEnd, lAllTokens, oTokenMap)
 
     for iStart, iEnd in zip(lStartIndexes, lEndIndexes):
         iLine = oTokenMap.get_line_number_of_index(iStart)
-        lTokens = lAllTokens[iStart:iEnd + 1]
+        lTokens = lAllTokens[iStart : iEnd + 1]
 
         bStore = False
         iLineNumber = None
@@ -26,7 +26,7 @@ def get_association_elements_between_tokens(oStart, oEnd, lAllTokens, oTokenMap)
                 iLineNumber = iLine
 
             if bStore:
-               lTemp.append(oToken)
+                lTemp.append(oToken)
 
             if isinstance(oToken, token.association_list.comma):
                 lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))
@@ -34,7 +34,7 @@ def get_association_elements_between_tokens(oStart, oEnd, lAllTokens, oTokenMap)
                 bStore = False
 
             if isinstance(oToken, parser.carriage_return):
-                iLine +=1
+                iLine += 1
 
         if len(lTemp) > 0:
             lReturn.append(tokens.New(iStartIndex, iLineNumber, lTemp))

@@ -8,13 +8,13 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     entity_statement ::=
         concurrent_assertion_statement
       | *passive*_concurrent_procedure_call_statement
       | *passive*_process_statement
       | *PSL*_PSL_Directive
-    '''
+    """
 
     iCurrent = process_statement.detect(iToken, lObjects)
     if iCurrent != iToken:

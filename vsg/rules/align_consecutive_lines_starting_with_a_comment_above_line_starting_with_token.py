@@ -8,7 +8,7 @@ from vsg.vhdlFile import utils
 
 
 class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token(alignment.Rule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -22,7 +22,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
 
     token : token object
        reference token to align comments with
-    '''
+    """
 
     def __init__(self, token, bIncrement=False):
         super().__init__()
@@ -35,7 +35,7 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
         lToi = oFile.get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(parser.comment, self.token)
         lReturn = []
         for oToi in lToi:
-            oToi.set_meta_data('indentLevel', oFile.get_indent_of_line_at_index(oToi.get_end_index()))
+            oToi.set_meta_data("indentLevel", oFile.get_indent_of_line_at_index(oToi.get_end_index()))
             lReturn.append(oToi)
 
         return lReturn
@@ -60,10 +60,10 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        if dAction['action'] == 'insert':
-            rules_utils.insert_new_whitespace(lTokens, len(lTokens) - 1, dAction['whitespace'])
+        if dAction["action"] == "insert":
+            rules_utils.insert_new_whitespace(lTokens, len(lTokens) - 1, dAction["whitespace"])
         else:
-            lTokens[0].set_value(dAction['whitespace'])
+            lTokens[0].set_value(dAction["whitespace"])
         oViolation.set_tokens(lTokens)
 
     def _adjust_token_indent(self, oToken, iIndent):
@@ -71,18 +71,18 @@ class align_consecutive_lines_starting_with_a_comment_above_line_starting_with_t
 
 
 def expected_whitespace(self, oToi):
-    iIndentLevel = oToi.get_meta_data('indentLevel')
-    if self.indent_style == 'smart_tabs':
-        return '\t' * iIndentLevel
-    return ' ' * iIndentLevel * self.indent_size
+    iIndentLevel = oToi.get_meta_data("indentLevel")
+    if self.indent_style == "smart_tabs":
+        return "\t" * iIndentLevel
+    return " " * iIndentLevel * self.indent_size
 
 
 def actual_whitespace(iToken, lTokens):
     if iToken == -1:
-        return ''
+        return ""
     elif rules_utils.token_is_whitespace(lTokens[iToken]):
         return lTokens[iToken].get_value()
-    return ''
+    return ""
 
 
 def comment_at_beginning_of_line(iToken, lTokens):
@@ -99,13 +99,13 @@ def comment_at_beginning_of_line(iToken, lTokens):
 
 def create_violation(oToi, sActualWhitespace, sExpectedWhitespace, oToken):
     iLine = oToi.get_line_number()
-    sSolution = 'Align comment with ' + oToken.get_value()
+    sSolution = "Align comment with " + oToken.get_value()
     dAction = {}
-    if sActualWhitespace == '':
-        dAction['action'] = 'insert'
+    if sActualWhitespace == "":
+        dAction["action"] = "insert"
     else:
-        dAction['action'] = 'adjust'
-    dAction['whitespace'] = sExpectedWhitespace
+        dAction["action"] = "adjust"
+    dAction["whitespace"] = sExpectedWhitespace
     oViolation = violation.New(iLine, oToi, sSolution)
     oViolation.set_action(dAction)
     return oViolation

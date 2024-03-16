@@ -9,7 +9,7 @@ lTokens.append([token.port_map_aspect.map_keyword, token.port_map_aspect.open_pa
 
 
 class rule_006(Rule):
-    '''
+    """
     This rule checks for a single space between the **map** keyword and the (.
 
     |configuring_whitespace_rules_link|
@@ -29,7 +29,8 @@ class rule_006(Rule):
        generic map (
 
        generic map (
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)
         self.solution = 'Ensure a single space exists between "map" and (.'

@@ -9,19 +9,18 @@ from vsg.rules import procedure
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_506_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_506_test_input.vhd"))
 
 lExpected_lower = []
-lExpected_lower.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_506_test_input.fixed_lower.vhd'), lExpected_lower)
+lExpected_lower.append("")
+utils.read_file(os.path.join(sTestDir, "rule_506_test_input.fixed_lower.vhd"), lExpected_lower)
 
 lExpected_upper = []
-lExpected_upper.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_506_test_input.fixed_upper.vhd'), lExpected_upper)
+lExpected_upper.append("")
+utils.read_file(os.path.join(sTestDir, "rule_506_test_input.fixed_upper.vhd"), lExpected_upper)
 
 
 class test_procedure_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -29,9 +28,9 @@ class test_procedure_rule(unittest.TestCase):
     def test_rule_506_lower(self):
         oRule = procedure.rule_506()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'procedure')
-        self.assertEqual(oRule.identifier, '506')
-        oRule.case_exceptions = ['ieee']
+        self.assertEqual(oRule.name, "procedure")
+        self.assertEqual(oRule.identifier, "506")
+        oRule.case_exceptions = ["ieee"]
 
         lExpected = [6]
 
@@ -40,10 +39,10 @@ class test_procedure_rule(unittest.TestCase):
 
     def test_rule_506_upper(self):
         oRule = procedure.rule_506()
-        oRule.case = 'upper'
+        oRule.case = "upper"
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'procedure')
-        self.assertEqual(oRule.identifier, '506')
+        self.assertEqual(oRule.name, "procedure")
+        self.assertEqual(oRule.identifier, "506")
 
         lExpected = [4]
         oRule.analyze(self.oFile)
@@ -63,7 +62,7 @@ class test_procedure_rule(unittest.TestCase):
 
     def test_fix_rule_506_upper(self):
         oRule = procedure.rule_506()
-        oRule.case = 'upper'
+        oRule.case = "upper"
 
         oRule.fix(self.oFile)
 
@@ -73,4 +72,3 @@ class test_procedure_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
-

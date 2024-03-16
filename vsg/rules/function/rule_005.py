@@ -8,7 +8,7 @@ lTokens.append(token.function_specification.function_keyword)
 
 
 class rule_005(token_case):
-    '''
+    """
     This rule checks the **function** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_005(token_case):
     .. code-block:: vhdl
 
        function overflow (a: integer) return integer is
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

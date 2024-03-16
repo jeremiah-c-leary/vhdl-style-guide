@@ -8,7 +8,7 @@ lTokens.append(token.instantiated_unit.entity_keyword)
 
 
 class rule_027(token_case):
-    '''
+    """
     This rule checks the **entity** keyword has proper case in direct instantiations.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_027(token_case):
     .. code-block:: vhdl
 
        INSTANCE_NAME : entity library.ENTITY_NAME
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

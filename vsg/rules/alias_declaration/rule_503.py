@@ -11,7 +11,7 @@ lNames.append(parser.todo)
 
 
 class rule_503(Rule):
-    '''
+    """
     This rule checks for consistent capitalization of alias designators.
 
     **Violation**
@@ -69,7 +69,7 @@ class rule_503(Rule):
          end process PROC_NAME;
 
        end architecture RTL;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lNames)

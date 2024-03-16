@@ -8,9 +8,9 @@ import sys
 executablePath = os.path.dirname(os.path.realpath(__file__))
 
 # Import program modules
-sys.path.append(os.path.join(executablePath, '..'))
+sys.path.append(os.path.join(executablePath, ".."))
 
 from vsg.__main__ import main
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

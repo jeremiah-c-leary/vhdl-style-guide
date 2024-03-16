@@ -20,7 +20,7 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     package_declarative_item ::=
         subprogram_declaration
       | subprogram_instantiation_declaration
@@ -42,7 +42,7 @@ def detect(iToken, lObjects):
       | group_declaration
       | PSL_Property_Declaration
       | PSL_Sequence_Declaration
-    '''
+    """
 
     iReturn = subprogram_declaration.detect(iToken, lObjects)
     if iReturn != iToken:

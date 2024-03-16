@@ -10,7 +10,7 @@ lTokenPairs.append([token.function_specification.function_keyword, token.functio
 
 
 class rule_019(Rule):
-    '''
+    """
     This rule checks the structure of function specifications.
 
     |configuring_subprogram_specification_statement_rules_link|
@@ -30,7 +30,7 @@ class rule_019(Rule):
           sample      : out std_logic
         ) return integer;
 
-    '''
+    """
 
     def __init__(self):
         Rule.__init__(self)

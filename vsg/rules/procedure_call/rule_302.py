@@ -8,7 +8,7 @@ lTokens.append(token.procedure_call.procedure_name)
 
 
 class rule_302(token_indent):
-    '''
+    """
     This rule checks the indent of the *procedure* name.
 
     **Violation**
@@ -26,7 +26,7 @@ class rule_302(token_indent):
        a <= b;
 
        WR_EN(parameter);
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

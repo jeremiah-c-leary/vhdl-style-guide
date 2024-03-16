@@ -5,7 +5,7 @@ from vsg.token import component_declaration as token
 
 
 class rule_003(previous_line):
-    '''
+    """
     This rule checks for blank lines or comments above the **component** declaration.
 
     |configuring_previous_line_rules_link|
@@ -26,8 +26,8 @@ class rule_003(previous_line):
        end component fifo;
 
        component ram is
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.component_keyword])
-        self.style = 'no_code'
+        self.style = "no_code"

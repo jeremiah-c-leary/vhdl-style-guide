@@ -20,7 +20,7 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     process_declarative_item ::=
         subprogram_declaration
       | subprogram_body
@@ -39,7 +39,7 @@ def detect(iToken, lObjects):
       | use_clause
       | group_template_declaration
       | group_declaration
-    '''
+    """
 
     iReturn = subprogram_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
@@ -97,6 +97,5 @@ def detect(iToken, lObjects):
     iReturn = use_clause.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
-
 
     return iToken

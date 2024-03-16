@@ -10,7 +10,7 @@ lTokens.append(token.open_parenthesis)
 
 
 class rule_013(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
-    '''
+    """
     This rule checks for the **generic** keyword on the same line as a generic declaration.
 
     **Violation**
@@ -25,8 +25,8 @@ class rule_013(insert_carriage_return_after_token_if_it_is_not_followed_by_a_com
 
        generic (
          g_depth : integer := 512;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move generic parameter to the next line.'
+        self.solution = "Move generic parameter to the next line."

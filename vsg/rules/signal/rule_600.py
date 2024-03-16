@@ -8,7 +8,7 @@ lTokens.append(token.signal_declaration.identifier)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes on signal identifiers.
     Default signal suffix is *_s*.
 
@@ -27,9 +27,9 @@ class rule_600(token_suffix):
 
        signal wr_en_s : std_logic;
        signal rd_en_s : std_logic;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_s']
-        self.solution = 'Signal identifiers'
+        self.suffixes = ["_s"]
+        self.solution = "Signal identifiers"

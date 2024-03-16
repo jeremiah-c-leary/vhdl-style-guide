@@ -5,7 +5,7 @@ from vsg.token import record_type_definition as token
 
 
 class rule_200(Rule):
-    '''
+    """
     This rule checks for blank lines below the **record** keyword.
 
     |configuring_blank_lines_link|
@@ -28,8 +28,8 @@ class rule_200(Rule):
          a : std_logic;
          b : std_logic;
        end record t_record;
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.record_keyword])
-        self.style = 'no_blank_line'
+        self.style = "no_blank_line"

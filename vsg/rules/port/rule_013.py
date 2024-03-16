@@ -13,7 +13,7 @@ lTokenPairs.append([token.port_clause.open_parenthesis, token.port_clause.close_
 
 
 class rule_013(Rule):
-    '''
+    """
     This rule checks for multiple ports declared on a single line.
 
     **Violation**
@@ -35,8 +35,8 @@ class rule_013(Rule):
          OVERFLOW : out   std_logic;
          DATA     : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lTokenPairs)
-        self.solution = 'Move multiple ports to their own lines.'
+        self.solution = "Move multiple ports to their own lines."

@@ -8,7 +8,7 @@ lTokens.append(token.variable_declaration.colon)
 
 
 class rule_006(Rule):
-    '''
+    """
     This rule checks for at least a single space before the colon.
 
     |configuring_whitespace_rules_link|
@@ -26,7 +26,8 @@ class rule_006(Rule):
 
        variable count : integer;
        variable counter : integer;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)
-        self.number_of_spaces = '>=1'
+        self.number_of_spaces = ">=1"

@@ -5,60 +5,61 @@ import unittest
 from tests import utils
 from vsg import config, rule_list, severity, vhdlFile
 
-sSourceCodeDir = os.path.join(os.path.dirname(__file__),'..','styles', 'code_examples')
+sSourceCodeDir = os.path.join(os.path.dirname(__file__), "..", "styles", "code_examples")
 
 dIndentMap = utils.read_indent_file()
 
-lTimestamp, eTimestapError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhd'))
+lTimestamp, eTimestapError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir, "timestamp.vhd"))
 oTimestamp = vhdlFile.vhdlFile(lTimestamp)
 oTimestamp.set_indent_map(dIndentMap)
 
-lSpiSlave, eSpiSlaveError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_slave.vhd'))
+lSpiSlave, eSpiSlaveError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir, "spi_slave.vhd"))
 oSpiSlave = vhdlFile.vhdlFile(lSpiSlave)
 oSpiSlave.set_indent_map(dIndentMap)
 
-lSpiMaster, eSpiMasterError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'spi_master.vhd'))
+lSpiMaster, eSpiMasterError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir, "spi_master.vhd"))
 oSpiMaster = vhdlFile.vhdlFile(lSpiMaster)
 oSpiMaster.set_indent_map(dIndentMap)
 
-#lGrpDebouncer, eGrpDebouncerError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'grp_debouncer.vhd'))
-#oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
-#oGrpDebouncer.set_indent_map(dIndentMap)
+# lGrpDebouncer, eGrpDebouncerError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'grp_debouncer.vhd'))
+# oGrpDebouncer = vhdlFile.vhdlFile(lGrpDebouncer)
+# oGrpDebouncer.set_indent_map(dIndentMap)
 #
-#lPIC, ePICError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
-#oPIC = vhdlFile.vhdlFile(lPIC)
-#oPIC.set_indent_map(dIndentMap)
+# lPIC, ePICError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'PIC.vhd'))
+# oPIC = vhdlFile.vhdlFile(lPIC)
+# oPIC.set_indent_map(dIndentMap)
 #
-#lLibraryStatements, eLibraryStatementsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'library_statements.vhd'))
-#oLibraryStatements = vhdlFile.vhdlFile(lLibraryStatements)
-#oLibraryStatements.set_indent_map(dIndentMap)
+# lLibraryStatements, eLibraryStatementsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'library_statements.vhd'))
+# oLibraryStatements = vhdlFile.vhdlFile(lLibraryStatements)
+# oLibraryStatements.set_indent_map(dIndentMap)
 #
-#lAlignments, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'alignments.vhd'))
-#oAlignments = vhdlFile.vhdlFile(lAlignments)
-#oAlignments.set_indent_map(dIndentMap)
+# lAlignments, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'alignments.vhd'))
+# oAlignments = vhdlFile.vhdlFile(lAlignments)
+# oAlignments.set_indent_map(dIndentMap)
 #
-#lTrailingWhitespace, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'trailing_whitespace.vhd'))
-#oTrailingWhitespace = vhdlFile.vhdlFile(lTrailingWhitespace)
-#oTrailingWhitespace.set_indent_map(dIndentMap)
+# lTrailingWhitespace, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'trailing_whitespace.vhd'))
+# oTrailingWhitespace = vhdlFile.vhdlFile(lTrailingWhitespace)
+# oTrailingWhitespace.set_indent_map(dIndentMap)
 #
-#lComments, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'comments.vhd'))
-#oComments = vhdlFile.vhdlFile(lComments)
-#oComments.set_indent_map(dIndentMap)
+# lComments, eAlignmentsError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'comments.vhd'))
+# oComments = vhdlFile.vhdlFile(lComments)
+# oComments.set_indent_map(dIndentMap)
 
-oStyle = utils.read_configuration(os.path.join(os.path.dirname(__file__),'..','..','vsg','styles', 'jcl.yaml'))
-oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__),'config.yaml'))
+oStyle = utils.read_configuration(os.path.join(os.path.dirname(__file__), "..", "..", "vsg", "styles", "jcl.yaml"))
+oConfig = utils.read_configuration(os.path.join(os.path.dirname(__file__), "config.yaml"))
 
 oSeverityList = severity.create_list({})
 
-class testCodeExample(unittest.TestCase):
 
+class testCodeExample(unittest.TestCase):
     def setUp(self):
         self.assertIsNone(eTimestapError)
         self.assertIsNone(eSpiSlaveError)
         self.assertIsNone(eSpiMasterError)
-#        self.assertIsNone(eGrpDebouncerError)
-#        self.assertIsNone(ePICError)
-#        self.assertIsNone(eLibraryStatementsError)
+
+    #        self.assertIsNone(eGrpDebouncerError)
+    #        self.assertIsNone(ePICError)
+    #        self.assertIsNone(eLibraryStatementsError)
 
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp, oSeverityList)
@@ -66,8 +67,8 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix()
 
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhd'), lExpected)
+        lExpected = [""]
+        utils.read_file(os.path.join(os.path.dirname(__file__), "timestamp.fixed.vhd"), lExpected)
 
         self.assertEqual(lExpected, oTimestamp.get_lines())
 
@@ -76,8 +77,8 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oStyle)
         oRuleList.configure(oConfig)
         oRuleList.fix()
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_slave.fixed.vhd'), lExpected)
+        lExpected = [""]
+        utils.read_file(os.path.join(os.path.dirname(__file__), "spi_slave.fixed.vhd"), lExpected)
 
         self.assertEqual(lExpected, oSpiSlave.get_lines())
 
@@ -86,10 +87,11 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix()
 
-        lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'spi_master.fixed.vhd'), lExpected)
+        lExpected = [""]
+        utils.read_file(os.path.join(os.path.dirname(__file__), "spi_master.fixed.vhd"), lExpected)
 
         self.assertEqual(lExpected, oSpiMaster.get_lines())
+
 
 #    def test_grp_debouncer(self):
 #        oRuleList = rule_list.rule_list(oGrpDebouncer, oSeverityList)
@@ -166,4 +168,3 @@ class testCodeExample(unittest.TestCase):
 #        self.assertFalse(oRuleList.violations)
 #        oRuleList.check_rules()
 #        self.assertFalse(oRuleList.violations)
-

@@ -8,7 +8,7 @@ from vsg.vhdlFile import utils
 
 
 class move_token_left_to_next_non_whitespace_token(structure.Rule):
-    '''
+    """
     Moves one token to the left until it encounters a non whitespace token.
 
     Parameters
@@ -25,7 +25,7 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
 
     token_to_move : token type
        The token which will be moved next to the anchor token.
-    '''
+    """
 
     def __init__(self, token_to_move):
         super().__init__()
@@ -50,17 +50,15 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
             lReturn.append(oToi)
         return lReturn
 
-
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
-            sSolution = 'Move **then** keyword to same line as ' + lTokens[0].get_value()
+            sSolution = "Move **then** keyword to same line as " + lTokens[0].get_value()
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
             oViolation.set_remap()
             oViolation.fix_blank_lines = True
             self.add_violation(oViolation)
-
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

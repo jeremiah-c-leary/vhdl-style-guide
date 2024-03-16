@@ -15,7 +15,7 @@ oEnd = token.generic_clause.close_parenthesis
 
 
 class rule_007(token_case_in_range_bounded_by_tokens):
-    '''
+    """
     This rule checks the generic names have proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -31,11 +31,11 @@ class rule_007(token_case_in_range_bounded_by_tokens):
     .. code-block:: vhdl
 
        g_width : integer := 32;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)
-        self.configuration.append('prefix_exceptions')
-        self.configuration.append('suffix_exceptions')
-        self.configuration.append('case_exceptions')
-        self.groups.append('case::name')
+        self.configuration.append("prefix_exceptions")
+        self.configuration.append("suffix_exceptions")
+        self.configuration.append("case_exceptions")
+        self.groups.append("case::name")

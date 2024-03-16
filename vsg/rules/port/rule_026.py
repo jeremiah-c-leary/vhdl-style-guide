@@ -13,7 +13,7 @@ from vsg.token import (
 
 
 class rule_026(structure.Rule):
-    '''
+    """
     This rule checks for multiple identifiers on port declarations.
 
     Any comments are not replicated.
@@ -39,7 +39,7 @@ class rule_026(structure.Rule):
          overflow : out   std_logic;
          empty : out   std_logic -- Other comment
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__()
@@ -63,32 +63,32 @@ class rule_026(structure.Rule):
                     lIdentifiers.append(oToken.get_value())
                     lIdentifierIndexes.append(iToken)
 
-            sSolution = 'Split identifiers ' + ', '.join(lIdentifiers) + ' to individual lines.'
+            sSolution = "Split identifiers " + ", ".join(lIdentifiers) + " to individual lines."
             dAction = {}
             if oToi == lToi[-1]:
-                dAction['last_element'] = False
+                dAction["last_element"] = False
             else:
-                dAction['last_element'] = True
-            dAction['identifier_indexes'] = lIdentifierIndexes
-            dAction['split_index'] = lIdentifierIndexes[-1] + 1
+                dAction["last_element"] = True
+            dAction["identifier_indexes"] = lIdentifierIndexes
+            dAction["split_index"] = lIdentifierIndexes[-1] + 1
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
             oViolation.set_action(dAction)
             self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
-        '''
+        """
         Applies fixes for any rule violations.
-        '''
+        """
         lTokens = oViolation.get_tokens()
         lNewTokens = []
         dAction = oViolation.get_action()
-        for iIndex in dAction['identifier_indexes']:
+        for iIndex in dAction["identifier_indexes"]:
             lCopyTokens = duplicate_tokens(lTokens)
             lNewTokens.append(lCopyTokens[iIndex])
 
-            lNewTokens.extend(lCopyTokens[dAction['split_index']:])
+            lNewTokens.extend(lCopyTokens[dAction["split_index"] :])
 
-            if iIndex != dAction['identifier_indexes'][-1]:
+            if iIndex != dAction["identifier_indexes"][-1]:
                 lNewTokens.append(interface_list.semicolon())
                 lNewTokens.append(parser.carriage_return())
         oViolation.set_tokens(lNewTokens)

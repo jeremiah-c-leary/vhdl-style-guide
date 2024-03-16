@@ -20,11 +20,11 @@ lBetweenTokens = []
 lBetweenTokens.append([token.if_generate_statement.if_keyword, token.if_generate_statement.end_keyword])
 
 lUnless = []
-lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
+lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
 
 
 class rule_403(align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens):
-    '''
+    """
     This rule checks the colons are in the same column for all declarations in the generate declarative part in if generate statements.
 
     |configuring_keyword_alignment_rules_link|
@@ -46,11 +46,11 @@ class rule_403(align_tokens_in_region_between_tokens_when_between_tokens_unless_
        variable var2      : natural;
        constant c_period  : time;
        file my_test_input : my_file_type;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lAlign, oStartToken, oEndToken, lBetweenTokens, lUnless)
-        self.solution = 'Align colon.'
+        self.solution = "Align colon."
         self.subphase = 2
-        self.configuration.remove('loop_control_statements_ends_group')
-        self.configuration.remove('separate_generic_port_alignment')
+        self.configuration.remove("loop_control_statements_ends_group")
+        self.configuration.remove("separate_generic_port_alignment")

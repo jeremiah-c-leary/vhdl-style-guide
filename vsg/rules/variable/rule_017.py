@@ -8,7 +8,7 @@ lTokenPairs.append([token.variable_declaration.variable_keyword, token.variable_
 
 
 class rule_017(Rule):
-    '''
+    """
     This rule checks the structure of variable constraints.
 
     |configuring_multiline_constraint_rules_link|
@@ -29,7 +29,7 @@ class rule_017(Rule):
            element1(7 downto 0),
            element2(3 downto 0)
          );
-    '''
+    """
 
     def __init__(self):
         Rule.__init__(self)

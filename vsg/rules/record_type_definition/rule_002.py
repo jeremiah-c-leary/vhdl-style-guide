@@ -10,7 +10,7 @@ lTokens.append(token.record_keyword)
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for code after the **record** keyword.
 
     **Violation**
@@ -29,8 +29,8 @@ class rule_002(Rule):
          a : std_logic;
          b : std_logic;
        end record;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move code after the begin to the next line.'
+        self.solution = "Move code after the begin to the next line."

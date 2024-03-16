@@ -9,7 +9,7 @@ lTokenPairs.append([token.simple_waveform_assignment.assignment, token.simple_wa
 
 
 class rule_402(Rule):
-    '''
+    """
     This rule checks the alignment of multiline simple sequential signal assignments that contain arrays.
 
     |configuring_multiline_indent_rules_link|
@@ -35,7 +35,7 @@ class rule_402(Rule):
          65535,
          32768
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)

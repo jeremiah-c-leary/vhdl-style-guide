@@ -8,7 +8,7 @@ lTokens.append(token.if_statement.elsif_keyword)
 
 
 class rule_012(token_indent):
-    '''
+    """
     This rule checks the indent of the **elsif** keyword.
 
     **Violation**
@@ -34,7 +34,7 @@ class rule_012(token_indent):
       else
         e <= '0';
       end if;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

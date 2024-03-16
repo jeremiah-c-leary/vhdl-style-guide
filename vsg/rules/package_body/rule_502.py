@@ -8,7 +8,7 @@ lTokens.append(token.package_body.package_simple_name)
 
 
 class rule_502(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the package name has proper case in the package declaration.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_502(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
        package body fifo_pkg is
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::name')
+        self.groups.append("case::name")

@@ -4,7 +4,7 @@ from vsg import proposed_rule
 
 
 class rule_007(proposed_rule.Rule):
-    '''
+    """
     This rule checks for code after the semicolon.
 
     .. NOTE:: This rule has not been implemented yet.
@@ -25,7 +25,7 @@ class rule_007(proposed_rule.Rule):
 
        context c1;
          library ieee; -- This is not allowed
-    '''
+    """
 
     def __init__(self):
         super().__init__()

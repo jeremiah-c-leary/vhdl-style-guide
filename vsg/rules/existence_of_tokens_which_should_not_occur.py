@@ -5,7 +5,7 @@ from vsg.rule_group import structure
 
 
 class existence_of_tokens_which_should_not_occur(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -22,7 +22,7 @@ class existence_of_tokens_which_should_not_occur(structure.Rule):
 
     lPrefixes : string list
        acceptable prefixes
-    '''
+    """
 
     def __init__(self, lTokens):
         super().__init__()

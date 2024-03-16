@@ -9,7 +9,7 @@ lTokens.append(token.selected_waveforms.when_keyword)
 
 
 class rule_011(Rule):
-    '''
+    """
     This rule checks the choice is on the same line as the **when** keyword.
 
     **Violation**
@@ -31,8 +31,8 @@ class rule_011(Rule):
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, bInsertSpace=True)
-        self.solution = 'Removed carraige returns after when keyword'
+        self.solution = "Removed carraige returns after when keyword"

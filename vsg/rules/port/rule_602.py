@@ -7,7 +7,7 @@ lTokens = []
 
 
 class rule_602(Rule):
-    '''
+    """
     This rule checks for valid prefixes on port identifiers for inout ports.
 
     The default prefix is: *io_*.
@@ -32,11 +32,11 @@ class rule_602(Rule):
          io_wr_en    : inout    std_logic;
          io_rd_en    : inout    std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['io_']
+        self.prefixes = ["io_"]
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []

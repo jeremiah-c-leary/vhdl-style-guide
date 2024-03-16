@@ -10,7 +10,7 @@ lTokens.append(token.open_parenthesis)
 
 
 class rule_005(insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment):
-    '''
+    """
     This rule checks for a port assignment on the same line as the **port map** keyword.
 
     **Violation**
@@ -31,8 +31,8 @@ class rule_005(insert_carriage_return_after_token_if_it_is_not_followed_by_a_com
            RD_EN    => rd_en,
            OVERFLOW => overflow
          );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move port assignment to it\'s own line.'
+        self.solution = "Move port assignment to it's own line."

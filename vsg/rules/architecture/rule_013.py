@@ -8,7 +8,7 @@ lTokens.append(token.identifier)
 
 
 class rule_013(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the case of the architecture name in the architecture declaration.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_013(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
        architecture rtl of fifo is
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::name')
+        self.groups.append("case::name")

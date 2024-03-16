@@ -14,7 +14,7 @@ lTokens.append([token.full_type_declaration.is_keyword, token.file_type_definiti
 
 
 class rule_007(Rule):
-    '''
+    """
     This rule checks for a single space after the **is** keyword.
 
     |configuring_whitespace_rules_link|
@@ -30,6 +30,7 @@ class rule_007(Rule):
     .. code-block:: vhdl
 
        type state_machine is (idle, write, read, done);
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

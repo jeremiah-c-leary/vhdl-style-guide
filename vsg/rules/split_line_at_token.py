@@ -6,7 +6,7 @@ from vsg.rules import utils as rules_utils
 
 
 class split_line_at_token(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -20,7 +20,7 @@ class split_line_at_token(structure.Rule):
 
     lTokens : list of parser object types
        object type to split a line at
-    '''
+    """
 
     def __init__(self, lTokens):
         super().__init__()

@@ -5,7 +5,7 @@ from vsg.token import context_declaration as token
 
 
 class rule_018(Rule):
-    '''
+    """
     This rule checks for a single space between the **end** keyword and the **context** keyword.
 
     |configuring_whitespace_rules_link|
@@ -25,7 +25,8 @@ class rule_018(Rule):
        end;
 
        end context;
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.left_token = token.end_keyword

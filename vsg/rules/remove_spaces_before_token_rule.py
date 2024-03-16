@@ -5,7 +5,7 @@ from vsg.rule_group import whitespace
 
 
 class remove_spaces_before_token_rule(whitespace.Rule):
-    '''
+    """
     This class removes whitespace before a given token.
 
     Parameters
@@ -19,10 +19,9 @@ class remove_spaces_before_token_rule(whitespace.Rule):
 
     oToken : token object
        The token where spaces will be removed before.
-    '''
+    """
 
     def __init__(self, oToken, bIgnoreIfLineStart=False):
-
         super().__init__()
         self.oToken = oToken
         self.bIgnoreIfLineStart = bIgnoreIfLineStart

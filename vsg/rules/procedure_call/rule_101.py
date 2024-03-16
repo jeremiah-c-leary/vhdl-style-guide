@@ -11,7 +11,7 @@ oEnd = token.procedure_call.close_parenthesis
 
 
 class rule_101(Rule):
-    '''
+    """
     This rule checks for a single space after the **=>** operator in procedure calls.
 
     |configuring_whitespace_rules_link|
@@ -37,6 +37,7 @@ class rule_101(Rule):
          port_3 => overflow,
          port_4 => underflow
        );
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)

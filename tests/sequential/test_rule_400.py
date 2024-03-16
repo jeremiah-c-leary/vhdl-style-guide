@@ -9,15 +9,14 @@ from vsg.rules import sequential
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_400_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_400_test_input.vhd"))
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_400_test_input.fixed.vhd"), lExpected)
 
 
 class test_sequential_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -25,10 +24,10 @@ class test_sequential_rule(unittest.TestCase):
     def test_rule_400(self):
         oRule = sequential.rule_400()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'sequential')
-        self.assertEqual(oRule.identifier, '400')
-        self.assertTrue('aggregate_parens_ends_group' in oRule.configuration)
-        self.assertTrue('ignore_single_line_aggregates' in oRule.configuration)
+        self.assertEqual(oRule.name, "sequential")
+        self.assertEqual(oRule.identifier, "400")
+        self.assertTrue("aggregate_parens_ends_group" in oRule.configuration)
+        self.assertTrue("ignore_single_line_aggregates" in oRule.configuration)
 
         lExpected = [12, 16, 17, 18]
 

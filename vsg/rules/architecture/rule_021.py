@@ -5,7 +5,7 @@ from vsg.token import architecture_body as token
 
 
 class rule_021(token_case):
-    '''
+    """
     This rule checks the proper case of the **begin** keyword.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -23,8 +23,8 @@ class rule_021(token_case):
 
        architecture rtl of fifo is
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.begin_keyword])
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

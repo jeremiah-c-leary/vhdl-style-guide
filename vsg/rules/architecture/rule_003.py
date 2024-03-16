@@ -5,7 +5,7 @@ from vsg.token import architecture_body as token
 
 
 class rule_003(previous_line):
-    '''
+    """
     This rule checks for a blank lines or comments above the **architecture** declaration.
 
     |configuring_previous_line_rules_link|
@@ -24,8 +24,8 @@ class rule_003(previous_line):
        library ieee;
 
        architecture rtl of fifo is
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.architecture_keyword])
-        self.style = 'require_blank_line'
+        self.style = "require_blank_line"

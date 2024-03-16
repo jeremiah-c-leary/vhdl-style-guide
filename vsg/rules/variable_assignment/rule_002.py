@@ -10,7 +10,7 @@ lTokens.append([token.selected_variable_assignment.assignment, parser.todo])
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for a single space after the assignment.
 
     |configuring_whitespace_rules_link|
@@ -28,6 +28,7 @@ class rule_002(Rule):
 
          counter := 0;
          count   := counter + 1;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

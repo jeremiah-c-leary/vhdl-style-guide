@@ -13,7 +13,7 @@ lTokens.append(token.selected_waveform_assignment.assignment)
 
 
 class rule_005(Rule):
-    '''
+    """
     This rule checks for code after the assignment.
 
     **Violation**
@@ -32,8 +32,8 @@ class rule_005(Rule):
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move code after assignment to the next line.'
+        self.solution = "Move code after assignment to the next line."

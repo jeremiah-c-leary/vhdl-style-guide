@@ -6,13 +6,13 @@ from vsg.vhdlFile import utils
 
 
 def build_solution(sIndent):
-    sSolution = 'Indent with '
-    if '\t' in sIndent and ' ' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s) followed by ' + str(sIndent.count(' ')) + ' space(s)'
-    elif '\t' in sIndent:
-        sSolution += str(sIndent.count('\t')) + ' tab(s)'
-    elif ' ' in sIndent:
-        sSolution += str(sIndent.count(' ')) + ' space(s)'
+    sSolution = "Indent with "
+    if "\t" in sIndent and " " in sIndent:
+        sSolution += str(sIndent.count("\t")) + " tab(s) followed by " + str(sIndent.count(" ")) + " space(s)"
+    elif "\t" in sIndent:
+        sSolution += str(sIndent.count("\t")) + " tab(s)"
+    elif " " in sIndent:
+        sSolution += str(sIndent.count(" ")) + " space(s)"
     return sSolution
 
 
@@ -20,7 +20,7 @@ def convert_expected_indent_to_smart_tab(dExpectedIndent, indent_size, iFirstLin
     iFirstLine = get_first_line(dExpectedIndent)
     iLastLine = get_last_line(dExpectedIndent)
     for iLine in range(iFirstLine + 1, iLastLine + 1):
-        dExpectedIndent[iLine] = '\t' + dExpectedIndent[iLine][iFirstLineIndent:]
+        dExpectedIndent[iLine] = "\t" + dExpectedIndent[iLine][iFirstLineIndent:]
 
 
 def get_first_line(dActualIndent):
@@ -48,7 +48,7 @@ def set_indent(iToken, lTokens):
     if isinstance(lTokens[iToken + 1], parser.whitespace):
         iReturn = lTokens[iToken + 1].get_value()
     else:
-        iReturn = ''
+        iReturn = ""
     return iReturn
 
 
@@ -66,7 +66,7 @@ def starts_with_paren(lTokens):
 def update_column_width(self, oToken):
     sToken = oToken.get_value()
     if isinstance(oToken, parser.whitespace):
-        iTabs = sToken.count('\t')
+        iTabs = sToken.count("\t")
         iLength = len(sToken) + (iTabs * self.indent_size) - iTabs
         return iLength
 
@@ -80,20 +80,20 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment, include_lines_wit
     iMinTokenColumn = 9999999999999999
 
     for iKey in list(dAnalysis.keys()):
-        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['left_column'])
-        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]['left_column'])
-        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])
-        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]['token_column'])
+        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]["left_column"])
+        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]["left_column"])
+        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]["token_column"])
+        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]["token_column"])
 
     if include_lines_without_comments:
         iMaxTokenColumn = max(iMaxTokenColumn, iMaxColumn)
 
     if compact_alignment:
         for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['token_column'] + 1
+            dAnalysis[iKey]["adjust"] = iMaxLeftColumn - dAnalysis[iKey]["token_column"] + 1
     else:
         for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
+            dAnalysis[iKey]["adjust"] = iMaxTokenColumn - dAnalysis[iKey]["token_column"]
 
 
 def check_for_exclusions(oToken, bSkip, oEndSkipToken, lUnless):
@@ -213,9 +213,9 @@ def is_single_line_aggregate(iToken, lTokens):
 def check_for_violations(self, dAnalysis, oFile):
     add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
     for iKey in list(dAnalysis.keys()):
-        if dAnalysis[iKey]['adjust'] != 0:
+        if dAnalysis[iKey]["adjust"] != 0:
             oLineTokens = oFile.get_tokens_from_line(iKey)
-            sSolution = 'Move ' + dAnalysis[iKey]['token_value'] + ' ' + str(dAnalysis[iKey]['adjust']) + ' columns'
+            sSolution = "Move " + dAnalysis[iKey]["token_value"] + " " + str(dAnalysis[iKey]["adjust"]) + " columns"
             oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, sSolution)
             oViolation.set_action(dAnalysis[iKey])
             self.add_violation(oViolation)
@@ -258,16 +258,17 @@ def case_generate_alternative_detected(oToken):
 
 
 def is_case_control_enabled(config):
-    if config == 'break_on_case_or_end_case':
+    if config == "break_on_case_or_end_case":
         return True
     return config
+
 
 def is_case_keyword(config, iIndex, lTokens):
     if check_for_case_keywords(iIndex + 1, lTokens):
         return True
     if check_for_when_keywords(iIndex + 1, lTokens):
-        if config != 'break_on_case_or_end_case':
-           return True
+        if config != "break_on_case_or_end_case":
+            return True
     return False
 
 
@@ -282,4 +283,3 @@ def get_index_of_end_unless_region(oToken, lTokens, lUnless, iIndex):
     for lTokenPairs in lUnless:
         if isinstance(oToken, lTokenPairs[0]):
             return rules_utils.get_index_of_token_in_list_after_index(lTokenPairs[1], lTokens, iIndex)
-

@@ -9,7 +9,7 @@ lTokens.append(token.selected_waveforms.when_keyword)
 
 
 class rule_010(Rule):
-    '''
+    """
     This rule checks the **when** keyword is on the same line as the expression or waveform.
 
     **Violation**
@@ -30,7 +30,7 @@ class rule_010(Rule):
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

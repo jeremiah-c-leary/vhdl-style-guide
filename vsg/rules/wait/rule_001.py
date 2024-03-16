@@ -9,7 +9,7 @@ lTokens.append(token.wait_statement.label)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks for indentation of the **wait** keyword.
     Proper indentation enhances comprehension.
 
@@ -32,7 +32,7 @@ class rule_001(token_indent):
          wait for 10ns;
          wait on a,b;
          wait until a = '0';
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

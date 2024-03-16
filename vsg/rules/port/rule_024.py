@@ -6,8 +6,9 @@ from vsg.token import port_clause as token
 lTokens = []
 lTokens.append(token.close_parenthesis)
 
+
 class rule_024(remove_excessive_blank_lines_above_line_starting_with_token):
-    '''
+    """
     This rule checks for blank lines before the close parenthesis in port declarations.
 
     **Violation**
@@ -33,8 +34,9 @@ class rule_024(remove_excessive_blank_lines_above_line_starting_with_token):
          OVERFLOW : out   std_logic;
          DATA     : inout std_logic
        );
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens, iAllow=0)
-        self.solution = 'Remove blank lines above ).'
+        self.solution = "Remove blank lines above )."
         self.configuration_documentation_link = None

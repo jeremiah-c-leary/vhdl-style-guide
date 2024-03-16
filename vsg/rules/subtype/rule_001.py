@@ -8,7 +8,7 @@ lTokens.append(token.subtype_declaration.subtype_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks for indentation of the **subtype** keyword.
 
     **Violation**
@@ -33,7 +33,7 @@ class rule_001(token_indent):
 
        begin
 
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

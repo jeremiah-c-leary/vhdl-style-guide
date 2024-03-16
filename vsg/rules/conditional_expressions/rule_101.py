@@ -5,7 +5,7 @@ from vsg.token import conditional_expressions as token
 
 
 class rule_101(Rule):
-    '''
+    """
     This rule checks for a single space after the **when** keyword.
 
     |configuring_whitespace_rules_link|
@@ -21,7 +21,7 @@ class rule_101(Rule):
     .. code-block:: vhdl
 
        wr_en <= '0' when (rd_en = '0') else '1';
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.when_keyword])

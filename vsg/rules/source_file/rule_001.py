@@ -5,7 +5,7 @@ from vsg.rule_group import structure
 
 
 class rule_001(structure.Rule):
-    '''
+    """
     This rule checks for the existence of the source file passed to VSG.
 
     **Violation**
@@ -17,13 +17,13 @@ class rule_001(structure.Rule):
     **Fix**
 
     Pass correct file name to VSG.
-    '''
+    """
 
     def __init__(self):
         super().__init__()
         # These are filled out when creating a new rule
         self.fixable = False
-        self.solution = 'File empty.'
+        self.solution = "File empty."
         self.configuration_documentation_link = None
 
     def analyze(self, oFile):

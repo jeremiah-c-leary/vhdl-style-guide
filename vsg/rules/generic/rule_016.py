@@ -13,7 +13,7 @@ lTokenPairs.append([token.generic_clause.open_parenthesis, token.generic_clause.
 
 
 class rule_016(Rule):
-    '''
+    """
     This rule checks for multiple generics defined on a single line.
 
     **Violation**
@@ -32,8 +32,8 @@ class rule_016(Rule):
         g_width : std_logic := '0';
         g_depth : std_logic := '1'
       );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lTokenPairs)
-        self.solution = 'Move multiple generics to their own lines.'
+        self.solution = "Move multiple generics to their own lines."

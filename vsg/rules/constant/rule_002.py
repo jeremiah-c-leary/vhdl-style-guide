@@ -8,7 +8,7 @@ lTokens.append(token.constant_declaration.constant_keyword)
 
 
 class rule_002(token_case):
-    '''
+    """
     This rule checks the **constant** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_002(token_case):
     .. code-block:: vhdl
 
        constant size : integer := 1;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

@@ -10,7 +10,7 @@ lTokens.append(token.semicolon)
 
 
 class rule_028(Rule):
-    '''
+    """
     This rule checks for code after the semicolon.
 
     **Violation**
@@ -25,8 +25,8 @@ class rule_028(Rule):
 
        end entity;
        architecture
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move code after the semicolon to the next line.'
+        self.solution = "Move code after the semicolon to the next line."

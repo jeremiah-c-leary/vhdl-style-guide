@@ -12,7 +12,7 @@ lUnless.append([constant_declaration.constant_keyword, constant_declaration.semi
 
 
 class rule_010(token_indent_unless_between_tokens):
-    '''
+    """
     This rule checks the indent lines starting with comments.
 
     **Violation**
@@ -46,7 +46,7 @@ class rule_010(token_indent_unless_between_tokens):
          signal rd_en : std_Logic;
 
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lUnless)

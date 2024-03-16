@@ -9,7 +9,7 @@ lTokens.append([token.process_statement.end_keyword, token.process_statement.end
 
 
 class rule_007(Rule):
-    '''
+    """
     This rule checks for a single space after the **end** keyword.
 
     |configuring_whitespace_rules_link|
@@ -25,6 +25,7 @@ class rule_007(Rule):
     .. code-block:: vhdl
 
        end process proc_a;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

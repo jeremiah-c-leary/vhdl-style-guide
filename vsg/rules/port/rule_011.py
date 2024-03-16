@@ -11,7 +11,7 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 
 
 class rule_011(token_prefix_between_tokens):
-    '''
+    """
     This rule checks for valid prefixes on port identifiers.
     The default port prefixes are: *i_*, *o_*, *io_*.
 
@@ -39,8 +39,8 @@ class rule_011(token_prefix_between_tokens):
          o_overflow : out   std_logic;
          io_data    : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
-        self.prefixes = ['i_', 'o_', 'io_']
+        self.prefixes = ["i_", "o_", "io_"]

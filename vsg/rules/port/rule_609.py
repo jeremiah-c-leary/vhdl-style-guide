@@ -7,7 +7,7 @@ lTokens = []
 
 
 class rule_609(Rule):
-    '''
+    """
     This rule checks for valid suffixes on port identifiers for linkage ports.
 
     The default suffix is: *_l*.
@@ -31,11 +31,11 @@ class rule_609(Rule):
          wr_en_l    : linkage    std_logic;
          rd_en_l    : linkage    std_logic
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_l']
+        self.suffixes = ["_l"]
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []

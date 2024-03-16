@@ -13,7 +13,7 @@ lTokens.append(token.if_generate_statement.end_generate_label)
 
 
 class rule_017(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on generate statement labels.
     The default prefix is *gen_*.
 
@@ -30,8 +30,8 @@ class rule_017(token_prefix):
     .. code-block:: vhdl
 
        gen_label : case condition generate
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['gen_']
+        self.prefixes = ["gen_"]

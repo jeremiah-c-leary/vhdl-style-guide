@@ -8,7 +8,7 @@ lTokenPairs.append([token.signal_declaration.signal_keyword, token.signal_declar
 
 
 class rule_400(Rule):
-    '''
+    """
     This rule checks alignment of multiline constraints in signal declarations.
 
     |configuring_multiline_indent_rules_link|
@@ -30,7 +30,7 @@ class rule_400(Rule):
            element1(7 downto 0),
            element2(3 downto 0)
          );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)

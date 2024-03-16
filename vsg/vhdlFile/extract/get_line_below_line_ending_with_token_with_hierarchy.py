@@ -5,7 +5,6 @@ from vsg.vhdlFile.extract.get_line_succeeding_line import get_line_succeeding_li
 
 
 def get_line_below_line_ending_with_token_with_hierarchy(lTokens, lAllTokens, lHierarchy, oTokenMap):
-
     lReturn = []
 
     lTokenIndexes = utils.get_indexes_of_token_list(lTokens, oTokenMap)

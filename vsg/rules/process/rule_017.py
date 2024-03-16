@@ -8,7 +8,7 @@ lTokens.append(token.process_statement.process_label)
 
 
 class rule_017(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the process label has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -30,8 +30,8 @@ class rule_017(token_case_with_prefix_suffix):
                          rd_full, wr_full
                         ) is
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::label')
+        self.groups.append("case::label")

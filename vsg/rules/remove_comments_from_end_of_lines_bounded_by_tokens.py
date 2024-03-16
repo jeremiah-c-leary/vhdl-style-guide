@@ -5,7 +5,7 @@ from vsg.rule_group import structure
 
 
 class remove_comments_from_end_of_lines_bounded_by_tokens(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -22,7 +22,7 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(structure.Rule):
 
     lPrefixes : string list
        acceptable prefixes
-    '''
+    """
 
     def __init__(self, oStart, oEnd):
         super().__init__()
@@ -42,8 +42,7 @@ class remove_comments_from_end_of_lines_bounded_by_tokens(structure.Rule):
                     iLine += 1
                 if isinstance(oToken, parser.comment):
                     if isinstance(lTokens[iToken + 1], parser.carriage_return):
-                        if isinstance(lTokens[iToken - 1], parser.carriage_return) or \
-                           isinstance(lTokens[iToken - 2], parser.carriage_return):
+                        if isinstance(lTokens[iToken - 1], parser.carriage_return) or isinstance(lTokens[iToken - 2], parser.carriage_return):
                             continue
                         else:
                             if isinstance(lTokens[iToken - 1], parser.whitespace):

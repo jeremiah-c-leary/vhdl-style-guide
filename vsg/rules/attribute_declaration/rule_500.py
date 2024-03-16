@@ -8,7 +8,7 @@ lTokens.append(token.attribute_declaration.attribute_keyword)
 
 
 class rule_500(token_case):
-    '''
+    """
     This rule checks the **attribute** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_500(token_case):
     .. code-block:: vhdl
 
        attribute max_delay : time;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

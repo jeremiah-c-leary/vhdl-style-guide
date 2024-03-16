@@ -8,7 +8,7 @@ lTokens.append(token.if_statement.if_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of the **if** keyword.
 
     **Violation**
@@ -34,7 +34,7 @@ class rule_001(token_indent):
       else
         e <= '0';
       end if;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

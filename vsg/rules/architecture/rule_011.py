@@ -8,7 +8,7 @@ lTokens.append(token.architecture_simple_name)
 
 
 class rule_011(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the architecture name case in the **end architecture** statement.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -25,8 +25,8 @@ class rule_011(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
        end architecture architecture_name;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::name')
+        self.groups.append("case::name")

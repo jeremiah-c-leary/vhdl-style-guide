@@ -8,7 +8,7 @@ lTokens.append(token.parameter_specification.identifier)
 
 
 class rule_602(token_prefix_between_tokens):
-    '''
+    """
     This rule checks for valid prefixes on loop parameter identifiers.
     The default loop prefix is *lv_*.
 
@@ -25,8 +25,8 @@ class rule_602(token_prefix_between_tokens):
     .. code-block:: vhdl
 
       for lv_index in t_range loop
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, token.iteration_scheme.for_keyword, token.parameter_specification.in_keyword)
-        self.prefixes = ['lv_']
+        self.prefixes = ["lv_"]

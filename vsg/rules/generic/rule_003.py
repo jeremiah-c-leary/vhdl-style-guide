@@ -8,7 +8,7 @@ lTokens.append([token.generic_clause.generic_keyword, token.generic_clause.open_
 
 
 class rule_003(Rule):
-    '''
+    """
     This rule checks for a single space between the **generic** keyword and the (.
 
     |configuring_whitespace_rules_link|
@@ -28,6 +28,7 @@ class rule_003(Rule):
        generic (
 
        generic (
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

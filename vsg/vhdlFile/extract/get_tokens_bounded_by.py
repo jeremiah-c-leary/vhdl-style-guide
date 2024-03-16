@@ -4,8 +4,16 @@ from vsg import parser
 from vsg.vhdlFile.extract import tokens
 
 
-def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing_whitespace=False, bExcludeLastToken=False, bIncludeTillEndOfLine=False, bIncludeTillBeginningOfLine=False):
-
+def get_tokens_bounded_by(
+    oStart,
+    oEnd,
+    lAllObjects,
+    oTokenMap,
+    include_trailing_whitespace=False,
+    bExcludeLastToken=False,
+    bIncludeTillEndOfLine=False,
+    bIncludeTillBeginningOfLine=False,
+):
     lReturn = []
     lStart, lEnd = oTokenMap.get_token_pair_indexes(oStart, oEnd)
 
@@ -35,7 +43,7 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
     if include_trailing_whitespace:
         for iNewEnd, iIndex in enumerate(lNewEnd):
             if iIndex + 1 in lWhiteSpace:
-                lNewEnd[iNewEnd] +=1
+                lNewEnd[iNewEnd] += 1
     elif not bIncludeTillEndOfLine:
         for iNewEnd, iIndex in enumerate(lNewEnd):
             if iIndex in lWhiteSpace:
@@ -44,7 +52,7 @@ def get_tokens_bounded_by(oStart, oEnd, lAllObjects, oTokenMap, include_trailing
                 lNewEnd[iNewEnd] -= 1
 
     for iStart, iEnd, iIndex in zip(lNewStart, lNewEnd, lEnd):
-        lTemp = lAllObjects[iStart: iEnd + 1]
+        lTemp = lAllObjects[iStart : iEnd + 1]
         iStartLine = oTokenMap.get_line_number_of_index(iStart)
         oToi = tokens.New(iStart, iStartLine, lTemp)
         oToi.set_token_value(iIndex - iStart)

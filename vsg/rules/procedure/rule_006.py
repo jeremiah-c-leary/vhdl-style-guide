@@ -8,7 +8,7 @@ lTokens.append(token.procedure_specification.close_parenthesis)
 
 
 class rule_006(token_indent):
-    '''
+    """
     This rule checks the indent of the closing parenthesis if it is on its own line.
 
     **Violation**
@@ -29,7 +29,7 @@ class rule_006(token_indent):
          constant a : in integer;
          signal d : out std_logic
        ) is
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

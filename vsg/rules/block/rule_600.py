@@ -9,7 +9,7 @@ lTokens.append(token.block_statement.end_block_label)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes on block labels.
     The default suffix is *_blk*.
 
@@ -26,8 +26,8 @@ class rule_600(token_suffix):
     .. code-block:: vhdl
 
        block_label_blk : block is
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_blk']
+        self.suffixes = ["_blk"]

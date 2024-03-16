@@ -6,7 +6,7 @@ from vsg.vhdlFile import utils
 
 
 class rule_003(block_rule.Rule):
-    '''
+    """
     This rule checks the block comment footer is correct.
 
     |configuring_block_comments_link|
@@ -28,20 +28,19 @@ class rule_003(block_rule.Rule):
        --|  Comment
        --|  Comment
        --+--------------------------[ Footer ]=
-    '''
+    """
 
     def __init__(self):
         super().__init__()
         self.footer_left = None
-        self.footer_left_repeat = '-'
+        self.footer_left_repeat = "-"
         self.footer_string = None
         self.footer_right_repeat = None
-        self.footer_alignment = 'center'
+        self.footer_alignment = "center"
         self.max_footer_column = 120
-        self.configuration.extend(['footer_left', 'footer_left_repeat', 'footer_string', 'footer_right_repeat', 'footer_alignment', 'max_footer_column'])
+        self.configuration.extend(["footer_left", "footer_left_repeat", "footer_string", "footer_right_repeat", "footer_alignment", "max_footer_column"])
 
     def analyze_comments(self, oToi):
-
         iLine, lTokens = utils.get_toi_parameters(oToi)
         iComments = utils.count_token_types_in_list_of_tokens(parser.comment, lTokens)
 
@@ -67,6 +66,6 @@ def analyze_footer(self, oToken, iLine, oToi):
     if block_rule.is_footer(sComment):
         self.set_token_indent(oToken)
         if sComment != sFooter:
-            sSolution = 'Change block comment footer to : ' + sFooter
+            sSolution = "Change block comment footer to : " + sFooter
             oViolation = violation.New(iLine, oToi, sSolution)
             self.add_violation(oViolation)

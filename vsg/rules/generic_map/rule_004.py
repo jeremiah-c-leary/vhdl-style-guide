@@ -7,7 +7,7 @@ oToken = token.generic_map_aspect.close_parenthesis
 
 
 class rule_004(Rule):
-    '''
+    """
     This rule checks the location of the closing ")" character for the generic map.
 
     The default location is on a line by itself.
@@ -32,7 +32,7 @@ class rule_004(Rule):
            GENERIC_2 => TRUE,
            GENERIC_3 => FALSE
          )
-    '''
+    """
 
     def __init__(self):
         super().__init__(oToken)

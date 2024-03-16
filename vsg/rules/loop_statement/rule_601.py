@@ -8,7 +8,7 @@ lTokens.append(token.loop_statement.loop_label)
 
 
 class rule_601(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes on loop labels.
     The default prefix is *_loop*.
 
@@ -25,9 +25,9 @@ class rule_601(token_suffix):
     .. code-block:: vhdl
 
        label_loop : for index in 4 to 23 loop
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_loop']
-        self.solution = 'Loop labels'
+        self.suffixes = ["_loop"]
+        self.solution = "Loop labels"

@@ -8,7 +8,7 @@ lTokens.append(token.instantiated_unit.component_name)
 
 
 class rule_009(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the component name has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -25,8 +25,8 @@ class rule_009(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
        u_fifo : fifo
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::name')
+        self.groups.append("case::name")

@@ -4,13 +4,11 @@ from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_line_which_includes_tokens(lTokens, lAllTokens, oTokenMap):
-
     lReturn = []
 
     lTokenIndexes = utils.get_indexes_of_token_list(lTokens, oTokenMap)
 
     for iIndex in lTokenIndexes:
-
         iStart = oTokenMap.get_index_of_carriage_return_before_index(iIndex)
         if iStart is None:
             iStart = 0

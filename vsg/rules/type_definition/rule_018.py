@@ -6,7 +6,7 @@ from vsg.token import full_type_declaration as token
 
 
 class rule_018(Rule):
-    '''
+    """
     This rule checks the **is** keyword is on the same line as the identifier.
 
     **Violation**
@@ -21,9 +21,9 @@ class rule_018(Rule):
     .. code-block:: vhdl
 
        type t_record is
-    '''
+    """
 
     def __init__(self):
         super().__init__(token.identifier, token.is_keyword)
-        self.solution = 'Ensure *is* keyword is on the same line as the identifier.'
+        self.solution = "Ensure *is* keyword is on the same line as the identifier."
         self.subphase = 2

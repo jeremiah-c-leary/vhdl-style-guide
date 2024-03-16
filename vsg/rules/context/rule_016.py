@@ -8,7 +8,7 @@ lTokens.append(token.context_declaration.context_simple_name)
 
 
 class rule_016(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the context identifier has proper case in the end context declaration.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_016(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
        end context c1;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::name')
+        self.groups.append("case::name")

@@ -9,17 +9,16 @@ from vsg.rules import comment
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_100_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_100_test_input.vhd"))
 
 dIndentMap = utils.read_indent_file()
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_100_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_100_test_input.fixed.vhd"), lExpected)
 
 
 class test_comment_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.oFile.lAllObjects[-2].is_block_comment = True
@@ -33,9 +32,9 @@ class test_comment_rule(unittest.TestCase):
     def test_rule_100(self):
         oRule = comment.rule_100()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'comment')
-        self.assertEqual(oRule.identifier, '100')
-        self.assertEqual(oRule.groups, ['whitespace'])
+        self.assertEqual(oRule.name, "comment")
+        self.assertEqual(oRule.identifier, "100")
+        self.assertEqual(oRule.groups, ["whitespace"])
 
         lExpected = [7, 8, 14, 20, 23]
 

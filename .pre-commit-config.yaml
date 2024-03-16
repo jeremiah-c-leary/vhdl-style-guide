@@ -1,8 +1,8 @@
 repos:
   - repo: https://github.com/psf/black
     rev: 23.12.1
-    hooks: []
-      #- id: black
+    hooks:
+      - id: black
 
   - repo: https://github.com/PyCQA/isort
     rev: 5.13.2
@@ -17,14 +17,14 @@ repos:
 
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v3.1.0
-    hooks: []
-      #- id: add-trailing-comma
+    hooks:
+      - id: add-trailing-comma
 
   # repeat as above changes may cause rework
   - repo: https://github.com/psf/black
     rev: 23.12.1
-    hooks: []
-      #- id: black
+    hooks:
+      - id: black
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.5.4

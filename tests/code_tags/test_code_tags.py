@@ -9,13 +9,12 @@ from vsg.rules import comment, constant, entity, library, port
 # Read in test file used for all tests
 dIndentMap = utils.read_indent_file()
 
-lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), 'code_tag_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), "code_tag_test_input.vhd"))
 oFile = vhdlFile.vhdlFile(lFile)
 oFile.set_indent_map(dIndentMap)
 
 
 class testCodeTags(unittest.TestCase):
-
     def setUp(self):
         self.assertIsNone(eError)
 
@@ -36,6 +35,7 @@ class testCodeTags(unittest.TestCase):
 
         oRule.analyze(oFile)
         self.assertEqual(len(oRule.violations), 0)
+
 
 #    def test_rule_library_008(self):
 #        oRule = library.rule_008()

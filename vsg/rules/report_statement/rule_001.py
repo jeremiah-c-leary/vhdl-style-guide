@@ -5,7 +5,7 @@ from vsg.token import report_statement as token
 
 
 class rule_001(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
-    '''
+    """
     This rule removes labels on report_statement_statements.
 
     **Violation**
@@ -19,8 +19,8 @@ class rule_001(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     .. code-block:: vhdl
 
         report "FIFO width is limited to 16 bits.";
-    '''
+    """
 
     def __init__(self):
         super().__init__(token.label, token.label_colon)
-        self.solution = 'Remove Label'
+        self.solution = "Remove Label"

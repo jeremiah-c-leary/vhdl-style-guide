@@ -8,12 +8,12 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     generate_statement ::=
         for_generate_statement
       | if_generate_statement
       | case_generate_statement
-    '''
+    """
 
     iCurrent = for_generate_statement.detect(iToken, lObjects)
     if iCurrent != iToken:

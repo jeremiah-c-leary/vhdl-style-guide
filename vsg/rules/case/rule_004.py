@@ -6,7 +6,7 @@ from vsg.token import case_statement_alternative as token
 
 
 class rule_004(Rule):
-    '''
+    """
     This rule checks for a single space after the **when** keyword.
 
     |configuring_whitespace_rules_link|
@@ -26,7 +26,8 @@ class rule_004(Rule):
       case data is
 
         when 3 =>
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.left_token = token.when_keyword

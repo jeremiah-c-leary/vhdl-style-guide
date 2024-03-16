@@ -8,7 +8,7 @@ lTokens.append(token.if_statement.then_keyword)
 
 
 class rule_036(Rule):
-    '''
+    """
     This rule checks the **then** keyword is not on a line by itself.
 
     **Violation**
@@ -23,7 +23,7 @@ class rule_036(Rule):
     .. code-block:: vhdl
 
        if a = '1' then
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

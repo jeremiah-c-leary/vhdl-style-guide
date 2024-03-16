@@ -7,7 +7,7 @@ oToken = token.port_map_aspect.close_parenthesis
 
 
 class rule_004(Rule):
-    '''
+    """
     This rule checks the location of the closing ")" character for the port map.
 
     The default location is on a line by itself.
@@ -28,7 +28,7 @@ class rule_004(Rule):
         port map (
           WR_EN => wr_en
         );
-    '''
+    """
 
     def __init__(self):
         super().__init__(oToken)

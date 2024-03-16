@@ -9,7 +9,7 @@ lTokenPairs.append([token.conditional_variable_assignment.assignment, token.cond
 
 
 class rule_007(Rule):
-    '''
+    """
     This rule checks the structure of simple and conditional variable assignments.
 
     |configuring_simple_multiline_structure_rules_link|
@@ -37,7 +37,7 @@ class rule_007(Rule):
        w_foo := I_FOO when ((I_BAR = '1') and
                             (I_CRUFT = '1')) else
                 '0';
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)

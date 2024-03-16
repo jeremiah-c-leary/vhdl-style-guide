@@ -11,7 +11,7 @@ lAllowTokens.append(token.subprogram_body.begin_keyword)
 
 
 class rule_201(blank_line_below_line_ending_with_token):
-    '''
+    """
     This rule checks for a blank line below the **is** keyword.
 
     This rule allows the **begin** keyword to occupy the blank line:
@@ -39,7 +39,7 @@ class rule_201(blank_line_below_line_ending_with_token):
 
          constant width : integer := 32;
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lAllowTokens)

@@ -12,7 +12,7 @@ lOverrides.append(token.loop_statement.semicolon)
 
 
 class rule_008(remove_excessive_blank_lines_above_line_starting_with_token):
-    '''
+    """
     This rule checks for blank lines before the **end if** keywords.
 
     **Violation**
@@ -30,8 +30,9 @@ class rule_008(remove_excessive_blank_lines_above_line_starting_with_token):
 
         e <= '0';
       end if;
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens, iAllow=0, lOverrides=lOverrides)
-        self.solution = 'Remove blank line(s) before the *end if* keyword.'
+        self.solution = "Remove blank line(s) before the *end if* keyword."
         self.configuration_documentation_link = None

@@ -12,7 +12,7 @@ lNames.append(token.type_mark.name)
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for consistent capitalization of subtype names.
 
     **Violation**
@@ -41,7 +41,7 @@ class rule_002(Rule):
 
        constant read_sz  : read_size := 8;
        constant write_sz : write_size := 1;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lNames)

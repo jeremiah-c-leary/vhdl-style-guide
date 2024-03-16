@@ -24,7 +24,7 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 
 class rule_001(structure.Rule):
-    '''
+    """
     This rule checks for **after x** in signal assignments in clock processes.
 
     **Violation**
@@ -65,7 +65,7 @@ class rule_001(structure.Rule):
        The **magnitude** is the number of units.  Default is *1*.
 
        The **units** is a valid time unit: ms, us, ns, ps etc...  Default is *ns*.
-    '''
+    """
 
     def __init__(self):
         super().__init__()
@@ -73,8 +73,8 @@ class rule_001(structure.Rule):
         self.oStart = oStart
         self.oEnd = oEnd
         self.magnitude = 1
-        self.units = 'ns'
-        self.configuration.extend(['magnitude', 'units'])
+        self.units = "ns"
+        self.configuration.extend(["magnitude", "units"])
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
@@ -105,7 +105,7 @@ class rule_001(structure.Rule):
                         bInsideAssignment = False
                     if detect_end_signal_assignment(oToken):
                         oNewToi = oToi.extract_tokens(iToken, iToken)
-                        sSolution = 'Add after ' + str(self.magnitude) + ' ' + self.units + ' to signal in clock process'
+                        sSolution = "Add after " + str(self.magnitude) + " " + self.units + " to signal in clock process"
                         oViolation = violation.New(iLine, oNewToi, sSolution)
                         self.add_violation(oViolation)
                         bInsideAssignment = False
@@ -113,11 +113,11 @@ class rule_001(structure.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         lNewTokens = []
-        lNewTokens.append(parser.whitespace(' '))
-        lNewTokens.append(token.waveform_element.after_keyword('after'))
-        lNewTokens.append(parser.whitespace(' '))
+        lNewTokens.append(parser.whitespace(" "))
+        lNewTokens.append(token.waveform_element.after_keyword("after"))
+        lNewTokens.append(parser.whitespace(" "))
         lNewTokens.append(parser.todo(str(self.magnitude)))
-        lNewTokens.append(parser.whitespace(' '))
+        lNewTokens.append(parser.whitespace(" "))
         lNewTokens.append(parser.todo(self.units))
         lNewTokens.extend(lTokens)
 
@@ -128,12 +128,38 @@ def detect_clock_definition(iToken, oToken, lTokens):
     if isinstance(oToken, token.if_statement.if_keyword) or isinstance(oToken, token.if_statement.elsif_keyword):
         if oToken.get_hierarchy() != 0:
             return False
-        if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens):
+        if (
+            utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [parser.open_parenthesis, token.ieee.std_logic_1164.function.rising_edge],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens)
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [parser.open_parenthesis, token.ieee.std_logic_1164.function.falling_edge],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens)
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [
+                    parser.open_parenthesis,
+                    None,
+                    parser.tic,
+                    token.predefined_attribute.event_keyword,
+                    token.logical_operator.and_operator,
+                    None,
+                    token.relational_operator.equal,
+                ],
+                iToken + 1,
+                lTokens,
+            )
+        ):
             return True
     return False
 

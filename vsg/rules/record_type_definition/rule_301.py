@@ -5,7 +5,7 @@ from vsg.token import record_type_definition as token
 
 
 class rule_301(Rule):
-    '''
+    """
     This rule checks the indent of the **end** keyword.
 
     **Violation**
@@ -25,7 +25,7 @@ class rule_301(Rule):
          a : std_logic;
          b : std_logic;
        end record t_record;
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.end_keyword])

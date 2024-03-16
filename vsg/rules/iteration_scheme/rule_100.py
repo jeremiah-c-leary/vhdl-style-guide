@@ -8,7 +8,7 @@ lTokens.append(token.while_keyword)
 
 
 class rule_100(Rule):
-    '''
+    """
     This rule checks that a single space exists after the **while** keyword.
 
     |configuring_whitespace_rules_link|
@@ -28,6 +28,7 @@ class rule_100(Rule):
        while (condition)
 
        while (condition)
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

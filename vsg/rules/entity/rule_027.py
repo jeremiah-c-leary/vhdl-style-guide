@@ -10,7 +10,7 @@ lTokens.append(token.begin_keyword)
 
 
 class rule_027(Rule):
-    '''
+    """
     This rule checks for code after the **begin** keyword.
 
     **Violation**
@@ -25,8 +25,8 @@ class rule_027(Rule):
 
         begin
         end entity;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = 'Move code after the **begin** keyword to the next line.'
+        self.solution = "Move code after the **begin** keyword to the next line."

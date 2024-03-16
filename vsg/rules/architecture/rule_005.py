@@ -6,7 +6,7 @@ from vsg.token import architecture_body as token
 
 
 class rule_005(move_token_next_to_another_token):
-    '''
+    """
     This rule checks the **of** keyword is on the same line as the **architecture** keyword.
 
     **Violation**
@@ -22,8 +22,8 @@ class rule_005(move_token_next_to_another_token):
 
        architecture rtl of
        fifo is
-    '''
+    """
 
     def __init__(self):
         super().__init__(token.identifier, token.of_keyword)
-        self.solution = 'Ensure *of* keyword is on the same line as the architecture identifier.'
+        self.solution = "Ensure *of* keyword is on the same line as the architecture identifier."

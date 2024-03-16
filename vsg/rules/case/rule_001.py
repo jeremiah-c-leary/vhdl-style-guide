@@ -10,7 +10,7 @@ lTokens.append(token.case_statement_alternative.when_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of **case**, **when**, and **end case** keywords.
 
     **Violation**
@@ -37,7 +37,7 @@ class rule_001(token_indent):
         when 3 =>
 
       end case;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

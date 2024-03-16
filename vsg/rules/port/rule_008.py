@@ -10,7 +10,7 @@ lBetween = [token.port_clause.open_parenthesis, token.port_clause.close_parenthe
 
 
 class rule_008(Rule):
-    '''
+    """
     This rule checks for spaces before and after the **out** mode keyword.
 
     |configuring_port_mode_alignment_link|
@@ -34,9 +34,10 @@ class rule_008(Rule):
          RD_EN    : in    std_logic;
          OVERFLOW : out std_logic
        );
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens, lBetween)
         self.spaces_before = 1
         self.spaces_after = 3
-        self.configuration_documentation_link = 'configuring_port_mode_alignment_link'
+        self.configuration_documentation_link = "configuring_port_mode_alignment_link"

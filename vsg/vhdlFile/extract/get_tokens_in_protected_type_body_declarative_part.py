@@ -8,7 +8,6 @@ oEnd = token.end_keyword
 
 
 def extract(lAllTokens, oTokenMap):
-
     lReturn = []
     iStart = 1
     lToi = get_tokens_bounded_by(oStart, oEnd, lAllTokens, oTokenMap)

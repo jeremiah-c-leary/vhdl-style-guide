@@ -6,7 +6,7 @@ from vsg.vhdlFile import utils
 
 
 class remove_excessive_blank_lines_above_line_starting_with_token(blank_line.Rule):
-    '''
+    """
     Checks for excessive blank lines above a line starting with a given token
 
     Parameters
@@ -26,11 +26,11 @@ class remove_excessive_blank_lines_above_line_starting_with_token(blank_line.Rul
 
     lOverrides : token object type list
        Ignore lines with given token types
-    '''
+    """
 
     def __init__(self, lTokens, iAllow=1, lOverrides=None):
         super().__init__()
-        self.solution = 'Remove blank lines above'
+        self.solution = "Remove blank lines above"
         self.lTokens = lTokens
         self.iAllow = iAllow
         if lOverrides == None:
@@ -55,21 +55,20 @@ class remove_excessive_blank_lines_above_line_starting_with_token(blank_line.Rul
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 dAction = {}
                 if bOverride:
-                    dAction['index'] = 2*(self.iAllow + 1)
+                    dAction["index"] = 2 * (self.iAllow + 1)
                 else:
-                    dAction['index'] = 2*self.iAllow
+                    dAction["index"] = 2 * self.iAllow
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lNewTokens = lTokens[0:dAction['index']]
+        lNewTokens = lTokens[0 : dAction["index"]]
         oViolation.set_tokens(lNewTokens)
 
 
 def check_if_override_exists(oFile, iLine, lOverrides):
-
     oMyToi = oFile.get_line_preceding_line(iLine)
     try:
         lTokens = oMyToi.get_tokens()

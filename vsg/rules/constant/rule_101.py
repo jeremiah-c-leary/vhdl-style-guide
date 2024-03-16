@@ -5,7 +5,7 @@ from vsg.token import constant_declaration as token
 
 
 class rule_101(Rule):
-    '''
+    """
     This rule checks for a single space before the identifier.
 
     |configuring_whitespace_rules_link|
@@ -23,7 +23,8 @@ class rule_101(Rule):
 
        constant size : integer := 1;
        constant width : integer := 32;
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.disable = True

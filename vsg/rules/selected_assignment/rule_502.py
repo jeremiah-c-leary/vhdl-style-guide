@@ -8,7 +8,7 @@ lTokens.append(token.selected_force_assignment.force_keyword)
 
 
 class rule_502(Rule):
-    '''
+    """
     This rule checks the **force** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -30,8 +30,8 @@ class rule_502(Rule):
          "0000" when 0,
          "0001" when 1,
          "1111" when others;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

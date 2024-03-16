@@ -21,7 +21,7 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 
 class rule_002(alignment.Rule):
-    '''
+    """
     This rule checks the *after* keywords are aligned in a clock process.
 
     |configuring_keyword_alignment_rules_link|
@@ -55,11 +55,11 @@ class rule_002(alignment.Rule):
            b <= c     after 1 ns;
          end if;
        end process clk_proc;
-    '''
+    """
 
     def __init__(self):
         super().__init__()
-        self.solution = 'Align **after** keyword.'
+        self.solution = "Align **after** keyword."
         self.disable = True
         self.subphase = 2
         self.oStart = oStart
@@ -67,13 +67,12 @@ class rule_002(alignment.Rule):
         self.lTokens = [token.waveform_element.after_keyword]
         ## Stuff below is from original keyword_alignment_rule
 
-        self.compact_alignment = 'yes'
-        self.configuration.append('compact_alignment')
-        self.blank_line_ends_group = 'yes'
-        self.configuration.append('blank_line_ends_group')
-        self.comment_line_ends_group = 'yes'
-        self.configuration.append('comment_line_ends_group')
-
+        self.compact_alignment = "yes"
+        self.configuration.append("compact_alignment")
+        self.blank_line_ends_group = "yes"
+        self.configuration.append("blank_line_ends_group")
+        self.comment_line_ends_group = "yes"
+        self.configuration.append("comment_line_ends_group")
 
     def analyze(self, oFile):
         self.compact_alignment = utils.convert_yes_no_option_to_boolean(self.compact_alignment)
@@ -110,60 +109,63 @@ class rule_002(alignment.Rule):
             iToken = -1
 
             for iIndex in range(0, len(lTokens)):
-               iToken += 1
-               oToken = lTokens[iIndex]
+                iToken += 1
+                oToken = lTokens[iIndex]
 
-               if not bTokenFound:
-                   for oSearch in self.lTokens:
-                       if isinstance(oToken, oSearch):
-                           bTokenFound = True
-                           dAnalysis[iLine] = {}
-                           dAnalysis[iLine]['token_column'] = iColumn
-                           dAnalysis[iLine]['token_index'] = iToken
-                           dAnalysis[iLine]['line_number'] = iLine
-                           if isinstance(lTokens[iIndex -1], parser.whitespace):
-                               dAnalysis[iLine]['left_column'] = iColumn - len(lTokens[iIndex - 1].get_value())
-                           else:
-                               dAnalysis[iLine]['left_column'] = iColumn
-                           break
+                if not bTokenFound:
+                    for oSearch in self.lTokens:
+                        if isinstance(oToken, oSearch):
+                            bTokenFound = True
+                            dAnalysis[iLine] = {}
+                            dAnalysis[iLine]["token_column"] = iColumn
+                            dAnalysis[iLine]["token_index"] = iToken
+                            dAnalysis[iLine]["line_number"] = iLine
+                            if isinstance(lTokens[iIndex - 1], parser.whitespace):
+                                dAnalysis[iLine]["left_column"] = iColumn - len(lTokens[iIndex - 1].get_value())
+                            else:
+                                dAnalysis[iLine]["left_column"] = iColumn
+                            break
 
-                   iColumn += len(oToken.get_value())
+                    iColumn += len(oToken.get_value())
 
-               if isinstance(oToken, parser.carriage_return):
-                   iLine += 1
-                   iColumn = 0
-                   bTokenFound = False
-                   iToken = -1
-                   if self.comment_line_ends_group:
-                       if utils.are_next_consecutive_token_types([parser.whitespace, parser.comment], iIndex + 1, lTokens) or \
-                          utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
+                if isinstance(oToken, parser.carriage_return):
+                    iLine += 1
+                    iColumn = 0
+                    bTokenFound = False
+                    iToken = -1
+                    if self.comment_line_ends_group:
+                        if utils.are_next_consecutive_token_types(
+                            [parser.whitespace, parser.comment],
+                            iIndex + 1,
+                            lTokens,
+                        ) or utils.are_next_consecutive_token_types([parser.comment], iIndex + 1, lTokens):
+                            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                            for iKey in list(dAnalysis.keys()):
+                                if dAnalysis[iKey]["adjust"] != 0:
+                                    oLineTokens = oFile.get_tokens_from_line(iKey)
+                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                                    oViolation.set_action(dAnalysis[iKey])
+                                    self.add_violation(oViolation)
 
-                           dAnalysis = {}
+                            dAnalysis = {}
 
-                   if self.blank_line_ends_group:
-                       if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
-                           add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
+                    if self.blank_line_ends_group:
+                        if utils.are_next_consecutive_token_types([parser.blank_line], iIndex + 1, lTokens):
+                            add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
-                           for iKey in list(dAnalysis.keys()):
-                               if dAnalysis[iKey]['adjust'] != 0:
-                                   oLineTokens = oFile.get_tokens_from_line(iKey)
-                                   oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
-                                   oViolation.set_action(dAnalysis[iKey])
-                                   self.add_violation(oViolation)
+                            for iKey in list(dAnalysis.keys()):
+                                if dAnalysis[iKey]["adjust"] != 0:
+                                    oLineTokens = oFile.get_tokens_from_line(iKey)
+                                    oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
+                                    oViolation.set_action(dAnalysis[iKey])
+                                    self.add_violation(oViolation)
 
-                           dAnalysis = {}
+                            dAnalysis = {}
 
             add_adjustments_to_dAnalysis(dAnalysis, self.compact_alignment)
 
             for iKey in list(dAnalysis.keys()):
-                if dAnalysis[iKey]['adjust'] != 0:
+                if dAnalysis[iKey]["adjust"] != 0:
                     oLineTokens = oFile.get_tokens_from_line(iKey)
                     oViolation = violation.New(oLineTokens.get_line_number(), oLineTokens, self.solution)
                     oViolation.set_action(dAnalysis[iKey])
@@ -174,11 +176,11 @@ class rule_002(alignment.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        iTokenIndex = dAction['token_index']
+        iTokenIndex = dAction["token_index"]
 
         if isinstance(lTokens[iTokenIndex - 1], parser.whitespace):
             iLen = len(lTokens[iTokenIndex - 1].get_value())
-            lTokens[iTokenIndex - 1].set_value(' '*(iLen + dAction['adjust']))
+            lTokens[iTokenIndex - 1].set_value(" " * (iLen + dAction["adjust"]))
         else:
             rules_utils.insert_whitespace(lTokens, iTokenIndex)
         oViolation.set_tokens(lTokens)
@@ -191,29 +193,55 @@ def add_adjustments_to_dAnalysis(dAnalysis, compact_alignment):
     iMinTokenColumn = 9999999999999999
 
     for iKey in list(dAnalysis.keys()):
-        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]['left_column'])
-        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]['left_column'])
-        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]['token_column'])
-        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]['token_column'])
+        iMaxLeftColumn = max(iMaxLeftColumn, dAnalysis[iKey]["left_column"])
+        iMinLeftColumn = min(iMinLeftColumn, dAnalysis[iKey]["left_column"])
+        iMaxTokenColumn = max(iMaxTokenColumn, dAnalysis[iKey]["token_column"])
+        iMinTokenColumn = min(iMinTokenColumn, dAnalysis[iKey]["token_column"])
 
     if compact_alignment:
         for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxLeftColumn - dAnalysis[iKey]['token_column'] + 1
+            dAnalysis[iKey]["adjust"] = iMaxLeftColumn - dAnalysis[iKey]["token_column"] + 1
     else:
         for iKey in list(dAnalysis.keys()):
-            dAnalysis[iKey]['adjust'] = iMaxTokenColumn - dAnalysis[iKey]['token_column']
+            dAnalysis[iKey]["adjust"] = iMaxTokenColumn - dAnalysis[iKey]["token_column"]
 
 
 def detect_clock_definition(iToken, oToken, lTokens):
     if isinstance(oToken, token.if_statement.if_keyword) or isinstance(oToken, token.if_statement.elsif_keyword):
         if oToken.get_hierarchy() != 0:
             return False
-        if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens) or \
-           utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis, None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal], iToken + 1, lTokens):
+        if (
+            utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [parser.open_parenthesis, token.ieee.std_logic_1164.function.rising_edge],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.rising_edge], iToken + 1, lTokens)
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [parser.open_parenthesis, token.ieee.std_logic_1164.function.falling_edge],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace([token.ieee.std_logic_1164.function.falling_edge], iToken + 1, lTokens)
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [None, parser.tic, token.predefined_attribute.event_keyword, token.logical_operator.and_operator, None, token.relational_operator.equal],
+                iToken + 1,
+                lTokens,
+            )
+            or utils.are_next_consecutive_token_types_ignoring_whitespace(
+                [
+                    parser.open_parenthesis,
+                    None,
+                    parser.tic,
+                    token.predefined_attribute.event_keyword,
+                    token.logical_operator.and_operator,
+                    None,
+                    token.relational_operator.equal,
+                ],
+                iToken + 1,
+                lTokens,
+            )
+        ):
             return True
     return False
 

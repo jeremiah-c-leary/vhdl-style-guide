@@ -9,7 +9,7 @@ lTokens.append(token.procedure_call_statement.label)
 
 
 class rule_500(token_case):
-    '''
+    """
     This rule checks the label has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -25,8 +25,8 @@ class rule_500(token_case):
     .. code-block:: vhdl
 
        procedure_call_label : WR_EN(parameter);
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::label')
+        self.groups.append("case::label")

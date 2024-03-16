@@ -10,7 +10,7 @@ lTokens.append([token.concurrent_selected_signal_assignment.target, token.concur
 
 
 class rule_004(Rule):
-    '''
+    """
     This rule checks for at least a single space before the **<=** operator.
 
     |configuring_whitespace_rules_link|
@@ -26,7 +26,8 @@ class rule_004(Rule):
     .. code-block:: vhdl
 
        wr_en <= '0';
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)
-        self.number_of_spaces = '>=1'
+        self.number_of_spaces = ">=1"

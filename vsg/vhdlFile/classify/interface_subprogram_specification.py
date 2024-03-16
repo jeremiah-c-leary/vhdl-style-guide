@@ -7,11 +7,11 @@ from vsg.vhdlFile.classify import (
 
 
 def detect(iToken, lObjects):
-    '''
-        interface_subprogram_specification ::=
-            interface_procedure_specification
-          | interface_function_specification
-    '''
+    """
+    interface_subprogram_specification ::=
+        interface_procedure_specification
+      | interface_function_specification
+    """
 
     iCurrent = interface_procedure_specification.detect(iToken, lObjects)
     if iCurrent != iToken:

@@ -5,7 +5,7 @@ from vsg.token import entity_declaration as token
 
 
 class rule_201(Rule):
-    '''
+    """
     This rule ensures no blank lines after the **is** keyword.
 
     **Violation**
@@ -23,7 +23,8 @@ class rule_201(Rule):
 
        entity fifo is
          port (
-    '''
+    """
+
     def __init__(self):
         super().__init__([token.is_keyword], iAllow=0)
         self.configuration_documentation_link = None

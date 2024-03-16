@@ -5,7 +5,7 @@ from vsg.token import architecture_body as token
 
 
 class rule_017(blank_line_below_line_ending_with_token):
-    '''
+    """
     This rule checks for a blank line below the **begin** keyword.
 
     |configuring_blank_lines_link|
@@ -24,7 +24,7 @@ class rule_017(blank_line_below_line_ending_with_token):
        begin
 
          wr_en <= '0';
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.begin_keyword])

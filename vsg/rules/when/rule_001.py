@@ -17,7 +17,7 @@ lTokenPairs.append([token.conditional_waveform_assignment.assignment, token.cond
 
 
 class rule_001(structure.Rule):
-    '''
+    """
     This rule checks the **else** keyword is not at the beginning of a line.
     The else should be at the end of the preceding line.
 
@@ -38,7 +38,7 @@ class rule_001(structure.Rule):
                 '0' when b = '0' else
                 c when d = '1' else
                 f;
-    '''
+    """
 
     def __init__(self):
         super().__init__()
@@ -65,8 +65,11 @@ class rule_001(structure.Rule):
                 iLine = utils.increment_line_number(iLine, oToken)
                 for oMoveToken in self.lMoveTokens:
                     if isinstance(oToken, oMoveToken):
-                        if (lTokens[iToken - 2] is not oAnchorToken and lTokens[iToken - 1] is not oAnchorToken) or \
-                           lTokens[iToken - 2] is oAnchorToken and isinstance(lTokens[iToken - 1], parser.carriage_return):
+                        if (
+                            (lTokens[iToken - 2] is not oAnchorToken and lTokens[iToken - 1] is not oAnchorToken)
+                            or lTokens[iToken - 2] is oAnchorToken
+                            and isinstance(lTokens[iToken - 1], parser.carriage_return)
+                        ):
                             self.solution = 'Move "' + oToken.get_value() + '" to the right of "' + oAnchorToken.get_value() + '" on line ' + str(iMoveToLine)
                             if isinstance(lTokens[iToken + 1], parser.whitespace):
                                 iRight = iToken + 1

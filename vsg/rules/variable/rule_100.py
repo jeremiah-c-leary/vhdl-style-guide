@@ -5,7 +5,7 @@ from vsg.token import variable_declaration as token
 
 
 class rule_100(Rule):
-    '''
+    """
     This rule checks for a single space before the identifier.
 
     |configuring_whitespace_rules_link|
@@ -23,7 +23,8 @@ class rule_100(Rule):
 
        variable size : integer;
        variable width : integer;
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.disable = True

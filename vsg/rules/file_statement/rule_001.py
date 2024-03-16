@@ -10,7 +10,7 @@ lTokens.append(token.file_open_information.is_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of **file** declarations.
 
     **Violation**
@@ -38,7 +38,7 @@ class rule_001(token_indent):
            is load_file_name;
 
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

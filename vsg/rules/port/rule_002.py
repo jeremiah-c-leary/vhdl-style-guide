@@ -8,7 +8,7 @@ lTokens.append(token.port_clause.port_keyword)
 
 
 class rule_002(token_indent):
-    '''
+    """
     This rule checks the indent of the **port** keyword.
 
     **Violation**
@@ -24,7 +24,7 @@ class rule_002(token_indent):
 
        entity FIFO is
          port (
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

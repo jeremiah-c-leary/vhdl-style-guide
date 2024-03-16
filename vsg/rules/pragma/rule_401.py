@@ -5,7 +5,7 @@ from vsg.token import pragma as token
 
 
 class rule_401(Rule):
-    '''
+    """
     This rule checks for a blank line below opening pragmas.
 
     |configuring_blank_lines_link|
@@ -29,8 +29,8 @@ class rule_401(Rule):
 
        -- synthesis translate_on
        signal rd_en : std_logic;
-    '''
+    """
 
     def __init__(self):
         super().__init__([token.open])
-        self.style = 'no_blank_line'
+        self.style = "no_blank_line"

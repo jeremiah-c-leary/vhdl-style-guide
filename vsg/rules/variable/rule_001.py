@@ -9,7 +9,7 @@ lTokens.append(token.variable_declaration.variable_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of variable declarations.
 
     **Violation**
@@ -33,7 +33,7 @@ class rule_001(token_indent):
          variable counter : integer;
 
        begin
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

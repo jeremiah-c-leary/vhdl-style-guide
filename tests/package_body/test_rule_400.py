@@ -9,15 +9,14 @@ from vsg.rules import package_body
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_400_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_400_test_input.vhd"))
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_400_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_400_test_input.fixed.vhd"), lExpected)
 
 
 class test_package_body_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -25,8 +24,8 @@ class test_package_body_rule(unittest.TestCase):
     def test_rule_400(self):
         oRule = package_body.rule_400()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'package_body')
-        self.assertEqual(oRule.identifier, '400')
+        self.assertEqual(oRule.name, "package_body")
+        self.assertEqual(oRule.identifier, "400")
 
         lExpected = []
         lExpected.extend([7, 8, 9, 10])

@@ -9,17 +9,16 @@ from vsg.rules import attribute_declaration
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_300_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_300_test_input.vhd"))
 
 dIndentMap = utils.read_indent_file()
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_300_test_input.fixed.vhd'), lExpected, False)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_300_test_input.fixed.vhd"), lExpected, False)
 
 
 class test_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -28,8 +27,8 @@ class test_rule(unittest.TestCase):
     def test_rule_300(self):
         oRule = attribute_declaration.rule_300()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'attribute_declaration')
-        self.assertEqual(oRule.identifier, '300')
+        self.assertEqual(oRule.name, "attribute_declaration")
+        self.assertEqual(oRule.identifier, "300")
 
         lExpected = [8, 10]
 

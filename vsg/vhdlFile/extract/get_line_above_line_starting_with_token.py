@@ -5,7 +5,6 @@ from vsg.vhdlFile.extract.get_line_preceding_line import get_line_preceding_line
 
 
 def get_line_above_line_starting_with_token(lTokens, lAllTokens, oTokenMap, bIncludeComments=False):
-
     lReturn = []
 
     lTokenIndexes = utils.get_indexes_of_token_list(lTokens, oTokenMap)

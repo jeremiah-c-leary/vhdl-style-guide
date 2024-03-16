@@ -8,7 +8,7 @@ lTokens.append(token.attribute_declaration.attribute_keyword)
 
 
 class rule_300(token_indent):
-    '''
+    """
     This rule checks the indent of the **attribute** keyword.
 
     **Violation**
@@ -24,7 +24,7 @@ class rule_300(token_indent):
 
        signal sig1 : std_logic;
        attribute max_delay : time;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

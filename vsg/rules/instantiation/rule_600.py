@@ -8,7 +8,7 @@ lTokens.append(token.component_instantiation_statement.instantiation_label)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes on instantiation labels.
     The default suffix is *_inst*.
 
@@ -25,8 +25,8 @@ class rule_600(token_suffix):
     .. code-block:: vhdl
 
        fifo_32x2k_inst : FIFO
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_inst']
+        self.suffixes = ["_inst"]

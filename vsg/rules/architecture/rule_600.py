@@ -15,7 +15,7 @@ lNames.append(token.todo.name)
 
 
 class rule_600(Rule):
-    '''
+    """
     This rule checks for consistent capitalization of generic names in an architecture body.
 
     **Violation**
@@ -57,22 +57,21 @@ class rule_600(Rule):
           output <= large_data(G_WIDTH - 1 downto 0);
 
        end architecture rtl;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lNames)
 
     def _get_tokens_of_interest(self, oFile):
-
         lNameTokens = cc_utils.get_all_name_tokens(oFile, self.lNames)
-#        print(f'lNames = {lNameTokens}')
-#        for iName in lNameTokens:
-#            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
+        #        print(f'lNames = {lNameTokens}')
+        #        for iName in lNameTokens:
+        #            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
 
         lIdentifierss = cc_utils.get_all_identifiers(oFile, self.lTokens)
-#        print(f'lIdentifiers = {lIdentifierss}')
-#        for iName in lIdentifierss:
-#            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
+        #        print(f'lIdentifiers = {lIdentifierss}')
+        #        for iName in lIdentifierss:
+        #            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
 
         lEntityDicts = cc_utils.get_entity_declaration_indexes(oFile)
         lGenericDicts = cc_utils.get_generic_clause_indexes(oFile)
@@ -82,14 +81,14 @@ class rule_600(Rule):
         lAllDicts = cc_utils.merge_dict_lists(lAllDicts, lPortDicts)
 
         lAllDicts = cc_utils.populate_identifiers(lAllDicts, lIdentifierss)
-        lAllDicts = cc_utils.remove_duplicate_identifiers('entity_declaration', 'port_clause', lAllDicts)
+        lAllDicts = cc_utils.remove_duplicate_identifiers("entity_declaration", "port_clause", lAllDicts)
 
         lAllDicts = cc_utils.populate_declarative_part_names(lAllDicts, lNameTokens)
-        lAllDicts = cc_utils.remove_duplicate_names('entity_declaration', 'generic_clause', lAllDicts)
-        lAllDicts = cc_utils.remove_duplicate_names('entity_declaration', 'port_clause', lAllDicts)
+        lAllDicts = cc_utils.remove_duplicate_names("entity_declaration", "generic_clause", lAllDicts)
+        lAllDicts = cc_utils.remove_duplicate_names("entity_declaration", "port_clause", lAllDicts)
 
-        lAllDicts = cc_utils.remove_type('generic_clause', lAllDicts)
-        lAllDicts = cc_utils.remove_type('port_clause', lAllDicts)
+        lAllDicts = cc_utils.remove_type("generic_clause", lAllDicts)
+        lAllDicts = cc_utils.remove_type("port_clause", lAllDicts)
 
         lArchitectureDicts = cc_utils.merge_dict_lists(cc_utils.get_architecture_indexes(oFile), cc_utils.get_subprogram_body_indexes(oFile))
         lArchitectureDicts = cc_utils.merge_dict_lists(lArchitectureDicts, cc_utils.get_component_declaration_indexes(oFile))
@@ -97,16 +96,16 @@ class rule_600(Rule):
         lArchitectureDicts = cc_utils.populate_declarative_part_names(lArchitectureDicts, lNameTokens)
         lArchitectureDicts = cc_utils.populate_statement_part_names(lArchitectureDicts, lNameTokens)
 
-        lArchitectureDicts = cc_utils.remove_duplicate_names('architecture_body', 'subprogram_body', lArchitectureDicts)
-        lArchitectureDicts = cc_utils.remove_duplicate_names('architecture_body', 'component_declaration', lArchitectureDicts)
+        lArchitectureDicts = cc_utils.remove_duplicate_names("architecture_body", "subprogram_body", lArchitectureDicts)
+        lArchitectureDicts = cc_utils.remove_duplicate_names("architecture_body", "component_declaration", lArchitectureDicts)
 
-        lArchitectureDicts = cc_utils.remove_type('subprogram_body', lArchitectureDicts)
-        lArchitectureDicts = cc_utils.remove_type('component_declaration', lArchitectureDicts)
+        lArchitectureDicts = cc_utils.remove_type("subprogram_body", lArchitectureDicts)
+        lArchitectureDicts = cc_utils.remove_type("component_declaration", lArchitectureDicts)
 
         lAllDicts = cc_utils.merge_dict_lists(lAllDicts, lArchitectureDicts)
 
         lAllDicts = cc_utils.add_entity_identifiers_to_architecture_body(lAllDicts)
 
-        lAllDicts = cc_utils.remove_type('entity_declaration', lAllDicts)
+        lAllDicts = cc_utils.remove_type("entity_declaration", lAllDicts)
 
         return cc_utils.create_tois(lAllDicts, oFile)

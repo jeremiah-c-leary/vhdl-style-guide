@@ -16,7 +16,7 @@ def get_sequence_of_tokens_matching(lTokens, lAllTokens, oTokenMap, bIgnoreIfLin
             if not isinstance(lAllTokens[iToken + iIndex], oToken):
                 break
         else:
-            lReturn.append(tokens.New(iIndex, iLine, lAllTokens[iIndex:iIndex + len(lTokens)]))
+            lReturn.append(tokens.New(iIndex, iLine, lAllTokens[iIndex : iIndex + len(lTokens)]))
 
     return lReturn
 

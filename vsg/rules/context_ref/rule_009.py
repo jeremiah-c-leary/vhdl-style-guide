@@ -4,7 +4,7 @@ from vsg import proposed_rule
 
 
 class rule_009(proposed_rule.Rule):
-    '''
+    """
     This rule checks for multiple selected names in a single reference.
 
     .. NOTE:: This rule has not been implemented yet.
@@ -28,7 +28,7 @@ class rule_009(proposed_rule.Rule):
        context c1;
        context c2;
        context c3;
-    '''
+    """
 
     def __init__(self):
         super().__init__()

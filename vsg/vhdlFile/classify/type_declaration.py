@@ -5,11 +5,11 @@ from vsg.vhdlFile.classify import full_type_declaration, incomplete_type_declara
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     type_declaration ::=
         full_type_declaration
       | incomplete_type_declaration
-    '''
+    """
 
     iReturn = full_type_declaration.detect(iToken, lObjects)
     if iReturn != iToken:

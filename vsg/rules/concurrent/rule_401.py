@@ -9,7 +9,7 @@ lTokenPairs.append([token.concurrent_simple_signal_assignment.assignment, token.
 
 
 class rule_401(Rule):
-    '''
+    """
     This rule checks the alignment of multiline concurrent simple signal assignments that contain arrays.
 
     |configuring_multiline_indent_rules_link|
@@ -35,7 +35,7 @@ class rule_401(Rule):
          65535,
          32768
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokenPairs)

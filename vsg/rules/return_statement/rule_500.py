@@ -8,7 +8,7 @@ lTokens.append(token.return_statement.return_keyword)
 
 
 class rule_500(Rule):
-    '''
+    """
     This rule checks the **return** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_500(Rule):
     .. code-block:: vhdl
 
        return my_value;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

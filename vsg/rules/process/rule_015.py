@@ -9,7 +9,7 @@ lTokens.append(token.process_statement.process_label)
 
 
 class rule_015(previous_line):
-    '''
+    """
     This rule checks for blank lines or comments above the **process** declaration.
 
     |configuring_previous_line_rules_link|
@@ -36,8 +36,8 @@ class rule_015(previous_line):
        wr_en <= wr_en;
 
        proc_a : process (rd_en, wr_en, data_in, data_out,
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.style = 'no_code'
+        self.style = "no_code"

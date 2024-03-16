@@ -8,7 +8,7 @@ lTokens.append(token.block_statement.end_block_keyword)
 
 
 class rule_505(token_case):
-    '''
+    """
     This rule checks the **block** keyword in the **end block** has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_505(token_case):
     .. code-block:: vhdl
 
        end block block_label;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

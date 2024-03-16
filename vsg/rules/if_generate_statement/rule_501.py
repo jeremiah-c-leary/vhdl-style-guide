@@ -8,7 +8,7 @@ lTokens.append(token.if_generate_statement.generate_keyword)
 
 
 class rule_501(Rule):
-    '''
+    """
     This rule checks the *generate* keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -28,8 +28,8 @@ class rule_501(Rule):
        if condition generate
        elsif condition generate
        else generate
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

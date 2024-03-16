@@ -8,7 +8,7 @@ lTokens.append([token.process_statement.process_label, token.process_statement.l
 
 
 class rule_024(Rule):
-    '''
+    """
     This rule checks for a single space after the process label.
 
     |configuring_whitespace_rules_link|
@@ -30,6 +30,7 @@ class rule_024(Rule):
                          rd_full, wr_full
                         ) is
        begin
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens)

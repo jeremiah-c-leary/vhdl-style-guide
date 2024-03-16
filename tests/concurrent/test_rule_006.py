@@ -9,15 +9,14 @@ from vsg.rules import concurrent
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir,'rule_006_test_input.vhd'))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_006_test_input.vhd"))
 
 lExpected = []
-lExpected.append('')
-utils.read_file(os.path.join(sTestDir, 'rule_006_test_input.fixed.vhd'), lExpected)
+lExpected.append("")
+utils.read_file(os.path.join(sTestDir, "rule_006_test_input.fixed.vhd"), lExpected)
 
 
 class test_concurrent_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -25,8 +24,8 @@ class test_concurrent_rule(unittest.TestCase):
     def test_rule_006(self):
         oRule = concurrent.rule_006()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, 'concurrent')
-        self.assertEqual(oRule.identifier, '006')
+        self.assertEqual(oRule.name, "concurrent")
+        self.assertEqual(oRule.identifier, "006")
 
         lExpected = [18, 19, 23, 24, 33, 40, 42, 47, 49, 53]
 
@@ -35,7 +34,7 @@ class test_concurrent_rule(unittest.TestCase):
 
     def test_fix_rule_006(self):
         oRule = concurrent.rule_006()
-        oRule.generate_statement_ends_group = 'yes'
+        oRule.generate_statement_ends_group = "yes"
 
         oRule.fix(self.oFile)
 

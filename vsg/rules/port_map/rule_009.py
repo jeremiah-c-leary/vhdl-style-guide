@@ -13,7 +13,7 @@ lTokenPairs.append([token.port_map_aspect.open_parenthesis, token.port_map_aspec
 
 
 class rule_009(Rule):
-    '''
+    """
     This rule checks multiple port assignments on the same line.
 
     **Violation**
@@ -34,8 +34,8 @@ class rule_009(Rule):
          RD_EN => w_rd_en,
          OVERFLOW => w_overflow
        );
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens, lTokenPairs)
-        self.solution = 'Move multiple port assignments to their own lines.'
+        self.solution = "Move multiple port assignments to their own lines."

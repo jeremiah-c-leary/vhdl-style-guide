@@ -8,7 +8,7 @@ lTokens.append(token.subtype_declaration.identifier)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes in subtype identifiers.
     The default new subtype suffix is *_st*.
 
@@ -25,8 +25,8 @@ class rule_600(token_suffix):
     .. code-block:: vhdl
 
        subtype my_subtype_st is range 0 to 9;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.suffixes = ['_st']
+        self.suffixes = ["_st"]

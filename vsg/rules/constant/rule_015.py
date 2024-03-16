@@ -8,7 +8,7 @@ lTokens.append(token.constant_declaration.identifier)
 
 
 class rule_015(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on constant identifiers.
     The default constant prefix is *c_*.
 
@@ -25,8 +25,8 @@ class rule_015(token_prefix):
     .. code-block:: vhdl
 
        constant c_my_const : integer;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)
-        self.prefixes = ['c_']
+        self.prefixes = ["c_"]

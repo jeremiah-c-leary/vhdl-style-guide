@@ -8,7 +8,7 @@ from vsg.vhdlFile import utils
 
 
 class separate_multiple_signal_identifiers_into_individual_statements(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -25,15 +25,15 @@ class separate_multiple_signal_identifiers_into_individual_statements(structure.
 
     lPrefixes : string list
        acceptable prefixes
-    '''
+    """
 
     def __init__(self, lTokens, iAllow=2):
         super().__init__()
-        self.solution = 'Split signal declaration into individual declarations'
+        self.solution = "Split signal declaration into individual declarations"
         self.lTokens = lTokens
         self.consecutive = iAllow
-        self.configuration.append('consecutive')
-        self.configuration_documentation_link = 'configuring_number_of_signals_in_signal_declaration_link'
+        self.configuration.append("consecutive")
+        self.configuration_documentation_link = "configuring_number_of_signals_in_signal_declaration_link"
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_bounded_by(token.signal_declaration.signal_keyword, token.signal_declaration.semicolon)
@@ -62,10 +62,10 @@ class separate_multiple_signal_identifiers_into_individual_statements(structure.
             if iIdentifiers > self.consecutive:
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 dAction = {}
-                dAction['start'] = iStartIndex
-                dAction['end'] = iEndIndex
-                dAction['number'] = iIdentifiers
-                dAction['identifiers'] = lIdentifiers
+                dAction["start"] = iStartIndex
+                dAction["end"] = iEndIndex
+                dAction["number"] = iIdentifiers
+                dAction["identifiers"] = lIdentifiers
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
@@ -74,14 +74,14 @@ class separate_multiple_signal_identifiers_into_individual_statements(structure.
         dAction = oViolation.get_action()
 
         lFinalTokens = []
-        for oIdentifier in dAction['identifiers']:
+        for oIdentifier in dAction["identifiers"]:
             lNewTokens = []
             for iToken, oToken in enumerate(lTokens):
-                if iToken < dAction['start']:
+                if iToken < dAction["start"]:
                     lNewTokens.append(copy.deepcopy(oToken))
-                if iToken == dAction['start']:
+                if iToken == dAction["start"]:
                     lNewTokens.append(oIdentifier)
-                if iToken > dAction['end']:
+                if iToken > dAction["end"]:
                     lNewTokens.append(copy.deepcopy(oToken))
             lNewTokens = utils.remove_carriage_returns_from_token_list(lNewTokens)
             lFinalTokens.extend(lNewTokens)

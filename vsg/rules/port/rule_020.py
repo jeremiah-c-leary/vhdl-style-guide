@@ -15,7 +15,7 @@ oEnd = token.port_clause.close_parenthesis
 
 
 class rule_020(Rule):
-    '''
+    """
     This rule checks for at least one space before the colon.
 
     |configuring_whitespace_rules_link|
@@ -41,7 +41,8 @@ class rule_020(Rule):
          OVERFLOW : out   std_logic;
          DATA     : inout std_logic
        );
-    '''
+    """
+
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)
-        self.number_of_spaces = '>=1'
+        self.number_of_spaces = ">=1"

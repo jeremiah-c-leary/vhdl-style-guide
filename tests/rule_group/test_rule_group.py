@@ -15,28 +15,32 @@ from vsg import __main__, version
 
 
 def full_source_path():
-    return full_file_path('test_input.vhd')
+    return full_file_path("test_input.vhd")
+
 
 def full_fixed_path(sName):
-    return full_file_path('test_input.' + sName + '.fixed.vhd')
+    return full_file_path("test_input." + sName + ".fixed.vhd")
+
 
 def full_config_path(sName):
-    return full_file_path(sName + '.yaml')
+    return full_file_path(sName + ".yaml")
+
 
 def full_file_path(sName):
-    sTestPath = 'tests/rule_group/'
-    return sTestPath + '/' + sName
+    sTestPath = "tests/rule_group/"
+    return sTestPath + "/" + sName
 
 
-class command_line_args():
-    ''' This is used as an input into the version command.'''
+class command_line_args:
+    """This is used as an input into the version command."""
+
     def __init__(self, version=False):
         self.version = version
 
 
 class testMain(unittest.TestCase):
     def full_actual_path(self, sName):
-        return os.path.join(self._tmpdir.name, 'test_input.' + sName + '.actual.vhd')
+        return os.path.join(self._tmpdir.name, "test_input." + sName + ".actual.vhd")
 
     def setUp(self):
         self._tmpdir = TemporaryDirectory()
@@ -45,16 +49,15 @@ class testMain(unittest.TestCase):
         self._tmpdir.cleanup()
 
     def test_config_1(self):
-
-        sConfigName = 'config_1'
+        sConfigName = "config_1"
         shutil.copy(full_source_path(), self.full_actual_path(sConfigName))
 
-        sys.argv = ['vsg']
-        sys.argv.extend(['--output_format', 'syntastic'])
-        sys.argv.extend(['--configuration', full_config_path(sConfigName)])
-        sys.argv.extend(['-p 1'])
-        sys.argv.extend(['-f', self.full_actual_path(sConfigName)])
-        sys.argv.extend(['--fix'])
+        sys.argv = ["vsg"]
+        sys.argv.extend(["--output_format", "syntastic"])
+        sys.argv.extend(["--configuration", full_config_path(sConfigName)])
+        sys.argv.extend(["-p 1"])
+        sys.argv.extend(["-f", self.full_actual_path(sConfigName)])
+        sys.argv.extend(["--fix"])
 
         try:
             __main__.main()
@@ -69,16 +72,15 @@ class testMain(unittest.TestCase):
         self.assertEqual(lExpected, lActual)
 
     def test_config_2(self):
-
-        sConfigName = 'config_2'
+        sConfigName = "config_2"
         shutil.copy(full_source_path(), self.full_actual_path(sConfigName))
 
-        sys.argv = ['vsg']
-        sys.argv.extend(['--output_format', 'syntastic'])
-        sys.argv.extend(['--configuration', full_config_path(sConfigName)])
-        sys.argv.extend(['-p 1'])
-        sys.argv.extend(['-f', self.full_actual_path(sConfigName)])
-        sys.argv.extend(['--fix'])
+        sys.argv = ["vsg"]
+        sys.argv.extend(["--output_format", "syntastic"])
+        sys.argv.extend(["--configuration", full_config_path(sConfigName)])
+        sys.argv.extend(["-p 1"])
+        sys.argv.extend(["-f", self.full_actual_path(sConfigName)])
+        sys.argv.extend(["--fix"])
 
         try:
             __main__.main()
@@ -93,16 +95,15 @@ class testMain(unittest.TestCase):
         self.assertEqual(lExpected, lActual)
 
     def test_config_3(self):
-
-        sConfigName = 'config_3'
+        sConfigName = "config_3"
         shutil.copy(full_source_path(), self.full_actual_path(sConfigName))
 
-        sys.argv = ['vsg']
-        sys.argv.extend(['--output_format', 'syntastic'])
-        sys.argv.extend(['--configuration', full_config_path(sConfigName)])
-        sys.argv.extend(['-p 1'])
-        sys.argv.extend(['-f', self.full_actual_path(sConfigName)])
-        sys.argv.extend(['--fix'])
+        sys.argv = ["vsg"]
+        sys.argv.extend(["--output_format", "syntastic"])
+        sys.argv.extend(["--configuration", full_config_path(sConfigName)])
+        sys.argv.extend(["-p 1"])
+        sys.argv.extend(["-f", self.full_actual_path(sConfigName)])
+        sys.argv.extend(["--fix"])
 
         try:
             __main__.main()

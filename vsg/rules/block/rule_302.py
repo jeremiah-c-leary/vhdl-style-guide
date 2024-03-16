@@ -8,7 +8,7 @@ lTokens.append(token.block_statement.end_keyword)
 
 
 class rule_302(token_indent):
-    '''
+    """
     This rule checks the indent of the **end** keyword.
 
     **Violation**
@@ -30,7 +30,7 @@ class rule_302(token_indent):
        begin
 
        end block block_label;
-    '''
+    """
 
     def __init__(self):
         super().__init__(lTokens)

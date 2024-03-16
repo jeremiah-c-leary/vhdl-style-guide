@@ -5,7 +5,7 @@ from vsg.token import file_declaration as token
 
 
 class rule_100(Rule):
-    '''
+    """
     This rule checks for a single space before the identifier.
 
     |configuring_whitespace_rules_link|
@@ -21,7 +21,8 @@ class rule_100(Rule):
     .. code-block:: vhdl
 
        file defaultImage : load_file_type open read_mode is load_file_name;
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.disable = True
