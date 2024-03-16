@@ -24,6 +24,7 @@ def build_report(dJson):
 def write_report_to_file(lReport, commandLineArguments):
     with open(commandLineArguments.quality_report, "w") as oFile:
         oFile.write(json.dumps(lReport, indent=2))
+        oFile.write("\n")
 
 
 def create_entry(dFile, dViolation, iViolation):

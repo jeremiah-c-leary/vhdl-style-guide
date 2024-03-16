@@ -27,4 +27,3 @@ for_loop_005
 ############
 
 This rule has been moved to **loop_statement_104**.
-

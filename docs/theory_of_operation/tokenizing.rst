@@ -33,4 +33,3 @@ would be tokenized into this:
        [' ', 'a', ' ', '<=', ' ', 'b', ';', '     ', '-- Assign output'],
        ['end', ' ', 'architecture', ' ', 'rtl', ';']
    ]
-

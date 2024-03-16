@@ -763,4 +763,3 @@ This rule checks the **then** keyword is not on a line by itself.
 .. code-block:: vhdl
 
    if a = '1' then
-

@@ -140,4 +140,3 @@ Rules Enforcing Case::Keyword Rule Group
 * `type_013 <../type_rules.html#type-013>`_
 * `use_clause_503 <../use_clause_rules.html#use-clause-503>`_
 * `variable_002 <../variable_rules.html#variable-002>`_
-

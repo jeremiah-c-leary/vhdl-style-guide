@@ -13,4 +13,3 @@ entity FIFO is
     O_RD_FULL, O_WR_FULL : out std_logic_vector(15 downto 0);
     O_RD_FULL, O_WR_FULL : out std_logic_vector(15 downto 0));
 end entity FIFO;
-

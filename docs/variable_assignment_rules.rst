@@ -248,4 +248,3 @@ This rule checks the alignment of multiline variable assignments that contain ar
      65535,
      32768
    );
-

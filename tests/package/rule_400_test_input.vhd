@@ -14,4 +14,3 @@ package fifo_pkg is
   alias alias1 is name;
 
 end package;
-

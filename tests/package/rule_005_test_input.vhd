@@ -7,4 +7,3 @@ package fifo_pkg --comment
 is
 
 end package;
-

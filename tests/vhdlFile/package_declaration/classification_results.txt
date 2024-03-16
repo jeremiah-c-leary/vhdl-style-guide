@@ -51,6 +51,3 @@
 13 | end;
 <class 'vsg.token.package_declaration.end_keyword'>
 <class 'vsg.token.package_declaration.semicolon'>
---------------------------------------------------------------------------------
-14 |
-<class 'vsg.parser.blank_line'>

@@ -69,4 +69,3 @@ begin
 end architecture rtl;
 
 -- vsg_on comment_010
-

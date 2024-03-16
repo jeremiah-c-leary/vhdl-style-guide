@@ -201,4 +201,3 @@ begin
   data_o_proc:    data_o <= reg_out;
   strb_o_proc:    strb_o <= strb_reg;
 end rtl;
-

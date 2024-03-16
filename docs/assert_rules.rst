@@ -340,4 +340,3 @@ This rule checks the **severity** keyword has proper case.
    assert WIDTH > 16
      report "FIFO width is limited to 16 bits."
      severity FAILURE;
-

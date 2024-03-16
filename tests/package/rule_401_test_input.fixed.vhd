@@ -10,4 +10,3 @@ package fifo_pkg is
   constant c_constant : integer; -- Comment
 
 end package;
-

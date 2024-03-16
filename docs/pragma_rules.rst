@@ -151,4 +151,3 @@ The default style is :code:`require_blank_line`.
    -- synthesis translate_off
 
    signal rd_en : std_logic;
-

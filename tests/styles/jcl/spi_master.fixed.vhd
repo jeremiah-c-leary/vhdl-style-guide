@@ -658,4 +658,3 @@ begin
   SCK_ENA_CE_O  <= sck_ena_ce;
 
 end architecture RTL;
-

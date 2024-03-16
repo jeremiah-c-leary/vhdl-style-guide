@@ -24,5 +24,3 @@ After executing VSG, Notepad++ with prompt to re-read the file if it has changed
 
 PythonScript
 ------------
-
-

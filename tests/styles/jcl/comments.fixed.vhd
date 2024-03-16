@@ -36,4 +36,3 @@ begin
   end generate SOME_LABEL;
 
 end architecture RTL;
-

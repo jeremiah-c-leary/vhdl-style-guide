@@ -46,4 +46,3 @@ begin
   a <= b;
 
 end architecture ARCH;
-

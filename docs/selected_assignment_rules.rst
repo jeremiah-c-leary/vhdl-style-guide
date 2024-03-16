@@ -678,4 +678,3 @@ This rule checks the **when** keyword has proper case.
      "0000" when 0,
      "0001" when 1,
      "1111" when others;
-

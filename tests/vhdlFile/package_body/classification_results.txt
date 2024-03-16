@@ -53,6 +53,3 @@
 <class 'vsg.token.package_body.end_package_keyword'>
 <class 'vsg.token.package_body.end_body_keyword'>
 <class 'vsg.token.package_body.semicolon'>
---------------------------------------------------------------------------------
-13 |
-<class 'vsg.parser.blank_line'>

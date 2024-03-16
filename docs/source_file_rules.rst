@@ -19,4 +19,3 @@ It will also be reported in the junit file if the --junit option is used.
 **Fix**
 
 Pass correct file name to VSG.
-

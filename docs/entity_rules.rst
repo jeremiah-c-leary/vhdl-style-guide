@@ -903,4 +903,3 @@ This rule checks for consistent capitalization of generic names in entity declar
        O_DATA : std_logic_vector(G_WIDTH - 1 downto 0)
      );
    end entity fifo;
-

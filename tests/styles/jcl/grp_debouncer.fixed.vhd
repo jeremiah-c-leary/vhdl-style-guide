@@ -217,4 +217,3 @@ begin
   STRB_O <= strb_reg;
 
 end architecture RTL;
-

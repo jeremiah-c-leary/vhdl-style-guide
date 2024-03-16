@@ -15,5 +15,3 @@ entity FIFO is
    g_depth : integer := 32
   );
 end entity FIFO;
-
-

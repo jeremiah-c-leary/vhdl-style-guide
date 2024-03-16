@@ -11,4 +11,3 @@ FIFO is
 
 end entity FIFO
  ;
-

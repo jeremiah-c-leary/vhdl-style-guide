@@ -617,4 +617,3 @@ begin
   sck_ena_ce_o_proc:  sck_ena_ce_o <= sck_ena_ce;
 
 end architecture rtl;
-

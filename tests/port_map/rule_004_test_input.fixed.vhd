@@ -65,4 +65,3 @@ begin
  ); -- Comment2
 
 end architecture ARCH;
-

@@ -520,4 +520,3 @@ This rule inserts the optional **is** keyword if it does not exist.
    component my_component is
 
    end my_component;
-

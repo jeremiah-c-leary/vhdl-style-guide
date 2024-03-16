@@ -273,4 +273,3 @@ This rule enforces a maximum number of consecutive blank lines.
    a <= b;
 
    c <= d;
-

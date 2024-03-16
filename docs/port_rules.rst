@@ -1020,4 +1020,3 @@ The default suffix is: *_l*.
      wr_en_l    : linkage    std_logic;
      rd_en_l    : linkage    std_logic
    );
-

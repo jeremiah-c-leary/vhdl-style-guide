@@ -27,4 +27,3 @@ entity FIFO is
   -- synthesis translate_off
   );
 end entity FIFO;
-

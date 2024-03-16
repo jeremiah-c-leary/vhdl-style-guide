@@ -26,4 +26,3 @@ Rules Enforcing Structure::Optional Rule Group
 * `process_012 <../process_rules.html#process-012>`_
 * `process_018 <../process_rules.html#process-018>`_
 * `record_type_definition_005 <../record_type_definition_rules.html#record-type-definition-005>`_
-

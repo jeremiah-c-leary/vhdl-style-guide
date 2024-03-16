@@ -100,4 +100,3 @@ This rule checks the block comment footer is correct.
    --|  Comment
    --|  Comment
    --+--------------------------[ Footer ]=
-

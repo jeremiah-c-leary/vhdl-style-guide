@@ -94,4 +94,3 @@ entity FIFO is
     i_port2 : out std_logic :='1'
   );
 end entity FIFO;
-

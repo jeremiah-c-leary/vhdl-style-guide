@@ -746,4 +746,3 @@ This rule checks for consistent capitalization of procedure names.
      end process;
 
    end architecture rtl;
-

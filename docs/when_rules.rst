@@ -30,4 +30,3 @@ The else should be at the end of the preceding line.
             '0' when b = '0' else
             c when d = '1' else
             f;
-

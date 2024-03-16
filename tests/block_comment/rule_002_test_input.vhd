@@ -66,4 +66,3 @@ begin
     -- Comment
 
 end architecture rtl;
-

@@ -54,4 +54,3 @@ Rules Enforcing Naming Rule Group
 * `type_600 <../type_rules.html#type-600>`_
 * `variable_012 <../variable_rules.html#variable-012>`_
 * `variable_600 <../variable_rules.html#variable-600>`_
-

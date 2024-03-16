@@ -24,4 +24,3 @@ entity fifo is
     sig7     : std_logic := 'Z'  -- Comment
   );
 end entity fifo;
-

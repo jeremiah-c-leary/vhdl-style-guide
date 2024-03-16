@@ -225,4 +225,3 @@ Rules Enforcing Conditional Expression Alignment
 * `concurrent_009 <concurrent_rules.html#concurrent-009>`_
 * `sequential_401 <sequential_rules.html#sequential-401>`_
 * `variable_assignment_400 <variable_assignment_400.html#variable-assignment-400>`_
-

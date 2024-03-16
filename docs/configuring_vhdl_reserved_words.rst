@@ -100,4 +100,3 @@ Rules Enforcing Optional Items
 ##############################
 
 * `reserved_001 <reserved_rules.html#reserved-001>`_
-

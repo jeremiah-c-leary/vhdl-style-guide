@@ -13,4 +13,3 @@ architecture RTL of ENTITY1 is
 begin
 
 end architecture RTL;
-

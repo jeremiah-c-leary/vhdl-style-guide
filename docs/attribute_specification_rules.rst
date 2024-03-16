@@ -155,4 +155,3 @@ This rule checks the **is** keyword has proper case.
 .. code-block:: vhdl
 
    attribute coordinate of comp_1 : component is (0.0, 17.5);
-

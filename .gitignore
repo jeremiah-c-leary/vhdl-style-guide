@@ -21,4 +21,3 @@ vsg/version_info.*
 
 # Ignore external repos used for tests
 tests/external_repos/repos
-

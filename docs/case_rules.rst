@@ -554,4 +554,3 @@ The default style is :code:`allow_comment`.
 
      -- Comment
      when 4 =>
-

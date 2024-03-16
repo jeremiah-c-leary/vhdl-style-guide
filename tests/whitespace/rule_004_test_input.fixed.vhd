@@ -19,4 +19,3 @@ begin
     );
 
 end architecture RTL;
-

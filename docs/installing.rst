@@ -29,4 +29,3 @@ Then installed using the setup.py file.
 .. code-block:: bash
 
   python setup.py install
-

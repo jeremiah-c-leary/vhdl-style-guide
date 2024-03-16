@@ -71,4 +71,3 @@ After issuing the command the tests will be executed.
    Ran 1170 tests in 6.424s
 
    OK
-

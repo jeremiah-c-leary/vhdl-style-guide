@@ -175,4 +175,3 @@ The violations are shown in the Problems tab:
 The violations can be fixed manually, or by using `ctrl+f`...
 
 .. image:: vscode_file_fixed.png
-

@@ -60,4 +60,3 @@ begin
   output <= large_data(G_DEPTH - 1 downto 0);
 
 end architecture rtl;
-

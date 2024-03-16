@@ -140,8 +140,7 @@ def blank_line():
 
 def write_file(path, sFilename, lLines):
     with open(os.path.join(path, sFilename), "w") as oFile:
-        for sLine in lLines:
-            oFile.write(sLine + "\n")
+        oFile.write("\n".join(lLines))
 
 
 def read_file(sFileName):

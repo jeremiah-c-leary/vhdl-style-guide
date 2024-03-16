@@ -589,4 +589,3 @@ The default prefix is *inst_*.
 .. code-block:: vhdl
 
    inst_fifo_32x2k : FIFO
-

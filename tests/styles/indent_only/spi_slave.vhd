@@ -455,4 +455,3 @@ begin
   wren_o_proc:        wren_o <= wren;
   sh_reg_debug_proc:  sh_reg_dbg_o <= sh_reg;                                     -- export sh_reg to debug
 end architecture rtl;
-

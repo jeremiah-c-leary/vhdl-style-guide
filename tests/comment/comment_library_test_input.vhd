@@ -7,4 +7,3 @@ library lib1;
 library lib2;
   -- Comment 2
   use lib2.all;
-

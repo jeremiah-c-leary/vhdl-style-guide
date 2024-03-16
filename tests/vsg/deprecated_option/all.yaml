@@ -53,4 +53,3 @@ file_rules:
       rule:
         architecture_003:
            indentStyle: 'spaces'
-

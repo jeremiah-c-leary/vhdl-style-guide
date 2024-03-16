@@ -47,6 +47,3 @@
 <class 'vsg.token.package_instantiation_declaration.new_keyword'>
 <class 'vsg.token.package_instantiation_declaration.uninstantiated_package_name'>
 <class 'vsg.token.package_instantiation_declaration.semicolon'>
---------------------------------------------------------------------------------
-10 |
-<class 'vsg.parser.blank_line'>

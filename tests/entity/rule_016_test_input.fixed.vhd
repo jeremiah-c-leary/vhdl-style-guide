@@ -16,4 +16,3 @@ entity FIFO is
     port1 : in std_logic
   );
 end entity;
-

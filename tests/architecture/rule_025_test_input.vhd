@@ -26,4 +26,3 @@ architecture CDC of ENTITY1 is
 begin
 
 end architecture CDC;
-

@@ -49,4 +49,3 @@ This rule checks the *others* keyword has proper case.
 .. code-block:: vhdl
 
    when others =>
-

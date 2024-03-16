@@ -659,6 +659,3 @@
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
 <class 'vsg.token.architecture_body.semicolon'>
---------------------------------------------------------------------------------
-139 |
-<class 'vsg.parser.blank_line'>

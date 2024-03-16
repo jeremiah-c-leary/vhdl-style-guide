@@ -22,5 +22,3 @@ entity FIFO is
     i_port1 : in std_logic := '0';
     i_port2 : out std_logic :='1');
 end entity FIFO;
-
-

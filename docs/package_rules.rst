@@ -512,4 +512,3 @@ This rule checks the colons are in the same column for all attribute specificati
      attribute mark_debug of wr_en        : signal is "true";
      attribute mark_debug of almost_empty : signal is "true";
      attribute mark_debug of full         : signal is "true";
-

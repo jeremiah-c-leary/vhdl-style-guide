@@ -17,4 +17,3 @@ package body fifo_pkg is
   constant a : std_logic;
 
 end package body;
-

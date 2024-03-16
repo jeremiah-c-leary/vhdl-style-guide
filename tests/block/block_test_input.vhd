@@ -28,4 +28,3 @@ begin
   end block BLK;
 
 end architecture RTL;
-

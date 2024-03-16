@@ -24,4 +24,3 @@ rst_in => "00",
        (d1 xor to_stdulogic(gen1));
 
 end architecture rtl;
-

@@ -665,4 +665,3 @@ begin
 	sck_ena_ce_o  <= sck_ena_ce;
 
 end architecture rtl;
-

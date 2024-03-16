@@ -128,4 +128,3 @@ Tabs set the indent and spaces are used for alignment.
    \t     "0001" when a = "11";
 
    end architecture rtl;
-

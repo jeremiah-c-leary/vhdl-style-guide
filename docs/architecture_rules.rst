@@ -882,4 +882,3 @@ This rule checks for consistent capitalization of port names in an architecture 
       register <= I_DATA;
 
    end architecture rtl;
-

@@ -63,8 +63,8 @@ def expand_filename(sFileName):
 
 def write_junit_xml_file(oJunitFile):
     with open(oJunitFile.filename, "w") as oFile:
-        for sLine in oJunitFile.build_junit():
-            oFile.write(sLine + "\n")
+        oFile.write("\n".join(oJunitFile.build_junit()))
+        oFile.write("\n")
 
 
 def extract_file_names_from_file_list(lFiles):

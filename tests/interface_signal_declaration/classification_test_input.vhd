@@ -21,4 +21,3 @@ entity FIFO is
     signal port1 : std_logic
   );
 end entity FIFO;
-

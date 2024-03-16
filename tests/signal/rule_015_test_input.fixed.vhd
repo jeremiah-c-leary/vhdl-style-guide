@@ -98,4 +98,3 @@ signal  bi2:    STD_LOGIC_VECTOR (width-1 downto 0);
 begin
 
 end architecture ARCH;
-

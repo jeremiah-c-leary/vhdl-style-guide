@@ -35,4 +35,3 @@ begin
       G_GEN_3 => 3);
 
 end architecture ARCH;
-

@@ -479,4 +479,3 @@ begin
 	SH_REG_DBG_O  <= sh_reg;                                      -- export sh_reg to debug
 
 end architecture RTL;
-

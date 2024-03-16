@@ -6,4 +6,3 @@ package fifo_pkg is
   attribute mark_debug of full         : signal is "true";
 
 end package;
-

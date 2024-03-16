@@ -92,6 +92,3 @@
 <class 'vsg.token.context_reference.comma'>
 <class 'vsg.token.context_reference.context_name'>
 <class 'vsg.token.context_reference.semicolon'>
---------------------------------------------------------------------------------
-13 |
-<class 'vsg.parser.blank_line'>
