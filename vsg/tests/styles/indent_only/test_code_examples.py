@@ -10,7 +10,7 @@ sSourceCodeDir = os.path.join(os.path.dirname(__file__),'..','code_examples')
 
 dIndentMap = utils.read_indent_file()
 
-lTimestamp, eTimestampError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhdl'))
+lTimestamp, eTimestampError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhd'))
 oTimestamp = vhdlFile.vhdlFile(lTimestamp)
 oTimestamp.set_indent_map(dIndentMap)
 
@@ -49,7 +49,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.configure(oConfig)
         oRuleList.fix(7, oConfig.dConfig['skip_phase'])
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.vhdl'), lExpected, bStrip=False)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.vhd'), lExpected, bStrip=False)
         self.assertEqual(lExpected, oTimestamp.get_lines())
 
     def test_spi_slave(self):

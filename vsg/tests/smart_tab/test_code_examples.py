@@ -12,7 +12,7 @@ sSourceCodeDir = os.path.join(os.path.dirname(__file__),'..','styles', 'code_exa
 
 dIndentMap = utils.read_indent_file()
 
-lTimestamp, eTimestapError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhdl'))
+lTimestamp, eTimestapError = vhdlFile.utils.read_vhdlfile(os.path.join(sSourceCodeDir,'timestamp.vhd'))
 oTimestamp = vhdlFile.vhdlFile(lTimestamp)
 oTimestamp.set_indent_map(dIndentMap)
 
@@ -70,7 +70,7 @@ class testCodeExample(unittest.TestCase):
         oRuleList.fix()
 
         lExpected = ['']
-        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhdl'), lExpected)
+        utils.read_file(os.path.join(os.path.dirname(__file__),'timestamp.fixed.vhd'), lExpected)
 
         self.assertEqual(lExpected, oTimestamp.get_lines())
 
