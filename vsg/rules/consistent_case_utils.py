@@ -281,7 +281,7 @@ def get_inner_indexes(lFirst, lSecond):
 #        print(lKeys)
 #        print(lKeys[0])
 #        print(dDelta[lKeys[0]])
-        
+
         lReturn.append(dDelta[lKeys[0]])
         lMyFirst.remove(dDelta[lKeys[0]][0])
         lMySecond.remove(dDelta[lKeys[0]][1])

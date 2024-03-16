@@ -5,10 +5,10 @@ architecture RTL of FIFO is
 
   -- Violations below
 
-  type state_machine 
+  type state_machine
  is (idle, write, read, done);
 
-  type state_machine 
+  type state_machine
 
 
   is (idle, write, read, done);

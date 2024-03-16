@@ -7,11 +7,11 @@ begin
             signal Sig0 : bit;
             signal Sig00 : bit;
         begin
-        
+
             g_2 : for i in 0 to 0 generate
 
             end generate g_2;
-            
+
         end generate g_1;
     end generate g_0;
 end architecture rtl;

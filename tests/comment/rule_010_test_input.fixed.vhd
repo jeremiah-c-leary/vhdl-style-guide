@@ -100,6 +100,6 @@ package body function_pkg is
       id     => (aw.id'range => ival),
       len    => (aw.len'range => ival)
     );
-  end function init_axi4_aw; 
+  end function init_axi4_aw;
 
 end package body function_pkg;

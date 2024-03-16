@@ -18,7 +18,7 @@ architecture RTL of ENTITY_NAME is
   --  | floating_type_definition
   --  | physical_type_definition
 
-  
+
 
   -- [full-type_declaration][type_definition][scalar_type_definition][enumeration_type_definition]
 

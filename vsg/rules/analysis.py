@@ -14,11 +14,11 @@ def check_for_carriage_return_after_token(self, oToi):
         return check_yes(self, oToi)
 
 
-def check_no(self, oToi):    
+def check_no(self, oToi):
     return check(self, oToi, 'remove_new_line')
 
 
-def check_yes(self, oToi):    
+def check_yes(self, oToi):
     return check(self, oToi, 'add_new_line')
 
 

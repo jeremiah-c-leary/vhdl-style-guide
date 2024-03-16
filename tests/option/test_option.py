@@ -57,23 +57,23 @@ class testRuleMethods(unittest.TestCase):
         dActual = self.oRule.get_configuration()
 
         self.assertEqual(dExpected, dActual)
-        
+
     def test_option_is_configurable(self):
         self.oRule.name = 'example'
-        self.oRule.identifier = '001' 
+        self.oRule.identifier = '001'
 
         dConfig = {}
         dConfig['rule'] = {}
         dConfig['rule']['example_001'] = {}
         dConfig['rule']['example_001']['option_name'] = 'no'
-        
+
         oConfig = config.config()
         oConfig.dConfig = dConfig
 
         self.assertEqual(self.oRule.option_name, 'yes')
-        self.assertEqual(self.oRule.options[0].value, 'yes') 
+        self.assertEqual(self.oRule.options[0].value, 'yes')
 
         self.oRule.configure(oConfig)
 
         self.assertEqual(self.oRule.option_name, 'no')
-        self.assertEqual(self.oRule.options[0].value, 'no') 
+        self.assertEqual(self.oRule.options[0].value, 'no')

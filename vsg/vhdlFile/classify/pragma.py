@@ -37,7 +37,7 @@ def check_for_open_pragmas(lTokens, dVars, lOpenPragmas):
     for sToken in lTokens:
         if sToken in lOpenPragmas:
             dVars['pragma'] = True
-        
+
 
 def first_token_is_a_comment(lTokens):
     try:
@@ -101,6 +101,6 @@ def classify_pragma(lTokens, lObjects, dVars, regex, oType):
         for iToken, sToken in enumerate(lTokens):
             if isinstance(lObjects[iToken], parser.comment):
                 lObjects[iToken] = pragma.single(sToken)
-                return True 
+                return True
     return False
 

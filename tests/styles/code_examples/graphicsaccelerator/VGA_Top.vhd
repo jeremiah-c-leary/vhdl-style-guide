@@ -24,7 +24,7 @@ architecture Behavioral of VGA_Top is
 COMPONENT Debouncer
 	PORT(
 		Clk : IN std_logic;
-		Button : IN std_logic;          
+		Button : IN std_logic;
 		Dout : OUT std_logic);
 END COMPONENT;
 COMPONENT Bresenhamer
@@ -34,7 +34,7 @@ COMPONENT Bresenhamer
 		X2 : IN std_logic_vector(9 downto 0);
 		Y2 : IN std_logic_vector(8 downto 0);
 		Clk : IN std_logic;
-		StartDraw : IN std_logic;          
+		StartDraw : IN std_logic;
 		WriteEnable : OUT std_logic;
 		SS : OUT STD_LOGIC_VECTOR (3 downto 0);
 		X : OUT std_logic_vector(9 downto 0);
@@ -84,7 +84,7 @@ COMPONENT Pointer
 			Here : OUT std_logic);
 END COMPONENT;
 COMPONENT FreqDiv
-	PORT(	Clk : IN std_logic;          
+	PORT(	Clk : IN std_logic;
 			Clk2 : OUT std_logic);
 END COMPONENT;
 signal Adx,GPU_X : STD_LOGIC_VECTOR (9 downto 0);
@@ -136,7 +136,7 @@ Inst_Bresenhamer: Bresenhamer PORT MAP(
 	SS => SS,
 	Reset => reset,
 	StartDraw => Dout);
-	
+
 LED <= BufferWrite;
 
 R <= Rt when (P1Region='0' and P2Region='0') else not Rt;
@@ -144,14 +144,14 @@ R <= Rt when (P1Region='0' and P2Region='0') else not Rt;
 G <= Gt when (P1Region='0' and P2Region='0') else not Gt;
 
 B <= Bt when (P1Region='0' and P2Region='0') else not Bt;
-	 
+
 Inst_SevenSegment: SevenSegment PORT MAP(
 	Clk => Clk,
 	Enables => Enables,
 	Segments => Segments,
 	data(3 downto 0) => SS,
 	data(15 downto 4) => "000000000000");
-		
+
 Inst_Pointer1: Pointer
 	GENERIC MAP (initX => "0000000100",
 					 initY => "011110000")

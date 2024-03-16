@@ -106,7 +106,7 @@ class item():
         oReturn.iId = self.iId
         oReturn.base_token, oReturn.sub_token = oReturn.update_token_types()
         return oReturn
-        
+
 
 class todo(item):
     '''

@@ -36,7 +36,7 @@ entity FIFO is
 -- synopsys something else
 -- synopsys something else entirely
 
--- xilinx 
+-- xilinx
 -- xilinx something
 -- xilinx something else
 -- xilinx something else entirely

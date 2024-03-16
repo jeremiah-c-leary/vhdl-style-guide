@@ -81,7 +81,7 @@ class New():
             sChars = ''.join(self.lChars[i:i+2])
             if sChars in lTwoCharacterSymbols:
                 lReturn.append(sChars)
-                i += 2 
+                i += 2
             else:
                 lReturn.append(self.lChars[i])
                 i += 1

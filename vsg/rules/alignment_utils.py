@@ -205,7 +205,7 @@ def is_single_line_aggregate(iToken, lTokens):
 
     for iIndex in range(iToken, len(lTokens)):
         if isinstance(lTokens[iIndex], parser.carriage_return):
-            return False 
+            return False
         if isinstance(lTokens[iIndex], token.aggregate.close_parenthesis):
             if lTokens[iIndex].iId == lTokens[iToken].iId:
                 return True

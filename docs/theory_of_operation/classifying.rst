@@ -56,7 +56,7 @@ This file has a detect function:
            architecture_statement_part
        end [ architecture ] [ *architecture*_simple_name ] ;
        '''
-   
+
        if utils.is_next_token('architecture', iToken, lObjects):
            return classify(iToken, lObjects)
        return iToken
@@ -69,42 +69,42 @@ The classify function:
 .. code-block:: python
 
    def classify(iToken, lObjects):
-   
+
        iCurrent = classify_opening_declaration(iToken, lObjects)
-   
+
        iCurrent = architecture_declarative_part.detect(iCurrent, lObjects)
-   
+
        iCurrent = utils.assign_next_token_required('begin', token.begin_keyword, iCurrent, lObjects)
-   
+
        iCurrent = architecture_statement_part.classify_until(['end'], iCurrent, lObjects)
-   
+
        iCurrent = classify_closing_declaration(iToken, lObjects)
-   
+
        return iCurrent
 
 ...includes two helper functions classify_opening_declaration and classify_closing_declaration:
-  
+
 .. code-block:: python
 
    def classify_opening_declaration(iToken, lObjects):
-  
+
        iCurrent = utils.assign_next_token_required('architecture', token.architecture_keyword, iToken, lObjects)
        iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
        iCurrent = utils.assign_next_token_required('of', token.of_keyword, iCurrent, lObjects)
        iCurrent = utils.assign_next_token(token.entity_name, iCurrent, lObjects)
        iCurrent = utils.assign_next_token_required('is', token.is_keyword, iCurrent, lObjects)
-  
+
        return iCurrent
-  
+
 .. code-block:: python
 
    def classify_closing_declaration(iToken, lObjects):
-  
+
        iCurrent = utils.assign_next_token_required('end', token.end_keyword, iToken, lObjects)
        iCurrent = utils.assign_next_token_if('architecture', token.end_architecture_keyword, iCurrent, lObjects)
        iCurrent = utils.assign_next_token_if_not(';', token.architecture_simple_name, iCurrent, lObjects)
        iCurrent = utils.assign_next_token_required(';', token.semicolon, iCurrent, lObjects)
-  
+
        return iCurrent
 
 The classification of the opening portion of the production, from **architecture** to **is**, is handled by the classify_opening_declaration function.

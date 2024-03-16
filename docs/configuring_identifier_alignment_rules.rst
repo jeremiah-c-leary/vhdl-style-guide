@@ -89,7 +89,7 @@ The following code snippet is used in the following examples:
 
       signal     wr_empty : std_logic;
       signal  rd_empty : std_logic;
-     
+
 
 Example: |compact_alignment| set to |yes|
 #########################################
@@ -105,7 +105,7 @@ Example: |compact_alignment| set to |yes|
 
       signal wr_empty : std_logic;
       signal rd_empty : std_logic;
-     
+
 Example: |blank_line_ends_group| set to |yes| others set to |no|
 ################################################################
 

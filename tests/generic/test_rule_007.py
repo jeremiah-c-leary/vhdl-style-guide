@@ -183,7 +183,7 @@ class test_generic_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
- 
+
     def test_rule_007_upper_with_lower_suffix(self):
         oRule = generic.rule_007()
         oRule.case = 'upper'
@@ -206,7 +206,7 @@ class test_generic_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
- 
+
     def test_rule_007_upper_with_lower_prefix_and_suffix(self):
         oRule = generic.rule_007()
         oRule.case = 'upper'

@@ -253,7 +253,7 @@ architecture rtl of new_fifo is
 begin
 
   output <= large_data(g_width - 1 downto 0);
-  
+
   process (i_input, o_output, io_inout) is
 
     variable v_data : std_logic_vector(g_width - 1 downto 0);
@@ -345,7 +345,7 @@ architecture rtl of new_fifo is
 begin
 
   output <= large_data(G_WIDTH - 1 downto 0);
- 
+
   process (i_input, o_output, io_inout) is
 
     variable v_data : std_logic_vector(G_WIDTH - 1 downto 0);
