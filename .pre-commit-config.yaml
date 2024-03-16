@@ -30,7 +30,14 @@ repos:
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
-      #- id: check-json
+      - id: check-json
+        # * config_error - intentional
+        # * *_run_config.json - legacy not json compliant
+        exclude: "^(\
+          tests/vsg/config_error\\.json|\
+          tests/vsg/read_configuration_files/config_w_file_list_globbing_w_individual_rule_config\\.json|\
+          tests/vsg/read_configuration_files/config_w_file_list_w_individual_rule_config\\.json\
+          )$"
       #- id: check-executables-have-shebangs
       #- id: check-shebang-scripts-are-executable
       - id: check-symlinks

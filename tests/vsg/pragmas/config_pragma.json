@@ -1,5 +1,5 @@
 {
-  "file_list":[
+  "file_list": [
     "tests/vsg/pragmas/pragmas.vhd"
   ],
   "pragma": {
