@@ -10,4 +10,3 @@ end ENTITY FIFO;
 entity FIFO is
 
 end ENTITY FIFO;
-

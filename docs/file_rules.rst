@@ -95,4 +95,3 @@ This rule checks for a single space before the identifier.
 .. code-block:: vhdl
 
    file defaultImage : load_file_type open read_mode is load_file_name;
-

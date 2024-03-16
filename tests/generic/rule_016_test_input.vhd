@@ -16,5 +16,3 @@ entity FIFO is
    i_port1 : in std_logic;i_port2 : in std_logic
   );
 end entity FIFO;
-
-

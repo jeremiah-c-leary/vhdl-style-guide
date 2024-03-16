@@ -25,4 +25,3 @@ begin
     );
 
 end architecture ARCH;
-

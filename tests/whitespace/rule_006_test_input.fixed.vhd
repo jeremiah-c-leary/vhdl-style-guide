@@ -19,4 +19,3 @@ begin
   a <= (b or ' ');
 
 end architecture RTL;
-

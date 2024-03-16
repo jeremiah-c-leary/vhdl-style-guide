@@ -500,4 +500,3 @@ The default constant suffix is *_c*.
 .. code-block:: vhdl
 
    constant my_const_c : integer;
-

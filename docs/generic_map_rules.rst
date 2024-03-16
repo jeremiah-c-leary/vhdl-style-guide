@@ -274,4 +274,3 @@ The default generic suffix is *g_*.
      G_WIDTH => 32,
      G_DEPTH => 512
    )
-

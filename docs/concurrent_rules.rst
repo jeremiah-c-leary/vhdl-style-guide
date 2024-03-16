@@ -363,4 +363,3 @@ This rule checks the alignment of multiline concurrent simple signal assignments
      65535,
      32768
    );
-

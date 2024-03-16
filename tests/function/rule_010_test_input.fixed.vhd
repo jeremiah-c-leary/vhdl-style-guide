@@ -20,4 +20,3 @@ begin
   end process;
 
 end architecture RTL;
-

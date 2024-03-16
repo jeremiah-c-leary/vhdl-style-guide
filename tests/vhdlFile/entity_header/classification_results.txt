@@ -220,6 +220,3 @@
 <class 'vsg.token.entity_declaration.end_entity_keyword'>
 <class 'vsg.token.entity_declaration.entity_simple_name'>
 <class 'vsg.token.entity_declaration.semicolon'>
---------------------------------------------------------------------------------
-43 |
-<class 'vsg.parser.blank_line'>

@@ -304,4 +304,3 @@ library_600
 ###########
 
 This rule has been moved to library_500.
-

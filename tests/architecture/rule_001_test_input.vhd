@@ -8,4 +8,3 @@ architecture RTL of FIFO is begin end architecture RTL;
 begin
 
 end architecture RTL;
-

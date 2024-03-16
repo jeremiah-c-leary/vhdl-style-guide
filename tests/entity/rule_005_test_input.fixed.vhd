@@ -10,4 +10,3 @@ entity FIFO is --Comment
 
 
 end entity;
-

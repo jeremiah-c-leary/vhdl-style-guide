@@ -216,4 +216,3 @@ The default new subtype suffix is *_st*.
 .. code-block:: vhdl
 
    subtype my_subtype_st is range 0 to 9;
-

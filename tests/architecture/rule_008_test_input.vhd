@@ -12,4 +12,3 @@ end architecture RTL;
      begin
 
    end architecture RTL;
-

@@ -16,5 +16,3 @@ g_size : integer := 10;
    g_depth : integer := 32
   );
 end entity FIFO;
-
-

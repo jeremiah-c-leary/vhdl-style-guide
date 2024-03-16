@@ -84,4 +84,3 @@ architecture ARCH of ENTITY is
 begin
 
 end architecture ARCH;
-

@@ -337,4 +337,3 @@ The default variable suffix is *_v*.
 .. code-block:: vhdl
 
    variable my_var_v : natural;
-

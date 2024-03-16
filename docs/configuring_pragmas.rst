@@ -68,4 +68,3 @@ Rules Using Pragmas
 * `pragma_401 <pragma_rules.html#pragma-401>`_
 * `pragma_402 <pragma_rules.html#pragma-402>`_
 * `pragma_403 <pragma_rules.html#pragma-403>`_
-

@@ -29,4 +29,3 @@ G_WIDTH : integer := 256;
                  G_DEPTH : integer := 32
   );
 end entity FIFO;
-

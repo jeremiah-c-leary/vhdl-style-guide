@@ -15,4 +15,3 @@ begin
         end generate g_1;
     end generate g_0;
 end architecture rtl;
-

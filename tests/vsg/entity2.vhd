@@ -9,4 +9,3 @@ entity ENTITY1 is
     PORT6 : inout std_logic
   );
 end entity ENTITY1;
-

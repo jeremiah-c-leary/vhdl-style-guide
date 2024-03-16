@@ -428,4 +428,3 @@ The default generic suffix is *_g*.
 .. code-block:: vhdl
 
    generic(my_generic_g : integer);
-

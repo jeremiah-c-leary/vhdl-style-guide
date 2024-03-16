@@ -10,4 +10,3 @@ end;
 ArChItEcTuRe RTL of ENT is
 begin
 end;
-

@@ -18,4 +18,3 @@ end;
 architecture RTL of ENT is
 BEGIN
 end architecture;
-

@@ -19,5 +19,3 @@ entity FIFO is
    i_port2 : in std_logic
   );
 end entity FIFO;
-
-

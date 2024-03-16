@@ -21,4 +21,3 @@ begin
   end process PROC_NAME;
 
 end architecture RTL;
-

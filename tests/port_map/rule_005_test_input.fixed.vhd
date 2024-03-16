@@ -42,4 +42,3 @@ PORT_1 => w_port_1,
    );
 
 end architecture ARCH;
-

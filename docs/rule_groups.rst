@@ -17,4 +17,3 @@ Rule Groups
    rule_groups/structure_rule_group.rst
    rule_groups/structure_optional_rule_group.rst
    rule_groups/whitespace_rule_group.rst
-

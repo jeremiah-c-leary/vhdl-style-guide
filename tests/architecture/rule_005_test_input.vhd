@@ -17,4 +17,3 @@ architecture RTL--some comment
 of ENT is
 begin
 end;
-

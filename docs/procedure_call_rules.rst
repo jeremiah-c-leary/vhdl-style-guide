@@ -293,4 +293,3 @@ This rule checks the **postponed** keyword has proper case.
 .. code-block:: vhdl
 
    postponed WR_EN(parameter)
-

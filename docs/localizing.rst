@@ -526,4 +526,3 @@ Keep these points in mind when creating new rules:
 #. Override **_get_solution** to return complex messages
 #. **analyze** method can be overridden if necessary
 #. If overriding **analyze**, then include a check for *vsg_off*
-

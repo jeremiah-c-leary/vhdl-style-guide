@@ -25,4 +25,3 @@ This rule checks the indent of the **exit** keyword.
    end if;
 
    exit;
-

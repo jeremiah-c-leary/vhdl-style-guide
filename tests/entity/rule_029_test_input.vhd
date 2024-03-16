@@ -12,4 +12,3 @@ entity FIFO is
     I_INPUT : in std_logic
   );begin
 end entity;
-

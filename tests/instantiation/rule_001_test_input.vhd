@@ -30,4 +30,3 @@ PORT_2 => w_port_2,
      );
 
 end architecture ARCH;
-

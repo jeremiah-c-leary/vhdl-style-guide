@@ -39,4 +39,3 @@ This rule checks predefined attributes have the proper case.
 .. code-block:: vhdl
 
    signal data : std_logic_vector(g_width'range);
-

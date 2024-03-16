@@ -13,4 +13,3 @@ entity FIFO is
   );
 begin
 end entity;
-

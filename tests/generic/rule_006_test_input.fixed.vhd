@@ -23,5 +23,3 @@ entity FIFO is
     I_PORT2 : out std_logic :='1'
   );
 end entity FIFO;
-
-

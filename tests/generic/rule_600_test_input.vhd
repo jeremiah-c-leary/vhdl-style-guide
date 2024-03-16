@@ -15,4 +15,3 @@ entity FIFO is
     DEPTH : integer := 32
   );
 end entity FIFO;
-

@@ -691,4 +691,3 @@ The default loop suffix is *_lv*.
 .. code-block:: vhdl
 
   for index_lv in t_range loop
-

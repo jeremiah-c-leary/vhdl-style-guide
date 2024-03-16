@@ -14,6 +14,7 @@ lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_011_te
 lExpected = []
 lExpected.append("")
 utils.read_file(os.path.join(sTestDir, "rule_011_test_input.fixed.vhd"), lExpected)
+lExpected.append("")
 
 
 class test_context_rule(unittest.TestCase):

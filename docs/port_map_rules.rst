@@ -276,4 +276,3 @@ This rule checks for a blank line below the open parenthesis in a port map.
     RD_EN => w_rd_en,
     OVERFLOW => w_overflow
   );
-

@@ -32,4 +32,3 @@ This rule checks IEEE types have the proper case.
      RD_EN    : in    std_logic;
      DATA     : inout std_logic_vector(31 downto 0)
    );
-

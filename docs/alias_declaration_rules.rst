@@ -309,4 +309,3 @@ Default prefix is *_a*.
 
    alias header_a is name;
    alias footer_a is name;
-

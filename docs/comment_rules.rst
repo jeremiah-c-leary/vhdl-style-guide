@@ -136,4 +136,3 @@ This rule checks for a single space after the **--**.
    --|Comment 2
    ---Comment
    ---------------------------
-

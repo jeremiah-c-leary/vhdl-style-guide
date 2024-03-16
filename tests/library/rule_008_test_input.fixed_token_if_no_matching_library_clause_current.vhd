@@ -42,4 +42,3 @@ library lib6;
 use ieee.numeric_std.all;
 
   use lib6.my_stuff.all;
-

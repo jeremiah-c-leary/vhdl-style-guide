@@ -91,4 +91,3 @@ Rules Enforcing Blank Line Rule Group
 * `type_011 <../type_rules.html#type-011>`_
 * `type_200 <../type_rules.html#type-200>`_
 * `whitespace_200 <../whitespace_rules.html#whitespace-200>`_
-

@@ -1167,4 +1167,3 @@ The default suffix is *_proc*.
 .. code-block:: vhdl
 
    main_proc: process () is
-

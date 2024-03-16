@@ -479,4 +479,3 @@ Default signal suffix is *_s*.
 
    signal wr_en_s : std_logic;
    signal rd_en_s : std_logic;
-

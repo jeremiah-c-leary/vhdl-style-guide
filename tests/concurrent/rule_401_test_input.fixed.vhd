@@ -24,4 +24,3 @@ begin
        (d1 xor to_stdulogic(gen1));
 
 end architecture rtl;
-

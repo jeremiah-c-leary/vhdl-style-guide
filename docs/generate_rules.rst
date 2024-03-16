@@ -727,4 +727,3 @@ The default generate suffix is *_gv*.
 .. code-block:: vhdl
 
   gen_label : for index_gv in t_range generate
-

@@ -36,4 +36,3 @@ begin
   end generate some_label;
 
 end architecture rtl;
-

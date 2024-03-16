@@ -6,4 +6,3 @@ end package pkg_fifo;
 package fifo is
 
 end package fifo;
-

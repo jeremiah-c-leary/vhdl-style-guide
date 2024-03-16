@@ -27,4 +27,3 @@ entity FIFO is
     O_OUTPUT : out integer
   );
 end entity FIFO;
-

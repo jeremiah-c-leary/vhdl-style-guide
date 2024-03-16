@@ -602,4 +602,3 @@ Default signal suffix is *_f*.
 .. code-block:: vhdl
 
    function read_data_f
-

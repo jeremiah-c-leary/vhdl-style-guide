@@ -32,5 +32,3 @@ end
 context
 c1
 ;
-
-

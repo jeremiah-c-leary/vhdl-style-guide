@@ -69,4 +69,3 @@ This project uses the following open source tools to help with code quality:
 * *Codcov* to check the code coverage of the tests.
 
 The results will be available on the pull request GitHub page.
-

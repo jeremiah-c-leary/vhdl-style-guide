@@ -569,4 +569,3 @@ The default new type suffix is *_t*.
 .. code-block:: vhdl
 
    type my_type_t is range -5 to 5 ;
-

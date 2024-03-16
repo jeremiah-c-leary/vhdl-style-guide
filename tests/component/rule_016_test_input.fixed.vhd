@@ -24,4 +24,3 @@ architecture RTl of FIFO is
 begin
 
 end architecture RTL;
-

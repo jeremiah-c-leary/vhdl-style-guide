@@ -7,4 +7,3 @@ package pack1 is new pack_name
   );
 
 package pack2 is new pack2_name;
-
