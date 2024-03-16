@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import interface_subprogram_default as token
-
 from vsg.vhdlFile import utils
 
 

@@ -2,10 +2,9 @@
 import argparse
 import sys
 
-from . import config
-from . import vhdlFile
-
 from tests import utils
+
+from . import config, vhdlFile
 from .CustomArgumentParser import CustomArgumentParser
 
 

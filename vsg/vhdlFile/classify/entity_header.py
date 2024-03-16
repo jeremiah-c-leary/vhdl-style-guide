@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg.vhdlFile.classify import generic_clause
-from vsg.vhdlFile.classify import port_clause
+from vsg.vhdlFile.classify import generic_clause, port_clause
 
 
 def detect(iToken, lObjects):

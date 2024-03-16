@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import split_line_at_token_when_between_tokens
-
 from vsg import token
+from vsg.rules import split_line_at_token_when_between_tokens
 
 lTokens = []
 lTokens.append(token.report_statement.severity_keyword)

@@ -6,8 +6,14 @@ repos:
 
   - repo: https://github.com/PyCQA/isort
     rev: 5.13.2
-    hooks: []
-      #- id: isort
+    hooks:
+      - id: isort
+        # These are abuse of python import mechanism
+        # please conisder to remove in favor of direct module import.
+        exclude: "^(\
+          vsg/rules/__init__\\.py|\
+          vsg/vhdlFile/extract/__init__\\.py\
+          )$"
 
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v3.1.0

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import blank_lines_between_token_pairs
-
 from vsg import token
+from vsg.rules import blank_lines_between_token_pairs
 
 lTokenPairs = []
 lTokenPairs.append([token.concurrent_simple_signal_assignment.target, token.concurrent_simple_signal_assignment.semicolon])

@@ -3,14 +3,8 @@
 import os
 import shutil
 
-from . import config
-from . import junit
-from . import rule_list
-from . import utils
-from . import vhdlFile
-
-from .exceptions import ClassifyError
-from .exceptions import ConfigurationError
+from . import config, junit, rule_list, utils, vhdlFile
+from .exceptions import ClassifyError, ConfigurationError
 
 
 def create_backup_file(sFileName):

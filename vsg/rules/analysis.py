@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import violation
 from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
-
-from vsg import violation
 
 
 def check_for_carriage_return_after_token(self, oToi):

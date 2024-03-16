@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
-
 from vsg.token import for_generate_statement as token
-
-from vsg.vhdlFile.classify import parameter_specification
-from vsg.vhdlFile.classify import generate_statement_body
+from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import generate_statement_body, parameter_specification
 
 
 def detect(iToken, lObjects):

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import interface_procedure_specification as token
-
 from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import formal_parameter_list
 
 

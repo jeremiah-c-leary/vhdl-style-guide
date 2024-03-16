@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
-from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_m_tokens_before_and_n_tokens_after_token(iM, iN, lTokens, lAllTokens, oTokenMap):

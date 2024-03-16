@@ -9,7 +9,6 @@ from .rule_006 import rule_006
 from .rule_007 import rule_007
 from .rule_008 import rule_008
 from .rule_009 import rule_009
-
 from .rule_400 import rule_400
 from .rule_401 import rule_401
 from .rule_402 import rule_402

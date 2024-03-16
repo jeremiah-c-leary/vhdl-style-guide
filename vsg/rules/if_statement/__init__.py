@@ -22,7 +22,6 @@ from .rule_021 import rule_021  # else
 from .rule_022 import rule_022  # code after else
 from .rule_023 import rule_023  # elsif
 from .rule_024 import rule_024  # code after then
-
 from .rule_025 import rule_025
 from .rule_026 import rule_026
 from .rule_027 import rule_027

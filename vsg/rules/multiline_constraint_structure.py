@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-
-from vsg.rules import utils as rules_utils
-from vsg.rules import check
-from vsg.rules import create_violation
-from vsg.rules import fix
-from vsg.rules import tokens_of_interest as toi
-
 from vsg.rule_group import structure
-
+from vsg.rules import (
+    check,
+    create_violation,
+    fix,
+    tokens_of_interest as toi,
+    utils as rules_utils,
+)
 from vsg.vhdlFile import utils
 
 

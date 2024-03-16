@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import multiline_alignment_between_tokens
-
 from vsg import token
+from vsg.rules import multiline_alignment_between_tokens
 
 lTokenPairs = []
 lTokenPairs.append([token.process_statement.open_parenthesis, token.process_statement.close_parenthesis])

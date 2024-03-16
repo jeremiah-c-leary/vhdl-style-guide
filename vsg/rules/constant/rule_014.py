@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import multiline_alignment_between_tokens as Rule
-
-from vsg import parser
-from vsg import token
+from vsg import parser, token
+from vsg.rules import (
+    alignment_utils,
+    multiline_alignment_between_tokens as Rule,
+    utils as rules_utils,
+)
 from vsg.vhdlFile import utils
-from vsg.rules import alignment_utils
-from vsg.rules import utils as rules_utils
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.assignment_operator, token.constant_declaration.semicolon])

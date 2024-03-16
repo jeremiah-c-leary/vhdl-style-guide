@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
-from vsg.token import constant_declaration
-
 from vsg.rules import token_indent_unless_between_tokens
+from vsg.token import constant_declaration
 
 lTokens = []
 lTokens.append(parser.comment)

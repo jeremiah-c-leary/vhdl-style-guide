@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import access_type_definition as token
-
 from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import subtype_indication
 
 

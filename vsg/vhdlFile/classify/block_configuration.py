@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import block_configuration as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import utils as c_utils
-
-from vsg.vhdlFile.classify import block_specification
-from vsg.vhdlFile.classify import use_clause
-from vsg.vhdlFile.classify import configuration_item
+from vsg.vhdlFile.classify import (
+    block_specification,
+    configuration_item,
+    use_clause,
+    utils as c_utils,
+)
 
 
 def detect(iToken, lObjects):

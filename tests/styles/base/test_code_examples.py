@@ -2,12 +2,8 @@
 import os
 import unittest
 
-from vsg import config
-from vsg import vhdlFile
-from vsg import rule_list
-from vsg import severity
-
 from tests import utils
+from vsg import config, rule_list, severity, vhdlFile
 
 sSourceCodeDir = os.path.join(os.path.dirname(__file__),'..','code_examples')
 

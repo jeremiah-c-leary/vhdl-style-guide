@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
-
 import unittest
 
-from vsg.rules import process
-from vsg.rules import architecture
-from vsg import vhdlFile
 from tests import utils
-
+from vsg import vhdlFile
+from vsg.rules import architecture, process
 
 # Read in test file used for all tests
 

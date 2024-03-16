@@ -2,6 +2,7 @@
 
 from vsg import parser
 
+
 def get_column_of_token_index(iToken, lAllTokens, oTokenMap):
 
     oToken = lAllTokens[iToken]

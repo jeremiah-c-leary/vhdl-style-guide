@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.extract import utils
-
 from vsg.vhdlFile.extract.get_line_preceding_line import get_line_preceding_line
 
 

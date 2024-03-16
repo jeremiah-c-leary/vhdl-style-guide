@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import binding_indication as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import entity_aspect
-from vsg.vhdlFile.classify import generic_map_aspect
-from vsg.vhdlFile.classify import port_map_aspect
+from vsg.vhdlFile.classify import entity_aspect, generic_map_aspect, port_map_aspect
 
 
 def detect(iToken, lObjects):

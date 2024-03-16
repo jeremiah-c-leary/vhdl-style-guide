@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import multiline_structure as Rule
-
 from vsg import token
+from vsg.rules import multiline_structure as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.concurrent_simple_signal_assignment.target, token.concurrent_simple_signal_assignment.semicolon])

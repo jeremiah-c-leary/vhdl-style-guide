@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import multiline_conditional_alignment as Rule
-
 from vsg import token
+from vsg.rules import multiline_conditional_alignment as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, token.concurrent_conditional_signal_assignment.semicolon])

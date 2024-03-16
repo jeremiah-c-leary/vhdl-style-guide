@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
-
 import unittest
 
-from vsg import vhdlFile
 from tests import utils
+from vsg import vhdlFile
 
 sLrmUnit = 'concurrent_conditional_signal_assignment'
 

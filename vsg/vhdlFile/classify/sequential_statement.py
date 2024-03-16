@@ -2,19 +2,21 @@
 
 #from vsg.vhdlFile import utils
 
-from vsg.vhdlFile.classify import assertion_statement
-from vsg.vhdlFile.classify import case_statement
-from vsg.vhdlFile.classify import exit_statement
-from vsg.vhdlFile.classify import if_statement
-from vsg.vhdlFile.classify import loop_statement
-from vsg.vhdlFile.classify import next_statement
-from vsg.vhdlFile.classify import null_statement
-from vsg.vhdlFile.classify import procedure_call_statement
-from vsg.vhdlFile.classify import report_statement
-from vsg.vhdlFile.classify import return_statement
-from vsg.vhdlFile.classify import signal_assignment_statement
-from vsg.vhdlFile.classify import variable_assignment_statement
-from vsg.vhdlFile.classify import wait_statement
+from vsg.vhdlFile.classify import (
+    assertion_statement,
+    case_statement,
+    exit_statement,
+    if_statement,
+    loop_statement,
+    next_statement,
+    null_statement,
+    procedure_call_statement,
+    report_statement,
+    return_statement,
+    signal_assignment_statement,
+    variable_assignment_statement,
+    wait_statement,
+)
 
 
 def detect(iToken, lObjects):

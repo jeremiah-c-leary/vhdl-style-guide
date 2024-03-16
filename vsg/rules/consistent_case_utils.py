@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.extract import tokens
-
 from vsg import token
+from vsg.vhdlFile.extract import tokens
 
 
 def add_identifiers_from_to(sType1, sType2, lAllDicts):

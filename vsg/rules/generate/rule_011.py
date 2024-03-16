@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, token, violation
 from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
+from vsg.vhdlFile import utils
 
 oInsertTokens = token.for_generate_statement.end_generate_label
 oAnchorTokens = token.for_generate_statement.semicolon

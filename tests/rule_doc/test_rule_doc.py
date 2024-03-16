@@ -4,11 +4,8 @@ import os
 import unittest
 from tempfile import TemporaryDirectory
 
-from vsg import __rule_doc_gen__
-from vsg import vhdlFile
-from vsg import rule_list
-
 from tests import utils
+from vsg import __rule_doc_gen__, rule_list, vhdlFile
 
 
 class testDocGen(unittest.TestCase):

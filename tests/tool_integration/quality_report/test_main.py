@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-import filecmp
-import pathlib
-import unittest
-from unittest import mock
-import os
-import sys
-
 import contextlib
+import filecmp
+import os
+import pathlib
+import sys
+import unittest
 from io import StringIO
-
 from tempfile import TemporaryDirectory
+from unittest import mock
 
 from vsg import __main__
 

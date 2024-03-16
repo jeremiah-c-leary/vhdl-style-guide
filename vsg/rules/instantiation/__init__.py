@@ -14,7 +14,6 @@ from .rule_011 import rule_011
 from .rule_012 import rule_012
 from .rule_013 import rule_013
 from .rule_014 import rule_014
-
 from .rule_016 import rule_016
 from .rule_017 import rule_017
 from .rule_018 import rule_018
@@ -35,6 +34,5 @@ from .rule_032 import rule_032
 from .rule_033 import rule_033
 from .rule_034 import rule_034
 from .rule_035 import rule_035
-
 from .rule_600 import rule_600
 from .rule_601 import rule_601

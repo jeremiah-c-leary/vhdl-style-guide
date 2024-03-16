@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import move_token_next_to_another_token_if_it_exists_between_tokens
-
 from vsg.token import context_declaration as token
 
 lBetweenTokens = [token.end_keyword, token.semicolon]

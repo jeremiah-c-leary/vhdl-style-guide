@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
-import sys
-import os
-import json
-import shutil
-import glob
-import yaml
-import functools
-import multiprocessing
-
-from . import junit
-from . import rule_list
-from . import severity
-from . import utils
-from . import version
-from . import vhdlFile
 import argparse
+import functools
+import glob
+import json
+import multiprocessing
+import os
+import shutil
+import sys
+
+import yaml
+
+from . import junit, rule_list, severity, utils, version, vhdlFile
 from .CustomArgumentParser import CustomArgumentParser
 
 

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import context_reference
-from vsg.vhdlFile.classify import library_clause
-from vsg.vhdlFile.classify import use_clause
+from vsg.vhdlFile.classify import context_reference, library_clause, use_clause
 
 
 def detect(iToken, lObjects):

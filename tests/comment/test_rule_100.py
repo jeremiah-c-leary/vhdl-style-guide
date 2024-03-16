@@ -3,10 +3,9 @@
 import os
 import unittest
 
-from vsg import parser
-from vsg.rules import comment
-from vsg import vhdlFile
 from tests import utils
+from vsg import parser, vhdlFile
+from vsg.rules import comment
 
 sTestDir = os.path.dirname(__file__)
 

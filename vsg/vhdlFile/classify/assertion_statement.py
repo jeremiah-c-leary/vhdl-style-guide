@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import assertion_statement as token
-
 from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import assertion
 
 

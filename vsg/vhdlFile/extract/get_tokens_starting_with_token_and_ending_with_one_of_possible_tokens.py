@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.extract import utils
-
-from vsg.vhdlFile.extract import tokens
-
 from vsg.vhdlFile import utils as vhdl_utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_tokens_starting_with_token_and_ending_with_one_of_possible_tokens(lStartTokens, lEndTokens, lAllTokens, oTokenMap, bIncludeStartToken=False, bIncludeEndToken=True, bEarliestDetect=False):

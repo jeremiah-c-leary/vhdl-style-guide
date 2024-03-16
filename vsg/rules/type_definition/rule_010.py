@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules import previous_line
 
 lTokens = []

@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import iteration_scheme as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import condition
-from vsg.vhdlFile.classify import parameter_specification
+from vsg.vhdlFile.classify import condition, parameter_specification
 
 
 def detect(iToken, lObjects):

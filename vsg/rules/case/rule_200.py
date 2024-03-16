@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import blank_line_below_line_ending_with_token
-
 from vsg.token import case_statement_alternative as token
 
 lTokens = []

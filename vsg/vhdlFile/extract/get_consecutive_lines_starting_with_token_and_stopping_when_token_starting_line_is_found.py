@@ -2,10 +2,7 @@
 
 
 from vsg import parser
-
-from vsg.vhdlFile.extract import tokens
-
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(search_token, stop_token, lAllTokens, oTokenMap):

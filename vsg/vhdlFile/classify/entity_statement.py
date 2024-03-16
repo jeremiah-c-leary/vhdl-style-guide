@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import concurrent_assertion_statement
-from vsg.vhdlFile.classify import concurrent_procedure_call_statement
-from vsg.vhdlFile.classify import process_statement
+from vsg.vhdlFile.classify import (
+    concurrent_assertion_statement,
+    concurrent_procedure_call_statement,
+    process_statement,
+)
 
 
 def detect(iToken, lObjects):

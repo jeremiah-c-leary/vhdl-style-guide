@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import rule
-from vsg import token
-from vsg import violation
+from vsg import rule, token, violation
 
 
 class rule_001(rule.Rule):

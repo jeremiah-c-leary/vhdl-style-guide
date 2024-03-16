@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-
-from vsg.rules.whitespace_after_token import Rule
 from vsg.rules import utils
+from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.colon)

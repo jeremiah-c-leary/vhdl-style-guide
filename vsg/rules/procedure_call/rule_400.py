@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import multiline_alignment_between_tokens as Rule
-
 from vsg import token
+from vsg.rules import multiline_alignment_between_tokens as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.procedure_call.procedure_name, token.procedure_call.close_parenthesis])

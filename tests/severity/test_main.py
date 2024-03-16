@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-import shutil
 import os
-import subprocess
 import pathlib
-
-
+import shutil
+import subprocess
 import unittest
-
 from tempfile import TemporaryDirectory
 
 from tests import utils

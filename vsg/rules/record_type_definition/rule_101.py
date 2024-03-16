@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules.whitespace_between_tokens import Rule as Rule
-
 from vsg.token import record_type_definition as token
 
 

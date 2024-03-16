@@ -39,8 +39,6 @@ from .rule_036 import rule_036
 from .rule_037 import rule_037
 from .rule_038 import rule_038
 from .rule_039 import rule_039
-
 from .rule_400 import rule_400
 from .rule_401 import rule_401
-
 from .rule_600 import rule_600

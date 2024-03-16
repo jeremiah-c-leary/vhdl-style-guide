@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import align_tokens_in_region_between_tokens
-
 from vsg import token
+from vsg.rules import align_tokens_in_region_between_tokens
 
 lAlign = []
 lAlign.append(token.element_declaration.colon)

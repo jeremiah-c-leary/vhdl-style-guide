@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.rules.whitespace_between_tokens import Rule
-
 from vsg.token import case_statement as token
 
 

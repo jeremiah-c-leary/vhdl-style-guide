@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import unittest
 import platform
+import unittest
 
 from vsg import junit
+
 
 class testJunitClasses(unittest.TestCase):
 

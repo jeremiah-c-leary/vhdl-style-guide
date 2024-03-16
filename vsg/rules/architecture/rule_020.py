@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import token_case
-
 from vsg.token import architecture_body as token
 
 

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token
-
+from vsg.rules import (
+    insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token,
+)
 from vsg.token import block_statement as token
 
 oInsertToken = token.end_block_label

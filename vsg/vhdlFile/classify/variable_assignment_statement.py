@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import variable_assignment_statement as token
-
-from vsg.vhdlFile.classify import conditional_variable_assignment
-from vsg.vhdlFile.classify import selected_variable_assignment
-from vsg.vhdlFile.classify import simple_variable_assignment
-
 from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import (
+    conditional_variable_assignment,
+    selected_variable_assignment,
+    simple_variable_assignment,
+)
 
 
 def detect(iToken, lObjects):

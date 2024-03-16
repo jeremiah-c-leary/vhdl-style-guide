@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token
-
+from vsg.rules import (
+    align_consecutive_lines_starting_with_a_comment_above_line_starting_with_token,
+)
 from vsg.token import use_clause as token
 
 

@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import case_generate_alternative as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import choices
-from vsg.vhdlFile.classify import generate_statement_body
+from vsg.vhdlFile.classify import choices, generate_statement_body
 
 
 def detect(iToken, lObjects):

@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 import argparse
-import pathlib
-import unittest
-from unittest import mock
-import subprocess
 import os
+import pathlib
+import subprocess
 import sys
-
+import unittest
 from tempfile import TemporaryFile
+from unittest import mock
 
 from tests import utils
-from vsg import version
-
-from vsg import cmd_line_args
+from vsg import cmd_line_args, version
 
 sAFile = os.path.join(os.path.dirname(__file__),'a.vhd')
 sBFile = os.path.join(os.path.dirname(__file__),'b.vhd')

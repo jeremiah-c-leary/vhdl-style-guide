@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.token import selected_waveforms as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import choices
-from vsg.vhdlFile.classify import waveform
+from vsg.vhdlFile.classify import choices, waveform
 
 
 def classify_until(lUntils, iToken, lObjects):

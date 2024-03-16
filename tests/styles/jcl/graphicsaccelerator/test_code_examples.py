@@ -2,11 +2,8 @@
 import os
 import unittest
 
-
-from vsg import vhdlFile
-from vsg import rule_list
-from vsg import severity
 from tests import utils
+from vsg import rule_list, severity, vhdlFile
 
 sSourceDir = os.path.join(os.path.dirname(__file__),'..','..','code_examples','graphicsaccelerator')
 

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.vhdlFile.extract import get_subprogram_body
 
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-import platform
 import datetime
+import platform
 
 
 class failure():

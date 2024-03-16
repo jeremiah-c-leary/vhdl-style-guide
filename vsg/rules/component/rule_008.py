@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import token_case_with_prefix_suffix
-
 from vsg import token
+from vsg.rules import token_case_with_prefix_suffix
 
 lTokens = []
 lTokens.append(token.component_declaration.identifier)

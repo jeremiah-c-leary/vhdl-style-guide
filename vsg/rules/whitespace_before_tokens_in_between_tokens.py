@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
+from vsg import parser, violation
 from vsg.rules import utils as rules_utils
+from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
 
 class Rule(WhitespaceRule):

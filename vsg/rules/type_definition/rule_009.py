@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line
-
 from vsg import token
+from vsg.rules import (
+    split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line,
+)
 
 oToken = token.enumeration_type_definition.enumeration_literal
 

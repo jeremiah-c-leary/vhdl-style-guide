@@ -3,9 +3,9 @@
 import os
 import unittest
 
-from vsg.rules import entity_specification
-from vsg import vhdlFile
 from tests import utils
+from vsg import vhdlFile
+from vsg.rules import entity_specification
 
 sTestDir = os.path.dirname(__file__)
 

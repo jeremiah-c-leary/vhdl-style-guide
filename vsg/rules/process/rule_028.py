@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import align_left_token_with_right_token_if_right_token_starts_a_line
-
 from vsg import token
+from vsg.rules import align_left_token_with_right_token_if_right_token_starts_a_line
 
 oLeftToken = token.process_statement.open_parenthesis
 oRightToken = token.process_statement.close_parenthesis

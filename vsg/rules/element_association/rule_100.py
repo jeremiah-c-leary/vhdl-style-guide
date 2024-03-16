@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules.whitespace_between_tokens import Rule
-
-from vsg.token import element_association
-from vsg.token import choice
+from vsg.token import choice, element_association
 
 
 class rule_100(Rule):

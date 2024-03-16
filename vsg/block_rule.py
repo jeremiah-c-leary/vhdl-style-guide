@@ -3,11 +3,9 @@
 import string
 
 from vsg import parser
-
 from vsg.rule_group import structure
-
-from vsg.vhdlFile import utils
 from vsg.rules import utils as rules_utils
+from vsg.vhdlFile import utils
 
 
 class Rule(structure.Rule):

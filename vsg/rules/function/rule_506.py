@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import token_case_in_range_bounded_by_tokens_with_prefix_suffix
-
 from vsg import token
+from vsg.rules import token_case_in_range_bounded_by_tokens_with_prefix_suffix
 
 lTokens = []
 lTokens.append(token.subprogram_body.designator)

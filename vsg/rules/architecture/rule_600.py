@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
-from vsg.rules import consistent_token_case as Rule
-
-from vsg.rules import consistent_case_utils as cc_utils
+from vsg import parser, token
+from vsg.rules import consistent_case_utils as cc_utils, consistent_token_case as Rule
 
 lTokens = []
 lTokens.append(token.interface_unknown_declaration.identifier)

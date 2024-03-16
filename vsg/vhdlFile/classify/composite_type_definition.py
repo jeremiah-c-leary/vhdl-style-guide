@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg.vhdlFile.classify import array_type_definition
-from vsg.vhdlFile.classify import record_type_definition
+from vsg.vhdlFile.classify import array_type_definition, record_type_definition
 
 
 def detect(iToken, lObjects):

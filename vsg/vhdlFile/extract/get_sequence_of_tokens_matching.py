@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_sequence_of_tokens_matching(lTokens, lAllTokens, oTokenMap, bIgnoreIfLineStart=False):

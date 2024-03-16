@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import previous_line
-
 from vsg.token import component_declaration as token
 
 

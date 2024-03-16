@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import violation
-
 from vsg.rules import token_suffix as Rule
 
 

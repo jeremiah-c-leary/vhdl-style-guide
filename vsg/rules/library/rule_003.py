@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import token
 from vsg.rules import previous_line
 from vsg.vhdlFile import utils
-
-from vsg import token
 
 lTokens = []
 lTokens.append(token.library_clause.keyword)

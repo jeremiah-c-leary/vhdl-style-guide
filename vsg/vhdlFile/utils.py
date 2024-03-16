@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 
-from vsg import exceptions
-from vsg import parser
-
-from vsg.token import direction
-from vsg.token import choice
-from vsg.token import element_association
-from vsg.token import exponent
-from vsg.token import predefined_attribute
-from vsg.token import relational_operator
-
-from vsg.token.ieee.std_logic_1164 import types
-
 import sys
+
+from vsg import exceptions, parser
+from vsg.token import (
+    choice,
+    direction,
+    element_association,
+    exponent,
+    predefined_attribute,
+    relational_operator,
+)
+from vsg.token.ieee.std_logic_1164 import types
 
 
 def assign_tokens_until(sToken, token, iToken, lObjects):

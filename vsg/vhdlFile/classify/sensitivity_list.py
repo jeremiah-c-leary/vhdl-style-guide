@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.token import sensitivity_list as token
-
 from vsg.vhdlFile import utils
 
 

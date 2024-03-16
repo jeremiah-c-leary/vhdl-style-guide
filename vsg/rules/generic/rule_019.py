@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import remove_excessive_blank_lines_above_line_starting_with_token
-
 from vsg.token import generic_clause as token
 
 lTokens = []

@@ -1,46 +1,36 @@
 # -*- coding: utf-8 -*-
 
-from vsg import config
-from vsg import exceptions
-from vsg import parser
-from vsg import token
-
-from vsg import tokens
-
-from vsg.token import adding_operator
-from vsg.token import aggregate
-from vsg.token import direction
-from vsg.token import exponent
-from vsg.token import logical_operator
-from vsg.token import miscellaneous_operator
-from vsg.token import multiplying_operator
-from vsg.token import predefined_attribute
-from vsg.token import relational_operator
-from vsg.token import resolution_indication
-from vsg.token import sign
-from vsg.token import type_mark
-from vsg.token import unary_logical_operator
-from vsg.token import choices
-from vsg.token import todo
-
-from vsg.token.ieee.std_logic_1164 import types
-from vsg.token.ieee.std_logic_1164 import function
-
-from vsg.vhdlFile import extract
-from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import blank
-from vsg.vhdlFile.classify import comment
-from vsg.vhdlFile.classify import design_file
-from vsg.vhdlFile.classify import whitespace
-from vsg.vhdlFile.classify import preprocessor
-from vsg.vhdlFile.classify import pragma
-
+from vsg import config, exceptions, parser, token, tokens
+from vsg.token import (
+    adding_operator,
+    aggregate,
+    choices,
+    direction,
+    exponent,
+    logical_operator,
+    miscellaneous_operator,
+    multiplying_operator,
+    predefined_attribute,
+    relational_operator,
+    resolution_indication,
+    sign,
+    todo,
+    type_mark,
+    unary_logical_operator,
+)
+from vsg.token.ieee.std_logic_1164 import function, types
+from vsg.token_map import process_tokens
+from vsg.vhdlFile import code_tags, extract, utils
+from vsg.vhdlFile.classify import (
+    blank,
+    comment,
+    design_file,
+    pragma,
+    preprocessor,
+    whitespace,
+)
 from vsg.vhdlFile.indent.set_token_indent import set_token_indent
 
-from vsg.token_map import process_tokens
-
-from vsg.vhdlFile import code_tags
 
 class command_line_args():
     ''' This is used as an input into the version command.'''

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import json
 import hashlib
+import json
 
 
 def write(commandLineArguments, dJson):

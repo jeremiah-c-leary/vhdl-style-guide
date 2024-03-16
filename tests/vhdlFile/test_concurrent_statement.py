@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
-
 import unittest
 
-from vsg import vhdlFile
 from tests import utils
-
+from vsg import vhdlFile
 
 sTestDir = os.path.join(os.path.dirname(__file__),   'concurrent_statement')
 lFile, eError =vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, 'classification_test_input.vhd'))

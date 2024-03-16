@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import subprogram_body as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import subprogram_declarative_part
-from vsg.vhdlFile.classify import subprogram_kind
-from vsg.vhdlFile.classify import subprogram_statement_part
+from vsg.vhdlFile.classify import (
+    subprogram_declarative_part,
+    subprogram_kind,
+    subprogram_statement_part,
+)
 
 
 def detect(iToken, lObjects):

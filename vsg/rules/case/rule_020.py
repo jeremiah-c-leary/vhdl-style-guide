@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import remove_tokens
-
 from vsg.token import case_statement as token
 
 lTokens = []

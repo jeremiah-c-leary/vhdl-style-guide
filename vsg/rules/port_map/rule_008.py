@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules import formal_part_in_association_element_between_tokens
 
 lStart = token.port_map_aspect.open_parenthesis

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import multiline_subprogram_specification_structure as Rule
-
 from vsg import token
+from vsg.rules import multiline_subprogram_specification_structure as Rule
 
 oSubprogramSpecification = token.procedure_specification
 
