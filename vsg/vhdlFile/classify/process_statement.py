@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import process_statement as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import process_declarative_part
-from vsg.vhdlFile.classify import process_statement_part
-from vsg.vhdlFile.classify import process_sensitivity_list
+from vsg.vhdlFile.classify import (
+    process_declarative_part,
+    process_sensitivity_list,
+    process_statement_part,
+)
 
 
 def detect(iToken, lObjects):

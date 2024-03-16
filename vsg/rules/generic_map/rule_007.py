@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_between_token_pairs_bounded_by_tokens import Rule
 
 lTokens = []

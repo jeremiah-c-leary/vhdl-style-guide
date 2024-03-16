@@ -2,14 +2,14 @@
 
 import copy
 
-from vsg import parser
-from vsg import violation
-
-from vsg.token import port_clause as token
-from vsg.token import interface_unknown_declaration
-from vsg.token import interface_list
-from vsg.token import identifier_list
+from vsg import parser, violation
 from vsg.rule_group import structure
+from vsg.token import (
+    identifier_list,
+    interface_list,
+    interface_unknown_declaration,
+    port_clause as token,
+)
 
 
 class rule_026(structure.Rule):

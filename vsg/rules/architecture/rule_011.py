@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import token_case_with_prefix_suffix
-
 from vsg.token import architecture_body as token
 
 lTokens = []

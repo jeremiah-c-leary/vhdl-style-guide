@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules.blank_line_above_line_starting_with_token_when_between_tokens import Rule
-
-from vsg.token import port_clause as token
-from vsg.token import entity_declaration as between
+from vsg.token import entity_declaration as between, port_clause as token
 
 lTokens = []
 lTokens.append(token.port_keyword)

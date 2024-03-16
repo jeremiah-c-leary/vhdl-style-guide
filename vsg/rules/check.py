@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import utils as rules_utils
-from vsg.rules import create_violation
+from vsg.rules import create_violation, utils as rules_utils
 
 
 def add_new_line_and_remove_new_line(self, oToi, sOption, oTokenType):

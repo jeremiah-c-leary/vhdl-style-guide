@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg.vhdlFile.classify import enumeration_type_definition
-from vsg.vhdlFile.classify import physical_type_definition
-from vsg.vhdlFile.classify import integer_type_definition
+from vsg.vhdlFile.classify import (
+    enumeration_type_definition,
+    integer_type_definition,
+    physical_type_definition,
+)
 
 
 def detect(iToken, lObjects):

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules import insert_token_left_of_token_if_it_does_not_exist_between_tokens
-
 
 oInsertToken = token.instantiated_unit.component_keyword('component')
 

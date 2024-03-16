@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import token_indent
-
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.concurrent_procedure_call_statement.label_name)

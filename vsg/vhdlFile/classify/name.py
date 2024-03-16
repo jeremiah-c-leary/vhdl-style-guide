@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
-from vsg.vhdlFile import utils
-
 from vsg.token import direction
+from vsg.vhdlFile import utils
 
 
 def classify_until(lUntils, iToken, lObjects, oType=parser.todo):

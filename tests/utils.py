@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-import re
 import os
 import pprint
+import re
+
 import yaml
 
-from vsg import config
-from vsg import parser
+from vsg import config, parser
 from vsg.vhdlFile import utils as vutils
 
 

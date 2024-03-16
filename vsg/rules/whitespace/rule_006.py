@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.rules import remove_spaces_before_token_rule
 
 

@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import package_instantiation_declaration as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import generic_map_aspect
-from vsg.vhdlFile.classify import identifier
+from vsg.vhdlFile.classify import generic_map_aspect, identifier
 
 
 def detect(iToken, lObjects):

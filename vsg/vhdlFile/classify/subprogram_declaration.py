@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import subprogram_declaration as token
-
 from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import subprogram_specification
 
 

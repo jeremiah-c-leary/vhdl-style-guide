@@ -4,12 +4,10 @@ import glob
 import os
 import re
 import sys
+
 import yaml
 
-from . import exceptions
-from . import junit
-from . import severity
-from . import utils
+from . import exceptions, junit, severity, utils
 
 
 def read_predefined_style(sStyleName):

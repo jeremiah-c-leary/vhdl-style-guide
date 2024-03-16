@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rule_group import length
 from vsg import violation
+from vsg.rule_group import length
 
 
 class number_of_lines_between_tokens(length.Rule):

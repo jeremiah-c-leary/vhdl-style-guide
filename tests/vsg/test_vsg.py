@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-import pathlib
-import unittest
-from unittest import mock
-import subprocess
-import os
-import sys
 import io
-
+import os
+import pathlib
+import subprocess
+import sys
+import unittest
 from tempfile import TemporaryDirectory
+from unittest import mock
 
 from tests import utils
 from vsg import version
+
 
 class command_line_args():
     ''' This is used as an input into the version command.'''

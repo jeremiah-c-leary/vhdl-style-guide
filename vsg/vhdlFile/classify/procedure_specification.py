@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import procedure_specification as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import formal_parameter_list
-from vsg.vhdlFile.classify import subprogram_header
+from vsg.vhdlFile.classify import formal_parameter_list, subprogram_header
 
 
 def detect(iToken, lObjects):

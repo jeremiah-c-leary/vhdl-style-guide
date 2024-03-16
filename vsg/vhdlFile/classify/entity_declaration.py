@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import entity_declarative_part
-from vsg.vhdlFile.classify import entity_header
-from vsg.vhdlFile.classify import entity_statement_part
-
 from vsg.token import entity_declaration as token
+from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import (
+    entity_declarative_part,
+    entity_header,
+    entity_statement_part,
+)
 
 
 def detect(iToken, lObjects):

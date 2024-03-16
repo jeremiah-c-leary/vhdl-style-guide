@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules.whitespace_after_token import Rule
-
 from vsg.token import iteration_scheme as token
 
 lTokens = []

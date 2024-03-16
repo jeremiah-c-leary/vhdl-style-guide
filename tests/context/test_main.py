@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
-import pathlib
-import subprocess
-import shutil
 import os
-
+import pathlib
+import shutil
+import subprocess
 import unittest
-
 from tempfile import TemporaryDirectory
 
-from vsg import __main__
-from vsg import severity
+from vsg import __main__, severity
 
 sFileName = 'context_classification_test_input.vhd'
 sFixedFileName = 'context_classification_test_input.fixed.vhd'

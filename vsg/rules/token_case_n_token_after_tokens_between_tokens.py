@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rule_group import case
 from vsg import violation
+from vsg.rule_group import case
 
 lKeywords = []
 lKeywords.append('std_logic')

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-
-from vsg.rules import token_case_formal_part_of_association_element_in_map_between_tokens
+from vsg.rules import (
+    token_case_formal_part_of_association_element_in_map_between_tokens,
+)
 
 oStart = token.component_instantiation_statement.instantiation_label
 oEnd = token.component_instantiation_statement.semicolon

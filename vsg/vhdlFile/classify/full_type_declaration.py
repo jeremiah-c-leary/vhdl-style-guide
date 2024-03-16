@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import full_type_declaration as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import identifier
-from vsg.vhdlFile.classify import type_definition
+from vsg.vhdlFile.classify import identifier, type_definition
 
 
 def detect(iToken, lObjects):

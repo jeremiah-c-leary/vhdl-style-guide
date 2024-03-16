@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
-from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_tokens_at_beginning_of_line_matching(lTokens, lAllTokens, oTokenMap):

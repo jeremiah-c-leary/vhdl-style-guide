@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rule_group import case
-from vsg.rules import case_utils
-from vsg.rules import utils
+from vsg.rules import case_utils, utils
 
 
 class token_case(case.Rule):

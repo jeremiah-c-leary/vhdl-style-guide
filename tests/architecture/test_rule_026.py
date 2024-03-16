@@ -3,10 +3,9 @@
 import os
 import unittest
 
-from vsg.rules import architecture
-from vsg import vhdlFile
 from tests import utils
-from vsg import token
+from vsg import token, vhdlFile
+from vsg.rules import architecture
 
 sTestDir = os.path.dirname(__file__)
 

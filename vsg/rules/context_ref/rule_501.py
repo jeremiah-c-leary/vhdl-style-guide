@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import token_case as Rule
-
 from vsg import token
+from vsg.rules import token_case as Rule
 
 lTokens = []
 lTokens.append(token.context_reference.context_name)

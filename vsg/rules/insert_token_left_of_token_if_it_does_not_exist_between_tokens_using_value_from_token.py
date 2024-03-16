@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, violation
 from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
-
-from vsg.rules.insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token import insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token as Rule
+from vsg.rules.insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token import (
+    insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token as Rule,
+)
+from vsg.vhdlFile import utils
 
 
 class insert_token_left_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(Rule):

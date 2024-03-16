@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import concurrent_selected_signal_assignment as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import delay_mechanism
-from vsg.vhdlFile.classify import expression
-from vsg.vhdlFile.classify import selected_waveforms
+from vsg.vhdlFile.classify import delay_mechanism, expression, selected_waveforms
 
 
 def detect(iToken, lObjects):

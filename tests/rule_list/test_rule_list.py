@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-import unittest
 import json
-
-from vsg import vhdlFile
-from vsg import rule_list
-from vsg import severity
+import unittest
 
 from tests import utils
+from vsg import rule_list, severity, vhdlFile
 
 dIndentMap = utils.read_indent_file()
 

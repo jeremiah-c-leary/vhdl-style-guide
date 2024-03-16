@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import architecture_body as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import architecture_declarative_part
-from vsg.vhdlFile.classify import architecture_statement_part
+from vsg.vhdlFile.classify import (
+    architecture_declarative_part,
+    architecture_statement_part,
+)
 
 
 def detect(iToken, lObjects):

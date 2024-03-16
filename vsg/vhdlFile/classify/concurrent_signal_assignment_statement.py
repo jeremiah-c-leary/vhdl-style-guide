@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import concurrent_signal_assignment_statement as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import concurrent_conditional_signal_assignment
-from vsg.vhdlFile.classify import concurrent_selected_signal_assignment
-from vsg.vhdlFile.classify import concurrent_simple_signal_assignment
+from vsg.vhdlFile.classify import (
+    concurrent_conditional_signal_assignment,
+    concurrent_selected_signal_assignment,
+    concurrent_simple_signal_assignment,
+)
 
 
 def detect(iToken, lObjects):

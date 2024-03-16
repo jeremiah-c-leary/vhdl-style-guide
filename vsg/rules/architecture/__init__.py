@@ -31,10 +31,7 @@ from .rule_030 import rule_030
 from .rule_031 import rule_031
 from .rule_032 import rule_032
 from .rule_033 import rule_033
-
 from .rule_200 import rule_200
-
 from .rule_400 import rule_400
-
 from .rule_600 import rule_600
 from .rule_601 import rule_601

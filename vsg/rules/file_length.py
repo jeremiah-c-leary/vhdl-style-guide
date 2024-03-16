@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
+from vsg import parser, violation
 from vsg.rule_group import length
-from vsg import violation
 
 
 class file_length(length.Rule):

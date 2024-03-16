@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.rules import insert_tokens_right_of_token_if_it_does_not_exist_before_token
-
 from vsg.token import package_body as token
 
 lInsertTokens = []

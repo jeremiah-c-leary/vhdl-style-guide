@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import selected_variable_assignment as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import expression
-from vsg.vhdlFile.classify import selected_expressions
+from vsg.vhdlFile.classify import expression, selected_expressions
 
 
 def detect(iToken, lObjects):

@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules import alignment_utils
-from vsg.rules import utils as rules_utils
+from vsg import parser, violation
 from vsg.rule_group import alignment
+from vsg.rules import alignment_utils, utils as rules_utils
 
 
 class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_token(alignment.Rule):

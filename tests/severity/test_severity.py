@@ -4,6 +4,7 @@ import unittest
 
 from vsg import severity
 
+
 class testMethods(unittest.TestCase):
 
     def test_error_class_exists(self):

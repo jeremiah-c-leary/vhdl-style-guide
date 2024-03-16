@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import interface_function_specification
-from vsg.vhdlFile.classify import interface_procedure_specification
+from vsg.vhdlFile.classify import (
+    interface_function_specification,
+    interface_procedure_specification,
+)
 
 
 def detect(iToken, lObjects):

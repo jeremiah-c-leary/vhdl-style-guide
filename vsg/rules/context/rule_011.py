@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens
-
 from vsg import token
+from vsg.rules import (
+    move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens,
+)
 
 lAnchorTokens = []
 lAnchorTokens.append(token.context_declaration.end_keyword)

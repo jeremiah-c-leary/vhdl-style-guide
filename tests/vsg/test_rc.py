@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-import unittest
 import subprocess
+import unittest
+
 
 class command_line_args():
     ''' This is used as an input into the version command.'''

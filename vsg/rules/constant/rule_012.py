@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg.rules import multiline_array_alignment as Rule
-
 from vsg import token
+from vsg.rules import multiline_array_alignment as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.assignment_operator, token.constant_declaration.semicolon])

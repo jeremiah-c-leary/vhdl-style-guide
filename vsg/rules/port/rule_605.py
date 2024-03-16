@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import token_suffix as Rule
-
-from vsg.rules import utils
-
 from vsg import token
+from vsg.rules import token_suffix as Rule, utils
 
 lTokens = []
 

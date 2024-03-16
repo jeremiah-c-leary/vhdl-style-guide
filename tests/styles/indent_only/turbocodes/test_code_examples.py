@@ -2,11 +2,8 @@
 import os
 import unittest
 
-
-from vsg import vhdlFile
-from vsg import rule_list
-from vsg import severity
 from tests import utils
+from vsg import rule_list, severity, vhdlFile
 
 dIndentMap = utils.read_indent_file()
 

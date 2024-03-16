@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-import unittest
 import os
+import unittest
 
 from vsg.config import read_configuration_files
+
 
 def get_index_of_dictionary_in_list(lList, sKey):
     for iIndex, item in enumerate(lList):

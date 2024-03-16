@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import group_declaration as token
-
 from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import group_constituent_list
 
 

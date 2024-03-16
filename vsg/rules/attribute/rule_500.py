@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import token_case as Rule
-
 from vsg.token import predefined_attribute as token
 
 lTokens = []

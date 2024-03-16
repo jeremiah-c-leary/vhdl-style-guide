@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import component_instantiation_statement as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import generic_map_aspect
-from vsg.vhdlFile.classify import instantiated_unit
-from vsg.vhdlFile.classify import port_map_aspect
+from vsg.vhdlFile.classify import generic_map_aspect, instantiated_unit, port_map_aspect
 
 
 def detect(iToken, lObjects):

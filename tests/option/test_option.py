@@ -3,16 +3,10 @@ import sys
 import unittest
 from unittest import mock
 
-from vsg import config
-from vsg import deprecated_rule
-from vsg import parser
-from vsg import rule
-from vsg import violation
-from vsg import __main__
-from vsg.vhdlFile.extract import tokens
+from vsg import __main__, config, deprecated_rule, parser, rule, violation
 from vsg.rules import option
-
 from vsg.rules.entity import rule_001
+from vsg.vhdlFile.extract import tokens
 
 #class command_line_args():
 #    ''' This is used as an input into the version command.'''

@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import configuration_declaration
-from vsg.vhdlFile.classify import context_declaration
-from vsg.vhdlFile.classify import entity_declaration
-from vsg.vhdlFile.classify import package_declaration
-from vsg.vhdlFile.classify import package_instantiation_declaration
+from vsg.vhdlFile.classify import (
+    configuration_declaration,
+    context_declaration,
+    entity_declaration,
+    package_declaration,
+    package_instantiation_declaration,
+)
 
 
 def detect(iToken, lObjects):

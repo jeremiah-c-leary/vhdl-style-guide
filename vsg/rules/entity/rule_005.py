@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import move_token_next_to_another_token
-
 from vsg.token import entity_declaration as token
 
 

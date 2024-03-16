@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import subprogram_instantiation_declaration as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import signature
-from vsg.vhdlFile.classify import subprogram_kind
-from vsg.vhdlFile.classify import generic_map_aspect
+from vsg.vhdlFile.classify import generic_map_aspect, signature, subprogram_kind
 
 
 def detect(iToken, lObjects):

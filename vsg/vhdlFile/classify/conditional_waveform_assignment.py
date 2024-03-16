@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import conditional_waveform_assignment as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import delay_mechanism
-from vsg.vhdlFile.classify import conditional_waveforms
+from vsg.vhdlFile.classify import conditional_waveforms, delay_mechanism
 
 
 def detect(iToken, lObjects):

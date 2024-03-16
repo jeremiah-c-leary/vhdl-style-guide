@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
-from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_blank_lines_below_line_ending_with_token(lTokens, lHierarchy, lAllTokens, oTokenMap):

@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from vsg import violation
-
+from vsg import parser, token, violation
+from vsg.rule_group import case
+from vsg.rules import consistent_case_utils as cc_utils
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.extract import tokens
-from vsg.rule_group import case
-
-from vsg import parser
-from vsg import token
-
-from vsg.rules import consistent_case_utils as cc_utils
 
 
 class consistent_token_case(case.Rule):

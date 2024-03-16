@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-from vsg import token
-
-from vsg.rules import utils as rules_utils
+from vsg import parser, token, violation
 from vsg.rule_group import blank_line
+from vsg.rules import utils as rules_utils
 
 
 class blank_line_below_line_ending_with_token(blank_line.Rule):

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.token import resolution_indication as token
-
 from vsg.vhdlFile import utils
 
 

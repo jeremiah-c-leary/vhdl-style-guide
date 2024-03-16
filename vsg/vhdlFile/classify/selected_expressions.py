@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import selected_expressions as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import choices
-from vsg.vhdlFile.classify import expression
+from vsg.vhdlFile.classify import choices, expression
 
 
 def classify_until(lUntils, iToken, lObjects):

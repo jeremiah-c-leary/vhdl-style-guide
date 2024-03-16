@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules import utils as rules_utils
+from vsg import parser, violation
 from vsg.rule_group import alignment
+from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
 
 

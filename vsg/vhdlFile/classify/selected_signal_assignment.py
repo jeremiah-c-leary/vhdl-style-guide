@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import selected_force_assignment
-from vsg.vhdlFile.classify import selected_waveform_assignment
+from vsg.vhdlFile.classify import (
+    selected_force_assignment,
+    selected_waveform_assignment,
+)
 
 
 def detect(iToken, lObjects):

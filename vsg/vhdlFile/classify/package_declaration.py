@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import package_declaration as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import package_declarative_part
-from vsg.vhdlFile.classify import package_header
+from vsg.vhdlFile.classify import package_declarative_part, package_header
 
 
 def detect(iToken, lObjects):

@@ -2,7 +2,6 @@
 
 
 from vsg.vhdlFile.extract import utils
-
 from vsg.vhdlFile.extract.get_line_succeeding_line import get_line_succeeding_line
 
 

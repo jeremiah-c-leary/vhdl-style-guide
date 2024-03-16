@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, violation
 from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
+from vsg.vhdlFile import utils
 
 
 class spaces_before_and_after_tokens_when_bounded_by_tokens(whitespace.Rule):

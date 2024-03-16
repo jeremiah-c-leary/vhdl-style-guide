@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from vsg import parser, violation
 from vsg.rule_group import blank_line
-from vsg import parser
-from vsg import violation
 
 
 class blank_line_above_line_starting_with_token(blank_line.Rule):

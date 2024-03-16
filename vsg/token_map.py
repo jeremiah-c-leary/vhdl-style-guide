@@ -3,8 +3,7 @@
 import bisect
 import pprint
 
-from vsg import parser
-from vsg import token
+from vsg import parser, token
 
 
 class New():

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import generic_map_aspect as token
-
 from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import association_list
 
 

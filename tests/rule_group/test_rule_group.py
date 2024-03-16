@@ -1,22 +1,17 @@
 # -*- coding: utf-8 -*-
-import filecmp
-import pathlib
-import unittest
-from unittest import mock
-import os
-import subprocess
-import shutil
-import sys
-import shutil
-
 import contextlib
+import filecmp
+import os
+import pathlib
+import shutil
+import subprocess
+import sys
+import unittest
 from io import StringIO
-
 from tempfile import TemporaryDirectory
 
 from tests import utils
-from vsg import version
-from vsg import __main__
+from vsg import __main__, version
 
 
 def full_source_path():

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import utils as rules_utils
-
 from vsg.vhdlFile import utils
 
 

@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
-
 import unittest
 
-from vsg import vhdlFile
-
-from vsg.rules import comment
-from vsg.rules import constant
-from vsg.rules import entity
-from vsg.rules import library
-from vsg.rules import port
-
 from tests import utils
+from vsg import vhdlFile
+from vsg.rules import comment, constant, entity, library, port
 
 # Read in test file used for all tests
 dIndentMap = utils.read_indent_file()

@@ -27,7 +27,6 @@ from .rule_024 import rule_024
 from .rule_025 import rule_025
 from .rule_026 import rule_026
 from .rule_027 import rule_027
-
 from .rule_600 import rule_600
 from .rule_601 import rule_601
 from .rule_602 import rule_602

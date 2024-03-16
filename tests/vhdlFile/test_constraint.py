@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
-
 import unittest
 
-from tests import utils
 import vsg.vhdlFile as vhdlFile
+from tests import utils
 
 sLrmUnit = utils.extract_lrm_unit_name(__name__)
 

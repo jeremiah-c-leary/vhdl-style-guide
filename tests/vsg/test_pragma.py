@@ -1,23 +1,20 @@
 # -*- coding: utf-8 -*-
+import contextlib
 import filecmp
-import pathlib
-import unittest
-from unittest import mock
 import os
+import pathlib
+import shutil
 import subprocess
-import shutil
 import sys
-import shutil
+import unittest
+from io import StringIO
+from tempfile import TemporaryFile
+from unittest import mock
+
 import yaml
 
-import contextlib
-from io import StringIO
-
-from tempfile import TemporaryFile
-
 from tests import utils
-from vsg import version
-from vsg import __main__
+from vsg import __main__, version
 
 
 class testMain(unittest.TestCase):

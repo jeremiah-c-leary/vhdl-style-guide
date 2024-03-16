@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import entity_aspect as token
-
 from vsg.vhdlFile import utils
 
 

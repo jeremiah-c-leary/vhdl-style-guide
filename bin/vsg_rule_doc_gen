@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
 import os
+import sys
 
 # Get the path to the executable
 executablePath = os.path.dirname(os.path.realpath(__file__))

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import utils
-
 from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
 

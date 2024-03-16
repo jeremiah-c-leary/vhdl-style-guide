@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import move_token as Rule
-
 from vsg import token
+from vsg.rules import move_token as Rule
 
 oToken = token.generic_map_aspect.close_parenthesis
 

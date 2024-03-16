@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import token_case_in_range_bounded_by_tokens
-
 from vsg import token
+from vsg.rules import token_case_in_range_bounded_by_tokens
 
 lTokens = []
 lTokens.append(token.generic_map_aspect.generic_keyword)

@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg import block_rule
-from vsg import parser
-from vsg import violation
-
+from vsg import block_rule, parser, violation
 from vsg.vhdlFile import utils
 
 

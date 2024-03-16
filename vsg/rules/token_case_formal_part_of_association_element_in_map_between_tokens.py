@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import token
-from vsg import violation
+from vsg import parser, token, violation
 from vsg.rule_group import case
-from vsg.rules import case_utils
-from vsg.rules import utils
+from vsg.rules import case_utils, utils
 
 
 class token_case_formal_part_of_association_element_in_map_between_tokens(case.Rule):

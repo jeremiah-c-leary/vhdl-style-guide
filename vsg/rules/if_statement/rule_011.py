@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import remove_excessive_blank_lines_below_line_ending_with_token
-
 from vsg import token
+from vsg.rules import remove_excessive_blank_lines_below_line_ending_with_token
 
 lTokens = []
 lTokens.append(token.if_statement.else_keyword)

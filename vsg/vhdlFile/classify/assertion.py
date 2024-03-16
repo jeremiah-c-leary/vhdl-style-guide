@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import assertion as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import condition
-from vsg.vhdlFile.classify import expression
+from vsg.vhdlFile.classify import condition, expression
 
 
 def classify(iToken, lObjects):

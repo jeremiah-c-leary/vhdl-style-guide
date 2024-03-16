@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import package_body as token
-
 from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import package_body_declarative_part
 
 

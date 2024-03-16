@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.rules import blank_line_below_line_ending_with_token as Rule
-
 from vsg.token import pragma as token
 
 

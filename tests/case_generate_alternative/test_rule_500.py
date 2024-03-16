@@ -3,9 +3,9 @@
 import os
 import unittest
 
-from vsg.rules import case_generate_alternative
-from vsg import vhdlFile
 from tests import utils
+from vsg import vhdlFile
+from vsg.rules import case_generate_alternative
 
 sTestDir = os.path.dirname(__file__)
 

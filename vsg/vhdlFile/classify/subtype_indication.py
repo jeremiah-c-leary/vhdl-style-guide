@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import constraint
-from vsg.vhdlFile.classify import resolution_indication
-from vsg.vhdlFile.classify import type_mark
+from vsg.vhdlFile.classify import constraint, resolution_indication, type_mark
 
 
 def classify(iToken, lObjects):

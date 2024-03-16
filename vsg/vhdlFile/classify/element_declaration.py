@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import element_declaration as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import element_subtype_definition
-from vsg.vhdlFile.classify import identifier_list
+from vsg.vhdlFile.classify import element_subtype_definition, identifier_list
 
 
 def classify(iToken, lObjects):

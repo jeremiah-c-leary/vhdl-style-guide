@@ -3,13 +3,9 @@
 import unittest
 from unittest import mock
 
-from vsg import config
-from vsg import deprecated_rule
-from vsg import parser
-from vsg import rule
-from vsg import violation
-from vsg.vhdlFile.extract import tokens
+from vsg import config, deprecated_rule, parser, rule, violation
 from vsg.rules import option
+from vsg.vhdlFile.extract import tokens
 
 
 class command_line_args():

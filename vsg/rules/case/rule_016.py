@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import token_case
-
 from vsg import token
+from vsg.rules import token_case
 
 lTokens = []
 lTokens.append(token.case_statement_alternative.when_keyword)

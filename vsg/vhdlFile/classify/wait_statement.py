@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import wait_statement as token
-
-from vsg.vhdlFile.classify import sensitivity_clause
-from vsg.vhdlFile.classify import condition_clause
-from vsg.vhdlFile.classify import timeout_clause
-
 from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import condition_clause, sensitivity_clause, timeout_clause
 
 
 def detect(iToken, lObjects):

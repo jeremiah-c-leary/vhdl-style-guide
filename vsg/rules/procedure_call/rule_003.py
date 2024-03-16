@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.rules import multiline_procedure_call_structure as Rule
-
 from vsg import token
+from vsg.rules import multiline_procedure_call_structure as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.procedure_call.procedure_name, token.concurrent_procedure_call_statement.semicolon])

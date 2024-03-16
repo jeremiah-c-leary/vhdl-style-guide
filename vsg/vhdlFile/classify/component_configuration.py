@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import component_configuration as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import component_specification
-from vsg.vhdlFile.classify import binding_indication
-from vsg.vhdlFile.classify import block_configuration
+from vsg.vhdlFile.classify import (
+    binding_indication,
+    block_configuration,
+    component_specification,
+)
 
 
 def detect(iToken, lObjects):
