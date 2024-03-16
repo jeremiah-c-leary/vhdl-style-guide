@@ -59,7 +59,7 @@ concurrent_003
 |phase_5| |error| |alignment|
 
 This rule checks alignment of multiline concurrent simple signal assignments.
-Succesive lines should align to the space after the assignment operator.
+Successive lines should align to the space after the assignment operator.
 However, there is a special case if there are parenthesis in the assignment.
 If the parenthesis are not closed on the same line, then the next line will be aligned to the parenthesis.
 Aligning to the parenthesis improves readability.

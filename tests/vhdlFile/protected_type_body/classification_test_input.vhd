@@ -21,7 +21,7 @@ architecture RTL of ENTITY_NAME is
 
    package pack2 is new pack2_name;
 
-   type indentifier;
+   type identifier;
 
    subtype identifier is integer;
 

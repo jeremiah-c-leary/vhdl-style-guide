@@ -44,6 +44,6 @@ class rule_029(align_tokens_in_region_between_tokens_unless_between_tokens):
 
     def __init__(self):
         super().__init__(lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
-        self.solution = 'Align identifer.'
+        self.solution = 'Align identifier.'
         self.configuration_documentation_link = 'configuring_identifier_alignment_rules_link'
         self.configuration.remove('separate_generic_port_alignment')

@@ -404,7 +404,7 @@ Following extra configurations are supported:
 
 .. code-block:: vhdl
 
-       wr_en    => write_enable,        -- Wrte enable
+       wr_en    => write_enable,        -- Write enable
        rd_en    => read_enable,    -- Read enable
        overflow => overflow,         -- FIFO has overflowed
 
@@ -412,7 +412,7 @@ Following extra configurations are supported:
 
 .. code-block:: vhdl
 
-       wr_en    => write_enable, -- Wrte enable
+       wr_en    => write_enable, -- Write enable
        rd_en    => read_enable,  -- Read enable
        overflow => overflow,     -- FIFO has overflowed
 

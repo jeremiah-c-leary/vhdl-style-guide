@@ -131,7 +131,7 @@ class testVsg(unittest.TestCase):
                 self.assertEqual(sLine, lActual[iLineNumber])
 
     def test_local_rules(self):
-        lExpected = ['ERROR: tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into seperate files.']
+        lExpected = ['ERROR: tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into separate files.']
         lExpected.append('')
 
         try:

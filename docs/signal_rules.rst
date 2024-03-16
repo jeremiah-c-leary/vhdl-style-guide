@@ -183,7 +183,7 @@ The function of this rule has been moved to rule ieee_500.
 signal_011
 ##########
 
-The function of this rule has been superceeded by the following rules:
+The function of this rule has been superseded by the following rules:
 
 * ieee_500
 * subtype_002

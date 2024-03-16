@@ -5,7 +5,7 @@ from vsg.rule_group import structure
 
 class rule_001(structure.Rule):
     '''
-    This rule checks for the existance of the source file passed to VSG.
+    This rule checks for the existence of the source file passed to VSG.
 
     **Violation**
 

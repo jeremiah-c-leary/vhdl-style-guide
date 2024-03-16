@@ -152,7 +152,7 @@ This rule checks for default assignments in variable declarations.
 variable_010
 ############
 
-The function of this rule has been superceeded by the following rules:
+The function of this rule has been superseded by the following rules:
 
 * ieee_500
 * subtype_002

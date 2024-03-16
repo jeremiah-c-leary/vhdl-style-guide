@@ -38,7 +38,7 @@ This rule checks the indent lines starting with comments.
 .. code-block:: vhdl
 
        -- Libraries
-   libary ieee;
+   library ieee;
 
     -- Define architecture
    architecture rtl of fifo is
@@ -54,7 +54,7 @@ This rule checks the indent lines starting with comments.
 .. code-block:: vhdl
 
    -- Libraries
-   libary ieee;
+   library ieee;
 
    -- Define architecture
    architecture rtl of fifo is

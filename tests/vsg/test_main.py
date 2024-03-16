@@ -232,7 +232,7 @@ class testMain(unittest.TestCase):
     @mock.patch('sys.stdout')
     def test_local_rules(self,mock_stdout):
         lExpected = []
-        lExpected.append(mock.call('ERROR: tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into seperate files.'))
+        lExpected.append(mock.call('ERROR: tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into separate files.'))
         lExpected.append(mock.call('\n'))
 
         sys.argv = ['vsg']

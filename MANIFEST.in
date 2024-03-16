@@ -1,5 +1,6 @@
 exclude setup.cfg
 include *.properties
+include .codespell-ignore
 include .flake8
 include .gitattributes
 include .gitignore

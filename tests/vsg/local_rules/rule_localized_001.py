@@ -11,7 +11,7 @@ class rule_001(rule.Rule):
       self.name = 'localized' # Force the rule's name, because it can't be extracted from the module
       self.phase = 1
       self.fixable = False  # User must split the file
-      self.solution = 'Split entity and architecture into seperate files.'
+      self.solution = 'Split entity and architecture into separate files.'
 
   def analyze(self, oFile):
       lToiEntity = oFile.get_tokens_matching([token.entity_declaration.entity_keyword])

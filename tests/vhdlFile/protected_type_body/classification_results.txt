@@ -124,7 +124,7 @@
 23 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-24 |    type indentifier;
+24 |    type identifier;
 <class 'vsg.token.incomplete_type_declaration.type_keyword'>
 <class 'vsg.token.incomplete_type_declaration.identifier'>
 <class 'vsg.token.incomplete_type_declaration.semicolon'>

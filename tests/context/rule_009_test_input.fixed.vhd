@@ -24,7 +24,7 @@ end context -- Some comment
  -- Some other comment
 c1;
 
-context c1  -- Yet another commet
+context c1  -- Yet another comment, comment
   -- Some comment
 is
 

@@ -93,7 +93,7 @@ would result in the following format being enforced:
    O_OUTPUT :   out std_logic;
    IO_INOUT : inout std_logic;
 
-Rules Enforcing Aligment
+Rules Enforcing Alignment
 ########################
 
 * `port_007 <port_rules.html#port-007>`_

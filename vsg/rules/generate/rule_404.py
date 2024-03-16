@@ -46,7 +46,7 @@ class rule_404(align_tokens_in_region_between_tokens_when_between_tokens_unless_
 
     def __init__(self):
         super().__init__(lAlign, oStartToken, oEndToken, lBetweenTokens, lUnless)
-        self.solution = 'Align identifer.'
+        self.solution = 'Align identifier.'
         self.configuration_documentation_link = 'configuring_identifier_alignment_rules_link'
         self.configuration.remove('loop_control_statements_ends_group')
         self.configuration.remove('separate_generic_port_alignment')

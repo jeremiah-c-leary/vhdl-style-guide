@@ -104,7 +104,7 @@ This works by taking the current buffer's contents and passing it into the stand
                     groups = { 'severity', 'row', 'code', 'message' },
                     overrides = {
                         severities = {
-                            -- 2 is for warnings, nvim showing as an erorr can be obnoxious. Change if desired
+                            -- 2 is for warnings, nvim showing as an error can be obnoxious. Change if desired
                             ["ERROR"] = 2,
                             ["WARNING"] = 3,
                             ["INFORMATION"] = 3,

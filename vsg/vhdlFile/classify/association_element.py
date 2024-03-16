@@ -11,7 +11,7 @@ def detect(iCurrent, lObjects):
     association_element ::=
         [ formal_part => ] actual_part
 
-    An association element will either end in a close parenthesis or a comma that is not within paranthesis.
+    An association element will either end in a close parenthesis or a comma that is not within parenthesis.
 
     accociation_element [)|,]
 

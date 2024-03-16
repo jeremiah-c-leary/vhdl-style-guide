@@ -12,7 +12,7 @@ begin
   -- with transport delay mechanism
   a <= transport b;
 
-  -- with inertial delay machanism
+  -- with inertial delay mechanism
   a <= inertial b;
 
   -- with reject delay mechanism
@@ -21,7 +21,7 @@ begin
   -- with guarded and transport delay mechanism
   a <= guarded transport b;
 
-  -- with guarded and inertial delay machanism
+  -- with guarded and inertial delay mechanism
   a <= guarded inertial b;
 
   -- with guarded and reject delay mechanism

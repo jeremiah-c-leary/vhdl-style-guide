@@ -86,7 +86,7 @@ begin
       case next_s is
 
         when RESET_S =>
-          -- initialze signals to zero.
+          -- initialize signals to zero.
           flag      <= '0';
           flag1     <= '0';
           int_type  <= "00";

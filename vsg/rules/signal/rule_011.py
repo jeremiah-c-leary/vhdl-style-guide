@@ -4,7 +4,7 @@ from vsg import deprecated_rule
 
 class rule_011(deprecated_rule.Rule):
     '''
-    The function of this rule has been superceeded by the following rules:
+    The function of this rule has been superseded by the following rules:
 
     * ieee_500
     * subtype_002
@@ -12,7 +12,7 @@ class rule_011(deprecated_rule.Rule):
     '''
     def __init__(self):
         super().__init__()
-        self.message.append('Rule ' + self.unique_id + ' has been superceeded by the following rules:')
+        self.message.append('Rule ' + self.unique_id + ' has been superseded by the following rules:')
         self.message.append('  ieee_500')
         self.message.append('  subtype_002')
         self.message.append('  type_014')

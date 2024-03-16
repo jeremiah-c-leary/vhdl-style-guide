@@ -18,7 +18,7 @@ begin
        c when 'b' else
        d;
 
-  -- with inertial delay machanism
+  -- with inertial delay mechanism
   a <= inertial b when 'a' else
        c when 'b' else
        d;
@@ -33,7 +33,7 @@ begin
        c when 'b' else
        d;
 
-  -- with guarded and inertial delay machanism
+  -- with guarded and inertial delay mechanism
   a <= guarded inertial b when 'a' else
        c when 'b' else
        d;

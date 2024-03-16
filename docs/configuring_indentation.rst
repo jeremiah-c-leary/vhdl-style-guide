@@ -5,7 +5,7 @@ Configuring Indentation
 -----------------------
 
 VSG follows a predefined set of rules when indenting VHDL code.
-The indenting alogrithm is driven by a YAML file.
+The indenting algorithm is driven by a YAML file.
 
 The indent values feeding the algorithm can be obtained by using the **-oc** command line argument.
 There will be a section starting with **indent**.

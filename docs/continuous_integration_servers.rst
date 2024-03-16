@@ -17,7 +17,7 @@ JUnit Report
 
 VSG can generate a report of an analysis in JUnit XML format.
 This report will include the filename along with any errors detected.
-The rule which was violated, the line number where the violation occured, and the proposed solution are provided.
+The rule which was violated, the line number where the violation occurred, and the proposed solution are provided.
 
 This report can be used in most CI server applications to create a test report.
 Refer to the documentation of your CI server application for how to integrate the JUnit report.
@@ -62,7 +62,7 @@ The following items in the spec are populated.
    A relative path to the file with code quality issues.
 
 .. |location_lines_begin| replace::
-   The line number where the code quality issue occured.
+   The line number where the code quality issue occurred.
 
 +----------------------+------------------------+
 | Code Climate Spec    | Description            |

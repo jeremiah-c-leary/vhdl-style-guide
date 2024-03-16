@@ -31,7 +31,7 @@ entity FIFO is
 -- RTL_SYNTHESIS OFF
 -- RTL_SYNTHESIS something
 
--- synopsys 
+-- synopsys
 -- synopsys something
 -- synopsys something else
 -- synopsys something else entirely

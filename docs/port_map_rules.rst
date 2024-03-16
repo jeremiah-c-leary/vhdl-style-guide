@@ -229,7 +229,7 @@ port_map_010
 |phase_1| |error| |structure|
 
 This rule checks for comments at the end of the port and generic assignments in instantiations.
-These comments represent additional maintainence.
+These comments represent additional maintenance.
 They will be out of sync with the entity at some point.
 Refer to the entity for port types, port directions and purpose.
 
