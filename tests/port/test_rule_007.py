@@ -52,7 +52,7 @@ class test_port_rule(unittest.TestCase):
         oRule = port.rule_007()
         oRule.spaces_before = 0
         oRule.spaces_after = 1
-        
+
         lExpected = [4, 5, 6, 15, 16]
 
         oRule.analyze(self.oFile)

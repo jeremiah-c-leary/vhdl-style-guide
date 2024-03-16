@@ -624,9 +624,9 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('x')
         lTokens.append('"--"')
         lTokens.append(';')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_single_quotes_around_spaces(self):
@@ -638,12 +638,12 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(' ')
         lTokens.append("' '")
         lTokens.append(' ')
-        lTokens.append('&') 
+        lTokens.append('&')
         lTokens.append(' ')
         lTokens.append('after')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
 
@@ -651,18 +651,18 @@ class testTokenMethod(unittest.TestCase):
         sLine = '--| "yet another string"'
         lTokens = []
         lTokens.append('--| "yet another string"')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_single_quotes_in_comment(self):
         sLine = "--| 'a'"
         lTokens = []
         lTokens.append("--| 'a'")
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_backward_slashes(self):
@@ -688,14 +688,14 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(' ')
         lTokens.append('STD_ULOGIC')
         lTokens.append(';')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_combine_backslash_characters_into_symbols(self):
         sLine = ' function \?=\ hello'
-         
+
         lActual = tokens.create(sLine)
 
         lExpected = []
@@ -710,7 +710,7 @@ class testTokenMethod(unittest.TestCase):
 
 
         sLine = ' function \?=\\'
-         
+
         lActual = tokens.create(sLine)
 
         lExpected = []
@@ -722,7 +722,7 @@ class testTokenMethod(unittest.TestCase):
         self.assertEqual(lExpected, lActual)
 
         sLine = ' function \?=\\('
-         
+
         lActual = tokens.create(sLine)
 
         lExpected = []
@@ -734,9 +734,9 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-        
+
         sLine = ' function \?=\\ '
-         
+
         lActual = tokens.create(sLine)
 
         lExpected = []
@@ -748,9 +748,9 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-        
+
         sLine = ' function \?=\\;'
-         
+
         lActual = tokens.create(sLine)
 
 
@@ -764,7 +764,7 @@ class testTokenMethod(unittest.TestCase):
         self.assertEqual(lExpected, lActual)
 
         sLine = ' function \\?>\\  ('
-         
+
         lActual = tokens.create(sLine)
 
         lExpected = []
@@ -787,9 +787,9 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append("'a'")
         lTokens.append(')')
         lTokens.append(')')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_multiple_character_literals(self):
@@ -806,9 +806,9 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append("'c'")
         lTokens.append('|')
         lTokens.append("'d'")
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_backslash(self):
@@ -819,9 +819,9 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('"/\\"')
         lTokens.append(' ')
         lTokens.append('b')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_real_number(self):
@@ -854,9 +854,9 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('50.23')
         lTokens.append('e')
         lTokens.append('91')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_tabs(self):
@@ -870,9 +870,9 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append('\t \t')
         lTokens.append('d')
         lTokens.append(' \t')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_delimited_comment(self):
@@ -882,18 +882,18 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(' ')
         lTokens.append('--- ')
         lTokens.append('*/')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_delimited_comment_after_comment(self):
         sLine = '-- Comment /* --- */'
         lTokens = []
         lTokens.append('-- Comment /* --- */')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_beginning_delimited_comment_before_comment(self):
@@ -903,9 +903,9 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(' ')
         lTokens.append('---')
         lTokens.append(' ')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 
     def test_ending_delimited_comment_after_comment(self):
@@ -913,8 +913,8 @@ class testTokenMethod(unittest.TestCase):
         lTokens = []
         lTokens.append('-- ')
         lTokens.append('*/')
-  
+
         lActual = tokens.create(sLine)
-  
+
         self.assertEqual(lTokens, lActual)
 

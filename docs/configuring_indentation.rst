@@ -46,7 +46,7 @@ where:
 |             | "+<integer>" |                                                                   |
 |             | "-<integer>" |                                                                   |
 +-------------+--------------+-------------------------------------------------------------------+
- 
+
 The **group_name** and **token_name** keys provide unique identifier which can be matched to types of tokens after the file has been parsed.
 There are more tokens than are currently defined in the indent configuration, as not all tokens require indenting rules.
 
@@ -182,31 +182,31 @@ In this case, there is a file named `component_instantiation_statement.py` file:
 .. code-block:: python
 
    from vsg import parser
-   
-   
+
+
    class instantiation_label(parser.label):
        '''
        unique_id = component_instantiation_statement : instantiation_label
        '''
-   
+
        def __init__(self, sString):
            super().__init__(sString)
-   
-   
+
+
    class label_colon(parser.label_colon):
        '''
        unique_id = component_instantiation_statement : label_colon
        '''
-   
+
        def __init__(self):
            super().__init__()
-   
-   
+
+
    class semicolon(parser.semicolon):
        '''
        unique_id = component_instantiation_statement : semicolon
        '''
-   
+
        def __init__(self, sString=None):
            super().__init__()
 
@@ -299,25 +299,25 @@ Using the above configuration on the following file...
 
 
     architecture rtl of fifo is
-    
+
     begin
-    
+
       U_FIFO : FIFO
         generic map ();
-    
+
       a <= b;
-    
+
       U_FIFO : FIFO
         port map ();
-    
+
       a <= b;
-    
+
       U_FIFO : FIFO
         generic map ()
         port map ();
-    
+
       a <= b;
-    
+
     end architecture rtl;
 
 ...results in the following updates:
@@ -325,23 +325,23 @@ Using the above configuration on the following file...
 .. code-block:: vhdl
 
    architecture rtl of fifo is
-   
+
    begin
-   
+
      u_fifo : component fifo
      generic map ();
-   
+
      a <= b;
-   
+
      u_fifo : component fifo
      port map ();
-   
+
      a <= b;
-   
+
      u_fifo : component fifo
      generic map ()
      port map ();
-   
+
      a <= b;
-   
+
    end architecture rtl;

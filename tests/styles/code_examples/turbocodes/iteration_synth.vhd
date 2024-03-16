@@ -101,9 +101,9 @@ begin
                                         z           => zout1,
                                         zPerm       => zout1Perm
                                         );
-    
+
     tmp0 <= zout1Perm(0) & zout1Perm(1) & zout1Perm(2) & zout1Perm(3) & abDel1Perm(0) & abDel1Perm(1);
-    
+
     interleaver_i0 : interleaver    generic map (
                                                 delay       => TREL1_LEN + TREL2_LEN + 2 + delay,
                                                 way         => 0
@@ -114,16 +114,16 @@ begin
                                                 d           => tmp0,
                                                 q           => tmp1
                                                 );
-    
+
     zoutInt1(0)         <= tmp1(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 3 + SIG_WIDTH * 2);
     zoutInt1(1)         <= tmp1(Z_WIDTH * 3 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 2 + SIG_WIDTH * 2);
     zoutInt1(2)         <= tmp1(Z_WIDTH * 2 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 1 + SIG_WIDTH * 2);
     zoutInt1(3)         <= tmp1(Z_WIDTH * 1 + SIG_WIDTH * 2 - 1 downto Z_WIDTH * 0 + SIG_WIDTH * 2);
     abDel1PermInt(0)    <= tmp1(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
     abDel1PermInt(1)    <= tmp1(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
-    
+
     tmp2 <= a & b & y & w & yInt & wInt;
-    
+
     delayer_i0 : delayer    generic map (
                                         delay   => TREL1_LEN + TREL2_LEN
                                         )
@@ -133,14 +133,14 @@ begin
                                         d       => tmp2,
                                         q       => tmp3
                                         );
-    
+
     aDel1       <= tmp3(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
     bDel1       <= tmp3(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
     yDel1       <= tmp3(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
     wDel1       <= tmp3(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
     yIntDel1    <= tmp3(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
     wIntDel1    <= tmp3(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
-    
+
     abPermut_i0 : abPermut  generic map (
                                         flip        => (TREL1_LEN + TREL2_LEN + 2 + delay + 1) mod 2
                                         )
@@ -150,9 +150,9 @@ begin
                                         b           => bDel1,
                                         abPerm      => abDel1Perm
                                         );
-    
+
     tmp4 <= aDel1 & bDel1 & yDel1 & wDel1;
-    
+
     delayer_i1 : delayer    generic map (
                                         delay   => FRSIZE
                                         )
@@ -162,7 +162,7 @@ begin
                                         d       => tmp4,
                                         q       => tmp5
                                         );
-    
+
     aDel2   <= tmp5(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
     bDel2   <= tmp5(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
     yDel2   <= tmp5(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
@@ -180,9 +180,9 @@ begin
                                 aClean  => aDecInt,
                                 bClean  => bDecInt
                                 );
-    
+
     tmp6 <= zout2(0) & zout2(1) & zout2(2) & zout2(3);
-    
+
     deinterleaver_i0 : interleaver  generic map (
                                                 delay       => 2 * (TREL1_LEN + TREL2_LEN + 2) + FRSIZE + delay,
                                                 way         => 1
@@ -193,12 +193,12 @@ begin
                                                 d           => tmp6,
                                                 q           => tmp7
                                                 );
-    
+
     zout2Int(0) <= tmp7(Z_WIDTH * 4 - 1 downto Z_WIDTH * 3);
     zout2Int(1) <= tmp7(Z_WIDTH * 3 - 1 downto Z_WIDTH * 2);
     zout2Int(2) <= tmp7(Z_WIDTH * 2 - 1 downto Z_WIDTH * 1);
     zout2Int(3) <= tmp7(Z_WIDTH * 1 - 1 downto Z_WIDTH * 0);
-    
+
     zPermut_i1 : zPermut    generic map (
                                         flip        => (2 * (TREL1_LEN + TREL2_LEN + 2) + FRSIZE + delay) mod 2
                                         )
@@ -207,9 +207,9 @@ begin
                                         z           => zout2Int,
                                         zPerm       => zout
                                         );
-    
+
     tmp8 <= aDel2 & bDel2 & yDel2 & wDel2 & yIntDel1 & wIntDel1;
-    
+
     delayer_i2 : delayer    generic map (
                                         delay   => TREL1_LEN + TREL2_LEN
                                         )
@@ -219,16 +219,16 @@ begin
                                         d       => tmp8,
                                         q       => tmp9
                                         );
-    
+
     aDel3       <= tmp9(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
     bDel3       <= tmp9(SIG_WIDTH * 5 - 1 downto SIG_WIDTH * 4);
     yDel3       <= tmp9(SIG_WIDTH * 4 - 1 downto SIG_WIDTH * 3);
     wDel3       <= tmp9(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
     yIntDel3    <= tmp9(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
     wIntDel3    <= tmp9(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
-    
+
     tmp10 <= aDel3 & bDel3 & yDel3 & wDel3 & yIntDel3 & wIntDel3 & yIntDel4 & wIntDel4;
-    
+
     delayer_i3 : delayer    generic map (
                                         delay   => FRSIZE
                                         )
@@ -238,7 +238,7 @@ begin
                                         d       => tmp10,
                                         q       => tmp11
                                         );
-    
+
     aDel        <= tmp11(SIG_WIDTH * 8 - 1 downto SIG_WIDTH * 7);
     bDel        <= tmp11(SIG_WIDTH * 7 - 1 downto SIG_WIDTH * 6);
     yDel        <= tmp11(SIG_WIDTH * 6 - 1 downto SIG_WIDTH * 5);
@@ -247,5 +247,5 @@ begin
     wIntDel4    <= tmp11(SIG_WIDTH * 3 - 1 downto SIG_WIDTH * 2);
     yIntDel     <= tmp11(SIG_WIDTH * 2 - 1 downto SIG_WIDTH * 1);
     wIntDel     <= tmp11(SIG_WIDTH * 1 - 1 downto SIG_WIDTH * 0);
-    
+
 end;

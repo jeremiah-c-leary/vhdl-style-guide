@@ -51,7 +51,7 @@ begin
     end if;
 
     case a is
-      when 0 => 
+      when 0 =>
         aaaaaaaaa      <= x;
         aaaaaaaaaa     <= x;
       when 1 =>

@@ -1,12 +1,12 @@
 -----------------------------------------------------------------------------------------------------------------------
 -- Author:          Jonny Doin, jdoin@opencores.org, jonnydoin@gmail.com
--- 
--- Create Date:     09:56:30 07/06/2011  
+--
+-- Create Date:     09:56:30 07/06/2011
 -- Module Name:     grp_debouncer - RTL
 -- Project Name:    basic functions
 -- Target Devices:  Spartan-6
 -- Tool versions:   ISE 13.1
--- Description: 
+-- Description:
 --
 --      This block is a generic multiple input debouncing circuit.
 --      It handles multiple inputs, like mechanical switch inputs, and outputs a debounced, stable registered version of the inputs.
@@ -14,16 +14,16 @@
 --
 --      CONCEPTUAL CIRCUIT
 --      ==================
---                                                                                     
---                                           W                                         
---                          /----------------/----------------\                        
---                          |                                 |                        
---                          |                                 |                        
---                          |        ______        ______     |         _____          
---                          |    W   |    |   W    |fdr |  W  |    W    |cmp \         
---                          \----/---| +1 |---/----|    |--/--+----/----|     \        
---                                   |    |        |    |               |      \       
---                                   ------        |    |               \       |      
+--
+--                                           W
+--                          /----------------/----------------\
+--                          |                                 |
+--                          |                                 |
+--                          |        ______        ______     |         _____
+--                          |    W   |    |   W    |fdr |  W  |    W    |cmp \
+--                          \----/---| +1 |---/----|    |--/--+----/----|     \
+--                                   |    |        |    |               |      \
+--                                   ------        |    |               \       |
 --                                                 |    |                |   =  |-----\
 --                                                 |> R |               /       |     |
 --                                                 ---+--               |      /      |
@@ -62,15 +62,15 @@
 --      PIPELINE LOGIC
 --      ==============
 --
---      This debouncer circuit detects edges in an input signal, and waits the signal to stabilize for the designated time 
---      before transferring the stable signal to the registered output. 
+--      This debouncer circuit detects edges in an input signal, and waits the signal to stabilize for the designated time
+--      before transferring the stable signal to the registered output.
 --      A one-clock-cyle strobe is pulsed at the output to signalize a new data available.
 --      The core clock should be the system clock, to optimize use of global clock resources.
 --
 --      GROUP DEBOUNCING
 --      ================
 --
---      A change in state in any bit in the input word causes reload of the delay counter, and the output word is updated only 
+--      A change in state in any bit in the input word causes reload of the delay counter, and the output word is updated only
 --      when all bits are stable for the specified period. Therefore, the grouping of signals and delay selection should match
 --      behaviour of the selected signals.
 --
@@ -86,28 +86,28 @@
 --      The VHDL dialect used is VHDL'93, accepted largely by all synthesis tools.
 --
 ------------------------------ COPYRIGHT NOTICE -----------------------------------------------------------------------
---                                                                   
---                                                                   
+--
+--
 --      Author(s):      Jonny Doin, jdoin@opencores.org, jonnydoin@gmail.com
---                                                                   
+--
 --      Copyright (C) 2011 Jonny Doin
 --      -----------------------------
---                                                                   
---      This source file may be used and distributed without restriction provided that this copyright statement is not    
---      removed from the file and that any derivative work contains the original copyright notice and the associated 
---      disclaimer. 
---                                                                   
---      This source file is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser 
---      General Public License as published by the Free Software Foundation; either version 2.1 of the License, or 
+--
+--      This source file may be used and distributed without restriction provided that this copyright statement is not
+--      removed from the file and that any derivative work contains the original copyright notice and the associated
+--      disclaimer.
+--
+--      This source file is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser
+--      General Public License as published by the Free Software Foundation; either version 2.1 of the License, or
 --      (at your option) any later version.
---                                                                   
+--
 --      This source is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
---      warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more  
+--      warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 --      details.
 --
---      You should have received a copy of the GNU Lesser General Public License along with this source; if not, download 
+--      You should have received a copy of the GNU Lesser General Public License along with this source; if not, download
 --      it from http://www.gnu.org/licenses/lgpl.txt
---                                                                   
+--
 ------------------------------ REVISION HISTORY -----------------------------------------------------------------------
 --
 -- 2011/07/06   v0.01.0010  [JD]    started development. verification of synthesis circuit inference.
@@ -126,19 +126,19 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity grp_debouncer is
-    Generic (   
+    Generic (
         N : positive := 8;                                                      -- input bus width
         CNT_VAL : positive := 10000);                                           -- clock counts for debounce period
-    Port (  
+    Port (
         clk_i : in std_logic := 'X';                                            -- system clock
         data_i : in std_logic_vector (N-1 downto 0) := (others => 'X');         -- noisy input data
         data_o : out std_logic_vector (N-1 downto 0);                           -- registered stable output data
         strb_o : out std_logic                                                  -- strobe for new data available
-    );                      
+    );
 end grp_debouncer;
 
 architecture rtl of grp_debouncer is
-    -- datapath pipeline 
+    -- datapath pipeline
     signal reg_A, reg_B : std_logic_vector (N-1 downto 0) := (others => '0');   -- debounce edge detectors
     signal reg_out : std_logic_vector (N-1 downto 0) := (others => '0');        -- registered output
     signal dat_strb : std_logic := '0';                                         -- data transfer strobe
@@ -193,7 +193,7 @@ begin
     edge_detector_proc: dat_diff <= '1' when reg_A /= reg_B else '0';
     -- lookahead new data strobe
     next_strobe_proc: strb_next <= '1' when ((reg_out /= reg_B) and dat_strb = '1') else '0';
-    
+
     --=============================================================================================
     -- OUTPUT LOGIC
     --=============================================================================================

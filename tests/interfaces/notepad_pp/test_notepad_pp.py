@@ -152,4 +152,4 @@ class test_input_arguments(unittest.TestCase):
         self.assertIsNone(self.oInputArguments.text)
         self.oInputArguments.set_text('This is a test.')
         self.assertEqual('This is a test.', self.oInputArguments.text)
-        
+

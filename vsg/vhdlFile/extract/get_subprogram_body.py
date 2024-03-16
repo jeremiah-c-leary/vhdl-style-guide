@@ -29,7 +29,7 @@ def extract_pairs(dData):
     lStartIndexes = merge_keywords(dData)
     lEndIndexes = merge_semicolons(dData)
     return extract_inner_pairs(lStartIndexes, lEndIndexes)
-    
+
 
 def merge_keywords(dData):
     return merge_keys(dData, 'procedureSpecificationKeyword', 'functionSpecificationKeyword')

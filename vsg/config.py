@@ -134,8 +134,8 @@ def search_list(lDict, lDeprecatedKeys, sConfigFilename, lMessages):
         elif sKey in lDeprecatedKeys:
             lMessages.append('ERROR: configuration file ' + sConfigFilename + ': ' + dDeprecatedOption[sKey])
             lDeprecatedKeys.remove(sKey)
-     
-               
+
+
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     dReturn = dConfig
     if 'file_list' not in dConfig:
@@ -270,7 +270,7 @@ dPragmas["single"].append("^\\s*--\\s+xilinx\\s+\\w+\\s+\\w+\\s*$")
 
 def add_pragma_regular_expressions(dStyle):
     if not 'pragma' in dStyle.keys():
-        dStyle['pragma'] = {} 
+        dStyle['pragma'] = {}
         dStyle['pragma']['patterns'] = dPragmas
     dStyle['pragma']['regexp'] = {}
 

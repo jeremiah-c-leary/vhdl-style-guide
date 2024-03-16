@@ -65,9 +65,9 @@ Setting the |option| option to |spaces| will result in leading whitespace being 
 
    begin
 
-   \tb <= "1000" when a = "00" else 
-   \t\t"0100" when a = "01" else 
-   \t\t"0010" when a = "10" else 
+   \tb <= "1000" when a = "00" else
+   \t\t"0100" when a = "01" else
+   \t\t"0010" when a = "10" else
    \t\t"0001" when a = "11";
 
    end architecture rtl;
@@ -82,9 +82,9 @@ Setting the |option| option to |spaces| will result in leading whitespace being 
 
    begin
 
-     b <= "1000" when a = "00" else 
-          "0100" when a = "01" else 
-          "0010" when a = "10" else 
+     b <= "1000" when a = "00" else
+          "0100" when a = "01" else
+          "0010" when a = "10" else
           "0001" when a = "11";
 
    end architecture rtl;
@@ -105,13 +105,13 @@ Tabs set the indent and spaces are used for alignment.
 
    begin
 
-     b <= "1000" when a = "00" else 
-          "0100" when a = "01" else 
-          "0010" when a = "10" else 
+     b <= "1000" when a = "00" else
+          "0100" when a = "01" else
+          "0010" when a = "10" else
           "0001" when a = "11";
 
    end architecture rtl;
-   
+
 **Fix**
 
 .. code-block:: text
@@ -122,9 +122,9 @@ Tabs set the indent and spaces are used for alignment.
 
    begin
 
-   \tb <= "1000" when a = "00" else 
-   \t     "0100" when a = "01" else 
-   \t     "0010" when a = "10" else 
+   \tb <= "1000" when a = "00" else
+   \t     "0100" when a = "01" else
+   \t     "0010" when a = "10" else
    \t     "0001" when a = "11";
 
    end architecture rtl;

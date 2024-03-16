@@ -26,7 +26,7 @@ For example, the following code...
 would be tokenized into this:
 
 .. code-block:: python
-   
+
    tokens = [
        ['architecture', ' ', 'rtl', ' ', 'of', ' ', 'fifo', ' ', 'is'],
        ['begin'],

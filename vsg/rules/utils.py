@@ -290,7 +290,7 @@ def token_is_at_end_of_line(iToken, lTokens):
     if token_is_whitespace(lTokens[iToken + 1]) and token_is_comment(lTokens[iToken + 2]):
         return True
     return False
-    
+
 
 def left_most_token_is_at_the_end_of_a_line(lTokens):
     return token_is_at_end_of_line(0, lTokens)
@@ -317,7 +317,7 @@ def lowercase_list(lList):
     for sItem in lList:
         lReturn.append(sItem.lower())
     return lReturn
-  
+
 
 def extract_identifiers_with_mode_of_input(lToi):
     return extract_identifiers_with_mode(lToi, token.mode.in_keyword)
@@ -436,7 +436,7 @@ def array_detected_after_assignment_operator(assignment_operator, oToi):
         if not bFirstTokenFound:
             bFirstTokenFound = token_is_open_paren(oToken)
 #        print(f'{iParen}|{bFirstTokenFound}|{oToken}')
-    
+
     return True
 
 

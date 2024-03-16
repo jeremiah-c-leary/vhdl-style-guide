@@ -86,7 +86,7 @@ begin
     elsif (something_else) then
       b <= 1;
     end if;
-  
+
     if (something) then
       b <= 0;
     elsif (something_else) then

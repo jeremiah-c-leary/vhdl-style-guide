@@ -22,7 +22,7 @@ def classify(iToken, lObjects):
 
     while not utils.is_next_token(';', iCurrent, lObjects):
         iCurrent = classify_utils.classify_selected_name(iCurrent, lObjects, token)
-    
+
         if utils.is_next_token(',', iCurrent, lObjects):
             iCurrent = utils.assign_next_token_required(',', token.comma, iCurrent, lObjects)
 

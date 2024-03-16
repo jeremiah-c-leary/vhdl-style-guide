@@ -14,12 +14,12 @@ begin
     -- Violations below
 
     loop end loop;
-    
+
 
     loop end loop END_LOOP_LABEL;
 
 
-    
+
 
   end process;
 

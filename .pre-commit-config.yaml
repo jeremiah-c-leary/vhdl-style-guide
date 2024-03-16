@@ -49,7 +49,12 @@ repos:
       - id: detect-private-key
       - id: fix-byte-order-marker
       #- id: end-of-file-fixer
-      #- id: trailing-whitespace
+      - id: trailing-whitespace
+        exclude: "^(\
+          tests/styles/code_examples/trailing_whitespace\\.vhd|\
+          tests/styles/jcl/trailing_whitespace.fixed\\.vhd|\
+          tests/whitespace/.*\\.vhd\
+          )$"
       #- id: fix-encoding-pragma
 
   - repo: https://github.com/mgedmin/check-manifest

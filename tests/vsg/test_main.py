@@ -502,7 +502,7 @@ class testMain(unittest.TestCase):
                     iCompares += 1
 
         self.assertEqual(iCompares, len(lExpected))
-       
+
 
     @mock.patch('sys.stdout')
     def test_backup_file(self, mock_stdout):
