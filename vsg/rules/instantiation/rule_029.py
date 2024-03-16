@@ -26,7 +26,7 @@ class rule_029(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
 
     .. code-block:: vhdl
 
-           wr_en    => write_enable,        -- Wrte enable
+           wr_en    => write_enable,        -- Write enable
            rd_en    => read_enable,    -- Read enable
            overflow => overflow,         -- FIFO has overflowed
 
@@ -34,7 +34,7 @@ class rule_029(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
 
     .. code-block:: vhdl
 
-           wr_en    => write_enable, -- Wrte enable
+           wr_en    => write_enable, -- Write enable
            rd_en    => read_enable,  -- Read enable
            overflow => overflow,     -- FIFO has overflowed
     '''

@@ -112,7 +112,7 @@ The classification of the opening portion of the production, from **architecture
 After the **is** keyword, the detect function of the architecture_declarative_part is called to check if there is anything in that production.
 If there are no more items in the architecture_declarative_part, then the begin keyword is classified.
 After the **begin** keyword, the detect function of the architecture_statement_part is called to check if there is anything in that production.
-If there are no more itmes in the architecture_statement_part, then the closing portion of the production, from **end** to the semicolon, is handled by the classify_closing_declaration function.
+If there are no more items in the architecture_statement_part, then the closing portion of the production, from **end** to the semicolon, is handled by the classify_closing_declaration function.
 
 The recursive nature is implemented by calling other productions and then those productions returning to the caller.
 

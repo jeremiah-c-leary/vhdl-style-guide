@@ -197,7 +197,7 @@ def does_not_contain_any_alpha_characters(sObjectValue):
     return False
 
 
-# Define mapping of case to checkers and comparitors
+# Define mapping of case to checkers and comparators
 dCase = {}
 dCase['camelCase'] = {}
 dCase['camelCase']['check'] = check_for_camelcase

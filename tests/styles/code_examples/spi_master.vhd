@@ -37,7 +37,7 @@
 --      Parallel load is controlled using 3 signals: 'di_i', 'di_req_o' and 'wren_i'. 'di_req_o' is a look ahead data request line,
 --      that is set 'PREFETCH' clock cycles in advance to synchronize a pipelined memory or fifo to present the 
 --      next input data at 'di_i' in time to have continuous clock at the spi bus, to allow back-to-back continuous load.
---      For a pipelined sync RAM, a PREFETCH of 2 cycles allows an address generator to present the new adress to the RAM in one
+--      For a pipelined sync RAM, a PREFETCH of 2 cycles allows an address generator to present the new address to the RAM in one
 --      cycle, and the RAM to respond in one more cycle, in time for 'di_i' to be latched by the shifter.
 --      If the user sequencer needs a different value for PREFETCH, the generic can be altered at instantiation time.
 --      The 'wren_i' write enable strobe must be valid at least one setup time before the rising edge of the last SPI clock cycle,
@@ -139,7 +139,7 @@
 --                                  BUG: CPOL='0', CPHA='1' causes SCK to have one extra pulse with one sclk_i width at the end.
 -- 2011/07/18   v1.12.0105  [JD]    CHG: spi sck output register changed to remove glitch at last clock when CPHA='1'.
 --                                  for CPHA='1', max spi clock is 25MHz. for CPHA= '0', max spi clock is >50MHz.
--- 2011/07/24   v1.13.0125  [JD]    FIX: 'sck_ena_ce' is on half-cycle advanced to 'fsm_ce', elliminating CPHA='1' glitches.
+-- 2011/07/24   v1.13.0125  [JD]    FIX: 'sck_ena_ce' is on half-cycle advanced to 'fsm_ce', eliminating CPHA='1' glitches.
 --                                  Core verified for all CPOL, CPHA at up to 50MHz, simulates to over 100MHz.
 -- 2011/07/29   v1.14.0130  [JD]    Removed global signal setting at the FSM, implementing exhaustive explicit signal attributions
 --                                  for each state, to avoid reported inference problems in some synthesis engines.

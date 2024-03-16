@@ -173,7 +173,7 @@ Having a space makes it clearer where the assignment occurs on the line.
 constant_011
 ############
 
-The function of this rule has been superceeded by the following rules:
+The function of this rule has been superseded by the following rules:
 
 * ieee_500
 * subtype_002

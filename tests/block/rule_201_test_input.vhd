@@ -3,7 +3,7 @@ architecture RTL of FIFO is
 
 begin
 
-  -- With no optional paramenters
+  -- With no optional parameters
   BLOCK_LABEL : block
   begin
   end block;

@@ -77,7 +77,7 @@ begin
       flag <= INTA_I;
       case next_s is
         when reset_s =>
-          --initialze signals to zero.
+          --initialize signals to zero.
           flag <= '0';
           flag1 <= '0';
           int_type <= "00";

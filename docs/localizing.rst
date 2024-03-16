@@ -144,7 +144,7 @@ We also need to provide a solution to the user so they will know how to fix the 
 
 
          self.fixable = False  # User must split the file
-         self.solution = 'Split entity and architecture into seperate files.'
+         self.solution = 'Split entity and architecture into separate files.'
 
      def analyze(self, oFile):
          if oFile.hasEntity and oFile.hasArchitecture:
@@ -164,7 +164,7 @@ Finally, we need to add a code tag check so the rule can be disabled via comment
          self.name = 'localized'
          self.phase = 1
          self.fixable = False  # User must split the file
-         self.solution = 'Split entity and architecture into seperate files.'
+         self.solution = 'Split entity and architecture into separate files.'
 
      def analyze(self, oFile):
          if not self.is_vsg_off(oLine):
@@ -190,7 +190,7 @@ When we want to run with localized rules, use the **--local_rules** option.
    File:  RAM.vhd
    ==============
    Phase 1... Reporting
-   localized_001            |            1 | Split entity and architecture into seperate files.
+   localized_001            |            1 | Split entity and architecture into separate files.
    Phase 2... Not executed
    Phase 3... Not executed
    Phase 4... Not executed
@@ -513,7 +513,7 @@ Use this to create the initial violation and add to it as necessary.
 The **get_violation_line_number** will return the lines['number'] attribute of the violation.
 Use this function to abstract away the line number from the underlying data structure.
 
-The **get_violating_line** will return a line object at the line the violation occured.
+The **get_violating_line** will return a line object at the line the violation occurred.
 This is easier than manually indexing into the oFile list to pull out a line.
 
 Rule creation guidelines

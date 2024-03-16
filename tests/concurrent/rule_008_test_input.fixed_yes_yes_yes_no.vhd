@@ -58,7 +58,7 @@ begin
 
   for_generate_label : for i in 0 to 200 generate -- for generate comment
     ab <= bc; -- comment zz
-    ac <= ad; -- coment za
+    ac <= ad; -- comment za
     ae <= af; -- comment ab
   end generate; -- end for generate label
 

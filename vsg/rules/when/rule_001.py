@@ -21,7 +21,7 @@ lTokenPairs.append([token.conditional_waveform_assignment.assignment, token.cond
 class rule_001(structure.Rule):
     '''
     This rule checks the **else** keyword is not at the beginning of a line.
-    The else should be at the end of the preceeding line.
+    The else should be at the end of the preceding line.
 
     **Violation**
 

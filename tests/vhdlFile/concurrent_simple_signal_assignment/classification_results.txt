@@ -58,7 +58,7 @@
 14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-15 |   -- with inertial delay machanism
+15 |   -- with inertial delay mechanism
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 16 |   a <= inertial b;
@@ -101,7 +101,7 @@
 23 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-24 |   -- with guarded and inertial delay machanism
+24 |   -- with guarded and inertial delay mechanism
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 25 |   a <= guarded inertial b;

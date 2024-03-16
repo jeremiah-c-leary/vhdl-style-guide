@@ -11,7 +11,7 @@ oEnd = token.component_instantiation_statement.semicolon
 class rule_010(remove_comments_from_end_of_lines_bounded_by_tokens):
     '''
     This rule checks for comments at the end of the port and generic assignments in instantiations.
-    These comments represent additional maintainence.
+    These comments represent additional maintenance.
     They will be out of sync with the entity at some point.
     Refer to the entity for port types, port directions and purpose.
 

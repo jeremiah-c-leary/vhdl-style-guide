@@ -265,13 +265,13 @@ This rule checks the label has proper case.
 
 .. code-block:: vhdl
 
-   PROCEDURE_CALL_LABEL : WR_EN(paremeter);
+   PROCEDURE_CALL_LABEL : WR_EN(parameter);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   procedure_call_label : WR_EN(paremeter);
+   procedure_call_label : WR_EN(parameter);
 
 procedure_call_501
 ##################

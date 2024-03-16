@@ -52,7 +52,7 @@ architecture rtl of fifo is
     others              => false
   );
 
-  -- Test hierarcical assignments
+  -- Test hierarchical assignments
   -- Desired alignment
   constant my_constant : my_type := (
     ENUM_1   => (

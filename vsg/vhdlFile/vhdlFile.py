@@ -192,8 +192,8 @@ class vhdlFile():
     def set_token_indent(self):
         set_token_indent(self.dIndentMap, self.lAllObjects)
 
-    def get_line_preceeding_line(self, iLine, iNumLines=1):
-        return extract.get_line_preceeding_line(iLine, self.lAllObjects, iNumLines, self.oTokenMap)
+    def get_line_preceding_line(self, iLine, iNumLines=1):
+        return extract.get_line_preceding_line(iLine, self.lAllObjects, iNumLines, self.oTokenMap)
 
     def get_line_succeeding_line(self, iLine, iNumLines=1):
         return extract.get_line_succeeding_line(iLine, self.lAllObjects, iNumLines, self.oTokenMap)

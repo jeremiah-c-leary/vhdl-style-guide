@@ -21,7 +21,7 @@ context
 
 end context c1;
 
-context c1 is  -- Yet another commet
+context c1 is  -- Yet another comment, comment
   -- Some comment
 
 

@@ -78,7 +78,7 @@ Where:
 +--------------+---------------------------------------------------------------+
 | filename     | The file being analyzed.                                      |
 +--------------+---------------------------------------------------------------+
-| line_number  | The line number the violation occured.                        |
+| line_number  | The line number the violation occurred.                        |
 +--------------+---------------------------------------------------------------+
 | rule         | The rule id that detected the violation                       |
 +--------------+---------------------------------------------------------------+

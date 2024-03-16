@@ -47,7 +47,7 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
 
     def __init__(self):
         super().__init__(lAlign, oStart, oEnd, lUnless)
-        self.solution = 'Align identifer.'
+        self.solution = 'Align identifier.'
         self.if_control_statements_ends_group = 'yes'
         self.case_control_statements_ends_group = 'yes'
         self.case_keyword_statements_ends_group = 'yes'

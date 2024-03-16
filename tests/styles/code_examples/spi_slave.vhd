@@ -29,7 +29,7 @@
 --      The write to 'di_i' must occur at most one 'spi_sck_i' cycle before actual load to the core shift register, to avoid
 --      race conditions at the register transfer.
 --      The user circuit places data at the 'di_i' port and strobes the 'wren_i' line for one rising edge of 'clk_i'.
---      For a pipelined sync RAM, a PREFETCH of 3 cycles allows an address generator to present the new adress to the RAM in one
+--      For a pipelined sync RAM, a PREFETCH of 3 cycles allows an address generator to present the new address to the RAM in one
 --      cycle, and the RAM to respond in one more cycle, in time for 'di_i' to be latched by the interface one clock before transfer.
 --      If the user sequencer needs a different value for PREFETCH, the generic can be altered at instantiation time.
 --      The 'wren_i' write enable strobe must be valid at least one setup time before the rising edge of the last clock cycle,
