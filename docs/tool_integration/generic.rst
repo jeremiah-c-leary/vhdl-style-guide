@@ -4,7 +4,7 @@ Generic Tool Integration
 VSG supports integration with other tools via several command line options.
 
 +-------------------------------+-------------------------------------------------+
-| --all-phases                  | Executes all phases without stopping if a       |
+| --all_phases                  | Executes all phases without stopping if a       |
 |                               | violation is found.                             |
 +-------------------------------+-------------------------------------------------+
 | --json                        | Filename of JSON file to generate.              |
@@ -12,11 +12,11 @@ VSG supports integration with other tools via several command line options.
 | --fix_only                    | Filename of JSON file with fix instructions     |
 +-------------------------------+-------------------------------------------------+
 
---all-phases
+--all_phases
 ############
 
 VSG has a concept of phases, where violations in one phase should be addressed before moving to the next phase.
-The **--all-phases** option will run an analysis over all the phases.
+The **--all_phases** option will run an analysis over all the phases.
 It will not stop if a violation has occured.
 
 This option can be useful when integrating VSG into an editor that supports linters.

@@ -127,7 +127,7 @@ The command line tool can be invoked with:
 +-------------------------------+-------------------------------------------------+
 | --version                     | Displays the version of VSG.                    |
 +-------------------------------+-------------------------------------------------+
-| --all-phases                  | Executes all phases without stopping if a       |
+| --all_phases                  | Executes all phases without stopping if a       |
 |                               | violation is found.                             |
 |                               | NOTE: This is not valid with the --fix option.  |
 +-------------------------------+-------------------------------------------------+
