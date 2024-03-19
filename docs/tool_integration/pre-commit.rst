@@ -7,7 +7,7 @@ VSG supports integration with pre-commit using the following ``.pre-commit-confi
 
   repos:
     - repo: https://github.com/jeremiah-c-leary/vhdl-style-guide
-      rev: v3.18.0
+      rev: 3.18.0
       hooks:
         - id: vsg
 
@@ -17,7 +17,7 @@ You may customize VSG by using the ``arg`` node, for example:
 
   repos:
     - repo: https://github.com/alonbl/vhdl-style-guide
-      rev: v3.18.0
+      rev: 3.18.0
       hooks:
         - id: vsg
           args:
