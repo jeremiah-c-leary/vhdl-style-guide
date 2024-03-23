@@ -8,7 +8,7 @@ import sys
 import contextlib
 from io import StringIO
 
-from tempfile import TemporaryFile
+from tempfile import TemporaryDirectory
 
 from vsg import __main__
 
@@ -16,18 +16,10 @@ from vsg import __main__
 class testMain(unittest.TestCase):
 
     def setUp(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
-
-        if os.path.isfile('actual.json'):
-            os.remove('actual.json')
+        self._tmpdir = TemporaryDirectory()
 
     def tearDown(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
-
-        if os.path.isfile('actual.json'):
-            os.remove('actual.json')
+        self._tmpdir.cleanup()
 
 
     @mock.patch('sys.stdout')
@@ -44,11 +36,13 @@ class testMain(unittest.TestCase):
         lExpected.append(mock.call(sExpected))
         lExpected.append(mock.call('\n'))
 
+        actual_file = os.path.join(self._tmpdir.name, 'actual.json')
+
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['-f', 'vsg/tests/tool_integration/quality_report/example.vhd'])
         sys.argv.extend(['-p 1'])
-        sys.argv.extend(['--quality_report', 'actual.json'])
+        sys.argv.extend(['--quality_report', actual_file])
 
         try:
             __main__.main()
@@ -56,6 +50,6 @@ class testMain(unittest.TestCase):
             pass
 
         mock_stdout.write.assert_has_calls(lExpected)
-        self.assertTrue(os.path.isfile('actual.json'))
-        self.assertTrue(filecmp.cmp('actual.json', os.path.join('vsg', 'tests', 'tool_integration', 'quality_report', 'expected.json')))
+        self.assertTrue(os.path.isfile(actual_file))
+        self.assertTrue(filecmp.cmp(actual_file, os.path.join('vsg', 'tests', 'tool_integration', 'quality_report', 'expected.json')))
 

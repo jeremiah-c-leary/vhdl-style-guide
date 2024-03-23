@@ -12,7 +12,7 @@ import yaml
 import contextlib
 from io import StringIO
 
-from tempfile import TemporaryFile
+from tempfile import TemporaryDirectory
 
 from vsg.tests import utils
 from vsg import version
@@ -35,12 +35,10 @@ class command_line_args():
 class testMain(unittest.TestCase):
 
     def setUp(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
+        self._tmpdir = TemporaryDirectory()
 
     def tearDown(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
+        self._tmpdir.cleanup()
 
     @mock.patch('sys.stdout')
     def test_multiple_configuration_w_multiple_filelists(self, mock_stdout):
@@ -135,19 +133,18 @@ class testMain(unittest.TestCase):
 
     @mock.patch('sys.stdout')
     def test_invalid_configuration(self, mock_stdout):
-#    def test_invalid_configuration(self):
-        utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
         lExpected = []
         lExpected.append(mock.call('ERROR: Invalid configuration file: vsg/tests/vsg/config_error.json'))
         lExpected.append(mock.call('\n'))
         lExpected.append(mock.call('while parsing a flow node\nexpected the node content, but found \',\'\n  in "vsg/tests/vsg/config_error.json", line 2, column 16'))
         lExpected.append(mock.call('\n'))
 
+        junit_file = os.path.join(self._tmpdir.name, 'config_error.actual.xml')
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_error.json'])
         sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
-        sys.argv.extend(['--junit', 'vsg/tests/vsg/config_error.actual.xml'])
+        sys.argv.extend(['--junit', junit_file])
         sys.argv.extend(['-p 1'])
 
         try:
@@ -162,30 +159,27 @@ class testMain(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'config_error.expected.xml'), lExpected)
         # Read in the actual JUnit XML file for comparison
         lActual = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'config_error.actual.xml'), lActual)
+        utils.read_file(junit_file, lActual)
         # Compare the two files, but skip the line with the timestamp (as it will never match)
         for iLineNumber, sLine in enumerate(lExpected):
             if iLineNumber != 1:
                 self.assertEqual(sLine, lActual[iLineNumber])
-        # Clean up
-        utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
 
     @mock.patch('sys.stderr')
     def test_junit_with_file_that_fails_to_parse(self, mock_stderr):
-#    def test_invalid_configuration(self):
-        utils.remove_file('vsg/tests/vsg/junit/parse_error.actual.xml')
         lStdErr = []
         lStdErr.append('Error: Unexpected token detected while parsing architecture_body @ Line 4, Column 1 in file vsg/tests/vsg/junit/parse_error.vhd')
         lStdErr.append('       Expecting : begin')
         lStdErr.append('       Found     : end')
 
+        junit_file = os.path.join(self._tmpdir.name, 'config_error.actual.xml')
         lExpected = []
         lExpected.append(mock.call('\n' + '\n'.join(lStdErr) + '\n'))
         lExpected.append(mock.call('\n'))
 
         sys.argv = ['vsg']
         sys.argv.extend(['-f', 'vsg/tests/vsg/junit/parse_error.vhd'])
-        sys.argv.extend(['--junit', 'vsg/tests/vsg/junit/parse_error.actual.xml'])
+        sys.argv.extend(['--junit', junit_file])
         sys.argv.extend(['-p 1'])
 
         try:
@@ -200,7 +194,7 @@ class testMain(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'junit','parse_error.expected.xml'), lExpected)
         # Read in the actual JUnit XML file for comparison
         lActual = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','parse_error.actual.xml'), lActual)
+        utils.read_file(junit_file, lActual)
         # Compare the two files, but skip the line with the timestamp (as it will never match)
         for iLineNumber, sLine in enumerate(lExpected):
             if iLineNumber != 1:
@@ -208,17 +202,13 @@ class testMain(unittest.TestCase):
 
         self.assertTrue('failures="1"' in lActual[1])
 
-        # Clean up
-        utils.remove_file('vsg/tests/vsg/junit/parse_error.actual.xml')
-
     @mock.patch('sys.stdout')
     def test_junit_with_file_with_no_errors(self, mock_stderr):
-#    def test_invalid_configuration(self):
-        utils.remove_file('vsg/tests/vsg/junit/no_error.actual.xml')
+        junit_file = os.path.join(self._tmpdir.name, 'config_error.actual.xml')
 
         sys.argv = ['vsg']
         sys.argv.extend(['-f', 'vsg/tests/vsg/junit/no_error.vhd'])
-        sys.argv.extend(['--junit', 'vsg/tests/vsg/junit/no_error.actual.xml'])
+        sys.argv.extend(['--junit', junit_file])
         sys.argv.extend(['-p 1'])
 
         try:
@@ -231,16 +221,13 @@ class testMain(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'junit','no_error.expected.xml'), lExpected)
         # Read in the actual JUnit XML file for comparison
         lActual = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'junit','no_error.actual.xml'), lActual)
+        utils.read_file(junit_file, lActual)
         # Compare the two files, but skip the line with the timestamp (as it will never match)
         for iLineNumber, sLine in enumerate(lExpected):
             if iLineNumber != 1:
                 self.assertEqual(sLine, lActual[iLineNumber])
 
         self.assertTrue('failures="0"' in lActual[1])
-
-        # Clean up
-        utils.remove_file('vsg/tests/vsg/junit/no_error.actual.xml')
 
     @mock.patch('sys.stdout')
     def test_local_rules(self,mock_stdout):
@@ -444,8 +431,9 @@ class testMain(unittest.TestCase):
     def test_oc_command_line_argument(self, mock_stdout):
         lExpected = []
 
+        config_file = os.path.join(self._tmpdir.name, 'deleteme.json')
         sys.argv = ['vsg']
-        sys.argv.extend(['-oc', 'deleteme.json'])
+        sys.argv.extend(['-oc', config_file])
         sys.argv.extend(['-p 1'])
 
         try:
@@ -473,16 +461,15 @@ class testMain(unittest.TestCase):
     def test_json_parameter(self):
         self.maxDiff = None
 
-        self.assertFalse(os.path.isfile('deleteme.json'))
-
         lExpected = []
         lExpected.append('ERROR: vsg/tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.')
         lExpected.append('ERROR: vsg/tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.')
 
+        config_file = os.path.join(self._tmpdir.name, 'deleteme.json')
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', 'vsg/tests/vsg/config_glob.yaml'])
-        sys.argv.extend(['--json', 'deleteme.json'])
+        sys.argv.extend(['--json', config_file])
         sys.argv.extend(['-p 1'])
 
         temp_stdout = StringIO()
@@ -494,12 +481,12 @@ class testMain(unittest.TestCase):
             except SystemExit:
                 pass
 
-        self.assertTrue(os.path.isfile('deleteme.json'))
+        self.assertTrue(config_file)
 
         sFileName = os.path.join(os.path.dirname(__file__),'json-expected.json')
         with open(sFileName) as yaml_file:
             dExpected = yaml.full_load(yaml_file)
-        with open('deleteme.json') as yaml_file:
+        with open(config_file) as yaml_file:
             dActual = yaml.full_load(yaml_file)
 
         lExpected = dExpected['files']
@@ -520,19 +507,15 @@ class testMain(unittest.TestCase):
     @mock.patch('sys.stdout')
     def test_backup_file(self, mock_stdout):
 
-        if os.path.isfile('vsg/tests/vsg/deleteme.vhd'):
-            os.remove('vsg/tests/vsg/deleteme.vhd')
-
-        if os.path.isfile('vsg/tests/vsg/deleteme.vhd.bak'):
-            os.remove('vsg/tests/vsg/deleteme.vhd.bak')
-
-        shutil.copyfile('vsg/tests/vsg/entity1.vhd', 'vsg/tests/vsg/deleteme.vhd')
+        test_file = os.path.join(self._tmpdir.name, 'entity1.vhd')
+        backup_file = test_file + '.bak'
+        shutil.copyfile('vsg/tests/vsg/entity1.vhd', test_file)
 
         lExpected = []
 
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
-        sys.argv.extend(['-f', 'vsg/tests/vsg/deleteme.vhd'])
+        sys.argv.extend(['-f', test_file])
         sys.argv.extend(['--fix'])
         sys.argv.extend(['--backup'])
         sys.argv.extend(['-p 1'])
@@ -542,20 +525,18 @@ class testMain(unittest.TestCase):
         except SystemExit:
             pass
 
-        self.assertTrue(os.path.isfile('vsg/tests/vsg/deleteme.vhd.bak'))
+        self.assertTrue(os.path.isfile(backup_file))
 
-        self.assertTrue(filecmp.cmp('vsg/tests/vsg/entity1.vhd', 'vsg/tests/vsg/deleteme.vhd.bak'))
+        self.assertTrue(filecmp.cmp('vsg/tests/vsg/entity1.vhd', backup_file))
 
         mock_stdout.write.assert_has_calls(lExpected)
 
-        if os.path.isfile('vsg/tests/vsg/deleteme.vhd'):
-            os.remove('vsg/tests/vsg/deleteme.vhd')
-
-        if os.path.isfile('vsg/tests/vsg/deleteme.vhd.bak'):
-            os.remove('vsg/tests/vsg/deleteme.vhd.bak')
-
     @mock.patch('sys.stdout')
     def test_backup_file_without_fix(self, mock_stdout):
+
+        test_file = os.path.join(self._tmpdir.name, 'entity1.vhd')
+        backup_file = test_file + '.bak'
+        shutil.copyfile('vsg/tests/vsg/entity1.vhd', test_file)
 
         lExpected = []
         lExpected.append(mock.call('ERROR:  --backup argument requires --fix argument'))
@@ -563,7 +544,7 @@ class testMain(unittest.TestCase):
 
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
-        sys.argv.extend(['-f', 'vsg/tests/vsg/entity1.vhd'])
+        sys.argv.extend(['-f', test_file])
         sys.argv.extend(['--backup'])
         sys.argv.extend(['-p 1'])
 
@@ -572,7 +553,7 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
         self.assertEqual(cm.exception.code, 1)
-        self.assertFalse(os.path.isfile('vsg/tests/vsg/entity1.vhd.bak'))
+        self.assertFalse(os.path.isfile(backup_file))
 
     @mock.patch('sys.stdout')
     def test_ap_with_fix(self, mock_stdout):

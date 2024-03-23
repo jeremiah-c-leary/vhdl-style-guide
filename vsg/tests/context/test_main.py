@@ -5,6 +5,8 @@ import os
 
 import unittest
 
+from tempfile import TemporaryDirectory
+
 from vsg import __main__
 from vsg import severity
 
@@ -20,18 +22,19 @@ oSeverityList = severity.create_list({})
 class test_context_using_main(unittest.TestCase):
 
     def setUp(self):
-        if os.path.isfile(sFileName):
-            os.remove(sFileName)
-        shutil.copyfile(sFile, sFileName)
+        self._tmpdir = TemporaryDirectory()
+
+        self._sFileName = os.path.join(self._tmpdir.name, sFileName)
+        shutil.copyfile(sFile, self._sFileName)
 
     def tearDown(self):
-        os.remove(sFileName)
+        self._tmpdir.cleanup()
 
     def test_classification_file(self):
         self.maxDiff = None
-        subprocess.check_output(['bin/vsg', '-f', sFileName, '--fix']).decode('utf-8').split('\n')
+        subprocess.check_output(['bin/vsg', '-f', self._sFileName, '--fix']).decode('utf-8').split('\n')
 
-        lActual = pathlib.Path(sFileName).read_text().split('\n')
+        lActual = pathlib.Path(self._sFileName).read_text().split('\n')
         lExpected = pathlib.Path(sFixedFile).read_text().split('\n')
 
         self.assertEqual(lExpected, lActual)

@@ -31,16 +31,16 @@ def main():
     sys.exit(fExitStatus)
 
 
-def create_rule_documentation():
+def create_rule_documentation(path):
 
     oRuleList = build_rule_list()
 
     dRules = build_rule_dictionary(oRuleList)
     lRuleNames = get_names_of_rule_classes(oRuleList)
     for sRuleName in lRuleNames:
-        build_rule_class_doc(sRuleName, dRules)
+        build_rule_class_doc(path, sRuleName, dRules)
 
-def build_rule_class_doc(sRuleName, dRules):
+def build_rule_class_doc(path, sRuleName, dRules):
 #    for sRuleName in lRuleName:
     lRuleClassDoc = []
     lRuleClassDoc.append('.. include:: includes.rst')
@@ -57,7 +57,7 @@ def build_rule_class_doc(sRuleName, dRules):
     lRuleClassDoc.extend(import_preamble_doc(sRuleName))
     lRuleClassDoc.extend(do_something(list(dRules[sRuleName])))
 
-    write_file(f'{sRuleName}_rules.rst', lRuleClassDoc)
+    write_file(path, f'{sRuleName}_rules.rst', lRuleClassDoc)
 
 
 def import_preamble_doc(sRuleName):
@@ -142,8 +142,8 @@ def blank_line():
     return lReturn
 
 
-def write_file(sFilename, lLines):
-    with open(sFilename, 'w') as oFile:
+def write_file(path, sFilename, lLines):
+    with open(os.path.join(path, sFilename), 'w') as oFile:
         for sLine in lLines:
             oFile.write(sLine + '\n')
 

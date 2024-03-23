@@ -28,13 +28,6 @@ def print_attributes(oLine):
     pp.pprint(oLine.__dict__)
 
 
-def remove_file(sFileName):
-    try:
-        os.remove(sFileName)
-    except OSError:
-        pass
-
-
 def read_indent_file():
     sFileName = os.path.join('vsg', 'vhdlFile', 'indent', 'indent_config.yaml')
     with open(sFileName) as yaml_file:
@@ -128,3 +121,7 @@ def replace_total_count(lOutput):
 
 def replace_total_count_summary(lOutput):
     return [re.sub(r'\([1-9][0-9]* rules checked\)', '(200 rules checked)', line) for line in lOutput]
+
+
+def replace_token(lOutput, src, dst):
+    return [line.replace(src, dst) for line in lOutput]

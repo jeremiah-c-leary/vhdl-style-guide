@@ -11,7 +11,7 @@ import shutil
 import contextlib
 from io import StringIO
 
-from tempfile import TemporaryFile
+from tempfile import TemporaryDirectory
 
 from vsg.tests import utils
 from vsg import version
@@ -23,9 +23,6 @@ def full_source_path():
 
 def full_fixed_path(sName):
     return full_file_path('test_input.' + sName + '.fixed.vhd')
-
-def full_actual_path(sName):
-    return full_file_path('test_input.' + sName + '.actual.vhd')
 
 def full_config_path(sName):
     return full_file_path(sName + '.yaml')
@@ -42,25 +39,25 @@ class command_line_args():
 
 
 class testMain(unittest.TestCase):
+    def full_actual_path(self, sName):
+        return os.path.join(self._tmpdir.name, 'test_input.' + sName + '.actual.vhd')
 
     def setUp(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
+        self._tmpdir = TemporaryDirectory()
 
     def tearDown(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
+        self._tmpdir.cleanup()
 
     def test_config_1(self):
 
         sConfigName = 'config_1'
-        shutil.copy(full_source_path(), full_actual_path(sConfigName))
+        shutil.copy(full_source_path(), self.full_actual_path(sConfigName))
 
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', full_config_path(sConfigName)])
         sys.argv.extend(['-p 1'])
-        sys.argv.extend(['-f', full_actual_path(sConfigName)])
+        sys.argv.extend(['-f', self.full_actual_path(sConfigName)])
         sys.argv.extend(['--fix'])
 
         try:
@@ -71,20 +68,20 @@ class testMain(unittest.TestCase):
         lExpected = []
         utils.read_file(full_fixed_path(sConfigName), lExpected, False)
         lActual = []
-        utils.read_file(full_actual_path(sConfigName), lActual, False)
+        utils.read_file(self.full_actual_path(sConfigName), lActual, False)
 
         self.assertEqual(lExpected, lActual)
 
     def test_config_2(self):
 
         sConfigName = 'config_2'
-        shutil.copy(full_source_path(), full_actual_path(sConfigName))
+        shutil.copy(full_source_path(), self.full_actual_path(sConfigName))
 
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', full_config_path(sConfigName)])
         sys.argv.extend(['-p 1'])
-        sys.argv.extend(['-f', full_actual_path(sConfigName)])
+        sys.argv.extend(['-f', self.full_actual_path(sConfigName)])
         sys.argv.extend(['--fix'])
 
         try:
@@ -95,20 +92,20 @@ class testMain(unittest.TestCase):
         lExpected = []
         utils.read_file(full_fixed_path(sConfigName), lExpected, False)
         lActual = []
-        utils.read_file(full_actual_path(sConfigName), lActual, False)
+        utils.read_file(self.full_actual_path(sConfigName), lActual, False)
 
         self.assertEqual(lExpected, lActual)
 
     def test_config_3(self):
 
         sConfigName = 'config_3'
-        shutil.copy(full_source_path(), full_actual_path(sConfigName))
+        shutil.copy(full_source_path(), self.full_actual_path(sConfigName))
 
         sys.argv = ['vsg']
         sys.argv.extend(['--output_format', 'syntastic'])
         sys.argv.extend(['--configuration', full_config_path(sConfigName)])
         sys.argv.extend(['-p 1'])
-        sys.argv.extend(['-f', full_actual_path(sConfigName)])
+        sys.argv.extend(['-f', self.full_actual_path(sConfigName)])
         sys.argv.extend(['--fix'])
 
         try:
@@ -119,6 +116,6 @@ class testMain(unittest.TestCase):
         lExpected = []
         utils.read_file(full_fixed_path(sConfigName), lExpected, False)
         lActual = []
-        utils.read_file(full_actual_path(sConfigName), lActual, False)
+        utils.read_file(self.full_actual_path(sConfigName), lActual, False)
 
         self.assertEqual(lExpected, lActual)

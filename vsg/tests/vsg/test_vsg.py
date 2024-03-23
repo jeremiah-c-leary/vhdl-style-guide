@@ -6,7 +6,7 @@ import os
 import sys
 import io
 
-from tempfile import TemporaryFile
+from tempfile import TemporaryDirectory
 
 from vsg.tests import utils
 from vsg import version
@@ -20,12 +20,10 @@ class command_line_args():
 class testVsg(unittest.TestCase):
 
     def setUp(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
+        self._tmpdir = TemporaryDirectory()
 
     def tearDown(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
+        self._tmpdir.cleanup()
 
 
     def test_multiple_configuration_w_multiple_filelists(self):
@@ -105,15 +103,15 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_invalid_configuration(self):
-        utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
         lExpected = []
         lExpected.append('ERROR: Invalid configuration file: vsg/tests/vsg/config_error.json')
         lExpected.append('while parsing a flow node')
         lExpected.append('expected the node content, but found \',\'')
         lExpected.append('  in "vsg/tests/vsg/config_error.json", line 2, column 16')
         lExpected.append('')
+        config_error_file = os.path.join(self._tmpdir.name, 'config_error.actual.xml')
         try:
-            lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_error.json','--output_format','syntastic','-f','vsg/tests/vsg/entity1.vhd','--junit','vsg/tests/vsg/config_error.actual.xml'])
+            lActual = subprocess.check_output(['bin/vsg','--configuration','vsg/tests/vsg/config_error.json','--output_format','syntastic','-f','vsg/tests/vsg/entity1.vhd','--junit',config_error_file])
         except subprocess.CalledProcessError as e:
             lActual = str(e.output.decode('utf-8')).split('\n')
             iExitStatus = e.returncode
@@ -126,13 +124,11 @@ class testVsg(unittest.TestCase):
         utils.read_file(os.path.join(os.path.dirname(__file__),'config_error.expected.xml'), lExpected)
         # Read in the actual JUnit XML file for comparison
         lActual = []
-        utils.read_file(os.path.join(os.path.dirname(__file__),'config_error.actual.xml'), lActual)
+        utils.read_file(config_error_file, lActual)
         # Compare the two files, but skip the line with the timestamp (as it will never match)
         for iLineNumber, sLine in enumerate(lExpected):
             if iLineNumber != 1:
                 self.assertEqual(sLine, lActual[iLineNumber])
-        # Clean up
-        utils.remove_file('vsg/tests/vsg/config_error.actual.xml')
 
     def test_local_rules(self):
         lExpected = ['ERROR: vsg/tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into seperate files.']
@@ -286,7 +282,7 @@ class testVsg(unittest.TestCase):
         lExpected = []
         lExpected.append('')
 
-        lActual = subprocess.check_output(['bin/vsg','-oc','deleteme.json'])
+        lActual = subprocess.check_output(['bin/vsg','-oc',os.path.join(self._tmpdir.name, 'deleteme.json')])
         lActual = str(lActual.decode('utf-8')).split('\n')
         self.assertEqual(lActual, lExpected)
 
@@ -300,7 +296,7 @@ class testVsg(unittest.TestCase):
 
     @unittest.skipIf('SUDO_UID' in os.environ.keys() or os.geteuid() == 0, "We are root. Root always has permissions so test will fail.")
     def test_no_permission_configuration_file(self):
-        sNoPermissionFile = 'no_permission.yml'
+        sNoPermissionFile = os.path.join(self._tmpdir.name, 'no_permission.yml')
         pathlib.Path(sNoPermissionFile).touch(mode=0o222, exist_ok=True)
 
         sExpected = f'ERROR: encountered PermissionError, Permission denied while opening configuration file: {sNoPermissionFile}\n'
@@ -314,9 +310,6 @@ class testVsg(unittest.TestCase):
             self.assertEqual(iExitStatus, 1)
 
             self.assertEqual(sActual, sExpected)
-        finally:
-            if os.path.isfile(sNoPermissionFile):
-                os.remove(sNoPermissionFile)
 
     def test_missing_files_in_configuration_file(self):
         lExpected = []

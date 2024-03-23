@@ -4,6 +4,7 @@ import unittest
 from unittest import mock
 import sys
 import subprocess
+from tempfile import TemporaryDirectory
 sys.path.append('vsg')
 
 from vsg.rules import source_file
@@ -21,9 +22,11 @@ sOutputEmptyFile = os.path.join(os.path.dirname(__file__),'output_empty_file.txt
 
 class testOSError(unittest.TestCase):
 
+    def setUp(self):
+        self._tmpdir = TemporaryDirectory()
+
     def tearDown(self):
-        if os.path.isfile(sNoPermissionFile):
-            os.remove(sNoPermissionFile)
+        self._tmpdir.cleanup()
 
     def test_file_not_found(self):
         try:
@@ -35,10 +38,12 @@ class testOSError(unittest.TestCase):
 
     @unittest.skipIf('SUDO_UID' in os.environ.keys() or os.geteuid() == 0, "We are root. Root always has permissions so test will fail.")
     def test_file_no_permission(self):
-        pathlib.Path(sNoPermissionFile).touch(mode=0o222, exist_ok=True)
+        sNoPermissionTempFile = os.path.join(self._tmpdir.name, sNoPermissionFile)
+
+        pathlib.Path(sNoPermissionTempFile).touch(mode=0o222, exist_ok=True)
 
         try:
-            subprocess.check_output(['bin/vsg', '-f', sNoPermissionFile])
+            subprocess.check_output(['bin/vsg', '-f', sNoPermissionTempFile])
         except subprocess.CalledProcessError as e:
             lActual = str(e.output.decode('utf-8')).split('\n')
             iExitStatus = e.returncode
@@ -46,7 +51,7 @@ class testOSError(unittest.TestCase):
         lExpected = pathlib.Path(sOutputNoPermission).read_text().split('\n')
 
         self.assertEqual(iExitStatus, 1)
-        self.assertEqual(utils.replace_total_count(lActual), lExpected)
+        self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), sNoPermissionTempFile, sNoPermissionFile), lExpected)
 
     def test_file_empty(self):
         try:

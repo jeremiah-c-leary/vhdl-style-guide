@@ -21,14 +21,6 @@ class command_line_args():
 
 class test_read_configuration_function(unittest.TestCase):
 
-    def setUp(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
-
-    def tearDown(self):
-        if os.path.isfile('deleteme.json'):
-            os.remove('deleteme.json')
-
     def test_file_list(self):
         oCommandLineArgs = command_line_args(['vsg/tests/vsg/read_configuration_files/config_w_file_list.json'])
 
