@@ -10,7 +10,7 @@ lTokens.append(token.loop_statement.loop_label)
 class rule_601(token_suffix):
     '''
     This rule checks for valid suffixes on loop labels.
-    The default prefix is *\_loop*.
+    The default prefix is *_loop*.
 
     |configuring_prefix_and_suffix_rules_link|
 

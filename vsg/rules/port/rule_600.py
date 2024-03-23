@@ -12,7 +12,7 @@ class rule_600(Rule):
     '''
     This rule checks for valid prefixes on port identifiers for input ports.
 
-    The default prefix is: *i\_*.
+    The default prefix is: *i_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

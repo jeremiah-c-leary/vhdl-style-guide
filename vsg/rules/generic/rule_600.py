@@ -13,7 +13,7 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 class rule_600(token_suffix_between_tokens):
     '''
     This rule checks for valid suffixes on generic identifiers.
-    The default generic suffix is *\_g*.
+    The default generic suffix is *_g*.
 
     |configuring_prefix_and_suffix_rules_link|
 

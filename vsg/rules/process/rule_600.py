@@ -11,7 +11,7 @@ lTokens.append(token.process_statement.end_process_label)
 class rule_600(token_suffix):
     '''
     This rule checks for valid suffixes on process labels.
-    The default suffix is *\_proc*.
+    The default suffix is *_proc*.
 
     |configuring_prefix_and_suffix_rules_link|
 

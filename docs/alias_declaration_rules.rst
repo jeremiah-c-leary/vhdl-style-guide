@@ -267,7 +267,7 @@ alias_declaration_600
 
 This rule checks for valid prefixes on alias designators.
 
-Default prefix is *a\_*.
+Default prefix is *a_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -292,7 +292,7 @@ alias_declaration_601
 
 This rule checks for valid suffixes on alias designators.
 
-Default prefix is *\_a*.
+Default prefix is *_a*.
 
 |configuring_prefix_and_suffix_rules_link|
 

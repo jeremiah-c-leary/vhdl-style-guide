@@ -10,7 +10,7 @@ lTokens.append(token.signal_declaration.identifier)
 class rule_008(token_prefix):
     '''
     This rule checks for valid prefixes on signal identifiers.
-    Default signal prefix is *s\_*.
+    Default signal prefix is *s_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

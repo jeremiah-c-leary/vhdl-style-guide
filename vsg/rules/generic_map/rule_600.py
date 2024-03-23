@@ -13,7 +13,7 @@ lEnd = token.generic_map_aspect.close_parenthesis
 class rule_600(token_suffix_between_tokens):
     '''
     This rule checks for valid suffixes on generic identifiers in generic maps
-    The default generic suffix is *\_g*.
+    The default generic suffix is *_g*.
 
     |configuring_prefix_and_suffix_rules_link|
 

@@ -10,7 +10,7 @@ lTokens.append(token.variable_declaration.identifier)
 class rule_600(token_suffix):
     '''
     This rule checks for valid suffix on variable identifiers.
-    The default variable suffix is *\_v*.
+    The default variable suffix is *_v*.
 
     |configuring_prefix_and_suffix_rules_link|
 

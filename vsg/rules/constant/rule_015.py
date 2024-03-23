@@ -10,7 +10,7 @@ lTokens.append(token.constant_declaration.identifier)
 class rule_015(token_prefix):
     '''
     This rule checks for valid prefixes on constant identifiers.
-    The default constant prefix is *c\_*.
+    The default constant prefix is *c_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

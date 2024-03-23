@@ -15,7 +15,7 @@ lTokens.append(token.if_generate_statement.end_generate_label)
 class rule_600(token_suffix):
     '''
     This rule checks for valid suffixes on generate statement labels.
-    The default suffix is *\_gen*.
+    The default suffix is *_gen*.
 
     |configuring_prefix_and_suffix_rules_link|
 

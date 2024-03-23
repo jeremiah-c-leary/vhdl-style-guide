@@ -1011,7 +1011,7 @@ process_036
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on process labels.
-The default prefix is *proc\_*.
+The default prefix is *proc_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -1152,7 +1152,7 @@ process_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on process labels.
-The default suffix is *\_proc*.
+The default suffix is *_proc*.
 
 |configuring_prefix_and_suffix_rules_link|
 

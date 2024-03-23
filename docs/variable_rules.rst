@@ -224,7 +224,7 @@ variable_012
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on variable identifiers.
-The default variable prefix is *v\_*.
+The default variable prefix is *v_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -322,7 +322,7 @@ variable_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffix on variable identifiers.
-The default variable suffix is *\_v*.
+The default variable suffix is *_v*.
 
 |configuring_prefix_and_suffix_rules_link|
 

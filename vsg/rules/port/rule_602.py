@@ -12,7 +12,7 @@ class rule_602(Rule):
     '''
     This rule checks for valid prefixes on port identifiers for inout ports.
 
-    The default prefix is: *io\_*.
+    The default prefix is: *io_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

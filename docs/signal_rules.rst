@@ -157,7 +157,7 @@ signal_008
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on signal identifiers.
-Default signal prefix is *s\_*.
+Default signal prefix is *s_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -462,7 +462,7 @@ signal_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on signal identifiers.
-Default signal suffix is *\_s*.
+Default signal suffix is *_s*.
 
 |configuring_prefix_and_suffix_rules_link|
 

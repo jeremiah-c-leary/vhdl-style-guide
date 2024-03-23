@@ -83,7 +83,7 @@ subtype_004
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes in subtype identifiers.
-The default new subtype prefix is *st\_*.
+The default new subtype prefix is *st_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -201,7 +201,7 @@ subtype_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes in subtype identifiers.
-The default new subtype suffix is *\_st*.
+The default new subtype suffix is *_st*.
 
 |configuring_prefix_and_suffix_rules_link|
 

@@ -12,7 +12,7 @@ class rule_601(Rule):
     '''
     This rule checks for valid prefixes on port identifiers for output ports.
 
-    The default prefix is: *o\_*.
+    The default prefix is: *o_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

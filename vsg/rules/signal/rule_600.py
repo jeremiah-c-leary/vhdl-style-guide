@@ -10,7 +10,7 @@ lTokens.append(token.signal_declaration.identifier)
 class rule_600(token_suffix):
     '''
     This rule checks for valid suffixes on signal identifiers.
-    Default signal suffix is *\_s*.
+    Default signal suffix is *_s*.
 
     |configuring_prefix_and_suffix_rules_link|
 

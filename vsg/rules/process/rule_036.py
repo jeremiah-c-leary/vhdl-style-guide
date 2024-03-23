@@ -11,7 +11,7 @@ lTokens.append(token.process_statement.end_process_label)
 class rule_036(token_prefix):
     '''
     This rule checks for valid prefixes on process labels.
-    The default prefix is *proc\_*.
+    The default prefix is *proc_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

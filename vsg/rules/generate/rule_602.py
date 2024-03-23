@@ -10,7 +10,7 @@ lTokens.append(token.parameter_specification.identifier)
 class rule_602(token_suffix_between_tokens):
     '''
     This rule checks for valid suffixes on generate parameter identifiers.
-    The default generate suffix is *\_gv*.
+    The default generate suffix is *_gv*.
 
     |configuring_prefix_and_suffix_rules_link|
 

@@ -11,7 +11,7 @@ class rule_601(Rule):
     '''
     This rule checks for valid suffixes on alias designators.
 
-    Default prefix is *\_a*.
+    Default prefix is *_a*.
 
     |configuring_prefix_and_suffix_rules_link|
 

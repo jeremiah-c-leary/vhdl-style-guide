@@ -10,7 +10,7 @@ lTokens.append(token.parameter_specification.identifier)
 class rule_602(token_prefix_between_tokens):
     '''
     This rule checks for valid prefixes on loop parameter identifiers.
-    The default loop prefix is *lv\_*.
+    The default loop prefix is *lv_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

@@ -10,7 +10,7 @@ lTokens.append(token.subtype_declaration.identifier)
 class rule_600(token_suffix):
     '''
     This rule checks for valid suffixes in subtype identifiers.
-    The default new subtype suffix is *\_st*.
+    The default new subtype suffix is *_st*.
 
     |configuring_prefix_and_suffix_rules_link|
 

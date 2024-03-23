@@ -10,7 +10,7 @@ lTokens.append(token.function_specification.designator)
 class rule_601(token_suffix):
     '''
     This rule checks for valid suffixes on function designators.
-    Default signal suffix is *\_f*.
+    Default signal suffix is *_f*.
 
     |configuring_prefix_and_suffix_rules_link|
 

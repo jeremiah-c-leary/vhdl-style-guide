@@ -565,7 +565,7 @@ function_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on function designators.
-Default signal prefix is *f\_*.
+Default signal prefix is *f_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -587,7 +587,7 @@ function_601
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on function designators.
-Default signal suffix is *\_f*.
+Default signal suffix is *_f*.
 
 |configuring_prefix_and_suffix_rules_link|
 

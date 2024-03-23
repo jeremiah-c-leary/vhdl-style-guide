@@ -10,7 +10,7 @@ lTokens.append(token.parameter_specification.identifier)
 class rule_603(token_suffix_between_tokens):
     '''
     This rule checks for valid suffixes on loop parameter identifiers.
-    The default loop suffix is *\_lv*.
+    The default loop suffix is *_lv*.
 
     |configuring_prefix_and_suffix_rules_link|
 

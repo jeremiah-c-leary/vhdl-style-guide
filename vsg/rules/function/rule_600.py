@@ -10,7 +10,7 @@ lTokens.append(token.function_specification.designator)
 class rule_600(token_prefix):
     '''
     This rule checks for valid prefixes on function designators.
-    Default signal prefix is *f\_*.
+    Default signal prefix is *f_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

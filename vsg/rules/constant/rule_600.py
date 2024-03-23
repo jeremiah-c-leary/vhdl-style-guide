@@ -10,7 +10,7 @@ lTokens.append(token.constant_declaration.identifier)
 class rule_600(token_suffix):
     '''
     This rule checks for valid suffixes on constant identifiers.
-    The default constant suffix is *\_c*.
+    The default constant suffix is *_c*.
 
     |configuring_prefix_and_suffix_rules_link|
 

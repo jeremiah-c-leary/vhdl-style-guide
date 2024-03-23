@@ -15,7 +15,7 @@ lTokens.append(token.if_generate_statement.end_generate_label)
 class rule_017(token_prefix):
     '''
     This rule checks for valid prefixes on generate statement labels.
-    The default prefix is *gen\_*.
+    The default prefix is *gen_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

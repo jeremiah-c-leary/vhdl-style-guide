@@ -358,7 +358,7 @@ generate_017
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on generate statement labels.
-The default prefix is *gen\_*.
+The default prefix is *gen_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -668,7 +668,7 @@ generate_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on generate statement labels.
-The default suffix is *\_gen*.
+The default suffix is *_gen*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -690,7 +690,7 @@ generate_601
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on generate parameter identifiers.
-The default generate prefix is *gv\_*.
+The default generate prefix is *gv_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -712,7 +712,7 @@ generate_602
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on generate parameter identifiers.
-The default generate suffix is *\_gv*.
+The default generate suffix is *_gv*.
 
 |configuring_prefix_and_suffix_rules_link|
 

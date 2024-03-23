@@ -10,7 +10,7 @@ lTokens.append(token.variable_declaration.identifier)
 class rule_012(token_prefix):
     '''
     This rule checks for valid prefixes on variable identifiers.
-    The default variable prefix is *v\_*.
+    The default variable prefix is *v_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

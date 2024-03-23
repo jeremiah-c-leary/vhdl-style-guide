@@ -12,7 +12,7 @@ class rule_604(Rule):
     '''
     This rule checks for valid prefixes on port identifiers for linkage ports.
 
-    The default prefix is: *l\_*.
+    The default prefix is: *l_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

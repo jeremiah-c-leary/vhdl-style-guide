@@ -12,7 +12,7 @@ class rule_603(Rule):
     '''
     This rule checks for valid prefixes on port identifiers for buffer ports.
 
-    The default prefix is: *b\_*.
+    The default prefix is: *b_*.
 
     |configuring_prefix_and_suffix_rules_link|
 

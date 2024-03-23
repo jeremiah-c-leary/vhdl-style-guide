@@ -306,7 +306,7 @@ constant_015
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on constant identifiers.
-The default constant prefix is *c\_*.
+The default constant prefix is *c_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -485,7 +485,7 @@ constant_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on constant identifiers.
-The default constant suffix is *\_c*.
+The default constant suffix is *_c*.
 
 |configuring_prefix_and_suffix_rules_link|
 

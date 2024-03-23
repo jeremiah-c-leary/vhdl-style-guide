@@ -11,7 +11,7 @@ lTokens.append(token.full_type_declaration.identifier)
 class rule_600(token_suffix):
     '''
     This rule checks for valid suffixes in user defined type identifiers.
-    The default new type suffix is *\_t*.
+    The default new type suffix is *_t*.
 
     |configuring_prefix_and_suffix_rules_link|
 

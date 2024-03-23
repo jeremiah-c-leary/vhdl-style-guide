@@ -10,7 +10,7 @@ lTokens.append(token.parameter_specification.identifier)
 class rule_601(token_prefix_between_tokens):
     '''
     This rule checks for valid prefixes on generate parameter identifiers.
-    The default generate prefix is *gv\_*.
+    The default generate prefix is *gv_*.
 
     |configuring_prefix_and_suffix_rules_link|
 
