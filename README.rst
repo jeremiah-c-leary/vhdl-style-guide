@@ -153,11 +153,17 @@ The latest development version can be cloned...
 
     git clone https://github.com/jeremiah-c-leary/vhdl-style-guide.git
 
-...and then installed locally...
+Install prerequisites.
 
 .. code-block:: bash
 
-    python setup.py install
+    pip install tox
+
+Build locally, artifacts will appear in ``dist`` directory.
+
+.. code-block:: bash
+
+    tox
 
 Usage
 -----
