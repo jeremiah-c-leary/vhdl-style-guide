@@ -94,7 +94,7 @@ would result in the following format being enforced:
    IO_INOUT : inout std_logic;
 
 Rules Enforcing Alignment
-########################
+#########################
 
 * `port_007 <port_rules.html#port-007>`_
 * `port_008 <port_rules.html#port-008>`_

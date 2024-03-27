@@ -23,7 +23,7 @@ Linting/Diagnostics with ALE
 
 A custom linter can be defined for 'ALE <https://github.com/dense-analysis/ale>'_ if you use this. You can place the following contents into a file somewhere in your runtime path under `ale_linters/vhdl/`, this will generate a Linter that can give you diagnostics in Vim
 
-.. code-block:: viml
+.. code-block:: vim
 
     function! ale_linters#vhdl#vsg_ale#GetCommand(buffer)
         return "vsg --config ./vsg_config.yaml -of syntastic -f " . expand('%p')

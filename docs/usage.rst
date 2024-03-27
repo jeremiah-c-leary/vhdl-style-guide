@@ -141,7 +141,7 @@ The command line tool can be invoked with:
 |                               | default is the number of cores available.       |
 +-------------------------------+-------------------------------------------------+
 | --debug                       | Print verbose debug information to assist with  |
-|                               | debugging errors with VSG.                       |
+|                               | debugging errors with VSG.                      |
 +-------------------------------+-------------------------------------------------+
 
 
