@@ -22,6 +22,15 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
+Update 03/27/2024
+
+I will be on vacation from May 13th through June 1st in Poland.
+If any issues come up during that time, I will address them when I get back.
+
+Regards,
+
+--Jeremy 
+
 Update 02/10/2024
 
 For Release 3.22.0.
