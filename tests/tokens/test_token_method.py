@@ -664,7 +664,7 @@ class testTokenMethod(unittest.TestCase):
         self.assertEqual(lTokens, lActual)
 
     def test_backward_slashes(self):
-        sLine = "  function \?=\ (L, R : ufixed) return STD_ULOGIC;"
+        sLine = "  function \\?=\\ (L, R : ufixed) return STD_ULOGIC;"
         lTokens = []
         lTokens.append("  ")
         lTokens.append("function")
@@ -692,7 +692,7 @@ class testTokenMethod(unittest.TestCase):
         self.assertEqual(lTokens, lActual)
 
     def test_combine_backslash_characters_into_symbols(self):
-        sLine = " function \?=\ hello"
+        sLine = " function \\?=\\ hello"
 
         lActual = tokens.create(sLine)
 
@@ -706,7 +706,7 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-        sLine = " function \?=\\"
+        sLine = " function \\?=\\"
 
         lActual = tokens.create(sLine)
 
@@ -718,7 +718,7 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-        sLine = " function \?=\\("
+        sLine = " function \\?=\\("
 
         lActual = tokens.create(sLine)
 
@@ -731,7 +731,7 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-        sLine = " function \?=\\ "
+        sLine = " function \\?=\\ "
 
         lActual = tokens.create(sLine)
 
@@ -744,7 +744,7 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
-        sLine = " function \?=\\;"
+        sLine = " function \\?=\\;"
 
         lActual = tokens.create(sLine)
 
