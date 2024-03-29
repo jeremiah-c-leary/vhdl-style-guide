@@ -1,4 +1,3 @@
-exclude setup.cfg
 include *.properties
 include .codespell-ignore
 include .flake8
@@ -7,7 +6,6 @@ include .gitignore
 include .pre-commit-config.yaml
 include .pre-commit-hooks.yaml
 include .readthedocs.yaml
-include .travis.yml
 include CODE_OF_CONDUCT.md
 include bin/vsg
 include bin/vsg_parser
