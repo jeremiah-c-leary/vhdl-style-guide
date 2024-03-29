@@ -144,5 +144,6 @@ ignore = [
     "*.egg-info",
     "*.egg-info/*",
     "PKG-INFO",
+    "setup.cfg"
 ]
 ignore-default-rules = true
