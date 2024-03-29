@@ -54,10 +54,10 @@ Exceptions to enforcing prefixes and suffixes can be given using the :code:`exce
             # Each suffix rule needs to be enabled explicitly.
             disable: false
             suffixes: ['_i', '_o']
-            exceptions: ['CLK']
+            exceptions: ['CLK', '.*_FIELD']
 
 The exceptions option provides a list of keywords, that when matched, prevents the rule from validating the prefix or suffix.
-The keywords are treated as case insensitive.
+The keywords are treated as case insensitive and support regular expressions.
 
 Rules Enforcing Prefixes and Suffixes
 #####################################

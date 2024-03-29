@@ -10,6 +10,12 @@ architecture RTL of ENTITY1 is
   subtype stRange is integer range 0 to 9;
   subtype stWidth is integer range 16 to 128;
 
+  subtype MAJOR_FIELD is std_logic_vector(7 downto 0);
+  subtype major_field is std_logic_vector(7 downto 0);
+
+  subtype MINOR_FIELD is std_logic_vector(7 downto 0);
+  subtype minor_field is std_logic_vector(7 downto 0);
+
 begin
 
 end architecture RTL;
