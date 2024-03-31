@@ -12,4 +12,6 @@ It could be out of date, missing information and some parts are aspirational.
    tokenizing
    tokens
    classifying
+   internal_data_structure
    rule_selection
+   rule_directory_structure
