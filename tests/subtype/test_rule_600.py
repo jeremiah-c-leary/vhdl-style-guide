@@ -24,7 +24,7 @@ class test_subtype_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, "600")
         self.assertEqual(oRule.groups, ["naming"])
 
-        lExpected = [7, 8, 10, 11]
+        lExpected = [7, 8, 10, 11, 13, 14, 16, 17]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -35,6 +35,24 @@ class test_subtype_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "subtype")
         self.assertEqual(oRule.identifier, "600")
+
+        lExpected = [7, 8, 10, 11, 13, 14, 16, 17]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_004_w_single_regexp(self):
+        oRule = subtype.rule_600()
+        oRule.exceptions = ["major_.*"]
+
+        lExpected = [7, 8, 10, 11, 16, 17]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_004_w_two_regexp(self):
+        oRule = subtype.rule_600()
+        oRule.exceptions = ["major_.*", "minor_.*"]
 
         lExpected = [7, 8, 10, 11]
 
