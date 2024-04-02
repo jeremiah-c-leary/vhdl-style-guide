@@ -3,12 +3,6 @@ Setting up a Development Environment
 
 If you would like to review the code and make some changes, follow these steps to setup the development environment.
 
-Dependencies
-############
-
-VSG uses PyYAML to parse JSON and YAML files.
-Ensure at least version 5.1 is installed in your python site-packages directory.
-
 Clone the repo
 ##############
 
@@ -29,77 +23,90 @@ Set an alias to VSG as follows:
 
 This allows you to execute VSG without installing it.
 
-Running Unit Tests
-##################
+Install prerequisites
+#####################
 
-To run the unit tests use the following command:
+.. code-block:: bash
 
-.. code-block:: text
+  pip install PyYAML
+  pip install tox
 
-   python -m unittest
+Build locally, artifacts will appear in ``dist`` directory.
 
-After issuing the command the tests will be executed.
+.. code-block:: bash
 
-.. code-block:: text
-
-   vhdl-style-guide$ python -m unittest discover
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   .................................................
-   ...........................................
-   -------------------------------------------------
-   Ran 1170 tests in 6.424s
-
-   OK
-
-tox
-
-use cases
-
-#. Run style checks
-#. Run all tests
-#. Prepare for pull request
-
-pytest
-
-#. Run single test
-#. Run all tests
-
-pyproject.toml
-pre-commit
-
-VSG Data Structure
-##################
-
-List of tokens.
-How tokens are assigned.
-Using VHDL LRM to define tokens.
-Show example of production and how it maps to a file in the tokens directory.
+  tox
 
 Helpful tools
 #############
 
-bin/vsg_parser.py
+vsg_parser
+==========
+
+vsg_parser is a tool which will show the mapping of tokens to a given file.
+It is located in the bin directory and can be invoked with:
+
+.. code-block:: bash
+
+   $ bin/vsg_parser -f <filename>
+
+This is the output when ran against the tests/architecture/rule_001_test_input.vhd file:
+
+.. code-block:: mono
+
+   --------------------------------------------------------------------------------
+   0 |
+   --------------------------------------------------------------------------------
+   1 |
+   <class 'vsg.parser.blank_line'>
+   --------------------------------------------------------------------------------
+   2 | architecture RTL of FIFO is begin end architecture RTL;
+   <class 'vsg.token.architecture_body.architecture_keyword'>
+   <class 'vsg.token.architecture_body.identifier'>
+   <class 'vsg.token.architecture_body.of_keyword'>
+   <class 'vsg.token.architecture_body.entity_name'>
+   <class 'vsg.token.architecture_body.is_keyword'>
+   <class 'vsg.token.architecture_body.begin_keyword'>
+   <class 'vsg.token.architecture_body.end_keyword'>
+   <class 'vsg.token.architecture_body.end_architecture_keyword'>
+   <class 'vsg.token.architecture_body.architecture_simple_name'>
+   <class 'vsg.token.architecture_body.semicolon'>
+   --------------------------------------------------------------------------------
+   3 |
+   <class 'vsg.parser.blank_line'>
+   --------------------------------------------------------------------------------
+   4 | -- This should fail
+   <class 'vsg.parser.comment'>
+   --------------------------------------------------------------------------------
+   5 |
+   <class 'vsg.parser.blank_line'>
+   --------------------------------------------------------------------------------
+   6 |   architecture RTL of FIFO is
+   <class 'vsg.token.architecture_body.architecture_keyword'>
+   <class 'vsg.token.architecture_body.identifier'>
+   <class 'vsg.token.architecture_body.of_keyword'>
+   <class 'vsg.token.architecture_body.entity_name'>
+   <class 'vsg.token.architecture_body.is_keyword'>
+   --------------------------------------------------------------------------------
+   7 |
+   <class 'vsg.parser.blank_line'>
+   --------------------------------------------------------------------------------
+   8 | begin
+   <class 'vsg.token.architecture_body.begin_keyword'>
+   --------------------------------------------------------------------------------
+   9 |
+   <class 'vsg.parser.blank_line'>
+   --------------------------------------------------------------------------------
+   10 | end architecture RTL;
+   <class 'vsg.token.architecture_body.end_keyword'>
+   <class 'vsg.token.architecture_body.end_architecture_keyword'>
+   <class 'vsg.token.architecture_body.architecture_simple_name'>
+   <class 'vsg.token.architecture_body.semicolon'>
+
+Each line is printed and then each token is listed in the order they appear on the line.
+Whitespace tokens can be shown using the :code:`-w` option.
+
+vsg_parser can be useful in rule generation to determine how vsg is assigning token types.
 
 Adding a rule
 #############
@@ -123,7 +130,7 @@ Following the steps in the given order ensures everything is covered.
 .. NOTE:: If a similar rule already exists, copy that rules elements for each of the following steps.
 
 Create Documentation
---------------------
+====================
 
 A documentation first approach clarifies what a rule will address.
 
@@ -181,12 +188,12 @@ The Violation Example provides a visual indicating what the issue is.
 The Fixed example provides a visual indicating what the end state should be.
 
 Create Test
------------
+===========
 
 The next step is to create a test for the soon to be new rule.
 
 Test directory structure
-------------------------
+========================
 
 The directory structure of the tests closely matches the rules directory.
 Every rule group has it's own directory.
@@ -215,7 +222,7 @@ Each rule will typically consist of at least three files:
        └── test_rule_001.py
 
 Test file structure
--------------------
+===================
 
 The test file contains a class with the name of `test_rule`.
 The minimum number of tests will be one for those rules for which a fix is not available.
@@ -240,7 +247,7 @@ The resulting fix is compared against the rule_001_test_input.fixed.vhd file.
 Any discrepencies are flagged.
 
 Test Input File
----------------
+===============
 
 The test input file provides examples of code passing and violating the particular rule.
 It provides the conditions where the rule is checked.
@@ -260,7 +267,7 @@ If configuration options are available for the rule, then this file should provi
    end architecture RTL;
 
 Fixed Input File
-----------------
+================
 
 This file provides the output product of running the rule in isolation.
 Additional rules are not applied.
@@ -279,7 +286,7 @@ If configuration options are available for the rule, then additional files are r
    end architecture RTL;
 
 Running failing test
---------------------
+====================
 
 VSG uses pytest
 
@@ -322,10 +329,10 @@ VSG uses pytest
 The test failed because the rule does not yet exist
 
 Create Rule
------------
+===========
 
 Updating __init__.py file
-=========================
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order for a rule to be used, it must be added to the __init__.py file in the rule group directory.
 
@@ -336,7 +343,7 @@ In order for a rule to be used, it must be added to the __init__.py file in the 
    from .rule_002 import rule_002
 
 Rule file structure
-===================
+^^^^^^^^^^^^^^^^^^^
 
 #. class name
 #. docstring
@@ -381,7 +388,7 @@ The rule implementation could be unique or it could call a base rule.
 In this case the `token_indent` base rule is used to check the indent of the architecture keyword.
 
 Running passing test
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Re-run the test and make any changes until the test passes.
 
@@ -399,7 +406,7 @@ Re-run the test and make any changes until the test passes.
    ========================================= 2 passed in 0.34s ==========================================
 
 Running regression tests
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that the single test runs, the entire suite of tests must be ran to ensure there no side effects.
 
@@ -427,3 +434,17 @@ Now that the single test runs, the entire suite of tests must be ran to ensure t
    ================================== 3005 passed in 72.67s (0:01:12) ===================================
      test-py38: OK (81.82=setup[8.52]+cmd[73.30] seconds)
      congratulations :) (81.87 seconds)
+
+Prepare for pull request
+========================
+
+Before creating a pull request use tox to perform all checks against the code base:
+
+.. code-block:: bash
+
+   $ tox
+
+This will run code style checks, unittests against multiple versions of python and attempt to perform a build.
+When this passes create a pull request.
+
+.. NOTE:: Issue 1157 https://github.com/jeremiah-c-leary/vhdl-style-guide/issues/1157 is still being resolved and should not gate any PR creation.

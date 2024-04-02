@@ -16,10 +16,11 @@ The VHDL Language Reference Manual (LRM) will be the basis used when determining
 Guidelines
 ==========
 
-* [naming_001] Rule naming shall be of the form :code:`{identifier}_{number}`
+* [naming_001] Rule naming shall be of the form :code:`{identifier}_{number}`.
 * [naming_002] The identifier shall be the *left-hand side* of VHDL production.
-* [naming_003] The number shall be three digits
-* [naming_004] The rule number shall indicate which phase the rule is executed
+* [naming_003] The number shall be three digits.
+* [naming_004] The rule number shall indicate which phase the rule is executed.
+* [naming_005] An identifier shall never be re-used.
 
 * [scoping_001] Rules shall be scoped to a VHDL production
 
