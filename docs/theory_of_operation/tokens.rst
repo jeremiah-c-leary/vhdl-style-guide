@@ -1,9 +1,9 @@
 Tokens
 ------
 
-Tokens are collection of classes used to represent elements of the VHDL language.
-They are grouped together under the vsg/tokens directory.
-Each file under vsg/tokens matches a VHDL production name.
+Tokens are a collection of classes used to represent elements of the VHDL language.
+They are grouped together under the :code:`vsg/tokens` directory.
+Each file under :code:`vsg/tokens` matches a VHDL production name.
 Each class in each file maps to an element in the VHDL production.
 
 For example, the following production for the architecture_body:
@@ -17,27 +17,27 @@ For example, the following production for the architecture_body:
            architecture_statement_part
        end [ architecture ] [ *architecture*_simple_name ] ;
 
-...has a file named vsg/tokens/architecture_body.py.
+has a file named vsg/tokens/architecture_body.py.
 
-In the architecture_body.py file, there are the following classes:
+In the :code:`architecture_body.py` file, the following classes exist:
 
-* architecture_keyword
-* identifier
-* of_keyword
-* entity_name
-* is_keyword
-* begin_keyword
-* end_keyword
-* end_architecture_keyword
-* architecture_simple_name
-* semicolon
+* :code:`architecture_keyword`
+* :code:`identifier`
+* :code:`of_keyword`
+* :code:`entity_name`
+* :code:`is_keyword`
+* :code:`begin_keyword`
+* :code:`end_keyword`
+* :code:`end_architecture_keyword`
+* :code:`architecture_simple_name`
+* :code:`semicolon`
 
-The name of the class matches the item in the production with the following additional rules applied:
+The name of the class matches an item in the production with the following additional rules applied:
 
-* All keywords have an _keyword suffix.
-* All duplicately named keywords at the end of the production have an end\_ prefix.
+* All keywords have an :code:`_keyword` suffix.
+* All duplicately named keywords at the end of the production have an :code:`end\_` prefix.
 
-All classes in a production are extensions of base classes in the parser module.
+All classes in a production are extensions of base classes in the :code:`parser` module.
 
 +--------------------------+--------------------+
 | production class         | parser base class  |
@@ -63,5 +63,5 @@ All classes in a production are extensions of base classes in the parser module.
 | semicolon                | parser.semicolon   |
 +--------------------------+--------------------+
 
-Having a base class allows rules to be written against all types of a token, for example semicolons.
-Extending base classes in the production allows for rules to be written against specific tokens in a production, for example architecture_body.semicolon.
+Having a base class allows rules to be written against all types of a token, for example :code:`parser.semicolon`.
+Extending base classes in the production allows for rules to be written against specific tokens in a production, for example :code:`architecture_body.semicolon`.

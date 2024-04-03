@@ -28,5 +28,6 @@ Welcome to vhdl-style-guide's documentation!
    rule_groups
    rules
    contributing
+   theory_of_operation/index
    setting_up_a_development_environment
    release_notes
