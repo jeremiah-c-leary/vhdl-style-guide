@@ -5,10 +5,7 @@ Following the steps in the given order ensures everything is covered.
 
 #. Create documentation
 #. Create test
-#. Run failing test
 #. Create rule
-#. Run passing test
-#. Run regression tests
 
 .. NOTE:: If a similar rule already exists, copy that rules elements for each of the following steps.
 
@@ -18,7 +15,7 @@ Create Documentation
 A documentation first approach clarifies what a rule will address.
 
 The documentation is located in the `docs` directory.
-All rules for a rule group are kept in a file with the following pattern:  <rule_group>_rules.rst.
+All rules for a rule group are kept in a file with the following pattern:  :code:`<rule_group>_rules.rst`.
 The rules are in alphabetical order within the documentation.
 
 Rule documentation contains the following items:
@@ -59,12 +56,12 @@ A Rule ID will never be re-used.
 
 Icons provide information about the rule at a quick glance.
 These icons indicate the phase in which the rule is ran, whether it is disabled by default, etc...
-Links to the icons are stored in a file named icons.rst and is included into each file using an include at the top of every file.
+Links to the icons are stored in a file named :code:`icons.rst` and is included into each file using an include at the top of every file.
 
 The summary is a very brief description of what issue the rule is attempting to resolve.
 
 If the rule has configuration options, a link to the configuration information will be given.
-The links are sored in a file named links.rst and in included into each file using an include at the top of every file.
+The links are sored in a file named :code:`links.rst` and in included into each file using an include at the top of every file.
 
 The Violation Example provides a visual indicating what the issue is.
 
@@ -73,10 +70,10 @@ The Fixed example provides a visual indicating what the end state should be.
 Create Test
 ===========
 
-The next step is to create a test for the soon to be new rule.
+The next step is to create a test for the new rule.
 
 Test directory structure
-========================
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The directory structure of the tests closely matches the rules directory.
 Every rule group has it's own directory.
@@ -92,9 +89,9 @@ Every rule group has it's own directory.
 
 Each rule will typically consist of at least three files:
 
-#.  test file of the form `test_rule_[0-9][0-9][0-9].py`
-#.  input vhdl file with violations in the form of `rule_[0-9][0-9][0-9]_test_input.vhd`
-#.  fixed vhdl file without violations in the form of `rule_[0-9][0-9][0-9]_test_input.fixed.vhd`
+#.  test file of the form :code:`test_rule_[0-9][0-9][0-9].py`
+#.  input vhdl file with violations in the form of :code:`rule_[0-9][0-9][0-9]_test_input.vhd`
+#.  fixed vhdl file without violations in the form of :code:`rule_[0-9][0-9][0-9]_test_input.fixed.vhd`
 
 .. code-block:: text
 
@@ -104,12 +101,12 @@ Each rule will typically consist of at least three files:
        ├── rule_001_test_input.vhd
        └── test_rule_001.py
 
-Test file structure
-===================
+Test File Structure
+^^^^^^^^^^^^^^^^^^^
 
-The test file contains a class with the name of `test_rule`.
+The test file contains a class with the name of :code:`test_rule`.
 The minimum number of tests will be one for those rules for which a fix is not available.
-The rules in which a fix is available, a minimum of two tests will be required:  one for detecting violations and another for verifying the violations can be fixed.
+For rules in which a fix is available, a minimum of two tests will be required:  one for detecting violations and another for verifying the violations can be fixed.
 If the rule has configurable options, then additional tests are required based on the number of configurable items.
 
 .. code-block:: python
@@ -122,15 +119,15 @@ If the rule has configurable options, then additional tests are required based o
        def test_fix_rule_001(self):
            oRule = architecture.rule_001()
 
-The test_rule_001 method operates on the test input file and returns a list of lines where a violation was detected.
+The :code:`test_rule_001` method operates on the test input file and returns a list of lines where a violation was detected.
 The line numbers are then validated.
 
-The test_fix_rule_001 method operations on the test input file and attempts to fix the violations.
-The resulting fix is compared against the rule_001_test_input.fixed.vhd file.
+The :code:`test_fix_rule_001` method operations on the test input file and attempts to fix the violations.
+The resulting fix is compared against the :code:`rule_001_test_input.fixed.vhd` file.
 Any discrepencies are flagged.
 
 Test Input File
-===============
+^^^^^^^^^^^^^^^
 
 The test input file provides examples of code passing and violating the particular rule.
 It provides the conditions where the rule is checked.
@@ -150,7 +147,7 @@ If configuration options are available for the rule, then this file should provi
    end architecture RTL;
 
 Fixed Input File
-================
+^^^^^^^^^^^^^^^^
 
 This file provides the output product of running the rule in isolation.
 Additional rules are not applied.
@@ -169,9 +166,9 @@ If configuration options are available for the rule, then additional files are r
    end architecture RTL;
 
 Run failing test
-================
+^^^^^^^^^^^^^^^^
 
-VSG uses pytest
+VSG uses pytest and individual tests can be executed:
 
 .. code-block:: text
 
@@ -209,7 +206,7 @@ VSG uses pytest
    FAILED tests/architecture/test_rule_001.py::test_architecture_rule::test_rule_001 - AttributeError: module 'vsg.rules.architecture' has no attribute 'rule_001'. Did you mean: 'rule_...
    ========================================= 2 failed in 0.43s ==========================================
 
-The test failed because the rule does not yet exist
+The test failed because the rule does not yet exist.
 
 Create Rule
 ===========
@@ -217,7 +214,7 @@ Create Rule
 Updating __init__.py file
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order for a rule to be used, it must be added to the __init__.py file in the rule group directory.
+In order for a rule to be used, it must be added to the :code:`__init__.py` file in the rule group directory.
 
 .. code-block:: python
 
@@ -232,7 +229,7 @@ Rule file structure
 #. docstring
 #. rule implementation
 
-The class name of the rule must follow this pattern:  `rule_[0-9][0-9][0-9]`.
+The class name of the rule must follow this pattern:  :code:`rule_[0-9][0-9][0-9]`.
 
 The docstring must match the documentation but does not include the header or the icons.
 
@@ -268,7 +265,7 @@ The rule implementation could be unique or it could call a base rule.
        def __init__(self):
            super().__init__([token.architecture_keyword])
 
-In this case the `token_indent` base rule is used to check the indent of the architecture keyword.
+In this case the :code:`token_indent` base rule is used to check the indent of the architecture keyword.
 
 Run passing test
 ^^^^^^^^^^^^^^^^
