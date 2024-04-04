@@ -6,7 +6,7 @@ The process employs a recursive methodology to apply the rules.
 The rules are divided into python modules under the :code:`vsg/vhdlFile/classify` directory.
 Each module name under :code:`vsg/vhdlFile/classify` matches a VHDL production name.
 
-Each module provides functions to parse a VHDL produciton and will have at least one of the following functions:
+Each module provides functions to parse a VHDL production and will have at least one of the following functions:
 
 * :code:`detect`
 * :code:`classify`

@@ -18,7 +18,7 @@ The transition from one state to another is governed by the table below.
 |                 +-----------------+---------------------------------------------------------------------------------------+
 |                 | User Feedback   | More information is required from the user before development can continue.           |
 |                 +-----------------+---------------------------------------------------------------------------------------+
-|                 | Deffered        | Issue will not be developed in current major release.                                 |
+|                 | Deferred        | Issue will not be developed in current major release.                                 |
 +-----------------+-----------------+---------------------------------------------------------------------------------------+
 | Triaged         | In Progress     | Issue can be developed without user feedback.                                         |
 |                 +-----------------+---------------------------------------------------------------------------------------+
@@ -30,7 +30,7 @@ The transition from one state to another is governed by the table below.
 |                 +-----------------+---------------------------------------------------------------------------------------+
 |                 | Closed          | Issue can be resolved without any new development.                                    |
 |                 +-----------------+---------------------------------------------------------------------------------------+
-|                 | Deffered        | Issue will not be developed in current major release.                                 |
+|                 | Deferred        | Issue will not be developed in current major release.                                 |
 +-----------------+-----------------+---------------------------------------------------------------------------------------+
 | User Validation | In Progress     | Additional development is required to meet user needs.                                |
 |                 +-----------------+---------------------------------------------------------------------------------------+
@@ -86,6 +86,5 @@ Deferred issues will either be developed later or eventually retired and then cl
 Version 4.0
 ===========
 
-This view provides a list of all issues which would be candidates when a major rewrite occures.
+This view provides a list of all issues which would be candidates when a major rewrite occurs.
 This could be due to limitations in parsing or the underlying data structure.
-

@@ -85,7 +85,7 @@ Every rule group has it's own directory.
    ├── alias_declaration
    ├── architecture
         ...
-   └── whitespace 
+   └── whitespace
 
 Each rule will typically consist of at least three files:
 
@@ -124,7 +124,7 @@ The line numbers are then validated.
 
 The :code:`test_fix_rule_001` method operations on the test input file and attempts to fix the violations.
 The resulting fix is compared against the :code:`rule_001_test_input.fixed.vhd` file.
-Any discrepencies are flagged.
+Any discrepancies are flagged.
 
 Test Input File
 ^^^^^^^^^^^^^^^
@@ -137,13 +137,13 @@ If configuration options are available for the rule, then this file should provi
 .. code-block:: vhdl
 
    architecture RTL of FIFO is begin end architecture RTL;
-   
+
    -- This should fail
-   
+
      architecture RTL of FIFO is
-   
+
    begin
-   
+
    end architecture RTL;
 
 Fixed Input File
@@ -151,18 +151,18 @@ Fixed Input File
 
 This file provides the output product of running the rule in isolation.
 Additional rules are not applied.
-If configuration options are available for the rule, then additional files are required for each configuraiton.
+If configuration options are available for the rule, then additional files are required for each configuration.
 
 .. code-block:: vhdl
 
    architecture RTL of FIFO is begin end architecture RTL;
-   
+
    -- This should fail
-   
+
    architecture RTL of FIFO is
-   
+
    begin
-   
+
    end architecture RTL;
 
 Run failing test
@@ -179,27 +179,27 @@ VSG uses pytest and individual tests can be executed:
    configfile: pyproject.toml
    plugins: html-4.1.1, html-reporter-0.2.9, metadata-3.1.1
    collected 2 items
-   
+
    tests/architecture/test_rule_001.py FF                                                         [100%]
-   
+
    ============================================== FAILURES ==============================================
    ______________________________ test_architecture_rule.test_fix_rule_001 ______________________________
-   
+
    self = <tests.architecture.test_rule_001.test_architecture_rule testMethod=test_fix_rule_001>
-   
+
        def test_fix_rule_001(self):
    >       oRule = architecture.rule_001()
    E       AttributeError: module 'vsg.rules.architecture' has no attribute 'rule_001'. Did you mean: 'rule_002'?
-   
+
    tests/architecture/test_rule_001.py:39: AttributeError
    ________________________________ test_architecture_rule.test_rule_001 ________________________________
-   
+
    self = <tests.architecture.test_rule_001.test_architecture_rule testMethod=test_rule_001>
-   
+
        def test_rule_001(self):
    >       oRule = architecture.rule_001()
    E       AttributeError: module 'vsg.rules.architecture' has no attribute 'rule_001'. Did you mean: 'rule_002'?
-   
+
    tests/architecture/test_rule_001.py:28: AttributeError
    ====================================== short test summary info =======================================
    FAILED tests/architecture/test_rule_001.py::test_architecture_rule::test_fix_rule_001 - AttributeError: module 'vsg.rules.architecture' has no attribute 'rule_001'. Did you mean: 'rule_...
@@ -238,30 +238,30 @@ The rule implementation could be unique or it could call a base rule.
 .. code-block:: python
 
    # -*- coding: utf-8 -*-
-  
+
    from vsg.rules import token_indent
    from vsg.token import architecture_body as token
-  
-  
+
+
    class rule_001(token_indent):
        """
        This rule checks for blank spaces before the **architecture** keyword.
-  
+
        **Violation**
-  
+
        .. code-block:: vhdl
-  
+
             architecture rtl of fifo is
           begin
-  
+
        **Fix**
-  
+
        .. code-block:: vhdl
-  
+
           architecture rtl of fifo is
           begin
        """
-  
+
        def __init__(self):
            super().__init__([token.architecture_keyword])
 
@@ -280,9 +280,9 @@ Re-run the test and make any changes until the test passes.
    configfile: pyproject.toml
    plugins: html-4.1.1, html-reporter-0.2.9, metadata-3.1.1
    collected 2 items
-   
+
    tests/architecture/test_rule_001.py ..                                                         [100%]
-   
+
    ========================================= 2 passed in 0.34s ==========================================
 
 Run regression tests
@@ -305,11 +305,11 @@ Now that the single test runs, the entire suite of tests must be ran to ensure t
 
    .............................................................................................. [ 97%]
    .......................................................................................        [100%]
-   
+
    ---------- coverage: platform linux, python 3.8.10-final-0 -----------
    Coverage HTML written to dir build.out/test-py38/coverage
    Coverage XML written to file build.out/test-py38/coverage.xml
-   
+
    - Generated html report: file:///home/jcleary/projects/vsg-master/build.out/test-py38/test/pytest.html -
    ================================== 3005 passed in 72.67s (0:01:12) ===================================
      test-py38: OK (81.82=setup[8.52]+cmd[73.30] seconds)
