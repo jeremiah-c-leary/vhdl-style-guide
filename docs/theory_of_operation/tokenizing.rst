@@ -4,7 +4,7 @@ Tokenizing
 The tokenizing process is responsible for taking the VHDL text file and grouping characters into tokens.
 This process is performed on a line by line basis.
 Each line is processed a single character at a time.
-Characters are combined to form words based on several rules.
+Characters are combined to form tokens based on several rules.
 
 * keywords and identifiers
 * multiple character sequences (<=, :=, etc...)
