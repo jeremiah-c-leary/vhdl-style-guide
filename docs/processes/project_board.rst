@@ -1,7 +1,7 @@
 Project Board
 -------------
 
-Issues and pull requests are managed on a GitHub project board: https://github.com/users/jeremiah-c-leary/projects/3
+Issues and pull requests are managed on a `GitHub project board <https://github.com/users/jeremiah-c-leary/projects/3>`_:
 
 Issues can be tracked from when they are created, through development, validation and release.
 
@@ -11,9 +11,9 @@ Issue flow chart
 Issue progress is tracked using the Status attribute.
 The transition from one state to another is governed by the table below.
 
-+=================+=================+=======================================================================================+
-| Status          | Next status     | Reason                                                                                |
 +-----------------+-----------------+---------------------------------------------------------------------------------------+
+| Status          | Next status     | Reason                                                                                |
++=================+=================+=======================================================================================+
 | None            | Triaged         | A solution can be developed.                                                          |
 |                 +-----------------+---------------------------------------------------------------------------------------+
 |                 | User Feedback   | More information is required from the user before development can continue.           |
@@ -39,14 +39,14 @@ The transition from one state to another is governed by the table below.
 | In Progress     | User Feedback   | More information is required from the user before development can continue.           |
 |                 +-----------------+---------------------------------------------------------------------------------------+
 |                 | User Validation | A solution has been developed for the user and requires validation.                   |
-+=================+=================+=======================================================================================+
++-----------------+-----------------+---------------------------------------------------------------------------------------+
 
-The project board is divided into 7 views: Issue Triage, Development, Bugs, Next Release, Releases, Deferred, Version 4.0.
+The project board is divided into 7 views: Issue Triage, Development, Bugs, Next Release, Releases, Deferred, and Version 4.0.
 
 Issue Triage
 ============
 
-There is a GitHub action which will add any new issue into the project board.
+There is a GitHub action which will add any newly created issue into the project board.
 This view provides an easy way to check for new issues.
 
 Development
@@ -77,11 +77,11 @@ Releases
 This view shows which issues have been addressed with a particular release.
 Each release provides a collapsible view containing each issue in a release.
 
-Deffered
+Deferred
 ========
 
 This view shows all issues which have been deferred.
-Deffered issues with either be developed later or eventually be closed.
+Deferred issues will either be developed later or eventually retired and then closed.
 
 Version 4.0
 ===========

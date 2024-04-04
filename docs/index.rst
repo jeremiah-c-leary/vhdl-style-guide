@@ -29,5 +29,6 @@ Welcome to vhdl-style-guide's documentation!
    rules
    contributing
    theory_of_operation/index
-   setting_up_a_development_environment
+   processes/index
+   developing/index
    release_notes

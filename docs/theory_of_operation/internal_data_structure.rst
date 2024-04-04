@@ -17,7 +17,7 @@ Given the following code snippet:
 
 The resulting data structure will be the following list:
 
-.. code-block:: python
+.. code-block:: text
 
    tokens = [
        <class 'vsg.token.architecture_body.architecture_keyword'>,

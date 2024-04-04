@@ -20,7 +20,7 @@ Guidelines
 * [naming_002] The identifier shall be the *left-hand side* of VHDL production.
 * [naming_003] The number shall be three digits.
 * [naming_004] The rule number shall indicate which phase the rule is executed.
-* [naming_005] An identifier shall never be re-used.
+* [naming_005] An identifier and number pair shall never be re-used.
 
 * [scoping_001] Rules shall be scoped to a VHDL production
 
@@ -38,7 +38,7 @@ The following production shows the structure of an architecture.
            architecture_statement_part
        *end* [ *architecture* ] [ architecture_simple_name ] ;
 
-The VHDL keywords are enclosed with asterisks, **architecture**, **of**, **is**, **begin** and **end**.
+The VHDL keywords are enclosed with asterisks, :code:`architecture`, :code:`of`, :code:`is`, :code:`begin` and :code:`end`.
 Everything else is another production:
 
 .. code-block:: text
@@ -111,13 +111,10 @@ For example:
 
 * architecture_body_700 = naming restrictions on identifier and architecture_simple_name
 
-The one exception is the identifier production.
-The entity_name is a reference to the identifier in the entity_declaration production and therefore no rule will be written against it at the architecture_body level.
-
 One question to answer are blank lines.
-Are they part of architecture_body or the next production?
+Are they part of :code:`architecture_body` or the next production?
 
-Expanding the architecture_declarative_part production we get:
+Expanding the :code:`architecture_declarative_part` production shows:
 
 .. code-block:: text
 
@@ -147,7 +144,7 @@ Expanding the architecture_declarative_part production we get:
      | PSL_Sequence_Declaration
      | PSL_Clock_Declaration
 
-Vertical spacing between these elements will be performed by rules in the block_declarative_part group.
+Vertical spacing between these elements will be performed by rules in the :code:`block_declarative_part` group.
 This will eliminate the issue where multiple blank line rules could collide.
 
 * block_declarative_part_300 = blank line at beginning of block_declarative part
@@ -155,7 +152,7 @@ This will eliminate the issue where multiple blank line rules could collide.
 * block_declarative_part_302 = blank line before block_declarative_item (could be configurable) (could also conflict with block_declarative_item_001)
 * etc...
 
-The block_declarative_part can into from 0 to N block_declarative_items.
+The block_declarative_part can include from 0 to N block_declarative_items.
 Alignment rules between block_declarative_items, e.g. colon alignment in signal_declaration and constant_declaration, will also be performed at this level.
 
 * block_declarative_part_500 = align identifiers in file, constant and signal declarations
