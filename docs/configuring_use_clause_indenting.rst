@@ -52,9 +52,10 @@ This is an example of how to configure these options.
 
    indent:
      tokens:
-        use_clause:
-          token_after_library_clause: '+1'
-          token_if_no_matching_library_clause: '+1'
+       use_clause:
+         keyword:
+           token_after_library_clause: '+1'
+           token_if_no_matching_library_clause: '+1'
 
 The following code snippet is used for all examples.
 
@@ -64,7 +65,6 @@ The following code snippet is used for all examples.
       use ieee.std_logic_1164.all;
 
       use work.my_package.all;
-
 
 Example: |token_if_no_matching_library_clause| set to |current_value|
 #####################################################################
@@ -110,7 +110,7 @@ Example: |token_after_library_clause| set to :code:`'+1'`
 
       use work.my_package.all;
 
-Rules Enforcing Keyword Alignment
-#################################
+Rules Enforcing Use Clause Indenting
+####################################
 
 * `library_008 <library_rules.html#library-008>`_
