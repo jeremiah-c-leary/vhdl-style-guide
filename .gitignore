@@ -12,8 +12,8 @@ _build
 .tox
 build.out/
 
-# This version file should never be committed
-vsg/version_info.*
+# Ignore release notes
+release_notes.txt
 
 # IDE files
 .idea/
