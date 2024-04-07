@@ -72,6 +72,7 @@ vsg = "vsg.__main__:main"
 
 [tool.setuptools-git-versioning]
 enabled = true
+template = "{tag}"
 
 [tool.setuptools.package-data]
 "vsg.rules" = [
