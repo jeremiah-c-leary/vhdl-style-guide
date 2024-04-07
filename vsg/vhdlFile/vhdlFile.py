@@ -82,9 +82,9 @@ class vhdlFile:
         self.stdin = commandLineArguments.stdin
         self.configuration = configuration
         self.commandLineArguments = commandLineArguments
-#        p = cProfile.Profile()
-#        p.runcall(self._processFile)
-#        p.print_stats()
+        #        p = cProfile.Profile()
+        #        p.runcall(self._processFile)
+        #        p.print_stats()
         self._processFile()
 
     def _processFile(self):
