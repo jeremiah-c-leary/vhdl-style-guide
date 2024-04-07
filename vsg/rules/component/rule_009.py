@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.component_declaration.end_keyword)
 
 
 class rule_009(token_indent):
-    '''
+    """
     This rule checks the indent of the **end component** keywords.
 
     **Violation**
@@ -26,7 +26,7 @@ class rule_009(token_indent):
            overflow : std_logic
          );
        end component fifo;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'component', '009', lTokens)
+        super().__init__(lTokens)

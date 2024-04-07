@@ -1,7 +1,7 @@
-
-from vsg.rules import token_case_n_token_after_tokens_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_case_n_token_after_tokens_between_tokens
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.colon)
@@ -14,7 +14,7 @@ oEnd = token.generic_clause.close_parenthesis
 
 
 class rule_017(token_case_n_token_after_tokens_between_tokens):
-    '''
+    """
     This rule checks the generic type has proper case if it is a VHDL keyword.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -36,9 +36,9 @@ class rule_017(token_case_n_token_after_tokens_between_tokens):
         g_width : std_logic := '0';
         g_depth : std_logic := '1'
       );
-    '''
+    """
 
     def __init__(self):
-        token_case_n_token_after_tokens_between_tokens.__init__(self, 'generic', '017', 1, lTokens, oStart, oEnd, True)
+        super().__init__(1, lTokens, oStart, oEnd, True)
         self.disabled = True
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

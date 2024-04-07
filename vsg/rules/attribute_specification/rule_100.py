@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
@@ -11,7 +11,7 @@ lTokens.append(token.attribute_specification.is_keyword)
 
 
 class rule_100(Rule):
-    '''
+    """
     This rule checks for a single space after the following attribute_specification elements:  **attribute** keyword, *attribute_designator*, **of** keyword and **is** keyword.
 
     |configuring_whitespace_rules_link|
@@ -31,6 +31,7 @@ class rule_100(Rule):
        attribute coordinate of comp_1:component   is (0.0, 17.5);
 
        attribute coordinate of comp_1:component   is (0.0, 17.5);
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, 'attribute_specification', '100', lTokens)
+        super().__init__(lTokens)

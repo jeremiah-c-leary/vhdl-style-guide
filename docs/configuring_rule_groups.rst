@@ -28,4 +28,3 @@ The following example configures the rules to:
           disable: True
         naming:
           disable: True
-

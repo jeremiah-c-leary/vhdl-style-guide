@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules import utils as rules_utils
+from vsg import parser, violation
 from vsg.rule_group import structure
+from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
 
 
 class move_token_next_to_another_token_if_it_exists_between_tokens(structure.Rule):
-    '''
+    """
     Moves one token next to another and places a single space between them.
 
     Parameters
@@ -25,10 +24,10 @@ class move_token_next_to_another_token_if_it_exists_between_tokens(structure.Rul
 
     token_to_move : token type
        The token which will be moved next to the anchor token.
-    '''
+    """
 
-    def __init__(self, name, identifier, anchor_token, token_to_move, between_tokens):
-        structure.Rule.__init__(self, name, identifier)
+    def __init__(self, anchor_token, token_to_move, between_tokens):
+        super().__init__()
         self.subphase = 2
         self.anchor_token = anchor_token
         self.token_to_move = token_to_move
@@ -49,8 +48,8 @@ class move_token_next_to_another_token_if_it_exists_between_tokens(structure.Rul
                     if not (iStartIndex + 2 == iMoveIndex and isinstance(lTokens[iStartIndex + 1], parser.whitespace)):
                         oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                         dAction = {}
-                        dAction['insertIndex'] = iStartIndex + 1
-                        dAction['moveIndex'] = iMoveIndex
+                        dAction["insertIndex"] = iStartIndex + 1
+                        dAction["moveIndex"] = iMoveIndex
                         oViolation.set_action(dAction)
                         oViolation.set_remap()
                         oViolation.fix_blank_lines = True
@@ -59,8 +58,8 @@ class move_token_next_to_another_token_if_it_exists_between_tokens(structure.Rul
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        oMoveToken = lTokens.pop(dAction['moveIndex'])
-        rules_utils.insert_token(lTokens, dAction['insertIndex'], oMoveToken)
-        rules_utils.insert_whitespace(lTokens, dAction['insertIndex'])
+        oMoveToken = lTokens.pop(dAction["moveIndex"])
+        rules_utils.insert_token(lTokens, dAction["insertIndex"], oMoveToken)
+        rules_utils.insert_whitespace(lTokens, dAction["insertIndex"])
         lTokens = utils.fix_blank_lines(lTokens)
         oViolation.set_tokens(lTokens)

@@ -1,7 +1,7 @@
-
-from vsg.rules import multiline_simple_structure as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import multiline_simple_structure as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.simple_waveform_assignment.assignment, token.simple_waveform_assignment.semicolon])
@@ -9,7 +9,7 @@ lTokenPairs.append([token.conditional_waveform_assignment.assignment, token.cond
 
 
 class rule_008(Rule):
-    '''
+    """
     This rule checks the structure of simple and conditional sequential signal assignments.
 
     |configuring_simple_multiline_structure_rules_link|
@@ -37,7 +37,7 @@ class rule_008(Rule):
        w_foo <= I_FOO when ((I_BAR = '1') and
                             (I_CRUFT = '1')) else
                 '0';
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, 'sequential', '008', lTokenPairs)
+        super().__init__(lTokenPairs)

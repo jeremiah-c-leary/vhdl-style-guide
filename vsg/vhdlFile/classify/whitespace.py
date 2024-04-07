@@ -1,12 +1,13 @@
+# -*- coding: utf-8 -*-
 
 
 from vsg import parser
 
 
 def classify(lTokens, lObjects):
-    '''
+    """
     Classifies whitespace objects.
-    '''
+    """
     for iToken, sToken in enumerate(lTokens):
         if string_contains_space(sToken):
             if is_string_literal(sToken):
@@ -23,13 +24,13 @@ def classify(lTokens, lObjects):
 
 
 def string_contains_space(sToken):
-    if ' ' in sToken:
+    if " " in sToken:
         return True
     return False
 
 
 def string_contains_tab(sToken):
-    if '\t' in sToken:
+    if "\t" in sToken:
         return True
     return False
 

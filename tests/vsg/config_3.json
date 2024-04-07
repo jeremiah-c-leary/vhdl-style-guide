@@ -1,0 +1,10 @@
+{
+  "rule": {
+    "port_007": {
+      "disable": true
+    },
+    "global": {
+       "indent_size": 2
+    }
+  }
+}

@@ -1,7 +1,7 @@
-
-from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
 
 lAlign = []
 lAlign.append(token.file_declaration.colon)
@@ -15,11 +15,11 @@ oStart = token.package_declaration.is_keyword
 oEnd = token.package_declaration.end_keyword
 
 lUnless = []
-lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
+lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
 
 
 class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
-    '''
+    """
     This rule checks the colons are in the same column for all declarations in the package declarative part.
 
     |configuring_keyword_alignment_rules_link|
@@ -47,9 +47,10 @@ class rule_400(align_tokens_in_region_between_tokens_unless_between_tokens):
          constant c_period : time;
 
        end package my_package;
-    '''
+    """
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, 'package', '400', lAlign, oStart, oEnd, lUnless)
-        self.solution = 'Align colon.'
+        super().__init__(lAlign, oStart, oEnd, lUnless)
+        self.solution = "Align colon."
         self.subphase = 3
+        self.configuration.remove("separate_generic_port_alignment")

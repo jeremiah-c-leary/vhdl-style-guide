@@ -27,7 +27,7 @@ This will create a template **task.json** file:
 Replace the contents of the template file with the following...
 
 .. code-block:: text
-    
+
     {
       // See https://go.microsoft.com/fwlink/?LinkId=733558
       // for the documentation about the tasks.json format
@@ -36,7 +36,7 @@ Replace the contents of the template file with the following...
         {
           "label": "vsg-check",
           "type": "shell",
-          "command": "vsg -f ${relativeFile}",
+          "command": "vsg -f \"${relativeFile}\"",
           "problemMatcher": {
             "owner": "vsg",
             "fileLocation": ["autoDetect", "${workspaceFolder}"],
@@ -86,10 +86,10 @@ Replace the contents of the template file with the following...
         {
           "label": "vsg-fix",
           "type": "shell",
-          "command": "vsg -f ${relativeFile} --fix",
+          "command": "vsg -f \"${relativeFile}\" --fix",
           "problemMatcher": {
             "owner": "vsg",
-            "fileLocation": ["autodetect", "${workspaceFolder}"],
+            "fileLocation": ["autoDetect", "${workspaceFolder}"],
             "pattern": [
               {
                 "regexp": "^File:  ([^\\s]*)\\s*$",
@@ -175,4 +175,3 @@ The violations are shown in the Problems tab:
 The violations can be fixed manually, or by using `ctrl+f`...
 
 .. image:: vscode_file_fixed.png
-

@@ -1,14 +1,14 @@
-
-from vsg.rules import split_line_at_token
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import split_line_at_token
 
 lTokens = []
 lTokens.append(token.process_statement.begin_keyword)
 
 
 class rule_010(split_line_at_token):
-    '''
+    """
     This rule checks the **begin** keyword is on its own line.
 
     **Violation**
@@ -27,8 +27,8 @@ class rule_010(split_line_at_token):
                          rd_full, wr_full
                         ) is
        begin
-    '''
+    """
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'process', '010', lTokens)
-        self.solution = 'Closing parenthesis must be on a line by itself.'
+        super().__init__(lTokens)
+        self.solution = "Closing parenthesis must be on a line by itself."

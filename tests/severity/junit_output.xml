@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" hostname="DESKTOP-HV9NHA3" failures="3" timestamp="2020-07-17T07:30:31" tests="1" time="0" name="vhdl-style-guide">
+  <properties>
+  </properties>
+  <testcase name="entity.vhd" time="0">
+    <failure type="Failure">
+      port_007: 3 : Change number of spaces after *in* to 4.
+      port_007: 4 : Change number of spaces after *in* to 4.
+      port_008: 6 : Change number of spaces after *out* to 3.
+      port_008: 7 : Change number of spaces after *out* to 3.
+    </failure>
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

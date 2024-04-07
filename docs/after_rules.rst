@@ -124,4 +124,3 @@ This rule checks the *after* keywords do not exist in the reset portion of a clo
        b <= c  after 1 ns;
      end if;
    end process clk_proc;
-

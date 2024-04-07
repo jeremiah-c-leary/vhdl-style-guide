@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules import utils as rules_utils
+from vsg import parser, violation
 from vsg.rule_group import structure
+from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
 
 
 class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens(structure.Rule):
-    '''
+    """
     Moves one token next to several possible tokens if it exists.
 
     Parameters
@@ -26,10 +25,10 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
     lTokens : list of token type
        The token types to move oToken to.
        This is an ordered list with the left item containing the token furthest way from oToken.
-    '''
+    """
 
-    def __init__(self, name, identifier, oMoveToken, lAnchorTokens, oStartToken, oEndToken, bInsertWhitespace=False):
-        structure.Rule.__init__(self, name, identifier)
+    def __init__(self, oMoveToken, lAnchorTokens, oStartToken, oEndToken, bInsertWhitespace=False):
+        super().__init__()
         self.oMoveToken = oMoveToken
         self.lAnchorTokens = lAnchorTokens
         self.oStartToken = oStartToken
@@ -38,7 +37,8 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_bounded_by(self.oStartToken, self.oEndToken, bIncludeTillEndOfLine=True)
+        lToi = oFile.get_tokens_bounded_by(self.oStartToken, self.oEndToken, bIncludeTillEndOfLine=True)
+        return rules_utils.remove_tois_with_pragmas(lToi)
 
     def _analyze(self, lToi):
         for oToi in lToi:
@@ -51,7 +51,7 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
                 iLine = utils.increment_line_number(iLine, oToken)
                 for oAnchorToken in self.lAnchorTokens:
                     if isinstance(oToken, oAnchorToken):
-                        dAction['insert'] = iToken + 1
+                        dAction["insert"] = iToken + 1
                         sAnchorToken = oToken.get_value()
                         iAnchorLine = iLine
                         if utils.are_next_consecutive_token_types([parser.whitespace, self.oMoveToken], iToken + 1, lTokens):
@@ -62,8 +62,10 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
                             break
                 if isinstance(oToken, self.oMoveToken):
                     iAnchorLine = iLine
-                    dAction['move_index'] = iToken
-                    sSolution = 'Move "' + oToken.get_value() + '" on line ' + str(iLine) + ' to the right of "' + sAnchorToken + '" on line ' + str(iAnchorLine)
+                    dAction["move_index"] = iToken
+                    sSolution = (
+                        'Move "' + oToken.get_value() + '" on line ' + str(iLine) + ' to the right of "' + sAnchorToken + '" on line ' + str(iAnchorLine)
+                    )
                 if bPassing:
                     break
             else:
@@ -76,10 +78,10 @@ class move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_to
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
 
-        oToken = lTokens.pop(dAction['move_index'])
-        rules_utils.insert_token(lTokens, dAction['insert'], oToken)
+        oToken = lTokens.pop(dAction["move_index"])
+        rules_utils.insert_token(lTokens, dAction["insert"], oToken)
         if self.bInsertWhitespace:
-            rules_utils.insert_whitespace(lTokens, dAction['insert'])
+            rules_utils.insert_whitespace(lTokens, dAction["insert"])
         lTokens = utils.remove_consecutive_whitespace_tokens(lTokens)
         lTokens = utils.fix_blank_lines(lTokens)
         oViolation.set_tokens(lTokens)

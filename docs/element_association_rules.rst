@@ -44,4 +44,3 @@ This rule checks for a single space after the => in an element_association.
 .. code-block:: vhdl
 
    a <= (others => (others => '0'));
-

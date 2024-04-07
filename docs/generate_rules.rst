@@ -322,23 +322,10 @@ This rule checks for a single space between the colon and the **for** keyword.
 generate_015
 ############
 
-|phase_1| |error| |structure|
+This rule has been replaced with the following rules:
 
-This rule checks the generate label and the **generate** keyword are on the same line.
-Keeping the label and generate on the same line reduces excessive indenting.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   ram_array :
-     for i in 0 to 7 generate
-
-**Fix**
-
-.. code-block:: vhdl
-
-   ram_array : for i in 0 to 7 generate
+* `generate_020 <generate_rules.html#generate-020>`_
+* `generate_021 <generate_rules.html#generate-021>`_
 
 generate_016
 ############
@@ -371,7 +358,7 @@ generate_017
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on generate statement labels.
-The default prefix is *gen\_*.
+The default prefix is *gen_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -433,6 +420,47 @@ This rule checks the **end** keyword is on its own line.
    ram_array : for i in 0 to 7 generate
      a <= b;
    end generate;
+
+generate_020
+############
+
+|phase_1| |error| |structure|
+
+This rule checks a label and the colon are on the same line.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label
+   :
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label :
+
+generate_021
+############
+
+|phase_1| |error| |structure|
+
+This rule checks a label colon is on the same line as the **case**, **if**, and **for** keywords.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   label :
+   case
+
+**Fix**
+
+.. code-block:: vhdl
+
+   label
+   : case
 
 generate_400
 ############
@@ -640,7 +668,7 @@ generate_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on generate statement labels.
-The default suffix is *\_gen*.
+The default suffix is *_gen*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -656,3 +684,46 @@ The default suffix is *\_gen*.
 
    label_gen : case condition generate
 
+generate_601
+############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid prefixes on generate parameter identifiers.
+The default generate prefix is *gv_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  gen_label : for index in t_range generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+  gen_label : for gv_index in t_range generate
+
+generate_602
+############
+
+|phase_7| |disabled| |error| |naming|
+
+This rule checks for valid suffixes on generate parameter identifiers.
+The default generate suffix is *_gv*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  gen_label : for index in t_range generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+  gen_label : for index_gv in t_range generate

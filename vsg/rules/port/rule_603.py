@@ -1,18 +1,16 @@
-
-from vsg.rules import token_prefix as Rule
-
-from vsg.rules import utils
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_prefix as Rule, utils
 
 lTokens = []
 
 
 class rule_603(Rule):
-    '''
+    """
     This rule checks for valid prefixes on port identifiers for buffer ports.
 
-    The default prefix is: *b\_*.
+    The default prefix is: *b_*.
 
     |configuring_prefix_and_suffix_rules_link|
 
@@ -34,11 +32,11 @@ class rule_603(Rule):
          b_wr_en    : buffer    std_logic;
          b_rd_en    : buffer    std_logic
        );
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, 'port', '603', lTokens)
-        self.prefixes = ['b_']
+        super().__init__(lTokens)
+        self.prefixes = ["b_"]
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []

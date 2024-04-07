@@ -1,7 +1,7 @@
-
-from vsg.rules import split_line_at_token_when_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import split_line_at_token_when_between_tokens
 
 lTokens = []
 lTokens.append(token.generic_map_aspect.generic_keyword)
@@ -11,7 +11,7 @@ oEnd = token.component_instantiation_statement.semicolon
 
 
 class rule_012(split_line_at_token_when_between_tokens):
-    '''
+    """
     This rule checks the instantiation declaration and the **generic map** keywords are not on the same line.
 
     **Violation**
@@ -26,8 +26,8 @@ class rule_012(split_line_at_token_when_between_tokens):
 
        U_FIFO : FIFO
          generic map (
-    '''
+    """
 
     def __init__(self):
-        split_line_at_token_when_between_tokens.__init__(self, 'instantiation', '012', lTokens, oStart, oEnd)
-        self.solution = 'Place *generic map* keywords on the next line by itself'
+        super().__init__(lTokens, oStart, oEnd)
+        self.solution = "Place *generic map* keywords on the next line by itself"

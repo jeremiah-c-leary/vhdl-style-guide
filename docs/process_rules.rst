@@ -745,6 +745,8 @@ process_028
 This rule checks the alignment of the closing parenthesis of a sensitivity list.
 Parenthesis on multiple lines should be in the same column.
 
+|configuring_keyword_alignment_rules_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -1009,7 +1011,7 @@ process_036
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on process labels.
-The default prefix is *proc\_*.
+The default prefix is *proc_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -1150,7 +1152,7 @@ process_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on process labels.
-The default suffix is *\_proc*.
+The default suffix is *_proc*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -1165,4 +1167,3 @@ The default suffix is *\_proc*.
 .. code-block:: vhdl
 
    main_proc: process () is
-

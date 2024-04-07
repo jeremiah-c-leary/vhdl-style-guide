@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
+from vsg import parser, token
 from vsg.rules import remove_lines_starting_with_token_between_token_pairs
 
 lTokens = []
@@ -13,7 +12,7 @@ oRemoveToken = parser.comment
 
 
 class rule_006(remove_lines_starting_with_token_between_token_pairs):
-    '''
+    """
     This rule checks for comments within multiline sequential statements.
 
     **Violation**
@@ -30,9 +29,9 @@ class rule_006(remove_lines_starting_with_token_between_token_pairs):
 
        overflow <= wr_en and
                    rd_en;
-    '''
+    """
 
     def __init__(self):
-        remove_lines_starting_with_token_between_token_pairs.__init__(self, 'sequential', '006', oRemoveToken, lTokens)
-        self.solution = 'Remove comments inside sequential assignment'
+        super().__init__(oRemoveToken, lTokens)
+        self.solution = "Remove comments inside sequential assignment"
         self.fixable = False

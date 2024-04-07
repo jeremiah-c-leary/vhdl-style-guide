@@ -1,0 +1,4 @@
+rule:
+  global:
+    indentSize : 4
+    indentType : 'spaces'

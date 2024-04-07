@@ -50,4 +50,3 @@ This rule checks the case of the **to** keyword.
 
    signal sig1 : std_logic_vector(3 to 0);
    signal sig2 : std_logic_vector(16 to 1);
-

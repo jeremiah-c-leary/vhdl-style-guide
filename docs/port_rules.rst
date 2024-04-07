@@ -234,7 +234,7 @@ port_011
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on port identifiers.
-The default port prefixes are: *i\_*, *o\_*, *io\_*.
+The default port prefixes are: *i_*, *o_*, *io_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -732,7 +732,7 @@ port_600
 
 This rule checks for valid prefixes on port identifiers for input ports.
 
-The default prefix is: *i\_*.
+The default prefix is: *i_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -762,7 +762,7 @@ port_601
 
 This rule checks for valid prefixes on port identifiers for output ports.
 
-The default prefix is: *o\_*.
+The default prefix is: *o_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -792,7 +792,7 @@ port_602
 
 This rule checks for valid prefixes on port identifiers for inout ports.
 
-The default prefix is: *io\_*.
+The default prefix is: *io_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -822,7 +822,7 @@ port_603
 
 This rule checks for valid prefixes on port identifiers for buffer ports.
 
-The default prefix is: *b\_*.
+The default prefix is: *b_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -852,7 +852,7 @@ port_604
 
 This rule checks for valid prefixes on port identifiers for linkage ports.
 
-The default prefix is: *l\_*.
+The default prefix is: *l_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -1020,4 +1020,3 @@ The default suffix is: *_l*.
      wr_en_l    : linkage    std_logic;
      rd_en_l    : linkage    std_logic
    );
-

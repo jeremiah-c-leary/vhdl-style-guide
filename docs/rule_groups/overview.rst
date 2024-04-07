@@ -46,4 +46,3 @@ Configuring Groups
 ------------------
 
 Refer to the section `Configuring a Rule Group <../configuring_rule_groups.html>`_ for information on how to configure rule groups.
-

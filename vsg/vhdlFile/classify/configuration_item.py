@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import block_configuration
-from vsg.vhdlFile.classify import component_configuration
+from vsg.vhdlFile.classify import block_configuration, component_configuration
 
 
 def detect(iToken, lObjects):
@@ -8,11 +8,11 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
-    '''
+    """
     configuration_item ::=
         block_configuration
       | component_configuration
-    '''
+    """
 
     iCurrent = component_configuration.detect(iToken, lObjects)
     if iCurrent != iToken:

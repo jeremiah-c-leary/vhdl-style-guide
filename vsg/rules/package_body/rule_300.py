@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.package_body.package_keyword)
 
 
 class rule_300(token_indent):
-    '''
+    """
     This rule checks the indent of the package body keyword.
 
     **Violation**
@@ -26,7 +26,7 @@ class rule_300(token_indent):
        library ieee;
 
        package body FIFO_PKG is
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'package_body', '300', lTokens)
+        super().__init__(lTokens)

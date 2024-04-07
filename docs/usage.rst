@@ -127,7 +127,7 @@ The command line tool can be invoked with:
 +-------------------------------+-------------------------------------------------+
 | --version                     | Displays the version of VSG.                    |
 +-------------------------------+-------------------------------------------------+
-| --all-phases                  | Executes all phases without stopping if a       |
+| --all_phases                  | Executes all phases without stopping if a       |
 |                               | violation is found.                             |
 |                               | NOTE: This is not valid with the --fix option.  |
 +-------------------------------+-------------------------------------------------+
@@ -141,7 +141,7 @@ The command line tool can be invoked with:
 |                               | default is the number of cores available.       |
 +-------------------------------+-------------------------------------------------+
 | --debug                       | Print verbose debug information to assist with  |
-|                               | debuging errors with VSG.                       |
+|                               | debugging errors with VSG.                      |
 +-------------------------------+-------------------------------------------------+
 
 
@@ -167,7 +167,7 @@ Here is an example output running against a test file:
    ----------------------------+------------+--------------------------------------
    NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
 
-VSG will report the rule which is violated and the line number or group of lines where the violation occured.
+VSG will report the rule which is violated and the line number or group of lines where the violation occurred.
 It also gives a suggestion on how to fix the violation.
 The rules VSG uses are grouped together into :doc:`phases`.
 These phases follow the order in which the user would take to address the violations.

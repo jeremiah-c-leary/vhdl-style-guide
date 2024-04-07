@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
@@ -8,7 +8,7 @@ lTokens.append([token.instantiated_unit.component_keyword, token.instantiated_un
 
 
 class rule_032(Rule):
-    '''
+    """
     This rule checks for a single space after the **component** keyword if it is used.
 
     |configuring_whitespace_rules_link|
@@ -28,6 +28,7 @@ class rule_032(Rule):
        INSTANCE_NAME : component ENTITY_NAME
        INSTANCE_NAME : component ENTITY_NAME
        INSTANCE_NAME : component ENTITY_NAME
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, 'instantiation', '032', lTokens)
+        super().__init__(lTokens)

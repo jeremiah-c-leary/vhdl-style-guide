@@ -1,0 +1,6 @@
+rule:
+  group:
+    case::keyword:
+      indentSize : 4
+    case::name:
+      indentType : 'spaces'

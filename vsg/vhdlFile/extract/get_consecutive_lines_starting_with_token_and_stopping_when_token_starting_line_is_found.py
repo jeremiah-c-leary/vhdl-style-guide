@@ -1,14 +1,11 @@
+# -*- coding: utf-8 -*-
 
 
 from vsg import parser
-
-from vsg.vhdlFile.extract import tokens
-
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_consecutive_lines_starting_with_token_and_stopping_when_token_starting_line_is_found(search_token, stop_token, lAllTokens, oTokenMap):
-
     lReturn = []
     lSearchIndexes = utils.filter_tokens_which_start_a_line(search_token, oTokenMap)
     lStopIndexes = utils.filter_tokens_which_start_a_line(stop_token, oTokenMap)

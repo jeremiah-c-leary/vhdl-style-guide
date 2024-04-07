@@ -1,17 +1,19 @@
+# -*- coding: utf-8 -*-
 
 import copy
 
-from vsg import parser
-from vsg import violation
-
-from vsg.token import port_clause as token
-from vsg.token import interface_unknown_declaration
-from vsg.token import interface_list
+from vsg import parser, violation
 from vsg.rule_group import structure
+from vsg.token import (
+    identifier_list,
+    interface_list,
+    interface_unknown_declaration,
+    port_clause as token,
+)
 
 
 class rule_026(structure.Rule):
-    '''
+    """
     This rule checks for multiple identifiers on port declarations.
 
     Any comments are not replicated.
@@ -37,10 +39,10 @@ class rule_026(structure.Rule):
          overflow : out   std_logic;
          empty : out   std_logic -- Other comment
        );
-    '''
+    """
 
     def __init__(self):
-        structure.Rule.__init__(self, name='port', identifier='026')
+        super().__init__()
         self.subphase = 2
         self.configuration_documentation_link = None
 
@@ -49,41 +51,44 @@ class rule_026(structure.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
+            if not oToi.token_type_exists(identifier_list.comma):
+                continue
             lTokens = oToi.get_tokens()
-            iCount = 0
+
+            ### Find identifiers ###
             lIdentifiers = []
             lIdentifierIndexes = []
             for iToken, oToken in enumerate(lTokens):
                 if isinstance(oToken, interface_unknown_declaration.identifier):
                     lIdentifiers.append(oToken.get_value())
-                    iCount += 1
                     lIdentifierIndexes.append(iToken)
-            if iCount > 1:
-                sSolution = 'Split identifiers ' + ', '.join(lIdentifiers) + ' to individual lines.'
-                dAction = {}
-                if oToi == lToi[-1]:
-                    dAction['last_element'] = False
-                else:
-                    dAction['last_element'] = True
-                dAction['identifier_indexes'] = lIdentifierIndexes
-                dAction['split_index'] = lIdentifierIndexes[-1] + 1
-                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-                oViolation.set_action(dAction)
-                self.add_violation(oViolation)
+
+            sSolution = "Split identifiers " + ", ".join(lIdentifiers) + " to individual lines."
+            dAction = {}
+            if oToi == lToi[-1]:
+                dAction["last_element"] = False
+            else:
+                dAction["last_element"] = True
+            dAction["identifier_indexes"] = lIdentifierIndexes
+            dAction["split_index"] = lIdentifierIndexes[-1] + 1
+            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+            oViolation.set_action(dAction)
+            self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
-        '''
+        """
         Applies fixes for any rule violations.
-        '''
+        """
         lTokens = oViolation.get_tokens()
         lNewTokens = []
         dAction = oViolation.get_action()
-        for iIndex in dAction['identifier_indexes']:
+        for iIndex in dAction["identifier_indexes"]:
             lCopyTokens = duplicate_tokens(lTokens)
             lNewTokens.append(lCopyTokens[iIndex])
 
-            lNewTokens.extend(lCopyTokens[dAction['split_index']:])
-            if iIndex != dAction['identifier_indexes'][-1]:
+            lNewTokens.extend(lCopyTokens[dAction["split_index"] :])
+
+            if iIndex != dAction["identifier_indexes"][-1]:
                 lNewTokens.append(interface_list.semicolon())
                 lNewTokens.append(parser.carriage_return())
         oViolation.set_tokens(lNewTokens)

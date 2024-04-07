@@ -433,7 +433,7 @@ component_019
 |phase_1| |error| |structure|
 
 This rule checks for comments at the end of the port and generic clauses in component declarations.
-These comments represent additional maintainence.
+These comments represent additional maintenance.
 They will be out of sync with the entity at some point.
 Refer to the entity for port types, port directions and purpose.
 
@@ -520,4 +520,3 @@ This rule inserts the optional **is** keyword if it does not exist.
    component my_component is
 
    end my_component;
-

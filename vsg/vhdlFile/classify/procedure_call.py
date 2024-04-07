@@ -1,16 +1,14 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import procedure_call as token
-
 from vsg.vhdlFile import utils
-
 from vsg.vhdlFile.classify import actual_parameter_part
 
-
-lExceptions = ['<=', 'end', 'map', 'component', 'entity', 'configuration', 'if']
+lExceptions = ["<=", "end", "map", "component", "entity", "configuration", "if"]
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     Calling functions:
 
     concurrent_procedure_call_statement ::=
@@ -25,11 +23,11 @@ def detect(iToken, lObjects):
         *procedure*_name [ ( actual_parameter_part ) ]
 
     Differentiating a procedure call from anything else is essentially the absence of keywords.
-    '''
+    """
 
     iCurrent = iToken
 
-    while lObjects[iCurrent].get_value() != ';':
+    while lObjects[iCurrent].get_value() != ";":
         if utils.is_item(lObjects, iCurrent):
             if lObjects[iCurrent].get_lower_value() in lExceptions:
                 return False
@@ -39,18 +37,18 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
-    '''
+    """
     procedure_call ::=
         *procedure*_name [ ( actual_parameter_part ) ]
-    '''
+    """
 
     iCurrent = utils.assign_next_token(token.procedure_name, iToken, lObjects)
 
-    if utils.is_next_token('(', iToken, lObjects):
-        iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iCurrent, lObjects)
+    if utils.is_next_token("(", iToken, lObjects):
+        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
 
         iCurrent = actual_parameter_part.classify(iCurrent, lObjects)
 
-        iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
 
     return iCurrent

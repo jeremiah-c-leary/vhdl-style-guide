@@ -1,8 +1,0 @@
-{
-  "rule": {
-    "after_002": {
-      "fixable": false,
-      "indentSize": 4
-    }
-  }
-}

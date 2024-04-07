@@ -1,16 +1,16 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, violation
 from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
-
-from vsg.rules.insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token import insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token as Rule
+from vsg.rules.insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token import (
+    insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token as Rule,
+)
+from vsg.vhdlFile import utils
 
 
 class insert_token_right_of_token_if_it_does_not_exist_between_tokens_using_value_from_token(Rule):
-    '''
+    """
     Checks for the existence of a token and will insert it if it does not exist.
 
     Parameters
@@ -30,14 +30,14 @@ class insert_token_right_of_token_if_it_does_not_exist_between_tokens_using_valu
 
     value_token : token object
        token to pull the value from
-    '''
+    """
 
-    def __init__(self, name, identifier, insert_token, anchor_token, left_token, right_token, value_token):
-        Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, insert_token, anchor_token, left_token, right_token, value_token):
+        Rule.__init__(self)
         self.insert_token = insert_token
         self.anchor_token = anchor_token
         self.left_token = left_token
         self.right_token = right_token
         self.value_token = value_token
-        self.configuration_documentation_link = 'configuring_optional_items_link'
-        self.direction = 'right'
+        self.configuration_documentation_link = "configuring_optional_items_link"
+        self.direction = "right"

@@ -75,7 +75,7 @@ VSG will combine any number of configurations to provide a unique set of rules f
                "disable":true
            },
            "global":{
-               "indentSize":2
+               "indent_size":2
            }
        }
    }
@@ -88,7 +88,7 @@ VSG will combine any number of configurations to provide a unique set of rules f
        "rule":{
            "entity_004":{
                "disable":false,
-               "indentSize":4
+               "indent_size":4
            }
        }
    }
@@ -108,13 +108,13 @@ VSG will combine the two configurations into this equivalent configuration...
        "rule":{
            "entity_004":{
                "disable":false,
-               "indentSize":4
+               "indent_size":4
            },
            "entity_005":{
                "disable":true
            },
            "global":{
-               "indentSize":2
+               "indent_size":2
            }
        }
    }

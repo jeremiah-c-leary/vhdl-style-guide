@@ -1,28 +1,17 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
+from vsg import parser, token
 from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
 lTokens.append(token.alias_declaration.alias_designator)
 
-lIgnore = []
-lIgnore.append(token.interface_signal_declaration.identifier)
-lIgnore.append(token.interface_unknown_declaration.identifier)
-lIgnore.append(token.interface_constant_declaration.identifier)
-lIgnore.append(token.interface_variable_declaration.identifier)
-lIgnore.append(token.association_element.formal_part)
-lIgnore.append(token.entity_declaration.identifier)
-lIgnore.append(token.entity_declaration.entity_simple_name)
-lIgnore.append(token.architecture_body.entity_name)
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
+lNames = []
+lNames.append(parser.todo)
 
 
 class rule_503(Rule):
-    '''
+    """
     This rule checks for consistent capitalization of alias designators.
 
     **Violation**
@@ -80,7 +69,8 @@ class rule_503(Rule):
          end process PROC_NAME;
 
        end architecture RTL;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, 'alias_declaration', '503', lTokens, lIgnore)
+        super().__init__(lTokens, lNames)
+        self.bIncludeDeclarativePartNames = True

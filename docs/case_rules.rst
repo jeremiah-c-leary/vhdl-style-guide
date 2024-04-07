@@ -498,7 +498,7 @@ The preference is to have comments above the case statement.
 case_021
 ########
 
-The function of this rule has been superceeced with comment indent updates and is handled by rule comment_010.
+The function of this rule has been superseded with comment indent updates and is handled by rule comment_010.
 
 case_200
 ########
@@ -554,4 +554,3 @@ The default style is :code:`allow_comment`.
 
      -- Comment
      when 4 =>
-

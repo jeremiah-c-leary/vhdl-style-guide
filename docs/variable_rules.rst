@@ -152,7 +152,7 @@ This rule checks for default assignments in variable declarations.
 variable_010
 ############
 
-The function of this rule has been superceeded by the following rules:
+The function of this rule has been superseded by the following rules:
 
 * ieee_500
 * subtype_002
@@ -224,7 +224,7 @@ variable_012
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on variable identifiers.
-The default variable prefix is *v\_*.
+The default variable prefix is *v_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -322,7 +322,7 @@ variable_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffix on variable identifiers.
-The default variable suffix is *\_v*.
+The default variable suffix is *_v*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -337,4 +337,3 @@ The default variable suffix is *\_v*.
 .. code-block:: vhdl
 
    variable my_var_v : natural;
-

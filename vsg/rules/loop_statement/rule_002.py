@@ -1,14 +1,14 @@
-
-from vsg.rules import split_line_at_token
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import split_line_at_token
 
 lTokens = []
 lTokens.append(token.loop_statement.end_keyword)
 
 
 class rule_002(split_line_at_token):
-    '''
+    """
     This rule checks the **end** keyword is on its own line.
 
     **Violation**
@@ -25,8 +25,8 @@ class rule_002(split_line_at_token):
        loop
          a <= b;
        end loop;
-    '''
+    """
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'loop_statement', '002', lTokens)
-        self.solution = 'Move *end* keyword to the next line.'
+        super().__init__(lTokens)
+        self.solution = "Move *end* keyword to the next line."

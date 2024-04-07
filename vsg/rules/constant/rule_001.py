@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.constant_declaration.constant_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of a constant declaration.
 
     **Violation**
@@ -28,7 +28,7 @@ class rule_001(token_indent):
 
          constant size : integer := 1;
          constant width : integer := 32
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'constant', '001', lTokens)
+        super().__init__(lTokens)

@@ -1,16 +1,16 @@
-
-from vsg.rules import token_prefix
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_prefix
 
 lTokens = []
 lTokens.append(token.constant_declaration.identifier)
 
 
 class rule_015(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on constant identifiers.
-    The default constant prefix is *c\_*.
+    The default constant prefix is *c_*.
 
     |configuring_prefix_and_suffix_rules_link|
 
@@ -25,8 +25,8 @@ class rule_015(token_prefix):
     .. code-block:: vhdl
 
        constant c_my_const : integer;
-    '''
+    """
 
     def __init__(self):
-        token_prefix.__init__(self, 'constant', '015', lTokens)
-        self.prefixes = ['c_']
+        super().__init__(lTokens)
+        self.prefixes = ["c_"]

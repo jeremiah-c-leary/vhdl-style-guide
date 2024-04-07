@@ -23,4 +23,3 @@ This rule checks logical operators have proper case.
 .. code-block:: vhdl
 
    a <= b and c;
-

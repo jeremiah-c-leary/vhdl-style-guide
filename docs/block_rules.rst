@@ -65,7 +65,7 @@ This rule checks the **is** keyword is on the same line as the **block** keyword
 
 .. code-block:: vhdl
 
-   block_labeel : block is
+   block_label : block is
 
 block_004
 #########
@@ -684,4 +684,3 @@ The default prefix is *blk_*.
 .. code-block:: vhdl
 
    blk_block_label : block is
-

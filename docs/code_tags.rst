@@ -119,4 +119,3 @@ The colon character, :, can be used to document why the code tag exists.
      b <= read;
    end process;
    -- vsg_on process_016 process_018 : Done with exclusion until VSG is fixed
-

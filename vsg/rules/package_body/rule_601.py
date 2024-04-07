@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules import token_prefix
 
 lTokens = []
@@ -9,7 +9,7 @@ lTokens.append(token.package_body.end_package_simple_name)
 
 
 class rule_601(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on package body identifiers.
     The default package prefix is *pkg_*.
 
@@ -26,9 +26,9 @@ class rule_601(token_prefix):
     .. code-block:: vhdl
 
        package body pkg_foo is
-    '''
+    """
 
     def __init__(self):
-        token_prefix.__init__(self, 'package_body', '601', lTokens)
-        self.prefixes = ['pkg_']
-        self.solution = 'Package identifier'
+        super().__init__(lTokens)
+        self.prefixes = ["pkg_"]
+        self.solution = "Package identifier"

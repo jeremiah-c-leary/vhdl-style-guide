@@ -173,7 +173,7 @@ Having a space makes it clearer where the assignment occurs on the line.
 constant_011
 ############
 
-The function of this rule has been superceeded by the following rules:
+The function of this rule has been superseded by the following rules:
 
 * ieee_500
 * subtype_002
@@ -306,7 +306,7 @@ constant_015
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid prefixes on constant identifiers.
-The default constant prefix is *c\_*.
+The default constant prefix is *c_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -485,7 +485,7 @@ constant_600
 |phase_7| |disabled| |error| |naming|
 
 This rule checks for valid suffixes on constant identifiers.
-The default constant suffix is *\_c*.
+The default constant suffix is *_c*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -500,4 +500,3 @@ The default constant suffix is *\_c*.
 .. code-block:: vhdl
 
    constant my_const_c : integer;
-

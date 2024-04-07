@@ -14,4 +14,3 @@ jobs:
         with:
           project-url: https://github.com/users/jeremiah-c-leary/projects/3
           github-token: ${{ secrets.ADD_TO_PROJECT_WORKFLOW_PAT }}
-

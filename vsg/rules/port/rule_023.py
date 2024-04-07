@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 
 from vsg import violation
-
-from vsg.token import port_clause as token
-from vsg.token import mode
 from vsg.rule_group import structure
+from vsg.token import mode, port_clause as token
 
 
 class rule_023(structure.Rule):
-    '''
+    """
     This rule checks for missing modes in port declarations.
 
     .. NOTE:: This must be fixed by the user.  VSG makes no assumption on the direction of the port.
@@ -33,11 +32,11 @@ class rule_023(structure.Rule):
          OVERFLOW : out   std_logic;
          DATA     : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
-        structure.Rule.__init__(self, name='port', identifier='023')
-        self.solution = 'Add mode'
+        super().__init__()
+        self.solution = "Add mode"
         self.fixable = False
         self.configuration_documentation_link = None
 
@@ -54,7 +53,7 @@ class rule_023(structure.Rule):
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def _fix_violation(self, oViolation):
-        '''
+        """
         Applies fixes for any rule violations.
-        '''
+        """
         return None

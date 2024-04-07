@@ -1,19 +1,17 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import array_constraint as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import array_element_constraint
-from vsg.vhdlFile.classify import index_constraint
+from vsg.vhdlFile.classify import array_element_constraint, index_constraint
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     array_constraint ::=
         index_constraint [ array_element_constraint ]
       | ( open ) [ array_element_constraint ]
 
-    '''
+    """
     if open_detected(iToken, lObjects):
         return classify(iToken, lObjects)
     if index_constraint.detect(iToken, lObjects):
@@ -22,17 +20,17 @@ def detect(iToken, lObjects):
 
 
 def detect_discrete_subtype_indication(iToken, lObjects):
-    if utils.is_next_token('(', iToken, lObjects):
+    if utils.is_next_token("(", iToken, lObjects):
         return index_constraint.classify(iToken, lObjects)
     return iToken
 
-def classify(iToken, lObjects):
 
+def classify(iToken, lObjects):
     iCurrent = utils.find_next_token(iToken, lObjects)
-    if utils.is_next_token('open', iCurrent + 1, lObjects):
-        iCurrent = utils.assign_next_token_required('(', token.open_parenthesis, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required('open', token.open_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(')', token.close_parenthesis, iCurrent, lObjects)
+    if utils.is_next_token("open", iCurrent + 1, lObjects):
+        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_required("open", token.open_keyword, iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
     else:
         iCurrent = index_constraint.classify(iCurrent, lObjects)
 
@@ -42,12 +40,12 @@ def classify(iToken, lObjects):
 
 
 def open_detected(iToken, lObjects):
-    if utils.is_next_token('(', iToken, lObjects):
-        if utils.find_in_next_n_tokens('open', 2, iToken, lObjects):
+    if utils.is_next_token("(", iToken, lObjects):
+        if utils.find_in_next_n_tokens("open", 2, iToken, lObjects):
             return True
     return False
 
 
 def classify_index_constraint(iToken, lObjects):
-    print('--> classify_index_constraint')
+    print("--> classify_index_constraint")
     return index_constraint.classify(iToken, lObjects)

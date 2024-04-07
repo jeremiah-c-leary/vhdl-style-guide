@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules.whitespace_before_token import Rule
-
 from vsg.token import conditional_expressions as token
 
 
 class rule_100(Rule):
-    '''
+    """
     This rule checks for a single space before the **when** keyword.
 
     |configuring_whitespace_rules_link|
@@ -21,7 +21,7 @@ class rule_100(Rule):
     .. code-block:: vhdl
 
        wr_en <= '0' when (rd_en = '0') else '1';
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, 'conditional_expressions', '100', [token.when_keyword])
+        super().__init__([token.when_keyword])

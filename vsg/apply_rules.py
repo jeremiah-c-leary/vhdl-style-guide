@@ -1,24 +1,18 @@
+# -*- coding: utf-8 -*-
 
 import os
 import shutil
 
-from . import config
-from . import junit
-from . import rule_list
-from . import utils
-from . import vhdlFile
-
-from .exceptions import ClassifyError
-from .exceptions import ConfigurationError
+from . import config, junit, rule_list, utils, vhdlFile
+from .exceptions import ClassifyError, ConfigurationError
 
 
 def create_backup_file(sFileName):
-    '''Copies existing file and adds .bak to the end.'''
-    shutil.copy2(sFileName, sFileName + '.bak')
+    """Copies existing file and adds .bak to the end."""
+    shutil.copy2(sFileName, sFileName + ".bak")
 
 
 def configure_rules(oConfig, oRules, configuration, iIndex, sFileName):
-
     sFileName = sFileName.replace(os.sep, "/")
 
     configure_rules_per_rule_option(oConfig, oRules)
@@ -31,11 +25,11 @@ def configure_rules_per_rule_option(oConfig, oRules):
 
 
 def configure_rules_per_file_list_option(oRules, configuration, iIndex, sFileName):
-    configure_rules_per_option(oRules, configuration, iIndex, sFileName, 'file_list')
+    configure_rules_per_option(oRules, configuration, iIndex, sFileName, "file_list")
 
 
 def configure_rules_per_file_rules_option(oRules, configuration, iIndex, sFileName):
-    configure_rules_per_option(oRules, configuration, iIndex, sFileName, 'file_rules')
+    configure_rules_per_option(oRules, configuration, iIndex, sFileName, "file_rules")
 
 
 def configure_rules_per_option(oRules, configuration, iIndex, sFileName, section):
@@ -69,8 +63,10 @@ def does_file_have_rule_configuration(configuration, section, iMyIndex, sFileNam
     except:
         return False
 
+
 bStopProcessingFiles = True
 bKeepProcessingFiles = False
+
 
 # This function is in a separate module from __main__ as a workaround for https://bugs.python.org/issue25053
 # see also https://stackoverflow.com/questions/41385708/multiprocessing-example-giving-attributeerror/42383397#42383397
@@ -90,21 +86,15 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         testCase = create_junit_testcase(sFileName, e)
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = []
-        sOutputStd = ''
+        sOutputStd = ""
         sOutputErr = e.message
         return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles
 
     oVhdlFile.set_indent_map(dIndent)
     try:
-        oRules = rule_list.rule_list(
-            oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules
-        )
+        oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
     except OSError as e:
-        sOutputStd = (
-            f"ERROR: encountered {e.__class__.__name__}, {e.args[1]} "
-            + commandLineArguments.local_rules
-            + " when trying to open local rules file."
-        )
+        sOutputStd = f"ERROR: encountered {e.__class__.__name__}, {e.args[1]} " + commandLineArguments.local_rules + " when trying to open local rules file."
         sOutputErr = None
         return 1, None, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
 
@@ -115,16 +105,14 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         testCase = None
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = []
-        sOutputStd = ''
+        sOutputStd = ""
         sOutputErr = e.message
         return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
 
     if commandLineArguments.fix:
         if commandLineArguments.backup:
             create_backup_file(sFileName)
-        oRules.fix(
-            commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only
-        )
+        oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only)
         write_vhdl_file(oVhdlFile, oConfig.dConfig)
 
     oRules.clear_violations()
@@ -132,9 +120,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         bAllPhases=commandLineArguments.all_phases,
         lSkipPhase=commandLineArguments.skip_phase,
     )
-    sOutputStd, sOutputErr = oRules.report_violations(
-        commandLineArguments.output_format
-    )
+    sOutputStd, sOutputErr = oRules.report_violations(commandLineArguments.output_format)
     fExitStatus = oRules.violations
 
     if commandLineArguments.junit:
@@ -152,12 +138,12 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
 def write_vhdl_file(oVhdlFile, dConfig):
     tmpfile = f"{oVhdlFile.filename}.tmp"
     try:
-        with open(tmpfile, 'w', encoding='utf-8', newline=dConfig.get("linesep")) as oFile:
-            for sLine in oVhdlFile.get_lines()[1:]:
-                oFile.write(sLine + '\n')
+        with open(tmpfile, "w", encoding="utf-8", newline=dConfig.get("linesep")) as oFile:
+            oFile.write("\n".join(oVhdlFile.get_lines()[1:]))
+            oFile.write("\n")
         os.replace(tmpfile, oVhdlFile.filename)
     except PermissionError as err:
-        print (err, "Could not write fixes back to file.")
+        print(err, "Could not write fixes back to file.")
     finally:
         try:
             os.remove(tmpfile)
@@ -166,7 +152,7 @@ def write_vhdl_file(oVhdlFile, dConfig):
 
 
 def create_junit_testcase(sVhdlFileName, oException):
-    '''
+    """
     Creates JUnit XML file listing all violations found.
 
     Parameters:
@@ -174,9 +160,9 @@ def create_junit_testcase(sVhdlFileName, oException):
       sVhdlFileName (string)
 
     Returns: (junit testcase object)
-    '''
-    oTestcase = junit.testcase(sVhdlFileName, str(0), 'failure')
-    oFailure = junit.failure('Failure')
+    """
+    oTestcase = junit.testcase(sVhdlFileName, str(0))
+    oFailure = junit.failure("Failure")
     oFailure.add_text(oException.message)
     oTestcase.add_failure(oFailure)
 

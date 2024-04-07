@@ -1,21 +1,21 @@
+# -*- coding: utf-8 -*-
 
 
 from vsg import violation
-
 from vsg.rule_group import naming
 
 
 class is_token_value_one_of(naming.Rule):
-    '''
+    """
     Checks if a token value is in a list of provided values.
-    '''
+    """
 
-    def __init__(self, name, identifier, token):
-        naming.Rule.__init__(self, name, identifier)
+    def __init__(self, token):
+        super().__init__()
         self.names = []
         self.fixable = False
         self.disable = True
-        self.configuration.append('names')
+        self.configuration.append("names")
         self.token = token
         self.configuration_documentation_link = None
 

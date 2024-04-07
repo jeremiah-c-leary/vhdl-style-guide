@@ -1,15 +1,13 @@
+# -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import token
-from vsg import violation
+from vsg import parser, token, violation
 from vsg.rule_group import case
-from vsg.rules import case_utils
-from vsg.rules import utils
+from vsg.rules import case_utils, utils
 
 
 class token_case_formal_part_of_association_element_in_map_between_tokens(case.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -23,18 +21,18 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
 
     trigger : parser object type
        object type to apply the case check against
-    '''
+    """
 
-    def __init__(self, name, identifier, sMapType, oStart, oEnd):
-        case.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, sMapType, oStart, oEnd):
+        super().__init__()
         self.solution = None
         self.phase = 6
-        self.case = 'lower'
-        self.configuration.append('case')
+        self.case = "lower"
+        self.configuration.append("case")
         self.prefix_exceptions = []
         self.suffix_exceptions = []
         self.case_exceptions = []
-        if sMapType == 'port':
+        if sMapType == "port":
             self.oMapStart = token.port_map_aspect.open_parenthesis
             self.oMapEnd = token.port_map_aspect.close_parenthesis
         else:
@@ -65,7 +63,7 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
                     bMapFound = False
                     break
                 if isinstance(oToken, parser.carriage_return):
-                   iLine += 1
+                    iLine += 1
                 if isinstance(oToken, token.association_element.formal_part) and not bFormalFound and bMapFound:
                     bFormalFound = True
                     oViolation = case_utils.check_for_case_violation(oToi, self, check_prefix, check_suffix, check_whole, iToken, iLine)
@@ -77,5 +75,5 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lTokens[dAction['index']].set_value(dAction['value'])
+        lTokens[dAction["index"]].set_value(dAction["value"])
         oViolation.set_tokens(lTokens)

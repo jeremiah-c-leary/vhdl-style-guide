@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.concurrent_procedure_call_statement.postponed_keyword)
 
 
 class rule_301(token_indent):
-    '''
+    """
     This rule checks the indent of the **postponed** keyword if it exists..
 
     **Violation**
@@ -26,7 +26,7 @@ class rule_301(token_indent):
        a <= b;
 
        postponed WR_EN(parameter);
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'procedure_call', '301', lTokens)
+        super().__init__(lTokens)

@@ -163,7 +163,7 @@ The following code snippet is used in the following examples:
    constant c_stimulus : t_stimulus_array :=
    (
      (
-       name => 
+       name =>
                "Hold in reset",
        clk_in => "01",
        rst_in => "11",
@@ -187,10 +187,10 @@ Example: |first_paren_new_line| set to |yes|
 
 .. code-block:: vhdl
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    (
      (
        name =>
@@ -245,7 +245,7 @@ Example: |last_paren_new_line| set to |yes|
    constant c_stimulus : t_stimulus_array := ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")
    ); -- Define test vectors
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    (
      (
        name =>
@@ -300,7 +300,7 @@ Example: |open_paren_new_line| set to |yes|
       name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (
       name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    (
      (
        name =>
@@ -352,7 +352,7 @@ Example: |close_paren_new_line| set to |yes|
      )
    ); -- Define test vectors
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    (
      (
        name =>
@@ -408,7 +408,7 @@ Example: |new_line_after_comma| set to |yes|
        cnt_en_in => "00",
        cnt_out => "00")); -- Define test vectors
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    (
      (
        name =>
@@ -444,10 +444,10 @@ Example: |assign_on_single_line| set to |yes|
 
 .. code-block:: vhdl
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    ((name => "Hold in reset", clk_in => "01", rst_in => "11", cnt_en_in => "00", cnt_out => "00"), (name => "Not enabled", clk_in => "01", rst_in => "00", cnt_en_in => "00", cnt_out => "00")); -- Define test vectors
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    (
      (
        name => "Hold in reset",
@@ -523,7 +523,7 @@ would result in the following formatting:
 
 .. code-block:: vhdl
 
-   constant c_stimulus : t_stimulus_array := 
+   constant c_stimulus : t_stimulus_array :=
    (
      (
        name => "Hold in reset",

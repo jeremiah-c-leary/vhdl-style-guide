@@ -1,7 +1,7 @@
 .. include:: includes.rst
 
 Iteration Scheme Rules
------------------------
+----------------------
 
 iteration_scheme_100
 ####################
@@ -151,4 +151,3 @@ This rule checks the **for** keyword has proper case.
 .. code-block:: vhdl
 
    for x in (31 downto 0) loop
-

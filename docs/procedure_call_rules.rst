@@ -3,7 +3,7 @@
 Procedure Call Rules
 --------------------
 
-These rules handle **procedure_call_statement** and **concurrent_procedure_call_statement** elements.
+These rules handle **procedure_call_statement** and **concurrent_procedure_call_statement** productions.
 
 .. _procedure_call_structural_rules:
 
@@ -52,7 +52,9 @@ procedure_call_003
 
 |phase_1| |error| |structure|
 
-This rule checks the structure of concurrent procedure calls.
+This rule checks the structure of procedure calls.
+
+|configuring_multiline_procedure_call_statement_rules_link|
 
 **Violation**
 
@@ -263,13 +265,13 @@ This rule checks the label has proper case.
 
 .. code-block:: vhdl
 
-   PROCEDURE_CALL_LABEL : WR_EN(paremeter);
+   PROCEDURE_CALL_LABEL : WR_EN(parameter);
 
 **Fix**
 
 .. code-block:: vhdl
 
-   procedure_call_label : WR_EN(paremeter);
+   procedure_call_label : WR_EN(parameter);
 
 procedure_call_501
 ##################
@@ -291,4 +293,3 @@ This rule checks the **postponed** keyword has proper case.
 .. code-block:: vhdl
 
    postponed WR_EN(parameter)
-

@@ -25,4 +25,3 @@ This rule checks the e keyword has proper case.
 
     12.5e-90
     6e57
-

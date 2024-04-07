@@ -425,4 +425,3 @@ This rule checks the proper case of the end **record** keyword.
      a : std_logic;
      b : std_logic;
    end record t_record;
-

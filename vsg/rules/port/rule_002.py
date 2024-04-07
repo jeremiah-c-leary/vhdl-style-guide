@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.port_clause.port_keyword)
 
 
 class rule_002(token_indent):
-    '''
+    """
     This rule checks the indent of the **port** keyword.
 
     **Violation**
@@ -24,7 +24,7 @@ class rule_002(token_indent):
 
        entity FIFO is
          port (
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'port', '002', lTokens)
+        super().__init__(lTokens)

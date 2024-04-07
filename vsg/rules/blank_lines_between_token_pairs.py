@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import violation
-
+from vsg import parser, violation
 from vsg.rule_group import blank_line
 from vsg.vhdlFile import utils
 
 
 class blank_lines_between_token_pairs(blank_line.Rule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -22,11 +21,11 @@ class blank_lines_between_token_pairs(blank_line.Rule):
 
     lTokens : list of token type pairs
        The tokens to check for a single space between
-    '''
+    """
 
-    def __init__(self, name, identifier, lTokenPairs):
-        blank_line.Rule.__init__(self, name=name, identifier=identifier)
-        self.solution = 'Remove blank line'
+    def __init__(self, lTokenPairs):
+        super().__init__()
+        self.solution = "Remove blank line"
         self.lTokenPairs = lTokenPairs
 
     def _get_tokens_of_interest(self, oFile):

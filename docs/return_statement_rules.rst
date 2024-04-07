@@ -44,4 +44,3 @@ This rule checks the **return** keyword has proper case.
 .. code-block:: vhdl
 
    return my_value;
-

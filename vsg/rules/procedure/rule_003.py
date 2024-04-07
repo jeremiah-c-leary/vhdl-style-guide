@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.subprogram_body.end_keyword)
 
 
 class rule_003(token_indent):
-    '''
+    """
     This rule checks the indent of the **end** keyword.
 
     **Violation**
@@ -34,7 +34,7 @@ class rule_003(token_indent):
          signal d : out std_logic ) is
        begin
        end procedure average_samples;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'procedure', '003', lTokens)
+        super().__init__(lTokens)

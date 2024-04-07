@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
@@ -14,7 +14,7 @@ lTokens.append(token.conditional_force_assignment.assignment)
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for a single space after the **<=** operator.
 
     |configuring_whitespace_rules_link|
@@ -32,6 +32,7 @@ class rule_002(Rule):
 
        wr_en <= '1';
        rd_en <= '0';
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, 'sequential', '002', lTokens)
+        super().__init__(lTokens)

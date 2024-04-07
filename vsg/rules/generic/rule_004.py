@@ -1,7 +1,7 @@
-
-from vsg.rules import token_indent_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent_between_tokens
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.constant_keyword)
@@ -19,7 +19,7 @@ oEnd = token.generic_clause.close_parenthesis
 
 
 class rule_004(token_indent_between_tokens):
-    '''
+    """
     This rule checks the indent of generic declarations.
 
     **Violation**
@@ -39,7 +39,7 @@ class rule_004(token_indent_between_tokens):
          g_width : integer := 32;
          g_depth : integer := 512
        )
-    '''
+    """
 
     def __init__(self):
-        token_indent_between_tokens.__init__(self, 'generic', '004', lTokens, oStart, oEnd)
+        super().__init__(lTokens, oStart, oEnd)

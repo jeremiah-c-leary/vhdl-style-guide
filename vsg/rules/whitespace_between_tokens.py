@@ -1,16 +1,14 @@
+# -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import violation
-
+from vsg import parser, violation
 from vsg.rule_group import whitespace
 from vsg.rules import utils as rules_utils
-
 from vsg.vhdlFile import utils
 
 
 class Rule(whitespace.Rule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -27,14 +25,14 @@ class Rule(whitespace.Rule):
 
     right_token : token object
        The right token to check for a space between the left token
-    '''
+    """
 
-    def __init__(self, name, identifier):
-        whitespace.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        super().__init__()
         self.left_token = None
         self.right_token = None
         self.number_of_spaces = 1
-        self.configuration.append('number_of_spaces')
+        self.configuration.append("number_of_spaces")
 
     def _get_tokens_of_interest(self, oFile):
         lToi_a = oFile.get_sequence_of_tokens_matching([self.left_token, parser.whitespace, self.right_token])
@@ -73,7 +71,7 @@ class Rule(whitespace.Rule):
             self.analyze_plus_spaces(oToi)
 
     def number_of_spaces_is_gt(self):
-        if self.number_of_spaces.startswith('>'):
+        if self.number_of_spaces.startswith(">"):
             return True
         return False
 
@@ -84,7 +82,7 @@ class Rule(whitespace.Rule):
             self.create_violation(oToi, iSpaces)
 
     def number_of_spaces_is_gte(self):
-        if self.number_of_spaces.startswith('>='):
+        if self.number_of_spaces.startswith(">="):
             return True
         return False
 
@@ -95,7 +93,7 @@ class Rule(whitespace.Rule):
             self.create_violation(oToi, iSpaces)
 
     def number_of_spaces_is_plus(self):
-        if self.number_of_spaces.endswith('+'):
+        if self.number_of_spaces.endswith("+"):
             return True
         return False
 
@@ -119,7 +117,7 @@ class Rule(whitespace.Rule):
         sSolution = create_solution(oToi, iNumSpaces)
         oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
         dAction = {}
-        dAction['spaces'] = iNumSpaces
+        dAction["spaces"] = iNumSpaces
         oViolation.set_action(dAction)
         self.add_violation(oViolation)
 
@@ -130,9 +128,9 @@ class Rule(whitespace.Rule):
             lTokens = [lTokens[0], lTokens[2]]
         else:
             if isinstance(lTokens[1], parser.whitespace):
-                lTokens[1].set_value(' '*dAction['spaces'])
+                lTokens[1].set_value(" " * dAction["spaces"])
             else:
-                rules_utils.insert_whitespace(lTokens, dAction['spaces'])
+                rules_utils.insert_whitespace(lTokens, dAction["spaces"])
         oViolation.set_tokens(lTokens)
 
 
@@ -154,7 +152,7 @@ def whitespace_token_exists(oToi):
 def create_solution(oToi, iNumSpaces):
     lTokens = oToi.get_tokens()
     if whitespace_token_exists(oToi):
-        sSolution = f'Change the number of space(s) between {lTokens[0].get_value()} and {lTokens[2].get_value()} to {str(iNumSpaces)}'
+        sSolution = f"Change the number of space(s) between {lTokens[0].get_value()} and {lTokens[2].get_value()} to {str(iNumSpaces)}"
     else:
-        sSolution = f'Add {str(iNumSpaces)} space(s) between {lTokens[0].get_value()} and {lTokens[1].get_value()}'
+        sSolution = f"Add {str(iNumSpaces)} space(s) between {lTokens[0].get_value()} and {lTokens[1].get_value()}"
     return sSolution

@@ -67,6 +67,10 @@ Rules Enforcing Blank Line Rule Group
 * `port_022 <../port_rules.html#port-022>`_
 * `port_024 <../port_rules.html#port-024>`_
 * `port_map_200 <../port_map_rules.html#port-map-200>`_
+* `pragma_400 <../pragma_rules.html#pragma-400>`_
+* `pragma_401 <../pragma_rules.html#pragma-401>`_
+* `pragma_402 <../pragma_rules.html#pragma-402>`_
+* `pragma_403 <../pragma_rules.html#pragma-403>`_
 * `procedure_200 <../procedure_rules.html#procedure-200>`_
 * `process_011 <../process_rules.html#process-011>`_
 * `process_015 <../process_rules.html#process-015>`_
@@ -87,4 +91,3 @@ Rules Enforcing Blank Line Rule Group
 * `type_011 <../type_rules.html#type-011>`_
 * `type_200 <../type_rules.html#type-200>`_
 * `whitespace_200 <../whitespace_rules.html#whitespace-200>`_
-

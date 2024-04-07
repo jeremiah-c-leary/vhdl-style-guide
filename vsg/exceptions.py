@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 
 class ClassifyError(Exception):
-    '''
+    """
     Exception raised for errors when classifying VHDL Files.
-    '''
+    """
 
     def __init__(self, message):
         self.message = message
@@ -12,9 +14,9 @@ class ClassifyError(Exception):
 
 
 class ConfigurationError(Exception):
-    '''
+    """
     Exception raised for errors when configuration VSG..
-    '''
+    """
 
     def __init__(self, message):
         self.message = message

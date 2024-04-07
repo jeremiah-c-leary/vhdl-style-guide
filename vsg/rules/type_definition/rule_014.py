@@ -1,26 +1,18 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
-from vsg.rules import consistent_token_case
+from vsg import parser, token
+from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
 lTokens.append(token.incomplete_type_declaration.identifier)
 lTokens.append(token.full_type_declaration.identifier)
 
-lIgnore = []
-lIgnore.append(token.interface_signal_declaration.identifier)
-lIgnore.append(token.interface_unknown_declaration.identifier)
-lIgnore.append(token.interface_constant_declaration.identifier)
-lIgnore.append(token.interface_variable_declaration.identifier)
-lIgnore.append(token.association_element.formal_part)
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
+lNames = []
+lNames.append(token.type_mark.name)
 
 
-class rule_014(consistent_token_case):
-    '''
+class rule_014(Rule):
+    """
     This rule checks for consistent capitalization of type names.
 
     **Violation**
@@ -38,7 +30,9 @@ class rule_014(consistent_token_case):
        type state_machine is (idle, write, read, done);
 
        signal sm : state_machine;
-    '''
+    """
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'type', '014', lTokens, lIgnore)
+        super().__init__(lTokens, lNames)
+        self.bIncludeDeclarativePartNames = True
+        self.bIncludeArchitectureBodyDeclarationsInSubprogramBody = True

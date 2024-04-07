@@ -1,8 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-from vsg import violation
-
+from vsg import parser, token, violation
 from vsg.rule_group import structure
 
 lTokens = []
@@ -13,7 +11,7 @@ lTokens.append(token.interface_unknown_declaration.assignment)
 
 
 class rule_012(structure.Rule):
-    '''
+    """
     This rule checks for default assignments on port declarations.
 
     This rule is defaulted to not fixable and can be overridden with a configuration to remove the default assignments.
@@ -39,11 +37,11 @@ class rule_012(structure.Rule):
          O_OVERFLOW : out   std_logic;
          IO_DATA    : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
-        structure.Rule.__init__(self, name='port', identifier='012')
-        self.solution = 'Remove assignment'
+        super().__init__()
+        self.solution = "Remove assignment"
         self.lTokens = lTokens
         self.oStart = token.port_clause.open_parenthesis
         self.oEnd = token.port_clause.close_parenthesis
@@ -62,9 +60,9 @@ class rule_012(structure.Rule):
                         oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                         dAction = {}
                         if isinstance(lTokens[iToken - 1], parser.whitespace):
-                            dAction['index'] = iToken - 1
+                            dAction["index"] = iToken - 1
                         else:
-                            dAction['index'] = iToken
+                            dAction["index"] = iToken
                         oViolation.set_action(dAction)
                         self.add_violation(oViolation)
                         break
@@ -72,7 +70,7 @@ class rule_012(structure.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        for iIndex in range(dAction['index'], len(lTokens)):
+        for iIndex in range(dAction["index"], len(lTokens)):
             if isinstance(lTokens[iIndex], parser.comment):
                 if isinstance(lTokens[iIndex - 1], parser.whitespace):
                     iEnd = iIndex - 1
@@ -82,7 +80,7 @@ class rule_012(structure.Rule):
         else:
             iEnd = iIndex
         if iEnd + 1 == len(lTokens):
-            lNewTokens = lTokens[:dAction['index']]
+            lNewTokens = lTokens[: dAction["index"]]
         else:
-            lNewTokens = lTokens[:dAction['index']] + lTokens[iEnd:]
+            lNewTokens = lTokens[: dAction["index"]] + lTokens[iEnd:]
         oViolation.set_tokens(lNewTokens)

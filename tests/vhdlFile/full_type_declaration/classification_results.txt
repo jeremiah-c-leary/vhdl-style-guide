@@ -1,0 +1,302 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of ENTITY_NAME is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 |   --
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+5 |   -- full_type_declaration ::=
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+6 |   --   type identifier is type_definition;
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+7 |   --
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+8 |   -- type_definition ::=
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+9 |   --    scalar_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+10 |   --  | composite_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+11 |   --  | access_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+12 |   --  | file_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+13 |   --  | protected_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+14 |   --
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+15 |   -- scalar_type_definition ::=
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+16 |   --    enumeration_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+17 |   --  | integer_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+18 |   --  | floating_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+19 |   --  | physical_type_definition
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+20 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+23 |   -- [full-type_declaration][type_definition][scalar_type_definition][enumeration_type_definition]
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+24 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+25 |   type T_SIM_TEST_STATUS is (
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.enumeration_type_definition.open_parenthesis'>
+--------------------------------------------------------------------------------
+26 |     SIM_TEST_STATUS_CREATED,
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+--------------------------------------------------------------------------------
+27 |     SIM_TEST_STATUS_ACTIVE,
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+--------------------------------------------------------------------------------
+28 |     SIM_TEST_STATUS_ENDED,
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+--------------------------------------------------------------------------------
+29 |     SIM_TEST_STATUS_ZOMBI
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+--------------------------------------------------------------------------------
+30 |   );
+<class 'vsg.token.enumeration_type_definition.close_parenthesis'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+31 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+32 |   -- [full-type_declaration][type_definition][scalar_type_definition][integer_type_definition]
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+33 |   type my_type is range 0 to 5;
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+34 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+35 |   type my_type is range -10 to -5;
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.token.sign.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.token.sign.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+36 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+37 |   -- [full-type_declaration][type_definition][scalar_type_definition][floating_type_definition]
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+38 |   type my_type is range 0.156 to 5.679;
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+39 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 |   type my_type is range -10.45 to -5.99;
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.token.sign.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.token.sign.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+41 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+42 |   -- [full-type_declaration][type_definition][scalar_type_definition][physical_type_definition]
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+43 |   type my_type is range 0 to 20 units
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.physical_type_definition.units_keyword'>
+--------------------------------------------------------------------------------
+44 |     primary_unit_declaration;
+<class 'vsg.token.primary_unit_declaration.identifier'>
+<class 'vsg.token.primary_unit_declaration.semicolon'>
+--------------------------------------------------------------------------------
+45 |   end units;
+<class 'vsg.token.physical_type_definition.end_keyword'>
+<class 'vsg.token.physical_type_definition.end_units_keyword'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+46 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+47 |   type my_type is range 0 to 20 units
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.physical_type_definition.units_keyword'>
+--------------------------------------------------------------------------------
+48 |     primary_unit_declaration;
+<class 'vsg.token.primary_unit_declaration.identifier'>
+<class 'vsg.token.primary_unit_declaration.semicolon'>
+--------------------------------------------------------------------------------
+49 |   end units physical_type_simple_name;
+<class 'vsg.token.physical_type_definition.end_keyword'>
+<class 'vsg.token.physical_type_definition.end_units_keyword'>
+<class 'vsg.token.physical_type_definition.simple_name'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+50 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+51 |   type my_type is range 0 to 20 units
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.physical_type_definition.units_keyword'>
+--------------------------------------------------------------------------------
+52 |     pud;
+<class 'vsg.token.primary_unit_declaration.identifier'>
+<class 'vsg.token.primary_unit_declaration.semicolon'>
+--------------------------------------------------------------------------------
+53 |     sud = 10 pud;
+<class 'vsg.token.secondary_unit_declaration.identifier'>
+<class 'vsg.token.secondary_unit_declaration.equal_sign'>
+<class 'vsg.token.secondary_unit_declaration.physical_literal'>
+<class 'vsg.token.secondary_unit_declaration.physical_literal'>
+<class 'vsg.token.secondary_unit_declaration.semicolon'>
+--------------------------------------------------------------------------------
+54 |   end units physical_type_simple_name;
+<class 'vsg.token.physical_type_definition.end_keyword'>
+<class 'vsg.token.physical_type_definition.end_units_keyword'>
+<class 'vsg.token.physical_type_definition.simple_name'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+55 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+56 |   type my_type is range 0 to 20 units
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.range_constraint.range_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.to'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.physical_type_definition.units_keyword'>
+--------------------------------------------------------------------------------
+57 |     pud;
+<class 'vsg.token.primary_unit_declaration.identifier'>
+<class 'vsg.token.primary_unit_declaration.semicolon'>
+--------------------------------------------------------------------------------
+58 |     sud1 = 10 pud;
+<class 'vsg.token.secondary_unit_declaration.identifier'>
+<class 'vsg.token.secondary_unit_declaration.equal_sign'>
+<class 'vsg.token.secondary_unit_declaration.physical_literal'>
+<class 'vsg.token.secondary_unit_declaration.physical_literal'>
+<class 'vsg.token.secondary_unit_declaration.semicolon'>
+--------------------------------------------------------------------------------
+59 |     sud2 = 10 sud1;
+<class 'vsg.token.secondary_unit_declaration.identifier'>
+<class 'vsg.token.secondary_unit_declaration.equal_sign'>
+<class 'vsg.token.secondary_unit_declaration.physical_literal'>
+<class 'vsg.token.secondary_unit_declaration.physical_literal'>
+<class 'vsg.token.secondary_unit_declaration.semicolon'>
+--------------------------------------------------------------------------------
+60 |     sud3 = 10 sud2;
+<class 'vsg.token.secondary_unit_declaration.identifier'>
+<class 'vsg.token.secondary_unit_declaration.equal_sign'>
+<class 'vsg.token.secondary_unit_declaration.physical_literal'>
+<class 'vsg.token.secondary_unit_declaration.physical_literal'>
+<class 'vsg.token.secondary_unit_declaration.semicolon'>
+--------------------------------------------------------------------------------
+61 |   end units physical_type_simple_name;
+<class 'vsg.token.physical_type_definition.end_keyword'>
+<class 'vsg.token.physical_type_definition.end_units_keyword'>
+<class 'vsg.token.physical_type_definition.simple_name'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+62 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+63 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+64 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+65 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

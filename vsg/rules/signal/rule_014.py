@@ -1,28 +1,31 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
-from vsg.rules import consistent_token_case
+from vsg import parser, token
+from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
 lTokens.append(token.signal_declaration.identifier)
 
-lIgnore = []
-lIgnore.append(token.interface_signal_declaration.identifier)
-lIgnore.append(token.interface_unknown_declaration.identifier)
-lIgnore.append(token.interface_constant_declaration.identifier)
-lIgnore.append(token.interface_variable_declaration.identifier)
-lIgnore.append(token.association_element.formal_part)
-lIgnore.append(token.entity_declaration.identifier)
-lIgnore.append(token.entity_declaration.entity_simple_name)
-lIgnore.append(token.architecture_body.entity_name)
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
+lNames = []
+lNames.append(parser.todo)
+lNames.append(token.todo.name)
+
+lNames.append(token.concurrent_conditional_signal_assignment.target)
+lNames.append(token.concurrent_selected_signal_assignment.target)
+lNames.append(token.concurrent_simple_signal_assignment.target)
+
+lNames.append(token.conditional_waveform_assignment.target)
+lNames.append(token.association_element.actual_part)
+lNames.append(token.selected_waveform_assignment.target)
+lNames.append(token.selected_force_assignment.target)
+
+lNames.append(token.simple_waveform_assignment.target)
+lNames.append(token.simple_force_assignment.target)
+lNames.append(token.simple_release_assignment.target)
 
 
-class rule_014(consistent_token_case):
-    '''
+class rule_014(Rule):
+    """
     This rule checks for consistent capitalization of signal names.
 
     **Violation**
@@ -74,7 +77,7 @@ class rule_014(consistent_token_case):
          end process proc_name;
 
        end architecture rtl;
-    '''
+    """
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'signal', '014', lTokens, lIgnore)
+        super().__init__(lTokens, lNames)

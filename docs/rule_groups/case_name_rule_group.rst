@@ -45,4 +45,3 @@ Rules Enforcing Case::Name Rule Group
 * `use_clause_501 <../use_clause_rules.html#use-clause-501>`_
 * `use_clause_502 <../use_clause_rules.html#use-clause-502>`_
 * `variable_004 <../variable_rules.html#variable-004>`_
-

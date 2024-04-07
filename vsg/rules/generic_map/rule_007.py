@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_between_token_pairs_bounded_by_tokens import Rule
 
 lTokens = []
@@ -11,7 +11,7 @@ lEnd = token.generic_map_aspect.close_parenthesis
 
 
 class rule_007(Rule):
-    '''
+    """
     This rule checks for a single space after the **=>** keyword in generic maps.
 
     |configuring_whitespace_rules_link|
@@ -35,6 +35,7 @@ class rule_007(Rule):
          WIDTH => 32,
          DEPTH => 512
        )
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, 'generic_map', '007', lTokens, lStart, lEnd)
+        super().__init__(lTokens, lStart, lEnd)

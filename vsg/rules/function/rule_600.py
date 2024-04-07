@@ -1,16 +1,16 @@
-
-from vsg.rules import token_prefix
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_prefix
 
 lTokens = []
 lTokens.append(token.function_specification.designator)
 
 
 class rule_600(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on function designators.
-    Default signal prefix is *f\_*.
+    Default signal prefix is *f_*.
 
     |configuring_prefix_and_suffix_rules_link|
 
@@ -25,9 +25,9 @@ class rule_600(token_prefix):
     .. code-block:: vhdl
 
        function f_read_data
-    '''
+    """
 
     def __init__(self):
-        token_prefix.__init__(self, 'function', '600', lTokens)
-        self.prefixes = ['f_']
-        self.solution = 'Function designator'
+        super().__init__(lTokens)
+        self.prefixes = ["f_"]
+        self.solution = "Function designator"

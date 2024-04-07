@@ -15,4 +15,3 @@ Rules Enforcing Case::Label Rule Group
 * `procedure_call_500 <../procedure_call_rules.html#procedure-call-500>`_
 * `process_017 <../process_rules.html#process-017>`_
 * `process_019 <../process_rules.html#process-019>`_
-

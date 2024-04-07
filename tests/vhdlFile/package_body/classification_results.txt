@@ -1,0 +1,55 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | package body fifo is
+<class 'vsg.token.package_body.package_keyword'>
+<class 'vsg.token.package_body.body_keyword'>
+<class 'vsg.token.package_body.package_simple_name'>
+<class 'vsg.token.package_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | end package body fifo;
+<class 'vsg.token.package_body.end_keyword'>
+<class 'vsg.token.package_body.end_package_keyword'>
+<class 'vsg.token.package_body.end_body_keyword'>
+<class 'vsg.token.package_body.end_package_simple_name'>
+<class 'vsg.token.package_body.semicolon'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 | package body fifo is
+<class 'vsg.token.package_body.package_keyword'>
+<class 'vsg.token.package_body.body_keyword'>
+<class 'vsg.token.package_body.package_simple_name'>
+<class 'vsg.token.package_body.is_keyword'>
+--------------------------------------------------------------------------------
+7 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 | end;
+<class 'vsg.token.package_body.end_keyword'>
+<class 'vsg.token.package_body.semicolon'>
+--------------------------------------------------------------------------------
+9 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | package body fifo is
+<class 'vsg.token.package_body.package_keyword'>
+<class 'vsg.token.package_body.body_keyword'>
+<class 'vsg.token.package_body.package_simple_name'>
+<class 'vsg.token.package_body.is_keyword'>
+--------------------------------------------------------------------------------
+11 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | end package body;
+<class 'vsg.token.package_body.end_keyword'>
+<class 'vsg.token.package_body.end_package_keyword'>
+<class 'vsg.token.package_body.end_body_keyword'>
+<class 'vsg.token.package_body.semicolon'>

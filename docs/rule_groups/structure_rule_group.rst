@@ -63,11 +63,12 @@ Rules Enforcing Structure Rule Group
 * `entity_027 <../entity_rules.html#entity-027>`_
 * `entity_028 <../entity_rules.html#entity-028>`_
 * `entity_029 <../entity_rules.html#entity-029>`_
-* `function_009 <../function_rules.html#function-009>`_
 * `function_018 <../function_rules.html#function-018>`_
+* `function_019 <../function_rules.html#function-019>`_
 * `generate_011 <../generate_rules.html#generate-011>`_
-* `generate_015 <../generate_rules.html#generate-015>`_
 * `generate_019 <../generate_rules.html#generate-019>`_
+* `generate_020 <../generate_rules.html#generate-020>`_
+* `generate_021 <../generate_rules.html#generate-021>`_
 * `generic_010 <../generic_rules.html#generic-010>`_
 * `generic_013 <../generic_rules.html#generic-013>`_
 * `generic_016 <../generic_rules.html#generic-016>`_
@@ -119,8 +120,8 @@ Rules Enforcing Structure Rule Group
 * `port_map_008 <../port_map_rules.html#port-map-008>`_
 * `port_map_009 <../port_map_rules.html#port-map-009>`_
 * `port_map_010 <../port_map_rules.html#port-map-010>`_
-* `procedure_011 <../procedure_rules.html#procedure-011>`_
 * `procedure_012 <../procedure_rules.html#procedure-012>`_
+* `procedure_013 <../procedure_rules.html#procedure-013>`_
 * `procedure_call_001 <../procedure_call_rules.html#procedure-call-001>`_
 * `procedure_call_002 <../procedure_call_rules.html#procedure-call-002>`_
 * `procedure_call_003 <../procedure_call_rules.html#procedure-call-003>`_

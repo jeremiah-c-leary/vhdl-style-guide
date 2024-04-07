@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_token_and_n_tokens_before_it(lTokens, iTokens, lAllTokens, oTokenMap):
@@ -12,5 +12,5 @@ def get_token_and_n_tokens_before_it(lTokens, iTokens, lAllTokens, oTokenMap):
         iLine = oTokenMap.get_line_number_of_index(iIndex)
         iStart = iIndex - iTokens
         if iStart >= 0:
-            lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart:iIndex + 1]))
+            lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart : iIndex + 1]))
     return lReturn

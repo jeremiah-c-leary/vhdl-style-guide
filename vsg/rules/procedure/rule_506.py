@@ -1,7 +1,7 @@
-
-from vsg.rules import token_case_in_range_bounded_by_tokens_with_prefix_suffix
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_case_in_range_bounded_by_tokens_with_prefix_suffix
 
 lTokens = []
 lTokens.append(token.subprogram_body.designator)
@@ -11,7 +11,7 @@ oEndToken = token.subprogram_body.semicolon
 
 
 class rule_506(token_case_in_range_bounded_by_tokens_with_prefix_suffix):
-    '''
+    """
     This rule checks the procedure designator has proper case on the end procedure declaration.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -27,8 +27,8 @@ class rule_506(token_case_in_range_bounded_by_tokens_with_prefix_suffix):
     .. code-block:: vhdl
 
        end procedure average_samples;
-    '''
+    """
 
     def __init__(self):
-        token_case_in_range_bounded_by_tokens_with_prefix_suffix.__init__(self, 'procedure', '506', lTokens, oStartToken, oEndToken)
-        self.groups.append('case::name')
+        super().__init__(lTokens, oStartToken, oEndToken)
+        self.groups.append("case::name")
