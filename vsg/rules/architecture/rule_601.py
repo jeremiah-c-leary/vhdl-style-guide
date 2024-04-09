@@ -264,9 +264,9 @@ def extract_entity_name(oToi):
     lTokens = oToi.get_tokens()
     for oToken in lTokens:
         if isinstance(oToken, token.entity_declaration.identifier):
-            return oToken.get_value().lower()
+            return oToken.get_lower_value()
         if isinstance(oToken, token.architecture_body.entity_name):
-            return oToken.get_value().lower()
+            return oToken.get_lower_value()
 
 
 def extract_port_names(oToi):

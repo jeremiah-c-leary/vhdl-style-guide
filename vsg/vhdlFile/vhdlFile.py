@@ -82,6 +82,9 @@ class vhdlFile:
         self.stdin = commandLineArguments.stdin
         self.configuration = configuration
         self.commandLineArguments = commandLineArguments
+        #        p = cProfile.Profile()
+        #        p.runcall(self._processFile)
+        #        p.print_stats()
         self._processFile()
 
     def _processFile(self):
@@ -129,10 +132,9 @@ class vhdlFile:
         set_code_tags(self.lAllObjects)
         self.oTokenMap = process_tokens(self.lAllObjects)
 
-    def update(self, lUpdates):
+    def update(self, lUpdates, bUpdateMap):
         if len(lUpdates) == 0:
             return
-        bUpdateMap = True
         for oUpdate in lUpdates[::-1]:
             iStart = oUpdate.oTokens.iStartIndex
             lTokens = oUpdate.get_tokens()
@@ -445,26 +447,27 @@ def post_token_assignments(lTokens):
     for iToken, oToken in enumerate(lTokens):
         if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name) or isinstance(oToken, todo.name):
             sValue = oToken.get_value()
+            sLowerValue = oToken.get_lower_value()
             ### IEEE values
-            if sValue.lower() == "std_logic_vector":
+            if sLowerValue == "std_logic_vector":
                 lTokens[iToken] = types.std_logic_vector(sValue)
 
-            elif sValue.lower() == "std_ulogic_vector":
+            elif sLowerValue == "std_ulogic_vector":
                 lTokens[iToken] = types.std_ulogic_vector(sValue)
 
-            elif sValue.lower() == "std_ulogic":
+            elif sLowerValue == "std_ulogic":
                 lTokens[iToken] = types.std_ulogic(sValue)
 
-            elif sValue.lower() == "std_logic":
+            elif sLowerValue == "std_logic":
                 lTokens[iToken] = types.std_logic(sValue)
 
-            elif sValue.lower() == "integer":
+            elif sLowerValue == "integer":
                 lTokens[iToken] = types.integer(sValue)
 
-            elif sValue.lower() == "natural":
+            elif sLowerValue == "natural":
                 lTokens[iToken] = types.natural(sValue)
 
-            elif sValue.lower() == "signed":
+            elif sLowerValue == "signed":
                 lTokens[iToken] = types.signed(sValue)
 
             elif sValue.lower() == "unsigned":
@@ -477,6 +480,7 @@ def post_token_assignments(lTokens):
 
         elif isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
+            sLowerValue = oToken.get_lower_value()
             if sValue == "&":
                 lTokens[iToken] = adding_operator.concat()
 
@@ -521,13 +525,13 @@ def post_token_assignments(lTokens):
             elif sValue == ",":
                 lTokens[iToken] = parser.comma()
 
-            elif sValue.lower() == "to":
+            elif sLowerValue == "to":
                 lTokens[iToken] = direction.to(sValue)
 
-            elif sValue.lower() == "downto":
+            elif sLowerValue == "downto":
                 lTokens[iToken] = direction.downto(sValue)
 
-            elif sValue.lower() == "and":
+            elif sLowerValue == "and":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.and_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -537,7 +541,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.and_operator(sValue)
 
-            elif sValue.lower() == "or":
+            elif sLowerValue == "or":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.or_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -547,7 +551,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.or_operator(sValue)
 
-            elif sValue.lower() == "nand":
+            elif sLowerValue == "nand":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -557,7 +561,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.nand_operator(sValue)
 
-            elif sValue.lower() == "nor":
+            elif sLowerValue == "nor":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -567,7 +571,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.nor_operator(sValue)
 
-            elif sValue.lower() == "xor":
+            elif sLowerValue == "xor":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -577,7 +581,7 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.xor_operator(sValue)
 
-            elif sValue.lower() == "xnor":
+            elif sLowerValue == "xnor":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
@@ -587,25 +591,25 @@ def post_token_assignments(lTokens):
                 else:
                     lTokens[iToken] = logical_operator.xnor_operator(sValue)
 
-            elif sValue.lower() == "**":
+            elif sValue == "**":
                 lTokens[iToken] = miscellaneous_operator.double_star(sValue)
 
-            elif sValue.lower() == "abs":
+            elif sLowerValue == "abs":
                 lTokens[iToken] = miscellaneous_operator.abs_operator(sValue)
 
-            elif sValue.lower() == "not":
+            elif sLowerValue == "not":
                 lTokens[iToken] = miscellaneous_operator.not_operator(sValue)
 
-            elif sValue.lower() == "*":
+            elif sValue == "*":
                 lTokens[iToken] = multiplying_operator.star(sValue)
 
-            elif sValue.lower() == "/":
+            elif sValue == "/":
                 lTokens[iToken] = multiplying_operator.slash(sValue)
 
-            elif sValue.lower() == "mod":
+            elif sLowerValue == "mod":
                 lTokens[iToken] = multiplying_operator.mod_operator(sValue)
 
-            elif sValue.lower() == "rem":
+            elif sLowerValue == "rem":
                 lTokens[iToken] = multiplying_operator.rem_operator(sValue)
 
             elif sValue == "=":
@@ -615,23 +619,23 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = parser.tic(sValue)
                 utils.classify_predefined_types(lTokens, iToken + 1)
 
-            elif sValue.lower() == "event":
+            elif sLowerValue == "event":
                 lTokens[iToken] = parser.event_keyword(sValue)
 
             ### IEEE values
-            elif sValue.lower() == "rising_edge":
+            elif sLowerValue == "rising_edge":
                 lTokens[iToken] = function.rising_edge(sValue)
 
-            elif sValue.lower() == "falling_edge":
+            elif sLowerValue == "falling_edge":
                 lTokens[iToken] = function.falling_edge(sValue)
 
-            elif sValue.lower() == "std_logic_vector":
+            elif sLowerValue == "std_logic_vector":
                 lTokens[iToken] = types.std_logic_vector(sValue)
 
-            elif sValue.lower() == "std_ulogic_vector":
+            elif sLowerValue == "std_ulogic_vector":
                 lTokens[iToken] = types.std_ulogic_vector(sValue)
 
-            elif sValue.lower() == "std_ulogic":
+            elif sLowerValue == "std_ulogic":
                 lTokens[iToken] = types.std_ulogic(sValue)
 
             elif len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
@@ -656,11 +660,11 @@ def post_token_assignments(lTokens):
                     lTokens[iToken] = sign.minus()
                 else:
                     lTokens[iToken] = adding_operator.minus()
-            elif sValue.lower() == "*":
+            elif sValue == "*":
                 lTokens[iToken] = multiplying_operator.star(sValue)
-            elif sValue.lower() == "/":
+            elif sValue == "/":
                 lTokens[iToken] = multiplying_operator.slash(sValue)
-            elif sValue.lower() == "**":
+            elif sValue == "**":
                 lTokens[iToken] = miscellaneous_operator.double_star(sValue)
             elif sValue == "(":
                 iParenId += 1

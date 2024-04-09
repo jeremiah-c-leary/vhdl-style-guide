@@ -23,7 +23,7 @@ def update_previous_library(oToi, lAllTokens, oTokenMap):
         oToi.set_meta_data("previous_library", None)
     else:
         oToken = lAllTokens[lTokenIndex[0]]
-        oToi.set_meta_data("previous_library", oToken.get_value().lower())
+        oToi.set_meta_data("previous_library", oToken.get_lower_value())
 
 
 def update_current_library(oToi, lAllTokens, oTokenMap):
@@ -33,7 +33,7 @@ def update_current_library(oToi, lAllTokens, oTokenMap):
     iEndIndex = oTokenMap.get_index_of_line(iLineNumber)
     lTokenIndex = oTokenMap.get_token_indexes_between_indexes(token.use_clause.library_name, iStartIndex, iEndIndex)
     oToken = lAllTokens[lTokenIndex[0]]
-    oToi.set_meta_data("current_library", oToken.get_value().lower())
+    oToi.set_meta_data("current_library", oToken.get_lower_value())
 
 
 def get_list_of_indexes(lTokens, oTokenMap):

@@ -30,5 +30,5 @@ class is_token_value_one_of(naming.Rule):
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if not lTokens[0].get_value().lower() in lower_names:
+            if not lTokens[0].get_lower_value() in lower_names:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))

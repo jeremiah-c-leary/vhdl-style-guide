@@ -664,7 +664,7 @@ def _build_structure_list(iLine, iColumn, lTokens):
             dParen["column"] = iColumn
             lStructure.append(dParen)
 
-        if oToken.get_value().lower() == "when":
+        if oToken.get_lower_value() == "when":
             dWhen = {}
             dWhen["type"] = "when"
             dWhen["line"] = iLine
@@ -672,7 +672,7 @@ def _build_structure_list(iLine, iColumn, lTokens):
             dWhen["iToken"] = iToken
             lStructure.append(dWhen)
 
-        if oToken.get_value().lower() == "else":
+        if oToken.get_lower_value() == "else":
             dElse = {}
             dElse["type"] = "else"
             dElse["line"] = iLine

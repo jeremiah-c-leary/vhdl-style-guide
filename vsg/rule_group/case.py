@@ -22,3 +22,4 @@ class Rule(rule.Rule):
         self.phase = 6
         self.groups.append("case")
         self.configuration_documentation_link = "configuring_uppercase_and_lowercase_rules_link"
+        self.remap = False

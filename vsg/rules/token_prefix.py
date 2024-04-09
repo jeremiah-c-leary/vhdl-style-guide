@@ -50,7 +50,7 @@ class token_prefix(naming.Rule):
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            sToken = lTokens[0].get_value().lower()
+            sToken = lTokens[0].get_lower_value()
 
             if self.exception_found(sToken):
                 continue

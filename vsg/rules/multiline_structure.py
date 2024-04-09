@@ -555,7 +555,7 @@ def _inside_others_clause(iToken, lTokens):
         elif rules_utils.token_is_parenthesis(oToken):
             return False
         else:
-            if oToken.get_value().lower() == "others":
+            if oToken.get_lower_value() == "others":
                 break
     else:
         return False
@@ -663,7 +663,7 @@ def _classify_others(iToken, lTokens):
         iEnd = iReturn + iStart
 
         for iIndex in range(iStart + 1, iEnd):
-            if lTokens[iIndex].get_value().lower() == "others":
+            if lTokens[iIndex].get_lower_value() == "others":
                 return iEnd, True
 
     return iToken, False

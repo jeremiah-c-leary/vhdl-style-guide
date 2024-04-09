@@ -236,6 +236,7 @@ def extract_pairs(lStartIndexes, lEndIndexes):
         lPair = []
         for iStart in lStartIndexes:
             lPair = extract_closest_pair(iStart, lEndIndexes, lPair, iMin)
+
         lMyPairs.append(lPair)
 
         if pair_is_empty(lPair):
