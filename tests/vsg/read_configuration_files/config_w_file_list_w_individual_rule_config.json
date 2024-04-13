@@ -1,10 +1,12 @@
 {
   "file_list": [
     "tests/vsg/read_configuration_files/entity.vhd",
-    "tests/vsg/read_configuration_files/arch.vhd": {
-      "rule": {
-        "rule_001": {
-          "disable": true
+    {
+      "tests/vsg/read_configuration_files/arch.vhd": {
+        "rule": {
+          "rule_001": {
+            "disable": true
+          }
         }
       }
     },
