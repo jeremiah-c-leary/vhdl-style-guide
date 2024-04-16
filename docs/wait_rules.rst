@@ -30,4 +30,3 @@ Proper indentation enhances comprehension.
      wait for 10ns;
      wait on a,b;
      wait until a = '0';
-

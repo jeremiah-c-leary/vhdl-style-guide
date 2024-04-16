@@ -1,7 +1,7 @@
-
-from vsg.rules import multiline_subprogram_specification_structure as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import multiline_subprogram_specification_structure as Rule
 
 oSubprogramSpecification = token.procedure_specification
 
@@ -10,7 +10,7 @@ lTokenPairs.append([token.procedure_specification.procedure_keyword, token.proce
 
 
 class rule_013(Rule):
-    '''
+    """
     This rule checks the structure of procedure specifications.
 
     |configuring_subprogram_specification_statement_rules_link|
@@ -29,7 +29,7 @@ class rule_013(Rule):
           num_samples : in integer;
           sample      : out std_logic
         );
-    '''
+    """
 
     def __init__(self):
         Rule.__init__(self)

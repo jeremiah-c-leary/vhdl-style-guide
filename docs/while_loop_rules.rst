@@ -12,4 +12,3 @@ while_loop_002
 ##############
 
 This rule has been moved to **loop_statement_302**.
-

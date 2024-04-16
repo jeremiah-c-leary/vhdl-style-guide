@@ -1,15 +1,13 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-from vsg import violation
-
-from vsg.rules import utils as rules_utils
+from vsg import parser, token, violation
 from vsg.rule_group import structure
+from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
 
 
 class multiline_simple_structure(structure.Rule):
-    '''
+    """
     This rule checks the structure of simple and conditional concurrent statements.
 
     |configuring_multiline_structure_rules_link|
@@ -37,16 +35,16 @@ class multiline_simple_structure(structure.Rule):
        w_foo <= I_FOO when ((I_BAR = '1') and
                             (I_CRUFT = '1')) else
                 '0';
-    '''
+    """
 
     def __init__(self, lTokenPairs):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.lTokenPairs = lTokenPairs
 
-        self.new_line_after_assign = 'no'
-        self.configuration.append('new_line_after_assign')
-        self.ignore_single_line = 'yes'
-        self.configuration.append('ignore_single_line')
+        self.new_line_after_assign = "no"
+        self.configuration.append("new_line_after_assign")
+        self.ignore_single_line = "yes"
+        self.configuration.append("ignore_single_line")
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -76,13 +74,12 @@ class multiline_simple_structure(structure.Rule):
 
     def _fix_violation(self, oViolation):
         dAction = oViolation.get_action()
-        if dAction['type'] == 'new_line_after_assign':
+        if dAction["type"] == "new_line_after_assign":
             _fix_new_line_after_assign(oViolation)
 
 
 def _check_new_line_after_assign(self, oToi):
-
-    if self.new_line_after_assign == 'ignore':
+    if self.new_line_after_assign == "ignore":
         return
 
     iLine, lTokens = utils.get_toi_parameters(oToi)
@@ -92,26 +89,26 @@ def _check_new_line_after_assign(self, oToi):
     iNumCarriageReturns = utils.count_carriage_returns(lTokens[:iNextToken])
 
     if iNumCarriageReturns == 0:
-        if self.new_line_after_assign == 'yes':
-            sSolution = 'Add return after assignment.'
-            oViolation = _create_violation(oToi, iLine, 1, 1, 'new_line_after_assign', 'insert', sSolution)
+        if self.new_line_after_assign == "yes":
+            sSolution = "Add return after assignment."
+            oViolation = _create_violation(oToi, iLine, 1, 1, "new_line_after_assign", "insert", sSolution)
             self.add_violation(oViolation)
     else:
-        if self.new_line_after_assign == 'no':
-            sSolution = 'Move code after assignment to the same line as assignment.'
-            oViolation = _create_violation(oToi, iLine, 0, iNextToken, 'new_line_after_assign', 'remove', sSolution)
+        if self.new_line_after_assign == "no":
+            sSolution = "Move code after assignment to the same line as assignment."
+            oViolation = _create_violation(oToi, iLine, 0, iNextToken, "new_line_after_assign", "remove", sSolution)
             self.add_violation(oViolation)
 
 
 def _fix_new_line_after_assign(oViolation):
     lTokens = oViolation.get_tokens()
     dAction = oViolation.get_action()
-    if dAction['action'] == 'insert':
+    if dAction["action"] == "insert":
         if not isinstance(lTokens[0], parser.whitespace):
             rules_utils.insert_whitespace(lTokens, 0)
         rules_utils.insert_carriage_return(lTokens, 0)
         oViolation.set_tokens(lTokens)
-    elif dAction['action'] == 'remove':
+    elif dAction["action"] == "remove":
         lNewTokens = []
         lNewTokens.append(lTokens[0])
         rules_utils.append_whitespace(lNewTokens)
@@ -128,8 +125,8 @@ def _create_violation(oToi, iLine, iStartIndex, iEndIndex, sType, sAction, sSolu
 
 def _create_action_dictionary(sType, sAction):
     dReturn = {}
-    dReturn['type'] = sType
-    dReturn['action'] = sAction
+    dReturn["type"] = sType
+    dReturn["action"] = sAction
     return dReturn
 
 

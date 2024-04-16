@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules import utils as rules_utils
+from vsg import parser, violation
 from vsg.rule_group import structure
+from vsg.rules import utils as rules_utils
 
 
 class insert_token_right_of_token_if_it_does_not_exist_before_token(structure.Rule):
-    '''
+    """
     Checks for the existence of a token and will insert it if it does not exist.
 
     Parameters
@@ -27,27 +26,27 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(structure.Ru
 
     end_token : token object type
        token that bounds the search for the insert_token
-    '''
+    """
 
     def __init__(self, insert_token, anchor_token, end_token):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.insert_token = insert_token
         self.anchor_token = anchor_token
         self.end_token = end_token
-        self.action = 'add'
-        self.configuration.append('action')
-        self.configuration_documentation_link = 'configuring_optional_items_link'
+        self.action = "add"
+        self.configuration.append("action")
+        self.configuration_documentation_link = "configuring_optional_items_link"
 
     def _get_tokens_of_interest(self, oFile):
-        if self.action == 'add':
+        if self.action == "add":
             return oFile.get_tokens_bounded_by(self.anchor_token, self.end_token)
         else:
             return oFile.get_token_and_n_tokens_before_it([self.insert_token], 1)
 
     def _analyze(self, lToi):
-        if self.action == 'remove':
+        if self.action == "remove":
             for oToi in lToi:
-                sSolution = self.action.capitalize() + ' ' + self.solution
+                sSolution = self.action.capitalize() + " " + self.solution
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
             return
 
@@ -59,12 +58,12 @@ class insert_token_right_of_token_if_it_does_not_exist_before_token(structure.Ru
                     bFound = True
                     break
             if not bFound:
-                sSolution = self.action.capitalize() + ' ' + self.solution
+                sSolution = self.action.capitalize() + " " + self.solution
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        if self.action == 'remove':
+        if self.action == "remove":
             rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
             if isinstance(lTokens[1], parser.whitespace) and isinstance(lTokens[2], parser.semicolon):

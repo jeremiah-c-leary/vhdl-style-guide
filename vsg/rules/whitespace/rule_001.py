@@ -1,12 +1,11 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
+from vsg import parser, violation
 from vsg.rule_group import whitespace
 
 
 class rule_001(whitespace.Rule):
-    '''
+    """
     This rule check for trailing spaces.
 
     **Violation**
@@ -22,14 +21,13 @@ class rule_001(whitespace.Rule):
     .. code-block:: vhdl
 
         library ieee;
-    '''
+    """
 
     def __init__(self):
-
-        whitespace.Rule.__init__(self)
+        super().__init__()
         self.phase = 1
         self.subphase = 0
-        self.solution = 'Remove trailing whitespace'
+        self.solution = "Remove trailing whitespace"
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
@@ -66,14 +64,14 @@ def whitespace_exists(oToi):
 def define_action(lTokens):
     dAction = {}
     if isinstance(lTokens[0], parser.carriage_return):
-        dAction['action'] = 'insert_blank_line'
+        dAction["action"] = "insert_blank_line"
     else:
-        dAction['action'] = 'remove'
+        dAction["action"] = "remove"
     return dAction
 
 
 def need_to_remove_whitespace(dAction):
-    if dAction['action'] == 'remove':
+    if dAction["action"] == "remove":
         return True
     return False
 

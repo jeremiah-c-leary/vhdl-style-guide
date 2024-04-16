@@ -10,18 +10,22 @@ This is the basic form of a configuration file in JSON:
    {
      "file_list": [
        "fifo.vhd",
-       "source/spi.vhd": {
-         "rule": {
-           "ruleId_ruleNumber": "blah"
+       {
+         "source/spi.vhd": {
+           "rule": {
+             "ruleId_ruleNumber": "blah"
+           }
          }
        },
        "$PATH_TO_FILE/spi_master.vhd",
        "$OTHER_PATH/src/*.vhd"
      ],
      "file_rules": [
-       "source/i2c.vhd": {
-         "rule": {
-           "ruleId_ruleNumber": "blah"
+       {
+         "source/i2c.vhd": {
+           "rule": {
+             "ruleId_ruleNumber": "blah"
+           }
          }
        }
      ],
@@ -192,12 +196,14 @@ If the same rule is defined in all four locations as in the example below, then 
 
    {
      "file_list": [
-       "entity.vhd": {
-         "rule": {
-           "length_001":{
-             "disable": true
+       {
+         "entity.vhd": {
+           "rule": {
+             "length_001":{
+               "disable": true
+             }
            }
-         }
+        }
       },
       "architecture.vhd",
       "package.vhd"

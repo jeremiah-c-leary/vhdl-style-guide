@@ -1,20 +1,21 @@
+# -*- coding: utf-8 -*-
 
 from vsg.token import signal_assignment_statement as token
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import conditional_signal_assignment
-from vsg.vhdlFile.classify import selected_signal_assignment
-from vsg.vhdlFile.classify import simple_signal_assignment
+from vsg.vhdlFile.classify import (
+    conditional_signal_assignment,
+    selected_signal_assignment,
+    simple_signal_assignment,
+)
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     signal_assignment_statement ::=
         [ label : ] simple_signal_assignment
       | [ label : ] conditional_signal_assignment
       | [ label : ] selected_signal_assignment
-    '''
+    """
 
     iCurrent = iToken
 

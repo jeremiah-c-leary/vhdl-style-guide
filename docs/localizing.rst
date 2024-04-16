@@ -47,7 +47,7 @@ Since this is the first rule, we will number it **001**.
    class rule_001(rule.rule):
 
      def __init__(self):
-         rule.rule.__init__(self)
+         super().__init__()
          self.name = 'localized'
 
 Referencing the :doc:`phases`, we decide it should be in phase 1: structural.
@@ -60,7 +60,7 @@ Referencing the :doc:`phases`, we decide it should be in phase 1: structural.
    class rule_001(rule.rule):
 
      def __init__(self):
-         rule.rule.__init__(self)
+         super().__init__()
          self.name = 'localized'
          self.phase = 1
 
@@ -74,7 +74,7 @@ Now we need to add the **analyze** method to perform the check.
    class rule_001(rule.rule):
 
      def __init__(self):
-         rule.rule.__init__(self)
+         super().__init__()
          self.name = 'localized'
          self.phase = 1
 
@@ -92,7 +92,7 @@ We are ready to write the body of the **analyze** method:
    class rule_001(rule.rule):
 
      def __init__(self):
-         rule.rule.__init__(self)
+         super().__init__()
          self.name = 'localized'
          self.phase = 1
 
@@ -119,7 +119,7 @@ We will tell VSG the rule is not fixable.
    class rule_001(rule.rule):
 
      def __init__(self):
-         rule.rule.__init__(self)
+         super().__init__()
          self.name = 'localized'
          self.phase = 1
          self.fixable = False  # User must split the file
@@ -138,13 +138,13 @@ We also need to provide a solution to the user so they will know how to fix the 
    class rule_001(rule.rule):
 
      def __init__(self):
-         rule.rule.__init__(self)
+         super().__init__()
          self.name = 'localized'
          self.phase = 1
 
 
          self.fixable = False  # User must split the file
-         self.solution = 'Split entity and architecture into seperate files.'
+         self.solution = 'Split entity and architecture into separate files.'
 
      def analyze(self, oFile):
          if oFile.hasEntity and oFile.hasArchitecture:
@@ -160,11 +160,11 @@ Finally, we need to add a code tag check so the rule can be disabled via comment
    class rule_001(rule.rule):
 
      def __init__(self):
-         rule.rule.__init__(self)
+         super().__init__()
          self.name = 'localized'
          self.phase = 1
          self.fixable = False  # User must split the file
-         self.solution = 'Split entity and architecture into seperate files.'
+         self.solution = 'Split entity and architecture into separate files.'
 
      def analyze(self, oFile):
          if not self.is_vsg_off(oLine):
@@ -190,7 +190,7 @@ When we want to run with localized rules, use the **--local_rules** option.
    File:  RAM.vhd
    ==============
    Phase 1... Reporting
-   localized_001            |            1 | Split entity and architecture into seperate files.
+   localized_001            |            1 | Split entity and architecture into separate files.
    Phase 2... Not executed
    Phase 3... Not executed
    Phase 4... Not executed
@@ -239,7 +239,7 @@ We will look at the rule **constant_014** to illustrate how VSG uses the methods
         '''
 
         def __init__(self):
-            rule.rule.__init__(self)
+            super().__init__()
             self.name = 'constant'
             self.identifier = '014'
             self.solution = 'Align with := keyword on constant declaration line.'
@@ -290,7 +290,7 @@ It calls the init of the base rule class, then we modify attributes for this spe
 .. code-block:: python
 
         def __init__(self):
-            rule.rule.__init__(self)
+            super().__init__()
             self.name = 'constant'
             self.identifier = '014'
             self.solution = 'Align with := keyword on constant declaration line.'
@@ -513,7 +513,7 @@ Use this to create the initial violation and add to it as necessary.
 The **get_violation_line_number** will return the lines['number'] attribute of the violation.
 Use this function to abstract away the line number from the underlying data structure.
 
-The **get_violating_line** will return a line object at the line the violation occured.
+The **get_violating_line** will return a line object at the line the violation occurred.
 This is easier than manually indexing into the oFile list to pull out a line.
 
 Rule creation guidelines
@@ -526,4 +526,3 @@ Keep these points in mind when creating new rules:
 #. Override **_get_solution** to return complex messages
 #. **analyze** method can be overridden if necessary
 #. If overriding **analyze**, then include a check for *vsg_off*
-

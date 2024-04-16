@@ -1,14 +1,14 @@
-
-from vsg.rules import multiline_conditional_alignment as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import multiline_conditional_alignment as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.conditional_variable_assignment.assignment, token.conditional_variable_assignment.semicolon])
 
 
 class rule_400(Rule):
-    '''
+    """
     This rule checks alignment of multiline conditional variable assignments.
 
     |configuring_conditional_multiline_indent_rules_link|
@@ -34,7 +34,7 @@ class rule_400(Rule):
        w_foo := I_FOO when ((I_BAR = '1') and
                             (I_CRUFT = '1')) else
                 '0';
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)

@@ -1,7 +1,7 @@
 Rules
 =====
 
-The rules are divided into catagories depending on the part of the VHDL code being operated on.
+The rules are divided into categories depending on the part of the VHDL code being operated on.
 
 .. toctree::
    :maxdepth: 2

@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import token_case as Rule
-
 from vsg.token import record_type_definition as token
 
 
 class rule_501(Rule):
-    '''
+    """
     This rule checks the proper case of the **end** keyword.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -27,8 +27,8 @@ class rule_501(Rule):
          a : std_logic;
          b : std_logic;
        end record t_record;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, [token.end_keyword])
-        self.groups.append('case::keyword')
+        super().__init__([token.end_keyword])
+        self.groups.append("case::keyword")

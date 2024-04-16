@@ -1,17 +1,17 @@
-
-from vsg import exceptions
-from vsg import parser
-
-from vsg.token import direction
-from vsg.token import choice
-from vsg.token import element_association
-from vsg.token import exponent
-from vsg.token import predefined_attribute
-from vsg.token import relational_operator
-
-from vsg.token.ieee.std_logic_1164 import types
+# -*- coding: utf-8 -*-
 
 import sys
+
+from vsg import exceptions, parser
+from vsg.token import (
+    choice,
+    direction,
+    element_association,
+    exponent,
+    predefined_attribute,
+    relational_operator,
+)
+from vsg.token.ieee.std_logic_1164 import types
 
 
 def assign_tokens_until(sToken, token, iToken, lObjects):
@@ -25,7 +25,7 @@ def assign_tokens_until_ignoring_paren(sToken, token, iToken, lObjects):
     iParen = 0
     for iCurrent in range(iToken, len(lObjects) - 1):
         iParen = update_paren_counter(iCurrent, lObjects, iParen)
-        if lObjects[iCurrent].get_value().lower() == sToken:
+        if lObjects[iCurrent].get_lower_value() == sToken:
             if iParen == 0:
                 return iCurrent
         if is_item(lObjects, iCurrent):
@@ -39,7 +39,7 @@ def assign_next_token(token, iToken, lObjects):
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
     except TypeError:
         lObjects[iCurrent] = token()
-    iCurrent+= 1
+    iCurrent += 1
     return iCurrent
 
 
@@ -72,7 +72,7 @@ def assign_next_token_if_not(sToken, token, iToken, lObjects):
 
 def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value().lower() not in lTokens:
+    if lObjects[iCurrent].get_lower_value() not in lTokens:
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
         iCurrent += 1
         return iCurrent
@@ -101,7 +101,7 @@ def assign_tokens_until_matching_closing_paren(token, iToken, lObjects):
 
 
 def object_value_is(lAllObjects, iToken, sString):
-    if lAllObjects[iToken].get_value().lower() == sString.lower():
+    if lAllObjects[iToken].get_lower_value() == sString.lower():
         return True
     return False
 
@@ -114,7 +114,7 @@ def is_item(lAllObjects, iToken):
 
 def get_range(lObjects, iStart, sEnd):
     iIndex = iStart
-    while lObjects[iIndex].get_value().lower() != sEnd:
+    while lObjects[iIndex].get_lower_value() != sEnd:
         iIndex += 1
     iEnd = iIndex
     iStart = iStart
@@ -243,7 +243,7 @@ def find_earliest_occurance(lEnd, iToken, lObjects):
     iEarliest = len(lObjects)
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
-            if lObjects[iIndex].get_value().lower() == sEnd:
+            if lObjects[iIndex].get_lower_value() == sEnd:
                 if iIndex < iEarliest:
                     sEarliest = lObjects[iIndex].get_value()
                     iEarliest = iIndex
@@ -256,17 +256,21 @@ def find_earliest_occurance_not_in_paren(lEnd, iToken, lObjects):
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
             iParen = update_paren_counter(iIndex, lObjects, iParen)
-            if lObjects[iIndex].get_value().lower() == sEnd:
+            if lObjects[iIndex].get_lower_value() == sEnd:
                 if iIndex < iEarliest and iParen == 0:
                     return lObjects[iIndex].get_value()
     return None
 
 
 def find_next_token(iToken, lObjects):
-    for iCurrent in range(iToken, len(lObjects)):
-        if is_item(lObjects, iCurrent):
-            return iCurrent
+    for iCurrent, oToken in enumerate(lObjects[iToken::]):
+        if type(oToken) == parser.item:
+            return iCurrent + iToken
     return iToken
+
+
+def rename_this_is_item_function(oToken):
+    return type(oToken) == parser.item
 
 
 def find_next_non_whitespace_token(iToken, lObjects):
@@ -293,7 +297,7 @@ def detect_submodule(iToken, lObjects, module):
     iLast = -1
     iReturn = iToken
     while iLast != iReturn:
-        if is_next_token('end', iReturn, lObjects):
+        if is_next_token("end", iReturn, lObjects):
             return iToken
         iReturn = find_next_token(iReturn, lObjects)
         iLast = iReturn
@@ -306,14 +310,14 @@ def has_label(iObject, lObjects):
     iCurrent = find_next_token(iObject, lObjects)
     iCurrent = increment_token_count(iCurrent)
     iCurrent = find_next_token(iCurrent, lObjects)
-    if object_value_is(lObjects, iCurrent, ':'):
+    if object_value_is(lObjects, iCurrent, ":"):
         return True
     return False
 
 
 def tokenize_postponed(iObject, lObjects, token):
     iIndex = find_next_token(iObject, lObjects)
-    if object_value_is(lObjects, iIndex, 'postponed'):
+    if object_value_is(lObjects, iIndex, "postponed"):
         assign_token(lObjects, iIndex, token)
         return iIndex + 1
     return iObject
@@ -336,28 +340,28 @@ def tokenize_label(iToken, lObjects, label_token, colon_token):
 
 
 def print_debug(sTitle, iStart, iEnd, lObjects):
-    print('--> ' + sTitle)
-    sOutput = ''
+    print("--> " + sTitle)
+    sOutput = ""
     for iIndex in range(iStart, iEnd + 1):
-        print(f'{iIndex} | {lObjects[iIndex]}')
-        sOutput += (lObjects[iIndex].get_value())
+        print(f"{iIndex} | {lObjects[iIndex]}")
+        sOutput += lObjects[iIndex].get_value()
     print(sOutput)
 
 
 def print_next_token(iObject, lObjects):
     iCurrent = find_next_token(iObject, lObjects)
     iLine = calculate_line_number(iObject, lObjects)
-    print(f'{iLine} | {iCurrent} | {lObjects[iCurrent].get_value()}')
+    print(f"{iLine} | {iCurrent} | {lObjects[iCurrent].get_value()}")
 
 
 def print_token(iObject, lObjects):
     iLine = calculate_line_number(iObject, lObjects)
-    print(f'{iLine} | {iObject} | {lObjects[iObject].get_value()} | {lObjects[iObject]}')
+    print(f"{iLine} | {iObject} | {lObjects[iObject].get_value()} | {lObjects[iObject]}")
 
 
 def print_line(lObjects, iStart):
     iIndex = iStart
-    sOutput = ''
+    sOutput = ""
     while not isinstance(lObjects[iIndex], parser.carriage_return):
         sOutput += lObjects[iIndex].get_value()
         iIndex += 1
@@ -365,38 +369,38 @@ def print_line(lObjects, iStart):
 
 
 def print_lines(lObjects):
-    sOutput = ''
+    sOutput = ""
     for oObject in lObjects:
         sOutput += oObject.get_value()
     print(sOutput)
 
 
 def token_is_semicolon(iObject, lObjects):
-    if object_value_is(lObjects, iObject, ';'):
+    if object_value_is(lObjects, iObject, ";"):
         return True
     return False
 
 
 def token_is_comma(iObject, lObjects):
-    if object_value_is(lObjects, iObject, ','):
+    if object_value_is(lObjects, iObject, ","):
         return True
     return False
 
 
 def token_is_open_parenthesis(iObject, lObjects):
-    if object_value_is(lObjects, iObject, '('):
+    if object_value_is(lObjects, iObject, "("):
         return True
     return False
 
 
 def token_is_close_parenthesis(iObject, lObjects):
-    if object_value_is(lObjects, iObject, ')'):
+    if object_value_is(lObjects, iObject, ")"):
         return True
     return False
 
 
 def token_is_assignment_operator(iObject, lObjects):
-    if object_value_is(lObjects, iObject, '<='):
+    if object_value_is(lObjects, iObject, "<="):
         return True
     return False
 
@@ -414,7 +418,7 @@ def is_next_token(sToken, iToken, lObjects):
 
 def is_next_token_one_of(lTokens, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value().lower() in lTokens:
+    if lObjects[iCurrent].get_lower_value() in lTokens:
         return True
     return False
 
@@ -448,7 +452,7 @@ def calculate_column(iToken, lObjects):
     iColumn = 0
     for iCarriageReturn in range(iToken, 0, -1):
         if isinstance(lObjects[iCarriageReturn], parser.carriage_return):
-            break;
+            break
     for iIndex in range(iCarriageReturn + 1, iToken):
         iColumn += len(lObjects[iIndex].get_value())
     iColumn += 1
@@ -461,13 +465,13 @@ def print_error_message(sToken, token, iToken, lObjects):
     iColumn = calculate_column(iToken, lObjects)
     sModuleName = extract_module_name(token)
 
-    sErrorMessage = '\n'
-    sErrorMessage += f'Error: Unexpected token detected while parsing {sModuleName} @ Line {iLine}, Column {iColumn} in file {lObjects[0].get_filename()}'
-    sErrorMessage += '\n'
-    sErrorMessage += f'       Expecting : {sToken}'
-    sErrorMessage += '\n'
-    sErrorMessage += f'       Found     : {sFoundToken}'
-    sErrorMessage += '\n'
+    sErrorMessage = "\n"
+    sErrorMessage += f"Error: Unexpected token detected while parsing {sModuleName} @ Line {iLine}, Column {iColumn} in file {lObjects[0].get_filename()}"
+    sErrorMessage += "\n"
+    sErrorMessage += f"       Expecting : {sToken}"
+    sErrorMessage += "\n"
+    sErrorMessage += f"       Found     : {sFoundToken}"
+    sErrorMessage += "\n"
 
     raise exceptions.ClassifyError(sErrorMessage)
 
@@ -475,23 +479,23 @@ def print_error_message(sToken, token, iToken, lObjects):
 def print_missing_error_message(lTokens, iToken, lObjects):
     iLine = calculate_line_number(iToken, lObjects)
 
-    sErrorMessage = '\n'
-    sErrorMessage += f'Error: Closing token not found while parsing Line {iLine}'
-    sErrorMessage += '\n'
-    sErrorMessage += '\n'
-    sErrorMessage += f' {iLine} | '
+    sErrorMessage = "\n"
+    sErrorMessage += f"Error: Closing token not found while parsing Line {iLine}"
+    sErrorMessage += "\n"
+    sErrorMessage += "\n"
+    sErrorMessage += f" {iLine} | "
     sErrorMessage += extract_line_with_token_index_of(iToken, lObjects)
-    sErrorMessage += '\n'
+    sErrorMessage += "\n"
 
     raise exceptions.ClassifyError(sErrorMessage)
 
 
 def extract_module_name(token):
-    return token.__module__.split('.')[-1]
+    return token.__module__.split(".")[-1]
 
 
 def keyword_found(sKeyword, iToken, lObjects):
-    if find_in_next_n_tokens(':', 2, iToken, lObjects):
+    if find_in_next_n_tokens(":", 2, iToken, lObjects):
         if find_in_next_n_tokens(sKeyword, 3, iToken, lObjects):
             return True
         else:
@@ -503,16 +507,16 @@ def keyword_found(sKeyword, iToken, lObjects):
 
 def is_next_token_in_list(lUntils, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_value().lower() in lUntils:
+    if lObjects[iCurrent].get_lower_value() in lUntils:
         return True
     return False
 
 
 def combine_two_token_class_lists(lToi_a, lToi_b):
-    '''
+    """
     Takes two lists that contain Token classes and merges them into a single list.
     The final list is ordered by the iStartIndex attribute on the Token classes.
-    '''
+    """
     if len(lToi_a) == 0:
         return lToi_b
     if len(lToi_b) == 0:
@@ -531,7 +535,6 @@ def combine_two_token_class_lists(lToi_a, lToi_b):
 
 
 def does_length_of_tokens_exceed(lObjects, iLength):
-
     iTotalLength = 0
     for oObject in lObjects:
         iTotalLength += len(oObject.get_value())
@@ -638,11 +641,13 @@ def remove_all_trailing_whitespace(lTokens):
 
 
 def token_is_whitespace_or_comment(oToken):
-    if isinstance(oToken, parser.whitespace) or \
-       isinstance(oToken, parser.carriage_return) or \
-       isinstance(oToken, parser.comment) or \
-       isinstance(oToken, parser.blank_line) or \
-       isinstance(oToken, parser.preprocessor):
+    if (
+        isinstance(oToken, parser.whitespace)
+        or isinstance(oToken, parser.carriage_return)
+        or isinstance(oToken, parser.comment)
+        or isinstance(oToken, parser.blank_line)
+        or isinstance(oToken, parser.preprocessor)
+    ):
         return True
     else:
         return False
@@ -656,10 +661,12 @@ def token_is_whitespace_token(oToken):
 
 
 def token_is_whitespace(oToken):
-    if isinstance(oToken, parser.whitespace) or \
-       isinstance(oToken, parser.carriage_return) or \
-       isinstance(oToken, parser.blank_line) or \
-       isinstance(oToken, parser.preprocessor):
+    if (
+        isinstance(oToken, parser.whitespace)
+        or isinstance(oToken, parser.carriage_return)
+        or isinstance(oToken, parser.blank_line)
+        or isinstance(oToken, parser.preprocessor)
+    ):
         return True
     else:
         return False
@@ -731,7 +738,7 @@ def does_token_start_line(iToken, lTokens):
 
 
 def convert_token_list_to_string(lTokens):
-    sReturn = ''
+    sReturn = ""
     for oToken in lTokens:
         sReturn += oToken.get_value()
     return sReturn
@@ -748,7 +755,11 @@ def fix_blank_lines(lTokens):
         except IndexError:
             pass
         try:
-            if isinstance(lTokens[iToken - 1], parser.carriage_return) and isinstance(oToken, parser.whitespace) and isinstance(lTokens[iToken + 1], parser.carriage_return):
+            if (
+                isinstance(lTokens[iToken - 1], parser.carriage_return)
+                and isinstance(oToken, parser.whitespace)
+                and isinstance(lTokens[iToken + 1], parser.carriage_return)
+            ):
                 lReturn.append(parser.blank_line())
                 continue
         except IndexError:
@@ -788,17 +799,16 @@ def is_whitespace(oObject):
 
 
 def read_vhdlfile(sFileName):
-
     def _read(oFile):
         lLines = []
         for sLine in oFile:
-            lLines.append(sLine.rstrip('\r\n'))
+            lLines.append(sLine.rstrip("\r\n"))
         return lLines
 
-    if sFileName == 'stdin':
+    if sFileName == "stdin":
         return _read(sys.stdin), None
     try:
-        with open(sFileName, encoding='utf-8') as oFile:
+        with open(sFileName, encoding="utf-8") as oFile:
             return _read(oFile), None
     except UnicodeDecodeError:
         with open(sFileName, encoding="ISO-8859-1") as oFile:
@@ -846,87 +856,87 @@ def update_paren_counter(iToken, lTokens, iCounter):
 
 
 def assignment_operator_found(iToken, lObjects):
-    if find_in_range('<=', iToken, ';', lObjects):
-        if all_assignments_inside_parenthesis(iToken, ';', lObjects):
+    if find_in_range("<=", iToken, ";", lObjects):
+        if all_assignments_inside_parenthesis(iToken, ";", lObjects):
             return False
         return True
     return False
 
 
 def assign_special_tokens(lObjects, iCurrent, oType):
-    sValue = lObjects[iCurrent].get_value().lower()
-    if sValue == ')':
+    sValue = lObjects[iCurrent].get_lower_value()
+    if sValue == ")":
         assign_token(lObjects, iCurrent, parser.close_parenthesis)
-    elif sValue == '(':
+    elif sValue == "(":
         assign_token(lObjects, iCurrent, parser.open_parenthesis)
-    elif sValue == '-':
+    elif sValue == "-":
         if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
             assign_token(lObjects, iCurrent, exponent.minus_sign)
         else:
             assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == '+':
+    elif sValue == "+":
         if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
             assign_token(lObjects, iCurrent, exponent.plus_sign)
         else:
             assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == '*':
+    elif sValue == "*":
         assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == '**':
+    elif sValue == "**":
         assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == '/':
+    elif sValue == "/":
         assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == 'downto':
+    elif sValue == "downto":
         assign_token(lObjects, iCurrent, direction.downto)
-    elif sValue == 'to':
+    elif sValue == "to":
         assign_token(lObjects, iCurrent, direction.to)
-    elif sValue == 'std_logic_vector':
+    elif sValue == "std_logic_vector":
         assign_token(lObjects, iCurrent, types.std_logic_vector)
-    elif sValue == 'std_ulogic_vector':
+    elif sValue == "std_ulogic_vector":
         assign_token(lObjects, iCurrent, types.std_ulogic_vector)
-    elif sValue == 'std_ulogic':
+    elif sValue == "std_ulogic":
         assign_token(lObjects, iCurrent, types.std_ulogic)
-    elif sValue == 'std_logic':
+    elif sValue == "std_logic":
         assign_token(lObjects, iCurrent, types.std_logic)
-    elif sValue == 'integer':
+    elif sValue == "integer":
         assign_token(lObjects, iCurrent, types.integer)
-    elif sValue == 'signed':
+    elif sValue == "signed":
         assign_token(lObjects, iCurrent, types.signed)
-    elif sValue == 'unsigned':
+    elif sValue == "unsigned":
         assign_token(lObjects, iCurrent, types.unsigned)
-    elif sValue == 'natural':
+    elif sValue == "natural":
         assign_token(lObjects, iCurrent, types.natural)
-    elif sValue == 'others':
+    elif sValue == "others":
         assign_token(lObjects, iCurrent, choice.others_keyword)
-    elif sValue == '=>':
+    elif sValue == "=>":
         assign_token(lObjects, iCurrent, element_association.assignment)
-    elif sValue == 'e':
-        if lObjects[iCurrent + 1].get_value().isdigit() or lObjects[iCurrent + 1].get_value() == '-' or lObjects[iCurrent + 1].get_value() == '+':
+    elif sValue == "e":
+        if lObjects[iCurrent + 1].get_value().isdigit() or lObjects[iCurrent + 1].get_value() == "-" or lObjects[iCurrent + 1].get_value() == "+":
             assign_token(lObjects, iCurrent, exponent.e_keyword)
         else:
             assign_token(lObjects, iCurrent, oType)
-    elif sValue == '=':
+    elif sValue == "=":
         assign_token(lObjects, iCurrent, relational_operator.equal)
-    elif sValue == '/=':
+    elif sValue == "/=":
         assign_token(lObjects, iCurrent, relational_operator.not_equal)
-    elif sValue == '<':
+    elif sValue == "<":
         assign_token(lObjects, iCurrent, relational_operator.less_than)
-    elif sValue == '<=':
+    elif sValue == "<=":
         assign_token(lObjects, iCurrent, relational_operator.less_than_or_equal)
-    elif sValue == '>':
+    elif sValue == ">":
         assign_token(lObjects, iCurrent, relational_operator.greater_than)
-    elif sValue == '>=':
+    elif sValue == ">=":
         assign_token(lObjects, iCurrent, relational_operator.greater_than_or_equal)
-    elif sValue == '?=':
+    elif sValue == "?=":
         assign_token(lObjects, iCurrent, relational_operator.question_equal)
-    elif sValue == '?/=':
+    elif sValue == "?/=":
         assign_token(lObjects, iCurrent, relational_operator.question_not_equal)
-    elif sValue == '?<':
+    elif sValue == "?<":
         assign_token(lObjects, iCurrent, relational_operator.question_less_than)
-    elif sValue == '?<=':
+    elif sValue == "?<=":
         assign_token(lObjects, iCurrent, relational_operator.question_less_than_or_equal)
-    elif sValue == '?>':
+    elif sValue == "?>":
         assign_token(lObjects, iCurrent, relational_operator.question_greater_than)
-    elif sValue == '?>=':
+    elif sValue == "?>=":
         assign_token(lObjects, iCurrent, relational_operator.question_greater_than_or_equal)
 
     elif exponent_detected(lObjects, iCurrent):
@@ -948,17 +958,17 @@ def exponent_detected(lObjects, iCurrent):
 def classify_predefined_types(lObjects, iCurrent):
     if not isinstance(lObjects[iCurrent], parser.todo):
         return
-    if lObjects[iCurrent].get_value().lower() in predefined_attribute.values:
-        if lObjects[iCurrent].get_value().lower() == 'event':
+    if lObjects[iCurrent].get_lower_value() in predefined_attribute.values:
+        if lObjects[iCurrent].get_lower_value() == "event":
             assign_token(lObjects, iCurrent, predefined_attribute.event_keyword)
         else:
             assign_token(lObjects, iCurrent, predefined_attribute.keyword)
 
 
 def convert_yes_no_option_to_boolean(option):
-    if option == 'yes':
+    if option == "yes":
         return True
-    elif option == 'no':
+    elif option == "no":
         return False
     return option
 
@@ -966,9 +976,9 @@ def convert_yes_no_option_to_boolean(option):
 def convert_boolean_to_yes_no(option):
     if isinstance(option, bool):
         if option:
-            return 'yes'
+            return "yes"
         else:
-            return 'no'
+            return "no"
     return option
 
 
@@ -980,7 +990,7 @@ def extract_line_with_token_index_of(iToken, lObjects):
         if isinstance(lObjects[iIndex], parser.carriage_return):
             iEnd = iIndex
             break
-    sReturn = ''
+    sReturn = ""
     for oObject in lObjects[iStart:iEnd]:
         sReturn += oObject.get_value()
     return sReturn

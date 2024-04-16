@@ -1,13 +1,13 @@
 {
-  "rule":{
-    "global":{
-        "phase":1
+  "rule": {
+    "global": {
+        "phase": 1
     },
-    "architecture_010":{
-        "disable":"True"
+    "architecture_010": {
+        "disable": "True"
     },
-    "port_011":{
-        "port_direction":"Suffix"
+    "port_011": {
+        "port_direction": "Suffix"
     }
   }
 }

@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.attribute_declaration.attribute_keyword)
 
 
 class rule_300(token_indent):
-    '''
+    """
     This rule checks the indent of the **attribute** keyword.
 
     **Violation**
@@ -24,7 +24,7 @@ class rule_300(token_indent):
 
        signal sig1 : std_logic;
        attribute max_delay : time;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, lTokens)
+        super().__init__(lTokens)

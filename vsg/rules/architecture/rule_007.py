@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import token_indent
-
 from vsg.token import architecture_body as token
 
 
 class rule_007(token_indent):
-    '''
+    """
     This rule checks for spaces before the **begin** keyword.
 
     **Violation**
@@ -21,7 +21,7 @@ class rule_007(token_indent):
 
        architecture rtl of fifo is
        begin
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, [token.begin_keyword])
+        super().__init__([token.begin_keyword])

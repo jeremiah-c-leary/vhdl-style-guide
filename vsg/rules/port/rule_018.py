@@ -1,7 +1,7 @@
-
-from vsg.rules import token_case_n_token_after_tokens_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_case_n_token_after_tokens_between_tokens
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.colon)
@@ -14,7 +14,7 @@ oEnd = token.port_clause.close_parenthesis
 
 
 class rule_018(token_case_n_token_after_tokens_between_tokens):
-    '''
+    """
     This rule checks the port type has proper case if it is a VHDL keyword.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -41,9 +41,9 @@ class rule_018(token_case_n_token_after_tokens_between_tokens):
          OVERFLOW : out   t_OVERFLOW;
          DATA     : inout std_logic_vector(31 downto 0)
        );
-    '''
+    """
 
     def __init__(self):
-        token_case_n_token_after_tokens_between_tokens.__init__(self, 2, lTokens, oStart, oEnd, True)
+        super().__init__(2, lTokens, oStart, oEnd, True)
         self.disabled = True
-        self.groups.append('case::keyword')
+        self.groups.append("case::keyword")

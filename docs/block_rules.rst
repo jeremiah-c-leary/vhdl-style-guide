@@ -684,4 +684,3 @@ The default prefix is *blk_*.
 .. code-block:: vhdl
 
    blk_block_label : block is
-

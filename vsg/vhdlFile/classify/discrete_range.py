@@ -1,27 +1,25 @@
+# -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.vhdlFile import utils
-
-from vsg.vhdlFile.classify import range
-from vsg.vhdlFile.classify import subtype_indication
+from vsg.vhdlFile.classify import range, subtype_indication
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     discrete_range ::=
         *discrete*_subtype_indication | range
-    '''
-    if utils.are_next_consecutive_tokens([None, '(', None, ')'], iToken, lObjects):
+    """
+    if utils.are_next_consecutive_tokens([None, "(", None, ")"], iToken, lObjects):
         return subtype_indication.classify(iToken, lObjects)
     return range.detect(iToken, lObjects)
 
 
 def classify(iToken, lObjects):
-    '''
+    """
     discrete_range ::=
         *discrete*_subtype_indication | range
-    '''
+    """
 
     return utils.assign_token(lObjects, iToken, parser.todo)
 
@@ -40,13 +38,13 @@ def classify_until(lUntils, iToken, lObjects):
             utils.print_missing_error_message(lUntils, iToken, lObjects)
 
         if utils.token_is_open_parenthesis(iCurrent, lObjects):
-           iOpenParenthesis += 1
+            iOpenParenthesis += 1
         if utils.token_is_close_parenthesis(iCurrent, lObjects):
-           iCloseParenthesis += 1
+            iCloseParenthesis += 1
         if iOpenParenthesis < iCloseParenthesis:
             break
         elif iOpenParenthesis == iCloseParenthesis:
-            if lObjects[iCurrent].get_value().lower() in lUntils:
+            if lObjects[iCurrent].get_lower_value() in lUntils:
                 break
             else:
                 utils.assign_token(lObjects, iCurrent, parser.todo)

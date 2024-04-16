@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.generic_clause.generic_keyword)
 
 
 class rule_002(token_indent):
-    '''
+    """
     This rule checks the indent of the **generic** keyword.
 
     **Violation**
@@ -30,7 +30,7 @@ class rule_002(token_indent):
 
        entity fifo is
          generic (
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, lTokens)
+        super().__init__(lTokens)

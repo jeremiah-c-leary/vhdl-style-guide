@@ -294,4 +294,3 @@ This rule checks the alignment of multiline simple sequential signal assignments
      65535,
      32768
    );
-

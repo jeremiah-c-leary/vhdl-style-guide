@@ -1,10 +1,8 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, token, violation
 from vsg.rule_group import structure
+from vsg.vhdlFile import utils
 
 lSplitTokens = []
 lSplitTokens.append(token.conditional_waveforms.else_keyword)
@@ -14,7 +12,7 @@ lTokenPairs.append([token.concurrent_conditional_signal_assignment.assignment, t
 
 
 class rule_001(structure.Rule):
-    '''
+    """
     This rule checks for code after the **else** keyword.
 
     .. NOTE:: There is a configuration option :code:`allow_single_line` which allows single line concurrent statements.
@@ -57,16 +55,16 @@ class rule_001(structure.Rule):
        wr_en <= '0' when overflow = '0' else
                 '1' when underflow = '1' else
                 sig_a;
-    '''
+    """
 
     def __init__(self):
-        structure.Rule.__init__(self)
-        self.solution = 'move code after else to next line.'
+        super().__init__()
+        self.solution = "move code after else to next line."
         self.subphase = 2
         self.lSplitTokens = lSplitTokens
         self.lTokenPairs = lTokenPairs
-        self.allow_single_line = 'no'
-        self.configuration.append('allow_single_line')
+        self.allow_single_line = "no"
+        self.configuration.append("allow_single_line")
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):

@@ -543,7 +543,7 @@ This rule checks the alignment of **:=** operator for each parameter in the proc
 procedure_412
 #############
 
-This rule has been superceeded by rule `architecture_027 <architecture_rules.html#architecture-027>`_.
+This rule has been superseded by rule `architecture_027 <architecture_rules.html#architecture-027>`_.
 
 procedure_500
 #############
@@ -746,4 +746,3 @@ This rule checks for consistent capitalization of procedure names.
      end process;
 
    end architecture rtl;
-

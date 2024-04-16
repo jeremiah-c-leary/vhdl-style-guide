@@ -1,7 +1,7 @@
-
-from vsg.rules import token_prefix
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_prefix
 
 lTokens = []
 lTokens.append(token.case_generate_statement.generate_label)
@@ -13,9 +13,9 @@ lTokens.append(token.if_generate_statement.end_generate_label)
 
 
 class rule_017(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on generate statement labels.
-    The default prefix is *gen\_*.
+    The default prefix is *gen_*.
 
     |configuring_prefix_and_suffix_rules_link|
 
@@ -30,8 +30,8 @@ class rule_017(token_prefix):
     .. code-block:: vhdl
 
        gen_label : case condition generate
-    '''
+    """
 
     def __init__(self):
-        token_prefix.__init__(self, lTokens)
-        self.prefixes = ['gen_']
+        super().__init__(lTokens)
+        self.prefixes = ["gen_"]

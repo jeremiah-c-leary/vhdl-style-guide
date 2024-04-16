@@ -1,11 +1,10 @@
+# -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.vhdlFile.extract import tokens
 
 
 def get_tokens_matching_not_at_beginning_or_ending_of_line(lTokens, lAllTokens, oTokenMap):
-
     lReturn = []
     lIndexes = []
     lCarriageReturns = oTokenMap.get_token_indexes(parser.carriage_return)

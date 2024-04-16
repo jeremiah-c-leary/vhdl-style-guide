@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
@@ -10,7 +10,7 @@ lTokens.append([token.case_generate_statement.generate_label, token.case_generat
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for a single space between the label and the colon.
 
     |configuring_whitespace_rules_link|
@@ -26,6 +26,7 @@ class rule_002(Rule):
     .. code-block:: vhdl
 
        ram_array : for i in 0 to 7 generate
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

@@ -1,7 +1,7 @@
-
-from vsg.rules import token_indent_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent_between_tokens
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.constant_keyword)
@@ -19,7 +19,7 @@ oEnd = token.procedure_specification.close_parenthesis
 
 
 class rule_004(token_indent_between_tokens):
-    '''
+    """
     This rule checks the indent of parameters.
 
     **Violation**
@@ -45,7 +45,7 @@ class rule_004(token_indent_between_tokens):
          signal d : out std_logic ) is
        begin
        end procedure average_samples;
-    '''
+    """
 
     def __init__(self):
-        token_indent_between_tokens.__init__(self, lTokens, oStart, oEnd)
+        super().__init__(lTokens, oStart, oEnd)

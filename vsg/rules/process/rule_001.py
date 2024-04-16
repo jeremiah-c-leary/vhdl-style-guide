@@ -1,7 +1,7 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.process_statement.process_label)
@@ -10,7 +10,7 @@ lTokens.append(token.process_statement.process_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of the process declaration.
 
     **Violation**
@@ -32,7 +32,7 @@ class rule_001(token_indent):
        begin
 
          proc_a : process (rd_en, wr_en, data_in, data_out,
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, lTokens)
+        super().__init__(lTokens)

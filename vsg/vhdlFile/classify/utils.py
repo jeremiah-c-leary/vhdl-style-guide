@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile import utils
 
 
 def classify_selected_name(iToken, lObjects, token):
     iTokenIndex = utils.find_next_token(iToken, lObjects)
-    lTokens = lObjects[iTokenIndex].get_value().split('.')
+    lTokens = lObjects[iTokenIndex].get_value().split(".")
     if lObjects[iTokenIndex + 1].get_value().startswith('"'):
         lTokens[-1] = lObjects.pop(iTokenIndex + 1).get_value()
     lNewTokens = build_selected_name_token_list(lTokens, token)
@@ -40,7 +41,7 @@ def classify_use_clause_selected_name_elements(iThisToken, lNewTokens, lTokens, 
     sToken = lTokens[iThisToken]
     if iThisToken == 0:
         lNewTokens.append(token.library_name(sToken))
-    elif sToken.lower() == 'all':
+    elif sToken.lower() == "all":
         lNewTokens.append(token.all_keyword(sToken))
     elif iThisToken == len(lTokens) - 1:
         lNewTokens.append(token.item_name(sToken))
@@ -66,7 +67,7 @@ def replace_item_in_list_with_a_list_at_index(lFirstList, lSecondList, iIndex):
 
 
 def is_use_clause_selected_name(token):
-    if token.__name__ == 'vsg.token.use_clause':
+    if token.__name__ == "vsg.token.use_clause":
         return True
     return False
 

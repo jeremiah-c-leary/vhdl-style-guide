@@ -1,14 +1,14 @@
-
-from vsg.rules import blank_line_above_line_starting_with_token
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import blank_line_above_line_starting_with_token
 
 lTokens = []
 lTokens.append(token.entity_declaration.end_keyword)
 
 
 class rule_016(blank_line_above_line_starting_with_token):
-    '''
+    """
     This rule checks for blank lines above the **end entity** keywords.
 
     |configuring_blank_lines_link|
@@ -33,8 +33,8 @@ class rule_016(blank_line_above_line_starting_with_token):
            rd_en : in    std_logic
          );
        end entity fifo;
-    '''
+    """
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, lTokens)
-        self.style = 'no_blank_line'
+        super().__init__(lTokens)
+        self.style = "no_blank_line"

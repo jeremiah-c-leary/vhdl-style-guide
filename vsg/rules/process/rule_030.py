@@ -1,14 +1,12 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, token, violation
 from vsg.rule_group import structure
+from vsg.vhdlFile import utils
 
 
 class rule_030(structure.Rule):
-    '''
+    """
     This rule checks for a single signal per line in a sensitivity list that is not the last one.
     The sensitivity list is required by the compiler, but provides no useful information to the reader.
     Therefore, the vertical spacing of the sensitivity list should be minimized.
@@ -35,11 +33,11 @@ class rule_030(structure.Rule):
        proc_a : process (rd_en, wr_en, data_in, data_out,
                          rd_full, wr_full
                         )
-    '''
+    """
 
     def __init__(self):
-        structure.Rule.__init__(self)
-        self.solution = 'Compact sensitivity list to reduce the number of lines it uses.'
+        super().__init__()
+        self.solution = "Compact sensitivity list to reduce the number of lines it uses."
         self.fixable = False
         self.configuration_documentation_link = None
 
@@ -55,21 +53,20 @@ class rule_030(structure.Rule):
             oSignal = None
             for oToken in lTokens:
                 if isinstance(oToken, token.sensitivity_list.comma):
-                    lNewList.append(parser.todo('signal name'))
+                    lNewList.append(parser.todo("signal name"))
                     iSignals += 1
                     oSignal = None
                 elif isinstance(oToken, parser.carriage_return):
                     if oSignal is not None:
-                        lNewList.append(parser.todo('signal name'))
+                        lNewList.append(parser.todo("signal name"))
                         iSignals += 1
                     lNewList.append(oToken)
                 else:
-                    oSignal = parser.todo('signal name')
+                    oSignal = parser.todo("signal name")
 
             if oSignal is not None and not isinstance(oToken, parser.carriage_return):
-                lNewList.append(parser.todo('signal name'))
+                lNewList.append(parser.todo("signal name"))
                 iSignals += 1
-
 
             if iSignals > 1:
                 for iToken, oToken in enumerate(lNewList):

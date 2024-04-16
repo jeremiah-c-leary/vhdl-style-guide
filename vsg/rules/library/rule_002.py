@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
@@ -8,7 +8,7 @@ lTokens.append([token.library_clause.keyword, token.logical_name_list.logical_na
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for excessive spaces after the **library** keyword.
 
     |configuring_whitespace_rules_link|
@@ -24,6 +24,7 @@ class rule_002(Rule):
     .. code-block:: vhdl
 
        library ieee;
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

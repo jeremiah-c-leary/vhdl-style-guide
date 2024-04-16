@@ -1,18 +1,16 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
+from vsg import parser, token
 from vsg.vhdlFile.extract import tokens
 
 
 def get_subprogram_body(lAllObjects, oTokenMap):
-
     dData = {}
 
-    dData['subprogramDeclarationSemicolon'] = oTokenMap.get_token_indexes(token.subprogram_declaration.semicolon)
-    dData['subprogramBodySemicolon'] = oTokenMap.get_token_indexes(token.subprogram_body.semicolon)
-    dData['procedureSpecificationKeyword'] = oTokenMap.get_token_indexes(token.procedure_specification.procedure_keyword)
-    dData['functionSpecificationKeyword'] = oTokenMap.get_token_indexes(token.function_specification.function_keyword)
+    dData["subprogramDeclarationSemicolon"] = oTokenMap.get_token_indexes(token.subprogram_declaration.semicolon)
+    dData["subprogramBodySemicolon"] = oTokenMap.get_token_indexes(token.subprogram_body.semicolon)
+    dData["procedureSpecificationKeyword"] = oTokenMap.get_token_indexes(token.procedure_specification.procedure_keyword)
+    dData["functionSpecificationKeyword"] = oTokenMap.get_token_indexes(token.function_specification.function_keyword)
 
     lPairs = extract_pairs(dData)
 
@@ -29,14 +27,14 @@ def extract_pairs(dData):
     lStartIndexes = merge_keywords(dData)
     lEndIndexes = merge_semicolons(dData)
     return extract_inner_pairs(lStartIndexes, lEndIndexes)
-    
+
 
 def merge_keywords(dData):
-    return merge_keys(dData, 'procedureSpecificationKeyword', 'functionSpecificationKeyword')
+    return merge_keys(dData, "procedureSpecificationKeyword", "functionSpecificationKeyword")
 
 
 def merge_semicolons(dData):
-    return merge_keys(dData, 'subprogramDeclarationSemicolon', 'subprogramBodySemicolon')
+    return merge_keys(dData, "subprogramDeclarationSemicolon", "subprogramBodySemicolon")
 
 
 def merge_keys(dData, sKey1, sKey2):
@@ -80,13 +78,12 @@ def extract_inner_pair(lStartIndexes, lEndIndexes):
 def remove_subprogram_declarations(dData, lPairs):
     lReturn = []
     for pair in lPairs:
-        if not pair[1] in dData['subprogramDeclarationSemicolon']:
+        if not pair[1] in dData["subprogramDeclarationSemicolon"]:
             lReturn.append(pair)
     return lReturn
 
 
 def sort_pairs(lPairs):
-
     lStartIndexes = []
     for pair in lPairs:
         lStartIndexes.append(pair[0])
@@ -107,5 +104,5 @@ def create_tokens_of_interest(lPairs, lAllTokens, oTokenMap):
         iStart = lPair[0]
         iEnd = lPair[1]
         iLine = oTokenMap.get_line_number_of_index(iStart)
-        lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart:iEnd + 1]))
+        lReturn.append(tokens.New(iStart, iLine, lAllTokens[iStart : iEnd + 1]))
     return lReturn

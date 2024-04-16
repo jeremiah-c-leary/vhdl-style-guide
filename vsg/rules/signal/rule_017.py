@@ -1,14 +1,14 @@
-
-from vsg.rules import multiline_constraint_structure as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import multiline_constraint_structure as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.signal_declaration.signal_keyword, token.signal_declaration.semicolon])
 
 
 class rule_017(Rule):
-    '''
+    """
     This rule checks the structure of signal constraints.
 
     |configuring_multiline_constraint_rules_link|
@@ -29,7 +29,7 @@ class rule_017(Rule):
            element1(7 downto 0),
            element2(3 downto 0)
          );
-    '''
+    """
 
     def __init__(self):
         Rule.__init__(self)

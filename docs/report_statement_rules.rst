@@ -195,4 +195,3 @@ This rule checks the **severity** keyword has proper case.
 
     report "FIFO width is limited to 16 bits."
       severity FAILURE;
-

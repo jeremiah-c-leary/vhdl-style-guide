@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules.whitespace_between_tokens import Rule
-
 from vsg.token import architecture_body as token
 
 
 class rule_012(Rule):
-    '''
+    """
     This rule checks for a single space between **end** and **architecture** keywords.
 
     |configuring_whitespace_rules_link|
@@ -21,7 +21,8 @@ class rule_012(Rule):
     .. code-block:: vhdl
 
        end architecture architecture_name;
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.left_token = token.end_keyword

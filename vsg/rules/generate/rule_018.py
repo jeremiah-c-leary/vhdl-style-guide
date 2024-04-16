@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.generate_statement_body.end_keyword)
 
 
 class rule_018(token_indent):
-    '''
+    """
     This rule checks the indent of the **end** keyword in the generate statement body.
 
     **Violation**
@@ -28,7 +28,7 @@ class rule_018(token_indent):
        begin
        end;
        end generate;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, lTokens)
+        super().__init__(lTokens)

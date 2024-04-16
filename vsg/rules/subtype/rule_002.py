@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
+from vsg import parser, token
 from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
@@ -13,7 +12,7 @@ lNames.append(token.type_mark.name)
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for consistent capitalization of subtype names.
 
     **Violation**
@@ -42,8 +41,8 @@ class rule_002(Rule):
 
        constant read_sz  : read_size := 8;
        constant write_sz : write_size := 1;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lNames)
+        super().__init__(lTokens, lNames)
         self.bIncludeDeclarativePartNames = True

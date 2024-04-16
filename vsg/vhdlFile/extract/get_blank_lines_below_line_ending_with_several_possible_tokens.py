@@ -1,12 +1,10 @@
+# -*- coding: utf-8 -*-
 
 from vsg import parser
-
-from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_blank_lines_below_line_ending_with_several_possible_tokens(lTokens, lAllTokens, oTokenMap):
-
     lReturn = []
 
     lIndexes = utils.get_indexes_of_tokens_between(lTokens[0], lTokens[1:], oTokenMap)
@@ -29,5 +27,3 @@ def get_blank_lines_below_line_ending_with_several_possible_tokens(lTokens, lAll
                 break
 
     return lReturn
-
-

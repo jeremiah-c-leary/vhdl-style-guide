@@ -1,19 +1,20 @@
+# -*- coding: utf-8 -*-
 
-from vsg.rule_group import case
 from vsg import violation
+from vsg.rule_group import case
 
 lKeywords = []
-lKeywords.append('std_logic')
-lKeywords.append('std_logic_vector')
-lKeywords.append('integer')
-lKeywords.append('signed')
-lKeywords.append('unsigned')
-lKeywords.append('natural')
-lKeywords.append('std_ulogic')
+lKeywords.append("std_logic")
+lKeywords.append("std_logic_vector")
+lKeywords.append("integer")
+lKeywords.append("signed")
+lKeywords.append("unsigned")
+lKeywords.append("natural")
+lKeywords.append("std_ulogic")
 
 
 class token_case_n_token_after_tokens_between_tokens(case.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -27,14 +28,14 @@ class token_case_n_token_after_tokens_between_tokens(case.Rule):
 
     trigger : parser object type
        object type to apply the case check against
-    '''
+    """
 
     def __init__(self, iToken, lTokens, oStart, oEnd, bLimitToVhdlKeywords=False):
-        case.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 6
-        self.case = 'lower'
-        self.configuration.append('case')
+        self.case = "lower"
+        self.configuration.append("case")
         self.iToken = iToken
         self.lTokens = lTokens
         self.oStart = oStart
@@ -52,19 +53,19 @@ class token_case_n_token_after_tokens_between_tokens(case.Rule):
             if self.bLimitToVhdlKeywords:
                 if sObjectValue.lower() not in lKeywords:
                     continue
-            if self.case == 'lower':
+            if self.case == "lower":
                 if not sObjectValue.islower():
                     sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.lower() + '"'
                     self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
-            if self.case == 'upper':
+            if self.case == "upper":
                 if not sObjectValue.isupper():
                     sSolution = 'Change "' + sObjectValue + '" to "' + sObjectValue.upper() + '"'
                     self.add_violation(violation.New(oToi.get_line_number(), oToi, sSolution))
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
-        if self.case == 'lower':
-            lTokens[0].set_value(lTokens[0].get_value().lower())
-        if self.case == 'upper':
+        if self.case == "lower":
+            lTokens[0].set_value(lTokens[0].get_lower_value())
+        if self.case == "upper":
             lTokens[0].set_value(lTokens[0].get_value().upper())
         oViolation.set_tokens(lTokens)

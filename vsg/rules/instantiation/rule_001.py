@@ -1,7 +1,7 @@
-
-from vsg.rules import token_indent_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent_between_tokens
 
 lTokens = []
 lTokens.append(token.component_instantiation_statement.instantiation_label)
@@ -20,7 +20,7 @@ oEnd = token.component_instantiation_statement.semicolon
 
 
 class rule_001(token_indent_between_tokens):
-    '''
+    """
     This rule checks for the proper indentation of instantiations.
 
     **Violation**
@@ -44,7 +44,7 @@ class rule_001(token_indent_between_tokens):
            RD_EN    => rd_en,
            OVERFLOW => overflow
          );
-    '''
+    """
 
     def __init__(self):
-        token_indent_between_tokens.__init__(self, lTokens, oStart, oEnd, bInclusive=True)
+        super().__init__(lTokens, oStart, oEnd, bInclusive=True)

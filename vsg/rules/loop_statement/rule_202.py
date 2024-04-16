@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import previous_line
-
 from vsg.token import loop_statement as token
 
 lTokens = []
@@ -8,7 +8,7 @@ lTokens.append(token.end_keyword)
 
 
 class rule_202(previous_line):
-    '''
+    """
     This rule checks for blank lines or comments above the **end** keyword.
 
     |configuring_previous_line_rules_link|
@@ -29,6 +29,7 @@ class rule_202(previous_line):
          a <= b;
 
        end loop;
-    '''
+    """
+
     def __init__(self):
-        previous_line.__init__(self, lTokens)
+        super().__init__(lTokens)

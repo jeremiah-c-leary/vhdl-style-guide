@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent as Rule
 
 lTokens = []
 lTokens.append(token.return_statement.return_keyword)
 
 
 class rule_300(Rule):
-    '''
+    """
     This rule checks the indentation of the **return** keyword.
 
     **Violation**
@@ -24,7 +24,7 @@ class rule_300(Rule):
 
            return my_value;
          end function;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

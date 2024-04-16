@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg import violation
-
 from vsg.rule_group import structure
 
 
 class existence_of_tokens_which_should_not_occur(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -22,10 +22,10 @@ class existence_of_tokens_which_should_not_occur(structure.Rule):
 
     lPrefixes : string list
        acceptable prefixes
-    '''
+    """
 
     def __init__(self, lTokens):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
         self.fixable = False
         self.configuration_documentation_link = None

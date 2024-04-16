@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace
-
 from vsg.token import procedure_call_statement as token
 
 
 class rule_001(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
-    '''
+    """
     This rule checks for labels on procedure call statements.
     Labels on procedure calls are optional and do not provide additional information.
 
@@ -20,8 +20,8 @@ class rule_001(remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace):
     .. code-block:: vhdl
 
        WR_EN(parameter);
-    '''
+    """
 
     def __init__(self):
-        remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace.__init__(self, token.label, token.label_colon)
-        self.solution = 'Remove Label'
+        super().__init__(token.label, token.label_colon)
+        self.solution = "Remove Label"

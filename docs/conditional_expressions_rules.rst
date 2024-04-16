@@ -128,4 +128,3 @@ This rule checks the **else** keyword has proper case.
 .. code-block:: vhdl
 
    wr_en <= '0' when (rd_en = '0') else '1';
-

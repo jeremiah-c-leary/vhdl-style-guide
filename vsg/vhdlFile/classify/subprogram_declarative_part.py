@@ -1,12 +1,13 @@
+# -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import subprogram_declarative_item
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     subprogram_declarative_part ::=
         { subprogram_declarative_item }
-    '''
+    """
 
     iLast = 0
     iCurrent = iToken

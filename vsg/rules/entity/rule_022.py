@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import move_token_next_to_another_token as Rule
-
 from vsg.token import entity_declaration as token
 
 
 class rule_022(Rule):
-    '''
+    """
     This rule checks the identifier is on the same line as the **entity** keyword.
 
     **Violation**
@@ -24,9 +24,9 @@ class rule_022(Rule):
        entity fifo is
 
        entity fifo is
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, token.entity_keyword, token.identifier)
+        super().__init__(token.entity_keyword, token.identifier)
         self.subphase = 1
-        self.solution = 'Move identifier next to *entity* keyword'
+        self.solution = "Move identifier next to *entity* keyword"

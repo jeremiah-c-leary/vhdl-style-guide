@@ -59,10 +59,10 @@ There are several options to these rules, which can be selected by using the :co
 +======================+================+===================+===================================================+
 | |style|              | |style_values| | |default_value|   | * |style__no_blank_line|                          |
 |                      |                |                   | * |style__require_blank_line|                     |
-|                      |                |                   | * |style__no_code|                                | 
-|                      |                |                   | * |style__allow_comment|                          | 
-|                      |                |                   | * |style__require_comment|                        | 
-|                      |                |                   | * |style__no_blank_line_unless_different_library| | 
+|                      |                |                   | * |style__no_code|                                |
+|                      |                |                   | * |style__allow_comment|                          |
+|                      |                |                   | * |style__require_comment|                        |
+|                      |                |                   | * |style__no_blank_line_unless_different_library| |
 +----------------------+----------------+-------------------+---------------------------------------------------+
 
 .. NOTE:: Unless stated in the rule description, the default style is :code:`require_blank_line`.

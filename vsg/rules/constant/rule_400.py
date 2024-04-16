@@ -1,7 +1,9 @@
-
-from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import (
+    align_tokens_in_region_between_tokens_unless_between_tokens as Rule,
+)
 
 lAlign = []
 lAlign.append(token.element_association.assignment)
@@ -13,7 +15,7 @@ oEndToken = token.constant_declaration.semicolon
 
 
 class rule_400(Rule):
-    '''
+    """
     This rule checks the alignment of assignment keywords in constant declarations.
 
     |configuring_keyword_alignment_rules_link|
@@ -37,14 +39,14 @@ class rule_400(Rule):
          c_address_data    => true,
          others            => false
        );
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, lAlign, oStartToken, oEndToken, lUnless)
-        self.solution = 'Align => .'
-        self.configuration.remove('if_control_statements_ends_group')
-        self.configuration.remove('case_control_statements_ends_group')
-        self.configuration.remove('loop_control_statements_ends_group')
-        self.configuration.remove('separate_generic_port_alignment')
-        self.configuration.append('aggregate_parens_ends_group')
-        self.configuration.append('ignore_single_line_aggregates')
+        super().__init__(lAlign, oStartToken, oEndToken, lUnless)
+        self.solution = "Align => ."
+        self.configuration.remove("if_control_statements_ends_group")
+        self.configuration.remove("case_control_statements_ends_group")
+        self.configuration.remove("loop_control_statements_ends_group")
+        self.configuration.remove("separate_generic_port_alignment")
+        self.configuration.append("aggregate_parens_ends_group")
+        self.configuration.append("ignore_single_line_aggregates")

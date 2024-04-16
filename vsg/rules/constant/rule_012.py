@@ -1,15 +1,15 @@
+# -*- coding: utf-8 -*-
 
-
-from vsg.rules import multiline_array_alignment as Rule
 
 from vsg import token
+from vsg.rules import multiline_array_alignment as Rule
 
 lTokenPairs = []
 lTokenPairs.append([token.constant_declaration.assignment_operator, token.constant_declaration.semicolon])
 
 
 class rule_012(Rule):
-    '''
+    """
     This rule checks the alignment of multiline constants that contain arrays.
 
     |configuring_multiline_indent_rules_link|
@@ -37,8 +37,8 @@ class rule_012(Rule):
          65535,
          32768
        );
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)
         self.assignment_operator = token.constant_declaration.assignment_operator

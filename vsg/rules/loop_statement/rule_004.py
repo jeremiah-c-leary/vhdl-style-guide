@@ -1,7 +1,9 @@
-
-from vsg.rules import move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import (
+    move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens as Rule,
+)
 
 lAnchorTokens = []
 lAnchorTokens.append(token.loop_statement.end_loop_keyword)
@@ -14,7 +16,7 @@ oEndToken = token.loop_statement.semicolon
 
 
 class rule_004(Rule):
-    '''
+    """
     This rule checks the semicolon is on the same line as the **end loop** keyword.
 
     **Violation**
@@ -34,8 +36,8 @@ class rule_004(Rule):
        end loop;
 
        end loop LOOP_LABEL;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, oToken, lAnchorTokens, oStartToken, oEndToken)
+        super().__init__(oToken, lAnchorTokens, oStartToken, oEndToken)
         self.subphase = 3

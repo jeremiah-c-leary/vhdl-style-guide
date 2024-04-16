@@ -1,9 +1,8 @@
+# -*- coding: utf-8 -*-
 
 from vsg import parser
-
-from vsg.token import constant_declaration
-
 from vsg.rules import token_indent_unless_between_tokens
+from vsg.token import constant_declaration
 
 lTokens = []
 lTokens.append(parser.comment)
@@ -13,7 +12,7 @@ lUnless.append([constant_declaration.constant_keyword, constant_declaration.semi
 
 
 class rule_010(token_indent_unless_between_tokens):
-    '''
+    """
     This rule checks the indent lines starting with comments.
 
     **Violation**
@@ -21,7 +20,7 @@ class rule_010(token_indent_unless_between_tokens):
     .. code-block:: vhdl
 
            -- Libraries
-       libary ieee;
+       library ieee;
 
         -- Define architecture
        architecture rtl of fifo is
@@ -37,7 +36,7 @@ class rule_010(token_indent_unless_between_tokens):
     .. code-block:: vhdl
 
        -- Libraries
-       libary ieee;
+       library ieee;
 
        -- Define architecture
        architecture rtl of fifo is
@@ -47,9 +46,9 @@ class rule_010(token_indent_unless_between_tokens):
          signal rd_en : std_Logic;
 
        begin
-    '''
+    """
 
     def __init__(self):
-        token_indent_unless_between_tokens.__init__(self, lTokens, lUnless)
+        super().__init__(lTokens, lUnless)
         self.phase = 4
         self.subphase = 3

@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
@@ -9,7 +9,7 @@ lTokens.append([token.package_declaration.end_package_keyword, token.package_dec
 
 
 class rule_009(Rule):
-    '''
+    """
     This rule checks for a single space between the **end** and **package** keywords and package name.
 
     |configuring_whitespace_rules_link|
@@ -25,6 +25,7 @@ class rule_009(Rule):
     .. code-block:: vhdl
 
        end package FIFO_PKG;
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, lTokens)
+        super().__init__(lTokens)

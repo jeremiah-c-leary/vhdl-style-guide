@@ -1,18 +1,17 @@
+# -*- coding: utf-8 -*-
 
 import glob
 import os
 import re
 import sys
+
 import yaml
 
-from . import exceptions
-from . import junit
-from . import severity
-from . import utils
+from . import exceptions, junit, severity, utils
 
 
 def read_predefined_style(sStyleName):
-    '''
+    """
     Reads a predefined style file.
 
     Parameters :
@@ -20,27 +19,27 @@ def read_predefined_style(sStyleName):
       sStyleName : (string)
 
     Returns : (dictionary)
-    '''
+    """
     dReturn = {}
     if sStyleName is not None:
-        sFileName = os.path.join(os.path.dirname(__file__), 'styles', sStyleName + '.yaml')
+        sFileName = os.path.join(os.path.dirname(__file__), "styles", sStyleName + ".yaml")
         dReturn = open_configuration_file(sFileName)
     return dReturn
 
 
 def open_configuration_file(sFileName, sJUnitFileName=None):
-    '''Attempts to open a configuration file and read it's contents.'''
+    """Attempts to open a configuration file and read it's contents."""
     try:
         with open(sFileName) as yaml_file:
             dTemp = yaml.full_load(yaml_file)
             check_for_deprecated_rule_options(dTemp, sFileName)
             return dTemp
     except OSError as e:
-        print(f'ERROR: encountered {e.__class__.__name__}, {e.args[1]} while opening configuration file: ' + sFileName)
+        print(f"ERROR: encountered {e.__class__.__name__}, {e.args[1]} while opening configuration file: " + sFileName)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         sys.exit(1)
     except (yaml.parser.ParserError, yaml.scanner.ScannerError) as e:
-        print('ERROR: Invalid configuration file: ' + sFileName)
+        print("ERROR: Invalid configuration file: " + sFileName)
         print(e)
         write_invalid_configuration_junit_file(sFileName, sJUnitFileName)
         sys.exit(1)
@@ -50,16 +49,16 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
 
 
 def validate_file_exists(sFilename, sConfigName):
-    '''Validates a file exist while using the glob function to expand filenames.'''
+    """Validates a file exist while using the glob function to expand filenames."""
     if isinstance(sFilename, dict):
         sExpandedFilename = list(sFilename.keys())[0]
     else:
         sExpandedFilename = sFilename
-#    print(sExpandedFilename)
+    #    print(sExpandedFilename)
     lFileNames = glob.glob(utils.expand_filename(sExpandedFilename), recursive=True)
-#    print(lFileNames)
+    #    print(lFileNames)
     if len(lFileNames) == 0:
-        print('ERROR: Could not find file ' + sFilename + ' in configuration file ' + sConfigName)
+        print("ERROR: Could not find file " + sFilename + " in configuration file " + sConfigName)
         sys.exit(1)
 
 
@@ -78,10 +77,10 @@ def read_configuration_files(dStyle, commandLineArguments):
 def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
     dReturn = dConfiguration
     for sKey in tempConfiguration.keys():
-        if sKey == 'file_list':
+        if sKey == "file_list":
             dReturn = process_file_list_key(dReturn, tempConfiguration, sKey, sConfigFilename)
 
-        elif sKey == 'rule':
+        elif sKey == "rule":
             for sRule in tempConfiguration[sKey]:
                 try:
                     dReturn[sKey][sRule] = tempConfiguration[sKey][sRule]
@@ -94,8 +93,8 @@ def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
 
 
 dDeprecatedOption = {}
-dDeprecatedOption['indentSize'] = 'option indentSize has been deprecated. Change to indent_size.'
-dDeprecatedOption['indentStyle'] = 'option indentStyle has been deprecated. Change to indent_style.'
+dDeprecatedOption["indentSize"] = "option indentSize has been deprecated. Change to indent_size."
+dDeprecatedOption["indentStyle"] = "option indentStyle has been deprecated. Change to indent_style."
 
 
 def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):
@@ -104,9 +103,9 @@ def check_for_deprecated_rule_options(dConfiguration, sConfigFilename):
     search_dictionary(dConfiguration, lDeprecatedKeys, sConfigFilename, lMessages)
 
     if len(lMessages) > 0:
-        sErrorMessage = ''
+        sErrorMessage = ""
         for sMessage in lMessages:
-            sErrorMessage += sMessage + '\n'
+            sErrorMessage += sMessage + "\n"
         raise exceptions.ConfigurationError(sErrorMessage)
 
 
@@ -119,7 +118,7 @@ def search_dictionary(dDict, lDeprecatedKeys, sConfigFilename, lMessages):
         elif isinstance(dDict[sKey], list):
             search_list(dDict[sKey], lDeprecatedKeys, sConfigFilename, lMessages)
         elif sKey in lDeprecatedKeys:
-            lMessages.append('ERROR: configuration file ' + sConfigFilename + ': ' + dDeprecatedOption[sKey])
+            lMessages.append("ERROR: configuration file " + sConfigFilename + ": " + dDeprecatedOption[sKey])
             lDeprecatedKeys.remove(sKey)
 
 
@@ -132,36 +131,36 @@ def search_list(lDict, lDeprecatedKeys, sConfigFilename, lMessages):
         elif isinstance(sKey, list):
             search_list(sKey, lDeprectedKeys, sConfigFilename, lMessages)
         elif sKey in lDeprecatedKeys:
-            lMessages.append('ERROR: configuration file ' + sConfigFilename + ': ' + dDeprecatedOption[sKey])
+            lMessages.append("ERROR: configuration file " + sConfigFilename + ": " + dDeprecatedOption[sKey])
             lDeprecatedKeys.remove(sKey)
-     
-               
+
+
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     dReturn = dConfig
-    if 'file_list' not in dConfig:
-        dReturn['file_list'] = []
-    for iIndex, sFilename in enumerate(tempConfiguration['file_list']):
+    if "file_list" not in dConfig:
+        dReturn["file_list"] = []
+    for iIndex, sFilename in enumerate(tempConfiguration["file_list"]):
         validate_file_exists(sFilename, sConfigFilename)
         try:
             for sGlobbedFilename in glob.glob(utils.expand_filename(sFilename), recursive=True):
-                dReturn['file_list'].append(sGlobbedFilename)
+                dReturn["file_list"].append(sGlobbedFilename)
         except TypeError:
             sKey = list(sFilename.keys())[0]
             for sGlobbedFilename in glob.glob(utils.expand_filename(sKey), recursive=True):
                 dTemp = {}
                 dTemp[sGlobbedFilename] = {}
-                dTemp[sGlobbedFilename].update(tempConfiguration['file_list'][iIndex][sKey])
-                dReturn['file_list'].append(dTemp)
+                dTemp[sGlobbedFilename].update(tempConfiguration["file_list"][iIndex][sKey])
+                dReturn["file_list"].append(dTemp)
     return dReturn
 
 
 def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
     if sJUnitFileName:
         oJunitFile = junit.xmlfile(sJUnitFileName)
-        oJunitTestsuite = junit.testsuite('vhdl-style-guide', str(0))
+        oJunitTestsuite = junit.testsuite("vhdl-style-guide", str(0))
         oJunitTestcase = junit.testcase(sFileName, str(0))
-        oFailure = junit.failure('Failure')
-        oFailure.add_text('Invalid JSON format.  Review configuration for errors.')
+        oFailure = junit.failure("Failure")
+        oFailure.add_text("Invalid JSON format.  Review configuration for errors.")
         oJunitTestcase.add_failure(oFailure)
         oJunitTestsuite.add_testcase(oJunitTestcase)
         oJunitFile.add_testsuite(oJunitTestsuite)
@@ -169,7 +168,7 @@ def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
 
 
 def add_debug_to_configuration(oCLA, dConfiguration):
-    '''
+    """
     Adds debug values to the configuration dictionary for later use.
 
     Parameters:
@@ -179,17 +178,17 @@ def add_debug_to_configuration(oCLA, dConfiguration):
       dConfiguration: (dictionary)
 
     Returns:  Nothing
-    '''
+    """
     try:
-        dConfiguration['debug'] = oCLA.debug
+        dConfiguration["debug"] = oCLA.debug
     except TypeError:
         dConfiguration = {}
-        dConfiguration['debug'] = oCLA.debug
+        dConfiguration["debug"] = oCLA.debug
     return dConfiguration
 
 
 def read_indent_configuration(dConfiguration):
-    '''
+    """
     Reads the default indent dictionary and merges any changes from a user configuration.
 
     Parameters:
@@ -197,37 +196,36 @@ def read_indent_configuration(dConfiguration):
        dConfiguration: (dictionary)
 
     Returns:  (dictionary)
-    '''
+    """
 
-    sFileName = os.path.join(os.path.dirname(__file__), 'vhdlFile', 'indent', 'indent_config.yaml')
+    sFileName = os.path.join(os.path.dirname(__file__), "vhdlFile", "indent", "indent_config.yaml")
 
     dReturn = open_configuration_file(sFileName)
 
     ### This merges an indent configuration into the base indent dictionary
-    if 'indent' in list(dConfiguration.keys()):
-        dGroups = dConfiguration['indent']['tokens']
+    if "indent" in list(dConfiguration.keys()):
+        dGroups = dConfiguration["indent"]["tokens"]
         for sGroup in list(dGroups.keys()):
             for sToken in list(dGroups[sGroup].keys()):
                 for sParameter in list(dGroups[sGroup][sToken].keys()):
-                    dReturn['indent']['tokens'][sGroup][sToken][sParameter] = dGroups[sGroup][sToken][sParameter]
+                    dReturn["indent"]["tokens"][sGroup][sToken][sParameter] = dGroups[sGroup][sToken][sParameter]
 
-    dConfiguration['indent'] = dReturn['indent']
+    dConfiguration["indent"] = dReturn["indent"]
 
     return dReturn
 
 
 def update_command_line_arguments(commandLineArguments, configuration):
-
-    if 'skip_phase' in configuration:
-        commandLineArguments.skip_phase = configuration['skip_phase']
+    if "skip_phase" in configuration:
+        commandLineArguments.skip_phase = configuration["skip_phase"]
     else:
         commandLineArguments.skip_phase = []
 
     if not configuration:
         return
 
-    if 'file_list' in configuration:
-        for sFilename in configuration['file_list']:
+    if "file_list" in configuration:
+        for sFilename in configuration["file_list"]:
             if isinstance(sFilename, dict):
                 sFilename = list(sFilename.keys())[0]
             try:
@@ -238,60 +236,60 @@ def update_command_line_arguments(commandLineArguments, configuration):
             except:
                 commandLineArguments.filename = glob.glob(utils.expand_filename(sFilename), recursive=True)
 
-    if 'local_rules' in configuration:
-        commandLineArguments.local_rules = utils.expand_filename(configuration['local_rules'])
+    if "local_rules" in configuration:
+        commandLineArguments.local_rules = utils.expand_filename(configuration["local_rules"])
 
 
 dPragmas = {}
-dPragmas['open'] = []
-dPragmas['close'] = []
-dPragmas['single'] = []
+dPragmas["open"] = []
+dPragmas["close"] = []
+dPragmas["single"] = []
 
-dPragmas['open'].append('^\s*--\s+synthesis\s+translate_off\s*$')
-dPragmas['close'].append('^\s*--\s+synthesis\s+translate_on\s*$')
+dPragmas["open"].append("^\\s*--\\s+synthesis\\s+translate_off\\s*$")
+dPragmas["close"].append("^\\s*--\\s+synthesis\\s+translate_on\\s*$")
 
-dPragmas['single'].append('^\s*--\s+synthesis\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+synthesis\s+\w+\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+pragma\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+pragma\s+\w+\s+\w+\s*$')
-dPragmas['open'].append('^\s*--vhdl_comp_off\s*$')
-dPragmas['close'].append('^\s*--vhdl_comp_on\s*$')
+dPragmas["single"].append("^\\s*--\\s+synthesis\\s+\\w+\\s*$")
+dPragmas["single"].append("^\\s*--\\s+synthesis\\s+\\w+\\s+\\w+\\s*$")
+dPragmas["single"].append("^\\s*--\\s+pragma\\s+\\w+\\s*$")
+dPragmas["single"].append("^\\s*--\\s+pragma\\s+\\w+\\s+\\w+\\s*$")
+dPragmas["open"].append("^\\s*--vhdl_comp_off\\s*$")
+dPragmas["close"].append("^\\s*--vhdl_comp_on\\s*$")
 
-dPragmas['single'].append('^\s*--\s+altera\s+\w+\s*$' )
+dPragmas["single"].append("^\\s*--\\s+altera\\s+\\w+\\s*$")
 
-dPragmas['open'].append('^\s*--\s+RTL_SYNTHESIS\s+OFF\s*$' )
-dPragmas['close'].append('^\s*--\s+RTL_SYNTHESIS\s+ON\s*$' )
+dPragmas["open"].append("^\\s*--\\s+RTL_SYNTHESIS\\s+OFF\\s*$")
+dPragmas["close"].append("^\\s*--\\s+RTL_SYNTHESIS\\s+ON\\s*$")
 
-dPragmas['single'].append('^\s*--\s+synopsys\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+synopsys\s+\w+\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+xilinx\s+\w+\s*$')
-dPragmas['single'].append('^\s*--\s+xilinx\s+\w+\s+\w+\s*$')
+dPragmas["single"].append("^\\s*--\\s+synopsys\\s+\\w+\\s*$")
+dPragmas["single"].append("^\\s*--\\s+synopsys\\s+\\w+\\s+\\w+\\s*$")
+dPragmas["single"].append("^\\s*--\\s+xilinx\\s+\\w+\\s*$")
+dPragmas["single"].append("^\\s*--\\s+xilinx\\s+\\w+\\s+\\w+\\s*$")
 
 
 def add_pragma_regular_expressions(dStyle):
-    if not 'pragma' in dStyle.keys():
-        dStyle['pragma'] = {} 
-        dStyle['pragma']['patterns'] = dPragmas
-    dStyle['pragma']['regexp'] = {}
+    if not "pragma" in dStyle.keys():
+        dStyle["pragma"] = {}
+        dStyle["pragma"]["patterns"] = dPragmas
+    dStyle["pragma"]["regexp"] = {}
 
     try:
-        types = list(dStyle['pragma']['patterns'].keys())
-        if 'close' not in types:
-            dStyle['pragma']['patterns']['close'] = []
-        if 'open' not in types:
-            dStyle['pragma']['patterns']['open'] = []
-        if 'single' not in types:
-            dStyle['pragma']['patterns']['single'] = []
+        types = list(dStyle["pragma"]["patterns"].keys())
+        if "close" not in types:
+            dStyle["pragma"]["patterns"]["close"] = []
+        if "open" not in types:
+            dStyle["pragma"]["patterns"]["open"] = []
+        if "single" not in types:
+            dStyle["pragma"]["patterns"]["single"] = []
 
-        for types in list(dStyle['pragma']['patterns'].keys()):
-            for pragma in dStyle['pragma']['patterns'][types]:
+        for types in list(dStyle["pragma"]["patterns"].keys()):
+            for pragma in dStyle["pragma"]["patterns"][types]:
                 try:
-                    dStyle['pragma']['regexp'][types].append(re.compile(pragma))
+                    dStyle["pragma"]["regexp"][types].append(re.compile(pragma))
                 except KeyError:
-                    dStyle['pragma']['regexp'][types] = []
-                    dStyle['pragma']['regexp'][types].append(re.compile(pragma))
+                    dStyle["pragma"]["regexp"][types] = []
+                    dStyle["pragma"]["regexp"][types].append(re.compile(pragma))
     except AttributeError as e:
-        print('Error in pragma definition:')
+        print("Error in pragma definition:")
         print('  Refer to "configuring pragmas" section in documentation for details on how to configure pragmas.')
         sys.exit(1)
 
@@ -324,8 +322,7 @@ def New(commandLineArguments):
     return oReturn
 
 
-class config():
-
+class config:
     def __init__(self):
         dIndent = None
         dConfig = None

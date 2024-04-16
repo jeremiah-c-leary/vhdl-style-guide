@@ -1,12 +1,11 @@
+# -*- coding: utf-8 -*-
 
 
 from vsg.vhdlFile.extract import utils
-
 from vsg.vhdlFile.extract.get_line_succeeding_line import get_line_succeeding_line
 
 
 def get_line_below_line_ending_with_token(lTokens, lAllTokens, oTokenMap):
-
     lReturn = []
 
     lTokenIndexes = utils.get_indexes_of_token_list(lTokens, oTokenMap)

@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
+from vsg import parser, token
 from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
@@ -12,7 +11,7 @@ lNames.append(parser.todo)
 
 
 class rule_501(Rule):
-    '''
+    """
     This rule checks for consistent capitalization of enumerated types.
 
     **Violation**
@@ -34,9 +33,9 @@ class rule_501(Rule):
        state <= IDLE;
        state <= WRITE;
        state <= READ;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lNames)
+        super().__init__(lTokens, lNames)
         self.subphase = 2
         self.bIncludeDeclarativePartNames = True

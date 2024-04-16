@@ -157,7 +157,7 @@ signal_008
 |phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on signal identifiers.
-Default signal prefix is *s\_*.
+Default signal prefix is *s_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -183,7 +183,7 @@ The function of this rule has been moved to rule ieee_500.
 signal_011
 ##########
 
-The function of this rule has been superceeded by the following rules:
+The function of this rule has been superseded by the following rules:
 
 * ieee_500
 * subtype_002
@@ -462,7 +462,7 @@ signal_600
 |phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on signal identifiers.
-Default signal suffix is *\_s*.
+Default signal suffix is *_s*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -479,4 +479,3 @@ Default signal suffix is *\_s*.
 
    signal wr_en_s : std_logic;
    signal rd_en_s : std_logic;
-

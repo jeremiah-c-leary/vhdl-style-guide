@@ -221,7 +221,7 @@ generic_map_600
 |phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on generic identifiers in generic maps
-The default generic suffix is *\_g*.
+The default generic suffix is *_g*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -251,7 +251,7 @@ generic_map_601
 |phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on generic identifiers in generic maps
-The default generic suffix is *\g_*.
+The default generic suffix is *g_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -274,4 +274,3 @@ The default generic suffix is *\g_*.
      G_WIDTH => 32,
      G_DEPTH => 512
    )
-

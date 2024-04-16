@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg import violation
-
 from vsg.rule_group import structure
 
 
 class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(structure.Rule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -22,10 +22,10 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(structure.R
 
     right_token : token object
        The second token that defines the region
-    '''
+    """
 
     def __init__(self, left_token, right_token):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.left_token = left_token
         self.right_token = right_token
         self.configuration_documentation_link = None
@@ -35,7 +35,7 @@ class remove_tokens_bounded_by_tokens_and_remove_trailing_whitespace(structure.R
 
     def _analyze(self, lToi):
         for oToi in lToi:
-           self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+            self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def _fix_violation(self, oViolation):
         oViolation.set_tokens([])

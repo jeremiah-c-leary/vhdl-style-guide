@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import violation
-
+from vsg import parser, violation
 from vsg.rule_group import blank_line
 from vsg.vhdlFile import utils
 
 
 class remove_blank_lines_above_line_starting_with_token(blank_line.Rule):
-    '''
+    """
     Checks for blank lines above a line.
 
     Parameters
@@ -22,10 +21,10 @@ class remove_blank_lines_above_line_starting_with_token(blank_line.Rule):
 
     lTokens : token list
        reference tokens to remove blank lines above
-    '''
+    """
 
     def __init__(self, lTokens):
-        blank_line.Rule.__init__(self)
+        super().__init__()
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):
@@ -37,19 +36,22 @@ class remove_blank_lines_above_line_starting_with_token(blank_line.Rule):
             iLine = oToi.get_line_number()
 
             for iToken, oToken in enumerate(lTokens):
-               if isinstance(oToken, parser.carriage_return):
-                   iLine += 1
-                   for oSearchToken in self.lTokens:
-                       if utils.are_next_consecutive_token_types([parser.whitespace, oSearchToken], iToken + 1, lTokens) or \
-                          utils.are_next_consecutive_token_types([oSearchToken], iToken + 1, lTokens):
-                           oViolation = violation.New(iLine, oToi, self.solution)
-                           dAction = {}
-                           dAction['remove_to_index'] = iToken + 1
-                           oViolation.set_action(dAction)
-                           self.add_violation(oViolation)
+                if isinstance(oToken, parser.carriage_return):
+                    iLine += 1
+                    for oSearchToken in self.lTokens:
+                        if utils.are_next_consecutive_token_types(
+                            [parser.whitespace, oSearchToken],
+                            iToken + 1,
+                            lTokens,
+                        ) or utils.are_next_consecutive_token_types([oSearchToken], iToken + 1, lTokens):
+                            oViolation = violation.New(iLine, oToi, self.solution)
+                            dAction = {}
+                            dAction["remove_to_index"] = iToken + 1
+                            oViolation.set_action(dAction)
+                            self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        lMyTokens = lTokens[dAction['remove_to_index']:]
+        lMyTokens = lTokens[dAction["remove_to_index"] :]
         oViolation.set_tokens(lMyTokens)

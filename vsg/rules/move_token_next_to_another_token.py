@@ -1,15 +1,14 @@
+# -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules import utils as rules_utils
+from vsg import parser, violation
 from vsg.rule_group import structure
+from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
 
 
 class move_token_next_to_another_token(structure.Rule):
-    '''
+    """
     Moves one token next to another and places a single space between them.
 
     Parameters
@@ -26,10 +25,10 @@ class move_token_next_to_another_token(structure.Rule):
 
     token_to_move : token type
        The token which will be moved next to the anchor token.
-    '''
+    """
 
     def __init__(self, anchor_token, token_to_move):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.subphase = 2
         self.anchor_token = anchor_token
         self.token_to_move = token_to_move
@@ -42,13 +41,15 @@ class move_token_next_to_another_token(structure.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if not utils.are_next_consecutive_token_types([parser.whitespace, self.token_to_move], 1, lTokens) and \
-               not utils.are_next_consecutive_token_types([self.token_to_move], 1, lTokens):
+            if not utils.are_next_consecutive_token_types([parser.whitespace, self.token_to_move], 1, lTokens) and not utils.are_next_consecutive_token_types(
+                [self.token_to_move],
+                1,
+                lTokens,
+            ):
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 oViolation.set_remap()
                 oViolation.fix_blank_lines = True
                 self.add_violation(oViolation)
-
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()

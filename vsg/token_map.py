@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 
 import bisect
 import pprint
 
-from vsg import parser
-from vsg import token
+from vsg import parser, token
 
 
-class New():
-
+class New:
     def __init__(self, dMap):
         self.dMap = dMap
         self.maxTokenNum = None
@@ -31,20 +30,20 @@ class New():
         return lReturn
 
     def get_line_number_of_index(self, iIndex):
-        iLine = bisect.bisect_left(self.dMap['parser']['carriage_return'], iIndex) + 1
+        iLine = bisect.bisect_left(self.dMap["parser"]["carriage_return"], iIndex) + 1
         return iLine
 
     def get_index_of_carriage_return_after_index(self, iIndex):
-        iTemp = bisect.bisect_right(self.dMap['parser']['carriage_return'], iIndex)
-        return self.dMap['parser']['carriage_return'][iTemp]
+        iTemp = bisect.bisect_right(self.dMap["parser"]["carriage_return"], iIndex)
+        return self.dMap["parser"]["carriage_return"][iTemp]
 
     def get_index_of_carriage_return_before_index(self, iIndex):
         if iIndex == 0:
             return None
-        iTemp = bisect.bisect_left(self.dMap['parser']['carriage_return'], iIndex) - 1
-        if iIndex < self.dMap['parser']['carriage_return'][iTemp]:
+        iTemp = bisect.bisect_left(self.dMap["parser"]["carriage_return"], iIndex) - 1
+        if iIndex < self.dMap["parser"]["carriage_return"][iTemp]:
             return iIndex
-        return self.dMap['parser']['carriage_return'][iTemp]
+        return self.dMap["parser"]["carriage_return"][iTemp]
 
     def get_index_of_token_after_index(self, oToken, iIndex):
         sBase, sSub = extract_unique_id(oToken)
@@ -67,15 +66,15 @@ class New():
         lBaseKeys = list(self.dMap.keys())
         for sBaseKey in lBaseKeys:
             lSubKeys = list(self.dMap[sBaseKey].keys())
-            if sBaseKey == 'parser':
-                if 'whitespace' in lSubKeys:
-                    lSubKeys.remove('whitespace')
-                if 'carriage_return' in lSubKeys:
-                    lSubKeys.remove('carriage_return')
-                if 'blank_line' in lSubKeys:
-                    lSubKeys.remove('blank_line')
-                if bExcludeComments and 'comment' in lSubKeys:
-                    lSubKeys.remove('comment')
+            if sBaseKey == "parser":
+                if "whitespace" in lSubKeys:
+                    lSubKeys.remove("whitespace")
+                if "carriage_return" in lSubKeys:
+                    lSubKeys.remove("carriage_return")
+                if "blank_line" in lSubKeys:
+                    lSubKeys.remove("blank_line")
+                if bExcludeComments and "comment" in lSubKeys:
+                    lSubKeys.remove("comment")
             for sSubKey in lSubKeys:
                 for iIdx in range(0, 4):
                     iSearchIdx = iStartIndex + iIdx
@@ -141,17 +140,17 @@ class New():
         return self.is_token_at_index(oToken, index)
 
     def pretty_print(self):
-        pp=pprint.PrettyPrinter(indent=4)
+        pp = pprint.PrettyPrinter(indent=4)
         pp.pprint(self.dMap)
 
     def get_index_of_line(self, iLine):
-        return(self.dMap['parser']['carriage_return'][iLine - 2] + 1)
+        return self.dMap["parser"]["carriage_return"][iLine - 2] + 1
 
 
 def extract_unique_id(oToken):
     lDoc = oToken.__doc__.split()
     for iDoc, sDoc in enumerate(lDoc):
-        if sDoc == 'unique_id':
+        if sDoc == "unique_id":
             return lDoc[iDoc + 2], lDoc[iDoc + 4]
     return None, None
 
@@ -159,21 +158,21 @@ def extract_unique_id(oToken):
 def process_tokens(lTokens):
     dMap = build_default_map()
     for iToken, oToken in enumerate(lTokens):
-#        print(oToken)
+        #        print(oToken)
         sBase, sSub = oToken.get_unique_id()
-#        print(f'{sBase}:{sSub}')
+        #        print(f'{sBase}:{sSub}')
         if sBase is not None:
-           try:
-               dMap[sBase][sSub].append(iToken)
-           except KeyError:
-               try:
-                   dMap[sBase][sSub] = []
-                   dMap[sBase][sSub].append(iToken)
-               except KeyError:
-                   dMap[sBase] = {}
-                   dMap[sBase][sSub] = []
-                   dMap[sBase][sSub].append(iToken)
-        if sBase == 'logical_operator':
+            try:
+                dMap[sBase][sSub].append(iToken)
+            except KeyError:
+                try:
+                    dMap[sBase][sSub] = []
+                    dMap[sBase][sSub].append(iToken)
+                except KeyError:
+                    dMap[sBase] = {}
+                    dMap[sBase][sSub] = []
+                    dMap[sBase][sSub].append(iToken)
+        if sBase == "logical_operator":
             try:
                 dMap[sBase][sBase].append(iToken)
             except KeyError:
@@ -185,31 +184,31 @@ def process_tokens(lTokens):
                     dMap[sBase][sBase] = []
                     dMap[sBase][sBase].append(iToken)
             continue
-        if sSub == 'comma':
+        if sSub == "comma":
             try:
-                if iToken not in dMap['parser']['comma']:
-                    dMap['parser']['comma'].append(iToken)
+                if iToken not in dMap["parser"]["comma"]:
+                    dMap["parser"]["comma"].append(iToken)
             except KeyError:
                 try:
-                    dMap['parser']['comma'] = []
-                    dMap['parser']['comma'].append(iToken)
+                    dMap["parser"]["comma"] = []
+                    dMap["parser"]["comma"].append(iToken)
                 except KeyError:
-                    dMap['parser'] = {}
-                    dMap['parser']['comma'] = []
-                    dMap['parser']['comma'].append(iToken)
+                    dMap["parser"] = {}
+                    dMap["parser"]["comma"] = []
+                    dMap["parser"]["comma"].append(iToken)
             continue
-        if sSub == 'open_parenthesis':
+        if sSub == "open_parenthesis":
             try:
-                if iToken not in dMap['parser']['open_parenthesis']:
-                    dMap['parser']['open_parenthesis'].append(iToken)
+                if iToken not in dMap["parser"]["open_parenthesis"]:
+                    dMap["parser"]["open_parenthesis"].append(iToken)
             except KeyError:
                 try:
-                    dMap['parser']['open_parenthesis'] = []
-                    dMap['parser']['open_parenthesis'].append(iToken)
+                    dMap["parser"]["open_parenthesis"] = []
+                    dMap["parser"]["open_parenthesis"].append(iToken)
                 except KeyError:
-                    dMap['parser'] = {}
-                    dMap['parser']['open_parenthesis'] = []
-                    dMap['parser']['open_parenthesis'].append(iToken)
+                    dMap["parser"] = {}
+                    dMap["parser"]["open_parenthesis"] = []
+                    dMap["parser"]["open_parenthesis"].append(iToken)
             continue
 
     oNew = New(dMap)
@@ -237,6 +236,7 @@ def extract_pairs(lStartIndexes, lEndIndexes):
         lPair = []
         for iStart in lStartIndexes:
             lPair = extract_closest_pair(iStart, lEndIndexes, lPair, iMin)
+
         lMyPairs.append(lPair)
 
         if pair_is_empty(lPair):

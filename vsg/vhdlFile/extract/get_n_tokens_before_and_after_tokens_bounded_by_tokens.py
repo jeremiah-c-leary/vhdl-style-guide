@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.extract import tokens
-from vsg.vhdlFile.extract import utils
+from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_n_tokens_before_and_after_tokens_bounded_by_tokens(iToken, lTokens, lBetween, lAllTokens, oTokenMap):
@@ -11,6 +11,6 @@ def get_n_tokens_before_and_after_tokens_bounded_by_tokens(iToken, lTokens, lBet
 
     for iIndex in lIndexes:
         iLine = oTokenMap.get_line_number_of_index(iIndex)
-        lReturn.append(tokens.New(iIndex - iToken, iLine, lAllTokens[iIndex - iToken:iIndex + iToken + 1]))
+        lReturn.append(tokens.New(iIndex - iToken, iLine, lAllTokens[iIndex - iToken : iIndex + iToken + 1]))
 
     return lReturn

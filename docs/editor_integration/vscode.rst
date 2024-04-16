@@ -27,7 +27,7 @@ This will create a template **task.json** file:
 Replace the contents of the template file with the following...
 
 .. code-block:: text
-    
+
     {
       // See https://go.microsoft.com/fwlink/?LinkId=733558
       // for the documentation about the tasks.json format
@@ -175,4 +175,3 @@ The violations are shown in the Problems tab:
 The violations can be fixed manually, or by using `ctrl+f`...
 
 .. image:: vscode_file_fixed.png
-

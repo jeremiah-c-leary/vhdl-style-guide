@@ -91,4 +91,3 @@ Rules Enforcing Indent Rule Group
 * `variable_001 <../variable_rules.html#variable-001>`_
 * `variable_assignment_001 <../variable_assignment_rules.html#variable-assignment-001>`_
 * `wait_001 <../wait_rules.html#wait-001>`_
-

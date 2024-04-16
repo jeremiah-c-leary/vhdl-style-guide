@@ -241,4 +241,3 @@ This rule checks the context name called out in the selected name has proper cas
 .. code-block:: vhdl
 
    context my_lib.interfaces;
-

@@ -1,7 +1,7 @@
-
-from vsg.rules import blank_line_below_line_ending_with_token as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import blank_line_below_line_ending_with_token as Rule
 
 lTokens = []
 lTokens.append(token.signal_declaration.semicolon)
@@ -11,7 +11,7 @@ lAllowTokens.append(token.signal_declaration.signal_keyword)
 
 
 class rule_200(Rule):
-    '''
+    """
     This rule checks for a blank line below a signal declaration unless there is another signal definition.
 
     |configuring_blank_lines_link|
@@ -32,9 +32,9 @@ class rule_200(Rule):
        signal   height : integer := 4;
 
        constant length : integer := 32;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, lTokens, lAllowTokens)
+        super().__init__(lTokens, lAllowTokens)
         self.disable = True
-        self.configuration.remove('style')
+        self.configuration.remove("style")

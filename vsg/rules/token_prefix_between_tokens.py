@@ -1,13 +1,11 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules import utils as rules_utils
-from vsg.rules import token_prefix as Rule
+from vsg import parser, violation
+from vsg.rules import token_prefix as Rule, utils as rules_utils
 
 
 class token_prefix_between_tokens(Rule):
-    '''
+    """
     Checks the prefix for words between tokens.
 
     Parameters
@@ -24,10 +22,10 @@ class token_prefix_between_tokens(Rule):
 
     lPrefixes : string list
        acceptable prefixes
-    '''
+    """
 
     def __init__(self, lTokens, oStart, oEnd):
-        Rule.__init__(self, lTokens=lTokens)
+        super().__init__(lTokens=lTokens)
         self.oStart = oStart
         self.oEnd = oEnd
 

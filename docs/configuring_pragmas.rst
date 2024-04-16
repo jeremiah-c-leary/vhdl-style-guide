@@ -5,7 +5,7 @@ Configuring Pragmas
 -------------------
 
 Pragmas are comments with meta data used by various vendors.
-These pragmas communicate information which can change how vendor tools interprate code.
+These pragmas communicate information which can change how vendor tools interpret code.
 
 There does not appear to be a standard for defining pragmas.
 This presents a challenge to detecting them across all vendor tools.
@@ -68,4 +68,3 @@ Rules Using Pragmas
 * `pragma_401 <pragma_rules.html#pragma-401>`_
 * `pragma_402 <pragma_rules.html#pragma-402>`_
 * `pragma_403 <pragma_rules.html#pragma-403>`_
-

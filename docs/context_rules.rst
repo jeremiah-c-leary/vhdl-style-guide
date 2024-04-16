@@ -620,4 +620,3 @@ This rule checks for alignment of inline comments in the context declaration.
      library ieee;                  -- Other comment
        use ieee.std_logic_1164.all; -- Comment 3
    end context c1;                  -- Comment 4
-

@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import previous_line as Rule
-
 from vsg.token import case_statement_alternative as token
 
 
 class rule_201(Rule):
-    '''
+    """
     This rule checks for blank lines or comments above the **when** keyword.
 
     |configuring_previous_line_rules_link|
@@ -31,8 +31,8 @@ class rule_201(Rule):
 
          -- Comment
          when 4 =>
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, [token.when_keyword])
-        self.style = 'allow_comment'
+        super().__init__([token.when_keyword])
+        self.style = "allow_comment"

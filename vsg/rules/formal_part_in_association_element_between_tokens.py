@@ -1,12 +1,11 @@
+# -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg import violation
-
+from vsg import token, violation
 from vsg.rule_group import structure
 
 
 class formal_part_in_association_element_between_tokens(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -23,10 +22,10 @@ class formal_part_in_association_element_between_tokens(structure.Rule):
 
     oEnd : token object type
        The end of the range
-    '''
+    """
 
     def __init__(self, oStart, oEnd):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.fixable = False
         self.oStart = oStart
         self.oEnd = oEnd

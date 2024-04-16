@@ -44,4 +44,3 @@ This rule checks the *generate* keyword has proper case.
 .. code-block:: vhdl
 
    for x in range (3 downto 0) generate
-

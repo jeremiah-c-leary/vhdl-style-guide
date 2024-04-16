@@ -1,26 +1,24 @@
+# -*- coding: utf-8 -*-
 
 import string
 
 from vsg import parser
-
 from vsg.rule_group import structure
-
-from vsg.vhdlFile import utils
 from vsg.rules import utils as rules_utils
+from vsg.vhdlFile import utils
 
 
 class Rule(structure.Rule):
-
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.fixable = False
         self.disable = True
 
         self.min_height = 3
-        self.configuration.append('min_height')
-        self.allow_indenting = 'yes'
-        self.configuration.append('allow_indenting')
-        self.configuration_documentation_link = 'configuring_block_comments_link'
+        self.configuration.append("min_height")
+        self.allow_indenting = "yes"
+        self.configuration.append("allow_indenting")
+        self.configuration_documentation_link = "configuring_block_comments_link"
 
     def _get_tokens_of_interest(self, oFile):
         lToi = oFile.get_consecutive_lines_starting_with_token(parser.comment, self.min_height)
@@ -32,18 +30,16 @@ class Rule(structure.Rule):
         return lReturn
 
     def _analyze(self, lToi):
-
         for oToi in lToi:
-
             if not first_comment_is_a_header(oToi):
                 continue
 
             self.analyze_comments(oToi)
 
     def fix(self, oFile, dFixOnly=None):
-        '''
+        """
         Applies fixes for any rule violations.
-        '''
+        """
         self.analyze(oFile)
 
     def set_token_indent(self, oToken):
@@ -61,7 +57,7 @@ class Rule(structure.Rule):
 
     def build_footer(self, oToken):
         iWhitespace = self.calculate_leading_whitespace(oToken)
-        sFooter = '--'
+        sFooter = "--"
         if self.footer_left is not None:
             sFooter += self.footer_left
             iFooter_left = len(self.footer_left)
@@ -70,16 +66,16 @@ class Rule(structure.Rule):
 
         if self.footer_string is None:
             sFooter += self.footer_left_repeat * (self.max_footer_column - iWhitespace - len(sFooter))
-        elif self.footer_alignment == 'center':
+        elif self.footer_alignment == "center":
             iLength = int((self.max_footer_column - iWhitespace - len(self.footer_string)) / 2) - iFooter_left - 2
             sFooter += self.footer_left_repeat * (iLength)
             sFooter += self.footer_string
             sFooter += self.footer_right_repeat * (self.max_footer_column - len(sFooter))
-        elif self.footer_alignment == 'left':
+        elif self.footer_alignment == "left":
             sFooter += self.footer_left_repeat
             sFooter += self.footer_string
             sFooter += self.footer_right_repeat * (self.max_footer_column - len(sFooter))
-        elif self.footer_alignment == 'right':
+        elif self.footer_alignment == "right":
             iLength = self.max_footer_column - iWhitespace - len(sFooter) - len(self.footer_string) - 1
             sFooter += self.footer_left_repeat * (iLength)
             sFooter += self.footer_string
@@ -87,7 +83,7 @@ class Rule(structure.Rule):
         return sFooter
 
     def build_comment(self, oToken):
-        sHeader = '--'
+        sHeader = "--"
         sHeader += self.comment_left
         return sHeader
 
@@ -112,13 +108,13 @@ def fourth_character_is_alphanumeric(sComment):
 def third_character_is_alphanumeric(sComment):
     if sComment[2] not in string.punctuation:
         return False
-    if sComment[2] == '!':
+    if sComment[2] == "!":
         return False
     return True
 
 
 def bare_comment(sString):
-    if sString == '--':
+    if sString == "--":
         return True
     return False
 
@@ -170,6 +166,6 @@ def adjust_indexes_for_code_tags_at_end_of_block_comment(lTokens, iRight, iLines
 
 
 def code_tag_detected(oToken):
-    if 'vsg_on' in oToken.get_value() or 'vsg_off' in oToken.get_value():
+    if "vsg_on" in oToken.get_value() or "vsg_off" in oToken.get_value():
         return True
     return False

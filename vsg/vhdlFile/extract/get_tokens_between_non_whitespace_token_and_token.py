@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 import bisect
 
@@ -5,7 +6,6 @@ from vsg.vhdlFile.extract import tokens
 
 
 def get_tokens_between_non_whitespace_token_and_token(right_token, lAllTokens, oTokenMap):
-
     lReturn = []
 
     lStart, lEnd = get_start_and_end_indexes(right_token, lAllTokens, oTokenMap)
@@ -16,7 +16,7 @@ def get_tokens_between_non_whitespace_token_and_token(right_token, lAllTokens, o
 
         iLine = oTokenMap.get_line_number_of_index(iStart)
 
-        oTokens = tokens.New(iStart, iLine, lAllTokens[iStart:iEnd + 1])
+        oTokens = tokens.New(iStart, iLine, lAllTokens[iStart : iEnd + 1])
         lReturn.append(oTokens)
 
     return lReturn

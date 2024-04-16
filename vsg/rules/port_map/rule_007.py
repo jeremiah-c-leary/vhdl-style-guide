@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_between_token_pairs_bounded_by_tokens import Rule
 
 lTokens = []
@@ -11,7 +11,7 @@ lEnd = token.port_map_aspect.close_parenthesis
 
 
 class rule_007(Rule):
-    '''
+    """
     This rule checks for a single space after the **=>** operator in port maps.
 
     |configuring_whitespace_rules_link|
@@ -37,6 +37,7 @@ class rule_007(Rule):
            RD_EN    => rd_en,
            OVERFLOW => overflow
          );
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, lTokens, lStart, lEnd)
+        super().__init__(lTokens, lStart, lEnd)

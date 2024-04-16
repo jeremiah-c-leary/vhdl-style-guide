@@ -1,7 +1,7 @@
-
-from vsg.rules import split_line_at_token_when_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import split_line_at_token_when_between_tokens
 
 lTokens = []
 lTokens.append(token.report_statement.severity_keyword)
@@ -11,7 +11,7 @@ oEnd = token.report_statement.semicolon
 
 
 class rule_002(split_line_at_token_when_between_tokens):
-    '''
+    """
     This rule checks the **severity** keyword is on its own line.
 
     **Violation**
@@ -26,8 +26,8 @@ class rule_002(split_line_at_token_when_between_tokens):
 
         report "FIFO width is limited to 16 bits."
           severity FAILURE;
-    '''
+    """
 
     def __init__(self):
-        split_line_at_token_when_between_tokens.__init__(self, lTokens, oStart, oEnd)
+        super().__init__(lTokens, oStart, oEnd)
         self.solution = "Place **severity** keyword on its own line."

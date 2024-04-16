@@ -1,7 +1,7 @@
-
-from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens
 
 lAlign = []
 lAlign.append(token.full_type_declaration.identifier)
@@ -17,11 +17,11 @@ oStart = token.process_statement.process_keyword
 oEnd = token.process_statement.begin_keyword
 
 lUnless = []
-lUnless.append([token.subprogram_body.is_keyword,token.subprogram_body.begin_keyword])
+lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
 
 
 class rule_031(align_tokens_in_region_between_tokens_unless_between_tokens):
-    '''
+    """
     This rule checks for alignment of identifiers in the process declarative region.
 
     |configuring_keyword_alignment_rules_link|
@@ -53,9 +53,9 @@ class rule_031(align_tokens_in_region_between_tokens_unless_between_tokens):
        begin
 
        end process proc_1;
-    '''
+    """
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_unless_between_tokens.__init__(self, lAlign, oStart, oEnd, lUnless)
-        self.solution = 'Align the first character of each identifier.'
-        self.configuration.remove('separate_generic_port_alignment')
+        super().__init__(lAlign, oStart, oEnd, lUnless)
+        self.solution = "Align the first character of each identifier."
+        self.configuration.remove("separate_generic_port_alignment")

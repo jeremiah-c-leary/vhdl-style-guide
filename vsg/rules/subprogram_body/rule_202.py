@@ -1,7 +1,7 @@
-
-from vsg.rules import blank_line_above_line_starting_with_token
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import blank_line_above_line_starting_with_token
 
 lTokens = []
 lTokens.append(token.subprogram_body.begin_keyword)
@@ -11,7 +11,7 @@ lAllowTokens.append(token.subprogram_body.is_keyword)
 
 
 class rule_202(blank_line_above_line_starting_with_token):
-    '''
+    """
     This rule checks for blank lines above the **begin** keyword.
 
     This rule allows the **is** keyword to occupy the blank line:
@@ -41,7 +41,7 @@ class rule_202(blank_line_above_line_starting_with_token):
          constant width : integer := 32;
 
        begin
-    '''
+    """
 
     def __init__(self):
-        blank_line_above_line_starting_with_token.__init__(self, lTokens, lAllowTokens)
+        super().__init__(lTokens, lAllowTokens)

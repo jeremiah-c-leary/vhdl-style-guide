@@ -1,14 +1,14 @@
-
-from vsg.rules import token_case_with_prefix_suffix
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_case_with_prefix_suffix
 
 lTokens = []
 lTokens.append(token.component_declaration.component_simple_name)
 
 
 class rule_012(token_case_with_prefix_suffix):
-    '''
+    """
     This rule checks the proper case of the component name in the **end component** line.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -24,8 +24,8 @@ class rule_012(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
        end component fifo;
-    '''
+    """
 
     def __init__(self):
-        token_case_with_prefix_suffix.__init__(self, lTokens)
-        self.groups.append('case::name')
+        super().__init__(lTokens)
+        self.groups.append("case::name")

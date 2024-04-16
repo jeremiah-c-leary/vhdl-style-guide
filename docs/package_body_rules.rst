@@ -541,4 +541,3 @@ The default package prefix is *pkg_*.
 .. code-block:: vhdl
 
    package body pkg_foo is
-

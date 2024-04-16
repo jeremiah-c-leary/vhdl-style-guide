@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules import utils
-
 from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
 
 class Rule(WhitespaceRule):
-    '''
+    """
     Checks for a single space after a token
 
     Parameters
@@ -19,7 +19,7 @@ class Rule(WhitespaceRule):
 
     lTokens : token type object list
        A list of tokens to check for a single space after.
-    '''
+    """
 
     def __init__(self, lTokens, oStart, oEnd):
         WhitespaceRule.__init__(self)

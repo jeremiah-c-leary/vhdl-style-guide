@@ -1,16 +1,14 @@
+# -*- coding: utf-8 -*-
 
 
-from vsg import parser
-from vsg import violation
-
+from vsg import parser, violation
 from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
-
 from vsg.vhdlFile import utils
 
 
 class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_same_line(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -30,10 +28,10 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
 
     oEnd : token type
        The end of the range
-    '''
+    """
 
     def __init__(self, oToken, oSameLineToken, lTokenPair):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 1
         self.oToken = oToken
@@ -54,19 +52,22 @@ class split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
                 if isinstance(oToken, parser.carriage_return):
                     iLine += 1
                 if isinstance(oToken, self.oSameLineToken):
-                    if utils.are_next_consecutive_token_types([parser.whitespace, self.oToken], iToken + 1, lTokens) or \
-                       utils.are_next_consecutive_token_types([self.oToken], iToken + 1, lTokens):
+                    if utils.are_next_consecutive_token_types([parser.whitespace, self.oToken], iToken + 1, lTokens) or utils.are_next_consecutive_token_types(
+                        [self.oToken],
+                        iToken + 1,
+                        lTokens,
+                    ):
                         sSolution = self.solution
                         oViolation = violation.New(iLine, oToi, sSolution)
                         dAction = {}
-                        dAction['insert_index'] = iToken + 1
+                        dAction["insert_index"] = iToken + 1
                         oViolation.set_action(dAction)
                         self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        rules_utils.insert_carriage_return(lTokens, dAction['insert_index'])
+        rules_utils.insert_carriage_return(lTokens, dAction["insert_index"])
         oViolation.set_tokens(lTokens)
 
 

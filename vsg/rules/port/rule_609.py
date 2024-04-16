@@ -1,15 +1,13 @@
-
-from vsg.rules import token_suffix as Rule
-
-from vsg.rules import utils
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_suffix as Rule, utils
 
 lTokens = []
 
 
 class rule_609(Rule):
-    '''
+    """
     This rule checks for valid suffixes on port identifiers for linkage ports.
 
     The default suffix is: *_l*.
@@ -33,11 +31,11 @@ class rule_609(Rule):
          wr_en_l    : linkage    std_logic;
          rd_en_l    : linkage    std_logic
        );
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, lTokens)
-        self.suffixes = ['_l']
+        super().__init__(lTokens)
+        self.suffixes = ["_l"]
 
     def _get_tokens_of_interest(self, oFile):
         lReturn = []

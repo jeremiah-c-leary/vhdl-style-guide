@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 
-from vsg.rules import align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens
-
-from vsg import parser
-from vsg import token
+from vsg import parser, token
+from vsg.rules import (
+    align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens,
+)
 
 lAlign = []
 lAlign.append(parser.comment)
@@ -12,7 +13,7 @@ lSkip.append(parser.comment)
 
 
 class rule_029(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
-    '''
+    """
     This rule checks for alignment of inline comments in an instantiation.
 
     Following extra configurations are supported:
@@ -26,7 +27,7 @@ class rule_029(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
 
     .. code-block:: vhdl
 
-           wr_en    => write_enable,        -- Wrte enable
+           wr_en    => write_enable,        -- Write enable
            rd_en    => read_enable,    -- Read enable
            overflow => overflow,         -- FIFO has overflowed
 
@@ -34,12 +35,12 @@ class rule_029(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
 
     .. code-block:: vhdl
 
-           wr_en    => write_enable, -- Wrte enable
+           wr_en    => write_enable, -- Write enable
            rd_en    => read_enable,  -- Read enable
            overflow => overflow,     -- FIFO has overflowed
-    '''
+    """
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(self, lAlign, token.component_instantiation_statement.instantiation_label, token.component_instantiation_statement.semicolon, lSkip)
-        self.solution = 'Align comment.'
+        super().__init__(lAlign, token.component_instantiation_statement.instantiation_label, token.component_instantiation_statement.semicolon, lSkip)
+        self.solution = "Align comment."
         self.subphase = 3

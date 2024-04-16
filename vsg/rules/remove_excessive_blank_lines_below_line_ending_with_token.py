@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
+from vsg import parser, violation
 from vsg.rule_group import blank_line
 from vsg.vhdlFile import utils
 
 
 class remove_excessive_blank_lines_below_line_ending_with_token(blank_line.Rule):
-    '''
+    """
     Checks for excessive blank lines below a line ending with a given token
 
     Parameters
@@ -27,11 +26,11 @@ class remove_excessive_blank_lines_below_line_ending_with_token(blank_line.Rule)
 
     lOverrides : token object type list
        Ignore lines with given token types
-    '''
+    """
 
     def __init__(self, lTokens, iAllow=1, lOverrides=None):
-        blank_line.Rule.__init__(self)
-        self.solution = 'Remove blank lines below'
+        super().__init__()
+        self.solution = "Remove blank lines below"
         self.lTokens = lTokens
         self.iAllow = iAllow
         if lOverrides == None:
@@ -55,15 +54,15 @@ class remove_excessive_blank_lines_below_line_ending_with_token(blank_line.Rule)
             if iCount > self.iAllow:
                 oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
                 dAction = {}
-                dAction['remove'] = self.iAllow - iCount
+                dAction["remove"] = self.iAllow - iCount
                 oViolation.set_action(dAction)
                 self.add_violation(oViolation)
 
     def _fix_violation(self, oViolation):
-            lTokens = oViolation.get_tokens()
-            dAction = oViolation.get_action()
-            lNewTokens = lTokens[0:2*dAction['remove']]
-            oViolation.set_tokens(lNewTokens)
+        lTokens = oViolation.get_tokens()
+        dAction = oViolation.get_action()
+        lNewTokens = lTokens[0 : 2 * dAction["remove"]]
+        oViolation.set_tokens(lNewTokens)
 
 
 def check_if_override_exists(oFile, iLine, lOverrides):

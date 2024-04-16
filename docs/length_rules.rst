@@ -31,4 +31,3 @@ length_003
 This rule checks the length of a process statement.
 
 |configuring_length_rules_link|
-

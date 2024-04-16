@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 
 from vsg import rules
 
 
 class token_case_subtype_indication(rules.token_case):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -20,10 +21,10 @@ class token_case_subtype_indication(rules.token_case):
 
     lEndTokens: list of token types
        The token types to stop searching.
-    '''
+    """
 
     def __init__(self, lTokens, lEndTokens):
-        rules.token_case.__init__(self, lTokens=lTokens)
+        super().__init__(lTokens=lTokens)
         self.lEndTokens = lEndTokens
 
     def _get_tokens_of_interest(self, oFile):

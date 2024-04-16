@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules import utils as rules_utils
+from vsg import parser, violation
 from vsg.rule_group import structure
+from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
 
 
 class remove_carriage_returns_between_token_pairs(structure.Rule):
-    '''
+    """
     Checks the case for words.
 
     Parameters
@@ -25,10 +24,10 @@ class remove_carriage_returns_between_token_pairs(structure.Rule):
 
     lPrefixes : string list
        acceptable prefixes
-    '''
+    """
 
     def __init__(self, lTokens, bInsertSpace=False):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.solution = None
         self.phase = 1
         self.lTokens = lTokens

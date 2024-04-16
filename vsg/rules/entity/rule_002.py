@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg.rules.whitespace_between_tokens import Rule
-
 from vsg.token import entity_declaration as token
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for a single space after the **entity** keyword.
 
     |configuring_whitespace_rules_link|
@@ -21,7 +21,8 @@ class rule_002(Rule):
     .. code-block:: vhdl
 
        entity fifo is
-    '''
+    """
+
     def __init__(self):
         Rule.__init__(self)
         self.left_token = token.entity_keyword

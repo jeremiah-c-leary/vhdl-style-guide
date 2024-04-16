@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, violation
 from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
+from vsg.vhdlFile import utils
 
 
 class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token(structure.Rule):
-    '''
+    """
     Checks for the existence of a token and will insert it if it does not exist.
 
     Parameters
@@ -28,19 +27,19 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
 
     value_token : token object
        token to pull the value from
-    '''
+    """
 
     def __init__(self):
-        structure.Rule.__init__(self)
+        super().__init__()
         self.insert_token = None
         self.anchor_token = None
         self.left_token = None
         self.right_token = None
         self.value_token = None
         self.direction = None
-        self.action = 'add'
-        self.configuration.append('action')
-        self.configuration_documentation_link = 'configuring_optional_items_link'
+        self.action = "add"
+        self.configuration.append("action")
+        self.configuration_documentation_link = "configuring_optional_items_link"
         self.filter_tokens = []
 
     def _get_tokens_of_interest(self, oFile):
@@ -50,8 +49,8 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
             return self._get_add_tokens_of_interest(oFile)
 
     def _get_add_tokens_of_interest(self, oFile):
-            lToi = oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
-            return filter_toi(self.filter_tokens, lToi)
+        lToi = oFile.get_tokens_between_tokens_inclusive_while_storing_value_from_token(self.left_token, self.right_token, self.value_token)
+        return filter_toi(self.filter_tokens, lToi)
 
     def _analyze(self, lToi):
         if remove_keyword(self):
@@ -78,7 +77,7 @@ def filter_toi(filter_tokens, lToi):
 
 
 def remove_keyword(self):
-    if self.action == 'remove':
+    if self.action == "remove":
         return True
     return False
 
@@ -115,7 +114,7 @@ def add_optional_item(oViolation, self):
 
     iIndex = rules_utils.get_last_index_of_token_in_list(self.anchor_token, lTokens)
 
-    if self.direction == 'right':
+    if self.direction == "right":
         rules_utils.insert_token(lTokens, iIndex + 1, self.insert_token(oViolation.get_token_value()))
         rules_utils.insert_whitespace(lTokens, iIndex + 1)
     else:
@@ -133,6 +132,6 @@ def token_value_available(oViolation):
 
 
 def create_violation(oToi, iLineNumber, self):
-    sSolution = self.action.capitalize() + ' ' + self.solution
+    sSolution = self.action.capitalize() + " " + self.solution
     oViolation = violation.New(iLineNumber, oToi, sSolution)
     return oViolation

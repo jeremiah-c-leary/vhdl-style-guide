@@ -1,7 +1,7 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.null_statement.label)
@@ -9,7 +9,7 @@ lTokens.append(token.null_statement.null_keyword)
 
 
 class rule_013(token_indent):
-    '''
+    """
     This rule checks the indent of the **null** keyword.
 
     **Violation**
@@ -31,7 +31,7 @@ class rule_013(token_indent):
 
        when others =>
          null;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, lTokens)
+        super().__init__(lTokens)

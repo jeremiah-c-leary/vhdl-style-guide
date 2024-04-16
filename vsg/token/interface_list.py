@@ -1,15 +1,16 @@
+# -*- coding: utf-8 -*-
 
 from vsg import parser
 
 ###############################################################################
-# Inteface List objects
+# Interface List objects
 ###############################################################################
 
 
 class semicolon(parser.semicolon):
-    '''
+    """
     unique_id = interface_list : semicolon
-    '''
+    """
 
-    def __init__(self, sString=';'):
-        parser.semicolon.__init__(self)
+    def __init__(self, sString=";"):
+        super().__init__()

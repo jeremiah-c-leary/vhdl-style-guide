@@ -1,14 +1,14 @@
-
-from vsg.rules import blank_line_below_line_ending_with_token
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import blank_line_below_line_ending_with_token
 
 lTokens = []
 lTokens.append(token.component_instantiation_statement.semicolon)
 
 
 class rule_019(blank_line_below_line_ending_with_token):
-    '''
+    """
     This rule checks for a blank line below the end of the instantiation declaration.
 
     |configuring_blank_lines_link|
@@ -37,7 +37,7 @@ class rule_019(blank_line_below_line_ending_with_token):
          );
 
        U_RAM : RAM
-    '''
+    """
 
     def __init__(self):
-        blank_line_below_line_ending_with_token.__init__(self, lTokens)
+        super().__init__(lTokens)

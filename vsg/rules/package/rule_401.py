@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 
-from vsg.rules import align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens
-
-from vsg import parser
-from vsg import token
+from vsg import parser, token
+from vsg.rules import (
+    align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens,
+)
 
 lAlign = []
 lAlign.append(parser.comment)
@@ -15,7 +16,7 @@ oEnd = token.package_declaration.end_keyword
 
 
 class rule_401(align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens):
-    '''
+    """
     This rule checks the alignment of inline comments in the package declarative part.
 
     |configuring_keyword_alignment_rules_link|
@@ -43,9 +44,9 @@ class rule_401(align_tokens_in_region_between_tokens_skipping_lines_starting_wit
          constant c_period : time;      -- Comment 3
 
        end package my_package;
-    '''
+    """
 
     def __init__(self):
-        align_tokens_in_region_between_tokens_skipping_lines_starting_with_tokens.__init__(self, lAlign, oStart, oEnd, lSkip)
-        self.solution = 'Align comments.'
+        super().__init__(lAlign, oStart, oEnd, lSkip)
+        self.solution = "Align comments."
         self.subphase = 4

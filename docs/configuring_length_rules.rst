@@ -22,7 +22,7 @@ Use the following configuration to change the line length to 180.
      length_001 :
         length : 180
 
-Overridding File Line Length
+Overriding File Line Length
 ############################
 
 Limiting the length of a VHDL file can improve readability.
@@ -37,7 +37,7 @@ Use the following configuration to change the file length to 5000.
      length_002 :
         length : 5000
 
-Overridding Process Line Length
+Overriding Process Line Length
 ###############################
 
 Limiting the length of a VHDL processes can improve readability.

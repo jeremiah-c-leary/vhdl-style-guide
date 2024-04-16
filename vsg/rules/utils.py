@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
+from vsg import parser, token
 from vsg.vhdlFile import utils
 
 
@@ -75,18 +74,18 @@ def update_code_tags(oToken1, oToken2):
     return oToken2
 
 
-def insert_whitespace(lTokens, index, num=1, sString=' '):
-    if sString == ' ':
-        insert_token(lTokens, index, parser.whitespace(' '*num))
+def insert_whitespace(lTokens, index, num=1, sString=" "):
+    if sString == " ":
+        insert_token(lTokens, index, parser.whitespace(" " * num))
     else:
-        oToken = parser.whitespace('\t'*num)
+        oToken = parser.whitespace("\t" * num)
         oToken.has_tabs = True
         insert_token(lTokens, index, oToken)
 
 
 def insert_new_whitespace(lTokens, index, sWhitespace):
     oToken = parser.whitespace(sWhitespace)
-    if '\t' in sWhitespace:
+    if "\t" in sWhitespace:
         oToken.has_tabs = True
     insert_token(lTokens, index, oToken)
 
@@ -100,7 +99,7 @@ def insert_blank_line(lTokens, index):
 
 
 def append_whitespace(lTokens, num=1):
-    append_token(lTokens, parser.whitespace(' '*num))
+    append_token(lTokens, parser.whitespace(" " * num))
 
 
 def append_carriage_return(lTokens):
@@ -290,14 +289,14 @@ def token_is_at_end_of_line(iToken, lTokens):
     if token_is_whitespace(lTokens[iToken + 1]) and token_is_comment(lTokens[iToken + 2]):
         return True
     return False
-    
+
 
 def left_most_token_is_at_the_end_of_a_line(lTokens):
     return token_is_at_end_of_line(0, lTokens)
 
 
 def whitespace_is_larger_than_a_single_character(lTokens):
-    if lTokens[1].get_value() != ' ':
+    if lTokens[1].get_value() != " ":
         return True
     return False
 
@@ -317,7 +316,7 @@ def lowercase_list(lList):
     for sItem in lList:
         lReturn.append(sItem.lower())
     return lReturn
-  
+
 
 def extract_identifiers_with_mode_of_input(lToi):
     return extract_identifiers_with_mode(lToi, token.mode.in_keyword)
@@ -356,7 +355,7 @@ def remove_leading_whitespace_tokens(lTokens):
 def change_all_whitespace_to_single_character(lTokens):
     for oToken in lTokens:
         if isinstance(oToken, parser.whitespace):
-            oToken.set_value(' ')
+            oToken.set_value(" ")
 
 
 def token_is_at_beginning_of_line(lTokens):
@@ -393,16 +392,18 @@ def analyze_with_function(self, oToi, oTokenType, fFunction):
     for iToken, oToken in enumerate(lTokens):
         iLine = utils.increment_line_number(iLine, oToken)
         if isinstance(oToken, oTokenType):
-            oToi.set_meta_data('iStartLine', iLine)
-            oToi.set_meta_data('iStart', iToken)
-            oToi.set_meta_data('iToken', iToken)
+            oToi.set_meta_data("iStartLine", iLine)
+            oToi.set_meta_data("iStart", iToken)
+            oToi.set_meta_data("iToken", iToken)
             fFunction(self, oToi)
+
 
 def token_exists_in_token_type_list(oToken, lTypeTokens):
     for oTokenType in lTypeTokens:
         if isinstance(oToken, oTokenType):
             return True
     return False
+
 
 def is_next_token_ignoring_whitespace(oToken, iToken, lTokens):
     iToken = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
@@ -435,8 +436,8 @@ def array_detected_after_assignment_operator(assignment_operator, oToi):
         iParen = update_paren_counter(oToken, iParen)
         if not bFirstTokenFound:
             bFirstTokenFound = token_is_open_paren(oToken)
-#        print(f'{iParen}|{bFirstTokenFound}|{oToken}')
-    
+    #        print(f'{iParen}|{bFirstTokenFound}|{oToken}')
+
     return True
 
 

@@ -1,7 +1,7 @@
-
-from vsg.rules import multiline_alignment_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import multiline_alignment_between_tokens
 
 lTokenPairs = []
 lTokenPairs.append([token.simple_waveform_assignment.assignment, token.simple_waveform_assignment.semicolon])
@@ -11,7 +11,7 @@ lTokenPairs.append([token.conditional_force_assignment.assignment, token.conditi
 
 
 class rule_004(multiline_alignment_between_tokens):
-    '''
+    """
     This rule checks the alignment of multiline sequential statements.
 
     |configuring_multiline_indent_rules_link|
@@ -29,9 +29,9 @@ class rule_004(multiline_alignment_between_tokens):
 
        overflow <= wr_en and
                    rd_en;
-    '''
+    """
 
     def __init__(self):
-        multiline_alignment_between_tokens.__init__(self, lTokenPairs)
+        super().__init__(lTokenPairs)
         self.phase = 5
         self.subphase = 2
