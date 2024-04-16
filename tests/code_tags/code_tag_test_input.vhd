@@ -66,6 +66,28 @@ architecture rtl of fifo is
 
 begin
 
+  -- vsg_off length_003 length_001 : comment
+
+  p_length_003_passing : process is
+  begin
+
+    a <= b;
+    a <= b;
+    a <= b;
+
+  end process p_length_003;
+
+  -- vsg_on length_003
+
+  p_length_003_failing : process is
+  begin
+
+    a <= b;
+    a <= b;
+    a <= b;
+
+  end process p_length_003;
+
 end architecture rtl;
 
 -- vsg_on comment_010
