@@ -4,7 +4,7 @@ import unittest
 
 from tests import utils
 from vsg import vhdlFile
-from vsg.rules import comment, constant, entity, library, port
+from vsg.rules import comment, constant, entity, length, library, port
 
 # Read in test file used for all tests
 dIndentMap = utils.read_indent_file()
@@ -36,24 +36,9 @@ class testCodeTags(unittest.TestCase):
         oRule.analyze(oFile)
         self.assertEqual(len(oRule.violations), 0)
 
+    def test_rule_length_003(self):
+        oRule = length.rule_003()
+        oRule.length = 2
 
-#    def test_rule_library_008(self):
-#        oRule = library.rule_008()
-#
-#        dExpected = []
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
-#
-#    def test_rule_entity_019_enclosed_with_vsg_off_and_vsg_on(self):
-#        oRule = entity.rule_019()
-#
-#        dExpected = []
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
-#
-#    def test_rule_port_007(self):
-#        oRule = port.rule_007()
-#
-#        dExpected = []
-#        oRule.analyze(oFile)
-#        self.assertEqual(oRule.violations, dExpected)
+        oRule.analyze(oFile)
+        self.assertEqual(len(oRule.violations), 1)

@@ -30,7 +30,8 @@ class number_of_lines_between_tokens(length.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            if oToi.get_token_value() > self.length:
+            if oToi.get_meta_data("length") > self.length:
                 sSolution = "Reduce process to less than " + str(self.length) + " lines"
-                oViolation = violation.New(oToi.get_line_number(), None, sSolution)
+                oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
+
                 self.add_violation(oViolation)
