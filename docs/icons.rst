@@ -14,6 +14,11 @@
    :width: 25px
    :target: rule_severity.html
 
+.. |unfixable| image:: img/unfixable_icon.svg
+   :height: 25px
+   :width: 25px
+   :target: unfixable_rules.html
+
 .. |phase_1| image:: img/phase_1_icon.svg
    :height: 25px
    :width: 25px

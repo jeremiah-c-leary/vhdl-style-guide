@@ -172,7 +172,7 @@ This rule checks for a single space after the **=>** operator in port maps.
 port_map_008
 ############
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for positional ports.
 Positional ports are subject to problems when the position of the underlying component changes.

@@ -133,7 +133,7 @@ This rule checks for at least a single space before the colon.
 variable_007
 ############
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for default assignments in variable declarations.
 
@@ -221,7 +221,7 @@ This rule checks for consistent capitalization of variable names.
 variable_012
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on variable identifiers.
 The default variable prefix is *v_*.
@@ -319,7 +319,7 @@ This rule checks alignment of multiline constraints in variable declarations.
 variable_600
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffix on variable identifiers.
 The default variable suffix is *_v*.

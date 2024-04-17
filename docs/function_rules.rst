@@ -562,7 +562,7 @@ This rule checks the function designator has proper case on the end function dec
 function_600
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on function designators.
 Default signal prefix is *f_*.
@@ -584,7 +584,7 @@ Default signal prefix is *f_*.
 function_601
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on function designators.
 Default signal suffix is *_f*.

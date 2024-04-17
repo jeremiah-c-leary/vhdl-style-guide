@@ -105,7 +105,7 @@ This rule has been deprecated and replaced with rule `process_400 <process_rules
 sequential_006
 ##############
 
-|phase_2| |error| |structure|
+|phase_2| |error| |unfixable| |structure|
 
 This rule checks for comments within multiline sequential statements.
 

@@ -153,6 +153,32 @@ class testDocGen(unittest.TestCase):
                 lActual.append(lLine[1][1:])
         self.assertEqual(lExpected, lActual)
 
+    def test_unfixable_rules_doc(self):
+        self.maxDiff = None
+        oVhdlFile = vhdlFile.vhdlFile([""])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+
+        lExpected = []
+        for oRule in oRuleList.rules:
+            if not oRule.fixable and not oRule.proposed and not oRule.deprecated:
+                lExpected.append(oRule.unique_id)
+
+        sFileName = "unfixable_rules.rst"
+        sFullPathFileName = os.path.join("docs", sFileName)
+        lFile = []
+        utils.read_file(sFullPathFileName, lFile)
+        lActual = []
+        for sLine in lFile:
+            if sLine.startswith("*"):
+                lLine = sLine.split()
+                lActual.append(lLine[1][1:])
+
+        for sExpected in lExpected:
+            self.assertTrue(sExpected in lActual)
+
+        for sActual in lActual:
+            self.assertTrue(sActual in lExpected)
+
     def test_alias_declaration_rules_doc(self):
         lExpected, lActual = self.compare_files("alias_declaration")
 
