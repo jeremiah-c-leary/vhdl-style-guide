@@ -38,7 +38,7 @@ def detect(iCurrent, lObjects):
 def classify(iStart, iEnd, lObjects, sEnd):
     iCurrent = iStart
     # Classify formal part if it exists
-    if utils.find_in_index_range("=>", iStart, iEnd, lObjects):
+    if formal_part_detected(iStart, iEnd, lObjects):
         iCurrent = formal_part.classify(token.formal_part, iCurrent, lObjects)
         iCurrent = utils.assign_next_token_required("=>", token.assignment, iCurrent, lObjects)
 
@@ -48,3 +48,12 @@ def classify(iStart, iEnd, lObjects, sEnd):
             utils.assign_token(lObjects, iCurrent, token.actual_part)
 
     return iCurrent
+
+
+def formal_part_detected(iStart, iEnd, lObjects):
+    iParen = 0
+    for iIndex in range(iStart, iEnd):
+        iParen = utils.update_paren_counter(iIndex, lObjects, iParen)
+        if iParen == 0 and utils.object_value_is(lObjects, iIndex, "=>"):
+            return True
+    return False
