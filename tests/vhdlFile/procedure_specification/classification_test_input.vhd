@@ -69,6 +69,14 @@ architecture RTL of FIFO is
     b <= a;
   end procedure proc_4;
 
+  -- Test parenthesis
+  package body demo_pkg is
+    procedure demo(any:natural) is
+    begin
+      func0(a, (proc0(b,c)) = (1 downto 0 => '0'), (others => '0'), d, e);
+    end procedure;
+  end package body;
+
 begin
 
 
