@@ -215,6 +215,33 @@ Use explicit port mapping.
      OVERFLOW => OVERFLOW
    );
 
+generic_map_100
+###############
+
+|phase_2| |error| |whitespace|
+
+This rules checks for whitespace before the assignment operator.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic map (
+     WIDTH=> 32,
+     DEPTH=> 512
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic map (
+     WIDTH => 32,
+     DEPTH => 512
+   );
+
 generic_map_600
 ###############
 

@@ -76,6 +76,7 @@ Rules Enforcing Whitespace Rule Group
 * `generic_014 <../generic_rules.html#generic-014>`_
 * `generic_map_006 <../generic_map_rules.html#generic-map-006>`_
 * `generic_map_007 <../generic_map_rules.html#generic-map-007>`_
+* `generic_map_100 <../generic_map_rules.html#generic-map-100>`_
 * `if_003 <../if_rules.html#if-003>`_
 * `if_004 <../if_rules.html#if-004>`_
 * `if_005 <../if_rules.html#if-005>`_
@@ -102,6 +103,7 @@ Rules Enforcing Whitespace Rule Group
 * `port_009 <../port_rules.html#port-009>`_
 * `port_020 <../port_rules.html#port-020>`_
 * `port_map_007 <../port_map_rules.html#port-map-007>`_
+* `port_map_100 <../port_map_rules.html#port-map-100>`_
 * `procedure_100 <../procedure_rules.html#procedure-100>`_
 * `procedure_101 <../procedure_rules.html#procedure-101>`_
 * `procedure_call_100 <../procedure_call_rules.html#procedure-call-100>`_
