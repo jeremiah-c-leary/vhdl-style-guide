@@ -34,6 +34,7 @@ Rules Enforcing Structure Rule Group
 * `component_005 <../component_rules.html#component-005>`_
 * `component_019 <../component_rules.html#component-019>`_
 * `component_021 <../component_rules.html#component-021>`_
+* `component_022 <../component_rules.html#component-022>`_
 * `concurrent_005 <../concurrent_rules.html#concurrent-005>`_
 * `concurrent_011 <../concurrent_rules.html#concurrent-011>`_
 * `concurrent_012 <../concurrent_rules.html#concurrent-012>`_

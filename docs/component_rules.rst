@@ -520,3 +520,28 @@ This rule inserts the optional **is** keyword if it does not exist.
    component my_component is
 
    end my_component;
+
+component_022
+#############
+
+|phase_1| |error| |structure| |structure_optional|
+
+This rule inserts the optional **component_simple_name** if it does not exist.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   component my_component
+
+   end component;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   component my_component is
+
+   end component my_component;

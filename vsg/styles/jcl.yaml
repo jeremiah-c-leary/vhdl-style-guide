@@ -11,6 +11,8 @@ rule :
     case : upper
   component_008 :
     case : upper
+  component_012 :
+    case : upper
   entity_008 :
     case : upper
   entity_012 :

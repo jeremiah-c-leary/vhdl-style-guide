@@ -89,6 +89,7 @@ Rules Enforcing Optional Items
 * `block_002 <block_rules.html#block-002>`_
 * `block_007 <block_rules.html#block-007>`_
 * `component_021 <component_rules.html#component-021>`_
+* `component_022 <component_rules.html#component-022>`_
 * `context_021 <context_rules.html#context-021>`_
 * `context_022 <context_rules.html#context-022>`_
 * `entity_015 <entity_rules.html#entity-015>`_

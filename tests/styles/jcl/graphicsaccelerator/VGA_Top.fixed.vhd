@@ -32,7 +32,7 @@ architecture BEHAVIORAL of VGA_TOP is
       BUTTON : in    std_logic;
       DOUT   : out   std_logic
     );
-  end component;
+  end component DEBOUNCER;
 
   component BRESENHAMER is
     port (
@@ -48,7 +48,7 @@ architecture BEHAVIORAL of VGA_TOP is
       Y           : out   std_logic_vector(8 downto 0);
       RESET       : in    std_logic
     );
-  end component;
+  end component BRESENHAMER;
 
   component SYNCHRONIZER is
     port (
@@ -62,7 +62,7 @@ architecture BEHAVIORAL of VGA_TOP is
       ADDRESSX : out   std_logic_vector(9 downto 0);
       ADDRESSY : out   std_logic_vector(8 downto 0)
     );
-  end component;
+  end component SYNCHRONIZER;
 
   component FRAMEBUFFER is
     port (
@@ -75,7 +75,7 @@ architecture BEHAVIORAL of VGA_TOP is
       BUFFERWRITE : in    std_logic;
       CLK         : in    std_logic
     );
-  end component;
+  end component FRAMEBUFFER;
 
   component SEVENSEGMENT is
     port (
@@ -84,7 +84,7 @@ architecture BEHAVIORAL of VGA_TOP is
       ENABLES  : out   std_logic_vector(3 downto 0);
       SEGMENTS : out   std_logic_vector(6 downto 0)
     );
-  end component;
+  end component SEVENSEGMENT;
 
   component POINTER is
     generic (
@@ -104,14 +104,14 @@ architecture BEHAVIORAL of VGA_TOP is
       SYNCY     : in    std_logic_vector(8 downto 0);
       HERE      : out   std_logic
     );
-  end component;
+  end component POINTER;
 
   component FREQDIV is
     port (
       CLK  : in    std_logic;
       CLK2 : out   std_logic
     );
-  end component;
+  end component FREQDIV;
 
   signal adx,      gpu_x     : std_logic_vector(9 downto 0);
   signal ady,      gpu_y     : std_logic_vector(8 downto 0);
