@@ -65,7 +65,7 @@ architecture BEHAVIORAL of DATA_CORE is
       YY     : in    std_logic_vector(15 downto 0);
       ZZ     : out   std_logic_vector(15 downto 0)
     );
-  end component;
+  end component ALU8;
 
   component SELECT_YY is
     port (
@@ -76,7 +76,7 @@ architecture BEHAVIORAL of DATA_CORE is
       RR      : in    std_logic_vector(15 downto 0);
       YY      : out   std_logic_vector(15 downto 0)
     );
-  end component;
+  end component SELECT_YY;
 
   -- cpu registers
   --

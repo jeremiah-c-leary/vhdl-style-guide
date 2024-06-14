@@ -70,7 +70,7 @@ architecture BEHAVIORAL of BOARD_CPU is
       XM_WE        : out   std_logic;
       XM_CE        : out   std_logic
     );
-  end component;
+  end component CPU;
 
   signal xm_wdat  : std_logic_vector( 7 downto 0);
   signal xm_rdat  : std_logic_vector( 7 downto 0);
