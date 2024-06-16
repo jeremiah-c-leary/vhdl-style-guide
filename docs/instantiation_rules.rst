@@ -113,6 +113,8 @@ instantiation_005
 
 This rule checks the **port map** keywords are on their own line.
 
+|configuring_port_map_new_line_link|
+
 **Violation**
 
 .. code-block:: vhdl

@@ -91,3 +91,6 @@
 
 .. |configuring_subprogram_specification_statement_rules_link| replace::
    Refer to :ref:`configuring-subprogram-specification-statement-rules` for more configuration options.
+
+.. |configuring_port_map_new_line_link| replace::
+   Refer to :ref:`configuring-port-map-new-line` for configuration options.

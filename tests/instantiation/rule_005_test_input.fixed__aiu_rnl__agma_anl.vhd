@@ -17,36 +17,31 @@ begin
       PORT_3 => w_port_3
     );
 
-  U_INST1 : INST1
-    port map (
+  U_INST1 : INST1 port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
     );
 
-  U_INST1 : configuration CONFIG
-    port map (
+  U_INST1 : configuration CONFIG port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
     );
 
-  U_INST1 : entity FIFO
-    port map (
+  U_INST1 : entity FIFO port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
     );
 
-  U_INST1 : entity FIFO(rtl)
-    port map (
+  U_INST1 : entity FIFO(rtl) port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
     );
 
-  U_INST1 : component FIFO
-    port map (
+  U_INST1 : component FIFO port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
@@ -59,7 +54,8 @@ begin
       G_GEN_1 => 3,
       G_GEN_2 => 4,
       G_GEN_3 => 5
-    ) port map (
+    )
+ port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
@@ -70,7 +66,8 @@ begin
       G_GEN_1 => 3,
       G_GEN_2 => 4,
       G_GEN_3 => 5
-    )port map (
+    )
+ port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
@@ -175,36 +172,31 @@ port map (
       PORT_3 => w_port_3
     );
 
-  U_INST1 : INST1
-port map (
+  U_INST1 : INST1 port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
     );
 
-  U_INST1 : configuration CONFIG
-port map (
+  U_INST1 : configuration CONFIG port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
     );
 
-  U_INST1 : entity FIFO
-port map (
+  U_INST1 : entity FIFO port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
     );
 
-  U_INST1 : entity FIFO(rtl)
-port map (
+  U_INST1 : entity FIFO(rtl) port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
     );
 
-  U_INST1 : component FIFO
-port map (
+  U_INST1 : component FIFO port map (
       PORT_1 => w_port_1,
       PORT_2 => w_port_2,
       PORT_3 => w_port_3
