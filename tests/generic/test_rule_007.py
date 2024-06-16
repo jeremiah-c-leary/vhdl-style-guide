@@ -44,7 +44,7 @@ lExpected_upper_with_lower_prefix_and_suffix.append("")
 utils.read_file(os.path.join(sTestDir, "rule_007_test_input.fixed_upper_with_lower_prefix_and_suffix.vhd"), lExpected_upper_with_lower_prefix_and_suffix)
 
 
-class test_generic_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -55,7 +55,7 @@ class test_generic_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "generic")
         self.assertEqual(oRule.identifier, "007")
 
-        lExpected = [4, 5, 6, 16, 17, 18, 28, 29, 30, 40, 41, 42, 66, 78, 90]
+        lExpected = [4, 5, 6, 16, 17, 18, 28, 29, 30, 40, 41, 42, 66, 78, 90, 102, 126]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -76,7 +76,7 @@ class test_generic_rule(unittest.TestCase):
         oRule = generic.rule_007()
         oRule.prefix_exceptions = ["PREFIX_"]
 
-        lExpected = [4, 5, 6, 16, 17, 18, 28, 29, 30, 40, 41, 42, 54, 78, 90]
+        lExpected = [4, 5, 6, 16, 17, 18, 28, 29, 30, 40, 41, 42, 54, 78, 90, 114, 126]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -98,7 +98,7 @@ class test_generic_rule(unittest.TestCase):
         oRule = generic.rule_007()
         oRule.suffix_exceptions = ["_SUFFIX"]
 
-        lExpected = [4, 5, 6, 16, 17, 18, 28, 29, 30, 40, 41, 42, 54, 66, 90]
+        lExpected = [4, 5, 6, 16, 17, 18, 28, 29, 30, 40, 41, 42, 54, 66, 90, 102, 138]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -121,7 +121,7 @@ class test_generic_rule(unittest.TestCase):
         oRule.prefix_exceptions = ["PREFIX_"]
         oRule.suffix_exceptions = ["_SUFFIX"]
 
-        lExpected = [4, 5, 6, 16, 17, 18, 28, 29, 30, 40, 41, 42, 54, 66, 78]
+        lExpected = [4, 5, 6, 16, 17, 18, 28, 29, 30, 40, 41, 42, 54, 66, 78, 114, 138]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -144,7 +144,43 @@ class test_generic_rule(unittest.TestCase):
         oRule = generic.rule_007()
         oRule.case = "upper"
 
-        lExpected = [6, 18, 30, 51, 52, 53, 54, 63, 64, 65, 66, 75, 76, 77, 78, 87, 88, 89, 90]
+        lExpected = [
+            6,
+            18,
+            30,
+            51,
+            52,
+            53,
+            54,
+            63,
+            64,
+            65,
+            66,
+            75,
+            76,
+            77,
+            78,
+            87,
+            88,
+            89,
+            90,
+            99,
+            100,
+            101,
+            102,
+            111,
+            112,
+            113,
+            114,
+            123,
+            124,
+            125,
+            126,
+            135,
+            136,
+            137,
+            138,
+        ]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
@@ -167,6 +203,10 @@ class test_generic_rule(unittest.TestCase):
         oRule.prefix_exceptions = ["prefix_"]
 
         lExpected = [6, 18, 42, 51, 52, 53, 54, 63, 64, 65, 66, 75, 76, 77, 78, 87, 88, 89, 90]
+        lExpected.extend([99, 100, 101, 102])
+        lExpected.extend([111, 112, 113, 114])
+        lExpected.extend([123, 124, 125, 126])
+        lExpected.extend([135, 136, 137, 138])
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
@@ -190,6 +230,10 @@ class test_generic_rule(unittest.TestCase):
         oRule.suffix_exceptions = ["_suffix"]
 
         lExpected = [6, 30, 42, 51, 52, 53, 54, 63, 64, 65, 66, 75, 76, 77, 78, 87, 88, 89, 90]
+        lExpected.extend([99, 100, 101, 102])
+        lExpected.extend([111, 112, 113, 114])
+        lExpected.extend([123, 124, 125, 126])
+        lExpected.extend([135, 136, 137, 138])
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
@@ -214,6 +258,10 @@ class test_generic_rule(unittest.TestCase):
         oRule.suffix_exceptions = ["_suffix"]
 
         lExpected = [18, 30, 42, 51, 52, 53, 54, 63, 64, 65, 66, 75, 76, 77, 78, 87, 88, 89, 90]
+        lExpected.extend([99, 100, 101, 102])
+        lExpected.extend([111, 112, 113, 114])
+        lExpected.extend([123, 124, 125, 126])
+        lExpected.extend([135, 136, 137, 138])
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 

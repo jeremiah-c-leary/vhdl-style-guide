@@ -101,7 +101,7 @@ class test_entity_rule(unittest.TestCase):
         oRule.prefix_exceptions.append("e_")
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [6, 10, 14, 18, 22, 30, 34, 38, 42, 46, 54, 62, 66]
+        lExpected = [6, 10, 14, 18, 22, 34, 38, 46, 54, 62]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
@@ -146,7 +146,7 @@ class test_entity_rule(unittest.TestCase):
         oRule.prefix_exceptions.append("e_")
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [2, 6, 14, 18, 26, 30, 34, 38, 42, 50, 58, 62, 66]
+        lExpected = [2, 6, 14, 18, 26, 30, 42, 50, 58, 66]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
