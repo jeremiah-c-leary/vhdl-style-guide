@@ -180,6 +180,14 @@ def check_for_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iLi
         sActualSuffix = extract_suffix(sConstant, sDesiredSuffix)
         sConstant = remove_suffix(sConstant, sActualSuffix)
         sExpected = sDesiredPrefix + sConstant.lower() + sDesiredSuffix
+    elif prefix_detected(sObjectValue, self.prefix_exceptions):
+        sDesiredPrefix = get_matched_prefix(sObjectValue, self.prefix_exceptions)
+        sActualPrefix = extract_prefix(sObjectValue, sDesiredPrefix)
+        sConstant = remove_prefix(sObjectValue, sActualPrefix)
+    elif suffix_detected(sObjectValue, self.suffix_exceptions):
+        sDesiredSuffix = get_matched_suffix(sObjectValue, self.suffix_exceptions)
+        sActualSuffix = extract_suffix(sObjectValue, sDesiredSuffix)
+        sConstant = remove_suffix(sObjectValue, sActualSuffix)
 
     return fCheck(sObjectValue, sDesiredPrefix, sConstant, sDesiredSuffix, oToi, iIndex, iLine)
 
