@@ -63,6 +63,11 @@ Rules Enforcing Whitespace Rule Group
 * `entity_013 <../entity_rules.html#entity-013>`_
 * `entity_specification_100 <../entity_specification_rules.html#entity-specification-100>`_
 * `entity_specification_101 <../entity_specification_rules.html#entity-specification-101>`_
+* `external_signal_name_100 <../external_signal_name_rules.html#external-signal-name-100>`_
+* `external_signal_name_101 <../external_signal_name_rules.html#external-signal-name-101>`_
+* `external_signal_name_102 <../external_signal_name_rules.html#external-signal-name-102>`_
+* `external_signal_name_103 <../external_signal_name_rules.html#external-signal-name-103>`_
+* `external_signal_name_104 <../external_signal_name_rules.html#external-signal-name-104>`_
 * `file_100 <../file_rules.html#file-100>`_
 * `function_100 <../function_rules.html#function-100>`_
 * `function_101 <../function_rules.html#function-101>`_

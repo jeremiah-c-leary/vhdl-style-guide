@@ -124,6 +124,7 @@ from vsg.rules import entity
 from vsg.rules import entity_specification
 from vsg.rules import exit_statement
 from vsg.rules import exponent
+from vsg.rules import external_signal_name
 from vsg.rules import file_statement
 from vsg.rules import for_loop
 from vsg.rules import for_generate_statement
