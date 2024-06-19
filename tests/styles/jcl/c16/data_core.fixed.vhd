@@ -220,7 +220,7 @@ begin
         rr <= X"0000";
         ll <= X"0000";
         sp <= X"0000";
-      elsif (CE  = '1' and T2 = '1') then
+      elsif (CE = '1' and T2 = '1') then
         if (WE_RR = '1') then
           rr <= zz;
         end if;

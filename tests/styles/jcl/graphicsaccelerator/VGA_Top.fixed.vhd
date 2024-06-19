@@ -180,13 +180,13 @@ begin
 
   LED <= bufferwrite;
 
-  R <= rt when (p1region='0' and p2region='0') else
+  R <= rt when (p1region = '0' and p2region = '0') else
        not rt;
 
-  G <= gt when (p1region='0' and p2region='0') else
+  G <= gt when (p1region = '0' and p2region = '0') else
        not gt;
 
-  B <= bt when (p1region='0' and p2region='0') else
+  B <= bt when (p1region = '0' and p2region = '0') else
        not bt;
 
   INST_SEVENSEGMENT : SEVENSEGMENT

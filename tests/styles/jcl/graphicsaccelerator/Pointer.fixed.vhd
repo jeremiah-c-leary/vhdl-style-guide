@@ -30,8 +30,8 @@ architecture BEHAVIORAL of POINTER is
 
 begin
 
-  HERE <= '1' when SYNCX(9 downto 3)=rx(9 downto 3) and
-                   SYNCY(8 downto 3)=ry(8 downto 3) else
+  HERE <= '1' when SYNCX(9 downto 3) = rx(9 downto 3) and
+                   SYNCY(8 downto 3) = ry(8 downto 3) else
           '0';
   X    <= rx;
   Y    <= ry;
