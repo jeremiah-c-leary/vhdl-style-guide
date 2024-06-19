@@ -58,10 +58,15 @@ def get_toi_parameters(oToi):
 def insert_token(lTokens, index, oToken):
     try:
         oToken = update_code_tags(lTokens[index], oToken)
+    except TypeError:
+        oToken = update_code_tags(lTokens[0], oToken)
     except IndexError:
         oToken = update_code_tags(lTokens[0], oToken)
 
-    lTokens.insert(index, oToken)
+    if index == "end":
+        lTokens.insert(len(lTokens), oToken)
+    else:
+        lTokens.insert(index, oToken)
 
 
 def append_token(lTokens, oToken):
