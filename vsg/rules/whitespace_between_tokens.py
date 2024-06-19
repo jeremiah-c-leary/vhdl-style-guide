@@ -59,6 +59,8 @@ class Rule(whitespace.Rule):
             return int(self.number_of_spaces[2:])
         elif self.number_of_spaces_is_gt():
             return int(self.number_of_spaces[1:])
+        elif self.number_of_spaces_is_plus():
+            return int(self.number_of_spaces[:-1])
 
     def analyze_whitespace_token(self, oToi):
         if self.number_of_spaces_is_an_integer():
@@ -130,7 +132,7 @@ class Rule(whitespace.Rule):
             if isinstance(lTokens[1], parser.whitespace):
                 lTokens[1].set_value(" " * dAction["spaces"])
             else:
-                rules_utils.insert_whitespace(lTokens, dAction["spaces"])
+                rules_utils.insert_whitespace(lTokens, 1, num=dAction["spaces"])
         oViolation.set_tokens(lTokens)
 
 
