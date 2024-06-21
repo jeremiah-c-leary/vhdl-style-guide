@@ -3,8 +3,8 @@
 External Signal Name Rules
 --------------------------
 
-signal_100
-##########
+external_signal_name_100
+########################
 
 |phase_2| |error| |whitespace|
 
@@ -26,8 +26,8 @@ This rule checks for a single space after the double less than.
    << signal dut.fifo.wr_en : std_logic >>
    << signal dut.fifo.wr_en : std_logic >>
 
-signal_101
-##########
+external_signal_name_101
+########################
 
 |phase_2| |error| |whitespace|
 
@@ -47,8 +47,8 @@ This rule checks for a single space after the signal keyword.
 
    << signal dut.fifo.wr_en : std_logic >>
 
-signal_102
-##########
+external_signal_name_102
+########################
 
 |phase_2| |error| |whitespace|
 
@@ -70,8 +70,8 @@ This rule checks for a single space before the colon.
    << signal dut.fifo.wr_en : std_logic >>
    << signal dut.fifo.wr_en : std_logic >>
 
-signal_103
-##########
+external_signal_name_103
+########################
 
 |phase_2| |error| |whitespace|
 
@@ -93,8 +93,8 @@ This rule checks for a single space after the colon.
    << signal dut.fifo.wr_en : std_logic >>
    << signal dut.fifo.wr_en : std_logic >>
 
-signal_104
-##########
+external_signal_name_104
+########################
 
 |phase_2| |error| |whitespace|
 
@@ -116,8 +116,8 @@ This rule checks for a single space before the double greater than.
    << signal dut.fifo.wr_en : std_logic >>
    << signal dut.fifo.wr_en : std_logic >>
 
-signal_500
-##########
+external_signal_name_500
+########################
 
 |phase_6| |error| |case| |case_keyword|
 
