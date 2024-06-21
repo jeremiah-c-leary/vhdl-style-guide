@@ -65,7 +65,282 @@
 11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-12 | end architecture RTL;
+12 |   probe_signal <= << constant some.hierarchy : std_logic >> or
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.external_constant_name.double_less_than'>
+<class 'vsg.token.external_constant_name.constant_keyword'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.token.external_constant_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_constant_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+13 |                   << signal some.hieararchy : std_logic >> or
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+14 |                   << variable some.hierarchy : std_logic >>;
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+15 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 |   process (<< constant some.hierarchy : std_logic >>,
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.open_parenthesis'>
+<class 'vsg.token.external_constant_name.double_less_than'>
+<class 'vsg.token.external_constant_name.constant_keyword'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.token.external_constant_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_constant_name.double_greater_than'>
+<class 'vsg.token.sensitivity_list.comma'>
+--------------------------------------------------------------------------------
+17 |            << signal some.hieararchy : std_logic >>,
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.token.sensitivity_list.comma'>
+--------------------------------------------------------------------------------
+18 |            << variable some.hierarchy : std_logic >>) is
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.process_statement.close_parenthesis'>
+<class 'vsg.token.process_statement.is_keyword'>
+--------------------------------------------------------------------------------
+19 |   begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+20 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 |     probe_signal <= << constant some.hierarchy : std_logic >> or
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.token.external_constant_name.double_less_than'>
+<class 'vsg.token.external_constant_name.constant_keyword'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.token.external_constant_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_constant_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+22 |                     << signal some.hieararchy : std_logic >> or
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+23 |                     << variable some.hierarchy : std_logic >>;
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+24 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+25 |     if << constant some.hierarchy : std_logic >> or
+<class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.token.external_constant_name.double_less_than'>
+<class 'vsg.token.external_constant_name.constant_keyword'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.token.external_constant_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_constant_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+26 |                     << signal some.hieararchy : std_logic >> or
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+27 |                     << variable some.hierarchy : std_logic >> then
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+28 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+29 |     elsif << constant some.hierarchy : std_logic >> or
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.external_constant_name.double_less_than'>
+<class 'vsg.token.external_constant_name.constant_keyword'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.token.external_constant_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_constant_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+30 |                     << signal some.hieararchy : std_logic >> or
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+31 |                     << variable some.hierarchy : std_logic >> then
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+32 |     else
+<class 'vsg.token.if_statement.else_keyword'>
+--------------------------------------------------------------------------------
+33 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+34 |         sig1 := func(<< signal some.hierarchy : std_logic >>, << signal some.hierarchy : std_logic >>, << variable some.hierarchy : std_logic >>);
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+35 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 |         var1 := func(<< signal some.hierarchy : std_logic >>, << signal some.hierarchy : std_logic >>, << variable some.hierarchy : std_logic >>);
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+37 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+38 |     end if;
+<class 'vsg.token.if_statement.end_keyword'>
+<class 'vsg.token.if_statement.end_if_keyword'>
+<class 'vsg.token.if_statement.semicolon'>
+--------------------------------------------------------------------------------
+39 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 |     case << signal some.hierarchy : std_logic >> & << signal some.hierarchy : std_logic >> & << variable some.hierarchy : std_logic >> is
+<class 'vsg.token.case_statement.case_keyword'>
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.token.adding_operator.concat'>
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.token.adding_operator.concat'>
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.case_statement.is_keyword'>
+--------------------------------------------------------------------------------
+41 |     end case;
+<class 'vsg.token.case_statement.end_keyword'>
+<class 'vsg.token.case_statement.end_case_keyword'>
+<class 'vsg.token.case_statement.semicolon'>
+--------------------------------------------------------------------------------
+42 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+43 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+44 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+45 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
