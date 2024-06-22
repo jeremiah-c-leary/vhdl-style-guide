@@ -126,6 +126,7 @@ from vsg.rules import exit_statement
 from vsg.rules import exponent
 from vsg.rules import external_signal_name
 from vsg.rules import external_constant_name
+from vsg.rules import external_variable_name
 from vsg.rules import file_statement
 from vsg.rules import for_loop
 from vsg.rules import for_generate_statement

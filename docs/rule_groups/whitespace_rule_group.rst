@@ -73,6 +73,11 @@ Rules Enforcing Whitespace Rule Group
 * `external_signal_name_102 <../external_signal_name_rules.html#external-signal-name-102>`_
 * `external_signal_name_103 <../external_signal_name_rules.html#external-signal-name-103>`_
 * `external_signal_name_104 <../external_signal_name_rules.html#external-signal-name-104>`_
+* `external_variable_name_100 <../external_variable_name_rules.html#external-variable-name-100>`_
+* `external_variable_name_101 <../external_variable_name_rules.html#external-variable-name-101>`_
+* `external_variable_name_102 <../external_variable_name_rules.html#external-variable-name-102>`_
+* `external_variable_name_103 <../external_variable_name_rules.html#external-variable-name-103>`_
+* `external_variable_name_104 <../external_variable_name_rules.html#external-variable-name-104>`_
 * `file_100 <../file_rules.html#file-100>`_
 * `function_100 <../function_rules.html#function-100>`_
 * `function_101 <../function_rules.html#function-101>`_
