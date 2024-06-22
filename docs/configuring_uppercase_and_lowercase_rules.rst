@@ -97,7 +97,7 @@ There are several options to these rules:
 
 .. |regex_option| replace::
    :code:`regex`
-   
+
 .. |regex_description| replace::
    Enforce case based on regex string
 
