@@ -150,6 +150,11 @@ Rules Enforcing Whitespace
 * `entity_013 <entity_rules.html#entity-013>`_
 * `entity_specification_100 <entity_specification_rules.html#entity-specification-100>`_
 * `entity_specification_101 <entity_specification_rules.html#entity-specification-101>`_
+* `external_constant_name_100 <../external_constant_name_rules.html#external-constant-name-100>`_
+* `external_constant_name_101 <../external_constant_name_rules.html#external-constant-name-101>`_
+* `external_constant_name_102 <../external_constant_name_rules.html#external-constant-name-102>`_
+* `external_constant_name_103 <../external_constant_name_rules.html#external-constant-name-103>`_
+* `external_constant_name_104 <../external_constant_name_rules.html#external-constant-name-104>`_
 * `external_signal_name_100 <../external_signal_name_rules.html#external-signal-name-100>`_
 * `external_signal_name_101 <../external_signal_name_rules.html#external-signal-name-101>`_
 * `external_signal_name_102 <../external_signal_name_rules.html#external-signal-name-102>`_

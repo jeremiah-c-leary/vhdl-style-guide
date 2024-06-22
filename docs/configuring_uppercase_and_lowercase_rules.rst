@@ -286,6 +286,8 @@ Rules Enforcing Case
 
 * `exponent_500 <exponent_rules.html#exponent-500>`_
 
+* `external_constant_name_500 <../external_constant_name_rules.html#external-constant-name-500>`_
+
 * `external_signal_name_500 <../external_signal_name_rules.html#external-signal-name-500>`_
 
 * `file_002 <file_rules.html#file-002>`_
