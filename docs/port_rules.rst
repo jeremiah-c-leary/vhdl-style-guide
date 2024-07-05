@@ -725,6 +725,50 @@ This rule checks the semicolon is not on its own line.
        I_WIDTH : in integer
      );
 
+port_100
+########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for at least a single space before the assignment.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   I_WIDTH : in integer:= 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   I_WIDTH : in integer := 32;
+
+port_101
+########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the assignment.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   I_WIDTH : in integer :=32;
+   I_DEPTH : in integer :=    256;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   I_WIDTH : in integer := 32;
+   I_DEPTH : in integer := 256;
+
 port_600
 ########
 

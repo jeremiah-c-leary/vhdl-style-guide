@@ -215,6 +215,35 @@ Use explicit port mapping.
      OVERFLOW => OVERFLOW
    );
 
+generic_map_100
+###############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for at least a single space before the **=>** keyword in generic maps.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     WIDTH=> 32,
+     DEPTH => 512
+   )
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic map
+   (
+     WIDTH => 32,
+     DEPTH => 512
+   )
+
 generic_map_600
 ###############
 
