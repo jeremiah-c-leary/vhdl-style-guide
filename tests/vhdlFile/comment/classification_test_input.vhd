@@ -26,4 +26,6 @@ architecture RTL of FIFO is
 
 begin
 
+-- Comment */Not a delimited comment
+
 end architecture RTL;

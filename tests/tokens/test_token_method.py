@@ -47,7 +47,14 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append("of")
         lTokens.append(" ")
         lTokens.append("line")
-        lTokens.append("--This is a comment")
+        lTokens.append("--")
+        lTokens.append("This")
+        lTokens.append(" ")
+        lTokens.append("is")
+        lTokens.append(" ")
+        lTokens.append("a")
+        lTokens.append(" ")
+        lTokens.append("comment")
 
         lActual = tokens.create(sLine)
 
@@ -64,7 +71,15 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(" ")
         lTokens.append("line")
         lTokens.append(" ")
-        lTokens.append("--  This is a comment")
+        lTokens.append("--")
+        lTokens.append("  ")
+        lTokens.append("This")
+        lTokens.append(" ")
+        lTokens.append("is")
+        lTokens.append(" ")
+        lTokens.append("a")
+        lTokens.append(" ")
+        lTokens.append("comment")
 
         lActual = tokens.create(sLine)
 
@@ -81,7 +96,15 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(" ")
         lTokens.append("line")
         lTokens.append(" ")
-        lTokens.append("--  This is a comment")
+        lTokens.append("--")
+        lTokens.append("  ")
+        lTokens.append("This")
+        lTokens.append(" ")
+        lTokens.append("is")
+        lTokens.append(" ")
+        lTokens.append("a")
+        lTokens.append(" ")
+        lTokens.append("comment")
         lTokens.append("  ")
 
         lActual = tokens.create(sLine)
@@ -94,7 +117,15 @@ class testTokenMethod(unittest.TestCase):
         lTokens = []
 
         lTokens.append(" ")
-        lTokens.append("-- This is a comment")
+        lTokens.append("--")
+        lTokens.append(" ")
+        lTokens.append("This")
+        lTokens.append(" ")
+        lTokens.append("is")
+        lTokens.append(" ")
+        lTokens.append("a")
+        lTokens.append(" ")
+        lTokens.append("comment")
         lTokens.append("  ")
 
         lActual = tokens.create(sLine)
@@ -106,7 +137,15 @@ class testTokenMethod(unittest.TestCase):
 
         lTokens = []
 
-        lTokens.append("-- This is a comment")
+        lTokens.append("--")
+        lTokens.append(" ")
+        lTokens.append("This")
+        lTokens.append(" ")
+        lTokens.append("is")
+        lTokens.append(" ")
+        lTokens.append("a")
+        lTokens.append(" ")
+        lTokens.append("comment")
         lTokens.append("  ")
 
         lActual = tokens.create(sLine)
@@ -559,7 +598,13 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append(")")
         lTokens.append(";")
         lTokens.append("    ")
-        lTokens.append("-- parallel data in")
+        lTokens.append("--")
+        lTokens.append(" ")
+        lTokens.append("parallel")
+        lTokens.append(" ")
+        lTokens.append("data")
+        lTokens.append(" ")
+        lTokens.append("in")
 
         lActual = tokens.create(sLine)
 
@@ -610,7 +655,17 @@ class testTokenMethod(unittest.TestCase):
 
         lTokens = []
 
-        lTokens.append('--! some text "other text')
+        lTokens.append("--")
+        lTokens.append("!")
+        lTokens.append(" ")
+        lTokens.append("some")
+        lTokens.append(" ")
+        lTokens.append("text")
+        lTokens.append(" ")
+        lTokens.append('"')
+        lTokens.append("other")
+        lTokens.append(" ")
+        lTokens.append("text")
 
         lActual = tokens.create(sLine)
 
@@ -648,7 +703,10 @@ class testTokenMethod(unittest.TestCase):
     def test_double_quotes_in_comment(self):
         sLine = '--| "yet another string"'
         lTokens = []
-        lTokens.append('--| "yet another string"')
+        lTokens.append("--")
+        lTokens.append("|")
+        lTokens.append(" ")
+        lTokens.append('"yet another string"')
 
         lActual = tokens.create(sLine)
 
@@ -657,7 +715,10 @@ class testTokenMethod(unittest.TestCase):
     def test_single_quotes_in_comment(self):
         sLine = "--| 'a'"
         lTokens = []
-        lTokens.append("--| 'a'")
+        lTokens.append("--")
+        lTokens.append("|")
+        lTokens.append(" ")
+        lTokens.append("'a'")
 
         lActual = tokens.create(sLine)
 
@@ -874,7 +935,9 @@ class testTokenMethod(unittest.TestCase):
         lTokens = []
         lTokens.append("/*")
         lTokens.append(" ")
-        lTokens.append("--- ")
+        lTokens.append("--")
+        lTokens.append("-")
+        lTokens.append(" ")
         lTokens.append("*/")
 
         lActual = tokens.create(sLine)
@@ -884,7 +947,16 @@ class testTokenMethod(unittest.TestCase):
     def test_delimited_comment_after_comment(self):
         sLine = "-- Comment /* --- */"
         lTokens = []
-        lTokens.append("-- Comment /* --- */")
+        lTokens.append("--")
+        lTokens.append(" ")
+        lTokens.append("Comment")
+        lTokens.append(" ")
+        lTokens.append("/*")
+        lTokens.append(" ")
+        lTokens.append("--")
+        lTokens.append("-")
+        lTokens.append(" ")
+        lTokens.append("*/")
 
         lActual = tokens.create(sLine)
 
@@ -895,7 +967,8 @@ class testTokenMethod(unittest.TestCase):
         lTokens = []
         lTokens.append("/*")
         lTokens.append(" ")
-        lTokens.append("---")
+        lTokens.append("--")
+        lTokens.append("-")
         lTokens.append(" ")
 
         lActual = tokens.create(sLine)
@@ -905,8 +978,36 @@ class testTokenMethod(unittest.TestCase):
     def test_ending_delimited_comment_after_comment(self):
         sLine = "-- */"
         lTokens = []
-        lTokens.append("-- ")
+        lTokens.append("--")
+        lTokens.append(" ")
         lTokens.append("*/")
+
+        lActual = tokens.create(sLine)
+
+        self.assertEqual(lTokens, lActual)
+
+    def test_ending_delimited_comment_after_comment_and_text(self):
+        sLine = "-- */D]"
+        lTokens = []
+        lTokens.append("--")
+        lTokens.append(" ")
+        lTokens.append("*/")
+        lTokens.append("D")
+        lTokens.append("]")
+
+        lActual = tokens.create(sLine)
+
+        self.assertEqual(lTokens, lActual)
+
+    def test_ending_delimited_comment_after_comment_and_text_and_trailing_whitespace(self):
+        sLine = "-- */D]   "
+        lTokens = []
+        lTokens.append("--")
+        lTokens.append(" ")
+        lTokens.append("*/")
+        lTokens.append("D")
+        lTokens.append("]")
+        lTokens.append("   ")
 
         lActual = tokens.create(sLine)
 
