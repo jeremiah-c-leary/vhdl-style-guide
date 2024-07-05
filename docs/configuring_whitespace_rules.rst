@@ -14,9 +14,6 @@ There are a couple of options to these rules:
 | number_of_spaces         | Determines the number of whitespace characters to allow. |
 +--------------------------+----------------------------------------------------------+
 
-..  | align_to_next_tab        | When true, will add spaces to align with next valid tab. |
-..  +--------------------------+----------------------------------------------------------+
-
 The :code:`number_of_spaces` option can accept several values:
 
 +-----------------------+----------------------------------------------------------+
@@ -29,6 +26,10 @@ The :code:`number_of_spaces` option can accept several values:
 | >=[0-9][0-9]*         | The minimum number of spaces to enforce.                 |
 +-----------------------+----------------------------------------------------------+
 | [0-9][0-9]*+          | The minimum number of spaces to enforce.                 |
++-----------------------+----------------------------------------------------------+
+| <[0-9][0-9]*          | The maximum number of spaces to enforce.                 |
++-----------------------+----------------------------------------------------------+
+| <=[0-9][0-9]*         | The maximum number of spaces to enforce.                 |
 +-----------------------+----------------------------------------------------------+
 
 These options combined with the values allow complete control over the number of whitespaces allowed.
@@ -89,6 +90,24 @@ The same result could be achieved using this yaml:
    rule :
      signal_006:
         number_of_spaces: '1+'
+
+Example:  allow at most 4 spaces before colon
+#############################################
+.. code-block:: yaml
+
+   rule :
+     signal_006:
+        number_of_spaces: '<=4'
+
+In this example, there must be at most four whitespaces before the colon.
+The third signal declaration would be a violation.
+
+.. code-Block:: vhdl
+
+   signal wr_en : std_logic;
+   signal wr_en  : std_logic;
+   signal wr_en                : std_logic;
+
 
 Rules Enforcing Whitespace
 ##########################
