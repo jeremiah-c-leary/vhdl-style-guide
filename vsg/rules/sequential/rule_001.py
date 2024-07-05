@@ -1,7 +1,7 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.signal_assignment_statement.label)
@@ -11,7 +11,7 @@ lTokens.append(token.conditional_waveform_assignment.target)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of sequential statements.
 
     **Violation**
@@ -31,7 +31,7 @@ class rule_001(token_indent):
 
          wr_en <= '1';
          rd_en <= '0';
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'sequential', '001', lTokens)
+        super().__init__(lTokens)

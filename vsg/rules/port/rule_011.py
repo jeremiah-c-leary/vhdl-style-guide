@@ -1,7 +1,7 @@
-
-from vsg.rules import token_prefix_between_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_prefix_between_tokens
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.identifier)
@@ -11,9 +11,9 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 
 
 class rule_011(token_prefix_between_tokens):
-    '''
+    """
     This rule checks for valid prefixes on port identifiers.
-    The default port prefixes are: *i\_*, *o\_*, *io\_*.
+    The default port prefixes are: *i_*, *o_*, *io_*.
 
     |configuring_prefix_and_suffix_rules_link|
 
@@ -39,8 +39,8 @@ class rule_011(token_prefix_between_tokens):
          o_overflow : out   std_logic;
          io_data    : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
-        token_prefix_between_tokens.__init__(self, 'port', '011', lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
-        self.prefixes = ['i_', 'o_', 'io_']
+        super().__init__(lTokens, token.port_clause.open_parenthesis, token.port_clause.close_parenthesis)
+        self.prefixes = ["i_", "o_", "io_"]

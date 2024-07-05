@@ -1,0 +1,33 @@
+
+entity FIFO is
+
+  port (
+    I_PORT1 : in integer;
+    I_PORT2 : in std_logic;
+    I_PORTA : in t_user2;
+    I_PORT3 : in std_logic_vector(3 downto 0);
+    I_PORT4 : in signed(15 downto 0);
+    I_PORT5 : in unsigned(7 downto 0);
+    I_PORT6 : in std_ulogic;
+    I_PORT7 : in t_user1
+  );
+
+end entity FIFO;
+
+
+-- Violation below
+
+entity FIFO is
+
+  port (
+    I_PORT1 : in integer;
+    I_PORT2 : in std_logic;
+    I_PORTA : in t_user2;
+    I_PORT3 : in std_logic_vector(3 downto 0);
+    I_PORT4 : in signed(15 downto 0);
+    I_PORT5 : in unsigned(7 downto 0);
+    I_PORT6 : in std_ulogic;
+    I_PORT7 : in t_user1
+  );
+
+end entity FIFO;

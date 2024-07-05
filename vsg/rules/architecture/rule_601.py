@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg import violation
-
+from vsg import token, violation
 from vsg.rule_group import case
 
 lPortTokens = []
@@ -24,7 +23,7 @@ oEndToken = token.architecture_body.end_keyword
 
 
 class rule_601(case.Rule):
-    '''
+    """
     This rule checks for consistent capitalization of port names in an architecture body.
 
     **Violation**
@@ -62,10 +61,10 @@ class rule_601(case.Rule):
           register <= I_DATA;
 
        end architecture rtl;
-    '''
+    """
 
     def __init__(self):
-        case.Rule.__init__(self, name="architecture", identifier="601")
+        super().__init__()
         self.subphase = 2
         self.configuration_documentation_link = None
 
@@ -87,7 +86,7 @@ class rule_601(case.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dActions = oViolation.get_action()
-        lTokens[0].set_value(dActions['value'])
+        lTokens[0].set_value(dActions["value"])
         oViolation.set_tokens(lTokens)
 
 
@@ -164,11 +163,11 @@ def validate_port_name_in_token_list(self, lMyPorts, oToi):
 
 
 def create_violation(sToken, iToken, dPortMap, oToi):
-    sSolution = 'Port case mismatch:  Change ' + sToken + ' to ' + dPortMap[sToken.lower()]
+    sSolution = "Port case mismatch:  Change " + sToken + " to " + dPortMap[sToken.lower()]
     oNewToi = oToi.extract_tokens(iToken, iToken)
     oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
     dAction = {}
-    dAction['value'] = dPortMap[sToken.lower()]
+    dAction["value"] = dPortMap[sToken.lower()]
     oViolation.set_action(dAction)
     return oViolation
 
@@ -265,9 +264,9 @@ def extract_entity_name(oToi):
     lTokens = oToi.get_tokens()
     for oToken in lTokens:
         if isinstance(oToken, token.entity_declaration.identifier):
-            return oToken.get_value().lower()
+            return oToken.get_lower_value()
         if isinstance(oToken, token.architecture_body.entity_name):
-            return oToken.get_value().lower()
+            return oToken.get_lower_value()
 
 
 def extract_port_names(oToi):

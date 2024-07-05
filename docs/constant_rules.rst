@@ -173,7 +173,7 @@ Having a space makes it clearer where the assignment occurs on the line.
 constant_011
 ############
 
-The function of this rule has been superceeded by the following rules:
+The function of this rule has been superseded by the following rules:
 
 * ieee_500
 * subtype_002
@@ -303,10 +303,10 @@ This rule checks the indent of multiline constants that do not contain arrays.
 constant_015
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on constant identifiers.
-The default constant prefix is *c\_*.
+The default constant prefix is *c_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -398,6 +398,58 @@ Having a space makes it clearer where the assignment occurs on the line.
    constant size : integer := 1;
    constant width : t_type := (
 
+constant_101
+############
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant    size : integer := 1;
+   constant width : integer := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant size : integer := 1;
+   constant width : integer := 32;
+
+constant_200
+############
+
+|phase_3| |disabled| |error| |blank_line|
+
+This rule checks for a blank line below a constant declaration unless there is another constant definition.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   constant width  : integer := 32;
+   signal   height : integer := 4;
+
+   constant width  : integer := 32;
+   constant height : integer := 4;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   constant width  : integer := 32;
+   signal   height : integer := 4;
+
+   constant width  : integer := 32;
+   constant height : integer := 4;
+
 constant_400
 ############
 
@@ -430,10 +482,10 @@ This rule checks the alignment of assignment keywords in constant declarations.
 constant_600
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on constant identifiers.
-The default constant suffix is *\_c*.
+The default constant suffix is *_c*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -448,4 +500,3 @@ The default constant suffix is *\_c*.
 .. code-block:: vhdl
 
    constant my_const_c : integer;
-

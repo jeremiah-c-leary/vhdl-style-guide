@@ -4,7 +4,7 @@
 Configuring Uppercase and Lowercase Rules
 -----------------------------------------
 
-There are several rules that enforce either uppercase or lowercase.
+There are several rules that enforce upper_or_lower, uppercase or lowercase.
 
 There are several options to these rules:
 
@@ -17,14 +17,38 @@ There are several options to these rules:
 .. |lower_value| replace::
    :code:`lower`
 
+.. |upper_or_lower_value| replace::
+   :code:`upper_or_lower`
+
+.. |camelCase_value| replace::
+   :code:`camelCase`
+
+.. |PascalCase_value| replace::
+   :code:`PascalCase`
+
+.. |regex_value| replace::
+   :code:`regex`
+
 .. |case_option__upper| replace::
    |upper_value| = Enforce upper case
 
 .. |case_option__lower| replace::
    |lower_value| = Enforce lower case
 
+.. |case_option__upper_or_lower| replace::
+   |upper_or_lower_value| = Allow upper or lower case
+
+.. |case_option__camelCase| replace::
+   |camelCase_value| = Enforce camelCase
+
+.. |case_option__PascalCase| replace::
+   |PascalCase_value| = Enforce PascalCase
+
+.. |case_option__regex| replace::
+   |regex_value| = Enforce user defined regex
+
 .. |case_values| replace::
-   |upper_value|, |lower_value|
+   |upper_value|, |lower_value|, |upper_or_lower_value|, |camelCase_value|, |PascalCase_value|, |regex_value|
 
 .. |case_default_value| replace::
    |lower_value|
@@ -59,24 +83,42 @@ There are several options to these rules:
 .. |ce_values| replace::
    List of strings
 
+.. |regex_values| replace::
+   String
+
 .. |ce_default_value| replace::
    Empty list
+
+.. |regex_default_value| replace::
+   Empty String
 
 .. |ce_description| replace::
    Enforce case for items in the list.
 
-+----------------------------+---------------+----------------------+----------------------------+
-| Option                     | Values        | Default Value        | Description                |
-+============================+===============+======================+============================+
-| |case_option|              | |case_values| | |case_default_value| | * |case_option__upper|     |
-|                            |               |                      | * |case_option__lower|     |
-+----------------------------+---------------+----------------------+----------------------------+
-| |prefix_exceptions_option| | |pe_values|   | |pe_default_value|   | |pe_description|           |
-+----------------------------+---------------+----------------------+----------------------------+
-| |suffix_exceptions_option| | |se_values|   | |se_default_value|   | |se_description|           |
-+----------------------------+---------------+----------------------+----------------------------+
-| |case_exceptions_option|   | |ce_values|   | |ce_default_value|   | |ce_description|           |
-+----------------------------+---------------+----------------------+----------------------------+
+.. |regex_option| replace::
+   :code:`regex`
+
+.. |regex_description| replace::
+   Enforce case based on regex string
+
++----------------------------+------------------------+-----------------------+-----------------------------------+
+| Option                     | Values                 | Default Value         | Description                       |
++============================+========================+=======================+===================================+
+| |case_option|              | |case_values|          | |case_default_value|  | * |case_option__upper|            |
+|                            |                        |                       | * |case_option__lower|            |
+|                            |                        |                       | * |case_option__upper_or_lower|   |
+|                            |                        |                       | * |case_option__camelCase|        |
+|                            |                        |                       | * |case_option__PascalCase|       |
+|                            |                        |                       | * |case_option__regex|            |
++----------------------------+------------------------+-----------------------+-----------------------------------+
+| |prefix_exceptions_option| | |pe_values|            | |pe_default_value|    | |pe_description|                  |
++----------------------------+------------------------+-----------------------+-----------------------------------+
+| |suffix_exceptions_option| | |se_values|            | |se_default_value|    | |se_description|                  |
++----------------------------+------------------------+-----------------------+-----------------------------------+
+| |case_exceptions_option|   | |ce_values|            | |ce_default_value|    | |ce_description|                  |
++----------------------------+------------------------+-----------------------+-----------------------------------+
+| |regex_option|             | |regex_values|         | |regex_default_value| | |regex_description|               |
++----------------------------+------------------------+-----------------------+-----------------------------------+
 
 This is an example of how to configure these options.
 
@@ -91,6 +133,8 @@ This is an example of how to configure these options.
           - '_G'
         case_exceptions:
           = 'IEEE'
+        regex:
+          = ''
 
 The following code snippet is used in the following examples:
 
@@ -117,6 +161,16 @@ Example: |case_option| set to |upper_value|
    constant C_DATA_WIDTH : positive := 32;
    constant ADDR_WIDTH_C : positive := 8;
 
+Example: |case_option| set to |upper_or_lower_value|
+####################################################
+
+This option will not perform any updates to the code as the case could be either upper or lower.
+
+.. code-block:: vhdl
+
+   constant c_DATA_width : positive := 32;
+   constant addr_WIDTH_c : positive := 8;
+
 Example: |case_option| set to |upper_value| and |prefix_exceptions_option| set to :code:`c_`
 ############################################################################################
 
@@ -140,6 +194,16 @@ Example: |case_option| set to |upper_value| and |case_exceptions_option| set to 
 
    constant C_DATA_WIDTH : positive := 32;
    constant addr_WIDTH_c : positive := 8;
+
+Example: |case_option| set to |regex_value| and |regex_option| set to :code:`[A-Z][A-Za-z\d]*`
+##############################################################################################
+
+The following constant identifiers would pass with the defined regular expression.
+
+.. code-block:: vhdl
+
+   constant SPIAccess : std_logic;
+   constant ADCRegisters : std_logic;
 
 Example: Changing Multiple Case Rules
 #####################################
@@ -171,6 +235,10 @@ Rules Enforcing Case
 * `architecture_020 <architecture_rules.html#architecture-020>`_
 * `architecture_021 <architecture_rules.html#architecture-021>`_
 * `architecture_028 <architecture_rules.html#architecture-028>`_
+
+* `assert_500 <assert_rules.html#assert-500>`_
+* `assert_501 <assert_rules.html#assert-501>`_
+* `assert_502 <assert_rules.html#assert-502>`_
 
 * `attribute_500 <attribute_rules.html#attribute-500>`_
 

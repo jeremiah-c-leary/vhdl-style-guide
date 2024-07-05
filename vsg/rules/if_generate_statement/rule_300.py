@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent as Rule
 
 lTokens = []
 lTokens.append(token.if_generate_statement.elsif_keyword)
 
 
 class rule_300(Rule):
-    '''
+    """
     This rule checks the indent of the *elsif* keyword.
 
     **Violation**
@@ -26,7 +26,7 @@ class rule_300(Rule):
        ram_array : if condition generate
        elsif condition generate
        end generate;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, 'if_generate_statement', '300', lTokens)
+        super().__init__(lTokens)

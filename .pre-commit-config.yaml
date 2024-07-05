@@ -1,0 +1,85 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        # These are abuse of python import mechanism
+        # please conisder to remove in favor of direct module import.
+        exclude: "^(\
+          vsg/rules/__init__\\.py|\
+          vsg/vhdlFile/extract/__init__\\.py\
+          )$"
+
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.1.0
+    hooks:
+      - id: add-trailing-comma
+
+  # repeat as above changes may cause rework
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.4
+    hooks:
+      - id: forbid-tabs
+        exclude: '^(.*\.vhd|.*\.svg)$'
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-json
+        # * config_error - intentional
+        # * *_run_config.json - legacy not json compliant
+        exclude: "^(\
+          tests/vsg/config_error\\.json\
+          )$"
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+        exclude: '^(.*\.svg)$'
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: fix-byte-order-marker
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        exclude: "^(\
+          tests/styles/code_examples/trailing_whitespace\\.vhd|\
+          tests/styles/jcl/trailing_whitespace.fixed\\.vhd|\
+          tests/whitespace/.*\\.vhd\
+          )$"
+      - id: fix-encoding-pragma
+
+  - repo: https://github.com/mgedmin/check-manifest
+    rev: "0.49"
+    hooks:
+      - id: check-manifest
+        additional_dependencies:
+          - setuptools-git-versioning
+        args:
+          - --no-build-isolation
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
+        args:
+          - -I.codespell-ignore
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks: []
+      #- id: flake8

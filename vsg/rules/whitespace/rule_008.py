@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, violation
 from vsg.rule_group import whitespace
+from vsg.vhdlFile import utils
 
 
 class rule_008(whitespace.Rule):
-    '''
+    """
     This rule checks for spaces after the **std_logic_vector** keyword.
 
     **Violation**
@@ -23,11 +22,11 @@ class rule_008(whitespace.Rule):
 
        signal data    : std_logic_vector(7 downto 0);
        signal counter : std_logic_vector(7 downto 0);
-    '''
+    """
 
     def __init__(self):
-        whitespace.Rule.__init__(self, 'whitespace', '008')
-        self.solution = 'Remove spaces after std_logic_vector'
+        super().__init__()
+        self.solution = "Remove spaces after std_logic_vector"
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
@@ -36,11 +35,10 @@ class rule_008(whitespace.Rule):
     def _analyze(self, lToi):
         oToi = lToi[0]
         iLine, lTokens = utils.get_toi_parameters(oToi)
-        for iToken, oToken in enumerate(lTokens[:len(lTokens) - 2]):
-
+        for iToken, oToken in enumerate(lTokens[: len(lTokens) - 2]):
             iLine = utils.increment_line_number(iLine, oToken)
 
-            if oToken.get_value().lower() == 'std_logic_vector':
+            if oToken.get_lower_value() == "std_logic_vector":
                 if utils.are_next_consecutive_token_types([parser.whitespace, parser.open_parenthesis], iToken + 1, lTokens):
                     lExtractedTokens = oToi.extract_tokens(iToken, iToken + 1)
                     oViolation = violation.New(iLine, lExtractedTokens, self.solution)

@@ -1,0 +1,3 @@
+rule:
+  global:
+    indent_style: 'smart_tabs'

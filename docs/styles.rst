@@ -97,7 +97,7 @@ Create a configuration with the following:
    ---
    rule:
      global:
-       indentSize: 3
+       indent_size: 3
      entity_008:
        case: lower
    ...

@@ -18,24 +18,31 @@ There are several options to these rules:
 .. |require_blank_line| replace::
    :code:`require_blank_line`
 
+.. |require_blank_line_unless_pragma| replace::
+   :code:`require_blank_line_unless_pragma`
+
 .. |style__no_blank_line| replace::
    :code:`no_blank_line` = Removes blank lines on the line above or below
 
 .. |style__require_blank_line| replace::
    :code:`require_blank_line` = Requires a blank line on the line above or below
 
+.. |style__require_blank_line_unless_pragma| replace::
+   :code:`require_blank_line_unless_pragma` = Requires a blank line on the line above or below unless the line has a pragma
+
 .. |style_values| replace::
-   :code:`no_blank_line`, :code:`require_blank_line`
+   :code:`no_blank_line`, :code:`require_blank_line`, :code:`require_blank_line_unless_pragma`
 
 .. |style_default| replace::
    Rule dependent
 
-+-------------------------+----------------+-----------------+----------------------------------------------+
-| Option                  |   Values       | Default         | Description                                  |
-+=========================+================+=================+==============================================+
-| |style|                 | |style_values| | |style_default| | * |style__no_blank_line|                     |
-|                         |                |                 | * |style__require_blank_line|                |
-+-------------------------+----------------+-----------------+----------------------------------------------+
++-------------------------+------------------------------------+-----------------+----------------------------------------------+
+| Option                  |   Values                           | Default         | Description                                  |
++=========================+====================================+=================+==============================================+
+| |style|                 | |no_blank_line|                    | |style_default| | * |style__no_blank_line|                     |
+|                         | |require_blank_line|               |                 | * |style__require_blank_line|                |
+|                         | |require_blank_line_unless_pragma| |                 | * |style__require_blank_line_unless_pragma|  |
++-------------------------+------------------------------------+-----------------+----------------------------------------------+
 
 This is an example of how to configure the options.
 
@@ -99,6 +106,30 @@ The following code would pass with this option:
    architecture rtl of fifo is
      signal s_sig1 : std_logic;
 
+Example: |style| set to |require_blank_line_unless_pragma|
+##########################################################
+
+The following code would fail with this option:
+
+.. code-Block:: vhdl
+
+   architecture rtl of fifo is
+     -- synthesis translate_off
+
+   architecture rtl of fifo is
+     signal s_sig1 : std_logic;
+
+The following code would pass with this option:
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+     -- synthesis translate_off
+
+   architecture rtl of fifo is
+
+     signal s_sig1 : std_logic;
+
 Rules Enforcing Blank Lines
 ###########################
 
@@ -117,6 +148,7 @@ Rules Enforcing Blank Lines
 * `case_200 <case_rules.html#case-200>`_
 * `component_016 <component_rules.html#component-016>`_
 * `component_018 <component_rules.html#component-018>`_
+* `constant_200 <constant_rules.html#constant-200>`_
 * `context_023 <context_rules.html#context-023>`_
 * `context_024 <context_rules.html#context-024>`_
 * `context_025 <context_rules.html#context-025>`_
@@ -136,6 +168,8 @@ Rules Enforcing Blank Lines
 * `package_body_203 <package_body_rules.html#package-body-203>`_
 * `port_001 <port_rules.html#port-001>`_
 * `port_map_200 <port_map_rules.html#port-map-200>`_
+* `pragma_401 <../pragma_rules.html#pragma-401>`_
+* `pragma_403 <../pragma_rules.html#pragma-403>`_
 * `process_011 <process_rules.html#process-011>`_
 * `process_021 <process_rules.html#process-021>`_
 * `process_022 <process_rules.html#process-022>`_
@@ -143,9 +177,11 @@ Rules Enforcing Blank Lines
 * `process_026 <process_rules.html#process-026>`_
 * `process_027 <process_rules.html#process-027>`_
 * `record_type_definition_200 <record_type_definition_rules.html#record-type-definition-200>`_
+* `signal_200 <signal_rules.html#signal-200>`_
 * `subprogram_body_201 <subprogram_body_rules.html#subprogram-body-201>`_
 * `subprogram_body_202 <subprogram_body_rules.html#subprogram-body-202>`_
 * `subprogram_body_203 <subprogram_body_rules.html#subprogram-body-203>`_
 * `subprogram_body_204 <subprogram_body_rules.html#subprogram-body-204>`_
 * `subprogram_body_205 <subprogram_body_rules.html#subprogram-body-205>`_
 * `type_011 <type_rules.html#type-011>`_
+* `type_200 <type_rules.html#type-200>`_

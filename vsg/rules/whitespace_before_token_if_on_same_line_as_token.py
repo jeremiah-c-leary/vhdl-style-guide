@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 from vsg import parser
-
 from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
 
 class Rule(WhitespaceRule):
-    '''
+    """
     Checks for a single space before a token.
 
     Parameters
@@ -22,10 +22,10 @@ class Rule(WhitespaceRule):
 
     oSecondToken : token object
        Token to use as an exclusion.
-    '''
+    """
 
-    def __init__(self, name, identifier):
-        WhitespaceRule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        WhitespaceRule.__init__(self)
         self.lTokens = []
         self.oFirstToken = None
         self.oExceptToken = None

@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
@@ -9,7 +9,7 @@ lTokens.append([token.process_statement.close_parenthesis, token.process_stateme
 
 
 class rule_014(Rule):
-    '''
+    """
     This rule checks for a single space before the **is** keyword.
 
     |configuring_whitespace_rules_link|
@@ -31,6 +31,7 @@ class rule_014(Rule):
                          rd_full, wr_full
                         ) is
        begin
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, 'process', '014', lTokens)
+        super().__init__(lTokens)

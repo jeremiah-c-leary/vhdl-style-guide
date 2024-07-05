@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.loop_statement.loop_keyword)
 
 
 class rule_300(token_indent):
-    '''
+    """
     This rule checks the indentation of the **loop** keyword.
 
     **Violation**
@@ -36,7 +36,7 @@ class rule_300(token_indent):
          end loop;
 
        end process;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'loop_statement', '300', lTokens)
+        super().__init__(lTokens)

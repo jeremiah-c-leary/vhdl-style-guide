@@ -335,7 +335,7 @@ This rule checks the indent of the end package declaration.
 package_016
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on package identifiers.
 The default package suffix is *_pkg*.
@@ -357,7 +357,7 @@ The default package suffix is *_pkg*.
 package_017
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on package identifiers.
 The default package prefix is *pkg_*.
@@ -512,4 +512,3 @@ This rule checks the colons are in the same column for all attribute specificati
      attribute mark_debug of wr_en        : signal is "true";
      attribute mark_debug of almost_empty : signal is "true";
      attribute mark_debug of full         : signal is "true";
-

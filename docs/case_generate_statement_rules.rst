@@ -75,4 +75,3 @@ This rule checks the *generate* keyword has proper case.
 .. code-block:: vhdl
 
    case expression generate
-

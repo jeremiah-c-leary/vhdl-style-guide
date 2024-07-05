@@ -1,14 +1,14 @@
-
-from vsg.rules import split_line_at_token
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import split_line_at_token
 
 lTokens = []
 lTokens.append(token.use_clause.keyword)
 
 
 class rule_011(split_line_at_token):
-    '''
+    """
     This rule checks the **use** keyword is on its own line.
 
     **Violation**
@@ -23,8 +23,8 @@ class rule_011(split_line_at_token):
 
        context c1 is library ieee;
            use ieee.std_logic_1164.all; end context c1;
-    '''
+    """
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'library', '011', lTokens)
-        self.solution = 'Move *use* to it\'s own line.'
+        super().__init__(lTokens)
+        self.solution = "Move *use* to it's own line."

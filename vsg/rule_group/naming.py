@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 
 from vsg import rule
 
 
 class Rule(rule.Rule):
-    '''
+    """
     Class for assigning rules to the naming group.
 
     Parameters
@@ -14,10 +15,11 @@ class Rule(rule.Rule):
 
     identifier : string
        unique identifier.  Usually in the form of 00N.
-    '''
+    """
 
-    def __init__(self, name, identifier):
-        rule.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        super().__init__()
         self.phase = 7
-        self.groups.append('naming')
-        self.configuration_documentation_link = 'configuring_prefix_and_suffix_rules_link'
+        self.groups.append("naming")
+        self.configuration_documentation_link = "configuring_prefix_and_suffix_rules_link"
+        self.remap = False

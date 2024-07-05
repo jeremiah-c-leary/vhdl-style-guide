@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 
 from vsg import token
-
 from vsg.rules import token_prefix
 
 lTokens = []
@@ -9,7 +9,7 @@ lTokens.append(token.block_statement.end_block_label)
 
 
 class rule_601(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on block labels.
     The default prefix is *blk_*.
 
@@ -26,9 +26,9 @@ class rule_601(token_prefix):
     .. code-block:: vhdl
 
        blk_block_label : block is
-    '''
+    """
 
     def __init__(self):
-        token_prefix.__init__(self, 'block', '601', lTokens)
-        self.prefixes = ['blk_']
-        self.solution = 'block label'
+        super().__init__(lTokens)
+        self.prefixes = ["blk_"]
+        self.solution = "block label"

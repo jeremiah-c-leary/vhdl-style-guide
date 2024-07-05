@@ -1,0 +1,10 @@
+---
+# Disable rules
+rule:
+# Disable this rule because ...
+    port_007:
+      disable: true
+# These are global rules
+    global:
+       indent_size: 2
+...

@@ -3,6 +3,54 @@
 Conditional Waveforms Rules
 ---------------------------
 
+conditional_waveforms_001
+#########################
+
+|phase_1| |error| |structure|
+
+This rule checks for code after the **else** keyword.
+
+.. NOTE:: There is a configuration option :code:`allow_single_line` which allows single line concurrent statements.
+
+:code:`allow_single_line` set to :code:`no` (Default)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_en <= '0' when overflow = '0' else '1';
+   wr_en <= '0' when overflow = '0' else '1' when underflow = '1' else sig_a;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_en <= '0' when overflow = '0' else
+            '1';
+   wr_en <= '0' when overflow = '0' else
+            '1' when underflow = '1' else
+            sig_a;
+
+:code:`allow_single_line` set to :code:`yes`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Violation**
+
+.. code-block:: vhdl
+
+   wr_en <= '0' when overflow = '0' else '1';
+   wr_en <= '0' when overflow = '0' else '1' when underflow = '1' else sig_a;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   wr_en <= '0' when overflow = '0' else '1';
+   wr_en <= '0' when overflow = '0' else
+            '1' when underflow = '1' else
+            sig_a;
+
 conditional_waveforms_100
 #########################
 
@@ -128,4 +176,3 @@ This rule checks the **else** keyword has proper case.
 .. code-block:: vhdl
 
    wr_en <= '0' when (rd_en = '0') else '1';
-

@@ -1,16 +1,16 @@
-
-from vsg.rules import token_suffix
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_suffix
 
 lTokens = []
 lTokens.append(token.signal_declaration.identifier)
 
 
 class rule_600(token_suffix):
-    '''
+    """
     This rule checks for valid suffixes on signal identifiers.
-    Default signal suffix is *\_s*.
+    Default signal suffix is *_s*.
 
     |configuring_prefix_and_suffix_rules_link|
 
@@ -27,9 +27,9 @@ class rule_600(token_suffix):
 
        signal wr_en_s : std_logic;
        signal rd_en_s : std_logic;
-    '''
+    """
 
     def __init__(self):
-        token_suffix.__init__(self, 'signal', '600', lTokens)
-        self.suffixes = ['_s']
-        self.solution = 'Signal identifiers'
+        super().__init__(lTokens)
+        self.suffixes = ["_s"]
+        self.solution = "Signal identifiers"

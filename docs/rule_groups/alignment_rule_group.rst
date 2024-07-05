@@ -79,4 +79,3 @@ Rules Enforcing Alignment Rule Group
 * `variable_assignment_004 <../variable_assignment_rules.html#variable-assignment-004>`_
 * `variable_assignment_400 <../variable_assignment_rules.html#variable-assignment-400>`_
 * `variable_assignment_401 <../variable_assignment_rules.html#variable-assignment-401>`_
-

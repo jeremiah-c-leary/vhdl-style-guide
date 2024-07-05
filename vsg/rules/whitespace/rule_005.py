@@ -1,16 +1,15 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.vhdlFile import utils
+from vsg import parser, violation
 from vsg.rule_group import whitespace
+from vsg.vhdlFile import utils
 
 lTokens = []
 lTokens.append(parser.open_parenthesis)
 
 
 class rule_005(whitespace.Rule):
-    '''
+    """
     This rule checks for spaces after an open parenthesis.
 
     .. NOTE::
@@ -31,11 +30,11 @@ class rule_005(whitespace.Rule):
        signal data        : std_logic_vector(31 downto 0);
        signal byte_enable : std_logic_vector( 3 downto 0);
        signal width       : std_logic_vector(g_width - 1 downto 0);
-    '''
+    """
 
     def __init__(self):
-        whitespace.Rule.__init__(self, 'whitespace', '005')
-        self.solution = 'Remove spaces after open (.'
+        super().__init__()
+        self.solution = "Remove spaces after open (."
         self.iSpaces = 0
         self.lTokens = [parser.open_parenthesis]
         self.configuration_documentation_link = None
@@ -44,7 +43,6 @@ class rule_005(whitespace.Rule):
         return oFile.get_n_tokens_before_and_after_tokens(2, self.lTokens)
 
     def _analyze(self, lToi):
-
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
 

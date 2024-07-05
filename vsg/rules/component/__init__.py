@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from .rule_001 import rule_001
 from .rule_002 import rule_002
@@ -20,3 +21,4 @@ from .rule_018 import rule_018
 from .rule_019 import rule_019
 from .rule_020 import rule_020
 from .rule_021 import rule_021
+from .rule_022 import rule_022

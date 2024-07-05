@@ -1,0 +1,97 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+2 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+3 |   file F1 : IntegerFile;
+<class 'vsg.token.file_declaration.file_keyword'>
+<class 'vsg.token.file_declaration.identifier'>
+<class 'vsg.token.file_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.file_declaration.semicolon'>
+--------------------------------------------------------------------------------
+4 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 |   file F2 : IntegerFile is "test.dat";
+<class 'vsg.token.file_declaration.file_keyword'>
+<class 'vsg.token.file_declaration.identifier'>
+<class 'vsg.token.file_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.file_open_information.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.file_declaration.semicolon'>
+--------------------------------------------------------------------------------
+6 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 |   file F3 : IntegerFile open WRITE_MODEW is "test.dat";
+<class 'vsg.token.file_declaration.file_keyword'>
+<class 'vsg.token.file_declaration.identifier'>
+<class 'vsg.token.file_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.file_open_information.open_keyword'>
+<class 'vsg.token.file_open_information.file_open_kind_expression'>
+<class 'vsg.token.file_open_information.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.file_declaration.semicolon'>
+--------------------------------------------------------------------------------
+8 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 |   file F1, F2, F3 : IntegerFile open WRITE_MODEW is "test.dat";
+<class 'vsg.token.file_declaration.file_keyword'>
+<class 'vsg.token.file_declaration.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.file_declaration.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.file_declaration.identifier'>
+<class 'vsg.token.file_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.file_open_information.open_keyword'>
+<class 'vsg.token.file_open_information.file_open_kind_expression'>
+<class 'vsg.token.file_open_information.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.file_declaration.semicolon'>
+--------------------------------------------------------------------------------
+10 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 |   file F1 : IntegerFile open WRITE_MODEM is (something(else));
+<class 'vsg.token.file_declaration.file_keyword'>
+<class 'vsg.token.file_declaration.identifier'>
+<class 'vsg.token.file_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.file_open_information.open_keyword'>
+<class 'vsg.token.file_open_information.file_open_kind_expression'>
+<class 'vsg.token.file_open_information.is_keyword'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.file_declaration.semicolon'>
+--------------------------------------------------------------------------------
+12 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+14 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

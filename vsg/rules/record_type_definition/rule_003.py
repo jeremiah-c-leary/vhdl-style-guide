@@ -1,14 +1,14 @@
-
-from vsg.rules import split_line_at_token as Rule
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import split_line_at_token as Rule
 
 lTokens = []
 lTokens.append(token.record_type_definition.end_keyword)
 
 
 class rule_003(Rule):
-    '''
+    """
     This rule checks the **end** keyword is on its own line.
 
     **Violation**
@@ -28,8 +28,8 @@ class rule_003(Rule):
          a : std_logic;
          b : std_logic;
        end record;
-    '''
+    """
 
     def __init__(self):
-        Rule.__init__(self, 'record_type_definition', '003', lTokens)
-        self.solution = 'Move *end* keyword and code after it to the next line'
+        super().__init__(lTokens)
+        self.solution = "Move *end* keyword and code after it to the next line"

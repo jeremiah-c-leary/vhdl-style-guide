@@ -1,7 +1,7 @@
-
-from vsg.rules import token_case_in_range_bounded_by_tokens
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_case_in_range_bounded_by_tokens
 
 lTokens = []
 lTokens.append(token.mode.in_keyword)
@@ -15,7 +15,7 @@ oEnd = token.port_clause.close_parenthesis
 
 
 class rule_019(token_case_in_range_bounded_by_tokens):
-    '''
+    """
     This rule checks the port direction has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -41,8 +41,8 @@ class rule_019(token_case_in_range_bounded_by_tokens):
          OVERFLOW : out   std_logic;
          DATA     : inout std_logic
        );
-    '''
+    """
 
     def __init__(self):
-        token_case_in_range_bounded_by_tokens.__init__(self, 'port', '019', lTokens, oStart, oEnd)
-        self.groups.append('case::keyword')
+        super().__init__(lTokens, oStart, oEnd)
+        self.groups.append("case::keyword")

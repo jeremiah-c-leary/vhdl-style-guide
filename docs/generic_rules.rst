@@ -362,10 +362,10 @@ This rule checks for blank lines before the ); of the generic declaration.
 generic_020
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on generic identifiers.
-The default generic prefix is *g\_*.
+The default generic prefix is *g_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -410,10 +410,10 @@ This rule checks the semicolon is not on its own line.
 generic_600
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on generic identifiers.
-The default generic suffix is *\_g*.
+The default generic suffix is *_g*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -428,4 +428,3 @@ The default generic suffix is *\_g*.
 .. code-block:: vhdl
 
    generic(my_generic_g : integer);
-

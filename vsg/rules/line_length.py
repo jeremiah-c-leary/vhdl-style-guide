@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 
 
-from vsg.rule_group import length
 from vsg import violation
+from vsg.rule_group import length
 
 
 class line_length(length.Rule):
-    '''
+    """
     Checks for a at least a single space before a token.
 
     Parameters
@@ -17,10 +18,10 @@ class line_length(length.Rule):
     identifier : string
        unique identifier.  Usually in the form of 00N.
 
-    '''
+    """
 
-    def __init__(self, name, identifier):
-        length.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self):
+        super().__init__()
         self.disable = False
         self.length = 120
 
@@ -29,6 +30,6 @@ class line_length(length.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-            self.solution = 'Reduce line to less than ' + str(self.length) + ' characters'
+            self.solution = "Reduce line to less than " + str(self.length) + " characters"
             oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
             self.add_violation(oViolation)

@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.procedure_specification.close_parenthesis)
 
 
 class rule_006(token_indent):
-    '''
+    """
     This rule checks the indent of the closing parenthesis if it is on its own line.
 
     **Violation**
@@ -29,7 +29,7 @@ class rule_006(token_indent):
          constant a : in integer;
          signal d : out std_logic
        ) is
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'procedure', '006', lTokens)
+        super().__init__(lTokens)

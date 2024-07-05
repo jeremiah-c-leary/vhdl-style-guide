@@ -63,6 +63,7 @@ Rules Enforcing Indent Rule Group
 * `port_002 <../port_rules.html#port-002>`_
 * `port_004 <../port_rules.html#port-004>`_
 * `port_015 <../port_rules.html#port-015>`_
+* `pragma_300 <../pragma_rules.html#pragma-300>`_
 * `procedure_001 <../procedure_rules.html#procedure-001>`_
 * `procedure_002 <../procedure_rules.html#procedure-002>`_
 * `procedure_003 <../procedure_rules.html#procedure-003>`_
@@ -90,4 +91,3 @@ Rules Enforcing Indent Rule Group
 * `variable_001 <../variable_rules.html#variable-001>`_
 * `variable_assignment_001 <../variable_assignment_rules.html#variable-assignment-001>`_
 * `wait_001 <../wait_rules.html#wait-001>`_
-

@@ -113,6 +113,8 @@ instantiation_005
 
 This rule checks the **port map** keywords are on their own line.
 
+|configuring_port_map_new_line_link|
+
 **Violation**
 
 .. code-block:: vhdl
@@ -404,7 +406,7 @@ Following extra configurations are supported:
 
 .. code-block:: vhdl
 
-       wr_en    => write_enable,        -- Wrte enable
+       wr_en    => write_enable,        -- Write enable
        rd_en    => read_enable,    -- Read enable
        overflow => overflow,         -- FIFO has overflowed
 
@@ -412,7 +414,7 @@ Following extra configurations are supported:
 
 .. code-block:: vhdl
 
-       wr_en    => write_enable, -- Wrte enable
+       wr_en    => write_enable, -- Write enable
        rd_en    => read_enable,  -- Read enable
        overflow => overflow,     -- FIFO has overflowed
 
@@ -491,7 +493,7 @@ This rule checks for the **component** keyword for a component instantiation.
 instantiation_034
 #################
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for component versus direct instantiations.
 
@@ -549,7 +551,7 @@ This rule checks the semicolon is not on its own line.
 instantiation_600
 #################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on instantiation labels.
 The default suffix is *_inst*.
@@ -571,7 +573,7 @@ The default suffix is *_inst*.
 instantiation_601
 #################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on instantiation labels.
 The default prefix is *inst_*.
@@ -589,4 +591,3 @@ The default prefix is *inst_*.
 .. code-block:: vhdl
 
    inst_fifo_32x2k : FIFO
-

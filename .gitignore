@@ -8,13 +8,16 @@ dist
 # Sphinx
 _build
 
-# This version file should never be committed
-vsg/version_info.*
+# Tox
+.tox
+build.out/
+
+# Ignore release notes
+release_notes.txt
 
 # IDE files
 .idea/
 .vscode/
 
 # Ignore external repos used for tests
-vsg/tests/external_repos/repos
-
+tests/external_repos/repos

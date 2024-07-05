@@ -1,0 +1,146 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture rtl of fifo is begin
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 |   s_foo <= (
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+--------------------------------------------------------------------------------
+5 |             item    => 12,
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+--------------------------------------------------------------------------------
+6 |             another_item => 34
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+7 |           );
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+8 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 |   proc_label : process is
+<class 'vsg.token.process_statement.process_label'>
+<class 'vsg.token.process_statement.label_colon'>
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.is_keyword'>
+--------------------------------------------------------------------------------
+10 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 |   begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+12 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 |     s_foo <= (
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+--------------------------------------------------------------------------------
+14 |               item     => 12,
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+--------------------------------------------------------------------------------
+15 |               another_item => 34
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+16 |             );
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+17 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 |   end process proc_label;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.end_process_label'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+19 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 |   s_foo <= ( item1 => 12,
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+--------------------------------------------------------------------------------
+21 |              item2 => f(a, b ,c),
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.parser.comma'>
+--------------------------------------------------------------------------------
+22 |              item3 => 36,
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+--------------------------------------------------------------------------------
+23 |              item4 => (
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+--------------------------------------------------------------------------------
+24 |                itemA => 3,
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+--------------------------------------------------------------------------------
+25 |                itemB => 4
+<class 'vsg.parser.todo'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.parser.todo'>
+--------------------------------------------------------------------------------
+26 |              )
+<class 'vsg.token.aggregate.close_parenthesis'>
+--------------------------------------------------------------------------------
+27 |            );
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+28 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+29 | end architecture rtl;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

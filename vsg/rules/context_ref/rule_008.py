@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 
 from vsg import proposed_rule
 
 
 class rule_008(proposed_rule.Rule):
-    '''
+    """
     This rule checks the context selected name is on the same line as the **context** keyword.
 
     .. NOTE:: This rule has not been implemented yet.
@@ -23,7 +24,7 @@ class rule_008(proposed_rule.Rule):
        context c1
 
        ;
-    '''
+    """
 
     def __init__(self):
-        proposed_rule.Rule.__init__(self, 'context_ref', '008')
+        super().__init__()

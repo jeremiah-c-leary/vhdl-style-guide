@@ -12,7 +12,7 @@ In the <UserDefinedCommands> section, add this line
 
 ::
 
-   <Command name="Run VSG" Ctrl="no" Alt="no" Shift="no" Key="120">vsg -f &quot;$(FULL_CURRENT_PATH)&quot; --fix</Command> 
+   <Command name="Run VSG" Ctrl="no" Alt="no" Shift="no" Key="120">vsg -f &quot;$(FULL_CURRENT_PATH)&quot; --fix</Command>
 
 
 This macro bound to the <F9> key performs the following steps:
@@ -24,5 +24,3 @@ After executing VSG, Notepad++ with prompt to re-read the file if it has changed
 
 PythonScript
 ------------
-
-

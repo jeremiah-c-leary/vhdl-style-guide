@@ -65,7 +65,7 @@ This rule checks the **is** keyword is on the same line as the **block** keyword
 
 .. code-block:: vhdl
 
-   block_labeel : block is
+   block_label : block is
 
 block_004
 #########
@@ -644,7 +644,7 @@ This rule checks the label has proper case on the end block declaration.
 block_600
 #########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on block labels.
 The default suffix is *_blk*.
@@ -666,7 +666,7 @@ The default suffix is *_blk*.
 block_601
 #########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on block labels.
 The default prefix is *blk_*.
@@ -684,4 +684,3 @@ The default prefix is *blk_*.
 .. code-block:: vhdl
 
    blk_block_label : block is
-

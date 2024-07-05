@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.return_statement.return_keyword)
 
 
 class rule_016(token_indent):
-    '''
+    """
     This rule checks the indent of return statements in function bodies.
 
     **Violation**
@@ -30,7 +30,7 @@ class rule_016(token_indent):
          return 99;
          return 99;
        end func1;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'function', '016', lTokens)
+        super().__init__(lTokens)

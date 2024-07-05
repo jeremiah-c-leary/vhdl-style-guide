@@ -1,7 +1,0 @@
-{
-  "file_list" : [
-    "vsg/tests/vsg/read_configuration_files/entity.vhd",
-    "vsg/tests/vsg/read_configuration_files/arch.vhd",
-    "vsg/tests/vsg/read_configuration_files/package.vhd"
-  ]
-}

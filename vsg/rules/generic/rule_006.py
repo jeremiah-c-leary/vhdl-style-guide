@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
+from vsg import parser, token
 from vsg.rules.whitespace_between_token_pairs_bounded_by_tokens import Rule
 
 lTokens = []
@@ -15,7 +14,7 @@ oEnd = token.generic_clause.close_parenthesis
 
 
 class rule_006(Rule):
-    '''
+    """
     This rule checks for a single space after the default assignment.
 
     |configuring_whitespace_rules_link|
@@ -33,6 +32,7 @@ class rule_006(Rule):
 
        g_width : integer := 32;
        g_depth : integer := 512;
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, 'generic', '006', lTokens, oStart, oEnd)
+        super().__init__(lTokens, oStart, oEnd)

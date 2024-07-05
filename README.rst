@@ -9,9 +9,6 @@ VHDL Style Guide (VSG)
 .. image:: https://img.shields.io/pypi/v/vsg.svg?style=flat-square
    :target: https://pypi.python.org/pypi/vsg
    :alt: PyPI Version
-.. image:: https://img.shields.io/travis/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square
-   :target: https://travis-ci.org/jeremiah-c-leary/vhdl-style-guide
-   :alt: Build Status
 .. image:: https://img.shields.io/codecov/c/github/jeremiah-c-leary/vhdl-style-guide/master.svg?style=flat-square
    :target: https://codecov.io/github/jeremiah-c-leary/vhdl-style-guide
    :alt: Test Coverage
@@ -25,23 +22,22 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
-Update 11/05/2023
+Update 02/10/2024
 
-Release 3.18.0
+For Release 3.22.0.
 
-There were several alignment rules which were ignoring the `comment_line_ends_group` option.
-Please be aware that some alignment rules may trigger from the previous release.
-Refer to issue #988 for more details.
+In an attempt to be more consistent in the configuration files, the following options are changing from camelCase to snake_case:
 
-There was also an issue with YAML configurations with options using `yes` and `no`.
-These options could be converted to booleans by PyYAML according to the YAML spec if they were not strings.
-Due to this an effort was made to change all the `True` and `False` options to `yes` and `no` strings.
-The original `True` and `False` are still supported, but going forward all options will be strings.
-Refer to issue #1009 for more details.
++---------------+--------------+
+| option        |  Changed To  |
++===============+==============+
+| indentSize    | indent_size  |
++---------------+--------------+
+| indentStyle   | indent_style |
++---------------+--------------+
 
-Platform independent features were added in this release.
-This includes line separators and file path separators.
-The type of line separator can be based on the platform or hard coded.
+An Error message will be generated if the old style is encountered.
+A reminder to change the option to snake_case will be given.
 
 Regards,
 
@@ -148,11 +144,17 @@ The latest development version can be cloned...
 
     git clone https://github.com/jeremiah-c-leary/vhdl-style-guide.git
 
-...and then installed locally...
+Install prerequisites.
 
 .. code-block:: bash
 
-    python setup.py install
+    pip install tox
+
+Build locally, artifacts will appear in ``dist`` directory.
+
+.. code-block:: bash
+
+    tox
 
 Usage
 -----

@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.process_statement.begin_keyword)
 
 
 class rule_003(token_indent):
-    '''
+    """
     This rule checks the indent of the **begin** keyword.
 
     **Violation**
@@ -28,7 +28,7 @@ class rule_003(token_indent):
                          rd_full, wr_full
                         ) is
        begin
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'process', '003', lTokens)
+        super().__init__(lTokens)

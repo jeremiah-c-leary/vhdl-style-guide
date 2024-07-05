@@ -8,7 +8,7 @@ These rules cover the length of lines in the VHDL file.
 length_001
 ##########
 
-|phase_7| |warning| |length|
+|phase_7| |warning| |unfixable| |length|
 
 This rule checks the length of the line.
 
@@ -17,7 +17,7 @@ This rule checks the length of the line.
 length_002
 ##########
 
-|phase_7| |warning| |length|
+|phase_7| |warning| |unfixable| |length|
 
 This rule checks the length of a file.
 
@@ -26,9 +26,8 @@ This rule checks the length of a file.
 length_003
 ##########
 
-|phase_7| |warning| |length|
+|phase_7| |warning| |unfixable| |length|
 
 This rule checks the length of a process statement.
 
 |configuring_length_rules_link|
-

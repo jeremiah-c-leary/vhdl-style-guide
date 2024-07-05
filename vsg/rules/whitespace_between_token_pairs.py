@@ -1,14 +1,13 @@
+# -*- coding: utf-8 -*-
 
 
 from vsg import parser
-
-from vsg.vhdlFile import utils
-
 from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
+from vsg.vhdlFile import utils
 
 
 class Rule(WhitespaceRule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -22,10 +21,10 @@ class Rule(WhitespaceRule):
 
     lTokens : list of token type pairs
        The tokens to check for a single space between
-    '''
+    """
 
-    def __init__(self, name, identifier, lTokens):
-        WhitespaceRule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens):
+        WhitespaceRule.__init__(self)
         self.lTokens = lTokens
 
     def _get_tokens_of_interest(self, oFile):

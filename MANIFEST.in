@@ -1,4 +1,28 @@
-include README.rst
-prune vsg/tests
-include vsg/styles/*.yaml
-include vsg/vhdlFile/indent/*.yaml
+include *.properties
+include .codespell-ignore
+include .flake8
+include .gitattributes
+include .gitignore
+include .pre-commit-config.yaml
+include .pre-commit-hooks.yaml
+include .readthedocs.yaml
+include CODE_OF_CONDUCT.md
+include bin/vsg
+include bin/vsg_parser
+include bin/vsg_rule_doc_gen
+include docs/conf.py
+include docs/example_configuration_json_file.json
+include tox.ini
+recursive-include .github *.md
+recursive-include .github *.yml
+recursive-include docs *.gif
+recursive-include docs *.png
+recursive-include docs *.rst
+recursive-include docs *.svg
+recursive-include tests *.json
+recursive-include tests *.py
+recursive-include tests *.rst
+recursive-include tests *.txt
+recursive-include tests *.vhd
+recursive-include tests *.xml
+recursive-include tests *.yaml

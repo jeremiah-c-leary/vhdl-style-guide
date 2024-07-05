@@ -6,9 +6,9 @@ Source File Rules
 source_file_001
 ###############
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
-This rule checks for the existance of the source file passed to VSG.
+This rule checks for the existence of the source file passed to VSG.
 
 **Violation**
 
@@ -19,4 +19,3 @@ It will also be reported in the junit file if the --junit option is used.
 **Fix**
 
 Pass correct file name to VSG.
-

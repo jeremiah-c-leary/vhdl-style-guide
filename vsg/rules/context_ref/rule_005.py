@@ -1,14 +1,14 @@
-
-from vsg.rules import split_line_at_token
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import split_line_at_token
 
 lTokens = []
 lTokens.append(token.context_reference.keyword)
 
 
 class rule_005(split_line_at_token):
-    '''
+    """
     This rule checks the **context** keyword is on its own line.
 
     **Violation**
@@ -28,8 +28,8 @@ class rule_005(split_line_at_token):
 
        library ieee;
        context con2;
-    '''
+    """
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'context_ref', '005', lTokens)
-        self.solution = 'Move context and code after context to the next line'
+        super().__init__(lTokens)
+        self.solution = "Move context and code after context to the next line"

@@ -33,7 +33,7 @@ This behavior can be modified by using the :code:`exceptions` and :code:`pattern
 +==========================+=======================+==========================+
 | |exceptions_option|      | |exceptions_defaults| | |exceptions_description| |
 +--------------------------+-----------------------+--------------------------+
-| |patterns_option|        | |patterns_defaults|   | |patterns_description|   | 
+| |patterns_option|        | |patterns_defaults|   | |patterns_description|   |
 +--------------------------+-----------------------+--------------------------+
 
 This is an example of how to configure these options.

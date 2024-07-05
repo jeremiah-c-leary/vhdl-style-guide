@@ -1,7 +1,7 @@
 Rules
 =====
 
-The rules are divided into catagories depending on the part of the VHDL code being operated on.
+The rules are divided into categories depending on the part of the VHDL code being operated on.
 
 .. toctree::
    :maxdepth: 2
@@ -52,12 +52,14 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    package_body_rules.rst
    port_rules.rst
    port_map_rules.rst
+   pragma_rules.rst
    procedure_rules.rst
    procedure_call_rules.rst
    process_rules.rst
    range_rules.rst
    record_type_definition_rules.rst
    report_statement_rules.rst
+   reserved_rules.rst
    return_statement_rules.rst
    selected_assignment_rules.rst
    sequential_rules.rst
@@ -66,6 +68,7 @@ The rules are divided into catagories depending on the part of the VHDL code bei
    subprogram_body_rules.rst
    subtype_rules.rst
    type_rules.rst
+   unfixable_rules.rst
    use_clause_rules.rst
    variable_rules.rst
    variable_assignment_rules.rst

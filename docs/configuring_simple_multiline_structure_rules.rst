@@ -7,10 +7,10 @@ Configuring Simple Multiline Structure Rules
    :code:`new_line_after_assign`
 
 .. |new_line_after_assign__yes| replace::
-   :code:`yes` =  Adds a carriage return (alias "new line") after the assigment operator.
+   :code:`yes` =  Adds a carriage return (alias "new line") after the assignment operator.
 
 .. |new_line_after_assign__no| replace::
-   :code:`no` = Removes a carriage return (alias "new line") after the assigment operator.
+   :code:`no` = Removes a carriage return (alias "new line") after the assignment operator.
 
 .. |new_line_after_assign__ignore| replace::
    :code:`ignore` = Ignores any formatting after the assignment operator.

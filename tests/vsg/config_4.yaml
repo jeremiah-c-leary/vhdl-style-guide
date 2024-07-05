@@ -1,0 +1,15 @@
+---
+# Configure the rules
+rule:
+  port_004:
+    disable: true
+  port_002:
+    disable: true
+  port_015:
+    disable: true
+  port_007:
+    disable: false
+# These are global rules
+  global:
+    indent_size: 4
+...

@@ -80,3 +80,17 @@
 .. |configuring_use_clause_indenting_link| replace::
    Refer to :ref:`configuring-use-clause-indenting` for information on how to change the indenting of use clauses.
 
+.. |configuring_pragmas_link| replace::
+   Refer to :ref:`configuring-pragmas` for information on how to configure detecting of pragmas.
+
+.. |configuring_vhdl_reserved_words_link| replace::
+   Refer to :ref:`configuring-vhdl-reserved-words` for information on how to change which VHDL standard reserved words to use.
+
+.. |configuring_multiline_procedure_call_statement_rules_link| replace::
+   Refer to :ref:`configuring-procedure-call-statement-rules` for more configuration options.
+
+.. |configuring_subprogram_specification_statement_rules_link| replace::
+   Refer to :ref:`configuring-subprogram-specification-statement-rules` for more configuration options.
+
+.. |configuring_port_map_new_line_link| replace::
+   Refer to :ref:`configuring-port-map-new-line` for configuration options.

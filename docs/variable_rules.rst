@@ -133,7 +133,7 @@ This rule checks for at least a single space before the colon.
 variable_007
 ############
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for default assignments in variable declarations.
 
@@ -152,7 +152,7 @@ This rule checks for default assignments in variable declarations.
 variable_010
 ############
 
-The function of this rule has been superceeded by the following rules:
+The function of this rule has been superseded by the following rules:
 
 * ieee_500
 * subtype_002
@@ -221,10 +221,10 @@ This rule checks for consistent capitalization of variable names.
 variable_012
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on variable identifiers.
-The default variable prefix is *v\_*.
+The default variable prefix is *v_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -266,6 +266,29 @@ This rule checks the structure of variable constraints.
        element2(3 downto 0)
      );
 
+variable_100
+############
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable    size : integer;
+   variable width : integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable size : integer;
+   variable width : integer;
+
 variable_400
 ############
 
@@ -296,10 +319,10 @@ This rule checks alignment of multiline constraints in variable declarations.
 variable_600
 ############
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffix on variable identifiers.
-The default variable suffix is *\_v*.
+The default variable suffix is *_v*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -314,4 +337,3 @@ The default variable suffix is *\_v*.
 .. code-block:: vhdl
 
    variable my_var_v : natural;
-

@@ -1,0 +1,28 @@
+
+--This should pass
+context c1 is
+
+end context c1;
+
+context c1 is
+
+end context;
+
+--This should fail
+context c1 is
+
+end context;
+
+context c1 is
+
+end context
+;
+
+-- Split declaration across lines
+context
+c1
+is
+
+end
+context
+;

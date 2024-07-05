@@ -80,10 +80,10 @@ This rule was deprecated and replaced with rules:
 subtype_004
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes in subtype identifiers.
-The default new subtype prefix is *st\_*.
+The default new subtype prefix is *st_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -98,6 +98,27 @@ The default new subtype prefix is *st\_*.
 .. code-block:: vhdl
 
    subtype st_my_subtype is range 0 to 9;
+
+subtype_100
+###########
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype         my_subtype is range 0 to 9;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype my_subtype is range 0 to 9;
 
 subtype_500
 ###########
@@ -177,10 +198,10 @@ This rule checks the **is** keyword has proper case.
 subtype_600
 ###########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes in subtype identifiers.
-The default new subtype suffix is *\_st*.
+The default new subtype suffix is *_st*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -195,4 +216,3 @@ The default new subtype suffix is *\_st*.
 .. code-block:: vhdl
 
    subtype my_subtype_st is range 0 to 9;
-

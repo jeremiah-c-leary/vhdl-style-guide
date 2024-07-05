@@ -1,7 +1,7 @@
-
-from vsg.rules import token_case
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_case
 
 lTokens = []
 lTokens.append(token.logical_operator.and_operator)
@@ -13,7 +13,7 @@ lTokens.append(token.logical_operator.xnor_operator)
 
 
 class rule_500(token_case):
-    '''
+    """
     This rule checks logical operators have proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
@@ -29,8 +29,8 @@ class rule_500(token_case):
     .. code-block:: vhdl
 
        a <= b and c;
-    '''
+    """
 
     def __init__(self):
-        token_case.__init__(self, 'logical_operator', '500', lTokens)
-        self.groups.append('case::keyword')
+        super().__init__(lTokens)
+        self.groups.append("case::keyword")

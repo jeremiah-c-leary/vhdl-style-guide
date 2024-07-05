@@ -511,7 +511,7 @@ It is clearer to the reader to state which architecture the end statement is clo
 architecture_025
 ################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid names for the architecture.
 Typical architecture names are:  RTL, EMPTY, and BEHAVE.
@@ -882,4 +882,3 @@ This rule checks for consistent capitalization of port names in an architecture 
       register <= I_DATA;
 
    end architecture rtl;
-

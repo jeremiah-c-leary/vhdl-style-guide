@@ -1,16 +1,16 @@
-
-from vsg.rules import token_prefix
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_prefix
 
 lTokens = []
 lTokens.append(token.signal_declaration.identifier)
 
 
 class rule_008(token_prefix):
-    '''
+    """
     This rule checks for valid prefixes on signal identifiers.
-    Default signal prefix is *s\_*.
+    Default signal prefix is *s_*.
 
     |configuring_prefix_and_suffix_rules_link|
 
@@ -27,9 +27,9 @@ class rule_008(token_prefix):
 
        signal s_wr_en : std_logic;
        signal s_rd_en : std_logic;
-    '''
+    """
 
     def __init__(self):
-        token_prefix.__init__(self, 'signal', '008', lTokens)
-        self.prefixes = ['s_']
-        self.solution = 'Signal identifiers'
+        super().__init__(lTokens)
+        self.prefixes = ["s_"]
+        self.solution = "Signal identifiers"

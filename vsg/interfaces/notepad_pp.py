@@ -1,16 +1,12 @@
+# -*- coding: utf-8 -*-
 
 import vsg
-
-from vsg import config
-from vsg import vhdlFile
-from vsg import rule_list
-from vsg import apply_rules
+from vsg import apply_rules, config, rule_list, vhdlFile
 
 
-class New():
-
+class New:
     def __init__(self):
-        self.identifier = 'notepad++ interface'
+        self.identifier = "notepad++ interface"
 
     def get_input_arguments(self):
         return InputArguments()
@@ -52,7 +48,7 @@ class New():
 
         oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, oConfig.dFixOnly)
 
-        sOutput = '\n'.join(oVhdlFile.get_lines()[1:])
+        sOutput = "\n".join(oVhdlFile.get_lines()[1:])
 
         oResults.set_text(sOutput)
 
@@ -69,8 +65,7 @@ class New():
         return oResults
 
 
-class InputArguments():
-
+class InputArguments:
     def __init__(self):
         self.filename = str(None)
         self.text = None
@@ -87,8 +82,7 @@ class InputArguments():
         self.configuration.append(sText)
 
 
-class Results():
-
+class Results:
     def __init__(self):
         self.text = None
         self.stdout = None
@@ -117,7 +111,7 @@ class Results():
         return self.error
 
 
-class command_line_args():
+class command_line_args:
     def __init__(self):
         self.fix = False
         self.style = None
@@ -127,6 +121,6 @@ class command_line_args():
         self.local_rules = None
         self.fix_phase = 7
         self.junit = None
-        self.output_format = 'vsg'
+        self.output_format = "vsg"
         self.all_phases = False
         self.skip_phase = None

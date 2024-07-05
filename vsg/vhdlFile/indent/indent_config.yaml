@@ -470,9 +470,15 @@ indent:
                 token : current
                 after : current
         simple_variable_assignment:
-            target:
+            simple_name:
                 token : current
                 after : current
+            aggregate_open_parenthesis:
+                token : current
+                after : '+1'
+            aggregate_close_parenthesis:
+                token : '-1'
+                after : '-1'
         simple_waveform_assignment:
             target:
                 token : current

@@ -231,10 +231,10 @@ This rule checks the port names have proper case.
 port_011
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on port identifiers.
-The default port prefixes are: *i\_*, *o\_*, *io\_*.
+The default port prefixes are: *i_*, *o_*, *io_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -264,7 +264,7 @@ The default port prefixes are: *i\_*, *o\_*, *io\_*.
 port_012
 ########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for default assignments on port declarations.
 
@@ -577,7 +577,7 @@ This rule checks for blank lines after the **port** keyword.
 port_023
 ########
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for missing modes in port declarations.
 
@@ -639,7 +639,7 @@ This rule checks for blank lines before the close parenthesis in port declaratio
 port_025
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on port identifiers.
 The default port suffixes are *_i*, *_o*, *_io*.
@@ -728,11 +728,11 @@ This rule checks the semicolon is not on its own line.
 port_600
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on port identifiers for input ports.
 
-The default prefix is: *i\_*.
+The default prefix is: *i_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -758,11 +758,11 @@ The default prefix is: *i\_*.
 port_601
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on port identifiers for output ports.
 
-The default prefix is: *o\_*.
+The default prefix is: *o_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -788,11 +788,11 @@ The default prefix is: *o\_*.
 port_602
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on port identifiers for inout ports.
 
-The default prefix is: *io\_*.
+The default prefix is: *io_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -818,11 +818,11 @@ The default prefix is: *io\_*.
 port_603
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on port identifiers for buffer ports.
 
-The default prefix is: *b\_*.
+The default prefix is: *b_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -848,11 +848,11 @@ The default prefix is: *b\_*.
 port_604
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on port identifiers for linkage ports.
 
-The default prefix is: *l\_*.
+The default prefix is: *l_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -878,7 +878,7 @@ The default prefix is: *l\_*.
 port_605
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on port identifiers for input ports.
 
@@ -908,7 +908,7 @@ The default suffix is: *_i*.
 port_606
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on port identifiers for output ports.
 
@@ -937,7 +937,7 @@ The default suffix is: *_o*.
 port_607
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on port identifiers for inout ports.
 
@@ -966,7 +966,7 @@ The default suffix is: *_io*.
 port_608
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on port identifiers for buffer ports.
 
@@ -995,7 +995,7 @@ The default suffix is: *_b*.
 port_609
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on port identifiers for linkage ports.
 
@@ -1020,4 +1020,3 @@ The default suffix is: *_l*.
      wr_en_l    : linkage    std_logic;
      rd_en_l    : linkage    std_logic
    );
-

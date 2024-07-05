@@ -1,7 +1,7 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.loop_statement.loop_label)
@@ -9,7 +9,7 @@ lTokens.append(token.iteration_scheme.for_keyword)
 
 
 class rule_301(token_indent):
-    '''
+    """
     This rule checks the indentation of the **for** keyword.
 
     **Violation**
@@ -37,7 +37,7 @@ class rule_301(token_indent):
          end loop;
 
        end process;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'iteration_scheme', '301', lTokens)
+        super().__init__(lTokens)

@@ -128,4 +128,3 @@ This rule checks the *type_mark* has proper case.
 .. code-block:: vhdl
 
    attribute max_delay : time;
-

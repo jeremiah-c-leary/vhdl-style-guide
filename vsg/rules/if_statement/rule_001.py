@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.if_statement.if_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of the **if** keyword.
 
     **Violation**
@@ -34,7 +34,7 @@ class rule_001(token_indent):
       else
         e <= '0';
       end if;
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'if', '001', lTokens)
+        super().__init__(lTokens)

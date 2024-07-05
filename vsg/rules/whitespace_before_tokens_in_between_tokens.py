@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
-from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
+from vsg import parser, violation
 from vsg.rules import utils as rules_utils
+from vsg.rules.whitespace_between_tokens import Rule as WhitespaceRule
 
 
 class Rule(WhitespaceRule):
-    '''
+    """
     Checks for at least a single space before a token.
 
     Parameters
@@ -27,10 +26,10 @@ class Rule(WhitespaceRule):
 
     oEnd : token object type
        The end of the range
-    '''
+    """
 
-    def __init__(self, name, identifier, lTokens, oStart, oEnd):
-        WhitespaceRule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, lTokens, oStart, oEnd):
+        WhitespaceRule.__init__(self)
         self.lTokens = lTokens
         self.oStart = oStart
         self.oEnd = oEnd

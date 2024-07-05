@@ -501,7 +501,7 @@ This rule checks the package name has proper case on the end package declaration
 package_body_600
 ################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on package body identifiers.
 The default package suffix is *_pkg*.
@@ -523,7 +523,7 @@ The default package suffix is *_pkg*.
 package_body_601
 ################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on package body identifiers.
 The default package prefix is *pkg_*.
@@ -541,4 +541,3 @@ The default package prefix is *pkg_*.
 .. code-block:: vhdl
 
    package body pkg_foo is
-

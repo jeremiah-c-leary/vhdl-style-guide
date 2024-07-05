@@ -11,7 +11,7 @@ when_001
 |phase_1| |error| |structure|
 
 This rule checks the **else** keyword is not at the beginning of a line.
-The else should be at the end of the preceeding line.
+The else should be at the end of the preceding line.
 
 **Violation**
 
@@ -30,4 +30,3 @@ The else should be at the end of the preceeding line.
             '0' when b = '0' else
             c when d = '1' else
             f;
-

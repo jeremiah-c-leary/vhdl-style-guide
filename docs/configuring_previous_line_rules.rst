@@ -59,10 +59,10 @@ There are several options to these rules, which can be selected by using the :co
 +======================+================+===================+===================================================+
 | |style|              | |style_values| | |default_value|   | * |style__no_blank_line|                          |
 |                      |                |                   | * |style__require_blank_line|                     |
-|                      |                |                   | * |style__no_code|                                | 
-|                      |                |                   | * |style__allow_comment|                          | 
-|                      |                |                   | * |style__require_comment|                        | 
-|                      |                |                   | * |style__no_blank_line_unless_different_library| | 
+|                      |                |                   | * |style__no_code|                                |
+|                      |                |                   | * |style__allow_comment|                          |
+|                      |                |                   | * |style__require_comment|                        |
+|                      |                |                   | * |style__no_blank_line_unless_different_library| |
 +----------------------+----------------+-------------------+---------------------------------------------------+
 
 .. NOTE:: Unless stated in the rule description, the default style is :code:`require_blank_line`.
@@ -254,6 +254,8 @@ Rules Enforcing Previous Lines
 * `loop_statement_202 <loop_statement_rules.html#loop-statement-202>`_
 * `package_003 <package_rules.html#package-003>`_
 * `package_body_200 <package_body_rules.html#package-body-200>`_
+* `pragma_400 <../pragma_rules.html#pragma-400>`_
+* `pragma_402 <../pragma_rules.html#pragma-402>`_
 * `procedure_200 <procedure_rules.html#procedure-200>`_
 * `process_015 <process_rules.html#process-015>`_
 * `record_type_definition_201 <record_type_definition_rules.html#record-type-definition-201>`_

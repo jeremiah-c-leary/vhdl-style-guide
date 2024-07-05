@@ -1,11 +1,10 @@
+# -*- coding: utf-8 -*-
 
 from vsg import parser
 
 
-class New():
-
+class New:
     def __init__(self, iStartIndex, iLine, lTokens):
-
         self.iStartIndex = iStartIndex
         self.lTokens = lTokens
         self.iLine = iLine
@@ -29,7 +28,7 @@ class New():
         return self.sTokenValue
 
     def extract_tokens(self, iStart, iEnd):
-        lTokens = self.lTokens[iStart:iEnd + 1]
+        lTokens = self.lTokens[iStart : iEnd + 1]
         iStartIndex = iStart + self.iStartIndex
         iLine = self.iLine
         for iIndex in range(0, iStart):

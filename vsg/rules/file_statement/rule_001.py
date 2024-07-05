@@ -1,7 +1,7 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.file_declaration.file_keyword)
@@ -10,7 +10,7 @@ lTokens.append(token.file_open_information.is_keyword)
 
 
 class rule_001(token_indent):
-    '''
+    """
     This rule checks the indent of **file** declarations.
 
     **Violation**
@@ -38,7 +38,7 @@ class rule_001(token_indent):
            is load_file_name;
 
        begin
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'file', '001', lTokens)
+        super().__init__(lTokens)

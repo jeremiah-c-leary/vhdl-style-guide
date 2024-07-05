@@ -90,6 +90,27 @@ This rule checks for a single space after the **is** keyword.
 
    alias alias_designator is name;
 
+alias_declaration_103
+#####################
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the designator.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   alias          alias_designator is name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   alias alias_designator is name;
+
 alias_declaration_300
 #####################
 
@@ -242,11 +263,11 @@ This rule checks for consistent capitalization of alias designators.
 alias_declaration_600
 #####################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on alias designators.
 
-Default prefix is *a\_*.
+Default prefix is *a_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -267,11 +288,11 @@ Default prefix is *a\_*.
 alias_declaration_601
 #####################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on alias designators.
 
-Default prefix is *\_a*.
+Default prefix is *_a*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -288,4 +309,3 @@ Default prefix is *\_a*.
 
    alias header_a is name;
    alias footer_a is name;
-

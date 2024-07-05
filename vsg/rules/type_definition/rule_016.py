@@ -1,14 +1,14 @@
-
-from vsg.rules import token_indent
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.enumeration_type_definition.close_parenthesis)
 
 
 class rule_016(token_indent):
-    '''
+    """
     This rule checks the indent of the closing parenthesis on multiline types.
 
     **Violation**
@@ -34,7 +34,7 @@ class rule_016(token_indent):
          );
 
        begin
-    '''
+    """
 
     def __init__(self):
-        token_indent.__init__(self, 'type', '016', lTokens)
+        super().__init__(lTokens)

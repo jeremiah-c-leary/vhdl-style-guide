@@ -1,24 +1,27 @@
+# -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import subprogram_declaration
-from vsg.vhdlFile.classify import subprogram_body
-from vsg.vhdlFile.classify import subprogram_instantiation_declaration
-from vsg.vhdlFile.classify import package_declaration
-from vsg.vhdlFile.classify import package_body
-from vsg.vhdlFile.classify import package_instantiation_declaration
-from vsg.vhdlFile.classify import type_declaration
-from vsg.vhdlFile.classify import subtype_declaration
-from vsg.vhdlFile.classify import constant_declaration
-from vsg.vhdlFile.classify import variable_declaration
-from vsg.vhdlFile.classify import file_declaration
-from vsg.vhdlFile.classify import alias_declaration
-from vsg.vhdlFile.classify import component_declaration
-from vsg.vhdlFile.classify import attribute_declaration
-from vsg.vhdlFile.classify import attribute_specification
-from vsg.vhdlFile.classify import use_clause
+from vsg.vhdlFile.classify import (
+    alias_declaration,
+    attribute_declaration,
+    attribute_specification,
+    component_declaration,
+    constant_declaration,
+    file_declaration,
+    package_body,
+    package_declaration,
+    package_instantiation_declaration,
+    subprogram_body,
+    subprogram_declaration,
+    subprogram_instantiation_declaration,
+    subtype_declaration,
+    type_declaration,
+    use_clause,
+    variable_declaration,
+)
 
 
 def detect(iToken, lObjects):
-    '''
+    """
     package_body_declarative_item ::=
         subprogram_declaration
       | subprogram_body
@@ -37,7 +40,7 @@ def detect(iToken, lObjects):
       | use_clause
       | group_template_declaration
       | group_declaration
-    '''
+    """
 
     iReturn = subprogram_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
@@ -96,11 +99,8 @@ def detect(iToken, lObjects):
     if iReturn != iToken:
         return iReturn
 
-
-
     iReturn = use_clause.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
-
 
     return iToken

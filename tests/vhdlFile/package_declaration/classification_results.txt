@@ -1,0 +1,53 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+3 | package PACK1 is
+<class 'vsg.token.package_declaration.package_keyword'>
+<class 'vsg.token.package_declaration.identifier'>
+<class 'vsg.token.package_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+4 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+5 | end package PACK1;
+<class 'vsg.token.package_declaration.end_keyword'>
+<class 'vsg.token.package_declaration.end_package_keyword'>
+<class 'vsg.token.package_declaration.end_package_simple_name'>
+<class 'vsg.token.package_declaration.semicolon'>
+--------------------------------------------------------------------------------
+6 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 | package PACK2 is
+<class 'vsg.token.package_declaration.package_keyword'>
+<class 'vsg.token.package_declaration.identifier'>
+<class 'vsg.token.package_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+8 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+9 | end package;
+<class 'vsg.token.package_declaration.end_keyword'>
+<class 'vsg.token.package_declaration.end_package_keyword'>
+<class 'vsg.token.package_declaration.semicolon'>
+--------------------------------------------------------------------------------
+10 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 | package PACK3 is
+<class 'vsg.token.package_declaration.package_keyword'>
+<class 'vsg.token.package_declaration.identifier'>
+<class 'vsg.token.package_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+12 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 | end;
+<class 'vsg.token.package_declaration.end_keyword'>
+<class 'vsg.token.package_declaration.semicolon'>

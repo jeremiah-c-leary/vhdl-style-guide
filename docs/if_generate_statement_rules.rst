@@ -136,4 +136,3 @@ This rule checks the *else* keyword has proper case.
 .. code-block:: vhdl
 
    else generate
-

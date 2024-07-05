@@ -333,10 +333,10 @@ This rule checks for consistent capitalization of type names.
 type_015
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes in user defined type identifiers.
-The default new type prefix is *t\_*.
+The default new type prefix is *t_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -424,6 +424,53 @@ This rule checks the **is** keyword is on the same line as the identifier.
 
    type t_record is
 
+type_100
+########
+
+|phase_2| |disabled| |error| |whitespace|
+
+This rule checks for a single space before the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type          t_my_type is range -5 to 5;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type t_my_type is range -5 to 5;
+
+type_200
+########
+
+|phase_3| |disabled| |error| |blank_line|
+
+This rule checks for a blank line below a type declaration unless there is another type declaration.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type state_machine_t is (idle, write, read, done);
+   type state_machine is (idle, write, read, done);
+   constant width : integer := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type state_machine_t is (idle, write, read, done);
+   type state_machine is (idle, write, read, done);
+
+   constant width : integer := 32;
+
 type_400
 ########
 
@@ -504,10 +551,10 @@ This rule checks for consistent capitalization of enumerated types.
 type_600
 ########
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes in user defined type identifiers.
-The default new type suffix is *\_t*.
+The default new type suffix is *_t*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -522,4 +569,3 @@ The default new type suffix is *\_t*.
 .. code-block:: vhdl
 
    type my_type_t is range -5 to 5 ;
-

@@ -1,14 +1,14 @@
-
-from vsg.rules import split_line_at_token
+# -*- coding: utf-8 -*-
 
 from vsg import token
+from vsg.rules import split_line_at_token
 
 lTokens = []
 lTokens.append(token.library_clause.keyword)
 
 
 class rule_007(split_line_at_token):
-    '''
+    """
     This rule checks for code after the **is** keyword.
 
     **Violation**
@@ -27,8 +27,8 @@ class rule_007(split_line_at_token):
 
        context c1 is
          library ieee; -- This is not allowed
-    '''
+    """
 
     def __init__(self):
-        split_line_at_token.__init__(self, 'context', '007', lTokens)
-        self.solution = 'Move library and code after library to the next line'
+        super().__init__(lTokens)
+        self.solution = "Move library and code after library to the next line"

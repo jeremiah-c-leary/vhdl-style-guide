@@ -1,13 +1,12 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import violation
-
+from vsg import parser, violation
 from vsg.rule_group import structure
 from vsg.vhdlFile import utils
 
 
 class remove_lines_starting_with_token_between_token_pairs(structure.Rule):
-    '''
+    """
     Checks for a single space between two tokens.
 
     Parameters
@@ -21,10 +20,10 @@ class remove_lines_starting_with_token_between_token_pairs(structure.Rule):
 
     lTokens : list of token type pairs
        The tokens to check for a single space between
-    '''
+    """
 
-    def __init__(self, name, identifier, oRemoveToken, lTokens):
-        structure.Rule.__init__(self, name=name, identifier=identifier)
+    def __init__(self, oRemoveToken, lTokens):
+        super().__init__()
         self.solution = None
         self.phase = 2
         self.oRemoveToken = oRemoveToken

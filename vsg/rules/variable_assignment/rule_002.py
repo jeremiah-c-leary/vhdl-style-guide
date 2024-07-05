@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
+from vsg import parser, token
 from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
@@ -11,7 +10,7 @@ lTokens.append([token.selected_variable_assignment.assignment, parser.todo])
 
 
 class rule_002(Rule):
-    '''
+    """
     This rule checks for a single space after the assignment.
 
     |configuring_whitespace_rules_link|
@@ -29,6 +28,7 @@ class rule_002(Rule):
 
          counter := 0;
          count   := counter + 1;
-    '''
+    """
+
     def __init__(self):
-        Rule.__init__(self, 'variable_assignment', '002', lTokens)
+        super().__init__(lTokens)

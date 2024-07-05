@@ -123,7 +123,7 @@ This rule checks the loop label and the **while**, **for** or **loop** keywords 
 loop_statement_006
 ##################
 
-|phase_1| |disabled| |error| |structure|
+|phase_1| |disabled| |error| |unfixable| |structure|
 
 This rule checks that loop statements have a label.
 
@@ -607,10 +607,10 @@ This rule checks the proper case of the end label on a loop statement.
 loop_statement_600
 ##################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid prefixes on loop labels.
-The default prefix is *loop\_*.
+The default prefix is *loop_*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -629,10 +629,10 @@ The default prefix is *loop\_*.
 loop_statement_601
 ##################
 
-|phase_7| |disabled| |error| |naming|
+|phase_7| |disabled| |error| |unfixable| |naming|
 
 This rule checks for valid suffixes on loop labels.
-The default prefix is *\_loop*.
+The default prefix is *_loop*.
 
 |configuring_prefix_and_suffix_rules_link|
 
@@ -648,3 +648,46 @@ The default prefix is *\_loop*.
 
    label_loop : for index in 4 to 23 loop
 
+loop_statement_602
+##################
+
+|phase_7| |disabled| |error| |unfixable| |naming|
+
+This rule checks for valid prefixes on loop parameter identifiers.
+The default loop prefix is *lv_*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  for index in t_range loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+  for lv_index in t_range loop
+
+loop_statement_603
+##################
+
+|phase_7| |disabled| |error| |unfixable| |naming|
+
+This rule checks for valid suffixes on loop parameter identifiers.
+The default loop suffix is *_lv*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  for index in t_range loop
+
+**Fix**
+
+.. code-block:: vhdl
+
+  for index_lv in t_range loop

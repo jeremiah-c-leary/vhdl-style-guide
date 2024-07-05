@@ -1,20 +1,18 @@
+# -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import token
-
-from vsg.rules import consistent_token_case
+from vsg import parser, token
+from vsg.rules import consistent_token_case as Rule
 
 lTokens = []
 lTokens.append(token.function_specification.designator)
 
-lIgnore = []
-lIgnore.append(parser.whitespace)
-lIgnore.append(parser.carriage_return)
-lIgnore.append(parser.blank_line)
+lNames = []
+lNames.append(token.todo.name)
+lNames.append(parser.todo)
 
 
-class rule_010(consistent_token_case):
-    '''
+class rule_010(Rule):
+    """
     This rule checks for consistent capitalization of function names.
 
     **Violation**
@@ -58,7 +56,8 @@ class rule_010(consistent_token_case):
          end process;
 
        end architecture rtl;
-    '''
+    """
 
     def __init__(self):
-        consistent_token_case.__init__(self, 'function', '010', lTokens, lIgnore)
+        super().__init__(lTokens, lNames)
+        self.bIncludeDeclarativePartNames = True

@@ -59,7 +59,7 @@ There are several options to these rules:
    :code:`yes`
 
 .. |default_no| replace::
-   :code:`no`   
+   :code:`no`
 
 +-----------------------+----------+---------------+------------------------------+
 | Option                | Values   | Default       | Description                  |
@@ -100,7 +100,7 @@ The following code snippet is used for all examples and is formatted with the co
 
      output <= '1' when input = "0000" or (input = "1111" and
                    input2 = "0101") else
-               sig_a or sig_b when input = "0001" and 
+               sig_a or sig_b when input = "0001" and
                  input2 = "1001" else
                sig_c and sig_d when input = "0010" else
               '0';
@@ -225,4 +225,3 @@ Rules Enforcing Conditional Expression Alignment
 * `concurrent_009 <concurrent_rules.html#concurrent-009>`_
 * `sequential_401 <sequential_rules.html#sequential-401>`_
 * `variable_assignment_400 <variable_assignment_400.html#variable-assignment-400>`_
-

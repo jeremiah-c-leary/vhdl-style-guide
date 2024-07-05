@@ -90,4 +90,3 @@ This rule checks the **all** keyword called out in the selected name has proper 
 .. code-block:: vhdl
 
    use ieee.std_logic_1164.all;
-

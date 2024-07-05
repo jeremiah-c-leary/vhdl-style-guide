@@ -1,0 +1,181 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 |   constant StartDay : WeekDay := Sat;
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   constant LogicalGND : Bit := '0';
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.parser.character_literal'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+7 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 |   constant BusWidth, QueueLength : Integer := 16;
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.identifier_list.comma'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 |   constant CLKPeriod : Time := 15 ns;
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+11 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 |   constant MaxSimTime : Time := 200 * CLKPeriod;
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.multiplying_operator.star'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+13 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 |   constant EntryCode : NumericCodeType := (2,6,4,8,0,0,1,3);
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+15 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 |   constant DataBusReset: Std_Logic_Vector(7 downto 0) := "00000000";
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+17 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+18 |   constant AddrSize : natural := abs -200;
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.natural'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.miscellaneous_operator.abs_operator'>
+<class 'vsg.token.sign.minus'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+19 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+20 |   constant AddrSize : natural := rem 200;
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.natural'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.multiplying_operator.rem_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+21 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 |   constant DataBusReset: std_ulogic_vector(7 downto 0) := "00000000";
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_ulogic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+23 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+25 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+26 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
