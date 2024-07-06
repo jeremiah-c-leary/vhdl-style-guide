@@ -229,7 +229,6 @@ def report_indent_configuration_error(dReturn, sGroup, sToken):
 
 
 def report_invalid_indent_group(dReturn, sGroup):
-
     try:
         lTemp = list(dReturn["indent"]["tokens"][sGroup].keys())
     except KeyError:
@@ -249,7 +248,6 @@ def report_invalid_indent_group(dReturn, sGroup):
 
 
 def report_invalid_indent_token(dReturn, sGroup, sToken):
-
     try:
         lTemp = list(dReturn["indent"]["tokens"][sGroup][sToken].keys())
     except KeyError:

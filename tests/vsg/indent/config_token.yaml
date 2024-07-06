@@ -3,4 +3,4 @@ indent:
       simple_variable_assignment:
          target:
             after: current
-            token: current 
+            token: current
