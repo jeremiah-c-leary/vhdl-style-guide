@@ -202,17 +202,72 @@ def read_indent_configuration(dConfiguration):
 
     dReturn = open_configuration_file(sFileName)
 
+    if "indent" not in list(dConfiguration.keys()):
+        dConfiguration["indent"] = dReturn["indent"]
+        return dReturn
+
     ### This merges an indent configuration into the base indent dictionary
-    if "indent" in list(dConfiguration.keys()):
+    try:
         dGroups = dConfiguration["indent"]["tokens"]
         for sGroup in list(dGroups.keys()):
             for sToken in list(dGroups[sGroup].keys()):
                 for sParameter in list(dGroups[sGroup][sToken].keys()):
                     dReturn["indent"]["tokens"][sGroup][sToken][sParameter] = dGroups[sGroup][sToken][sParameter]
+    except KeyError:
+        report_indent_configuration_error(dReturn, sGroup, sToken)
 
     dConfiguration["indent"] = dReturn["indent"]
 
     return dReturn
+
+
+def report_indent_configuration_error(dReturn, sGroup, sToken):
+    print("ERROR: Invalid indent configuration detected")
+
+    report_invalid_indent_group(dReturn, sGroup)
+    report_invalid_indent_token(dReturn, sGroup, sToken)
+
+
+def report_invalid_indent_group(dReturn, sGroup):
+
+    try:
+        lTemp = list(dReturn["indent"]["tokens"][sGroup].keys())
+    except KeyError:
+        print("The following group does not exist")
+        print("")
+        print("indent:")
+        print("    tokens:")
+        print(f"        {sGroup}:")
+        print("")
+        print("The following groups are available:")
+        print("")
+        print("indent:")
+        print("    tokens:")
+        for sMyGroup in list(dReturn["indent"]["tokens"].keys()):
+            print(f"        {sMyGroup}:")
+        sys.exit(1)
+
+
+def report_invalid_indent_token(dReturn, sGroup, sToken):
+
+    try:
+        lTemp = list(dReturn["indent"]["tokens"][sGroup][sToken].keys())
+    except KeyError:
+        print("The following token does not exist")
+        print("")
+        print("indent:")
+        print("    tokens:")
+        print(f"        {sGroup}:")
+        print(f"            {sToken}:")
+        print("")
+        print("The following tokens are available:")
+        print("")
+        print("indent:")
+        print("    tokens:")
+        print(f"        {sGroup}:")
+        for sMyToken in list(dReturn["indent"]["tokens"][sGroup].keys()):
+            print(f"            {sMyToken}:")
+        sys.exit(1)
 
 
 def update_command_line_arguments(commandLineArguments, configuration):
