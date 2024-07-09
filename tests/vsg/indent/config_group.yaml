@@ -1,0 +1,6 @@
+indent:
+   tokens:
+      simple_something:
+         target:
+            after: current
+            token: current

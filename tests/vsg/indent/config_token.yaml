@@ -1,0 +1,6 @@
+indent:
+   tokens:
+      simple_variable_assignment:
+         target:
+            after: current
+            token: current
