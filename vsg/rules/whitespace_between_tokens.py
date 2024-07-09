@@ -48,7 +48,9 @@ class Rule(whitespace.Rule):
                 self.analyze_no_whitespace_token(oToi)
 
     def analyze_no_whitespace_token(self, oToi):
-        if self.number_of_spaces != 0:
+        if not self.number_of_spaces_is_an_integer() and self.number_of_spaces_is_lte() and self.number_of_spaces_is_lt():
+            return
+        elif self.number_of_spaces != 0:
             iSpaces = self.extract_expected_number_of_spaces()
             self.create_violation(oToi, iSpaces)
 
