@@ -101,7 +101,7 @@ class vhdlFile:
             whitespace.classify(lTokens, lObjects)
             comment.classify(lTokens, lObjects, oOptions)
             preprocessor.classify(lTokens, lObjects)
-            pragma.classify(lTokens, lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars, self.configuration)
+            pragma.classify(lObjects, self.lOpenPragmas, self.lClosePragmas, self.dVars, self.configuration)
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
