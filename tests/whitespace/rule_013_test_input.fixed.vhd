@@ -35,4 +35,17 @@ begin
   a <= f and xor(some_signal);
   a <= g and xnor(some_signal);
 
+  process
+  begin
+
+    if or(some_signal) then
+    elsif and(some_signal) then
+    elsif nand(some_signal) then
+    elsif nor(some_signal) then
+    elsif xor(some_signal) then
+    elsif xnor(some_signal) then
+    end if;
+
+  end process;
+
 end architecture RTL;

@@ -1,0 +1,461 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   a <= b and c or d xor e nand f nor g xor h xnor i;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.or_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.xor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.nand_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.nor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.xor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.xnor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+7 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 |   a <= (b) and (c) or (d) xor (e) nand (f) nor (g) xor (h) xnor (i);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.or_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.xor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.nand_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.nor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.xor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.xnor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+9 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 |   -- Violations
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+11 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 |   a <= b  and  c  or  d  xor  e  nand  f  nor  g  xor  h  xnor  i;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.or_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.xor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.nand_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.nor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.xor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.xnor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+13 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 |   a <= (b)and(c)or(d)xor(e)nand(f)nor(g)xor(h)xnor(i);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.or_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.xor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.nand_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.nor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.xor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.logical_operator.xnor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+15 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+16 |   -- Unary operators should be ignored
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+17 |   a <= (others => func(and b, or b, nand b, or b, nor b, xnor b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.and_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.nand_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.nor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.comma'>
+<class 'vsg.token.unary_logical_operator.xnor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+18 |   a <= (others => func(nand b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.nand_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+19 |   a <= (others => func(or b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+20 |   a <= (others => func(nor b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.nor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+21 |   a <= (others => func(xor b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.xor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+22 |   a <= (others => func(xnor b));
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.aggregate.open_parenthesis'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.element_association.assignment'>
+<class 'vsg.token.todo.name'>
+<class 'vsg.token.todo.open_parenthesis'>
+<class 'vsg.token.unary_logical_operator.xnor_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.todo.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+23 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 |   a <= and(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.unary_logical_operator.and_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+25 |   a <= nand(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.unary_logical_operator.nand_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+26 |   a <= or(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+27 |   a <= nor(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.unary_logical_operator.nor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+28 |   a <= xor(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.unary_logical_operator.xor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+29 |   a <= xnor(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.unary_logical_operator.xnor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+30 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+31 |   a <= b and and(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.token.unary_logical_operator.and_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+32 |   a <= c and nand(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.token.unary_logical_operator.nand_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+33 |   a <= d and or(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+34 |   a <= e and nor(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.token.unary_logical_operator.nor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+35 |   a <= f and xor(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.token.unary_logical_operator.xor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+36 |   a <= g and xnor(some_signal);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.token.unary_logical_operator.xnor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+37 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+38 |   process
+<class 'vsg.token.process_statement.process_keyword'>
+--------------------------------------------------------------------------------
+39 |   begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+40 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+41 |     if or(some_signal) then
+<class 'vsg.token.if_statement.if_keyword'>
+<class 'vsg.token.unary_logical_operator.or_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+42 |     elsif and(some_signal) then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.unary_logical_operator.and_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+43 |     elsif nand(some_signal) then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.unary_logical_operator.nand_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+44 |     elsif nor(some_signal) then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.unary_logical_operator.nor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+45 |     elsif xor(some_signal) then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.unary_logical_operator.xor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+46 |     elsif xnor(some_signal) then
+<class 'vsg.token.if_statement.elsif_keyword'>
+<class 'vsg.token.unary_logical_operator.xnor_operator'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.if_statement.then_keyword'>
+--------------------------------------------------------------------------------
+47 |     end if;
+<class 'vsg.token.if_statement.end_keyword'>
+<class 'vsg.token.if_statement.end_if_keyword'>
+<class 'vsg.token.if_statement.semicolon'>
+--------------------------------------------------------------------------------
+48 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+49 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+50 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+51 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
