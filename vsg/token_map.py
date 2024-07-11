@@ -225,7 +225,6 @@ def extract_start_end_indexes(lStartIndexes, lEndIndexes):
     mylStartIndexes = lStartIndexes.copy()
     mylEndIndexes = lEndIndexes.copy()
     lPairs = extract_pairs(mylStartIndexes, mylEndIndexes)
-
     return extract_indexes_from_pairs(lPairs)
 
 
@@ -259,16 +258,21 @@ def extract_closest_pair(iStart, lEndIndexes, lPair, iMin):
 
 
 def extract_indexes_from_pairs(lPairs):
-    lReturnStartIndexes = []
-    lReturnEndIndexes = []
+    lStartIndexes = []
     for pair in lPairs:
         if pair_is_empty(pair):
             break
-        lReturnStartIndexes.append(pair[0])
-        lReturnEndIndexes.append(pair[1])
+        lStartIndexes.append(pair[0])
 
-    lReturnStartIndexes.sort()
-    lReturnEndIndexes.sort()
+    lStartIndexes.sort()
+
+    lReturnStartIndexes = []
+    lReturnEndIndexes = []
+    for iStartIndex in lStartIndexes:
+        lReturnStartIndexes.append(iStartIndex)
+        for pair in lPairs:
+            if pair[0] == iStartIndex:
+                lReturnEndIndexes.append(pair[1])
 
     return lReturnStartIndexes, lReturnEndIndexes
 

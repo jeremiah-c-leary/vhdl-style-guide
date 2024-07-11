@@ -66,6 +66,7 @@ Rules Enforcing Structure Rule Group
 * `entity_029 <../entity_rules.html#entity-029>`_
 * `function_018 <../function_rules.html#function-018>`_
 * `function_019 <../function_rules.html#function-019>`_
+* `function_020 <../function_rules.html#function-020>`_
 * `generate_011 <../generate_rules.html#generate-011>`_
 * `generate_019 <../generate_rules.html#generate-019>`_
 * `generate_020 <../generate_rules.html#generate-020>`_
@@ -123,6 +124,7 @@ Rules Enforcing Structure Rule Group
 * `port_map_010 <../port_map_rules.html#port-map-010>`_
 * `procedure_012 <../procedure_rules.html#procedure-012>`_
 * `procedure_013 <../procedure_rules.html#procedure-013>`_
+* `procedure_014 <../procedure_rules.html#procedure-014>`_
 * `procedure_call_001 <../procedure_call_rules.html#procedure-call-001>`_
 * `procedure_call_002 <../procedure_call_rules.html#procedure-call-002>`_
 * `procedure_call_003 <../procedure_call_rules.html#procedure-call-003>`_

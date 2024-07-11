@@ -51,7 +51,7 @@ architecture BEHAVIORAL of DATA_CORE is
 
     return A & A & A & A & A & A & A & A;
 
-  end function;
+  end function b8;
 
   component ALU8 is
     port (

@@ -43,7 +43,7 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
         self.filter_tokens = []
 
     def _get_tokens_of_interest(self, oFile):
-        if remove_keyword(self):
+        if self._remove_keyword():
             return oFile.get_token_and_n_tokens_before_it([self.insert_token], 1)
         else:
             return self._get_add_tokens_of_interest(oFile)
@@ -53,16 +53,21 @@ class insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value
         return filter_toi(self.filter_tokens, lToi)
 
     def _analyze(self, lToi):
-        if remove_keyword(self):
+        if self._remove_keyword():
             analyze_for_existence_of_optional_keyword(lToi, self)
         else:
             analyze_for_missing_optional_keyword(lToi, self)
 
     def _fix_violation(self, oViolation):
-        if remove_keyword(self):
+        if self._remove_keyword():
             rules_utils.remove_optional_item(oViolation, self.insert_token)
         else:
             add_optional_item(oViolation, self)
+
+    def _remove_keyword(self):
+        if self.action == "remove":
+            return True
+        return False
 
 
 def filter_toi(filter_tokens, lToi):
@@ -74,12 +79,6 @@ def filter_toi(filter_tokens, lToi):
         else:
             lReturn.append(oToi)
     return lReturn
-
-
-def remove_keyword(self):
-    if self.action == "remove":
-        return True
-    return False
 
 
 def analyze_for_existence_of_optional_keyword(lToi, self):

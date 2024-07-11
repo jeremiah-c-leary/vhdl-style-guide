@@ -355,6 +355,31 @@ This rule checks the structure of procedure specifications.
       sample      : out std_logic
     );
 
+procedure_014
+#############
+
+|phase_1| |error| |structure| |structure_optional|
+
+This rule checks the procedure designator exists in the closing of the procedure specification.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure proc is
+
+   end procedure;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure proc is
+
+   end procedure proc;
+
 procedure_100
 #############
 

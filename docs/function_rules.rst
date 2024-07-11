@@ -401,6 +401,30 @@ This rule checks the structure of function specifications.
       sample      : out std_logic
     ) return integer;
 
+function_020
+############
+
+|phase_1| |error| |structure| |structure_optional|
+
+This rule checks the function designator exists in the closing of the function specification.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function func return integer is
+
+   end function;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function func return integer is
+
+   end function func;
 
 function_100
 ############
