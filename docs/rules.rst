@@ -32,6 +32,9 @@ The rules are divided into categories depending on the part of the VHDL code bei
    entity_specification_rules.rst
    exit_statement_rules.rst
    exponent_rules.rst
+   external_constant_name_rules.rst
+   external_signal_name_rules.rst
+   external_variable_name_rules.rst
    file_rules.rst
    for_loop_rules.rst
    for_generate_statement_rules.rst

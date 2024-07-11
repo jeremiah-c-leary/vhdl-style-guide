@@ -247,6 +247,35 @@ Refer to the entity for port types, port directions and purpose.
    WR_EN => w_wr_en;
    RD_EN => w_rd_en;
 
+port_map_100
+############
+
+|phase_2| |error| |whitespace|
+
+This rules checks for whitespace before the assignment operator.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port map (
+     WR_EN=> w_wr_en,
+     RD_EN=> w_rd_en,
+     OVERFLOW => w_overflow
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port map (
+     WR_EN => w_wr_en,
+     RD_EN => w_rd_en,
+     OVERFLOW => w_overflow
+   );
+
 port_map_200
 ############
 

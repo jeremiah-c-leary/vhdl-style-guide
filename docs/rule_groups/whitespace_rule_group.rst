@@ -63,6 +63,21 @@ Rules Enforcing Whitespace Rule Group
 * `entity_013 <../entity_rules.html#entity-013>`_
 * `entity_specification_100 <../entity_specification_rules.html#entity-specification-100>`_
 * `entity_specification_101 <../entity_specification_rules.html#entity-specification-101>`_
+* `external_constant_name_100 <../external_constant_name_rules.html#external-constant-name-100>`_
+* `external_constant_name_101 <../external_constant_name_rules.html#external-constant-name-101>`_
+* `external_constant_name_102 <../external_constant_name_rules.html#external-constant-name-102>`_
+* `external_constant_name_103 <../external_constant_name_rules.html#external-constant-name-103>`_
+* `external_constant_name_104 <../external_constant_name_rules.html#external-constant-name-104>`_
+* `external_signal_name_100 <../external_signal_name_rules.html#external-signal-name-100>`_
+* `external_signal_name_101 <../external_signal_name_rules.html#external-signal-name-101>`_
+* `external_signal_name_102 <../external_signal_name_rules.html#external-signal-name-102>`_
+* `external_signal_name_103 <../external_signal_name_rules.html#external-signal-name-103>`_
+* `external_signal_name_104 <../external_signal_name_rules.html#external-signal-name-104>`_
+* `external_variable_name_100 <../external_variable_name_rules.html#external-variable-name-100>`_
+* `external_variable_name_101 <../external_variable_name_rules.html#external-variable-name-101>`_
+* `external_variable_name_102 <../external_variable_name_rules.html#external-variable-name-102>`_
+* `external_variable_name_103 <../external_variable_name_rules.html#external-variable-name-103>`_
+* `external_variable_name_104 <../external_variable_name_rules.html#external-variable-name-104>`_
 * `file_100 <../file_rules.html#file-100>`_
 * `function_100 <../function_rules.html#function-100>`_
 * `function_101 <../function_rules.html#function-101>`_
@@ -76,6 +91,7 @@ Rules Enforcing Whitespace Rule Group
 * `generic_014 <../generic_rules.html#generic-014>`_
 * `generic_map_006 <../generic_map_rules.html#generic-map-006>`_
 * `generic_map_007 <../generic_map_rules.html#generic-map-007>`_
+* `generic_map_100 <../generic_map_rules.html#generic-map-100>`_
 * `if_003 <../if_rules.html#if-003>`_
 * `if_004 <../if_rules.html#if-004>`_
 * `if_005 <../if_rules.html#if-005>`_
@@ -102,6 +118,7 @@ Rules Enforcing Whitespace Rule Group
 * `port_009 <../port_rules.html#port-009>`_
 * `port_020 <../port_rules.html#port-020>`_
 * `port_map_007 <../port_map_rules.html#port-map-007>`_
+* `port_map_100 <../port_map_rules.html#port-map-100>`_
 * `procedure_100 <../procedure_rules.html#procedure-100>`_
 * `procedure_101 <../procedure_rules.html#procedure-101>`_
 * `procedure_call_100 <../procedure_call_rules.html#procedure-call-100>`_

@@ -3,6 +3,7 @@
 from vsg import parser
 from vsg.token import direction
 from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import external_name
 
 
 def classify(iToken, lObjects):
@@ -54,6 +55,10 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
             else:
                 break
         else:
+            iPrevious = iCurrent
+            iCurrent = external_name.detect(iCurrent, lObjects)
+            if iCurrent != iPrevious:
+                continue
             utils.assign_special_tokens(lObjects, iCurrent, oType)
             iCurrent += 1
     return iCurrent

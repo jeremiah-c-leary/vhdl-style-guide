@@ -10,7 +10,6 @@ def detect(iToken, lObjects):
       | array_constraint
       | record_constraint
     """
-
     iReturn = range_constraint.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
