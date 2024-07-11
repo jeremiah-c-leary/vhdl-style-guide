@@ -541,6 +541,14 @@ def post_token_assignments(lTokens):
                     lTokens[iToken] = unary_logical_operator.and_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.and_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.and_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
+                    [parser.keyword],
+                    iToken - 1,
+                    lTokens,
+                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.and_operator(sValue)
                 else:
                     lTokens[iToken] = logical_operator.and_operator(sValue)
 
@@ -550,6 +558,14 @@ def post_token_assignments(lTokens):
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.or_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.or_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.or_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
+                    [parser.keyword],
+                    iToken - 1,
+                    lTokens,
+                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.or_operator(sValue)
                 else:
                     lTokens[iToken] = logical_operator.or_operator(sValue)
@@ -561,6 +577,14 @@ def post_token_assignments(lTokens):
                     lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
+                    [parser.keyword],
+                    iToken - 1,
+                    lTokens,
+                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
                 else:
                     lTokens[iToken] = logical_operator.nand_operator(sValue)
 
@@ -570,6 +594,14 @@ def post_token_assignments(lTokens):
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
+                    [parser.keyword],
+                    iToken - 1,
+                    lTokens,
+                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
                 else:
                     lTokens[iToken] = logical_operator.nor_operator(sValue)
@@ -581,6 +613,14 @@ def post_token_assignments(lTokens):
                     lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
+                    [parser.keyword],
+                    iToken - 1,
+                    lTokens,
+                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
                 else:
                     lTokens[iToken] = logical_operator.xor_operator(sValue)
 
@@ -590,6 +630,14 @@ def post_token_assignments(lTokens):
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
                 elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
+                    lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
+                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
+                    [parser.keyword],
+                    iToken - 1,
+                    lTokens,
+                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
                     lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
                 else:
                     lTokens[iToken] = logical_operator.xnor_operator(sValue)
