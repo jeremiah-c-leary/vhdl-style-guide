@@ -289,6 +289,73 @@ This rule checks for a single space before the identifier.
    variable size : integer;
    variable width : integer;
 
+variable_101
+############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the shared keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   shared    variable size : integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   shared variable size : integer;
+
+variable_102
+############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the assignment.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable size : integer      := 32;
+   variable width : integer:= 256;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable size : integer := 32;
+   variable width : integer := 256;
+
+variable_103
+############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the assignment.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable size : integer :=32;
+   variable width : integer :=     256;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable size : integer := 32;
+   variable width : integer := 256;
+
 variable_400
 ############
 
