@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import re
 
 from vsg import parser, token, violation
 from vsg.rule_group import case
@@ -32,6 +33,8 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
         self.prefix_exceptions = []
         self.suffix_exceptions = []
         self.case_exceptions = []
+        self.regex = ""
+        self.oRegex = None
         if sMapType == "port":
             self.oMapStart = token.port_map_aspect.open_parenthesis
             self.oMapEnd = token.port_map_aspect.close_parenthesis
@@ -49,6 +52,7 @@ class token_case_formal_part_of_association_element_in_map_between_tokens(case.R
         check_prefix = case_utils.is_exception_enabled(self.prefix_exceptions)
         check_suffix = case_utils.is_exception_enabled(self.suffix_exceptions)
         check_whole = case_utils.is_exception_enabled(self.suffix_exceptions)
+        self.oRegex = re.compile(self.regex)
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
