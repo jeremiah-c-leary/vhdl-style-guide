@@ -48,6 +48,15 @@ class test_port_map_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
+    def test_rule_002_regex(self):
+        oRule = port_map.rule_002()
+        oRule.case = "regex"
+        oRule.regex = "port_.*"
+        lExpected = [13, 14, 15]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
+
     def test_fix_rule_002_lower(self):
         oRule = port_map.rule_002()
 
