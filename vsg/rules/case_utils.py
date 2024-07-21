@@ -6,6 +6,7 @@ from vsg import violation
 
 camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
 PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
+PascalSnakeCase = re.compile("(((?:[A-Z])+(?:[a-z0-9])*)+_?)+")
 
 
 def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, check_whole=False, iIndex=0, iLine=None):
@@ -132,6 +133,13 @@ def check_for_pascalcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iL
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
 
 
+def check_for_pascal_snake_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
+    sExpectedValue = sPrefix + sWord + sSuffix
+    if PascalSnakeCase.fullmatch(sWord) is None:
+        sSolution = "Format " + sActualValue + " into Pascal_Snake_Case"
+        return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
+
+
 def check_for_regex(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
     sExpectedValue = sPrefix + sWord + sSuffix
     if self.oRegex.fullmatch(sWord) is None:
@@ -223,6 +231,8 @@ dCase["camelCase"] = {}
 dCase["camelCase"]["check"] = check_for_camelcase
 dCase["PascalCase"] = {}
 dCase["PascalCase"]["check"] = check_for_pascalcase
+dCase["Pascal_Snake_Case"] = {}
+dCase["Pascal_Snake_Case"]["check"] = check_for_pascal_snake_case
 dCase["regex"] = {}
 dCase["regex"]["check"] = check_for_regex
 dCase["lower"] = {}
