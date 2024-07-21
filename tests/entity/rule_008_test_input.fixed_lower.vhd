@@ -66,3 +66,13 @@ end entity;
 entity myfifo_a is
 
 end entity;
+
+-- Test Pascal_Snake_Case
+
+entity myfifo_greenred_blue is end entity;
+
+entity e_my_fifo_green is end entity;
+
+entity my_fifo_green_a is end entity;
+
+entity e_myfifo_greenred_blue_a is end entity;
