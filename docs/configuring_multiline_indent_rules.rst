@@ -38,10 +38,10 @@ There are several options to these rules:
 +---------------+----------+---------------+----------------------+
 | Option        | Values   | Default       | Description          |
 +===============+==========+===============+======================+
-| |align_left|  | |values| | |default_yes| | * |align_left__yes|  |
+| |align_left|  | |values| | |default_no|  | * |align_left__yes|  |
 |               |          |               | * |align_left__no|   |
 +---------------+----------+---------------+----------------------+
-| |align_paren| | |values| | |default_no|  | * |align_paren__yes| |
+| |align_paren| | |values| | |default_yes| | * |align_paren__yes| |
 |               |          |               | * |align_paren__no|  |
 +---------------+----------+---------------+----------------------+
 
