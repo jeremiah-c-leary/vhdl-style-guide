@@ -40,4 +40,4 @@ The resulting data structure will be the following list:
        <class 'vsg.token.architecture_body.semicolon'>
    ]
 
-The elements in this data structure will be interogated and modified by rules.
+The elements in this data structure will be interrogated and modified by rules.

@@ -240,7 +240,7 @@ This rule checks for consistent capitalization of signal names.
 
        if (SIG2 = '0') then
          sIg1 <= '1';
-       elisif (SiG2 = '1') then
+       elsif (SiG2 = '1') then
          SIg1 <= '0';
        end if;
 
@@ -264,7 +264,7 @@ This rule checks for consistent capitalization of signal names.
 
        if (sig2 = '0') then
          sig1 <= '1';
-       elisif (sig2 = '1') then
+       elsif (sig2 = '1') then
          sig1 <= '0';
        end if;
 

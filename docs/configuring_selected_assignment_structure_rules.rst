@@ -636,4 +636,4 @@ The above configuration when applied to the code snippet will result in the foll
 Rules Enforcing Selected Assignment Structure Rules
 ###################################################
 
-* `selected_assignment_001 <selected_assingment_rules.html#selected-assignment-001>`_
+* `selected_assignment_001 <selected_assignment_rules.html#selected-assignment-001>`_
