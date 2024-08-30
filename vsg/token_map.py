@@ -259,9 +259,8 @@ def extract_closest_pair(iStart, lEndIndexes, lPair, iMin):
 
 def extract_indexes_from_pairs(lPairs):
     lStartIndexes = []
+    lPairs = remove_any_empty_pairs(lPairs)
     for pair in lPairs:
-        if pair_is_empty(pair):
-            break
         lStartIndexes.append(pair[0])
 
     lStartIndexes.sort()
@@ -281,3 +280,7 @@ def pair_is_empty(lPair):
     if len(lPair) == 0:
         return True
     return False
+
+
+def remove_any_empty_pairs(lPairs):
+    return [x for x in lPairs if x != []]
