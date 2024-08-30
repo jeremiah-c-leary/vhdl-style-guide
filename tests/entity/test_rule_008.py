@@ -162,7 +162,7 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
 
         lExpected = [2, 14, 18, 26, 30, 34, 38, 42, 50, 54, 58, 62, 66]
         oRule.analyze(self.oFile)
@@ -171,7 +171,7 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex_with_prefix(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
         oRule.prefix_exceptions.append("e_")
 
         lExpected = [2, 14, 18, 26, 30, 42, 50, 54, 58, 62, 66]
@@ -181,7 +181,7 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex_with_suffix(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
         oRule.suffix_exceptions.append("_a")
 
         lExpected = [2, 14, 18, 26, 30, 34, 38, 42, 50, 54, 58, 66]
@@ -191,7 +191,7 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex_with_prefix_and_suffix(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
         oRule.prefix_exceptions.append("e_")
         oRule.suffix_exceptions.append("_a")
 
@@ -202,7 +202,7 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex_with_whole_exception(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
         oRule.case_exceptions.append("myFifo")
 
         lExpected = [2, 14, 18, 22, 30, 34, 38, 42, 50, 54, 58, 62, 66]
