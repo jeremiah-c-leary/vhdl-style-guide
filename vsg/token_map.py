@@ -236,10 +236,10 @@ def extract_pairs(lStartIndexes, lEndIndexes):
         for iStart in lStartIndexes:
             lPair = extract_closest_pair(iStart, lEndIndexes, lPair, iMin)
 
-        lMyPairs.append(lPair)
-
         if pair_is_empty(lPair):
             break
+
+        lMyPairs.append(lPair)
 
         lStartIndexes.remove(lPair[0])
         lEndIndexes.remove(lPair[1])
