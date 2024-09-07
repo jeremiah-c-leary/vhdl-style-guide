@@ -9,7 +9,7 @@ from . import config, rule_list, vhdlFile
 def parse_command_line_arguments():
     """Parses the command line arguments and returns them."""
 
-    parser = argparse.ArgumentParser(prog="VHDL Style Guide (VSG) Parser", description="""Outputs formatted rule documentation.""")
+    parser = argparse.ArgumentParser(prog="VHDL Style Guide (VSG) Rule Documentation Generator", description="""Outputs formatted rule documentation.""")
 
     return parser.parse_args()
 
