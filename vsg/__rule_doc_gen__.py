@@ -9,12 +9,14 @@ from . import config, rule_list, vhdlFile
 def parse_command_line_arguments():
     """Parses the command line arguments and returns them."""
 
-    parser = argparse.ArgumentParser(prog="VHDL Style Guide (VSG) Rule Documentation Generator", description="""Outputs formatted rule documentation.""")
+    parser = argparse.ArgumentParser(
+        prog="VHDL Style Guide (VSG) Rule Documentation Generator",
+        description="""Outputs formatted rule documentation."""
+    )
 
     sDocsPath = os.path.join(os.path.dirname(__file__), "../docs")
 
     parser.add_argument("-p", "--path", default=sDocsPath, help="Path in which to generate the rule documentation")
-
 
     return parser.parse_args()
 
