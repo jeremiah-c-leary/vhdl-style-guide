@@ -26,7 +26,7 @@ def main():
 
     commandLineArguments = parse_command_line_arguments()
 
-    create_rule_documentation()
+    create_rule_documentation(commandLineArguments.path)
 
     sys.exit(fExitStatus)
 
