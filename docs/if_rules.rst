@@ -620,7 +620,7 @@ if_030
 |phase_3| |error| |blank_line|
 
 This rule checks a single blank line after the **end if**.
-In the case of nested **if** statements, the rule will be enfoced on the last **end if**.
+In the case of nested **if** statements, the rule will be enforced on the last **end if**.
 
 |configuring_blank_lines_link|
 
@@ -649,7 +649,7 @@ if_031
 |phase_3| |error| |blank_line|
 
 This rule checks for blank lines or comments above the **if** keyword.
-In the case of nested **if** statements, the rule will be enfoced on the first **if**.
+In the case of nested **if** statements, the rule will be enforced on the first **if**.
 
 |configuring_previous_line_rules_link|
 

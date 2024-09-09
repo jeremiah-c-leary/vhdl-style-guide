@@ -13,7 +13,7 @@ lTokens.append([token.block_statement.guard_close_parenthesis, token.block_state
 
 class rule_100(Rule):
     """
-    This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guart close parenthesis, and **is** keywords.
+    This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guard close parenthesis, and **is** keywords.
 
     |configuring_whitespace_rules_link|
 

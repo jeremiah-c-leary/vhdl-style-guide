@@ -105,7 +105,7 @@ The following code snippet is used for all examples and is formatted with the co
                sig_c and sig_d when input = "0010" else
               '0';
 
-.. NOTE::  Formatting in the following exampes is performed by a separate rule.
+.. NOTE::  Formatting in the following examples is performed by a separate rule.
 
 Example: |align_left| set to |default_yes|
 ##########################################
