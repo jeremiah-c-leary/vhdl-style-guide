@@ -6,7 +6,7 @@ Reserved Rules
 reserved_001
 ############
 
-|phase_1| |error| |structure|
+|phase_1| |error| |unfixable| |structure|
 
 This rule checks for VHDL reserved words being used as identifiers and names.
 

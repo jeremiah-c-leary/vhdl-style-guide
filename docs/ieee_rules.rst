@@ -1,4 +1,3 @@
-
 .. include:: includes.rst
 
 IEEE Rules
