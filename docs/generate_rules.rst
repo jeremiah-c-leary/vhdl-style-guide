@@ -462,6 +462,29 @@ This rule checks a label colon is on the same line as the **case**, **if**, and 
    label
    : case
 
+generate_022
+############
+
+|phase_1| |disabled| |error| |structure| |structure_optional|
+
+This rule checks for the existence of the **begin** keyword in for generate statements.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate begin
+   end generate;
+
 generate_400
 ############
 

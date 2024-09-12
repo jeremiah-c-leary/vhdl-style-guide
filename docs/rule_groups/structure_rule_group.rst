@@ -71,6 +71,7 @@ Rules Enforcing Structure Rule Group
 * `generate_019 <../generate_rules.html#generate-019>`_
 * `generate_020 <../generate_rules.html#generate-020>`_
 * `generate_021 <../generate_rules.html#generate-021>`_
+* `generate_022 <../generate_rules.html#generate-022>`_
 * `generic_010 <../generic_rules.html#generic-010>`_
 * `generic_013 <../generic_rules.html#generic-013>`_
 * `generic_016 <../generic_rules.html#generic-016>`_

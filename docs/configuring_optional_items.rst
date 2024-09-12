@@ -97,6 +97,7 @@ Rules Enforcing Optional Items
 * `function_018 <function_rules.html#function-018>`_
 * `function_020 <function_rules.html#function-020>`_
 * `generate_011 <generate_rules.html#generate-011>`_
+* `generate_022 <generate_rules.html#generate-022>`_
 * `instantiation_033 <instantiation_rules.html#instantiation-033>`_
 * `loop_statement_007 <loop_statement_rules.html#loop-statement-007>`_
 * `package_007 <package_rules.html#package-007>`_

@@ -50,6 +50,7 @@ Rules Disabled by Default
 * `function_600 <function_rules.html#function-600>`_
 * `function_601 <function_rules.html#function-601>`_
 * `generate_017 <generate_rules.html#generate-017>`_
+* `generate_022 <generate_rules.html#generate-022>`_
 * `generate_600 <generate_rules.html#generate-600>`_
 * `generate_601 <generate_rules.html#generate-601>`_
 * `generate_602 <generate_rules.html#generate-602>`_
