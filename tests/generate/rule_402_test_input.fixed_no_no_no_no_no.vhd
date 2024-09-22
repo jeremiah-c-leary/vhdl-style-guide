@@ -83,4 +83,19 @@ begin
 
   end generate;
 
+  -- Test different generates in succession, with and without begin keywords.
+  gen_1 : if true generate
+  begin
+
+  end generate;
+
+  gen_2 : for gv_reg in t_reg generate
+  begin
+
+  end generate;
+
+  gen_3 : if c_reg generate
+
+  end generate;
+
 end;
