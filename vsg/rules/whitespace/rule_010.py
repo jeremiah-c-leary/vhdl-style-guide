@@ -9,7 +9,7 @@ lTokens.append(token.adding_operator.concat)
 
 class rule_010(n_spaces_before_and_after_tokens):
     """
-    This rule checks for spaces before and after the concate (&) operator.
+    This rule checks for spaces before and after the concatenate (&) operator.
 
     **Violation**
 

@@ -40,7 +40,7 @@ class rule_011(Rule):
 
            if (VAR2 = '0') then
              vaR3 <= '1';
-           elisif (var2 = '1') then
+           elsif (var2 = '1') then
              VAR4 <= '0';
            end if;
 
@@ -65,7 +65,7 @@ class rule_011(Rule):
 
          if (var2 = '0') then
            var3 <= '1';
-         elisif (var2 = '1') then
+         elsif (var2 = '1') then
            var4 <= '0';
          end if;
 

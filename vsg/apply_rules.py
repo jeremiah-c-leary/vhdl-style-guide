@@ -87,7 +87,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = []
         sOutputStd = ""
-        sOutputErr = e.message
+        sOutputErr = f"Error while processing {sFileName}: {e.message}"
         return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles
 
     oVhdlFile.set_indent_map(dIndent)
@@ -106,7 +106,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = []
         sOutputStd = ""
-        sOutputErr = e.message
+        sOutputErr = f"Error while processing {sFileName}: {e.message}"
         return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
 
     if commandLineArguments.fix:
