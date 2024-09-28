@@ -5,6 +5,7 @@ from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
 lTokens.append([token.subtype_declaration.is_keyword, token.type_mark.name])
+lTokens.append([token.subtype_declaration.is_keyword, token.resolution_indication.resolution_function_name])
 lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_logic_vector])
 lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_ulogic_vector])
 lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_ulogic])

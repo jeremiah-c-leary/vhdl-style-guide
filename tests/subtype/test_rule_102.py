@@ -27,7 +27,7 @@ class test_type_definition_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "subtype")
         self.assertEqual(oRule.identifier, "102")
 
-        lExpected = [16, 17, 18, 19, 20, 21, 22, 23, 24]
+        lExpected = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
