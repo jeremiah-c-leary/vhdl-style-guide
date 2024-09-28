@@ -104,7 +104,6 @@ Rules Enforcing Case Rule Group
 * `generic_017 <../generic_rules.html#generic-017>`_
 * `generic_map_001 <../generic_map_rules.html#generic-map-001>`_
 * `generic_map_002 <../generic_map_rules.html#generic-map-002>`_
-* `ieee_500 <../ieee_rules.html#ieee-500>`_
 * `if_generate_statement_500 <../if_generate_statement_rules.html#if-generate-statement-500>`_
 * `if_generate_statement_501 <../if_generate_statement_rules.html#if-generate-statement-501>`_
 * `if_generate_statement_502 <../if_generate_statement_rules.html#if-generate-statement-502>`_
@@ -195,6 +194,7 @@ Rules Enforcing Case Rule Group
 * `type_014 <../type_rules.html#type-014>`_
 * `type_500 <../type_rules.html#type-500>`_
 * `type_501 <../type_rules.html#type-501>`_
+* `type_mark_500 <../type_mark_rules.html#type_mark-500>`_
 * `use_clause_500 <../use_clause_rules.html#use-clause-500>`_
 * `use_clause_501 <../use_clause_rules.html#use-clause-501>`_
 * `use_clause_502 <../use_clause_rules.html#use-clause-502>`_
