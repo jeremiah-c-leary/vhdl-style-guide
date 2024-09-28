@@ -381,7 +381,7 @@
 82 |   a <= std_logic(to_unsigned(b, 4));
 <class 'vsg.token.concurrent_simple_signal_assignment.target'>
 <class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.token.todo.name'>
 <class 'vsg.token.todo.open_parenthesis'>
