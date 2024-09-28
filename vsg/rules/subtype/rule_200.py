@@ -12,7 +12,7 @@ lAllowTokens.append(token.subtype_declaration.subtype_keyword)
 
 class rule_200(Rule):
     """
-    This rule checks for a blank line below a subtype declaration unless there is another subtype declaration.
+    This rule checks for a blank line below a **subtype** declaration unless there is another **subtype** declaration.
 
     |configuring_blank_lines_link|
 

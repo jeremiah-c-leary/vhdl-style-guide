@@ -7,7 +7,7 @@ from vsg.token import subtype_declaration as token
 
 class rule_009(Rule):
     """
-    This rule checks the identifier is on the same line as the subtype keyword.
+    This rule checks the identifier is on the same line as the **subtype** keyword.
 
     **Violation**
 
@@ -20,7 +20,7 @@ class rule_009(Rule):
 
     .. code-block:: vhdl
 
-       type st_counter
+       subtype st_counter
        is
     """
 

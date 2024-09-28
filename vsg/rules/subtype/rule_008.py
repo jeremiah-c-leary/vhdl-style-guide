@@ -9,7 +9,7 @@ lTokens.append(token.subtype_declaration.semicolon)
 
 class rule_008(blank_line_below_line_ending_with_token):
     """
-    This rule checks for a blank line below the **type** declaration.
+    This rule checks for a blank line below the **subtype** declaration.
 
     |configuring_blank_lines_link|
 
