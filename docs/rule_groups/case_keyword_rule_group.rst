@@ -73,7 +73,6 @@ Rules Enforcing Case::Keyword Rule Group
 * `generic_009 <../generic_rules.html#generic-009>`_
 * `generic_017 <../generic_rules.html#generic-017>`_
 * `generic_map_001 <../generic_map_rules.html#generic-map-001>`_
-* `ieee_500 <../ieee_rules.html#ieee-500>`_
 * `if_generate_statement_500 <../if_generate_statement_rules.html#if-generate-statement-500>`_
 * `if_generate_statement_501 <../if_generate_statement_rules.html#if-generate-statement-501>`_
 * `if_generate_statement_502 <../if_generate_statement_rules.html#if-generate-statement-502>`_

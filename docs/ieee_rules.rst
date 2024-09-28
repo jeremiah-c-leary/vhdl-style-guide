@@ -1,9 +1,9 @@
 .. include:: includes.rst
 
-IEEE Rules
------------
+Ieee Rules
+----------
 
-IEEE_500
+ieee_500
 ########
 
 This rule was deprecated and replaced with the following rule:
