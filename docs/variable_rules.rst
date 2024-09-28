@@ -187,7 +187,7 @@ This rule checks for consistent capitalization of variable names.
 
        if (VAR2 = '0') then
          vaR3 <= '1';
-       elisif (var2 = '1') then
+       elsif (var2 = '1') then
          VAR4 <= '0';
        end if;
 
@@ -212,7 +212,7 @@ This rule checks for consistent capitalization of variable names.
 
      if (var2 = '0') then
        var3 <= '1';
-     elisif (var2 = '1') then
+     elsif (var2 = '1') then
        var4 <= '0';
      end if;
 

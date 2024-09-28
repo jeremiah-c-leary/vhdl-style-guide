@@ -10,7 +10,7 @@ lTokens.append(token.if_statement.if_keyword)
 class rule_031(previous_line):
     """
     This rule checks for blank lines or comments above the **if** keyword.
-    In the case of nested **if** statements, the rule will be enfoced on the first **if**.
+    In the case of nested **if** statements, the rule will be enforced on the first **if**.
 
     |configuring_previous_line_rules_link|
 

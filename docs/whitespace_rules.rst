@@ -179,7 +179,7 @@ whitespace_010
 
 |phase_2| |error| |whitespace|
 
-This rule checks for spaces before and after the concate (&) operator.
+This rule checks for spaces before and after the concatenate (&) operator.
 
 **Violation**
 
@@ -198,7 +198,7 @@ whitespace_011
 
 |phase_2| |error| |whitespace|
 
-This rule checks for at least a single space before and after math operators +, -, /, * and **.
+This rule checks for at least a single space before and after math operators +, -, /, * and \*\*.
 
 **Violation**
 
