@@ -25,7 +25,6 @@ class rule_500(token_case_with_prefix_suffix):
     .. code-block:: vhdl
 
       subtype my_subtype is my_external_type range 10 to 20;
-
     """
 
     def __init__(self):

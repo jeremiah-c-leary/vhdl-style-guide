@@ -24,4 +24,3 @@ This rule checks that the name has proper case.
 .. code-block:: vhdl
 
   subtype my_subtype is my_external_type range 10 to 20;
-
