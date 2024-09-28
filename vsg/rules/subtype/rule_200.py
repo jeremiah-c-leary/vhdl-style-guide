@@ -5,10 +5,8 @@ from vsg.rules import blank_line_below_line_ending_with_token as Rule
 
 lTokens = []
 lTokens.append(token.subtype_declaration.semicolon)
-lTokens.append(token.subtype_declaration.semicolon)
 
 lAllowTokens = []
-lAllowTokens.append(token.subtype_declaration.subtype_keyword)
 lAllowTokens.append(token.subtype_declaration.subtype_keyword)
 
 
@@ -22,7 +20,7 @@ class rule_200(Rule):
 
     .. code-block:: vhdl
 
-       subtype counter is unsigned(4 downto 0);
+       subtype counter_t is unsigned(4 downto 0);
        subtype counter is unsigned(4 downto 0);
        constant width : integer := 32;
 
@@ -30,7 +28,7 @@ class rule_200(Rule):
 
     .. code-block:: vhdl
 
-       subtype counter is unsigned(4 downto 0);
+       subtype counter_t is unsigned(4 downto 0);
        subtype counter is unsigned(4 downto 0);
 
        constant width : integer := 32;
