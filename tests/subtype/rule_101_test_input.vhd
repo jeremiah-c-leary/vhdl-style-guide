@@ -5,13 +5,7 @@ architecture RTL of FIFO is
 
   -- Violations below
 
-  subtype counter
- is unsigned(4 downto 0);
-
-  subtype counter
-
-
-  is unsigned(4 downto 0);
+  subtype counter    is unsigned(4 downto 0);
 
 begin
 

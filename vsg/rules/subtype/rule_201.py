@@ -7,7 +7,7 @@ lTokens = []
 lTokens.append(token.subtype_declaration.subtype_keyword)
 
 
-class rule_007(previous_line):
+class rule_201(previous_line):
     """
     This rule checks for blank lines or comments above the **subtype** declaration.
 

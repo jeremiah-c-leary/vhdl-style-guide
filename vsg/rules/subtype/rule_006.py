@@ -1,38 +1,29 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg.rules.whitespace_between_token_pairs import Rule
 
-lTokens = []
-lTokens.append([token.subtype_declaration.is_keyword, token.type_mark.name])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_logic_vector])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_ulogic_vector])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_ulogic])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_logic])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.integer])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.signed])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.unsigned])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.natural])
+from vsg.rules import move_token_next_to_another_token as Rule
+from vsg.token import subtype_declaration as token
 
 
 class rule_006(Rule):
     """
-    This rule checks for a single space after the **is** keyword.
-
-    |configuring_whitespace_rules_link|
+    This rule checks the **is** keyword is on the same line as the identifier.
 
     **Violation**
 
     .. code-block:: vhdl
 
-       subtype counter is     unsigned(4 downto 0);
+       subtype st_counter
+       is
 
     **Fix**
 
     .. code-block:: vhdl
 
-       subtype counter is unsigned(4 downto 0);
+       subtype st_counter is
     """
 
     def __init__(self):
-        super().__init__(lTokens)
+        super().__init__(token.identifier, token.is_keyword)
+        self.solution = "Ensure *is* keyword is on the same line as the identifier."
+        self.subphase = 2

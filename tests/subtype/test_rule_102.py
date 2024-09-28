@@ -9,34 +9,31 @@ from vsg.rules import subtype
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_009_test_input.vhd"))
-
-dIndentMap = utils.read_indent_file()
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_102_test_input.vhd"))
 
 lExpected = []
 lExpected.append("")
-utils.read_file(os.path.join(sTestDir, "rule_009_test_input.fixed.vhd"), lExpected)
+utils.read_file(os.path.join(sTestDir, "rule_102_test_input.fixed.vhd"), lExpected)
 
 
 class test_type_definition_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
-        self.oFile.set_indent_map(dIndentMap)
 
-    def test_rule_009(self):
-        oRule = subtype.rule_009()
+    def test_rule_102(self):
+        oRule = subtype.rule_102()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "subtype")
-        self.assertEqual(oRule.identifier, "009")
+        self.assertEqual(oRule.identifier, "102")
 
-        lExpected = [8, 11]
+        lExpected = [16, 17, 18, 19, 20, 21, 22, 23, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_009(self):
-        oRule = subtype.rule_009()
+    def test_fix_rule_102(self):
+        oRule = subtype.rule_102()
 
         oRule.fix(self.oFile)
 

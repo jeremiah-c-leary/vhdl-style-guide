@@ -11,15 +11,18 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_006_test_input.vhd"))
 
+dIndentMap = utils.read_indent_file()
+
 lExpected = []
 lExpected.append("")
 utils.read_file(os.path.join(sTestDir, "rule_006_test_input.fixed.vhd"), lExpected)
 
 
-class test_type_definition_rule(unittest.TestCase):
+class test_subtype(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
+        self.oFile.set_indent_map(dIndentMap)
 
     def test_rule_006(self):
         oRule = subtype.rule_006()
@@ -27,7 +30,7 @@ class test_type_definition_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "subtype")
         self.assertEqual(oRule.identifier, "006")
 
-        lExpected = [16, 17, 18, 19, 20, 21, 22, 23, 24]
+        lExpected = [8, 11, 18]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
