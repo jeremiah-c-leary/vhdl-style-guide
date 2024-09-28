@@ -27,4 +27,4 @@ class rule_023(split_line_at_token):
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = "Move *elsif* keyword to it's own line."
+        self.solution = "Move *elsif* keyword to its own line."

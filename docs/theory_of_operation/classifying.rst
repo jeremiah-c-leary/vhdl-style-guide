@@ -45,7 +45,7 @@ Given the following production for the architecture_body:
 
 There is a classifier file named :code:`vsg/vhdlFile/classify/architecture_body.py`.
 
-This file has a detect function:
+This file has a :code:`detect` function:
 
 .. code-block:: python
 
@@ -62,7 +62,7 @@ This file has a detect function:
            return classify(iToken, lObjects)
        return iToken
 
-The detect function searches for the keyword :code:`architecture` in the token list.
+The :code:`detect` function searches for the keyword :code:`architecture` in the token list.
 If this keyword is found then it calls the :code:`classify` function.
 
 The :code:`classify` function:
@@ -110,9 +110,9 @@ includes two helper functions :code:`classify_opening_declaration` and :code:`cl
 
 The classification of the opening portion of the production, from :code:`architecture` to :code:`is`, is handled by the :code:`classify_opening_declaration` function.
 
-After the :code:`is` keyword, the detect function of the :code:`architecture_declarative_part` is called to check if there is anything in that production.
+After the :code:`is` keyword, the :code:`detect` function of the :code:`architecture_declarative_part` is called to check if there is anything in that production.
 If there are no more items in the :code:`architecture_declarative_part`, then the :code:`begin` keyword is classified.
-After the :code:`begin` keyword, the detect function of the :code:`architecture_statement_part` is called to check if there is anything in that production.
+After the :code:`begin` keyword, the :code:`detect` function of the :code:`architecture_statement_part` is called to check if there is anything in that production.
 If there are no more items in the :code:`architecture_statement_part`, then the closing portion of the production, from :code:`end` to the semicolon, is handled by the :code:`classify_closing_declaration` function.
 
 The recursive nature is implemented by calling other productions and then those productions returning to the caller.
