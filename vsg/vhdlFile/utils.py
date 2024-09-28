@@ -11,7 +11,6 @@ from vsg.token import (
     predefined_attribute,
     relational_operator,
 )
-from vsg.token.ieee.std_logic_1164 import types
 
 
 def assign_tokens_until(sToken, token, iToken, lObjects):
@@ -889,22 +888,6 @@ def assign_special_tokens(lObjects, iCurrent, oType):
         assign_token(lObjects, iCurrent, direction.downto)
     elif sValue == "to":
         assign_token(lObjects, iCurrent, direction.to)
-    elif sValue == "std_logic_vector":
-        assign_token(lObjects, iCurrent, types.std_logic_vector)
-    elif sValue == "std_ulogic_vector":
-        assign_token(lObjects, iCurrent, types.std_ulogic_vector)
-    elif sValue == "std_ulogic":
-        assign_token(lObjects, iCurrent, types.std_ulogic)
-    elif sValue == "std_logic":
-        assign_token(lObjects, iCurrent, types.std_logic)
-    elif sValue == "integer":
-        assign_token(lObjects, iCurrent, types.integer)
-    elif sValue == "signed":
-        assign_token(lObjects, iCurrent, types.signed)
-    elif sValue == "unsigned":
-        assign_token(lObjects, iCurrent, types.unsigned)
-    elif sValue == "natural":
-        assign_token(lObjects, iCurrent, types.natural)
     elif sValue == "others":
         assign_token(lObjects, iCurrent, choice.others_keyword)
     elif sValue == "=>":
