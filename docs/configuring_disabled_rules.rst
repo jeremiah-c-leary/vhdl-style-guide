@@ -88,9 +88,11 @@ Rules Disabled by Default
 * `signal_100 <signal_rules.html#signal-100>`_
 * `signal_200 <signal_rules.html#signal-200>`_
 * `signal_600 <signal_rules.html#signal-600>`_
+* `subtype_002 <subtype_rules.html#subtype-002>`_
 * `subtype_004 <subtype_rules.html#subtype-004>`_
 * `subtype_100 <subtype_rules.html#subtype-100>`_
 * `subtype_600 <subtype_rules.html#subtype-600>`_
+* `type_014 <type_rules.html#type-014>`_
 * `type_015 <type_rules.html#type-015>`_
 * `type_100 <type_rules.html#type-100>`_
 * `type_200 <type_rules.html#type-200>`_
