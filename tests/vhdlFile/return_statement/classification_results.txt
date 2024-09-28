@@ -31,7 +31,7 @@
 --------------------------------------------------------------------------------
 9 |     return std_logic_vector(3 downto 0);
 <class 'vsg.token.return_statement.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.todo.name'>
 <class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -46,7 +46,7 @@
 <class 'vsg.token.return_statement.label'>
 <class 'vsg.token.return_statement.label_colon'>
 <class 'vsg.token.return_statement.return_keyword'>
-<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.todo.name'>
 <class 'vsg.token.todo.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
