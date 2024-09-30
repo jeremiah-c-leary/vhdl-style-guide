@@ -1,20 +1,28 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser, token
-from vsg.rules import consistent_case_utils as cc_utils, consistent_token_case as Rule
+from vsg import token, violation
+from vsg.rule_group import case
 
-lTokens = []
-lTokens.append(token.interface_unknown_declaration.identifier)
-lTokens.append(token.interface_constant_declaration.identifier)
-lTokens.append(token.interface_variable_declaration.identifier)
-lTokens.append(token.interface_signal_declaration.identifier)
+lGenericTokens = []
+lGenericTokens.append(token.interface_unknown_declaration.identifier)
+lGenericTokens.append(token.interface_constant_declaration.identifier)
+lGenericTokens.append(token.interface_variable_declaration.identifier)
+lGenericTokens.append(token.interface_signal_declaration.identifier)
 
-lNames = []
-lNames.append(parser.todo)
-lNames.append(token.todo.name)
+lPairs = []
+lPairs.append([token.concurrent_simple_signal_assignment.target, token.concurrent_simple_signal_assignment.semicolon])
+lPairs.append([token.concurrent_conditional_signal_assignment.target, token.concurrent_conditional_signal_assignment.semicolon])
+lPairs.append([token.constant_declaration.colon, token.constant_declaration.semicolon])
+lPairs.append([token.signal_declaration.colon, token.signal_declaration.semicolon])
+lPairs.append([token.variable_declaration.colon, token.variable_declaration.semicolon])
+lPairs.append([token.process_statement.open_parenthesis, token.process_statement.close_parenthesis])
+lPairs.append([token.process_statement.begin_keyword, token.process_statement.end_keyword])
+
+oStartToken = token.architecture_body.entity_name
+oEndToken = token.architecture_body.end_keyword
 
 
-class rule_600(Rule):
+class rule_600(case.Rule):
     """
     This rule checks for consistent capitalization of generic names in an architecture body.
 
@@ -60,52 +68,244 @@ class rule_600(Rule):
     """
 
     def __init__(self):
-        super().__init__(lTokens, lNames)
+        super().__init__()
+        self.subphase = 2
+        self.configuration_documentation_link = None
 
-    def _get_tokens_of_interest(self, oFile):
-        lNameTokens = cc_utils.get_all_name_tokens(oFile, self.lNames)
-        #        print(f'lNames = {lNameTokens}')
-        #        for iName in lNameTokens:
-        #            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
+    def analyze(self, oFile):
+        lGenerics = extract_generic_names_from_entities(oFile)
 
-        lIdentifierss = cc_utils.get_all_identifiers(oFile, self.lTokens)
-        #        print(f'lIdentifiers = {lIdentifierss}')
-        #        for iName in lIdentifierss:
-        #            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
+        if no_generics_detected(lGenerics):
+            return None
 
-        lEntityDicts = cc_utils.get_entity_declaration_indexes(oFile)
-        lGenericDicts = cc_utils.get_generic_clause_indexes(oFile)
-        lPortDicts = cc_utils.get_port_clause_indexes(oFile)
+        lArchitectures = oFile.get_tokens_bounded_by(oStartToken, oEndToken)
+        for oArchitecture in lArchitectures:
+            oArchitecture.name = extract_entity_name(oArchitecture)
+            lArchitectureGenerics = lGenerics[oArchitecture.name]
+            lToi = extract_token_pairs(oArchitecture, lPairs)
+            lToi.extend(extract_component_instantiation_actual_parts(oArchitecture))
+            for oToi in lToi:
+                validate_generic_name_in_token_list(self, lArchitectureGenerics, oToi)
 
-        lAllDicts = cc_utils.merge_dict_lists(lEntityDicts, lGenericDicts)
-        lAllDicts = cc_utils.merge_dict_lists(lAllDicts, lPortDicts)
+    def _fix_violation(self, oViolation):
+        lTokens = oViolation.get_tokens()
+        dActions = oViolation.get_action()
+        lTokens[0].set_value(dActions["value"])
+        oViolation.set_tokens(lTokens)
 
-        lAllDicts = cc_utils.populate_identifiers(lAllDicts, lIdentifierss)
-        lAllDicts = cc_utils.remove_duplicate_identifiers("entity_declaration", "port_clause", lAllDicts)
 
-        lAllDicts = cc_utils.populate_declarative_part_names(lAllDicts, lNameTokens)
-        lAllDicts = cc_utils.remove_duplicate_names("entity_declaration", "generic_clause", lAllDicts)
-        lAllDicts = cc_utils.remove_duplicate_names("entity_declaration", "port_clause", lAllDicts)
+def extract_component_instantiation_actual_parts(oArchitecture):
+    lReturn = []
 
-        lAllDicts = cc_utils.remove_type("generic_clause", lAllDicts)
-        lAllDicts = cc_utils.remove_type("port_clause", lAllDicts)
+    lInstantiations = extract_component_instantiations(oArchitecture)
+    for oInstantiation in lInstantiations:
+        lGenericMapAspects = extract_generic_map_aspect(oInstantiation)
+        lReturn.extend(extract_actual_part_tokens_from_aspects(lGenericMapAspects))
+        lGenericMapAspects = extract_generic_map_aspect(oInstantiation)
+        lReturn.extend(extract_actual_part_tokens_from_aspects(lGenericMapAspects))
+    return lReturn
 
-        lArchitectureDicts = cc_utils.merge_dict_lists(cc_utils.get_architecture_indexes(oFile), cc_utils.get_subprogram_body_indexes(oFile))
-        lArchitectureDicts = cc_utils.merge_dict_lists(lArchitectureDicts, cc_utils.get_component_declaration_indexes(oFile))
 
-        lArchitectureDicts = cc_utils.populate_declarative_part_names(lArchitectureDicts, lNameTokens)
-        lArchitectureDicts = cc_utils.populate_statement_part_names(lArchitectureDicts, lNameTokens)
+def extract_component_instantiations(oArchitecture):
+    return extract_token_pairs(oArchitecture, [[token.component_instantiation_statement.label_colon, token.component_instantiation_statement.semicolon]])
 
-        lArchitectureDicts = cc_utils.remove_duplicate_names("architecture_body", "subprogram_body", lArchitectureDicts)
-        lArchitectureDicts = cc_utils.remove_duplicate_names("architecture_body", "component_declaration", lArchitectureDicts)
 
-        lArchitectureDicts = cc_utils.remove_type("subprogram_body", lArchitectureDicts)
-        lArchitectureDicts = cc_utils.remove_type("component_declaration", lArchitectureDicts)
+def extract_generic_map_aspect(oInstantiation):
+    return extract_token_pairs(oInstantiation, [[token.generic_map_aspect.open_parenthesis, token.generic_map_aspect.close_parenthesis]])
 
-        lAllDicts = cc_utils.merge_dict_lists(lAllDicts, lArchitectureDicts)
 
-        lAllDicts = cc_utils.add_entity_identifiers_to_architecture_body(lAllDicts)
+def extract_generic_map_aspect(oInstantiation):
+    return extract_token_pairs(oInstantiation, [[token.generic_map_aspect.open_parenthesis, token.generic_map_aspect.close_parenthesis]])
 
-        lAllDicts = cc_utils.remove_type("entity_declaration", lAllDicts)
 
-        return cc_utils.create_tois(lAllDicts, oFile)
+def extract_actual_part_tokens_from_aspects(lMapAspect):
+    lReturn = []
+    for oMapAspect in lMapAspect:
+        lReturn.extend(extract_actual_part_tokens_from_aspect(oMapAspect))
+    return lReturn
+
+
+def extract_actual_part_tokens_from_aspect(oMapAspect):
+    lReturn = []
+    for iToken, oToken in enumerate(oMapAspect.get_tokens()):
+        lReturn.extend(extract_actual_part_token(oMapAspect, iToken, oToken))
+    return lReturn
+
+
+def extract_actual_part_token(oMapAspect, iToken, oToken):
+    lReturn = []
+    if is_actual_part_token(oToken):
+        lReturn.append(oMapAspect.extract_tokens(iToken, iToken))
+    return lReturn
+
+
+def is_actual_part_token(oToken):
+    if isinstance(oToken, token.association_element.actual_part):
+        return True
+    return False
+
+
+def no_generics_detected(lGenerics):
+    if len(lGenerics) == 0:
+        return True
+    return False
+
+
+def validate_generic_name_in_token_list(self, lMyGenerics, oToi):
+    lMyGenericsLower = []
+    dGenericMap = {}
+    for sGeneric in lMyGenerics:
+        lMyGenericsLower.append(sGeneric.lower())
+        dGenericMap[sGeneric.lower()] = sGeneric
+
+    lTokens = oToi.get_tokens()
+    for iToken, oToken in enumerate(lTokens):
+        sToken = oToken.get_value()
+        if generic_case_mismatch(sToken, lMyGenerics, lMyGenericsLower):
+            oViolation = create_violation(sToken, iToken, dGenericMap, oToi)
+            self.add_violation(oViolation)
+
+
+def create_violation(sToken, iToken, dGenericMap, oToi):
+    sSolution = "Generic case mismatch:  Change " + sToken + " to " + dGenericMap[sToken.lower()]
+    oNewToi = oToi.extract_tokens(iToken, iToken)
+    oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
+    dAction = {}
+    dAction["value"] = dGenericMap[sToken.lower()]
+    oViolation.set_action(dAction)
+    return oViolation
+
+
+def skip_code(oToken, bSkip):
+    bReturn = bSkip
+
+    if not bSkip:
+        return start_of_skip_region_found(oToken, bReturn)
+
+    return end_of_skip_region_found(oToken, bReturn)
+
+
+def end_of_skip_region_found(oToken, bReturn):
+    if isinstance(oToken, token.subprogram_body.semicolon):
+        return False
+    return True
+
+
+def start_of_skip_region_found(oToken, bReturn):
+    bReturn = function_keyword_found(oToken, bReturn)
+    bReturn = procedure_keyword_found(oToken, bReturn)
+    return bReturn
+
+
+def function_keyword_found(oToken, bReturn):
+    if isinstance(oToken, token.function_specification.function_keyword):
+        return True
+    return bReturn
+
+
+def procedure_keyword_found(oToken, bReturn):
+    if isinstance(oToken, token.procedure_specification.procedure_keyword):
+        return True
+    return bReturn
+
+
+def generic_case_mismatch(sToken, lGenerics, lGenericsLower):
+    if sToken.lower() in lGenericsLower and sToken not in lGenerics:
+        return True
+    return False
+
+
+def extract_matching_value(sFind, lValues):
+    sLower = sFind.lower()
+    for sValue in lValues:
+        if sLower == sValue.lower():
+            return sValue
+
+
+def extract_token_pairs(oArchitecture, lPairs):
+    lReturn = []
+    for lPair in lPairs:
+        lReturn.extend(extract_token_pair(oArchitecture, lPair))
+    return lReturn
+
+
+def extract_token_pair(oArchitecture, lPair):
+    lReturn = []
+    bSkip = False
+    iStart = None
+    for iToken, oToken in enumerate(oArchitecture.get_tokens()):
+        bSkip = skip_code(oToken, bSkip)
+        if bSkip:
+            continue
+        iStart = set_start_index(iToken, oToken, lPair, iStart)
+        lReturn.extend(extract_tokens_if_end_is_found(oArchitecture, iToken, oToken, lPair, iStart))
+    return lReturn
+
+
+def extract_tokens_if_end_is_found(oArchitecture, iToken, oToken, lPair, iStart):
+    lReturn = []
+    if isinstance(oToken, lPair[1]):
+        lReturn.append(oArchitecture.extract_tokens(iStart, iToken))
+    return lReturn
+
+
+def set_start_index(iToken, oToken, lPair, iStart):
+    if isinstance(oToken, lPair[0]):
+        return iToken
+    return iStart
+
+
+def extract_generic_names_from_entities(oFile):
+    lEntities = oFile.get_tokens_bounded_by(token.entity_declaration.identifier, token.entity_declaration.end_keyword)
+    lGenerics = {}
+    for oEntity in lEntities:
+        oEntity.name = extract_entity_name(oEntity)
+        lGenerics[oEntity.name] = extract_generic_names(oEntity)
+    return lGenerics
+
+
+def extract_entity_name(oToi):
+    lTokens = oToi.get_tokens()
+    for oToken in lTokens:
+        if isinstance(oToken, token.entity_declaration.identifier):
+            return oToken.get_lower_value()
+        if isinstance(oToken, token.architecture_body.entity_name):
+            return oToken.get_lower_value()
+
+
+def extract_generic_names(oToi):
+    lReturn = []
+
+    bSearch = False
+    for oToken in oToi.get_tokens():
+        bSearch = end_search(oToken, bSearch)
+        lReturn.extend(extract_generic_token(bSearch, oToken, lGenericTokens))
+        bSearch = start_search(oToken, bSearch)
+    return lReturn
+
+
+def end_search(oToken, bSearch):
+    if isinstance(oToken, token.generic_clause.close_parenthesis):
+        return False
+    return bSearch
+
+
+def extract_generic_token(bSearch, oToken, lGenericTokens):
+    lReturn = []
+    if bSearch:
+        if is_token_in_token_type_list(oToken, lGenericTokens):
+            lReturn.append(oToken.get_value())
+    return lReturn
+
+
+def start_search(oToken, bSearch):
+    if isinstance(oToken, token.generic_clause.open_parenthesis):
+        return True
+    return bSearch
+
+
+def is_token_in_token_type_list(oToken, lTokenTypes):
+    for oTokenType in lTokenTypes:
+        if isinstance(oToken, oTokenType):
+            return True
+    return False
