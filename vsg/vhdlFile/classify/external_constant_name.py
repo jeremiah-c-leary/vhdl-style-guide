@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import parser
 from vsg.token import external_constant_name as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import subtype_indication
@@ -21,6 +22,9 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("<<", token.double_less_than, iToken, lObjects)
     iCurrent = utils.assign_next_token_required("constant", token.constant_keyword, iCurrent, lObjects)
     iCurrent = utils.assign_next_token(token.external_pathname, iCurrent, lObjects)
+
+    iCurrent = utils.assign_parenthesis_as_todo(iCurrent, lObjects)
+
     iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
 
     iCurrent = subtype_indication.classify(iCurrent, lObjects)

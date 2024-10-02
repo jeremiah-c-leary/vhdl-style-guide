@@ -42,4 +42,10 @@ begin
 
   end process;
 
+  -- Test external names with indexes
+
+  probe_signal <= << constant some.hierarchy.hier(i) : std_logic >> or
+                  << signal some.hieararchy(i) : std_logic >> or
+                  << variable some.hierarchy.ab.cd.(i) : std_logic >>;
+
 end architecture RTL;
