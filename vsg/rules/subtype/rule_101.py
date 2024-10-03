@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules.whitespace_between_token_pairs import Rule
+from vsg.rules.whitespace_before_token import Rule
 
 lTokens = []
-lTokens.append([token.subtype_declaration.identifier, token.subtype_declaration.is_keyword])
+lTokens.append(token.subtype_declaration.is_keyword)
 
 
 class rule_101(Rule):
