@@ -256,7 +256,9 @@ def extract_port_names_from_entities(oFile):
     lPorts = {}
     for oEntity in lEntities:
         oEntity.name = extract_entity_name(oEntity)
-        lPorts[oEntity.name] = extract_port_names(oEntity)
+        lPortNames = extract_port_names(oEntity)
+        if lPortNames != []:
+            lPorts[oEntity.name] = extract_port_names(oEntity)
     return lPorts
 
 

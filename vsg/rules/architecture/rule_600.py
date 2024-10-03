@@ -260,7 +260,9 @@ def extract_generic_names_from_entities(oFile):
     lGenerics = {}
     for oEntity in lEntities:
         oEntity.name = extract_entity_name(oEntity)
-        lGenerics[oEntity.name] = extract_generic_names(oEntity)
+        lGenericNames = extract_generic_names(oEntity)
+        if lGenericNames != []:
+            lGenerics[oEntity.name] = extract_generic_names(oEntity)
     return lGenerics
 
 
