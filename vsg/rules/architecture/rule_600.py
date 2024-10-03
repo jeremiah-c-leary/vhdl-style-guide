@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules.consistent_interface_token_case import consistent_interface_token_case as Rule
+from vsg.rules import consistent_interface_token_case
 
 
-class rule_600(Rule):
+class rule_600(consistent_interface_token_case.consistent_interface_token_case):
     """
     This rule checks for consistent capitalization of generic names in an architecture body.
 
