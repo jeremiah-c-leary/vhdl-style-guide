@@ -3,11 +3,12 @@ architecture ARCH of ENTITY1 is
 
 begin
 
+  -- Passing
   U_INST1 : INST1
     generic map (
-      G_GEN_1 => 3,
-      G_GEN_2 => 4,
-      G_GEN_3 => 5
+      G_GEN_1=> 3,
+      G_GEN_2=> 4,
+      G_GEN_3=> 5
     )
     port map (
       PORT_1 => w_port_1,
@@ -15,18 +16,7 @@ begin
       PORT_3 => w_port_3
     );
 
-  -- Violations below
-
-  U_INST1 : INST1
-    generic map(
-      G_GEN_1    => 3,
-      G_GEN_2=> 4,
-      G_GEN_3 => 5
-    )
-    port map (PORT_1 => w_port_1,
-      PORT_2 => w_port_2,
-      PORT_3=> w_port_3
-   );
+  -- Failing
 
   U_INST1 : INST1
     generic map (
@@ -34,9 +24,10 @@ begin
       G_GEN_2=> 4,
       G_GEN_3=> 5
     )
-    port map (   PORT_1=> w_port_1,
+    port map (
+      PORT_1=> w_port_1,
       PORT_2=> w_port_2,
-      PORT_3 => w_port_3
-   );
+      PORT_3=> w_port_3
+    );
 
 end architecture ARCH;

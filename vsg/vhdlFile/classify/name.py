@@ -3,6 +3,7 @@
 from vsg import parser
 from vsg.token import direction
 from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import external_name
 
 
 def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
@@ -19,6 +20,10 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
 
     NOTE: At the moment, everything will be set to parser.todo.
     """
+
+    iReturn = external_name.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
 
     iCurrent = iToken
     iStop = len(lObjects) - 1
