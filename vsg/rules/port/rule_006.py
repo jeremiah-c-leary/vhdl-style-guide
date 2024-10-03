@@ -5,7 +5,7 @@ from vsg import deprecated_rule
 
 class rule_006(deprecated_rule.Rule):
     """
-    This rule has been deprecated and it's function was include in rule **port_005**.
+    This rule has been deprecated and its function was include in rule **port_005**.
     """
 
     def __init__(self):

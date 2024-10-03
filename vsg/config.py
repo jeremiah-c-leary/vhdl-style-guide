@@ -28,7 +28,7 @@ def read_predefined_style(sStyleName):
 
 
 def open_configuration_file(sFileName, sJUnitFileName=None):
-    """Attempts to open a configuration file and read it's contents."""
+    """Attempts to open a configuration file and read its contents."""
     try:
         with open(sFileName) as yaml_file:
             dTemp = yaml.full_load(yaml_file)

@@ -3,7 +3,7 @@ Code Tags
 
 VSG supports inline tags embedded into code to enable or disable rules.
 This can be useful in fine tuning rule exceptions within a file.
-The code tags are embedded in comments similar to pragmas, and must be on it's own line.
+The code tags are embedded in comments similar to pragmas, and must be on its own line.
 
 Full rule exclusion
 -------------------
