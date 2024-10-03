@@ -13,7 +13,6 @@ lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_100_te
 
 
 class test_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
