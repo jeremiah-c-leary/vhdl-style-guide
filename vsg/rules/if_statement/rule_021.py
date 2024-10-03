@@ -27,4 +27,4 @@ class rule_021(split_line_at_token):
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = "Move *else* keyword to it's own line."
+        self.solution = "Move *else* keyword to its own line."

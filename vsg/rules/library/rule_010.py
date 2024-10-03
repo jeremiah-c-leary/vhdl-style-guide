@@ -27,4 +27,4 @@ class rule_010(split_line_at_token):
 
     def __init__(self):
         super().__init__(lTokens)
-        self.solution = "Move *library* to it's own line."
+        self.solution = "Move *library* to its own line."

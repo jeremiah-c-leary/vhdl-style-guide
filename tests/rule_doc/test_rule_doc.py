@@ -309,6 +309,21 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_external_constant_name_rules_doc(self):
+        lExpected, lActual = self.compare_files("external_constant_name")
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_external_signal_name_rules_doc(self):
+        lExpected, lActual = self.compare_files("external_signal_name")
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_external_variable_name_rules_doc(self):
+        lExpected, lActual = self.compare_files("external_variable_name")
+
+        self.assertEqual(lExpected, lActual)
+
     def test_file_rules_doc(self):
         lExpected, lActual = self.compare_files("file")
 

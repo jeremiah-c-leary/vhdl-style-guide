@@ -220,7 +220,7 @@ generic_map_100
 
 |phase_2| |error| |whitespace|
 
-This rule checks for at least a single space before the **=>** keyword in generic maps.
+This rules checks for whitespace before the assignment operator.
 
 |configuring_whitespace_rules_link|
 
@@ -228,21 +228,19 @@ This rule checks for at least a single space before the **=>** keyword in generi
 
 .. code-block:: vhdl
 
-   generic map
-   (
+   generic map (
      WIDTH=> 32,
-     DEPTH => 512
-   )
+     DEPTH=> 512
+   );
 
 **Fix**
 
 .. code-block:: vhdl
 
-   generic map
-   (
+   generic map (
      WIDTH => 32,
      DEPTH => 512
-   )
+   );
 
 generic_map_600
 ###############
