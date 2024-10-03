@@ -1,0 +1,35 @@
+library ieee;
+  use ieee.std_logic_1164.all;
+  use ieee.numeric_std.all;
+  use ieee.math_real.all;
+
+entity test is
+end entity test;
+
+architecture rtl of test is
+
+  type my_type is range 10 to 100;
+
+  subtype my_subtype   is MY_TYPE range 10 to 20;
+  subtype my_subtype_t is MY_EXTERNAL_TYPE range 10 to 20;
+  subtype my_int       is INTEGER range 10 to 100;
+  subtype my_nat       is NATURAL range 10 to 100;
+  subtype my_pos       is POSITIVE range 10 to 100;
+  subtype my_char      is CHARACTER range 'a' downto 'b';
+
+  signal s_my_subtype   : MY_EXTERNAL_SUBTYPE;
+  signal s_my_subtype   : MY_SUBTYPE;
+  signal s_my_subtype_t : MY_SUBTYPE_T;
+  signal s_my_int       : MY_INT;
+  signal s_my_nat       : MY_NAT;
+  signal s_my_pos       : MY_POS;
+  signal s_my_char      : MY_CHAR;
+  signal s_my_type_t    : MY_TYPE_T;
+  signal s_int          : INTEGER;
+  signal s_nat          : NATURAL;
+  signal s_pos          : POSITIVE;
+  signal s_char         : CHARACTER;
+
+begin
+
+end architecture rtl;

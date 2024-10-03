@@ -1,0 +1,12 @@
+rule:
+  global:
+    disable: true
+  type_004:
+    disable: true
+  type_014:
+    disable: true
+  subtype_002:
+    disable: true
+  type_mark_500:
+    case: 'lower'
+    disable: false

@@ -116,10 +116,6 @@ combine_as_imports = true
 
 [tool.pytest.ini_options]
 addopts = [
-    "--cov=vsg",
-    "--import-mode=importlib",
-    "--self-contained-html",
-    "-n", "auto",
     "-ra",
 ]
 pythonpath = [
