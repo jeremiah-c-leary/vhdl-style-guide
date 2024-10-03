@@ -9,7 +9,7 @@ lTokens.append(token.type_mark.name)
 
 class rule_500(token_case_with_prefix_suffix):
     """
-    This rule checks that the name has proper case.
+    This rule checks that the type name has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
@@ -17,14 +17,13 @@ class rule_500(token_case_with_prefix_suffix):
 
     .. code-block:: vhdl
 
-      subtype my_subtype is MY_EXTERNAL_TYPE range 10 to 20;
-
+      signal s_my_subtype : MY_EXTERNAL_SUBTYPE;
 
     **Fix**
 
     .. code-block:: vhdl
 
-      subtype my_subtype is my_external_type range 10 to 20;
+      signal s_my_subtype : my_external_subtype;
     """
 
     def __init__(self):

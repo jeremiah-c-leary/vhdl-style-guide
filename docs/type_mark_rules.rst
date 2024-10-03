@@ -8,7 +8,7 @@ type_mark_500
 
 |phase_6| |error| |case| |case_name|
 
-This rule checks that the name has proper case.
+This rule checks that the type name has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -16,11 +16,10 @@ This rule checks that the name has proper case.
 
 .. code-block:: vhdl
 
-  subtype my_subtype is MY_EXTERNAL_TYPE range 10 to 20;
-
+  signal s_my_subtype : MY_EXTERNAL_SUBTYPE;
 
 **Fix**
 
 .. code-block:: vhdl
 
-  subtype my_subtype is my_external_type range 10 to 20;
+  signal s_my_subtype : my_external_subtype;
