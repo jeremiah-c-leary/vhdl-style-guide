@@ -8,10 +8,10 @@ from .rule_005 import rule_005
 from .rule_006 import rule_006
 from .rule_101 import rule_101
 from .rule_102 import rule_102
-from .rule_201 import rule_201
-from .rule_202 import rule_202
 from .rule_100 import rule_100
 from .rule_200 import rule_200
+from .rule_201 import rule_201
+from .rule_202 import rule_202
 from .rule_500 import rule_500
 from .rule_501 import rule_501
 from .rule_502 import rule_502
