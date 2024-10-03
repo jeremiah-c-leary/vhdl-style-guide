@@ -47,6 +47,6 @@ class rule_601(Rule):
 
     def __init__(self):
         super().__init__()
-        self.map_aspect_token = token.port_map_aspect
         self.clause_token = token.port_clause
         self.interface_string = "Port"
+        self.map_aspect_token = token.port_map_aspect
