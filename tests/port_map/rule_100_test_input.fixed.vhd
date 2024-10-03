@@ -17,6 +17,7 @@ begin
     );
 
   -- Failing
+
   U_INST1 : INST1
     generic map (
       G_GEN_1=> 3,

@@ -10,6 +10,8 @@ def classify(lTokens, lObjects, oOptions):
 
     for iToken, sToken in enumerate(lTokens):
         classify_delimited_comment_text(iToken, lObjects, oOptions)
+        if classify_single_line_comment(iToken, lObjects, oOptions):
+            break
         classify_opening_comment_delimiters(iToken, lObjects, oOptions)
         classify_closing_comment_delimiters(iToken, lObjects, oOptions)
 
@@ -24,16 +26,43 @@ def classify_closing_comment_delimiters(iToken, lObjects, oOptions):
 
 
 def classify_opening_comment_delimiters(iToken, lObjects, oOptions):
-    classify_single_line_comment(iToken, lObjects, oOptions)
     classify_delimited_comment_open_keyword(iToken, lObjects, oOptions)
 
 
 def classify_single_line_comment(iToken, lObjects, oOptions):
     sToken = lObjects[iToken].get_value()
     if not oOptions.inside_delimited_comment() and sToken.startswith("--"):
+        # Find index of last space token
+        blastSpaceTokenFound = False
+        iIndex = iToken
+
+        if lObjects[-1].get_value().isspace():
+            iEndIndex = len(lObjects) - 1
+        else:
+            iEndIndex = len(lObjects)
+
+        #        for i in range(len(lObjects) - 1, iToken + 1, -1):
+        ##             print(i)
+        #             iIndex = i
+        #             print(lObjects[i])
+        #             if lObjects[i].get_value().isspace():
+        #                 bLastSpaceTokenFound = True
+        #             elif not lObjects[i].get_value().isspace():
+        #                 break
+
+        # Combine comment tokens for all non space tokens
+        for i in range(iToken + 1, iEndIndex):
+            sToken += lObjects[i].get_value()
+
+        # Remove duplicate tokens
+        for i in range(iToken + 1, iEndIndex):
+            lObjects.pop(iToken + 1)
+
         lObjects[iToken] = parser.comment(sToken)
         if "\t" in sToken:
             lObjects[iToken].has_tab = True
+        return True
+    return False
 
 
 def classify_delimited_comment_open_keyword(iToken, lObjects, oOptions):

@@ -48,7 +48,9 @@ class Rule(whitespace.Rule):
                 self.analyze_no_whitespace_token(oToi)
 
     def analyze_no_whitespace_token(self, oToi):
-        if self.number_of_spaces != 0:
+        if not self.number_of_spaces_is_an_integer() and self.number_of_spaces_is_lte() and self.number_of_spaces_is_lt():
+            return
+        elif self.number_of_spaces != 0:
             iSpaces = self.extract_expected_number_of_spaces()
             self.create_violation(oToi, iSpaces)
 
@@ -59,6 +61,12 @@ class Rule(whitespace.Rule):
             return int(self.number_of_spaces[2:])
         elif self.number_of_spaces_is_gt():
             return int(self.number_of_spaces[1:])
+        elif self.number_of_spaces_is_lte():
+            return int(self.number_of_spaces[2:])
+        elif self.number_of_spaces_is_lt():
+            return int(self.number_of_spaces[1:])
+        elif self.number_of_spaces_is_plus():
+            return int(self.number_of_spaces[:-1])
 
     def analyze_whitespace_token(self, oToi):
         if self.number_of_spaces_is_an_integer():
@@ -67,11 +75,20 @@ class Rule(whitespace.Rule):
             self.analyze_gte_spaces(oToi)
         elif self.number_of_spaces_is_gt():
             self.analyze_gt_spaces(oToi)
+        elif self.number_of_spaces_is_lte():
+            self.analyze_lte_spaces(oToi)
+        elif self.number_of_spaces_is_lt():
+            self.analyze_lt_spaces(oToi)
         elif self.number_of_spaces_is_plus():
             self.analyze_plus_spaces(oToi)
 
     def number_of_spaces_is_gt(self):
         if self.number_of_spaces.startswith(">"):
+            return True
+        return False
+
+    def number_of_spaces_is_lt(self):
+        if self.number_of_spaces.startswith("<"):
             return True
         return False
 
@@ -81,8 +98,19 @@ class Rule(whitespace.Rule):
         if iWhitespaces < iSpaces:
             self.create_violation(oToi, iSpaces)
 
+    def analyze_lt_spaces(self, oToi):
+        iSpaces = int(self.number_of_spaces[1:]) - 1
+        iWhitespaces = extract_length_of_whitespace(oToi)
+        if iWhitespaces > iSpaces:
+            self.create_violation(oToi, iSpaces)
+
     def number_of_spaces_is_gte(self):
         if self.number_of_spaces.startswith(">="):
+            return True
+        return False
+
+    def number_of_spaces_is_lte(self):
+        if self.number_of_spaces.startswith("<="):
             return True
         return False
 
@@ -90,6 +118,12 @@ class Rule(whitespace.Rule):
         iSpaces = int(self.number_of_spaces[2:])
         iWhitespaces = extract_length_of_whitespace(oToi)
         if iWhitespaces < iSpaces:
+            self.create_violation(oToi, iSpaces)
+
+    def analyze_lte_spaces(self, oToi):
+        iSpaces = int(self.number_of_spaces[2:])
+        iWhitespaces = extract_length_of_whitespace(oToi)
+        if iWhitespaces > iSpaces:
             self.create_violation(oToi, iSpaces)
 
     def number_of_spaces_is_plus(self):
@@ -130,7 +164,7 @@ class Rule(whitespace.Rule):
             if isinstance(lTokens[1], parser.whitespace):
                 lTokens[1].set_value(" " * dAction["spaces"])
             else:
-                rules_utils.insert_whitespace(lTokens, dAction["spaces"])
+                rules_utils.insert_whitespace(lTokens, 1, num=dAction["spaces"])
         oViolation.set_tokens(lTokens)
 
 

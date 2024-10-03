@@ -14,9 +14,6 @@ There are a couple of options to these rules:
 | number_of_spaces         | Determines the number of whitespace characters to allow. |
 +--------------------------+----------------------------------------------------------+
 
-..  | align_to_next_tab        | When true, will add spaces to align with next valid tab. |
-..  +--------------------------+----------------------------------------------------------+
-
 The :code:`number_of_spaces` option can accept several values:
 
 +-----------------------+----------------------------------------------------------+
@@ -29,6 +26,10 @@ The :code:`number_of_spaces` option can accept several values:
 | >=[0-9][0-9]*         | The minimum number of spaces to enforce.                 |
 +-----------------------+----------------------------------------------------------+
 | [0-9][0-9]*+          | The minimum number of spaces to enforce.                 |
++-----------------------+----------------------------------------------------------+
+| <[0-9][0-9]*          | The maximum number of spaces to enforce.                 |
++-----------------------+----------------------------------------------------------+
+| <=[0-9][0-9]*         | The maximum number of spaces to enforce.                 |
 +-----------------------+----------------------------------------------------------+
 
 These options combined with the values allow complete control over the number of whitespaces allowed.
@@ -89,6 +90,24 @@ The same result could be achieved using this yaml:
    rule :
      signal_006:
         number_of_spaces: '1+'
+
+Example:  allow at most 4 spaces before colon
+#############################################
+.. code-block:: yaml
+
+   rule :
+     signal_006:
+        number_of_spaces: '<=4'
+
+In this example, there must be at most four whitespaces before the colon.
+The third signal declaration would be a violation.
+
+.. code-Block:: vhdl
+
+   signal wr_en : std_logic;
+   signal wr_en  : std_logic;
+   signal wr_en                : std_logic;
+
 
 Rules Enforcing Whitespace
 ##########################
@@ -201,6 +220,8 @@ Rules Enforcing Whitespace
 * `package_body_101 <package_body_rules.html#package-body-101>`_
 * `port_003 <port_rules.html#port-003>`_
 * `port_020 <port_rules.html#port-020>`_
+* `port_100 <port_rules.html#port-100>`_
+* `port_101 <port_rules.html#port-101>`_
 * `port_map_007 <port_map_rules.html#port-map-007>`_
 * `port_map_100 <port_map_rules.html#port-map-100>`_
 * `procedure_100 <procedure_rules.html#procedure-100>`_
@@ -235,9 +256,12 @@ Rules Enforcing Whitespace
 * `type_006 <type_rules.html#type-006>`_
 * `type_007 <type_rules.html#type-007>`_
 * `type_100 <type_rules.html#type-100>`_
-* `variable_005 <variable_rules.html#variable-002>`_
-* `variable_006 <variable_rules.html#variable-002>`_
-* `variable_100 <variable_rules.html#variable-002>`_
+* `variable_005 <variable_rules.html#variable-005>`_
+* `variable_006 <variable_rules.html#variable-006>`_
+* `variable_100 <variable_rules.html#variable-100>`_
+* `variable_101 <variable_rules.html#variable-101>`_
+* `variable_102 <variable_rules.html#variable-102>`_
+* `variable_103 <variable_rules.html#variable-103>`_
 * `variable_assignment_002 <variable_assignment_rules.html#variable-assignment-002>`_
 * `variable_assignment_003 <variable_assignment_rules.html#variable-assignment-003>`_
 * `whitespace_007 <whitespace_rules.html#whitespace-007>`_

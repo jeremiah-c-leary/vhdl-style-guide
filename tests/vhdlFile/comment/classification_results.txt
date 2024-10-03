@@ -100,7 +100,13 @@
 28 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-29 | end architecture RTL;
+29 | -- Comment */Not a delimited comment
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+30 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+31 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

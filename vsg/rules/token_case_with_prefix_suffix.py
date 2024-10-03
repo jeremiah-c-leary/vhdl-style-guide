@@ -25,3 +25,4 @@ class token_case_with_prefix_suffix(rules.token_case):
         self.configuration.append("prefix_exceptions")
         self.configuration.append("suffix_exceptions")
         self.configuration.append("case_exceptions")
+        self.configuration.append("regex")

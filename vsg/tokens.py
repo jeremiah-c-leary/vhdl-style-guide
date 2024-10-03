@@ -21,7 +21,6 @@ def create(sString):
     oLine.combine_two_character_symbols()
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
-    oLine.combine_comments()
     oLine.split_natural_numbers()
     return oLine.lChars
 
@@ -122,12 +121,6 @@ class New:
 
         combine_quote_pairs(lQuotePairs, self)
 
-    def combine_comments(self):
-        if has_trailing_whitespace(self.lChars):
-            combine_comment_with_trailing_whitespace(self)
-        else:
-            combine_comment(self)
-
     def split_natural_numbers(self):
         lReturn = []
         for sChar in self.lChars:
@@ -221,61 +214,6 @@ def filter_character_literal_candidates(lLiterals):
         lReturn.append(lLiteral)
     lReturn.append(lLiterals[-1])
     return lReturn
-
-
-def combine_comment_with_trailing_whitespace(self):
-    if self.lChars.count("--") > 0:
-        iIndex = self.lChars.index("--")
-        lReturn = self.lChars[0:iIndex]
-        lReturn.append("".join(self.lChars[iIndex:-1]))
-        lReturn.append(self.lChars[-1])
-        self.lChars = lReturn
-
-
-def combine_comment(self):
-    if self.lChars.count("--") > 0:
-        iIndex = self.lChars.index("--")
-        lReturn = self.lChars[0:iIndex]
-        if has_beginning_delimited_comment(self.lChars) and beginning_delimited_comment_after_comment(self.lChars):
-            lReturn.append("".join(self.lChars[iIndex::]))
-        elif has_ending_delimited_comment(self.lChars):
-            iStopIndex = self.lChars.index("*/")
-            lReturn.append("".join(self.lChars[iIndex:iStopIndex]))
-            lReturn.append(self.lChars[iStopIndex])
-        else:
-            lReturn.append("".join(self.lChars[iIndex::]))
-        self.lChars = lReturn
-
-
-def has_ending_delimited_comment(lTokens):
-    if lTokens.count("*/") > 0:
-        return True
-    return False
-
-
-def has_beginning_delimited_comment(lTokens):
-    if lTokens.count("*/") > 0:
-        return True
-    return False
-
-
-def beginning_delimited_comment_after_comment(lTokens):
-    iCommentIndex = lTokens.index("--")
-    try:
-        iBeginningDelimitedCommentIndex = lTokens.index("/*")
-    except ValueError:
-        iBeginningDelimitedCommentIndex = 0
-    if iCommentIndex < iBeginningDelimitedCommentIndex:
-        return True
-    return False
-
-
-def has_trailing_whitespace(lChars):
-    if len(lChars) == 0:
-        return False
-    if lChars[-1].isspace():
-        return True
-    return False
 
 
 def inside_backslash_symbol(bSymbol, sChar):

@@ -11,12 +11,9 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_100_test_input.vhd"))
 
-lExpected = []
-lExpected.append("")
-utils.read_file(os.path.join(sTestDir, "rule_100_test_input.fixed.vhd"), lExpected)
 
+class test_rule(unittest.TestCase):
 
-class test_port_map_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -27,6 +24,7 @@ class test_port_map_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "port_map")
         self.assertEqual(oRule.identifier, "100")
 
+
         lExpected = [27, 28, 29]
 
         oRule.analyze(self.oFile)
@@ -36,6 +34,10 @@ class test_port_map_rule(unittest.TestCase):
         oRule = port_map.rule_100()
 
         oRule.fix(self.oFile)
+
+        lExpected = []
+        lExpected.append("")
+        utils.read_file(os.path.join(sTestDir, "rule_100_test_input.fixed.vhd"), lExpected)
 
         lActual = self.oFile.get_lines()
 

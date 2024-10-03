@@ -139,7 +139,7 @@ This file can then be applied with the **-c** option.
 Example 2
 #########
 
-Instantions default the indentation of port map and generic map to one more than the label:
+Instantiations default the indentation of port map and generic map to one more than the label:
 
 .. code-block:: vhdl
 
@@ -260,7 +260,7 @@ Update indent configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The default indent is to increase the indent by 1 after the `instantiation_label` is found and then decrease the indent by 1 when the `semicolon` is found.
-To enforce the desired indent, change the `after` entiry for both `instantiation_label` and `semicolon` to `"current"`.
+To enforce the desired indent, change the `after` entry for both `instantiation_label` and `semicolon` to `"current"`.
 Using `"current"` tells VSG to not change the indent after the label and semicolon are encountered.
 
 Extract the `component_instantiation_statement` section out of the JSON file and save it to a new configuration file or add it to an existing one.

@@ -443,7 +443,7 @@ Single line violations
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Most violations are against a single line and no other information is required to fix it.
-These dictionaries use the minimumal form.
+These dictionaries use the minimal form.
 
 .. code-block:: json
 

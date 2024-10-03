@@ -117,6 +117,8 @@ Rules Enforcing Whitespace Rule Group
 * `port_008 <../port_rules.html#port-008>`_
 * `port_009 <../port_rules.html#port-009>`_
 * `port_020 <../port_rules.html#port-020>`_
+* `port_100 <../port_rules.html#port-100>`_
+* `port_101 <../port_rules.html#port-101>`_
 * `port_map_007 <../port_map_rules.html#port-map-007>`_
 * `port_map_100 <../port_map_rules.html#port-map-100>`_
 * `procedure_100 <../procedure_rules.html#procedure-100>`_
@@ -154,6 +156,9 @@ Rules Enforcing Whitespace Rule Group
 * `variable_005 <../variable_rules.html#variable-005>`_
 * `variable_006 <../variable_rules.html#variable-006>`_
 * `variable_100 <../variable_rules.html#variable-100>`_
+* `variable_101 <../variable_rules.html#variable-101>`_
+* `variable_102 <../variable_rules.html#variable-102>`_
+* `variable_103 <../variable_rules.html#variable-103>`_
 * `variable_assignment_002 <../variable_assignment_rules.html#variable-assignment-002>`_
 * `variable_assignment_003 <../variable_assignment_rules.html#variable-assignment-003>`_
 * `whitespace_001 <../whitespace_rules.html#whitespace-001>`_
@@ -167,3 +172,4 @@ Rules Enforcing Whitespace Rule Group
 * `whitespace_010 <../whitespace_rules.html#whitespace-010>`_
 * `whitespace_011 <../whitespace_rules.html#whitespace-011>`_
 * `whitespace_013 <../whitespace_rules.html#whitespace-013>`_
+* `whitespace_100 <../whitespace_rules.html#whitespace-100>`_

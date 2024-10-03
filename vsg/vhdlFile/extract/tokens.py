@@ -37,7 +37,10 @@ class New:
                     iLine += 1
             except IndexError:
                 iLine = iLine
-        return New(iStartIndex, iLine, lTokens)
+        oToi = New(iStartIndex, iLine, lTokens)
+        oToi.sTokenValue = self.sTokenValue
+        oToi.dMetaData = self.dMetaData
+        return oToi
 
     def get_start_index(self):
         return self.iStartIndex
@@ -68,6 +71,20 @@ class New:
             if isinstance(oToken, oTokenType):
                 return iToken
         return None
+
+    def get_index_of_last_token_matching(self, oTokenType):
+        iReturn = None
+        for iToken, oToken in enumerate(self.lTokens):
+            if isinstance(oToken, oTokenType):
+                iReturn = iToken
+        return iReturn
+
+    def extract_token_and_n_tokens_before_it(self, oTokenType, iNum):
+        iEnd = self.get_index_of_token_matching(oTokenType)
+        if iEnd is None:
+            return None
+        iStart = iEnd - iNum
+        return self.extract_tokens(iStart, iEnd)
 
 
 def calculate_end_index(iStartIndex, lTokens):

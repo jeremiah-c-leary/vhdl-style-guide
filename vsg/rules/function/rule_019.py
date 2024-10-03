@@ -29,7 +29,6 @@ class rule_019(Rule):
           num_samples : in integer;
           sample      : out std_logic
         ) return integer;
-
     """
 
     def __init__(self):

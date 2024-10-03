@@ -98,19 +98,19 @@ def is_exception_enabled(lList):
     return True
 
 
-def check_for_lower_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine):
+def check_for_lower_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
     sExpectedValue = sPrefix + sWord.lower() + sSuffix
     if not sActualValue == sExpectedValue:
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine)
 
 
-def check_for_upper_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine):
+def check_for_upper_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
     sExpectedValue = sPrefix + sWord.upper() + sSuffix
     if not sActualValue == sExpectedValue:
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine)
 
 
-def check_for_upper_or_lower_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine):
+def check_for_upper_or_lower_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
     sExpectedUpperValue = sPrefix + sWord.upper() + sSuffix
     sExpectedLowerValue = sPrefix + sWord.lower() + sSuffix
     if not sActualValue == sExpectedUpperValue and not sActualValue == sExpectedLowerValue:
@@ -118,22 +118,29 @@ def check_for_upper_or_lower_case(sActualValue, sPrefix, sWord, sSuffix, oToi, i
         return create_case_violation(sActualValue, None, oToi, iIndex, iLine, sSolution)
 
 
-def check_for_camelcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine):
+def check_for_camelcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
     sExpectedValue = sPrefix + sWord + sSuffix
     if camelCase.fullmatch(sWord) is None:
         sSolution = "Format " + sActualValue + " into camelCase"
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
 
 
-def check_for_pascalcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine):
+def check_for_pascalcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
     sExpectedValue = sPrefix + sWord + sSuffix
     if PascalCase.fullmatch(sWord) is None:
         sSolution = "Format " + sActualValue + " into PascalCase"
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
 
 
+def check_for_regex(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
+    sExpectedValue = sPrefix + sWord + sSuffix
+    if self.oRegex.fullmatch(sWord) is None:
+        sSolution = "Format " + sActualValue + " to match defined regex"
+        return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
+
+
 def check_for_case(sObjectValue, self, oToi, iIndex, iLine, fCheck):
-    return fCheck(sObjectValue, "", sObjectValue, "", oToi, iIndex, iLine)
+    return fCheck(sObjectValue, "", sObjectValue, "", oToi, iIndex, iLine, self)
 
 
 def check_for_prefix_exception(sObjectValue, self, oToi, iIndex, iLine, fCheck):
@@ -145,7 +152,7 @@ def check_for_prefix_exception(sObjectValue, self, oToi, iIndex, iLine, fCheck):
         sActualPrefix = extract_prefix(sObjectValue, sDesiredPrefix)
         sConstant = remove_prefix(sObjectValue, sActualPrefix)
 
-    return fCheck(sObjectValue, sDesiredPrefix, sConstant, "", oToi, iIndex, iLine)
+    return fCheck(sObjectValue, sDesiredPrefix, sConstant, "", oToi, iIndex, iLine, self)
 
 
 #    else:
@@ -161,7 +168,7 @@ def check_for_suffix_exception(sObjectValue, self, oToi, iIndex, iLine, fCheck):
         sActualSuffix = extract_suffix(sObjectValue, sDesiredSuffix)
         sConstant = remove_suffix(sObjectValue, sActualSuffix)
 
-    return fCheck(sObjectValue, "", sConstant, sDesiredSuffix, oToi, iIndex, iLine)
+    return fCheck(sObjectValue, "", sConstant, sDesiredSuffix, oToi, iIndex, iLine, self)
 
 
 #    else:
@@ -180,8 +187,16 @@ def check_for_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iLi
         sActualSuffix = extract_suffix(sConstant, sDesiredSuffix)
         sConstant = remove_suffix(sConstant, sActualSuffix)
         sExpected = sDesiredPrefix + sConstant.lower() + sDesiredSuffix
+    elif prefix_detected(sObjectValue, self.prefix_exceptions):
+        sDesiredPrefix = get_matched_prefix(sObjectValue, self.prefix_exceptions)
+        sActualPrefix = extract_prefix(sObjectValue, sDesiredPrefix)
+        sConstant = remove_prefix(sObjectValue, sActualPrefix)
+    elif suffix_detected(sObjectValue, self.suffix_exceptions):
+        sDesiredSuffix = get_matched_suffix(sObjectValue, self.suffix_exceptions)
+        sActualSuffix = extract_suffix(sObjectValue, sDesiredSuffix)
+        sConstant = remove_suffix(sObjectValue, sActualSuffix)
 
-    return fCheck(sObjectValue, sDesiredPrefix, sConstant, sDesiredSuffix, oToi, iIndex, iLine)
+    return fCheck(sObjectValue, sDesiredPrefix, sConstant, sDesiredSuffix, oToi, iIndex, iLine, self)
 
 
 def case_exception_found(sObjectValue, self):
@@ -208,6 +223,8 @@ dCase["camelCase"] = {}
 dCase["camelCase"]["check"] = check_for_camelcase
 dCase["PascalCase"] = {}
 dCase["PascalCase"]["check"] = check_for_pascalcase
+dCase["regex"] = {}
+dCase["regex"]["check"] = check_for_regex
 dCase["lower"] = {}
 dCase["lower"]["check"] = check_for_lower_case
 dCase["upper"] = {}

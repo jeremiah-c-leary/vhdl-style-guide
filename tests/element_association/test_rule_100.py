@@ -15,6 +15,10 @@ lExpected = []
 lExpected.append("")
 utils.read_file(os.path.join(sTestDir, "rule_100_test_input.fixed.vhd"), lExpected)
 
+lExpected_spaces_gte2 = []
+lExpected_spaces_gte2.append("")
+utils.read_file(os.path.join(sTestDir, "rule_100_test_input.fixed_spaces_gte2.vhd"), lExpected_spaces_gte2)
+
 
 class test_element_association_rule(unittest.TestCase):
     def setUp(self):
@@ -40,6 +44,28 @@ class test_element_association_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_rule_100_spaces_2_plus(self):
+        oRule = element_association.rule_100()
+        oRule.number_of_spaces = "2+"
+
+        lExpected = [6, 6, 10, 10, 21, 25]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_fix_rule_100_spaces_2_plus(self):
+        oRule = element_association.rule_100()
+        oRule.number_of_spaces = "2+"
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_spaces_gte2, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

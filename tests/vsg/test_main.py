@@ -167,13 +167,14 @@ class testMain(unittest.TestCase):
     @mock.patch("sys.stderr")
     def test_junit_with_file_that_fails_to_parse(self, mock_stderr):
         lStdErr = []
+        lStdErr.append("Error while processing tests/vsg/junit/parse_error.vhd: ")
         lStdErr.append("Error: Unexpected token detected while parsing architecture_body @ Line 4, Column 1 in file tests/vsg/junit/parse_error.vhd")
         lStdErr.append("       Expecting : begin")
         lStdErr.append("       Found     : end")
 
         junit_file = os.path.join(self._tmpdir.name, "config_error.actual.xml")
         lExpected = []
-        lExpected.append(mock.call("\n" + "\n".join(lStdErr) + "\n"))
+        lExpected.append(mock.call("\n".join(lStdErr) + "\n"))
         lExpected.append(mock.call("\n"))
 
         sys.argv = ["vsg"]

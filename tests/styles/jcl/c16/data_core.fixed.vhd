@@ -51,7 +51,7 @@ architecture BEHAVIORAL of DATA_CORE is
 
     return A & A & A & A & A & A & A & A;
 
-  end function;
+  end function b8;
 
   component ALU8 is
     port (
@@ -65,7 +65,7 @@ architecture BEHAVIORAL of DATA_CORE is
       YY     : in    std_logic_vector(15 downto 0);
       ZZ     : out   std_logic_vector(15 downto 0)
     );
-  end component;
+  end component ALU8;
 
   component SELECT_YY is
     port (
@@ -76,7 +76,7 @@ architecture BEHAVIORAL of DATA_CORE is
       RR      : in    std_logic_vector(15 downto 0);
       YY      : out   std_logic_vector(15 downto 0)
     );
-  end component;
+  end component SELECT_YY;
 
   -- cpu registers
   --
@@ -220,7 +220,7 @@ begin
         rr <= X"0000";
         ll <= X"0000";
         sp <= X"0000";
-      elsif (CE  = '1' and T2 = '1') then
+      elsif (CE = '1' and T2 = '1') then
         if (WE_RR = '1') then
           rr <= zz;
         end if;
