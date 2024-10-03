@@ -1,19 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules.whitespace_between_token_pairs import Rule
+from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
-lTokens.append([token.subtype_declaration.is_keyword, token.type_mark.name])
-lTokens.append([token.subtype_declaration.is_keyword, token.resolution_indication.resolution_function_name])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_logic_vector])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_ulogic_vector])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_ulogic])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.std_logic])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.integer])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.signed])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.unsigned])
-lTokens.append([token.subtype_declaration.is_keyword, token.ieee.std_logic_1164.types.natural])
+lTokens.append(token.subtype_declaration.is_keyword)
 
 
 class rule_102(Rule):
