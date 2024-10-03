@@ -53,3 +53,4 @@ class rule_600(Rule):
         super().__init__()
         self.map_aspect_token = token.generic_map_aspect
         self.clause_token = token.generic_clause
+        self.interface_string = "Generic"

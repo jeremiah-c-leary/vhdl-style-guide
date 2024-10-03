@@ -49,3 +49,4 @@ class rule_601(Rule):
         super().__init__()
         self.map_aspect_token = token.port_map_aspect
         self.clause_token = token.port_clause
+        self.interface_string = "Port"

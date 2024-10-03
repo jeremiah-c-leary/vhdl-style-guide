@@ -43,9 +43,9 @@ class consistent_interface_token_case(case.Rule):
         super().__init__()
         self.subphase = 2
         self.configuration_documentation_link = None
-        # TODO get tokens from string somehow?
         self.map_aspect_token = None
         self.clause_token = None
+        self.interface_string = None
 
     def analyze(self, oFile):
         lInterfaces = extract_interface_names_from_entities(oFile, self.clause_token)
@@ -60,7 +60,7 @@ class consistent_interface_token_case(case.Rule):
             lToi = extract_token_pairs(oArchitecture, lPairs)
             lToi.extend(extract_component_instantiation_actual_parts(oArchitecture, self.map_aspect_token))
             for oToi in lToi:
-                validate_interface_name_in_token_list(self, lArchitectureInterfaces, oToi)
+                validate_interface_name_in_token_list(self, lArchitectureInterfaces, oToi, self.interface_string)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -126,24 +126,23 @@ def no_interfaces_detected(lInterfaces):
     return False
 
 
-def validate_interface_name_in_token_list(self, lMyInterfaces, oToi):
+def validate_interface_name_in_token_list(self, lMyInterfaces, oToi, sInterface):
     lMyInterfacesLower = []
     dInterfaceMap = {}
-    for sInterface in lMyInterfaces:
-        lMyInterfacesLower.append(sInterface.lower())
-        dInterfaceMap[sInterface.lower()] = sInterface
+    for sInterfaceName in lMyInterfaces:
+        lMyInterfacesLower.append(sInterfaceName.lower())
+        dInterfaceMap[sInterfaceName.lower()] = sInterfaceName
 
     lTokens = oToi.get_tokens()
     for iToken, oToken in enumerate(lTokens):
         sToken = oToken.get_value()
         if interface_case_mismatch(sToken, lMyInterfaces, lMyInterfacesLower):
-            oViolation = create_violation(sToken, iToken, dInterfaceMap, oToi)
+            oViolation = create_violation(sInterface, sToken, iToken, dInterfaceMap, oToi)
             self.add_violation(oViolation)
 
 
-def create_violation(sToken, iToken, dInterfaceMap, oToi):
-    # TODO improve on "Interface"
-    sSolution = "Interface case mismatch:  Change " + sToken + " to " + dInterfaceMap[sToken.lower()]
+def create_violation(sInterface, sToken, iToken, dInterfaceMap, oToi):
+    sSolution = sInterface + " case mismatch:  Change " + sToken + " to " + dInterfaceMap[sToken.lower()]
     oNewToi = oToi.extract_tokens(iToken, iToken)
     oViolation = violation.New(oNewToi.get_line_number(), oNewToi, sSolution)
     dAction = {}
