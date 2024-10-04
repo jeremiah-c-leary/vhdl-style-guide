@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import re
 
 from vsg import exceptions, parser
 from vsg.token import (
@@ -111,6 +112,13 @@ def assign_parenthesis_as_todo(iToken, lObjects):
 
 def object_value_is(lAllObjects, iToken, sString):
     if lAllObjects[iToken].get_lower_value() == sString.lower():
+        return True
+    return False
+
+
+def object_value_matches(lAllObjects, iToken, sPattern):
+    oMatch = re.search(sPattern.lower(), lAllObjects[iToken].get_lower_value())
+    if oMatch is not None:
         return True
     return False
 
@@ -416,6 +424,13 @@ def token_is_assignment_operator(iObject, lObjects):
 
 def increment_token_count(iToken):
     return iToken + 1
+
+
+def matches_next_token(sPattern, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if object_value_matches(lObjects, iCurrent, sPattern):
+        return True
+    return False
 
 
 def is_next_token(sToken, iToken, lObjects):
