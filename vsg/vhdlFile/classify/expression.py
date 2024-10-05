@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-from vsg.token import direction
 from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import external_name, bit_string_literal
+from vsg.vhdlFile.classify import bit_string_literal,  external_name
 
 
 def classify(iToken, lObjects):

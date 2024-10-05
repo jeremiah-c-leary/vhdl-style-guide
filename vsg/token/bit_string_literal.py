@@ -2,6 +2,7 @@
 
 from vsg import parser
 
+
 class integer(parser.integer):
     """
     unique_id = bit_string_literal : integer

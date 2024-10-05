@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import re
+import sys
 
 from vsg import exceptions, parser
 from vsg.token import (
