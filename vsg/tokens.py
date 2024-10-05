@@ -143,6 +143,7 @@ class New:
             lReturn.append(sChar)
         self.lChars = lReturn
 
+
 def is_bit_string_literal_integer_and_base_specifier(iIndex, lChars):
     if iIndex < len(lChars) - 1:
         sChar = lChars[iIndex]
@@ -151,23 +152,20 @@ def is_bit_string_literal_integer_and_base_specifier(iIndex, lChars):
             return True
         return False
 
+
 def parse_bit_string_literal_integer_and_base_specifier(sIntegerAndBaseSpecifier):
     lReturn = []
-    sTemp = ""
-    bCurrentlyParsingInteger = True
-    for sChar in sIntegerAndBaseSpecifier:
-        if bCurrentlyParsingInteger:
-            if sChar.isdigit():
-                sTemp += sChar
-            else:
-                bCurrentlyParsingInteger = False
-                if sTemp != "":
-                    lReturn.append(sTemp)
-                sTemp = sChar
-        else:
-            sTemp += sChar
-    lReturn.append(sTemp)
+    iSplitIndex = get_bit_string_literal_integer_and_base_specifier_split_index(sIntegerAndBaseSpecifier)
+    lReturn.append(sIntegerAndBaseSpecifier[:iSplitIndex])
+    lReturn.append(sIntegerAndBaseSpecifier[iSplitIndex:])
+    lReturn = [x for x in lReturn if x != ""]
     return lReturn
+
+
+def get_bit_string_literal_integer_and_base_specifier_split_index(sIntegerAndBaseSpecifier):
+    for iIndex in range(len(sIntegerAndBaseSpecifier)):
+        if not sIntegerAndBaseSpecifier[iIndex].isdigit():
+            return iIndex
 
 
 def is_natural_number(sString):
