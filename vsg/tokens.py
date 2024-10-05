@@ -22,6 +22,7 @@ def create(sString):
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
     oLine.split_natural_numbers()
+    oLine.split_bit_string_literals()
     return oLine.lChars
 
 
@@ -130,6 +131,39 @@ class New:
                 lReturn.append(sChar)
 
         self.lChars = lReturn
+
+    def split_bit_string_literals(self):
+        lReturn = []
+        iIndex = 0
+        for iIndex, sChar in enumerate(self.lChars):
+            sChar = self.lChars[iIndex]
+            if iIndex < len(self.lChars) - 1:
+                sNextChar = self.lChars[iIndex + 1]
+                if sChar.lower().endswith(("b", "o", "x", "d")) and sNextChar.startswith('"'):
+                    lReturn.extend(parse_bit_string_literal(sChar))
+                    continue
+            lReturn.append(sChar)
+        self.lChars = lReturn
+
+
+def parse_bit_string_literal(sIntegerAndBaseSpecifier):
+    lReturn = []
+    sTemp = ""
+    iIndex = 0
+    bCurrentlyParsingInteger = True
+    for sChar in sIntegerAndBaseSpecifier:
+        if bCurrentlyParsingInteger:
+            if sChar.isdigit():
+                sTemp += sChar
+            else:
+                bCurrentlyParsingInteger = False
+                if sTemp != "":
+                    lReturn.append(sTemp)
+                sTemp = sChar
+        else:
+            sTemp += sChar
+    lReturn.append(sTemp)
+    return lReturn
 
 
 def is_natural_number(sString):

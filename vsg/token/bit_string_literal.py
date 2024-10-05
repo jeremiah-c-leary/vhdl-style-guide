@@ -2,14 +2,13 @@
 
 from vsg import parser
 
-# TODO Maybe this gets absorbed into base_specifier?
 class integer(parser.integer):
     """
     unique_id = bit_string_literal : integer
     """
 
-    def __init__(self, sString="("):
-        super().__init__()
+    def __init__(self, sString):
+        super().__init__(sString)
 
 
 class base_specifier(parser.item):

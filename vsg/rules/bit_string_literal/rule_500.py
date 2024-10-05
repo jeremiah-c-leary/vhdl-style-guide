@@ -6,7 +6,6 @@ from vsg.rules import token_case
 lTokens = []
 lTokens.append(token.bit_string_literal.base_specifier)
 
-# TODO problem is does_not_contain_any_alpha_characters - it drops out if token starts with ".
 
 class rule_500(token_case):
     """

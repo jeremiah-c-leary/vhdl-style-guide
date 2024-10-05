@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg import parser
 from vsg.token import bit_string_literal as token
 from vsg.vhdlFile import utils
+
+sIntegerPattern = r"^\d+$"
+sBaseSpecifierPattern = r"^(([us]?[box])|d)$"
+sBitValueStringPattern = r"^\"[0-9a-fhluwxz\-_]*\"$"
 
 
 def detect(iToken, lObjects):
@@ -12,20 +15,23 @@ def detect(iToken, lObjects):
         [ integer ] base_specifier " [ bit_value ] "
     """
 
-# XXX SUCCESS! We are parsing the bit_value and base specifier!
-# TODO can we split the tokens up?
-
-    if utils.matches_next_token(r"^\d*(([us]?[box])|d)$", iToken, lObjects):
-        iCurrent = utils.find_next_token(iToken, lObjects)
+    iCurrent = utils.find_next_token(iToken, lObjects)
+    if utils.matches_next_token(sIntegerPattern, iToken, lObjects):
         iCurrent += 1
-        if utils.matches_next_token(r"^\"[0-9a-fhluwxz\-_]*\"$", iCurrent, lObjects):
+    if utils.matches_next_token(sBaseSpecifierPattern, iCurrent, lObjects):
+        iCurrent = utils.find_next_token(iCurrent, lObjects)
+        iCurrent += 1
+        if utils.matches_next_token(sBitValueStringPattern, iCurrent, lObjects):
             return classify(iToken, lObjects)
-
     return iToken
 
+
 def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token(token.base_specifier, iToken, lObjects)
+
+    if utils.matches_next_token(sIntegerPattern, iToken, lObjects):
+        iCurrent = utils.assign_next_token(token.integer, iToken, lObjects)
+    else:
+        iCurrent = iToken
+    iCurrent = utils.assign_next_token(token.base_specifier, iCurrent, lObjects)
     iCurrent = utils.assign_next_token(token.bit_value_string, iCurrent, lObjects)
     return iCurrent
-
-# ["B", "O", "X", "UB", "UO", "UX", "SB", "SO", "SX", "D"]
