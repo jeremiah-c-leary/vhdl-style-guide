@@ -57,8 +57,6 @@ VSG was developed using a Test Driven Development (TDD) process.
 There are over 1000 tests which cover individual rules and other features of VSG.
 For each pull request, an accompanying test to validate the pull request would be appreciated.
 
-Refer to `Setting up a Development Environment <setting_up_a_development_environment.html#running-unit-tests>`_ for more information on how to get started.
-
 Quality Control
 ###############
 

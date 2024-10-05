@@ -15,10 +15,10 @@ It can be installed using **pip**.
 
 This is the preferred method for installing VSG.
 
-Git Hub
--------
+GitHub
+------
 
-The latest development version can be cloned from the git hub repo.
+The latest development version can be cloned from the GitHub repo.
 
 .. code-block:: bash
 
