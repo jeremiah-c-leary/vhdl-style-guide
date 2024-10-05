@@ -137,14 +137,19 @@ class New:
         iIndex = 0
         for iIndex, sChar in enumerate(self.lChars):
             sChar = self.lChars[iIndex]
-            if iIndex < len(self.lChars) - 1:
-                sNextChar = self.lChars[iIndex + 1]
-                if sChar.lower().endswith(("b", "o", "x", "d")) and sNextChar.startswith('"'):
-                    lReturn.extend(parse_bit_string_literal_integer_and_base_specifier(sChar))
-                    continue
+            if is_bit_string_literal_integer_and_base_specifier(iIndex, self.lChars):
+                lReturn.extend(parse_bit_string_literal_integer_and_base_specifier(sChar))
+                continue
             lReturn.append(sChar)
         self.lChars = lReturn
 
+def is_bit_string_literal_integer_and_base_specifier(iIndex, lChars):
+    if iIndex < len(lChars) - 1:
+        sChar = lChars[iIndex]
+        sNextChar = lChars[iIndex + 1]
+        if sChar.lower().endswith(("b", "o", "x", "d")) and sNextChar.startswith('"'):
+            return True
+        return False
 
 def parse_bit_string_literal_integer_and_base_specifier(sIntegerAndBaseSpecifier):
     lReturn = []
