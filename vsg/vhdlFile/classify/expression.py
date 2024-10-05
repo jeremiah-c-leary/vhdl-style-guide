@@ -55,10 +55,10 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
                 break
         else:
             iPrevious = iCurrent
-            iCurrent = external_name.detect(iCurrent, lObjects)
-            if iCurrent != iPrevious:
-                continue
-            iCurrent = bit_string_literal.detect(iCurrent, lObjects)
+            for oToken in [external_name, bit_string_literal]:
+                iCurrent = oToken.detect(iCurrent, lObjects)
+                if iCurrent != iPrevious:
+                    continue
             if iCurrent != iPrevious:
                 continue
             utils.assign_special_tokens(lObjects, iCurrent, oType)
