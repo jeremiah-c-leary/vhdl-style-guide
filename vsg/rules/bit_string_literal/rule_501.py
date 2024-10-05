@@ -13,6 +13,8 @@ class rule_501(token_case):
 
     |configuring_uppercase_and_lowercase_rules_link|
 
+    The default style is :code:`upper`.
+
     **Violation**
 
     .. code-block:: vhdl
@@ -29,3 +31,4 @@ class rule_501(token_case):
 
     def __init__(self):
         super().__init__(lTokens)
+        self.case = "upper"

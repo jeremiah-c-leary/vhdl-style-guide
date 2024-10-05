@@ -34,6 +34,8 @@ This rule checks the bit value has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
+The default style is :code:`upper`.
+
 **Violation**
 
 .. code-block:: vhdl
