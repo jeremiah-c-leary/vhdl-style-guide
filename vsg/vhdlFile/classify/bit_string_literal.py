@@ -27,7 +27,6 @@ def detect(iToken, lObjects):
 
 
 def classify(iToken, lObjects):
-
     if utils.matches_next_token(sIntegerPattern, iToken, lObjects):
         iCurrent = utils.assign_next_token(token.integer, iToken, lObjects)
     else:
