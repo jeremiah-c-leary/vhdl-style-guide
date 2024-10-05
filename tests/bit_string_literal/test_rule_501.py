@@ -27,6 +27,7 @@ class test_assert_rule(unittest.TestCase):
 
     def test_rule_501_lower(self):
         oRule = bit_string_literal.rule_501()
+        oRule.case = "lower"
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "bit_string_literal")
         self.assertEqual(oRule.identifier, "501")
@@ -86,6 +87,7 @@ class test_assert_rule(unittest.TestCase):
 
     def test_fix_rule_501_lower(self):
         oRule = bit_string_literal.rule_501()
+        oRule.case = "lower"
 
         oRule.fix(self.oFile)
 
