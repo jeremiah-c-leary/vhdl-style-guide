@@ -22,7 +22,7 @@ def create(sString):
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
     oLine.split_natural_numbers()
-    oLine.split_bit_string_literals()
+    oLine.split_bit_string_literal_integer_and_base_specifier()
     return oLine.lChars
 
 
@@ -132,7 +132,7 @@ class New:
 
         self.lChars = lReturn
 
-    def split_bit_string_literals(self):
+    def split_bit_string_literal_integer_and_base_specifier(self):
         lReturn = []
         iIndex = 0
         for iIndex, sChar in enumerate(self.lChars):
@@ -140,16 +140,15 @@ class New:
             if iIndex < len(self.lChars) - 1:
                 sNextChar = self.lChars[iIndex + 1]
                 if sChar.lower().endswith(("b", "o", "x", "d")) and sNextChar.startswith('"'):
-                    lReturn.extend(parse_bit_string_literal(sChar))
+                    lReturn.extend(parse_bit_string_literal_integer_and_base_specifier(sChar))
                     continue
             lReturn.append(sChar)
         self.lChars = lReturn
 
 
-def parse_bit_string_literal(sIntegerAndBaseSpecifier):
+def parse_bit_string_literal_integer_and_base_specifier(sIntegerAndBaseSpecifier):
     lReturn = []
     sTemp = ""
-    iIndex = 0
     bCurrentlyParsingInteger = True
     for sChar in sIntegerAndBaseSpecifier:
         if bCurrentlyParsingInteger:
