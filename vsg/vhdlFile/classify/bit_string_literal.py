@@ -25,7 +25,7 @@ def detect(iToken, lObjects):
 
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token(token.base_specifier, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.bit_value, iCurrent, lObjects)
+    iCurrent = utils.assign_next_token(token.bit_value_string, iCurrent, lObjects)
     return iCurrent
 
 # ["B", "O", "X", "UB", "UO", "UX", "SB", "SO", "SX", "D"]

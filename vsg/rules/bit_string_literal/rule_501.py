@@ -4,7 +4,7 @@ from vsg import token
 from vsg.rules import token_case
 
 lTokens = []
-lTokens.append(token.bit_string_literal.bit_value)
+lTokens.append(token.bit_string_literal.bit_value_string)
 
 
 class rule_501(token_case):

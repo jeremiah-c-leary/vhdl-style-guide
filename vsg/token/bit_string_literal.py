@@ -20,29 +20,11 @@ class base_specifier(parser.item):
     def __init__(self, sString):
         super().__init__(sString)
 
-# TODO Maybe this gets absorbed into bit value?
-class opening_double_quote(parser.item):
-    """
-    unique_id = bit_string_literal : opening_double_quote
-    """
 
-    def __init__(self, sString):
-        super().__init__(sString)
-
-class bit_value(parser.item):
+class bit_value_string(parser.item):
     """
-    unique_id = bit_string_literal : bit_value
+    unique_id = bit_string_literal : bit_value_string
     """
 
     def __init__(self, sString):
         super().__init__(sString)
-
-# TODO Maybe this gets absorbed into bit value?
-class closing_double_quote(parser.item):
-    """
-    unique_id = bit_string_literal : closing_double_quote
-    """
-
-    def __init__(self, sString):
-        super().__init__(sString)
-
