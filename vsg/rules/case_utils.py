@@ -13,7 +13,7 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False,
     iMyLine = get_violation_line(oToi, iLine)
     oViolation = None
 
-    if does_not_contain_any_alpha_characters(sObjectValue):
+    if self.name != "bit_string_literal" and does_not_contain_any_alpha_characters(sObjectValue):
         return None
 
     elif case_exception_found(sObjectValue, self):
