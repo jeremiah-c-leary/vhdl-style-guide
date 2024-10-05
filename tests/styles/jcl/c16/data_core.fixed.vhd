@@ -162,7 +162,7 @@ begin
     case saz is
 
       when SA_21_0 =>
-        adr_z <= X"0000";
+        adr_z <= x"0000";
 
       when SA_21_LL =>
         adr_z <= ll;
