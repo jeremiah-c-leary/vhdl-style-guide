@@ -5,9 +5,9 @@ import re
 from vsg.token import bit_string_literal as token
 from vsg.vhdlFile import utils
 
-oIntegerRegex = re.compile("\d+")
-oBaseSpecifierRegex = re.compile("(([us]?[box])|d)")
-oBitValueStringRegex = re.compile('"[0-9a-fhluwxz\-_]*"')
+oIntegerRegex = re.compile(r"\d+")
+oBaseSpecifierRegex = re.compile(r"(([us]?[box])|d)")
+oBitValueStringRegex = re.compile(r'"[0-9a-fhluwxz\-_]*"')
 
 
 def detect(iToken, lObjects):
