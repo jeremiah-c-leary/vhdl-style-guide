@@ -116,9 +116,9 @@ def object_value_is(lAllObjects, iToken, sString):
     return False
 
 
-def object_value_matches(lAllObjects, iToken, sPattern):
-    oMatch = re.search(sPattern.lower(), lAllObjects[iToken].get_lower_value())
-    if oMatch is not None:
+def object_value_matches(lAllObjects, iToken, oRegex):
+    sToken = lAllObjects[iToken].get_lower_value()
+    if oRegex.fullmatch(sToken) is not None:
         return True
     return False
 
@@ -426,9 +426,9 @@ def increment_token_count(iToken):
     return iToken + 1
 
 
-def matches_next_token(sPattern, iToken, lObjects):
+def matches_next_token(oRegex, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if object_value_matches(lObjects, iCurrent, sPattern):
+    if object_value_matches(lObjects, iCurrent, oRegex):
         return True
     return False
 

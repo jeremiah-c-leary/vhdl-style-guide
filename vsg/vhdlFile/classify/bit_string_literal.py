@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
+import re
 
 from vsg.token import bit_string_literal as token
 from vsg.vhdlFile import utils
 
-sIntegerPattern = r"^\d+$"
-sBaseSpecifierPattern = r"^(([us]?[box])|d)$"
-sBitValueStringPattern = r"^\"[0-9a-fhluwxz\-_]*\"$"
+oIntegerRegex = re.compile("\d+")
+oBaseSpecifierRegex = re.compile("(([us]?[box])|d)")
+oBitValueStringRegex = re.compile('"[0-9a-fhluwxz\-_]*"')
 
 
 def detect(iToken, lObjects):
@@ -16,18 +17,18 @@ def detect(iToken, lObjects):
     """
 
     iCurrent = utils.find_next_token(iToken, lObjects)
-    if utils.matches_next_token(sIntegerPattern, iToken, lObjects):
+    if utils.matches_next_token(oIntegerRegex, iToken, lObjects):
         iCurrent += 1
-    if utils.matches_next_token(sBaseSpecifierPattern, iCurrent, lObjects):
+    if utils.matches_next_token(oBaseSpecifierRegex, iCurrent, lObjects):
         iCurrent = utils.find_next_token(iCurrent, lObjects)
         iCurrent += 1
-        if utils.matches_next_token(sBitValueStringPattern, iCurrent, lObjects):
+        if utils.matches_next_token(oBitValueStringRegex, iCurrent, lObjects):
             return classify(iToken, lObjects)
     return iToken
 
 
 def classify(iToken, lObjects):
-    if utils.matches_next_token(sIntegerPattern, iToken, lObjects):
+    if utils.matches_next_token(oIntegerRegex, iToken, lObjects):
         iCurrent = utils.assign_next_token(token.integer, iToken, lObjects)
     else:
         iCurrent = iToken
