@@ -64,6 +64,7 @@ Rules Enforcing Structure Rule Group
 * `entity_027 <../entity_rules.html#entity-027>`_
 * `entity_028 <../entity_rules.html#entity-028>`_
 * `entity_029 <../entity_rules.html#entity-029>`_
+* `for_generate_statement_001 <../for_generate_statement_rules.html#for-generate-statement-001>`_
 * `function_018 <../function_rules.html#function-018>`_
 * `function_019 <../function_rules.html#function-019>`_
 * `function_020 <../function_rules.html#function-020>`_
