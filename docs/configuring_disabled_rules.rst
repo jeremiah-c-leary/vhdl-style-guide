@@ -58,6 +58,7 @@ Rules Disabled by Default
 * `generic_600 <generic_rules.html#generic-600>`_
 * `generic_map_600 <generic_map_rules.html#generic-map-600>`_
 * `generic_map_601 <generic_map_rules.html#generic-map-601>`_
+* `if_generate_statement_001 <if_generate_statement_rules.html#if-generate-statement-001>`_
 * `instantiation_600 <instantiation_rules.html#instantiation-600>`_
 * `instantiation_601 <instantiation_rules.html#instantiation-601>`_
 * `loop_statement_006 <loop_statement_rules.html#loop-statement-006>`_

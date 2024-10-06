@@ -3,6 +3,29 @@
 If Generate Statement Rules
 ---------------------------
 
+if_generate_statement_001
+#########################
+
+|phase_1| |disabled| |error| |structure| |structure_optional|
+
+This rule checks for the existence of the **begin** keyword.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ram_array : if condition generate
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   ram_array : if condition generate begin
+   end generate;
+
 if_generate_statement_300
 #########################
 
