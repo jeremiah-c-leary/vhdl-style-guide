@@ -5,7 +5,6 @@ import unittest
 import vsg.vhdlFile as vhdlFile
 from tests import utils
 
-
 lTokenFiles = os.scandir(os.path.dirname(__file__))
 
 lLrmUnits = [x.name for x in lTokenFiles if x.is_dir()]
@@ -17,7 +16,6 @@ class TestClassificationMeta(type):
     __test__ = False
 
     def __new__(oClass, sName, oBases, dNamespace):
-
         def generate_test(sLrmUnit):
             def test_classification(self):
                 lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit, "classification_test_input.vhd"))
