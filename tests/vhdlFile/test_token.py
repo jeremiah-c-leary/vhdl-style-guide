@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 import pathlib
 import unittest
 
@@ -8,10 +7,12 @@ import vsg.vhdlFile as vhdlFile
 from tests import utils
 
 sTestInputFileName = "classification_test_input.vhd"
+sTestResultFileName = "classification_results.txt"
 
-def get_lrm_unit_names():
+
+def get_lrm_unit_paths():
     lTestInputPaths = pathlib.Path(__file__).parent.glob("*/" + sTestInputFileName)
-    lReturn = [path.parent.name for path in lTestInputPaths]
+    lReturn = [path.parent for path in lTestInputPaths]
     return lReturn
 
 
@@ -19,17 +20,16 @@ class test_classification_meta(type):
     __test__ = False
 
     def __new__(oClass, sName, oBases, dNamespace):
-        def generate_test(sLrmUnit):
+        def generate_test(oLrmUnitPath):
             def test_classification(self):
-                sTestDir = os.path.join(os.path.dirname(__file__), sLrmUnit)
 
-                lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, sTestInputFileName))
+                lFile, eError = vhdlFile.utils.read_vhdlfile(str(oLrmUnitPath.joinpath(sTestInputFileName)))
                 oFile = vhdlFile.vhdlFile(lFile)
 
                 self.maxDiff = None
 
                 lExpected = []
-                utils.read_file(os.path.join(sTestDir, "classification_results.txt"), lExpected, False)
+                utils.read_file(str(oLrmUnitPath.joinpath(sTestResultFileName)), lExpected, False)
 
                 lActual = []
 
@@ -40,9 +40,9 @@ class test_classification_meta(type):
 
             return test_classification
 
-        for sLrmUnit in get_lrm_unit_names():
-            test_name = "test_" + sLrmUnit
-            dNamespace[test_name] = generate_test(sLrmUnit)
+        for oLrmUnitPath in get_lrm_unit_paths():
+            test_name = "test_" + oLrmUnitPath.name
+            dNamespace[test_name] = generate_test(oLrmUnitPath)
         return type.__new__(oClass, sName, oBases, dNamespace)
 
 
