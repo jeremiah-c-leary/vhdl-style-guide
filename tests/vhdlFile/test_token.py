@@ -8,7 +8,7 @@ import vsg.vhdlFile as vhdlFile
 from tests import utils
 
 
-def get_list_of_lrm_unit_names():
+def get_lrm_unit_names():
     lTestInputPaths = pathlib.Path(__file__).parent.glob("*/*.vhd")
     lReturn = [path.parent.name for path in lTestInputPaths]
     return lReturn
@@ -39,7 +39,7 @@ class test_classification_meta(type):
 
             return test_classification
 
-        for sLrmUnit in get_list_of_lrm_unit_names():
+        for sLrmUnit in get_lrm_unit_names():
             test_name = "test_" + sLrmUnit
             dNamespace[test_name] = generate_test(sLrmUnit)
         return type.__new__(oClass, sName, oBases, dNamespace)
