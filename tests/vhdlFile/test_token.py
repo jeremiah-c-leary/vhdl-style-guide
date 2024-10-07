@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+
 import os
+import pathlib
 import unittest
 
 import vsg.vhdlFile as vhdlFile
@@ -7,9 +9,8 @@ from tests import utils
 
 
 def get_list_of_lrm_unit_names():
-    lReturn = []
-    with os.scandir(os.path.dirname(__file__)) as lTokenFiles:
-        lReturn = [entry.name for entry in lTokenFiles if (entry.is_dir() and entry.name != "__pycache__")]
+    lTestInputPaths = pathlib.Path(__file__).parent.glob("*/*.vhd")
+    lReturn = [path.parent.name for path in lTestInputPaths]
     return lReturn
 
 
