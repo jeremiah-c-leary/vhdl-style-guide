@@ -5,11 +5,12 @@ import unittest
 import vsg.vhdlFile as vhdlFile
 from tests import utils
 
-lTokenFiles = os.scandir(os.path.dirname(__file__))
 
-lLrmUnits = [x.name for x in lTokenFiles if x.is_dir()]
-if "__pycache__" in lLrmUnits:
-    lLrmUnits.remove("__pycache__")
+def get_list_of_lrm_unit_names():
+    lReturn = []
+    with os.scandir(os.path.dirname(__file__)) as lTokenFiles:
+        lReturn = [entry.name for entry in lTokenFiles if (entry.is_dir() and entry.name != "__pycache__")]
+    return lReturn
 
 
 class TestClassificationMeta(type):
@@ -37,7 +38,7 @@ class TestClassificationMeta(type):
 
             return test_classification
 
-        for sLrmUnit in lLrmUnits:
+        for sLrmUnit in get_list_of_lrm_unit_names():
             test_name = "test_" + sLrmUnit
             dNamespace[test_name] = generate_test(sLrmUnit)
         return type.__new__(oClass, sName, oBases, dNamespace)
