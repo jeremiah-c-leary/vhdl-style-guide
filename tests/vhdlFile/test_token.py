@@ -13,7 +13,7 @@ def get_list_of_lrm_unit_names():
     return lReturn
 
 
-class TestClassificationMeta(type):
+class test_classification_meta(type):
     __test__ = False
 
     def __new__(oClass, sName, oBases, dNamespace):
@@ -44,6 +44,6 @@ class TestClassificationMeta(type):
         return type.__new__(oClass, sName, oBases, dNamespace)
 
 
-class TestClassification(unittest.TestCase, metaclass=TestClassificationMeta):
-    __metaclass__ = TestClassificationMeta
+class test_classification(unittest.TestCase, metaclass=test_classification_meta):
+    __metaclass__ = test_classification_meta
     __test__ = True
