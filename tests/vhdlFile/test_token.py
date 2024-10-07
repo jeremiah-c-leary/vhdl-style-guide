@@ -7,9 +7,10 @@ import unittest
 import vsg.vhdlFile as vhdlFile
 from tests import utils
 
+sTestInputFileName = "classification_test_input.vhd"
 
 def get_lrm_unit_names():
-    lTestInputPaths = pathlib.Path(__file__).parent.glob("*/*.vhd")
+    lTestInputPaths = pathlib.Path(__file__).parent.glob("*/" + sTestInputFileName)
     lReturn = [path.parent.name for path in lTestInputPaths]
     return lReturn
 
@@ -20,7 +21,7 @@ class test_classification_meta(type):
     def __new__(oClass, sName, oBases, dNamespace):
         def generate_test(sLrmUnit):
             def test_classification(self):
-                lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit, "classification_test_input.vhd"))
+                lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit, sTestInputFileName))
                 oFile = vhdlFile.vhdlFile(lFile)
 
                 self.maxDiff = None
