@@ -21,12 +21,12 @@ class test_classification_meta(type):
     def __new__(oClass, sName, oBases, dNamespace):
         def generate_test(sLrmUnit):
             def test_classification(self):
-                lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), sLrmUnit, sTestInputFileName))
+                sTestDir = os.path.join(os.path.dirname(__file__), sLrmUnit)
+
+                lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, sTestInputFileName))
                 oFile = vhdlFile.vhdlFile(lFile)
 
                 self.maxDiff = None
-
-                sTestDir = os.path.join(os.path.dirname(__file__), sLrmUnit)
 
                 lExpected = []
                 utils.read_file(os.path.join(sTestDir, "classification_results.txt"), lExpected, False)
