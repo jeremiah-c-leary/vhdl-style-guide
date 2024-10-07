@@ -22,7 +22,6 @@ class test_classification_meta(type):
     def __new__(oClass, sName, oBases, dNamespace):
         def generate_test(oLrmUnitPath):
             def test_classification(self):
-
                 lFile, eError = vhdlFile.utils.read_vhdlfile(str(oLrmUnitPath.joinpath(sTestInputFileName)))
                 oFile = vhdlFile.vhdlFile(lFile)
 
