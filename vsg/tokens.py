@@ -22,6 +22,7 @@ def create(sString):
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
     oLine.split_natural_numbers()
+    oLine.split_bit_string_literal_integer_and_base_specifier()
     return oLine.lChars
 
 
@@ -130,6 +131,41 @@ class New:
                 lReturn.append(sChar)
 
         self.lChars = lReturn
+
+    def split_bit_string_literal_integer_and_base_specifier(self):
+        lReturn = []
+        iIndex = 0
+        for iIndex, sChar in enumerate(self.lChars):
+            sChar = self.lChars[iIndex]
+            if is_bit_string_literal_integer_and_base_specifier(iIndex, self.lChars):
+                lReturn.extend(parse_bit_string_literal_integer_and_base_specifier(sChar))
+                continue
+            lReturn.append(sChar)
+        self.lChars = lReturn
+
+
+def is_bit_string_literal_integer_and_base_specifier(iIndex, lChars):
+    if iIndex < len(lChars) - 1:
+        sChar = lChars[iIndex]
+        sNextChar = lChars[iIndex + 1]
+        if sChar.lower().endswith(("b", "o", "x", "d")) and sNextChar.startswith('"'):
+            return True
+        return False
+
+
+def parse_bit_string_literal_integer_and_base_specifier(sIntegerAndBaseSpecifier):
+    lReturn = []
+    iSplitIndex = get_bit_string_literal_integer_and_base_specifier_split_index(sIntegerAndBaseSpecifier)
+    lReturn.append(sIntegerAndBaseSpecifier[:iSplitIndex])
+    lReturn.append(sIntegerAndBaseSpecifier[iSplitIndex:])
+    lReturn = [x for x in lReturn if x != ""]
+    return lReturn
+
+
+def get_bit_string_literal_integer_and_base_specifier_split_index(sIntegerAndBaseSpecifier):
+    for iIndex in range(len(sIntegerAndBaseSpecifier)):
+        if not sIntegerAndBaseSpecifier[iIndex].isdigit():
+            return iIndex
 
 
 def is_natural_number(sString):
