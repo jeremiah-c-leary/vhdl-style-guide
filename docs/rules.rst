@@ -13,6 +13,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    attribute_rules.rst
    attribute_declaration_rules.rst
    attribute_specification_rules.rst
+   bit_string_literal_rules.rst
    block_rules.rst
    block_comment_rules.rst
    case_rules.rst

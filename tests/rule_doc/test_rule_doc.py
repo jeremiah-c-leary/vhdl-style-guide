@@ -214,6 +214,11 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_bit_string_literal_rules_doc(self):
+        lExpected, lActual = self.compare_files("bit_string_literal")
+
+        self.assertEqual(lExpected, lActual)
+
     def test_block_rules_doc(self):
         lExpected, lActual = self.compare_files("block")
 

@@ -83,7 +83,7 @@ begin
 
 		if (RESET = '1') then
 			state        <= IDLE;
-			counter      <= X"00000000";
+			counter      <= x"00000000";
 			addr_counter <= "0000000000";
 		else
 			if (save_udi_code = '1') then
