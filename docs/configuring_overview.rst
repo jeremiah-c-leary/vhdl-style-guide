@@ -1,7 +1,7 @@
 Overview
 ========
 
-VSG can use a configuration file to alter it's behavior and/or include a list of files to analyze.
+VSG can use a configuration file to alter its behavior and/or include a list of files to analyze.
 This is accomplished by passing JSON and/or YAML file(s) through the **--configuration** command line argument.
 This is the basic form of a configuration file in JSON:
 
@@ -124,7 +124,7 @@ rule
 Any attribute of any rule can be configured.
 Using **global** will set the attribute for every rule.
 Using **group** will set attributes for groups of rules.
-Each rule is addressable by using it's unique **ruleId** and **ruleNumber** combination.  For example, whitespace_006 or port_010.
+Each rule is addressable by using its unique **ruleId** and **ruleNumber** combination.  For example, whitespace_006 or port_010.
 
 .. NOTE::
    If **global** and unique attributes are set at the same time, the unique attribute will take precedence.

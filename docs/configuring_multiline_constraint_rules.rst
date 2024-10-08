@@ -53,7 +53,7 @@ There are several options to the structure rules:
    The setting :code:`all_in_one_line` will combine :code:`array_constraints` into a single line
 
 .. |one_line_per_dimension| replace::
-   The setting :code:`one_line_per_dimension` will place each dimension on it's own line
+   The setting :code:`one_line_per_dimension` will place each dimension on its own line
 
 .. |exceptions| replace::
    Refer to :ref:`exceptions` for more information.

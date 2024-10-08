@@ -251,6 +251,9 @@ Rules Enforcing Case
 * `attribute_specification_502 <attribute_specification_rules.html#attribute-specification-502>`_
 * `attribute_specification_503 <attribute_specification_rules.html#attribute-specification-503>`_
 
+* `bit_string_literal_500 <bit_string_literal_rules.html#bit-string-literal-500>`_
+* `bit_string_literal_501 <bit_string_literal_rules.html#bit-string-literal-501>`_
+
 * `block_500 <block_rules.html#block-500>`_
 * `block_501 <block_rules.html#block-501>`_
 * `block_502 <block_rules.html#block-502>`_
@@ -311,6 +314,12 @@ Rules Enforcing Case
 * `entity_specification_503 <entity_specification_rules.html#entity-specification-503>`_
 
 * `exponent_500 <exponent_rules.html#exponent-500>`_
+
+* `external_constant_name_500 <../external_constant_name_rules.html#external-constant-name-500>`_
+
+* `external_signal_name_500 <../external_signal_name_rules.html#external-signal-name-500>`_
+
+* `external_variable_name_500 <../external_variable_name_rules.html#external-variable-name-500>`_
 
 * `file_002 <file_rules.html#file-002>`_
 

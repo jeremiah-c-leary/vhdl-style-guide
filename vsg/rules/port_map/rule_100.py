@@ -12,7 +12,7 @@ oEnd = token.port_map_aspect.close_parenthesis
 
 class rule_100(Rule):
     """
-    This rule checks for at least a single space before the **=>** operator in port maps.
+    This rules checks for whitespace before the assignment operator.
 
     |configuring_whitespace_rules_link|
 
@@ -20,23 +20,21 @@ class rule_100(Rule):
 
     .. code-block:: vhdl
 
-       U_FIFO : FIFO
-         port map (
-           WR_EN    => wr_en,
-           RD_EN    => rd_en,
-           OVERFLOW=> overflow
-         );
+       port map (
+         WR_EN=> w_wr_en,
+         RD_EN=> w_rd_en,
+         OVERFLOW => w_overflow
+       );
 
     **Fix**
 
     .. code-block:: vhdl
 
-       U_FIFO : FIFO
-         port map (
-           WR_EN    => wr_en,
-           RD_EN    => rd_en,
-           OVERFLOW => overflow
-         );
+       port map (
+         WR_EN => w_wr_en,
+         RD_EN => w_rd_en,
+         OVERFLOW => w_overflow
+       );
     """
 
     def __init__(self):

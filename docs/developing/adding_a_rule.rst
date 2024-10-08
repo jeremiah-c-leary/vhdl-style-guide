@@ -76,7 +76,7 @@ Test directory structure
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The directory structure of the tests closely matches the rules directory.
-Every rule group has it's own directory.
+Every rule group has its own directory.
 
 .. code-block:: text
 

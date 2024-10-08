@@ -12,7 +12,7 @@ oEnd = token.generic_map_aspect.close_parenthesis
 
 class rule_100(Rule):
     """
-    This rule checks for at least a single space before the **=>** keyword in generic maps.
+    This rules checks for whitespace before the assignment operator.
 
     |configuring_whitespace_rules_link|
 
@@ -20,21 +20,19 @@ class rule_100(Rule):
 
     .. code-block:: vhdl
 
-       generic map
-       (
+       generic map (
          WIDTH=> 32,
-         DEPTH => 512
-       )
+         DEPTH=> 512
+       );
 
     **Fix**
 
     .. code-block:: vhdl
 
-       generic map
-       (
+       generic map (
          WIDTH => 32,
          DEPTH => 512
-       )
+       );
     """
 
     def __init__(self):

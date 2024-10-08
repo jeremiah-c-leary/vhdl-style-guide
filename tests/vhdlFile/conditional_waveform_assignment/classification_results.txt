@@ -37,8 +37,8 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.relational_operator.greater_than_or_equal'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
 <class 'vsg.token.logical_operator.and_operator'>
 <class 'vsg.token.todo.name'>
 <class 'vsg.token.todo.open_parenthesis'>
@@ -47,8 +47,8 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.relational_operator.less_than_or_equal'>
-<class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.conditional_expressions.else_keyword'>
 <class 'vsg.parser.character_literal'>
