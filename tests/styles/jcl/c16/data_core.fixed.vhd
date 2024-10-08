@@ -162,7 +162,7 @@ begin
     case saz is
 
       when SA_21_0 =>
-        adr_z <= X"0000";
+        adr_z <= x"0000";
 
       when SA_21_LL =>
         adr_z <= ll;
@@ -180,7 +180,7 @@ begin
   SEL_AYZ : process (SA(0), adr_z) is
   begin
 
-    adr_yz <= adr_z + (X"000" & "000" & SA(0));
+    adr_yz <= adr_z + (x"000" & "000" & SA(0));
 
   end process SEL_AYZ;
 
@@ -217,9 +217,9 @@ begin
 
     if (rising_edge(CLK_I)) then
       if (CLR = '1') then
-        rr <= X"0000";
-        ll <= X"0000";
-        sp <= X"0000";
+        rr <= x"0000";
+        ll <= x"0000";
+        sp <= x"0000";
       elsif (CE = '1' and T2 = '1') then
         if (WE_RR = '1') then
           rr <= zz;

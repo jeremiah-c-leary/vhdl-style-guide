@@ -114,6 +114,13 @@ def object_value_is(lAllObjects, iToken, sString):
     return False
 
 
+def object_value_matches(lAllObjects, iToken, oRegex):
+    sToken = lAllObjects[iToken].get_lower_value()
+    if oRegex.fullmatch(sToken) is not None:
+        return True
+    return False
+
+
 def is_item(lAllObjects, iToken):
     if type(lAllObjects[iToken]) == parser.item:
         return True
@@ -415,6 +422,13 @@ def token_is_assignment_operator(iObject, lObjects):
 
 def increment_token_count(iToken):
     return iToken + 1
+
+
+def matches_next_token(oRegex, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if object_value_matches(lObjects, iCurrent, oRegex):
+        return True
+    return False
 
 
 def is_next_token(sToken, iToken, lObjects):
