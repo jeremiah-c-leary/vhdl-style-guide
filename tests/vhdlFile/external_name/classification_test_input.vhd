@@ -48,4 +48,8 @@ begin
                   << signal some.hieararchy(i) : std_logic >> or
                   << variable some.hierarchy.ab.cd.(i) : std_logic >>;
 
+  probe_signal <= << constant some.hierarchy.hier(i).test(i).my_loop(i).test : std_logic >> or
+                  << signal some.hieararchy(i).test(i).my_loop(i).test : std_logic >> or
+                  << variable some.hierarchy.ab.cd.(i).test(i).my_loop(i).test : std_logic >>;
+
 end architecture RTL;
