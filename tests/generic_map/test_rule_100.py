@@ -23,7 +23,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "generic_map")
         self.assertEqual(oRule.identifier, "100")
 
-        lExpected = [9, 22, 24]
+        lExpected = [22, 23, 24]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

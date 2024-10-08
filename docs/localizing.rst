@@ -106,7 +106,7 @@ This dictionary can be modified to include other information about the violation
 This method appends the dictionary to a violation list, which is processed later for reporting and fixing purposes.
 In this case, any line number will do so we picked 1.
 
-We must decide if we want to give VSG the ability to fix this rule on it's own.
+We must decide if we want to give VSG the ability to fix this rule on its own.
 If so, then we will need to write the **_fix_violations** method.
 However, for this violation we want the user to split the file.
 We will tell VSG the rule is not fixable.
@@ -296,7 +296,7 @@ It calls the init of the base rule class, then we modify attributes for this spe
             self.solution = 'Align with := keyword on constant declaration line.'
             self.phase = 5
 
-For this rule we set it's *name*, *identifier*, *solution*, and *phase*.
+For this rule we set its *name*, *identifier*, *solution*, and *phase*.
 
 Analyzing Considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -501,7 +501,7 @@ The **column** attribute indicates which column the keyword was found.
 The **desired_column**, which applies to all lines in the **lines** list, indicates which column the keyword should be located.
 
 This violation would cover a group of multiple lines.
-If there were violations in multiple groups, then each group with get it's own violation dictionary.
+If there were violations in multiple groups, then each group with get its own violation dictionary.
 
 utils functions
 ~~~~~~~~~~~~~~~

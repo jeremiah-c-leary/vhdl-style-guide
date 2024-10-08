@@ -1,0 +1,530 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture RTL of FIFO is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 |   -- Examples adapted from those given in the LRM.
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   constant c_test : std_logic_vector := B"1111_1111_1111"; -- Equivalent to the string literal "111111111111".
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+7 |   constant c_test : std_logic_vector := X"FFF";            -- Equivalent to B"1111_1111_1111".
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+8 |   constant c_test : std_logic_vector := O"777";            -- Equivalent to B"111_111_111".
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+9 |   constant c_test : std_logic_vector := X"777";            -- Equivalent to B"0111_0111_0111".
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+10 |   constant c_test : std_logic_vector := B"XXXX_01LH";      -- Equivalent to the string literal "XXXX01LH"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+11 |   constant c_test : unsigned         := UO"27";            -- Equivalent to B"010_111"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.unsigned'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+12 |   constant c_test : unsigned         := UO"2C";            -- Equivalent to B"011_CCC"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.unsigned'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+13 |   constant c_test : signed           := SX"3W";            -- Equivalent to B"0011_WWWW"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+14 |   constant c_test : std_logic_vector := D"35";             -- Equivalent to B"100011"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+15 |   constant c_test : std_logic_vector := 12UB"X1";          -- Equivalent to B"0000_0000_00X1"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+16 |   constant c_test : std_logic_vector := 12SB"X1";          -- Equivalent to B"XXXX_XXXX_XXX1"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+17 |   constant c_test : unsigned         := 12UX"F-";          -- Equivalent to B"0000_1111_----"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.unsigned'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+18 |   constant c_test : signed           := 12SX"F-";          -- Equivalent to B"1111_1111_----"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+19 |   constant c_test : std_logic_vector := 12D"13";           -- Equivalent to B"0000_0000_1101"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+20 |   constant c_test : unsigned         := 12UX"000WWW";      -- Equivalent to B"WWWW_WWWW_WWWW"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.unsigned'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+21 |   constant c_test : signed           := 12SX"FFFC00";      -- Equivalent to B"1100_0000_0000"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+22 |   constant c_test : signed           := 12SX"XXXX00";      -- Equivalent to B"XXXX_0000_0000"
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+23 |   constant c_test : std_logic_vector := 8D"511";           -- Error
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+24 |   constant c_test : unsigned         := 8UO"477";          -- Error
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.unsigned'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+25 |   constant c_test : signed           := 8SX"0FF";          -- Error
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+26 |   constant c_test : signed           := 8SX"FXX";          -- Error
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.integer'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+27 |   constant c1: STRING := B"1111_1111_1111";
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+28 |   constant c2: BIT_VECTOR := X"FFF";
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+29 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+30 |   type MVL is ('X', '0', '1', 'Z');
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.enumeration_type_definition.open_parenthesis'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.comma'>
+<class 'vsg.token.enumeration_type_definition.enumeration_literal'>
+<class 'vsg.token.enumeration_type_definition.close_parenthesis'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+31 |   type MVL_VECTOR is array (NATURAL range <>) of MVL;
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.unbounded_array_definition.array_keyword'>
+<class 'vsg.token.unbounded_array_definition.open_parenthesis'>
+<class 'vsg.token.ieee.std_logic_1164.types.natural'>
+<class 'vsg.token.index_subtype_definition.range_keyword'>
+<class 'vsg.token.index_subtype_definition.undefined_range'>
+<class 'vsg.token.unbounded_array_definition.close_parenthesis'>
+<class 'vsg.token.unbounded_array_definition.of_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+32 |   constant c3: MVL_VECTOR := O"777";
+<class 'vsg.token.constant_declaration.constant_keyword'>
+<class 'vsg.token.constant_declaration.identifier'>
+<class 'vsg.token.constant_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.constant_declaration.assignment_operator'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.constant_declaration.semicolon'>
+--------------------------------------------------------------------------------
+33 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+34 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+35 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 |   assert c1'LENGTH = 12 and c2'LENGTH = 12 and c3 = "111111111";
+<class 'vsg.token.assertion.keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.tic'>
+<class 'vsg.token.predefined_attribute.keyword'>
+<class 'vsg.token.relational_operator.equal'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.tic'>
+<class 'vsg.token.predefined_attribute.keyword'>
+<class 'vsg.token.relational_operator.equal'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.logical_operator.and_operator'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.relational_operator.equal'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_assertion_statement.semicolon'>
+--------------------------------------------------------------------------------
+37 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+38 |   signal_b  <= B"01uxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+39 |   signal_sb <= sB"01uxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+40 |   signal_ub <= uB"01uxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+41 |   signal_o  <= O"01234567uxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+42 |   signal_so <= sO"01234567uxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+43 |   signal_uo <= uO"01234567uxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+44 |   signal_x  <= X"0123456789abcdefuxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+45 |   signal_sx <= sX"0123456789abcdefuxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+46 |   signal_ux <= uX"0123456789abcdefuxzwlh-";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+47 |   signal_d  <= D"0123456789";
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+48 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+49 |   process (all) is
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.open_parenthesis'>
+<class 'vsg.token.process_sensitivity_list.all_keyword'>
+<class 'vsg.token.process_statement.close_parenthesis'>
+<class 'vsg.token.process_statement.is_keyword'>
+--------------------------------------------------------------------------------
+50 |   begin
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+51 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+52 |     variable_b  := B"01uxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+53 |     variable_sb := sB"01uxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+54 |     variable_ub := uB"01uxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+55 |     variable_o  := O"01234567uxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+56 |     variable_so := sO"01234567uxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+57 |     variable_uo := uO"01234567uxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+58 |     variable_x  := X"0123456789abcdefuxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+59 |     variable_sx := sX"0123456789abcdefuxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+60 |     variable_ux := uX"0123456789abcdefuxzwlh-";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+61 |     variable_d  := D"0123456789";
+<class 'vsg.token.simple_variable_assignment.simple_name'>
+<class 'vsg.token.simple_variable_assignment.assignment'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.simple_variable_assignment.semicolon'>
+--------------------------------------------------------------------------------
+62 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+63 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+64 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+65 | end architecture RTL;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>

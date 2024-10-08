@@ -214,6 +214,11 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_bit_string_literal_rules_doc(self):
+        lExpected, lActual = self.compare_files("bit_string_literal")
+
+        self.assertEqual(lExpected, lActual)
+
     def test_block_rules_doc(self):
         lExpected, lActual = self.compare_files("block")
 
@@ -306,6 +311,21 @@ class testDocGen(unittest.TestCase):
 
     def test_exponent_rules_doc(self):
         lExpected, lActual = self.compare_files("exponent")
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_external_constant_name_rules_doc(self):
+        lExpected, lActual = self.compare_files("external_constant_name")
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_external_signal_name_rules_doc(self):
+        lExpected, lActual = self.compare_files("external_signal_name")
+
+        self.assertEqual(lExpected, lActual)
+
+    def test_external_variable_name_rules_doc(self):
+        lExpected, lActual = self.compare_files("external_variable_name")
 
         self.assertEqual(lExpected, lActual)
 
