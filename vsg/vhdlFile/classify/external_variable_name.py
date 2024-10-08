@@ -1,3 +1,7 @@
+
+    while not utils.is_next_token(":", iCurrent, lObjects):
+        iCurrent = utils.assign_parenthesis_as_todo(iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_if_not(":", token.external_pathname, iCurrent, lObjects)
 # -*- coding: utf-8 -*-
 
 from vsg import parser
@@ -23,7 +27,9 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("variable", token.variable_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token(token.external_pathname, iToken, lObjects)
 
-    iCurrent = utils.assign_parenthesis_as_todo(iCurrent, lObjects)
+    while not utils.is_next_token(":", iCurrent, lObjects):
+        iCurrent = utils.assign_parenthesis_as_todo(iCurrent, lObjects)
+        iCurrent = utils.assign_next_token_if_not(":", token.external_pathname, iCurrent, lObjects)
 
     iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
 
