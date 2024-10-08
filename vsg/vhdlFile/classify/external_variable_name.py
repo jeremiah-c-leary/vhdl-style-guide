@@ -23,7 +23,7 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("variable", token.variable_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token(token.external_pathname, iToken, lObjects)
 
-    while not utils.is_next_token(":", iCurrent, lObjects):
+    while utils.is_next_token("(", iCurrent, lObjects):
         iCurrent = utils.assign_parenthesis_as_todo(iCurrent, lObjects)
         iCurrent = utils.assign_next_token_if_not(":", token.external_pathname, iCurrent, lObjects)
 
