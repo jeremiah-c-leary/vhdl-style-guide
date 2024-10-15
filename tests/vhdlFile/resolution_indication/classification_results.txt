@@ -1,0 +1,152 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 | architecture rtl of fifo is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+2 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+3 |   signal sig8 : blah std_logic_vector(open);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.resolution_indication.resolution_function_name'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.array_constraint.open_parenthesis'>
+<class 'vsg.token.array_constraint.open_keyword'>
+<class 'vsg.token.array_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+4 |   signal sig8 : blah std_logic_vector(37 downto 0);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.resolution_indication.resolution_function_name'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+5 |   signal sig8 : blah std_logic_vector(37 downto 0, 56 downto 32);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.resolution_indication.resolution_function_name'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+6 |   signal sig8 : blah std_logic_vector(37 downto 0, 56 downto 32)(5 downto 0);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.resolution_indication.resolution_function_name'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+7 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 |   signal sig8 : std_logic_vector(open);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.array_constraint.open_parenthesis'>
+<class 'vsg.token.array_constraint.open_keyword'>
+<class 'vsg.token.array_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 |   signal sig8 : std_logic_vector(37 downto 0);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+10 |   signal sig8 : std_logic_vector(37 downto 0, 56 downto 32);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+11 |   signal sig8 : std_logic_vector(37 downto 0, 56 downto 32)(5 downto 0);
+<class 'vsg.token.signal_declaration.signal_keyword'>
+<class 'vsg.token.signal_declaration.identifier'>
+<class 'vsg.token.signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.comma'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.signal_declaration.semicolon'>
+--------------------------------------------------------------------------------
+12 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+14 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 | end architecture rtl;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
