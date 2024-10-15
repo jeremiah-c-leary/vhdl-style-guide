@@ -190,13 +190,6 @@ def interface_case_mismatch(sToken, lInterfaces, lInterfacesLower):
     return False
 
 
-def extract_matching_value(sFind, lValues):
-    sLower = sFind.lower()
-    for sValue in lValues:
-        if sLower == sValue.lower():
-            return sValue
-
-
 def extract_token_pairs(oArchitecture, lPairs):
     lReturn = []
     for lPair in lPairs:
