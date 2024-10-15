@@ -47,6 +47,7 @@ Rules Disabled by Default
 * `context_ref_008 <context_ref_rules.html#context-ref-008>`_
 * `context_ref_009 <context_ref_rules.html#context-ref-009>`_
 * `file_100 <file_rules.html#file-100>`_
+* `for_generate_statement_001 <for_generate_statement_rules.html#for-generate-statement-001>`_
 * `function_600 <function_rules.html#function-600>`_
 * `function_601 <function_rules.html#function-601>`_
 * `generate_017 <generate_rules.html#generate-017>`_
@@ -57,6 +58,7 @@ Rules Disabled by Default
 * `generic_600 <generic_rules.html#generic-600>`_
 * `generic_map_600 <generic_map_rules.html#generic-map-600>`_
 * `generic_map_601 <generic_map_rules.html#generic-map-601>`_
+* `if_generate_statement_001 <if_generate_statement_rules.html#if-generate-statement-001>`_
 * `instantiation_600 <instantiation_rules.html#instantiation-600>`_
 * `instantiation_601 <instantiation_rules.html#instantiation-601>`_
 * `loop_statement_006 <loop_statement_rules.html#loop-statement-006>`_
