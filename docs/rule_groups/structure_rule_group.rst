@@ -167,6 +167,8 @@ Rules Enforcing Structure Rule Group
 * `signal_015 <../signal_rules.html#signal-015>`_
 * `signal_017 <../signal_rules.html#signal-017>`_
 * `source_file_001 <../source_file_rules.html#source-file-001>`_
+* `subtype_005 <../subtype_rules.html#subtype-005>`_
+* `subtype_006 <../subtype_rules.html#subtype-006>`_
 * `type_008 <../type_rules.html#type-008>`_
 * `type_009 <../type_rules.html#type-009>`_
 * `type_017 <../type_rules.html#type-017>`_

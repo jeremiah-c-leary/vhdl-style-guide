@@ -253,6 +253,8 @@ Rules Enforcing Whitespace
 * `signal_101 <signal_rules.html#signal-101>`_
 * `signal_102 <signal_rules.html#signal-102>`_
 * `subtype_100 <subtype_rules.html#subtype-100>`_
+* `subtype_101 <../subtype_rules.html#subtype-101>`_
+* `subtype_102 <../subtype_rules.html#subtype-102>`_
 * `type_006 <type_rules.html#type-006>`_
 * `type_007 <type_rules.html#type-007>`_
 * `type_100 <type_rules.html#type-100>`_

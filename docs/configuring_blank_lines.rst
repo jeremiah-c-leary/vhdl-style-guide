@@ -183,5 +183,7 @@ Rules Enforcing Blank Lines
 * `subprogram_body_203 <subprogram_body_rules.html#subprogram-body-203>`_
 * `subprogram_body_204 <subprogram_body_rules.html#subprogram-body-204>`_
 * `subprogram_body_205 <subprogram_body_rules.html#subprogram-body-205>`_
+* `subtype_200 <../subtype_rules.html#subtype-200>`_
+* `subtype_202 <../subtype_rules.html#subtype-202>`_
 * `type_011 <type_rules.html#type-011>`_
 * `type_200 <type_rules.html#type-200>`_
