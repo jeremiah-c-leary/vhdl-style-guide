@@ -18,7 +18,7 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.constant_declaration.assignment_operator'>
 <class 'vsg.token.sign.minus'>
 <class 'vsg.parser.todo'>
@@ -28,7 +28,7 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signal_declaration.assignment_operator'>
 <class 'vsg.token.sign.minus'>
 <class 'vsg.parser.todo'>

@@ -18,7 +18,7 @@ from vsg.token import (
     type_mark,
     unary_logical_operator,
 )
-from vsg.token.ieee.std_logic_1164 import function, types
+from vsg.token.ieee.std_logic_1164 import function
 from vsg.token_map import process_tokens
 from vsg.vhdlFile import code_tags, extract, utils
 from vsg.vhdlFile.classify import (
@@ -451,30 +451,6 @@ def post_token_assignments(lTokens):
         if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name) or isinstance(oToken, todo.name):
             sValue = oToken.get_value()
             sLowerValue = oToken.get_lower_value()
-            ### IEEE values
-            if sLowerValue == "std_logic_vector":
-                lTokens[iToken] = types.std_logic_vector(sValue)
-
-            elif sLowerValue == "std_ulogic_vector":
-                lTokens[iToken] = types.std_ulogic_vector(sValue)
-
-            elif sLowerValue == "std_ulogic":
-                lTokens[iToken] = types.std_ulogic(sValue)
-
-            elif sLowerValue == "std_logic":
-                lTokens[iToken] = types.std_logic(sValue)
-
-            elif sLowerValue == "integer":
-                lTokens[iToken] = types.integer(sValue)
-
-            elif sLowerValue == "natural":
-                lTokens[iToken] = types.natural(sValue)
-
-            elif sLowerValue == "signed":
-                lTokens[iToken] = types.signed(sValue)
-
-            elif sValue.lower() == "unsigned":
-                lTokens[iToken] = types.unsigned(sValue)
 
         elif isinstance(oToken, type_mark.attribute):
             sValue = oToken.get_value()
@@ -679,15 +655,6 @@ def post_token_assignments(lTokens):
 
             elif sLowerValue == "falling_edge":
                 lTokens[iToken] = function.falling_edge(sValue)
-
-            elif sLowerValue == "std_logic_vector":
-                lTokens[iToken] = types.std_logic_vector(sValue)
-
-            elif sLowerValue == "std_ulogic_vector":
-                lTokens[iToken] = types.std_ulogic_vector(sValue)
-
-            elif sLowerValue == "std_ulogic":
-                lTokens[iToken] = types.std_ulogic(sValue)
 
             elif len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
                 lTokens[iToken] = parser.character_literal(sValue)

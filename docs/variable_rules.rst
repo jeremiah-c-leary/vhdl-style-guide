@@ -154,7 +154,7 @@ variable_010
 
 The function of this rule has been superseded by the following rules:
 
-* ieee_500
+* type_mark_500
 * subtype_002
 * type_014
 
