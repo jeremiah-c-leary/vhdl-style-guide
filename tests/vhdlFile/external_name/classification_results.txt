@@ -387,7 +387,75 @@
 50 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-51 | end architecture RTL;
+51 |   probe_signal <= << constant some.hierarchy.hier(i).test(i).my_loop(i).test : std_logic >> or
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.token.external_constant_name.double_less_than'>
+<class 'vsg.token.external_constant_name.constant_keyword'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_constant_name.external_pathname'>
+<class 'vsg.token.external_constant_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_constant_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+52 |                   << signal some.hieararchy(i).test(i).my_loop(i).test : std_logic >> or
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.token.logical_operator.or_operator'>
+--------------------------------------------------------------------------------
+53 |                   << variable some.hierarchy.ab.cd.(i).test(i).my_loop(i).test : std_logic >>;
+<class 'vsg.token.external_variable_name.double_less_than'>
+<class 'vsg.token.external_variable_name.variable_keyword'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.external_variable_name.external_pathname'>
+<class 'vsg.token.external_variable_name.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.external_variable_name.double_greater_than'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+54 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+55 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

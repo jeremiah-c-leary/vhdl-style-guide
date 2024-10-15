@@ -132,9 +132,8 @@ This is an example of how to configure these options.
         suffix_exceptions:
           - '_G'
         case_exceptions:
-          = 'IEEE'
-        regex:
-          = ''
+          - 'IEEE'
+        regex: ''
 
 The following code snippet is used in the following examples:
 
