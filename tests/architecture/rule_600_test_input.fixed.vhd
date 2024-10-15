@@ -60,3 +60,61 @@ begin
   output <= large_data(G_DEPTH - 1 downto 0);
 
 end architecture rtl;
+
+entity test is
+  generic (
+    G1 : integer := 0;
+    g2 : integer := 0
+  );
+  port (
+    P1 : in  std_logic;
+    P2 : out std_logic
+  );
+end entity test;
+
+architecture rtl of test is
+
+  component test2 is
+    generic (
+      G1 : integer := 0;
+      g2 : integer := 0
+    );
+    port (
+      P1 : in    std_logic;
+      p2 : out   std_logic
+    );
+  end component test2;
+
+begin
+
+  test2_i : component test2
+    generic map (
+      G1 => G1,
+      g2 => g2
+    )
+    port map (
+      P1 => P1,
+      P2 => P2
+    );
+
+  test3_lower : entity work.test3
+    generic map (
+      g1 => G1,
+      g2 => g2
+    )
+    port map (
+      p1 => p1,
+      p2 => p2
+    );
+
+  test3_upper : entity work.test3
+    generic map (
+      G1 => G1,
+      G2 => g2
+    )
+    port map (
+      p1 => p1,
+      p2 => p2
+    );
+
+end architecture;
