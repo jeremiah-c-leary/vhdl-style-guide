@@ -771,3 +771,30 @@ This rule checks for consistent capitalization of procedure names.
      end process;
 
    end architecture rtl;
+
+procedure_508
+#############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks that the parameter names have proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  procedure my_proc (
+    PARAM1 : in integer;
+    PaRaM2 : out integer
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  procedure my_proc (
+    param1 : in integer;
+    param2 : out integer
+  );

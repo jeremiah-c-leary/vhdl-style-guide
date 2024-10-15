@@ -9,7 +9,7 @@ lTokens.append(token.association_element.formal_part)
 
 class rule_502(token_case_in_range_bounded_by_tokens):
     """
-    This rule checks the port names have proper case.
+    This rule checks that the parameter names have proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
@@ -17,23 +17,20 @@ class rule_502(token_case_in_range_bounded_by_tokens):
 
     .. code-block:: vhdl
 
-       port (
-         wr_en     : in    std_logic;
-         rd_en     : in    std_logic;
-         OVERFLOW  : out   std_logic;
-         underflow : out   std_logic
-       );
+
+      my_proc (
+        PARAM1 => MY_PARAM1,
+        PaRaM2 => MY_PARAM2
+      );
 
     **Fix**
 
     .. code-block:: vhdl
 
-       port (
-         wr_en     : in    std_logic;
-         rd_en     : in    std_logic;
-         overflow  : out   std_logic;
-         underflow : out   std_logic
-       );
+      my_proc (
+        param1 => MY_PARAM1,
+        param2 => MY_PARAM2
+      );
     """
 
     def __init__(self):
