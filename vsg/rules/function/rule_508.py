@@ -41,5 +41,6 @@ class rule_508(Rule):
 
     def __init__(self):
         super().__init__()
+        self.groups.append("case::name")
         self.subprogram_token = token.function_specification
         self.start_token = token.function_specification.function_keyword

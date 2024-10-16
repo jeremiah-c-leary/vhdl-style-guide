@@ -798,3 +798,38 @@ This rule checks that the parameter names have proper case.
     param1 : in integer;
     param2 : out integer
   );
+
+procedure_509
+#############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks for consistent capitalization of parameter names within the subprogram body.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  procedure my_proc (
+    param1 : in integer;
+    param2 : out integer
+  ) is
+  begin
+
+    SIG <= PARAM1 + PARAM2;
+
+  end procedure my_proc;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  procedure my_proc (
+    param1 : in integer;
+    param2 : out integer
+  ) is
+  begin
+
+    SIG <= param1 + param2;
+
+  end procedure my_proc;

@@ -610,6 +610,43 @@ This rule checks that the parameter names have proper case.
     param2 : out integer
   ) return integer;
 
+function_508
+############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks for consistent capitalization of parameter names within the subprogram body.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  function my_func (
+    param1 : in integer;
+    param2 : out integer
+  ) return integer is
+  begin
+
+    SIG <= PARAM1 + PARAM2;
+
+  end function my_func;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  function my_func (
+    param1 : in integer;
+    param2 : out integer
+  ) return integer is
+  begin
+
+    SIG <= param1 + param2;
+
+  end function my_func;
+
+   end architecture rtl;
+
 function_600
 ############
 
