@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser, token
+from vsg import token
 from vsg.rules import consistent_subprogram_parameter_token_case as Rule
 
 
