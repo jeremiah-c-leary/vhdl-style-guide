@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules import token_case_in_range_bounded_by_tokens
+from vsg.rules import token_case_in_range_bounded_by_tokens as Rule
 
 lTokens = []
 lTokens.append(token.association_element.formal_part)
 
 
-class rule_502(token_case_in_range_bounded_by_tokens):
+class rule_502(Rule):
     """
     This rule checks that the parameter names have proper case.
 

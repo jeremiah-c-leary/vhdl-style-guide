@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules import token_case_in_range_bounded_by_tokens
+from vsg.rules import token_case_in_range_bounded_by_tokens as Rule
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.identifier)
@@ -10,7 +10,7 @@ lTokens.append(token.interface_variable_declaration.identifier)
 lTokens.append(token.interface_unknown_declaration.identifier)
 
 
-class rule_507(token_case_in_range_bounded_by_tokens):
+class rule_507(Rule):
     """
     This rule checks that the parameter names have proper case.
 
