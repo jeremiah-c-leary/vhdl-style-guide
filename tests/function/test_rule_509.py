@@ -26,10 +26,10 @@ class test_function_rule(unittest.TestCase):
         self.assertIsNone(eError)
 
     def test_rule_510_lower(self):
-        oRule = function.rule_510()
+        oRule = function.rule_509()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "function")
-        self.assertEqual(oRule.identifier, "510")
+        self.assertEqual(oRule.identifier, "509")
 
         lExpected = [6, 7, 16, 17, 26, 27]
 
@@ -37,18 +37,18 @@ class test_function_rule(unittest.TestCase):
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
     def test_rule_510_upper(self):
-        oRule = function.rule_510()
+        oRule = function.rule_509()
         oRule.case = "upper"
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "function")
-        self.assertEqual(oRule.identifier, "510")
+        self.assertEqual(oRule.identifier, "509")
 
         lExpected = [3, 4, 13, 14, 23, 24]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
     def test_fix_rule_510_lower(self):
-        oRule = function.rule_510()
+        oRule = function.rule_509()
 
         oRule.fix(self.oFile)
 
@@ -60,7 +60,7 @@ class test_function_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_510_upper(self):
-        oRule = function.rule_510()
+        oRule = function.rule_509()
         oRule.case = "upper"
 
         oRule.fix(self.oFile)

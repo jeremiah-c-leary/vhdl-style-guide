@@ -8,7 +8,7 @@ lTokens.append(token.function_specification.pure_keyword)
 lTokens.append(token.function_specification.impure_keyword)
 
 
-class rule_510(Rule):
+class rule_509(Rule):
     """
     This rule checks the **pure**/**impure** keyword has proper case.
 

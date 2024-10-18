@@ -583,7 +583,7 @@ This rule checks the function designator has proper case on the end function dec
 
    end function overflow;
 
-function_510
+function_509
 ############
 
 |phase_6| |error| |case| |case_keyword|
