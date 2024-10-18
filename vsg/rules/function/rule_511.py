@@ -7,7 +7,6 @@ lTokens = []
 lTokens.append(token.interface_variable_declaration.variable_keyword)
 lTokens.append(token.interface_constant_declaration.constant_keyword)
 lTokens.append(token.interface_signal_declaration.signal_keyword)
-lTokens.append(token.interface_signal_declaration.signal_keyword)
 lTokens.append(token.interface_file_declaration.file_keyword)
 
 oStart = token.function_specification.open_parenthesis
