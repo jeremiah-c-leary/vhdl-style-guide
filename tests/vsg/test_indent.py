@@ -165,6 +165,8 @@ class testMain(unittest.TestCase):
         lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        loop_statement:"))
         lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("        next_statement:"))
+        lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        null_statement:"))
         lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        package_body:"))
