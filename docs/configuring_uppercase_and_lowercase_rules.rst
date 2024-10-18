@@ -333,6 +333,7 @@ Rules Enforcing Case
 * `function_501 <function_rules.html#function-501>`_
 * `function_502 <function_rules.html#function-502>`_
 * `function_506 <function_rules.html#function-506>`_
+* `function_510 <function_rules.html#function-510>`_
 
 * `generate_005 <generate_rules.html#generate-005>`_
 * `generate_009 <generate_rules.html#generate-009>`_
