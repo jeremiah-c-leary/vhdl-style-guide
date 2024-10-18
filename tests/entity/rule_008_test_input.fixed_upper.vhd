@@ -66,3 +66,11 @@ end entity;
 entity MYFIFO_A is
 
 end entity;
+
+entity MYFIFO is
+
+end entity;
+
+entity MYFIFO is
+
+end entity;

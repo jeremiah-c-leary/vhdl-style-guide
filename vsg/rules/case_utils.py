@@ -4,8 +4,8 @@ import re
 
 from vsg import violation
 
-camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
-PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
+camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*([A-Z])?")
+PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+([A-Z])?")
 
 
 def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, check_whole=False, iIndex=0, iLine=None):
