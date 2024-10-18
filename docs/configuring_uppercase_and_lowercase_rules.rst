@@ -333,6 +333,7 @@ Rules Enforcing Case
 * `function_501 <function_rules.html#function-501>`_
 * `function_502 <function_rules.html#function-502>`_
 * `function_506 <function_rules.html#function-506>`_
+* `function_511 <function_rules.html#function-511>`_
 
 * `generate_005 <generate_rules.html#generate-005>`_
 * `generate_009 <generate_rules.html#generate-009>`_
@@ -416,6 +417,7 @@ Rules Enforcing Case
 * `procedure_504 <procedure_rules.html#procedure-504>`_
 * `procedure_505 <procedure_rules.html#procedure-505>`_
 * `procedure_506 <procedure_rules.html#procedure-506>`_
+* `procedure_511 <procedure_rules.html#procedure-511>`_
 
 * `procedure_call_500 <procedure_call_rules.html#procedure-call-500>`_
 * `procedure_call_501 <procedure_call_rules.html#procedure-call-501>`_
