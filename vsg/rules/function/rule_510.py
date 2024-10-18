@@ -16,7 +16,7 @@ oEnd = token.function_specification.close_parenthesis
 
 class rule_510(token_case_in_range_bounded_by_tokens):
     """
-    This rule checks the port direction has proper case.
+    This rule checks the parameter direction has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
