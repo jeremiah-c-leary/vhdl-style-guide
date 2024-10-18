@@ -5,6 +5,8 @@ architecture RTL of FIFO is
 
     loop
 
+      next_label : next my_loop when condition;
+      next_label : next my_loop when condition;
       next my_loop when condition;
       next my_loop when condition;
       next when condition;
@@ -20,6 +22,8 @@ architecture RTL of FIFO is
 
     loop
 
+            next_label : next my_loop when condition;
+next_label : next my_loop when condition;
             next my_loop when condition;
 next my_loop when condition;
             next when condition;

@@ -329,6 +329,9 @@ indent:
                 token : '-1'
                 after : '-1'
         next_statement:
+            label:
+                token : current
+                after : current
             next_keyword:
                 token : current
                 after : '+1'
