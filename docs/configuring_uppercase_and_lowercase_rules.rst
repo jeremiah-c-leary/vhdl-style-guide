@@ -312,6 +312,9 @@ Rules Enforcing Case
 * `entity_specification_501 <entity_specification_rules.html#entity-specification-501>`_
 * `entity_specification_503 <entity_specification_rules.html#entity-specification-503>`_
 
+* `exit_statement_500 <exit_statement_rules.html#exit-statement-500>`_
+* `exit_statement_501 <exit_statement_rules.html#exit-statement-501>`_
+
 * `exponent_500 <exponent_rules.html#exponent-500>`_
 
 * `external_constant_name_500 <../external_constant_name_rules.html#external-constant-name-500>`_
