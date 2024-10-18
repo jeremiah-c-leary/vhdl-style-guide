@@ -16,8 +16,11 @@ oEnd = token.procedure_specification.close_parenthesis
 class rule_511(token_case_in_range_bounded_by_tokens):
     """
     This rule checks the parameter class has proper case.
+
     |configuring_uppercase_and_lowercase_rules_link|
+
     **Violation**
+
     .. code-block:: vhdl
 
       procedure my_func (
@@ -29,6 +32,7 @@ class rule_511(token_case_in_range_bounded_by_tokens):
       );
 
     **Fix**
+
     .. code-block:: vhdl
 
       procedure my_func (
