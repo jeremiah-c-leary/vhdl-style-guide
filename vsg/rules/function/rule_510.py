@@ -14,7 +14,7 @@ oStart = token.function_specification.open_parenthesis
 oEnd = token.function_specification.close_parenthesis
 
 
-class rule_509(token_case_in_range_bounded_by_tokens):
+class rule_510(token_case_in_range_bounded_by_tokens):
     """
     This rule checks the port direction has proper case.
 
