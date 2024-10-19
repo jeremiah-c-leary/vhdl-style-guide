@@ -548,6 +548,28 @@ This rule checks the semicolon is not on its own line.
        A => B,
        B => C);
 
+instantiation_500
+#################
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks the component library name has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   u_fifo : entity WORK.FIFO
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   u_fifo : entity work.FIFO
+
 instantiation_600
 #################
 

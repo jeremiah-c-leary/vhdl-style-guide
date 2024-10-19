@@ -9,7 +9,7 @@ lTokens.append(token.instantiated_unit.library_name)
 
 class rule_500(token_case_with_prefix_suffix):
     """
-    This rule checks the component library has proper case.
+    This rule checks the component library name has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 

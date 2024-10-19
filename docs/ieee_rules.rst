@@ -1,9 +1,9 @@
 .. include:: includes.rst
 
-IEEE Rules
------------
+Ieee Rules
+----------
 
-IEEE_500
+ieee_500
 ########
 
 |phase_6| |error| |case| |case_keyword|
