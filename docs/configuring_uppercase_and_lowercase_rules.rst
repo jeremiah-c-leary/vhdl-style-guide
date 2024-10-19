@@ -384,6 +384,8 @@ Rules Enforcing Case
 * `loop_statement_503 <loop_statement_rules.html#loop-statement-503>`_
 * `loop_statement_504 <loop_statement_rules.html#loop-statement-504>`_
 
+* `null_statement_500 <null_statement_rules.html#null-statement-500>`_
+
 * `package_004 <package_rules.html#package-004>`_
 * `package_006 <package_rules.html#package-006>`_
 * `package_008 <package_rules.html#package-008>`_
