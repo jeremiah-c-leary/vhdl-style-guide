@@ -19,7 +19,6 @@ class rule_500(token_case_with_prefix_suffix):
 
        u_fifo : entity WORK.FIFO
 
-
     **Fix**
 
     .. code-block:: vhdl

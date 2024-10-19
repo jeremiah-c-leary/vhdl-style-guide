@@ -563,7 +563,6 @@ This rule checks the component library name has proper case.
 
    u_fifo : entity WORK.FIFO
 
-
 **Fix**
 
 .. code-block:: vhdl
