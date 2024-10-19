@@ -1,3 +1,4 @@
+
 package rule_510_test_input is
 
   pure function func1 return integer;

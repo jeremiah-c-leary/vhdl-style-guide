@@ -31,7 +31,7 @@ class test_function_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "function")
         self.assertEqual(oRule.identifier, "509")
 
-        lExpected = [6, 7, 16, 17, 26, 27]
+        lExpected = [7, 8, 17, 18, 27, 28]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -43,7 +43,7 @@ class test_function_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "function")
         self.assertEqual(oRule.identifier, "509")
 
-        lExpected = [3, 4, 13, 14, 23, 24]
+        lExpected = [4, 5, 14, 15, 24, 25]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
