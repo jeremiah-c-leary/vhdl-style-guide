@@ -146,3 +146,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `type_013 <../type_rules.html#type-013>`_
 * `use_clause_503 <../use_clause_rules.html#use-clause-503>`_
 * `variable_002 <../variable_rules.html#variable-002>`_
+* `wait_500 <../wait_rules.html#wait-500>`_
+* `wait_501 <../wait_rules.html#wait-501>`_
+* `wait_502 <../wait_rules.html#wait-502>`_
+* `wait_503 <../wait_rules.html#wait-503>`_
