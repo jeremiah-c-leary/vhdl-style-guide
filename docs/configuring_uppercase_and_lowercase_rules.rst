@@ -371,6 +371,7 @@ Rules Enforcing Case
 * `instantiation_027 <instantiation_rules.html#instantiation-027>`_
 * `instantiation_028 <instantiation_rules.html#instantiation-028>`_
 * `instantiation_031 <instantiation_rules.html#instantiation-031>`_
+* `instantiation_500 <instantiation_rules.html#instantiation-500>`_
 
 * `iteration_scheme_500 <iteration_scheme_rules.html#iteration-scheme-500>`_
 * `iteration_scheme_501 <iteration_scheme_rules.html#iteration-scheme-501>`_
