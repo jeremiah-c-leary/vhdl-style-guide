@@ -57,6 +57,7 @@ Rules Enforcing Indent Rule Group
 * `loop_statement_301 <../loop_statement_rules.html#loop-statement-301>`_
 * `loop_statement_302 <../loop_statement_rules.html#loop-statement-302>`_
 * `next_statement_300 <../next_statement_rules.html#next-statement-300>`_
+* `null_statement_300 <../null_statement_rules.html#null-statement-300>`_
 * `package_001 <../package_rules.html#package-001>`_
 * `package_015 <../package_rules.html#package-015>`_
 * `package_body_300 <../package_body_rules.html#package-body-300>`_

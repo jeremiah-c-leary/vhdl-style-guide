@@ -82,6 +82,8 @@ Rules Enforcing Case Rule Group
 * `entity_specification_500 <../entity_specification_rules.html#entity-specification-500>`_
 * `entity_specification_501 <../entity_specification_rules.html#entity-specification-501>`_
 * `entity_specification_503 <../entity_specification_rules.html#entity-specification-503>`_
+* `exit_statement_500 <../exit_statement_rules.html#exit-statement-500>`_
+* `exit_statement_501 <../exit_statement_rules.html#exit-statement-501>`_
 * `exponent_500 <../exponent_rules.html#exponent-500>`_
 * `external_constant_name_500 <../external_constant_name_rules.html#external-constant-name-500>`_
 * `external_signal_name_500 <../external_signal_name_rules.html#external-signal-name-500>`_
@@ -89,6 +91,7 @@ Rules Enforcing Case Rule Group
 * `file_002 <../file_rules.html#file-002>`_
 * `for_generate_statement_500 <../for_generate_statement_rules.html#for-generate-statement-500>`_
 * `for_generate_statement_501 <../for_generate_statement_rules.html#for-generate-statement-501>`_
+* `for_generate_statement_502 <../for_generate_statement_rules.html#for-generate-statement-502>`_
 * `function_004 <../function_rules.html#function-004>`_
 * `function_005 <../function_rules.html#function-005>`_
 * `function_010 <../function_rules.html#function-010>`_
@@ -127,6 +130,7 @@ Rules Enforcing Case Rule Group
 * `instantiation_031 <../instantiation_rules.html#instantiation-031>`_
 * `iteration_scheme_500 <../iteration_scheme_rules.html#iteration-scheme-500>`_
 * `iteration_scheme_501 <../iteration_scheme_rules.html#iteration-scheme-501>`_
+* `iteration_scheme_502 <../iteration_scheme_rules.html#iteration-scheme-502>`_
 * `library_004 <../library_rules.html#library-004>`_
 * `library_005 <../library_rules.html#library-005>`_
 * `library_500 <../library_rules.html#library-500>`_
@@ -138,6 +142,7 @@ Rules Enforcing Case Rule Group
 * `loop_statement_504 <../loop_statement_rules.html#loop-statement-504>`_
 * `next_statement_500 <../next_statement_rules.html#next-statement-500>`_
 * `next_statement_501 <../next_statement_rules.html#next-statement-501>`_
+* `null_statement_500 <../null_statement_rules.html#null-statement-500>`_
 * `package_004 <../package_rules.html#package-004>`_
 * `package_006 <../package_rules.html#package-006>`_
 * `package_008 <../package_rules.html#package-008>`_
@@ -209,3 +214,7 @@ Rules Enforcing Case Rule Group
 * `variable_002 <../variable_rules.html#variable-002>`_
 * `variable_004 <../variable_rules.html#variable-004>`_
 * `variable_011 <../variable_rules.html#variable-011>`_
+* `wait_500 <../wait_rules.html#wait-500>`_
+* `wait_501 <../wait_rules.html#wait-501>`_
+* `wait_502 <../wait_rules.html#wait-502>`_
+* `wait_503 <../wait_rules.html#wait-503>`_
