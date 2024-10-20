@@ -56,6 +56,8 @@ Rules Enforcing Case::Keyword Rule Group
 * `entity_500 <../entity_rules.html#entity-500>`_
 * `entity_specification_500 <../entity_specification_rules.html#entity-specification-500>`_
 * `entity_specification_501 <../entity_specification_rules.html#entity-specification-501>`_
+* `exit_statement_500 <../exit_statement_rules.html#exit-statement-500>`_
+* `exit_statement_501 <../exit_statement_rules.html#exit-statement-501>`_
 * `exponent_500 <../exponent_rules.html#exponent-500>`_
 * `external_constant_name_500 <../external_constant_name_rules.html#external-constant-name-500>`_
 * `external_signal_name_500 <../external_signal_name_rules.html#external-signal-name-500>`_
