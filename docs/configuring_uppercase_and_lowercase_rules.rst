@@ -312,6 +312,9 @@ Rules Enforcing Case
 * `entity_specification_501 <entity_specification_rules.html#entity-specification-501>`_
 * `entity_specification_503 <entity_specification_rules.html#entity-specification-503>`_
 
+* `exit_statement_500 <exit_statement_rules.html#exit-statement-500>`_
+* `exit_statement_501 <exit_statement_rules.html#exit-statement-501>`_
+
 * `exponent_500 <exponent_rules.html#exponent-500>`_
 
 * `external_constant_name_500 <../external_constant_name_rules.html#external-constant-name-500>`_
@@ -324,6 +327,7 @@ Rules Enforcing Case
 
 * `for_generate_statement_500 <for_generate_statement_rules.html#for-generate-statement-500>`_
 * `for_generate_statement_501 <for_generate_statement_rules.html#for-generate-statement-501>`_
+* `for_generate_statement_502 <for_generate_statement_rules.html#for-generate-statement-502>`_
 
 * `function_004 <function_rules.html#function-004>`_
 * `function_005 <function_rules.html#function-005>`_
@@ -334,6 +338,7 @@ Rules Enforcing Case
 * `function_502 <function_rules.html#function-502>`_
 * `function_506 <function_rules.html#function-506>`_
 * `function_509 <function_rules.html#function-509>`_
+* `function_511 <function_rules.html#function-511>`_
 
 * `generate_005 <generate_rules.html#generate-005>`_
 * `generate_009 <generate_rules.html#generate-009>`_
@@ -368,9 +373,11 @@ Rules Enforcing Case
 * `instantiation_027 <instantiation_rules.html#instantiation-027>`_
 * `instantiation_028 <instantiation_rules.html#instantiation-028>`_
 * `instantiation_031 <instantiation_rules.html#instantiation-031>`_
+* `instantiation_500 <instantiation_rules.html#instantiation-500>`_
 
 * `iteration_scheme_500 <iteration_scheme_rules.html#iteration-scheme-500>`_
 * `iteration_scheme_501 <iteration_scheme_rules.html#iteration-scheme-501>`_
+* `iteration_scheme_502 <iteration_scheme_rules.html#iteration-scheme-502>`_
 
 * `library_004 <library_rules.html#library-004>`_
 * `library_005 <library_rules.html#library-005>`_
@@ -383,6 +390,9 @@ Rules Enforcing Case
 * `loop_statement_502 <loop_statement_rules.html#loop-statement-502>`_
 * `loop_statement_503 <loop_statement_rules.html#loop-statement-503>`_
 * `loop_statement_504 <loop_statement_rules.html#loop-statement-504>`_
+
+* `next_statement_500 <next_statement_rules.html#next-statement-500>`_
+* `next_statement_501 <next_statement_rules.html#next-statement-501>`_
 
 * `null_statement_500 <null_statement_rules.html#null-statement-500>`_
 
@@ -419,6 +429,7 @@ Rules Enforcing Case
 * `procedure_504 <procedure_rules.html#procedure-504>`_
 * `procedure_505 <procedure_rules.html#procedure-505>`_
 * `procedure_506 <procedure_rules.html#procedure-506>`_
+* `procedure_511 <procedure_rules.html#procedure-511>`_
 
 * `procedure_call_500 <procedure_call_rules.html#procedure-call-500>`_
 * `procedure_call_501 <procedure_call_rules.html#procedure-call-501>`_
@@ -467,3 +478,8 @@ Rules Enforcing Case
 
 * `variable_002 <variable_rules.html#variable-002>`_
 * `variable_004 <variable_rules.html#variable-004>`_
+
+* `wait_500 <wait_rules.html#wait-500>`_
+* `wait_501 <wait_rules.html#wait-501>`_
+* `wait_502 <wait_rules.html#wait-502>`_
+* `wait_503 <wait_rules.html#wait-503>`_
