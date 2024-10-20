@@ -583,6 +583,33 @@ This rule checks the function designator has proper case on the end function dec
 
    end function overflow;
 
+function_510
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the parameter direction has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  function overflow (
+    a : IN  integer;
+    b : OUT integer
+  ) return integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  function overflow (
+    a : in  integer;
+    b : out integer
+  ) return integer;
+
 function_511
 ############
 
