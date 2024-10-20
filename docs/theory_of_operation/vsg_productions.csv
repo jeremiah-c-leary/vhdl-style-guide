@@ -1,0 +1,786 @@
+﻿,Left side,Right Side,classifier,test,Production
+,absolute_pathname,. partial_pathname,N,,
+,abstract_literal,"  decimal_literal
+| based_literal",N,,
+,access_type_definition,access subtype_indication,Y,Y,
+,actual_designator,"  [ inertial ] expression
+| signal_name
+| variable_name
+| file_name
+| subtype_indication
+| subprogram_name
+| instantiated_package_name
+| open",N,,
+,actual_parameter_part,parameter_association_list,Y,,
+,actual_part,"  actual_designator
+| function_name ( actual_designator )
+| type_mark ( actual_designator )",N,,
+,adding_operator,+ | - | &,N,,
+,aggregate,"( element_association { , element_association } )",N,,
+,alias_declaration,alias alias_designator [ : subtype_indication ] is name [ signature ] ;,Y,,
+,alias_designator,"  identifier
+| character_literal
+| operator_symbol",N,,
+,allocator,"  new subtype_indication
+| new qualified_expression",N,,
+,architecture_body,"architecture identifier of entity_name is
+  architecture_declarative_part
+begin
+  architecture_statement_part
+end [ architecture ] [ architecture_simple_name ] ;",Y,,
+,architecture_declarative_part,{ block_declarative_item },Y,,
+,architecture_statement_part,{ concurrent_statement },Y,,
+,array_contraint,"  index_constraint [ array_element_constraint ]
+| ( open ) [ array_element_constraint ]",Y,,
+,array_element_constraint,element_constraint,Y,,
+,array_element_resolution,resolution_indication,N,,
+,array_type_definition,"  unbounded_array_definition
+| constrained_array_definition",Y,,
+,assertion,"assert condition
+[ report expression ]
+[ severity expression ]",Y,,
+,assertion_statement,[ label : ] assertion ;,Y,,
+,association_element,[ formal_part => ] actual_part,Y,,
+,association_list,"association_element { , association_element }",Y,,
+,attribute_declaration,attribute identifier : type_mark ;,Y,,
+,attribute_designator,attribute_simple_name,Y,,
+,attribute_name,prefix [ signature ] ' attribute_designator [ ( expression ) ],Y,,
+,attribute_specification,attribute attribute_designator of entity_specification is expression ;,Y,,
+,base,integer,N,,
+,base_specifier,B | O | X | UB | UO | UX | SB | SO | SX | D,N,,
+,based_integer,extended_digit { [ underline ] extended_digit },N,,
+,basic_character,"  basic_graphic_character
+| format_effector",N,,
+,basic_graphic_character,"  upper_case_letter
+| digit
+| special_character
+| space_character",N,,
+,basic_identifier,letter { [ underline ] letter_or_digit },N,,
+,binding_indication,"[ use entity_aspect ]
+[ generic_map_aspect ]
+[ port_map_aspect ]",Y,,
+,bit_string_literal,"[ integer ] base_specifier "" [ bit_value ] """,N,,
+,bit_value,graphic_character { [ underline ] graphic_character },N,,
+,block_configuration,"for block_specification
+{ use_clause }
+{ configuration_item }
+end for ;",Y,,
+,block_declarative_item,"subprogram_declaration
+| subprogram_body
+| subprogram_instantiation_declaration
+| package_declaration
+| package_body
+| package_instantiation_declaration
+| type_declaration
+| subtype_declaration
+| constant_declaration
+| signal_declaration
+| shared_variable_declaration
+| file_declaration
+| alias_declaration
+| component_declaration
+| attribute_declaration
+| attribute_specification
+| configuration_specification
+| disconnection_specification
+| use_clause
+| group_template_declaration
+| group_declaration
+| PSL_Property_Declaration
+| PSL_Sequence_Declaration
+| PSL_Clock_Declaration",Y,,
+,block_declarative_part,{ block_declarative_item },Y,,
+,block_header,"[ generic_clause
+[ generic_map_aspect ; ] ]
+[ port_clause
+[ port_map_aspect ; ] ]",Y,,
+,block_specification,"  architecture_name
+| block_statement_label
+| generate_statement_label [ ( generate_specification ) ]",Y,,
+,block_statement,"block_label :
+  block [ ( guard_condition ) ] [ is ]
+    block_header
+    block_declarative_part
+  begin
+    block_statement_part
+  end block [ block_label ] ;",Y,,
+,block_statement_part,{ concurrent_statement },Y,,
+,case_generate_alternative,"when [ alternative_label : ] choices =>
+generate_statement_body",Y,,
+,case_generate_statement,"generate_label :
+  case expression generate
+     case_generate_alternative
+   { case_generate_alternative }
+  end generate [ generate_label ] ;",Y,,
+,case_statement,"[ case_label : ]
+  case [ ? ] expression is
+    case_statement_alternative
+  { case_statement_alternative }
+  end case [ ? ] [ case_label ] ;",Y,,
+,case_statement_alternative,"when choices =>
+  sequence_of_statements",Y,,
+,character_literal,' graphic_character ',Y,,
+,choice,"  simple_expression
+| discrete_range
+| element_simple_name
+| others",Y,,
+,choices,choice { | choice },Y,,
+,component_configuration,"for component_specification
+[ binding_indication ; ]
+{ verification_unit_binding_indication ; }
+[ block_configuration ]
+end for ;",Y,,
+,component_declaration,"component identifier [ is ]
+[ local_generic_clause ]
+[ local_port_clause ]
+end component [ component_simple_name ] ;",Y,,
+,component_instantiation_statement,"instantiation_label :
+  instantiated_unit
+    [ generic_map_aspect ]
+    [ port_map_aspect ] ;",Y,,
+,component_specification,instantiation_list : component_name,Y,,
+,composite_type_definition,"  array_type_definition
+| record_type_definition",Y,,
+,compound_configuration_specification,"for component_specification binding_indication ;
+    verification_unit_binding_indication ;
+  { verification_unit_binding_indication ; }
+end for ;",N,,
+,concurrent_assertion_statement,[ label : ] [ postponed ] assertion ;,Y,,
+,concurrent_conditional_signal_assignment,target <= [ guarded ] [ delay_mechanism ] conditional_waveforms ;,Y,,
+,concurrent_procedure_call_statement,[ label : ] [ postponed ] procedure_call ;,Y,,
+,concurrent_selected_signal_assignment,"with expression select [ ? ]
+  target <= [ guarded ] [ delay_mechanism ] selected_waveforms ;",Y,,
+,concurrent_signal_assignment_statement,"  [ label : ] [ postponed ] concurrent_simple_signal_assignment
+| [ label : ] [ postponed ] concurrent_conditional_signal_assignment
+| [ label : ] [ postponed ] concurrent_selected_signal_assignment",Y,,
+,concurrent_simple_signal_assignment,target <= [ guarded ] [ delay_mechanism ] waveform ;,Y,,
+,concurrent_statement,"  block_statement
+| process_statement
+| concurrent_procedure_call_statement
+| concurrent_assertion_statement
+| concurrent_signal_assignment_statement
+| component_instantiation_statement
+| generate_statement
+| PSL_PSL_Directive",Y,,
+,condition,expression,Y,,
+,condition_clause,until condition,Y,,
+,condition_expressions,"expression when condition
+{ else expression when condition }
+[ else expression ]",Y,,
+,condition_operator,??,N,,
+,conditional_force_assigment,target <= force [ force_mode ] conditional_expressions ;,Y,,
+,conditional_signal_assignment,"  conditional_waveform_assignment
+| conditional_force_assignment",Y,,
+,conditional_variable_assignment,target := conditional_expressions ;,Y,,
+,conditional_waveform_assignment,target <= [ delay_mechanism ] conditional_waveforms ;,Y,,
+,conditional_waveforms,"waveform when condition
+{ else waveform when condition }
+[ else waveform ]",Y,,
+,configuration_declaration,"configuration identifier of entity_name is
+  configuration_declarative_part
+  { verification_unit_binding_indication ; }
+  block_configuration
+end [ configuration ] [ configuration_simple_name ] ;",Y,,
+,configuration_declarative_item,"  use_clause
+| attribute_specification
+| group_declaration",Y,,
+,configuration_declarative_part,{ configuration_declarative_item },Y,,
+,configuration_item,"  block_configuration
+| component_configuration",Y,,
+,configuration_specification,"  simple_configuration_specification
+| compound_configuration_specification",Y,,
+,constant_declaration,constant identifier_list : subtype_indication [ := expression ] ;,Y,,
+,constrained_array_definition,array index_constraint of element_subtype_indication,Y,,
+,constraint,"  range_constraint
+| array_constraint
+| record_constraint",Y,,
+,context_clause,{ context_item },Y,,
+,context_declaration,"context identifier is
+  context_clause
+end [ context ] [ context_simple_name ] ;",Y,,
+,context_item,"  library_clause
+| use_clause
+| context_reference",Y,,
+,context_reference,"context selected_name { , selected_name } ;",Y,,
+,decimal_literal,integer [ . integer ] [ exponent ],N,,
+,delay_mechanism,"  transport
+| [ reject time_expression ] inertial",Y,,
+,design_file,"design_unit
+{ design_unit }",Y,,
+,design_unit,"context_clause
+library_unit",Y,,
+,designator,"  identifier
+| operator_symbol",N,,
+,direction,"  to
+| downto",N,,
+,disconnection_specification,disconnect guarded_signal_specification after time_expression ;,N,,
+,discrete_range,"  discrete_subtype_indication
+| range",Y,,
+,element_association,[ choices => ] expression,N,,
+,element_constraint,"  array_constraint
+| record_constraint",Y,,
+,element_declaration,identifier_list : element_subtype_definition ;,Y,,
+,element_resolution,"  array_element_resolution
+| record_resolution",Y,,
+,element_subtype_definition,subtype_indication,Y,,
+,entity_aspect,"  entity entity_name [ ( architecture_identifier ) ]
+| configuration configuration_name
+| open",Y,,
+,entity_class,"  entity
+| architecture
+| configuration
+| procedure
+| function
+| package
+| type
+| subtype
+| constant
+| signal
+| variable
+| component
+| label
+| literal
+| units
+| group
+| file
+| property
+| sequence",N,,
+,entity_class_entry,entity_class [ <> ],N,,
+,entity_class_entry_list,"entity_class_entry { , entity_class_entry }",N,,
+,entity_declaration,"entity identifier is
+  entity_header
+  entity_declarative_part
+[ begin
+  entity_statement_part ]
+end [ entity ] [ entity_simple_name ] ;",Y,,
+,entity_declaration_item,"  subprogram_declaration
+| subprogram_body
+| subprogram_instantiation_declaration
+| package_declaration
+| package_body
+| package_instantiation_declaration
+| type_declaration
+| subtype_declaration
+| constant_declaration
+| signal_declaration
+| shared_variable_declaration
+| file_declaration
+| alias_declaration
+| attribute_declaration
+| attribute_specification
+| disconnection_specification
+| use_clause
+| group_template_declaration
+| group_declaration
+| PSL_Property_Declaration
+| PSL_Sequence_Declaration
+| PSL_Clock_Declaration",Y,,
+,entity_declarative_part,{ entity_declarative_item },Y,,
+,entity_designator,entity_tag [ signature ],Y,,
+,entity_header,"[ formal_generic_clause ]
+[ formal_port_clause ]",Y,,
+,entity_name_list,"  entity_designator { , entity_designator }
+| others
+| all",Y,,
+,entity_specification,entity_name_list : entity_class,Y,,
+,entity_statement,"  concurrent_assertion_statement
+| passive_concurrent_procedure_call_statement
+| passive_process_statement
+| PSL_PSL_Directive",Y,,
+,entity_statement_part,{ entity_statement },Y,,
+,entity_tag,"  simple_name
+| character_literal
+| operator_symbol",N,,
+,enumeration_literal,identifier | character_literal,N,,
+,enumeration_type_definition,"( enumeration_literal { , enumeration_literal } )",Y,,
+,exit_statement,[ label : ] exit [ loop_label ] [ when condition ] ;,Y,,
+,exponent,E [ + ] integer | E – integer,N,,
+,expression,"  condition_operator primary
+| logical_expression",Y,,
+,extended_digit,"  digit
+| letter",N,,
+,extended_identifier,\ graphic_character { graphic_character } \,N,,
+,external_name,"  external_constant_name
+| external_signal_name
+| external_variable_name",N,,
+,external_constant_name,<< constant external_pathname : subtype_indication >>,N,,
+,external_signal_name,<< signal external_pathname : subtype_indication >>,N,,
+,external_variable_name,<< variable external_pathname : subtype_indication >>,N,,
+,external_pathname,"  package_pathname
+| absolute_pathname
+| relative_pathname",N,,
+,factor,"  primary [ ** primary ]
+| abs primary
+| not primary
+| logical_operator primary",N,,
+,file_declaration,file identifier_list : subtype_indication [ file_open_information ] ;,Y,,
+,file_logical_name,string_expression,Y,,
+,file_open_information,[ open file_open_kind_expression ] is file_logical_name,Y,,
+,file_type_definition,file of type_mark,Y,,
+,for_generate_statement,"generate_label :
+  for generate_parameter_specification generate
+    generate_statement_body
+  end generate [ generate_label ] ;",Y,,
+,force_mode,"  in
+| out",Y,,
+,formal_designator,"  generic_name
+| port_name
+| parameter_name",N,,
+,formal_parameter_list,parameter_interface_list,Y,,
+,formal_part,"  formal_designator
+| function_name ( formal_designator )
+| type_mark ( formal_designator )",N,,
+,full_type_declaration,type identifier is type_definition ;,Y,,
+,function_call,function_name [ ( actual_parameter_part ) ],N,,
+,function_specification,"[ pure | impure ] function designator
+  subprogram_header
+  [ [ parameter ] ( formal_parameter_list ) ] return type_mark",Y,,
+,generate_specification,"  static_discrete_range
+| static_expression
+| alternative_label",Y,,
+,generate_statement,"  for_generate_statement
+| if_generate_statement
+| case_generate_statement",Y,,
+,generate_statement_body,"  [ block_declarative_part
+begin ]
+  { concurrent_statement }
+[ end [ alternative_label ] ; ]",Y,,
+,generic_clause,generic ( generic_list ) ;,Y,,
+,generic_list,generic_interface_list,Y,,
+,generic_map_aspect,generic map ( generic_association_list ),Y,,
+,graphic_character,"  basic_graphic_character
+| lower_case_letter
+| other_special_character",N,,
+,group_constituent,"  name
+| character_literal",N,,
+,group_constituent_list,"group_constituent { , group_constituent }",Y,,
+,group_declaration,group identifier : group_template_name ( group_constituent_list ) ;,Y,,
+,group_template_declaration,group identifier is ( entity_class_entry_list ) ;,N,,
+,guarded_signal_specification,guarded_signal_list : type_mark,N,,
+,identifier,"  basic_identifier
+| extended_identifier",Y,,
+,identifier_list,"identifier { , identifier }",Y,,
+,if_generate_statement,"generate_label :
+  if [ alternative_label : ] condition generate
+    generate_statement_body
+  { elsif [ alternative_label : ] condition generate
+    generate_statement_body }
+  [ else [ alternative_label : ] generate
+    generate_statement_body ]
+  end generate [ generate_label ] ;",Y,,
+,if_statement,"[ if_label : ]
+  if condition then
+    sequence_of_statements
+  { elsif condition then
+    sequence_of_statements }
+  [ else
+    sequence_of_statements ]
+  end if [ if_label ] ;",Y,,
+,incomplete_type_declaration,type identifier ;,Y,,
+,index_constraint,"( discrete_range { , discrete_range } )",Y,,
+,index_subtype_definition,type_mark range <>,Y,,
+,indexed_name,"prefix ( expression { , expression } )",N,,
+,instantiated_unit,"  [ component ] component_name
+| entity entity_name [ ( architecture_identifier ) ]
+| configuration configuration_name",Y,,
+,instantiation_list,"  instantiation_label { , instantiation_label }
+| others
+| all",Y,,
+,integer,digit { [ underline ] digit },N,,
+,integer_type_definition,range_constraint,Y,,
+,interface_constant_declaration,[ constant ] identifier_list : [ in ] subtype_indication [ := static_expression ],Y,,
+,interface_declaration,"  interface_object_declaration
+| interface_type_declaration
+| interface_subprogram_declaration
+| interface_package_declaration",Y,,
+,interface_element,interface_declaration,Y,,
+,interface_file_declaration,file identifier_list : subtype_indication,Y,,
+,interface_function_specification,"[ pure | impure ] function designator
+[ [ parameter ] ( formal_parameter_list ) ] return type_mark",Y,,
+,interface_incomplete_type_declaration,type identifier,Y,,
+,interface_list,interface_element { ; interface_element },Y,,
+,interface_object_declaration,"  interface_constant_declaration
+| interface_signal_declaration
+| interface_variable_declaration
+| interface_file_declaration",Y,,
+,interface_package_declaration,"package identifier is
+new uninstantiated_package_name interface_package_generic_map_aspect",Y,,
+,interface_package_generic_map_aspect,"  generic_map_aspect
+| generic map ( <> )
+| generic map ( default )",Y,,
+,interface_procedure_specification,"procedure designator
+[ [ parameter ] ( formal_parameter_list ) ]",Y,,
+,interface_signal_declaration,[ signal ] identifier_list : [ mode ] subtype_indication [ bus ] [ := static_expression ],Y,,
+,interface_subprogram_declaration,interface_subprogram_specification [ is interface_subprogram_default ],Y,,
+,interface_subprogram_default,"  subprogram_name
+| <>",Y,,
+,interface_subprogram_specification,"  interface_procedure_specification
+| interface_function_specification",Y,,
+,interface_type_declaration,interface_incomplete_type_declaration,Y,,
+,interface_variable_declaration,[ variable ] identifier_list : [ mode ] subtype_indication [ := static_expression ],Y,,
+,iteration_scheme,"  while condition
+| for loop_parameter_specification",Y,,
+,label,identifier,N,,
+,letter,"  upper_case_letter
+| lower_case_letter",N,,
+,letter_or_digit,"  letter
+| digit",N,,
+,library_clause,library logical_name_list ;,Y,,Y
+,library_unit,"  primary_unit
+| secondary_unit",Y,,
+,literal,"  numeric_literal
+| enumeration_literal
+| string_literal
+| bit_string_literal
+| null",N,,
+,logical_expression,"  relation { and relation }
+| relation { or relation }
+| relation { xor relation }
+| relation [ nand relation ]
+| relation [ nor relation ]
+| relation { xnor relation }",N,,
+,logical_name,identifier,Y,,Y
+,logical_name_list,"logical_name { , logical_name }",Y,,Y
+,logical_operator,"  and
+| or
+| nand
+| nor
+| xor
+| xnor",N,,
+,loop_statement,"[ loop_label : ]
+  [ iteration_scheme ] loop
+    sequence_of_statements
+  end loop [ loop_label ] ;",Y,,
+,miscellaneous_operator,"  **
+| abs
+| not",N,,
+  ,mode,"  in
+| out
+| inout
+| buffer
+| linkage",Y,,
+,multiplying_operator,"  *
+| /
+| mod
+| rem",N,,
+,name,"  simple_name
+| operator_symbol
+| character_literal
+| selected_name
+| indexed_name
+| slice_name
+| attribute_name
+| external_name",Y,,
+,next_statement,[ label : ] next [ loop_label ] [ when condition ] ;,Y,,
+,null_statement,[ label : ] null ;,Y,,
+,numeric_literal,"  abstract_literal
+| physical_literal",N,,
+,object_declaration,"  constant_declaration
+| signal_declaration
+| variable_declaration
+| file_declaration",N,,
+,operator_symbol,string_literal,Y,,
+,package_body,"package body package_simple_name is
+  package_body_declarative_part
+end [ package body ] [ package_simple_name ] ;",Y,,
+,package_body_declarative_item,"  subprogram_declaration
+| subprogram_body
+| subprogram_instantiation_declaration
+| package_declaration
+| package_body
+| package_instantiation_declaration
+| type_declaration
+| subtype_declaration
+| constant_declaration
+| variable_declaration
+| file_declaration
+| alias_declaration
+| attribute_declaration
+| attribute_specification
+| use_clause
+| group_template_declaration
+| group_declaration",Y,,
+,package_body_declarative_part,{ package_body_declarative_item },Y,,
+,package_declaration,"package identifier is
+  package_header
+  package_declarative_part
+end [ package ] [ package_simple_name ] ;",Y,,
+,package_declarative_item,"  subprogram_declaration
+| subprogram_instantiation_declaration
+| package_declaration
+| package_instantiation_declaration
+| type_declaration
+| subtype_declaration
+| constant_declaration
+| signal_declaration
+| variable_declaration
+| file_declaration
+| alias_declaration
+| component_declaration
+| attribute_declaration
+| attribute_specification
+| disconnection_specification
+| use_clause
+| group_template_declaration
+| group_declaration
+| PSL_Property_Declaration
+| PSL_Sequence_Declaration",Y,,
+,package_declarative_part,{ package_declarative_item },Y,,
+,package_header,"[ generic_clause
+[ generic_map_aspect ; ] ]",Y,,
+,package_instantiation_declaration,"package identifier is new uninstantiated_package_name
+  [ generic_map_aspect ] ;",Y,,
+,package_pathname,@ library_logical_name . { package_simple_name . } object_simple_name,N,,
+,parameter_specification,identifier in discrete_range,Y,,
+,partial_pathname,{ pathname_element . } object_simple_name,N,,
+,pathname_element,"  entity_simple_name
+| component_instantiation_label
+| block_label
+| generate_statement_label [ ( static_expression ) ]
+| package_simple_name",N,,
+,physical_literal,[ abstract_literal ] unit_name,N,,
+,physical_type_definition,"range_constraint
+  units
+    primary_unit_declaration
+    { secondary_unit_declaration }
+  end units [ physical_type_simple_name ]",Y,,
+,port_clause,port ( port_list ) ;,Y,,
+,port_list,port_interface_list,Y,,
+,port_map_aspect,port map ( port_association_list ),Y,,
+,prefix,"  name
+| function_call",P,,
+,primary,"  name
+| literal
+| aggregate
+| function_call
+| qualified_expression
+| type_conversion
+| allocator
+| ( expression )",N,,
+,primary_unit,"  entity_declaration
+| configuration_declaration
+| package_declaration
+| package_instantiation_declaration
+| context_declaration
+| PSL_Verification_Unit",Y,,
+,primary_unit_declaration,identifier ;,Y,,
+,procedure_call,procedure_name [ ( actual_parameter_part ) ],Y,,
+,procedure_call_statement,[ label : ] procedure_call ;,Y,,
+,procedure_specification,"procedure designator
+  subprogram_header
+  [ [ parameter ] ( formal_parameter_list ) ]",Y,,
+,process_declarative_item,"  subprogram_declaration
+| subprogram_body
+| subprogram_instantiation_declaration
+| package_declaration
+| package_body
+| package instantiation_declaration
+| type_declaration
+| subtype_declaration
+| constant_declaration
+| variable_declaration
+| file_declaration
+| alias_declaration
+| attribute_declaration
+| attribute_specification
+| use_clause
+| group_template_declaration
+| group_declaration",Y,,
+,process_declarative_part,{ process_declarative_item },Y,,
+,process_sensitivity_list,"  all
+| sensitivity_list",Y,,
+,process_statement,"[ process_label : ]
+  [ postponed ] process [ ( process_sensitivity_list ) ] [ is ]
+    process_declarative_part
+  begin
+    process_statement_part
+  end [ postponed ] process [ process_label ] ;",Y,,
+,process_statement_part,{ sequential_statement },Y,,
+,protected_type_body,"protected body
+  protected_type_body_declarative_part
+end protected body [ protected_type_simple name ]",Y,,
+,protected_type_body_declarative_item,"  subprogram_declaration
+| subprogram_body
+| subprogram_instantiation_declaration
+| package_declaration
+| package_body
+| package_instantiation_declaration
+| type_declaration
+| subtype_declaration
+| constant_declaration
+| variable_declaration
+| file_declaration
+| alias_declaration
+| attribute_declaration
+| attribute_specification
+| use_clause
+| group_template_declaration
+| group_declaration",Y,,
+,protected_type_body_declarative_part,{ protected_type_body_declarative_item },Y,,
+,protected_type_declaration,"protected
+  protected_type_declarative_part
+end protected [ protected_type_simple_name ]",Y,,
+,protected_type_declarative_item,"  subprogram_declaration
+| subprogram_instantiation_declaration
+| attribute_specification
+| use_clause",Y,,
+,protected_type_declarative_part,{ protected_type_declarative_item },Y,,
+,protected_type_definition,"  protected_type_declaration
+| protected_type_body",Y,,
+,qualified_expression,"  type_mark ' ( expression )
+| type_mark ' aggregate",N,,
+,range,"  range_attribute_name
+| simple_expression direction simple_expression",Y,,
+,range_constraint,range range,Y,,
+,record_constraint,"( record_element_constraint { , record_element_constraint } )",Y,,
+,record_element_constraint,record_element_simple_name element_constraint,Y,,
+,record_element_resolution,record_element_simple_name resolution_indication,N,,
+,record_resolution,"record_element_resolution { , record_element_resolution }",N,,
+,record_type_definition,"record
+  element_declaration
+  { element_declaration }
+end record [ record_type_simple_name ]",Y,,
+,relation,shift_expression [ relational_operator shift_expression ],N,,
+,relational_operator,= | /= | < | <= | > | >= | ?= | ?/= | ?< | ?<= | ?> | ?>=,N,,
+,relative_pathname,{ ^ . } partial_pathname,N,,
+,report_statement,"[ label : ]
+  report expression
+    [ severity expression ] ;",Y,,
+,resolution_indication,resolution_function_name | ( element_resolution ),Y,,
+,return_statement,[ label : ] return [ expression ] ;,Y,,
+,scalar_type_definition,"  enumeration_type_definition
+| integer_type_definition
+| floating_type_definition
+| physical_type_definition",Y,,
+,secondary_unit,"  architecture_body
+| package_body",Y,,
+,secondary_unit_declaration,identifier = physical_literal ;,Y,,
+,selected_expressions,"{ expression when choices , }
+expression when choices",Y,,
+,selected_force_assignment,"with expression select [ ? ]
+  target <= force [ force_mode ] selected_expressions ;",Y,,
+,selected_name,prefix . suffix,Y,,Y
+,selected_signal_assignment,"  selected_waveform_assignment
+| selected_force_assignment",Y,,
+,selected_variable_assignment,"with expression select [ ? ]
+  target := selected_expressions ;",Y,,
+,selected_waveform_assignment,"with expression select [ ? ]
+  target <= [ delay_mechanism ] selected_waveforms ;",Y,,
+,selected_waveforms,"{ waveform when choices , }
+waveform when choices",Y,,
+,sensitivity_clause,on sensitivity_list,Y,,
+,sensitivity_list,"signal_name { , signal_name }",Y,,
+,sequence_of_statements,{ sequential_statement },Y,,
+,sequential_statement,"  wait_statement
+| assertion_statement
+| report_statement
+| signal_assignment_statement
+| variable_assignment_statement
+| procedure_call_statement
+| if_statement
+| case_statement
+| loop_statement
+| next_statement
+| exit_statement
+| return_statement
+| null_statement",Y,,
+,shift_expression,simple_expression [ shift_operator simple_expression ],N,,
+,shift_operator,"  sll
+| srl
+| sla
+| sra
+| rol
+| ror",N,,
+,sign,"  +
+| -",N,,
+,signal_assignment_statement,"  [ label : ] simple_signal_assignment
+| [ label : ] conditional_signal_assignment
+| [ label : ] selected_signal_assignment",Y,,
+,signal_declaration,signal identifier_list : subtype_indication [ signal_kind ] [ := expression ] ;,Y,,
+,signal_kind,"  register
+| bus",Y,,
+,signal_list,"signal_name { , signal_name }
+| others
+| all",N,,
+,signature,"[ [ type_mark { , type_mark } ] [ return type_mark ] ]",Y,,
+,simple_configuration_specification,"for component_specification binding_indication ;
+[ end for ; ]",Y,,
+,simple_expression,[ sign ] term { adding_operator term },N,,
+,simple_force_assignment,target <= force [ force_mode ] expression ;,Y,,
+,simple_name,identifier,Y,,
+,simple_release_assignment,target <= release [ force_mode ] ;,Y,,
+,simple_signal_assignment,"  simple_waveform_assignment
+| simple_force_assignment
+| simple_release_assignment",Y,,
+,simple_waveform_assignment,target <= [ delay_mechanism ] waveform ;,Y,,
+,simple_variable_assignment,target := expression ;,Y,,
+,slice_name,prefix ( discrete_range ),N,,
+,string_literal,""" { graphic_character } """,Y,,
+,subprogram_body,"subprogram_specification is
+  subprogram_declarative_part
+begin
+  subprogram_statement_part
+end [ subprogram_kind ] [ designator ] ;",Y,,
+,subprogram_declaration,subprogram_specification ;,Y,,
+,subprogram_declarative_item,"  subprogram_declaration
+| subprogram_body
+| subprogram_instantiation_declaration
+| package_declaration
+| package_body
+| package_instantiation_declaration
+| type_declaration
+| subtype_declaration
+| constant_declaration
+| variable_declaration
+| file_declaration
+| alias_declaration
+| attribute_declaration
+| attribute_specification
+| use_clause
+| group_template_declaration
+| group_declaration",Y,,
+,subprogram_declarative_part,{ subprogram_declarative_item },Y,,
+,subprogram_header,"[ generic ( generic_list )
+[ generic_map_aspect ] ]",Y,,
+,subprogram_instantiation_declaration,"subprogram_kind identifier is new uninstantiated_subprogram_name [ signature ]
+  [ generic_map_aspect ] ;",Y,,
+,subprogram_kind,"  procedure
+| function",Y,,
+,subprogram_specification,"  procedure_specification
+| function_specification",Y,,
+,subprogram_statement_part,{ sequential_statement },Y,,
+,subtype_declaration,subtype identifier is subtype_indication ;,Y,,
+,subtype_indication,[ resolution_indication ] type_mark [ constraint ],Y,,
+,suffix,"  simple_name
+| character_literal
+| operator_symbol
+| all",Y,,
+,target,"  name
+| aggregate",N,,
+,term,factor { multiplying_operator factor },N,,
+,timeout_clause,for time_expression,Y,,
+,tool_directive,` identifier { graphic_character },N,,
+,type_conversion,type_mark ( expression ),N,,
+,type_declaration,"  full_type_declaration
+| incomplete_type_declaration",Y,,
+,type_definition,"  scalar_type_definition
+| composite_type_definition
+| access_type_definition
+| file_type_definition
+| protected_type_definition",Y,,
+,type_mark,"  type_name
+| subtype_name",Y,,
+,unbounded_array_definition,"array ( index_subtype_definition { , index_subtype_definition } )
+  of element_subtype_indication",Y,,
+,use_clause,"use selected_name { , selected_name } ;",Y,,Y
+,variable_assignment_statement,"  [ label : ] simple_variable_assignment
+| [ label : ] conditional_variable_assignment
+| [ label : ] selected_variable_assignment",Y,,
+,variable_declaration,[ shared ] variable identifier_list : subtype_indication [ := expression ] ;,Y,,
+,verification_unit_binding_indication,use vunit verification_unit_list,N,,
+,verification_unit_list,"verification_unit_name { , verification_unit_name }",N,,
+,wait_statement,[ label : ] wait [ sensitivity_clause ] [ condition_clause ] [ timeout_clause ] ;,Y,,
+,waveform,"waveform_element { , waveform_element }
+| unaffected",Y,,
+,waveform_element,"value_expression [ after time_expression ]
+| null [ after time_expression ]",Y,,
