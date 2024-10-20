@@ -26,6 +26,9 @@ There are several options to these rules:
 .. |PascalCase_value| replace::
    :code:`PascalCase`
 
+.. |PascalSnakeCase_value| replace::
+   :code:`Pascal_Snake_Case`
+
 .. |regex_value| replace::
    :code:`regex`
 
@@ -43,6 +46,9 @@ There are several options to these rules:
 
 .. |case_option__PascalCase| replace::
    |PascalCase_value| = Enforce PascalCase
+
+.. |case_option__PascalSnakeCase| replace::
+   |PascalCase_value| = Enforce Pascal_Snake_Case
 
 .. |case_option__regex| replace::
    |regex_value| = Enforce user defined regex
@@ -109,6 +115,7 @@ There are several options to these rules:
 |                            |                        |                       | * |case_option__upper_or_lower|   |
 |                            |                        |                       | * |case_option__camelCase|        |
 |                            |                        |                       | * |case_option__PascalCase|       |
+|                            |                        |                       | * |case_option__PascalSnakeCase|  |
 |                            |                        |                       | * |case_option__regex|            |
 +----------------------------+------------------------+-----------------------+-----------------------------------+
 | |prefix_exceptions_option| | |pe_values|            | |pe_default_value|    | |pe_description|                  |
