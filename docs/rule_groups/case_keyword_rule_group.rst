@@ -101,6 +101,8 @@ Rules Enforcing Case::Keyword Rule Group
 * `loop_statement_500 <../loop_statement_rules.html#loop-statement-500>`_
 * `loop_statement_501 <../loop_statement_rules.html#loop-statement-501>`_
 * `loop_statement_502 <../loop_statement_rules.html#loop-statement-502>`_
+* `next_statement_500 <../next_statement_rules.html#next-statement-500>`_
+* `next_statement_501 <../next_statement_rules.html#next-statement-501>`_
 * `null_statement_500 <../null_statement_rules.html#null-statement-500>`_
 * `package_004 <../package_rules.html#package-004>`_
 * `package_006 <../package_rules.html#package-006>`_

@@ -141,6 +141,8 @@ Rules Enforcing Case Rule Group
 * `loop_statement_502 <../loop_statement_rules.html#loop-statement-502>`_
 * `loop_statement_503 <../loop_statement_rules.html#loop-statement-503>`_
 * `loop_statement_504 <../loop_statement_rules.html#loop-statement-504>`_
+* `next_statement_500 <../next_statement_rules.html#next-statement-500>`_
+* `next_statement_501 <../next_statement_rules.html#next-statement-501>`_
 * `null_statement_500 <../null_statement_rules.html#null-statement-500>`_
 * `package_004 <../package_rules.html#package-004>`_
 * `package_006 <../package_rules.html#package-006>`_
