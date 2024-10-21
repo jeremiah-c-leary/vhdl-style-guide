@@ -4,25 +4,25 @@ from vsg import token
 from vsg.rules import token_indent as Rule
 
 lTokens = []
-lTokens.append(token.return_statement.return_keyword)
+lTokens.append(token.return_statement.label)
 
 
-class rule_300(Rule):
+class rule_301(Rule):
     """
-    This rule checks the indentation of the **return** keyword.
+    This rule checks the indentation of the label.
 
     **Violation**
 
     .. code-block:: vhdl
 
-         return my_value;
+         return_label : return my_value;
          end function;
 
     **Fix**
 
     .. code-block:: vhdl
 
-           return my_value;
+           return_label : return my_value;
          end function;
     """
 
