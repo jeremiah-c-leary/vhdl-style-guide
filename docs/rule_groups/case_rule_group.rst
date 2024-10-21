@@ -105,6 +105,7 @@ Rules Enforcing Case Rule Group
 * `function_509 <../function_rules.html#function-509>`_
 * `function_510 <../function_rules.html#function-510>`_
 * `function_511 <../function_rules.html#function-511>`_
+* `function_512 <../function_rules.html#function-512>`_
 * `generate_005 <../generate_rules.html#generate-005>`_
 * `generate_009 <../generate_rules.html#generate-009>`_
 * `generate_010 <../generate_rules.html#generate-010>`_
