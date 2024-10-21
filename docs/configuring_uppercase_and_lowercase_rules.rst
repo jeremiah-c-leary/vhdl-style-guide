@@ -266,6 +266,7 @@ Rules Enforcing Case
 * `case_016 <case_rules.html#case-016>`_
 * `case_017 <case_rules.html#case-017>`_
 * `case_018 <case_rules.html#case-018>`_
+* `case_500 <case_rules.html#case-500>`_
 
 * `case_generate_alternative_500 <case_generate_alternative_rules.html#case-generate-alternative-500>`_
 * `case_generate_alternative_501 <case_generate_alternative_rules.html#case-generate-alternative-501>`_
@@ -338,6 +339,7 @@ Rules Enforcing Case
 * `function_502 <function_rules.html#function-502>`_
 * `function_506 <function_rules.html#function-506>`_
 * `function_509 <function_rules.html#function-509>`_
+* `function_510 <function_rules.html#function-510>`_
 * `function_511 <function_rules.html#function-511>`_
 
 * `generate_005 <generate_rules.html#generate-005>`_
@@ -429,6 +431,7 @@ Rules Enforcing Case
 * `procedure_504 <procedure_rules.html#procedure-504>`_
 * `procedure_505 <procedure_rules.html#procedure-505>`_
 * `procedure_506 <procedure_rules.html#procedure-506>`_
+* `procedure_510 <procedure_rules.html#procedure-510>`_
 * `procedure_511 <procedure_rules.html#procedure-511>`_
 
 * `procedure_call_500 <procedure_call_rules.html#procedure-call-500>`_

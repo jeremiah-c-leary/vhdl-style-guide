@@ -604,6 +604,33 @@ This rule checks the **pure**/**impure** keyword has proper case.
 
    pure function overflow (a: integer) return integer is
 
+function_510
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the parameter direction has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  function overflow (
+    a : IN  integer;
+    b : OUT integer
+  ) return integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  function overflow (
+    a : in  integer;
+    b : out integer
+  ) return integer;
+
 function_511
 ############
 
