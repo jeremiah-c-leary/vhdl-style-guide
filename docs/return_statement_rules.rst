@@ -24,6 +24,27 @@ This rule checks the indentation of the **return** keyword.
        return my_value;
      end function;
 
+return_statement_301
+####################
+
+|phase_4| |error| |indent|
+
+This rule checks the indentation of the label.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     return_label : return my_value;
+     end function;
+
+**Fix**
+
+.. code-block:: vhdl
+
+       return_label : return my_value;
+     end function;
+
 return_statement_500
 ####################
 
