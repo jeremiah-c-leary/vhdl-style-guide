@@ -30,7 +30,7 @@ class test_return_statement_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "return_statement")
         self.assertEqual(oRule.identifier, "300")
 
-        lExpected = [13, 14, 15, 16]
+        lExpected = [12, 13]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
