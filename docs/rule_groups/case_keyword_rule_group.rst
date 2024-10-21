@@ -31,6 +31,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `case_016 <../case_rules.html#case-016>`_
 * `case_017 <../case_rules.html#case-017>`_
 * `case_018 <../case_rules.html#case-018>`_
+* `case_500 <../case_rules.html#case-500>`_
 * `case_generate_alternative_500 <../case_generate_alternative_rules.html#case-generate-alternative-500>`_
 * `case_generate_alternative_501 <../case_generate_alternative_rules.html#case-generate-alternative-501>`_
 * `case_generate_statement_500 <../case_generate_statement_rules.html#case-generate-statement-500>`_
@@ -72,6 +73,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `function_014 <../function_rules.html#function-014>`_
 * `function_501 <../function_rules.html#function-501>`_
 * `function_502 <../function_rules.html#function-502>`_
+* `function_510 <../function_rules.html#function-510>`_
 * `function_511 <../function_rules.html#function-511>`_
 * `generate_009 <../generate_rules.html#generate-009>`_
 * `generate_010 <../generate_rules.html#generate-010>`_
@@ -126,6 +128,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `procedure_503 <../procedure_rules.html#procedure-503>`_
 * `procedure_504 <../procedure_rules.html#procedure-504>`_
 * `procedure_505 <../procedure_rules.html#procedure-505>`_
+* `procedure_510 <../procedure_rules.html#procedure-510>`_
 * `procedure_511 <../procedure_rules.html#procedure-511>`_
 * `procedure_call_501 <../procedure_call_rules.html#procedure-call-501>`_
 * `process_004 <../process_rules.html#process-004>`_
