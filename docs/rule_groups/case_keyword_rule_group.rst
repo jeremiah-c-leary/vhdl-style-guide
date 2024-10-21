@@ -73,8 +73,10 @@ Rules Enforcing Case::Keyword Rule Group
 * `function_014 <../function_rules.html#function-014>`_
 * `function_501 <../function_rules.html#function-501>`_
 * `function_502 <../function_rules.html#function-502>`_
+* `function_509 <../function_rules.html#function-509>`_
 * `function_510 <../function_rules.html#function-510>`_
 * `function_511 <../function_rules.html#function-511>`_
+* `function_512 <../function_rules.html#function-512>`_
 * `generate_009 <../generate_rules.html#generate-009>`_
 * `generate_010 <../generate_rules.html#generate-010>`_
 * `generate_500 <../generate_rules.html#generate-500>`_

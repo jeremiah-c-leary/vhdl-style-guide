@@ -583,6 +583,27 @@ This rule checks the function designator has proper case on the end function dec
 
    end function overflow;
 
+function_509
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **pure** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PURE function overflow (a: integer) return integer is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   pure function overflow (a: integer) return integer is
+
 function_510
 ############
 
@@ -642,6 +663,27 @@ This rule checks the parameter class has proper case.
     signal   d : integer;
     file     e : file_type
   ) is return integer;
+
+function_512
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **impure** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   IMPURE function overflow (a: integer) return integer is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   impure function overflow (a: integer) return integer is
 
 function_600
 ############
