@@ -356,8 +356,8 @@ class vhdlFile:
     def get_token_and_n_tokens_after_it_when_between_tokens(self, lTokens, iTokens, oStart, oEnd):
         return extract.get_token_and_n_tokens_after_it_when_between_tokens(lTokens, iTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
-    def get_blank_lines_below_line_ending_with_token(self, lTokens, lHierarhcy=None):
-        return extract.get_blank_lines_below_line_ending_with_token(lTokens, lHierarhcy, self.lAllObjects, self.oTokenMap)
+    def get_blank_lines_below_line_ending_with_token(self, lTokens, lHierarchy=None):
+        return extract.get_blank_lines_below_line_ending_with_token(lTokens, lHierarchy, self.lAllObjects, self.oTokenMap)
 
     def get_blank_lines_below_line_ending_with_several_possible_tokens(self, lTokens):
         return extract.get_blank_lines_below_line_ending_with_several_possible_tokens(lTokens, self.lAllObjects, self.oTokenMap)
