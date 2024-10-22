@@ -15,15 +15,15 @@ class rule_301(Rule):
 
     .. code-block:: vhdl
 
-        next_label : next when condition;
-        end function;
+         next_label : next when condition;
+         end function;
 
     **Fix**
 
     .. code-block:: vhdl
 
-          next_label : next when condition;
-        end function;
+           next_label : next when condition;
+         end function;
     """
 
     def __init__(self):
