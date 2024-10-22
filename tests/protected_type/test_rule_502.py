@@ -31,7 +31,7 @@ class test_protected_type_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "protected_type")
         self.assertEqual(oRule.identifier, "502")
 
-        lExpected = [7, 17]
+        lExpected = [8, 18]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -43,7 +43,7 @@ class test_protected_type_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "protected_type")
         self.assertEqual(oRule.identifier, "502")
 
-        lExpected = [4, 14]
+        lExpected = [5, 15]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
