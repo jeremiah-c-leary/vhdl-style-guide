@@ -5,7 +5,6 @@ from vsg.rules import token_indent
 
 lTokens = []
 lTokens.append(token.wait_statement.wait_keyword)
-lTokens.append(token.wait_statement.label)
 
 
 class rule_001(token_indent):
