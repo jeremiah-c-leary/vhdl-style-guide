@@ -7,7 +7,7 @@ lTokens = []
 lTokens.append(token.protected_type_declaration.end_protected_keyword)
 
 
-class rule_501(token_case):
+class rule_502(token_case):
     """
     This rule checks the **protected** keyword in **end protected** has proper case.
 
