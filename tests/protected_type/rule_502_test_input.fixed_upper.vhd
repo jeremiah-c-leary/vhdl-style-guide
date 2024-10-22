@@ -1,3 +1,4 @@
+
 package test is
 
   type flag_pt is protected
