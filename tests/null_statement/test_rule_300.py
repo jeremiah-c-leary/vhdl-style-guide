@@ -30,7 +30,7 @@ class test_null_statement_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "null_statement")
         self.assertEqual(oRule.identifier, "300")
 
-        lExpected = [19, 20, 21, 22]
+        lExpected = [18, 19]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
