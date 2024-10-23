@@ -78,6 +78,8 @@ Rules Enforcing Indent Rule Group
 * `process_001 <../process_rules.html#process-001>`_
 * `process_003 <../process_rules.html#process-003>`_
 * `process_006 <../process_rules.html#process-006>`_
+* `protected_type_300 <../protected_type_rules.html#protected-type-300>`_
+* `protected_type_body_300 <../protected_type_body_rules.html#protected-type-body-300>`_
 * `record_type_definition_300 <../record_type_definition_rules.html#record-type-definition-300>`_
 * `record_type_definition_301 <../record_type_definition_rules.html#record-type-definition-301>`_
 * `report_statement_300 <../report_statement_rules.html#report-statement-300>`_
