@@ -1,27 +1,27 @@
 
-package body test is
+package test is
 
-  type flag_pt is protected body
-  end protected body;
+  type flag_pt is protected
+  end protected;
 
-  type flag_pt is protected body
-    end protected body;
+  type flag_pt is protected
+    end protected;
 
-  type flag_pt is protected body
-end protected body;
+  type flag_pt is protected
+end protected;
 
-end package body test;
+end package test;
 
 architecture rtl of test is
 
-  type flag_pt is protected body
-  end protected body;
+  type flag_pt is protected
+  end protected;
 
-  type flag_pt is protected body
-    end protected body;
+  type flag_pt is protected
+    end protected;
 
-  type flag_pt is protected body
-end protected body;
+  type flag_pt is protected
+end protected;
 
 begin
 
