@@ -9,8 +9,8 @@ def get_function_subprogram_body(lAllObjects, oTokenMap):
 
     lReturn = []
     for oToi in lToi:
-        oToken = oToi.get_first_token_matching(token.function_specification.function_keyword)
-        if oToken is not None:
+        bSubprogramIsFunction = oToi.does_first_token_match(token.function_specification.function_keyword)
+        if bSubprogramIsFunction:
             oToken = oToi.get_first_token_matching(token.function_specification.designator)
             oToi.set_token_value(oToken.get_value())
             lReturn.append(oToi)
