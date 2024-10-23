@@ -1,37 +1,20 @@
+
 package test is
 
   procedure my_proc (
-    PARAM1 : IN integer;
-    PARAM2 : IN integer;
-    PARAM3 : OUT integer
+    PARAM1          : IN integer;
+    VARIABLE PARAM2 : OUT integer;
+    CONSTANT PARAM3 : IN integer;
+    SIGNAL PARAM4   : OUT integer;
+    FILE PARAM5     : MY_FILE
+  );
+
+  procedure my_proc (
+    PARAM1          : IN integer;
+    VARIABLE PARAM2 : OUT integer;
+    CONSTANT PARAM3 : IN integer;
+    SIGNAL PARAM4   : OUT integer;
+    FILE PARAM5     : MY_FILE
   );
 
 end package test;
-
-package body test is
-
-  procedure my_proc (
-    PARAM1 : IN integer;
-    PARAM2 : IN integer;
-    PARAM3 : OUT integer
-  ) is
-  begin
-
-  end procedure my_proc;
-
-end package body test;
-
-architecture rtl of test is
-
-  procedure my_proc (
-    PARAM1 : IN integer;
-    PARAM2 : IN integer;
-    PARAM3 : OUT integer
-  ) is
-  begin
-
-  end procedure my_proc;
-
-begin
-
-end architecture rtl;
