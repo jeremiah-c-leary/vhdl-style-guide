@@ -8,6 +8,7 @@ lTokens.append(token.interface_constant_declaration.identifier)
 lTokens.append(token.interface_signal_declaration.identifier)
 lTokens.append(token.interface_variable_declaration.identifier)
 lTokens.append(token.interface_unknown_declaration.identifier)
+lTokens.append(token.interface_file_declaration.identifier)
 
 
 class rule_507(Rule):
