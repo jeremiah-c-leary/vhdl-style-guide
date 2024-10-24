@@ -49,7 +49,7 @@ class consistent_subprogram_parameter_token_case(case.Rule):
 
         for oSubprogram in lSubprogram:
             lSubprogramInterfaces = lInterfaces[oSubprogram.iLine]
-            oToi = oSubprogram.extract_tokens(0, len(oSubprogram.get_tokens()))
+            oToi = extract_all_tokens(oSubprogram)
             validate_interface_name_in_token_list(self, lSubprogramInterfaces, oToi)
 
     def _fix_violation(self, oViolation):
@@ -96,33 +96,10 @@ def interface_case_mismatch(sToken, lInterfaces, lInterfacesLower):
     return False
 
 
-def extract_token_pairs(oSubprogram, lPairs):
-    lReturn = []
-    for lPair in lPairs:
-        lReturn.extend(extract_token_pair(oSubprogram, lPair))
-    return lReturn
-
-
-def extract_token_pair(oSubprogram, lPair):
-    lReturn = []
-    iStart = None
-    for iToken, oToken in enumerate(oSubprogram.get_tokens()):
-        iStart = set_start_index(iToken, oToken, lPair, iStart)
-        lReturn.extend(extract_tokens_if_end_is_found(oSubprogram, iToken, oToken, lPair, iStart))
-    return lReturn
-
-
-def extract_tokens_if_end_is_found(oSubprogram, iToken, oToken, lPair, iStart):
-    lReturn = []
-    if isinstance(oToken, lPair[1]):
-        lReturn.append(oSubprogram.extract_tokens(iStart, iToken))
-    return lReturn
-
-
-def set_start_index(iToken, oToken, lPair, iStart):
-    if isinstance(oToken, lPair[0]):
-        return iToken
-    return iStart
+def extract_all_tokens(oSubprogram):
+    iStart = 0
+    iEnd = len(oSubprogram.get_tokens())
+    return oSubprogram.extract_tokens(iStart, iEnd)
 
 
 def extract_interface_names_from_subprograms(oFile, oSubprogramKeywordToken, oSubprogramToken):
