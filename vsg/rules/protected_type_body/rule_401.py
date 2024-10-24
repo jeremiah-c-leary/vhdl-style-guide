@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules import align_tokens_in_region_between_tokens_unless_between_tokens as Rule
+from vsg.rules import (
+    align_tokens_in_region_between_tokens_unless_between_tokens as Rule,
+)
 
 lAlign = []
 lAlign.append(token.file_declaration.colon)
