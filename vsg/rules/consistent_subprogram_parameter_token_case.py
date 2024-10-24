@@ -3,24 +3,12 @@
 from vsg import token, violation
 from vsg.rule_group import case
 
-lInterfaceTokens = []
-lInterfaceTokens.append(token.interface_unknown_declaration.identifier)
-lInterfaceTokens.append(token.interface_constant_declaration.identifier)
-lInterfaceTokens.append(token.interface_variable_declaration.identifier)
-lInterfaceTokens.append(token.interface_signal_declaration.identifier)
-
-lPairs = []
-lPairs.append([token.simple_waveform_assignment.target, token.simple_waveform_assignment.semicolon])
-lPairs.append([token.simple_variable_assignment.simple_name, token.simple_variable_assignment.semicolon])
-lPairs.append([token.conditional_waveform_assignment.target, token.conditional_waveform_assignment.semicolon])
-lPairs.append([token.conditional_variable_assignment.target, token.conditional_variable_assignment.semicolon])
-lPairs.append([token.concurrent_simple_signal_assignment.target, token.concurrent_simple_signal_assignment.semicolon])
-lPairs.append([token.concurrent_conditional_signal_assignment.target, token.concurrent_conditional_signal_assignment.semicolon])
-lPairs.append([token.constant_declaration.colon, token.constant_declaration.semicolon])
-lPairs.append([token.signal_declaration.colon, token.signal_declaration.semicolon])
-lPairs.append([token.variable_declaration.colon, token.variable_declaration.semicolon])
-lPairs.append([token.process_statement.open_parenthesis, token.process_statement.close_parenthesis])
-lPairs.append([token.process_statement.begin_keyword, token.process_statement.end_keyword])
+lTokens = []
+lTokens.append(token.interface_unknown_declaration.identifier)
+lTokens.append(token.interface_constant_declaration.identifier)
+lTokens.append(token.interface_variable_declaration.identifier)
+lTokens.append(token.interface_signal_declaration.identifier)
+lTokens.append(token.interface_file_declaration.identifier)
 
 
 class consistent_subprogram_parameter_token_case(case.Rule):
@@ -54,16 +42,15 @@ class consistent_subprogram_parameter_token_case(case.Rule):
         if no_interfaces_detected(lInterfaces):
             return None
 
-        lSubprogramBodies = oFile.get_tokens_bounded_by_tokens_unless_token_is_between_them(
-            self.start_token, self.end_token, token.subprogram_declaration.semicolon
-        )
-        for oSubprogramBody in lSubprogramBodies:
-            oSubprogramBody.name = extract_subprogram_name(oSubprogramBody, self.subprogram_token)
-            lSubprogramInterfaces = lInterfaces[oSubprogramBody.name]
-            lToi = extract_token_pairs(oSubprogramBody, lPairs)
-            # lToi.extend(extract_component_instantiation_actual_parts(oSubprogramBody, self.map_aspect_token))
-            for oToi in lToi:
-                validate_interface_name_in_token_list(self, lSubprogramInterfaces, oToi)
+        if self.subprogram_token == token.procedure_specification:
+            lSubprogram = oFile.get_procedure_subprogram_body()
+        elif self.subprogram_token == token.function_specification:
+            lSubprogram = oFile.get_function_subprogram_body()
+
+        for oSubprogram in lSubprogram:
+            lSubprogramInterfaces = lInterfaces[oSubprogram.iLine]
+            oToi = oSubprogram.extract_tokens(0, len(oSubprogram.get_tokens()))
+            validate_interface_name_in_token_list(self, lSubprogramInterfaces, oToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
@@ -109,10 +96,10 @@ def interface_case_mismatch(sToken, lInterfaces, lInterfacesLower):
     return False
 
 
-def extract_token_pairs(oSubprogramBody, lPairs):
+def extract_token_pairs(oSubprogram, lPairs):
     lReturn = []
     for lPair in lPairs:
-        lReturn.extend(extract_token_pair(oSubprogramBody, lPair))
+        lReturn.extend(extract_token_pair(oSubprogram, lPair))
     return lReturn
 
 
@@ -125,10 +112,10 @@ def extract_token_pair(oSubprogram, lPair):
     return lReturn
 
 
-def extract_tokens_if_end_is_found(oArchitecture, iToken, oToken, lPair, iStart):
+def extract_tokens_if_end_is_found(oSubprogram, iToken, oToken, lPair, iStart):
     lReturn = []
     if isinstance(oToken, lPair[1]):
-        lReturn.append(oArchitecture.extract_tokens(iStart, iToken))
+        lReturn.append(oSubprogram.extract_tokens(iStart, iToken))
     return lReturn
 
 
@@ -139,21 +126,13 @@ def set_start_index(iToken, oToken, lPair, iStart):
 
 
 def extract_interface_names_from_subprograms(oFile, oSubprogramKeywordToken, oSubprogramToken):
-    lSubprograms = oFile.get_tokens_bounded_by(oSubprogramKeywordToken, oSubprogramToken.close_parenthesis)
+    lSubprograms = oFile.get_tokens_bounded_by(oSubprogramKeywordToken, token.subprogram_body.is_keyword)
     lInterfaces = {}
     for oSubprogram in lSubprograms:
-        oSubprogram.name = extract_subprogram_name(oSubprogram, oSubprogramToken)
         lInterfaceNames = extract_interface_names(oSubprogram, oSubprogramToken)
         if lInterfaceNames != []:
-            lInterfaces[oSubprogram.name] = lInterfaceNames
+            lInterfaces[oSubprogram.iLine] = lInterfaceNames
     return lInterfaces
-
-
-def extract_subprogram_name(oToi, oSubprogramToken):
-    lTokens = oToi.get_tokens()
-    for oToken in lTokens:
-        if isinstance(oToken, oSubprogramToken.designator):
-            return oToken.get_lower_value()
 
 
 def extract_interface_names(oToi, oSubprogramToken):
@@ -162,7 +141,7 @@ def extract_interface_names(oToi, oSubprogramToken):
     bSearch = False
     for oToken in oToi.get_tokens():
         bSearch = end_search(oToken, bSearch, oSubprogramToken)
-        lReturn.extend(extract_interface_token(bSearch, oToken, lInterfaceTokens))
+        lReturn.extend(extract_interface_token(bSearch, oToken, lTokens))
         bSearch = start_search(oToken, bSearch, oSubprogramToken)
     return lReturn
 
@@ -173,10 +152,10 @@ def end_search(oToken, bSearch, oSubprogramToken):
     return bSearch
 
 
-def extract_interface_token(bSearch, oToken, lInterfaceTokens):
+def extract_interface_token(bSearch, oToken, lTokens):
     lReturn = []
     if bSearch:
-        if is_token_in_token_type_list(oToken, lInterfaceTokens):
+        if is_token_in_token_type_list(oToken, lTokens):
             lReturn.append(oToken.get_value())
     return lReturn
 
