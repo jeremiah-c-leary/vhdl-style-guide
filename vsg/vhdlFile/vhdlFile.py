@@ -259,9 +259,6 @@ class vhdlFile:
     def get_tokens_bounded_by_tokens_if_token_is_between_them(self, oLeft, oRight, oToken):
         return extract.get_tokens_bounded_by_tokens_if_token_is_between_them(oLeft, oRight, oToken, self.lAllObjects, self.oTokenMap)
 
-    def get_tokens_bounded_by_tokens_unless_token_is_between_them(self, oLeft, oRight, oToken):
-        return extract.get_tokens_bounded_by_tokens_unless_token_is_between_them(oLeft, oRight, oToken, self.lAllObjects, self.oTokenMap)
-
     def get_tokens_bounded_by_unless_between(self, oLeft, oRight, lUnless):
         return extract.get_tokens_bounded_by_unless_between(oLeft, oRight, lUnless, self.lAllObjects, self.oTokenMap)
 
