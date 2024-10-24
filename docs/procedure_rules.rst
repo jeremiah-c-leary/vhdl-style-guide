@@ -833,3 +833,63 @@ This rule checks for consistent capitalization of parameter names within the sub
     SIG <= param1 + param2;
 
   end procedure my_proc;
+
+procedure_510
+#############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the parameter direction has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  procedure overflow (
+    a : IN  integer;
+    b : OUT integer
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  procedure overflow (
+    a : in  integer;
+    b : out integer
+  );
+
+procedure_511
+#############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the parameter class has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  procedure my_func (
+    a          : integer;
+    VARIABLE b : integer;
+    CONSTANT c : integer;
+    SIGNAL   d : integer;
+    FILE     e : file_type
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  procedure my_func (
+    a          : integer;
+    variable b : integer;
+    constant c : integer;
+    signal   d : integer;
+    file     e : file_type
+  );

@@ -30,6 +30,7 @@ Rules Enforcing Case::Name Rule Group
 * `generic_map_002 <../generic_map_rules.html#generic-map-002>`_
 * `instantiation_009 <../instantiation_rules.html#instantiation-009>`_
 * `instantiation_028 <../instantiation_rules.html#instantiation-028>`_
+* `instantiation_500 <../instantiation_rules.html#instantiation-500>`_
 * `library_500 <../library_rules.html#library-500>`_
 * `package_008 <../package_rules.html#package-008>`_
 * `package_010 <../package_rules.html#package-010>`_
