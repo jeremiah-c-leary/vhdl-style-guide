@@ -10,6 +10,7 @@ lTokens.append(token.interface_variable_declaration.identifier)
 lTokens.append(token.interface_unknown_declaration.identifier)
 lTokens.append(token.interface_file_declaration.identifier)
 
+
 class rule_508(Rule):
     """
     This rule checks that the parameter names have proper case.
