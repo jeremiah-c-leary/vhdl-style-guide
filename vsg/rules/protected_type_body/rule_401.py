@@ -28,25 +28,25 @@ class rule_401(Rule):
 
     .. code-block:: vhdl
 
-       package my_package is
+       type my_type protected body is
 
          signal   wr_en : std_logic;
          signal   rd_en   : std_logic;
          constant c_period : time;
 
-       end package my_package;
+       end protected body;
 
     **Fix**
 
     .. code-block:: vhdl
 
-       package my_package is
+       type my_type protected body is
 
          signal   wr_en    : std_logic;
          signal   rd_en    : std_logic;
          constant c_period : time;
 
-       end package my_package;
+       end protected body;
     """
 
     def __init__(self):
