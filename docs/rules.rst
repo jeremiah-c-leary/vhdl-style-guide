@@ -7,6 +7,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    :maxdepth: 2
 
    after_rules.rst
+   aggregate_rules.rst
    alias_declaration_rules.rst
    architecture_rules.rst
    assert_rules.rst
