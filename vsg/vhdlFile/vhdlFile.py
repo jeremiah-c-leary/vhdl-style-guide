@@ -50,8 +50,6 @@ default_cla = command_line_args()
 
 default_conf = config.New(default_cla)
 
-# TODO make them snake_case?
-
 dIeeeTypeStringMap = {
     "std_logic_vector": types.std_logic_vector,
     "std_ulogic_vector": types.std_ulogic_vector,
@@ -78,7 +76,7 @@ dParserTodoStringMap = {
     "=": relational_operator.equal,
     "event": parser.event_keyword,
     "rising_edge": function.rising_edge,
-    "falling_edge": function.falling_edge
+    "falling_edge": function.falling_edge,
 }
 
 dUnaryOrBinaryAdditionOperatorStringMap = {
