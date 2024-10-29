@@ -558,15 +558,6 @@ def post_token_assignments(lTokens):
             elif sLowerValue == "falling_edge":
                 lTokens[iToken] = function.falling_edge(sValue)
 
-            elif sLowerValue == "std_logic_vector":
-                lTokens[iToken] = types.std_logic_vector(sValue)
-
-            elif sLowerValue == "std_ulogic_vector":
-                lTokens[iToken] = types.std_ulogic_vector(sValue)
-
-            elif sLowerValue == "std_ulogic":
-                lTokens[iToken] = types.std_ulogic(sValue)
-
             elif len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
                 lTokens[iToken] = parser.character_literal(sValue)
         else:
