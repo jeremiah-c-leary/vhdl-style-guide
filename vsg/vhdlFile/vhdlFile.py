@@ -62,6 +62,20 @@ dIeeeTypeStringMap = {
     "unsigned": types.unsigned,
 }
 
+dUnaryOrBinaryAdditionOperatorStringMap = {
+    "+": {"unary": sign.plus, "binary": adding_operator.plus},
+    "-": {"unary": sign.minus, "binary": adding_operator.minus},
+}
+
+dUnaryOrBinaryLogicalOperatorStringMap = {
+    "and": {"unary": unary_logical_operator.and_operator, "binary": logical_operator.and_operator},
+    "or": {"unary": unary_logical_operator.or_operator, "binary": logical_operator.or_operator},
+    "nand": {"unary": unary_logical_operator.nand_operator, "binary": logical_operator.nand_operator},
+    "nor": {"unary": unary_logical_operator.nor_operator, "binary": logical_operator.nor_operator},
+    "xor": {"unary": unary_logical_operator.xor_operator, "binary": logical_operator.xor_operator},
+    "xnor": {"unary": unary_logical_operator.xnor_operator, "binary": logical_operator.xnor_operator},
+}
+
 
 class vhdlFile:
     """
@@ -479,33 +493,13 @@ def post_token_assignments(lTokens):
             if sValue == "&":
                 lTokens[iToken] = adding_operator.concat()
 
-            elif sValue == "+":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.plus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.plus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.plus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.plus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([choices.bar], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.plus()
-                else:
-                    lTokens[iToken] = adding_operator.plus()
+            elif sLowerValue in dUnaryOrBinaryAdditionOperatorStringMap.keys():
+                assign_token_of_addition_operator_that_can_be_both_unary_and_binary(
+                    iToken, lTokens, sValue, dUnaryOrBinaryAdditionOperatorStringMap[sLowerValue]
+                )
 
-            elif sValue == "-":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.minus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.minus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.minus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.minus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([choices.bar], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.minus()
-                else:
-                    lTokens[iToken] = adding_operator.minus()
+            elif sLowerValue in dUnaryOrBinaryLogicalOperatorStringMap.keys():
+                assign_token_of_logical_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dUnaryOrBinaryLogicalOperatorStringMap[sLowerValue])
 
             elif sValue == "(":
                 lTokens[iToken] = parser.open_parenthesis()
@@ -518,121 +512,13 @@ def post_token_assignments(lTokens):
                 lTokens[iToken].iId = lParenId.pop()
 
             elif sValue == ",":
-                lTokens[iToken] = parser.comma()
+                lTokens[iToken] = parser.comma(sValue)
 
             elif sLowerValue == "to":
                 lTokens[iToken] = direction.to(sValue)
 
             elif sLowerValue == "downto":
                 lTokens[iToken] = direction.downto(sValue)
-
-            elif sLowerValue == "and":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.and_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.and_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.and_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.and_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
-                    [parser.keyword],
-                    iToken - 1,
-                    lTokens,
-                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.and_operator(sValue)
-                else:
-                    lTokens[iToken] = logical_operator.and_operator(sValue)
-
-            elif sLowerValue == "or":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.or_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.or_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.or_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.or_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
-                    [parser.keyword],
-                    iToken - 1,
-                    lTokens,
-                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.or_operator(sValue)
-                else:
-                    lTokens[iToken] = logical_operator.or_operator(sValue)
-
-            elif sLowerValue == "nand":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
-                    [parser.keyword],
-                    iToken - 1,
-                    lTokens,
-                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nand_operator(sValue)
-                else:
-                    lTokens[iToken] = logical_operator.nand_operator(sValue)
-
-            elif sLowerValue == "nor":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
-                    [parser.keyword],
-                    iToken - 1,
-                    lTokens,
-                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.nor_operator(sValue)
-                else:
-                    lTokens[iToken] = logical_operator.nor_operator(sValue)
-
-            elif sLowerValue == "xor":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
-                    [parser.keyword],
-                    iToken - 1,
-                    lTokens,
-                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xor_operator(sValue)
-                else:
-                    lTokens[iToken] = logical_operator.xor_operator(sValue)
-
-            elif sLowerValue == "xnor":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
-                    [parser.keyword],
-                    iToken - 1,
-                    lTokens,
-                ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
-                    lTokens[iToken] = unary_logical_operator.xnor_operator(sValue)
-                else:
-                    lTokens[iToken] = logical_operator.xnor_operator(sValue)
 
             elif sValue == "**":
                 lTokens[iToken] = miscellaneous_operator.double_star(sValue)
@@ -821,6 +707,40 @@ def remove_beginning_of_file_tokens(lTokens):
         if not isinstance(oToken, parser.beginning_of_file):
             lReturn.append(oToken)
     return lReturn
+
+
+def assign_token_of_addition_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
+    if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    elif utils.are_previous_consecutive_token_types_ignoring_whitespace([choices.bar], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    else:
+        lTokens[iToken] = dTokenTypes["binary"](sValue)
+
+
+def assign_token_of_logical_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
+    if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    elif utils.are_previous_consecutive_token_types_ignoring_whitespace([logical_operator.logical_operator], iToken - 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    elif utils.are_previous_consecutive_token_types_ignoring_whitespace(
+        [parser.keyword],
+        iToken - 1,
+        lTokens,
+    ) and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
+        lTokens[iToken] = dTokenTypes["unary"](sValue)
+    else:
+        lTokens[iToken] = dTokenTypes["binary"](sValue)
 
 
 class options:
