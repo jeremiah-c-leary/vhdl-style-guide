@@ -50,6 +50,7 @@ default_cla = command_line_args()
 
 default_conf = config.New(default_cla)
 
+# TODO make them snake_case?
 
 dIeeeTypeStringMap = {
     "std_logic_vector": types.std_logic_vector,
@@ -536,21 +537,13 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = parser.character_literal(sValue)
         else:
             if sValue == "+":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.plus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
+                if utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
                     pass
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.plus()
                 else:
                     lTokens[iToken] = adding_operator.plus()
             elif sValue == "-":
-                if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.minus()
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
+                if utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
                     pass
-                elif utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens):
-                    lTokens[iToken] = sign.minus()
                 else:
                     lTokens[iToken] = adding_operator.minus()
             elif sValue == "*":
