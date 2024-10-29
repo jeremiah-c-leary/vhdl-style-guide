@@ -125,9 +125,6 @@ class vhdlFile:
         self.stdin = commandLineArguments.stdin
         self.configuration = configuration
         self.commandLineArguments = commandLineArguments
-        #        p = cProfile.Profile()
-        #        p.runcall(self._processFile)
-        #        p.print_stats()
         self._processFile()
 
     def _processFile(self):
@@ -167,7 +164,6 @@ class vhdlFile:
                 raise e
 
         post_token_assignments(self.lAllObjects)
-        #        self.lAllObjects = combine_use_clause_selected_name(self.lAllObjects)
 
         set_token_hierarchy_value(self.lAllObjects)
         set_todo_tokens(self.lAllObjects)
@@ -487,7 +483,6 @@ def split_on_carriage_return(lObjects):
 
 
 def post_token_assignments(lTokens):
-    oCodeTags = code_tags.New()
     iParenId = 0
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
@@ -593,17 +588,14 @@ def set_code_tags(lTokens):
 def set_aggregate_tokens(lTokens):
     lOpenParens = []
     for iToken, oToken in enumerate(lTokens):
-        #        if isinstance(oToken, parser.open_parenthesis):
         if type(oToken) == parser.open_parenthesis:
             lOpenParens.append(iToken)
-        #        if isinstance(oToken, parser.close_parenthesis):
         if type(oToken) == parser.close_parenthesis:
             iIndex = lOpenParens.pop()
             if isinstance(lTokens[iIndex], token.aggregate.open_parenthesis):
                 iId = oToken.iId
                 lTokens[iToken] = token.aggregate.close_parenthesis()
                 lTokens[iToken].iId = iId
-        #        if isinstance(oToken, token.element_association.assignment):
         if len(lOpenParens) > 0 and (isinstance(oToken, token.element_association.assignment) or type(oToken) == parser.comma):
             iId = lTokens[lOpenParens[-1]].iId
             lTokens[lOpenParens[-1]] = token.aggregate.open_parenthesis()
