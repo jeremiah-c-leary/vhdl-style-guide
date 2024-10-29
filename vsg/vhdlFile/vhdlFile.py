@@ -690,17 +690,6 @@ def check_for_close_parenthesis(oToken, iToken, lTokens, lOpenParens):
             pass
 
 
-# def combine_use_clause_selected_name(lTokens):
-#    lReturn = []
-#    for iToken, oToken in enumerate(lTokens):
-#        if isinstance(oToken, token.use_clause.selected_name):
-#            if isinstance(lReturn[-1], token.use_clause.selected_name):
-#                lReturn[-1].value = lReturn[-1].value + oToken.value
-#                continue
-#        lReturn.append(oToken)
-#    return lReturn
-
-
 def remove_beginning_of_file_tokens(lTokens):
     lReturn = []
     for oToken in lTokens:
