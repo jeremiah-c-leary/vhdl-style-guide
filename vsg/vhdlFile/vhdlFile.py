@@ -51,6 +51,18 @@ default_cla = command_line_args()
 default_conf = config.New(default_cla)
 
 
+dIeeeTypeStringMap = {
+    "std_logic_vector": types.std_logic_vector,
+    "std_ulogic_vector": types.std_ulogic_vector,
+    "std_ulogic": types.std_ulogic,
+    "std_logic": types.std_logic,
+    "integer": types.integer,
+    "natural": types.natural,
+    "signed": types.signed,
+    "unsigned": types.unsigned,
+}
+
+
 class vhdlFile:
     """
     Holds contents of a VHDL file.
@@ -448,33 +460,13 @@ def post_token_assignments(lTokens):
     iParenId = 0
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
-        if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name) or isinstance(oToken, todo.name):
+        if isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, todo.name)):
             sValue = oToken.get_value()
             sLowerValue = oToken.get_lower_value()
             ### IEEE values
-            if sLowerValue == "std_logic_vector":
-                lTokens[iToken] = types.std_logic_vector(sValue)
-
-            elif sLowerValue == "std_ulogic_vector":
-                lTokens[iToken] = types.std_ulogic_vector(sValue)
-
-            elif sLowerValue == "std_ulogic":
-                lTokens[iToken] = types.std_ulogic(sValue)
-
-            elif sLowerValue == "std_logic":
-                lTokens[iToken] = types.std_logic(sValue)
-
-            elif sLowerValue == "integer":
-                lTokens[iToken] = types.integer(sValue)
-
-            elif sLowerValue == "natural":
-                lTokens[iToken] = types.natural(sValue)
-
-            elif sLowerValue == "signed":
-                lTokens[iToken] = types.signed(sValue)
-
-            elif sValue.lower() == "unsigned":
-                lTokens[iToken] = types.unsigned(sValue)
+            if sLowerValue in dIeeeTypeStringMap.keys():
+                oTokenClass = dIeeeTypeStringMap[sLowerValue]
+                lTokens[iToken] = oTokenClass(sValue)
 
         elif isinstance(oToken, type_mark.attribute):
             sValue = oToken.get_value()
