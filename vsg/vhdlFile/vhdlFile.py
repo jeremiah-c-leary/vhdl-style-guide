@@ -62,6 +62,24 @@ dIeeeTypeStringMap = {
     "unsigned": types.unsigned,
 }
 
+dParserTodoStringMap = {
+    "&": adding_operator.concat,
+    ",": parser.comma,
+    "to": direction.to,
+    "downto": direction.downto,
+    "**": miscellaneous_operator.double_star,
+    "abs": miscellaneous_operator.abs_operator,
+    "not": miscellaneous_operator.not_operator,
+    "*": multiplying_operator.star,
+    "/": multiplying_operator.slash,
+    "mod": multiplying_operator.mod_operator,
+    "rem": multiplying_operator.rem_operator,
+    "=": relational_operator.equal,
+    "event": parser.event_keyword,
+    "rising_edge": function.rising_edge,
+    "falling_edge": function.falling_edge
+}
+
 dUnaryOrBinaryAdditionOperatorStringMap = {
     "+": {"unary": sign.plus, "binary": adding_operator.plus},
     "-": {"unary": sign.minus, "binary": adding_operator.minus},
@@ -490,8 +508,9 @@ def post_token_assignments(lTokens):
         elif isinstance(oToken, parser.todo):
             sValue = oToken.get_value()
             sLowerValue = oToken.get_lower_value()
-            if sValue == "&":
-                lTokens[iToken] = adding_operator.concat()
+            if sLowerValue in dParserTodoStringMap.keys():
+                oTokenClass = dParserTodoStringMap[sLowerValue]
+                lTokens[iToken] = oTokenClass(sValue)
 
             elif sLowerValue in dUnaryOrBinaryAdditionOperatorStringMap.keys():
                 assign_token_of_addition_operator_that_can_be_both_unary_and_binary(
@@ -511,52 +530,9 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = parser.close_parenthesis()
                 lTokens[iToken].iId = lParenId.pop()
 
-            elif sValue == ",":
-                lTokens[iToken] = parser.comma(sValue)
-
-            elif sLowerValue == "to":
-                lTokens[iToken] = direction.to(sValue)
-
-            elif sLowerValue == "downto":
-                lTokens[iToken] = direction.downto(sValue)
-
-            elif sValue == "**":
-                lTokens[iToken] = miscellaneous_operator.double_star(sValue)
-
-            elif sLowerValue == "abs":
-                lTokens[iToken] = miscellaneous_operator.abs_operator(sValue)
-
-            elif sLowerValue == "not":
-                lTokens[iToken] = miscellaneous_operator.not_operator(sValue)
-
-            elif sValue == "*":
-                lTokens[iToken] = multiplying_operator.star(sValue)
-
-            elif sValue == "/":
-                lTokens[iToken] = multiplying_operator.slash(sValue)
-
-            elif sLowerValue == "mod":
-                lTokens[iToken] = multiplying_operator.mod_operator(sValue)
-
-            elif sLowerValue == "rem":
-                lTokens[iToken] = multiplying_operator.rem_operator(sValue)
-
-            elif sValue == "=":
-                lTokens[iToken] = relational_operator.equal(sValue)
-
             elif sValue == "'":
                 lTokens[iToken] = parser.tic(sValue)
                 utils.classify_predefined_types(lTokens, iToken + 1)
-
-            elif sLowerValue == "event":
-                lTokens[iToken] = parser.event_keyword(sValue)
-
-            ### IEEE values
-            elif sLowerValue == "rising_edge":
-                lTokens[iToken] = function.rising_edge(sValue)
-
-            elif sLowerValue == "falling_edge":
-                lTokens[iToken] = function.falling_edge(sValue)
 
             elif len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
                 lTokens[iToken] = parser.character_literal(sValue)
