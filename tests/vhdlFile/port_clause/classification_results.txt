@@ -29,15 +29,14 @@
 <class 'vsg.token.entity_declaration.identifier'>
 <class 'vsg.token.entity_declaration.is_keyword'>
 --------------------------------------------------------------------------------
-6 | port ( a : integer
+6 | port (
 <class 'vsg.token.port_clause.port_keyword'>
 <class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+7 |     a : integer
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.ieee.std_logic_1164.types.integer'>
---------------------------------------------------------------------------------
-7 |
-<class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
 8 | );
 <class 'vsg.token.port_clause.close_parenthesis'>
