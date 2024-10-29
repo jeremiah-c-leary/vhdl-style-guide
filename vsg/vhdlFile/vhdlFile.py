@@ -512,12 +512,12 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = oTokenClass(sValue)
 
             elif sLowerValue in dUnaryOrBinaryAdditionOperatorStringMap.keys():
-                assign_token_of_addition_operator_that_can_be_both_unary_and_binary(
-                    iToken, lTokens, sValue, dUnaryOrBinaryAdditionOperatorStringMap[sLowerValue]
-                )
+                dTokenTypes = dUnaryOrBinaryAdditionOperatorStringMap[sLowerValue]
+                assign_token_of_addition_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
 
             elif sLowerValue in dUnaryOrBinaryLogicalOperatorStringMap.keys():
-                assign_token_of_logical_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dUnaryOrBinaryLogicalOperatorStringMap[sLowerValue])
+                dTokenTypes = dUnaryOrBinaryLogicalOperatorStringMap[sLowerValue]
+                assign_token_of_logical_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
 
             elif sValue == "(":
                 lTokens[iToken] = parser.open_parenthesis()
