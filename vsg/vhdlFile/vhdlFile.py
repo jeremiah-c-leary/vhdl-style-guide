@@ -492,8 +492,8 @@ def post_token_assignments(lTokens):
     iParenId = 0
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
+        sValue = oToken.get_value()
         if isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, todo.name)):
-            sValue = oToken.get_value()
             sLowerValue = oToken.get_lower_value()
             ### IEEE values
             if sLowerValue in dIeeeTypeStringMap.keys():
@@ -501,12 +501,10 @@ def post_token_assignments(lTokens):
                 lTokens[iToken] = oTokenClass(sValue)
 
         elif isinstance(oToken, type_mark.attribute):
-            sValue = oToken.get_value()
             if sValue.lower() in predefined_attribute.values:
                 lTokens[iToken] = predefined_attribute.keyword(sValue)
 
         elif isinstance(oToken, parser.todo):
-            sValue = oToken.get_value()
             sLowerValue = oToken.get_lower_value()
             if sLowerValue in dParserTodoStringMap.keys():
                 oTokenClass = dParserTodoStringMap[sLowerValue]
@@ -537,7 +535,6 @@ def post_token_assignments(lTokens):
             elif len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
                 lTokens[iToken] = parser.character_literal(sValue)
         else:
-            sValue = oToken.get_value()
             if sValue == "+":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens):
                     lTokens[iToken] = sign.plus()
