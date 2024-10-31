@@ -223,6 +223,9 @@ indent:
             function_keyword:
                 token : current
                 after : '+1'
+            open_parenthesis:
+                token : current
+                after : current
             close_parenthesis:
                 token : '-1'
                 after : current
