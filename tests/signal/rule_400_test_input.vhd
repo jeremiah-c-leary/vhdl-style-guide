@@ -18,6 +18,12 @@ elementE(3 downto 0)(6 downto 0),
  element7(7 downto 0)
 );
 
+  signal s : MY_TYPE := (
+                    a => '0',
+                                ddddd => (others => '0'),
+                            ffff => (others => '0')
+                );
+
 begin
 
 end architecture rtl;
