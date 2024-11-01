@@ -398,7 +398,10 @@ def _analyze_align_left_no_align_paren_yes(
         #        print(f'iParens = {iParens}')
 
         if len(lTemp) == 0:
-            dExpectedIndent[iLine + 1] = lColumn[-1]
+            if bIgnoreStartParen:
+                dExpectedIndent[iLine + 1] = lColumn[-1] + 1
+            else:
+                dExpectedIndent[iLine + 1] = lColumn[-1]
 
     #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
     #    print(dExpectedIndent)
