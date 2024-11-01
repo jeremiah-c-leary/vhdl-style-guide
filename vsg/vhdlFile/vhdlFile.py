@@ -506,11 +506,11 @@ def post_token_assignments(lTokens):
 
             elif sLowerValue in dUnaryOrBinaryAdditionOperatorStringMap.keys():
                 dTokenTypes = dUnaryOrBinaryAdditionOperatorStringMap[sLowerValue]
-                assign_token_of_addition_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
+                assign_token_of_addition_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
 
             elif sLowerValue in dUnaryOrBinaryLogicalOperatorStringMap.keys():
                 dTokenTypes = dUnaryOrBinaryLogicalOperatorStringMap[sLowerValue]
-                assign_token_of_logical_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
+                assign_token_of_logical_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
 
             elif sValue == "(":
                 lTokens[iToken] = parser.open_parenthesis()
@@ -645,7 +645,7 @@ def remove_beginning_of_file_tokens(lTokens):
     return lReturn
 
 
-def assign_token_of_addition_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
+def assign_token_of_addition_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
     if (
         utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens)
         or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens)
@@ -658,7 +658,7 @@ def assign_token_of_addition_operator_that_can_be_both_unary_and_binary(iToken, 
         lTokens[iToken] = dTokenTypes["binary"](sValue)
 
 
-def assign_token_of_logical_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
+def assign_token_of_logical_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
     if (
         utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens)
         or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens)
