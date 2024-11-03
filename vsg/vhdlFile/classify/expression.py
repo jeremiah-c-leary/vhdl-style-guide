@@ -4,6 +4,7 @@ from vsg import parser
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import bit_string_literal, external_name
 
+
 @utils.tagged_production
 def classify(iToken, lObjects):
     """

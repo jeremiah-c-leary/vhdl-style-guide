@@ -15,7 +15,7 @@ from vsg.token.ieee.std_logic_1164 import types
 
 
 def tag_production(iStart, iEnd, lObjects, sName, verbose=0):
-    """ Tag the first and last token in the token list to indicate
+    """Tag the first and last token in the token list to indicate
     when we enter and leave the specified production rule.
 
     Parameters:
@@ -31,7 +31,7 @@ def tag_production(iStart, iEnd, lObjects, sName, verbose=0):
             using  the module ``__name__`` as `sName`.
 
     """
-    sName = sName.rsplit('.')[-1]  # keep only last element of the module hierarchy
+    sName = sName.rsplit(".")[-1]  # keep only last element of the module hierarchy
     # Tag the starting token
     oToken = lObjects[find_next_non_whitespace_token(iStart, lObjects)]  # skip leading comments and whitespaces to keep them out of the production
     assert not oToken.enter_prod, f"Tried to add a enter_classify name {sName} on Token {oToken} which already has {oToken.enter_prod}"
@@ -42,12 +42,15 @@ def tag_production(iStart, iEnd, lObjects, sName, verbose=0):
         print(f"Tried to add a leave_classify name {sName} on Token {oToken} which already has {oToken.leave_prod}")
     oToken.leave_prod.insert(0, sName)
 
+
 def tagged_production(func):
     def prod(iToken, lObjects):
         iCurrent = func(iToken, lObjects)
         tag_production(iToken, iCurrent, lObjects, func.__module__)
         return iCurrent
+
     return prod
+
 
 def assign_tokens_until(sToken, token, iToken, lObjects):
     iCurrent = iToken

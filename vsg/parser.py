@@ -107,7 +107,7 @@ class item:
         elif issubclass(token, item):
             oReturn = token(self.value)
         else:
-            raise RuntimeError('Invalid replacement token')
+            raise RuntimeError("Invalid replacement token")
         oReturn.indent = self.indent
         oReturn.hierarchy = self.hierarchy
         oReturn.context = self.context

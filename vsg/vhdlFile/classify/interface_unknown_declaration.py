@@ -21,7 +21,6 @@ def detect(iToken, lObjects):
         return classify(iToken, lObjects)
 
 
-
 @utils.tagged_production
 def classify(iToken, lObjects):
     iCurrent = identifier_list.classify_until([":"], iToken, lObjects, token.identifier)

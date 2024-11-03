@@ -442,15 +442,17 @@ def split_on_carriage_return(lObjects):
         lReturn.append(lMyObjects)
     return lReturn
 
+
 def replace_token(iToken, lTokens, new_token, **kwargs):
     lTokens[iToken] = lTokens[iToken].convert_to(new_token)
 
     # Update  attributes of new token with values specified in kwargs
-    for key,value in kwargs.items():
+    for key, value in kwargs.items():
         setattr(lTokens[iToken], key, value)
 
+
 def replace_token_if_adjacent_tokens_in_list(iToken, lTokens, token_list, token_in_list, token_not_in_list):
-    """ Replace token at ``lTokens[iToken]`` with token ``token_in_list`` if the previous and optionally the next token matches any of the tokens in ``token_list``,
+    """Replace token at ``lTokens[iToken]`` with token ``token_in_list`` if the previous and optionally the next token matches any of the tokens in ``token_list``,
     otherwise replace it with ``token_not_in_list``.
 
     If an element in ``token_list`` is a token type, a match is obtained if that token precede the target token.
@@ -460,14 +462,18 @@ def replace_token_if_adjacent_tokens_in_list(iToken, lTokens, token_list, token_
     """
     for token in token_list:
         if isinstance(token, tuple):
-            match = (utils.are_previous_consecutive_token_types_ignoring_whitespace([token[0]], iToken - 1, lTokens) and
-                     utils.are_next_consecutive_token_types_ignoring_whitespace([token[1]], iToken + 1, lTokens))
+            match = utils.are_previous_consecutive_token_types_ignoring_whitespace(
+                [token[0]],
+                iToken - 1,
+                lTokens,
+            ) and utils.are_next_consecutive_token_types_ignoring_whitespace([token[1]], iToken + 1, lTokens)
         else:
             match = utils.are_previous_consecutive_token_types_ignoring_whitespace([token], iToken - 1, lTokens)
         if match:
             replace_token(iToken, lTokens, token_in_list)
             return
     replace_token(iToken, lTokens, token_not_in_list)
+
 
 def post_token_assignments(lTokens):
     oCodeTags = code_tags.New()
@@ -492,19 +498,23 @@ def post_token_assignments(lTokens):
             if sValue == "&":
                 replace_token(iToken, lTokens, adding_operator.concat())
 
-            elif sValue  == "+":
+            elif sValue == "+":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, parser.keyword, parser.assignment, parser.comma, choices.bar),
                     sign.plus(),
-                    adding_operator.plus())
+                    adding_operator.plus(),
+                )
 
-            elif sValue  == "-":
+            elif sValue == "-":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, parser.keyword, parser.assignment, parser.comma, choices.bar),
                     sign.minus(),
-                    adding_operator.minus())
+                    adding_operator.minus(),
+                )
 
             elif sValue == "(":
                 iParenId += 1
@@ -525,45 +535,57 @@ def post_token_assignments(lTokens):
 
             elif sLowerValue == "and":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, parser.assignment, parser.comma, logical_operator.logical_operator, (parser.keyword, parser.open_parenthesis)),
                     unary_logical_operator.and_operator(sValue),
-                    logical_operator.and_operator(sValue))
+                    logical_operator.and_operator(sValue),
+                )
 
             elif sLowerValue == "or":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, parser.assignment, parser.comma, logical_operator.logical_operator, (parser.keyword, parser.open_parenthesis)),
                     unary_logical_operator.or_operator(sValue),
-                    logical_operator.or_operator(sValue))
+                    logical_operator.or_operator(sValue),
+                )
 
             elif sLowerValue == "nand":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, parser.assignment, parser.comma, logical_operator.logical_operator, (parser.keyword, parser.open_parenthesis)),
                     unary_logical_operator.nand_operator(sValue),
-                    logical_operator.nand_operator(sValue))
+                    logical_operator.nand_operator(sValue),
+                )
 
             elif sLowerValue == "nor":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, parser.assignment, parser.comma, logical_operator.logical_operator, (parser.keyword, parser.open_parenthesis)),
                     unary_logical_operator.nor_operator(sValue),
-                    logical_operator.nor_operator(sValue))
+                    logical_operator.nor_operator(sValue),
+                )
 
             elif sLowerValue == "xor":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, parser.assignment, parser.comma, logical_operator.logical_operator, (parser.keyword, parser.open_parenthesis)),
                     unary_logical_operator.xor_operator(sValue),
-                    logical_operator.xor_operator(sValue))
+                    logical_operator.xor_operator(sValue),
+                )
 
             elif sLowerValue == "xnor":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, parser.assignment, parser.comma, logical_operator.logical_operator, (parser.keyword, parser.open_parenthesis)),
                     unary_logical_operator.xnor_operator(sValue),
-                    logical_operator.xnor_operator(sValue))
+                    logical_operator.xnor_operator(sValue),
+                )
 
             elif sLowerValue == "**":
                 replace_token(iToken, lTokens, miscellaneous_operator.double_star(sValue))
@@ -607,18 +629,22 @@ def post_token_assignments(lTokens):
                 replace_token(iToken, lTokens, parser.character_literal(sValue))
         else:
             sValue = oToken.get_value()
-            if sValue  == "+":
+            if sValue == "+":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, exponent.e_keyword, parser.keyword),
                     sign.plus(),
-                    adding_operator.plus())
-            elif sValue  == "-":
+                    adding_operator.plus(),
+                )
+            elif sValue == "-":
                 replace_token_if_adjacent_tokens_in_list(
-                    iToken, lTokens,
+                    iToken,
+                    lTokens,
                     (parser.open_parenthesis, exponent.e_keyword, parser.keyword),
                     sign.minus(),
-                    adding_operator.minus())
+                    adding_operator.minus(),
+                )
             elif sValue == "*":
                 replace_token(iToken, lTokens, multiplying_operator.star(sValue))
             elif sValue == "/":
@@ -676,10 +702,9 @@ def set_aggregate_tokens(lTokens):
             iIndex = lOpenParens.pop()
             if isinstance(lTokens[iIndex], token.aggregate.open_parenthesis):
                 replace_token(iToken, lTokens, token.aggregate.close_parenthesis(), iId=oToken.iId)
-#        if isinstance(oToken, token.element_association.assignment):
+        #        if isinstance(oToken, token.element_association.assignment):
         if len(lOpenParens) > 0 and (isinstance(oToken, token.element_association.assignment) or type(oToken) == parser.comma):
             replace_token(lOpenParens[-1], lTokens, token.aggregate.open_parenthesis(), iId=lTokens[lOpenParens[-1]].iId)
-
 
 
 def set_todo_tokens(lTokens):
