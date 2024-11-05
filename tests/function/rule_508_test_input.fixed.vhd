@@ -114,6 +114,31 @@ architecture rtl of test is
 
   end function my_func;
 
+  function my_func return integer is
+
+    constant con : integer := PARAM1;
+    variable var : integer := PARAM4;
+
+  begin
+
+    -- PARAM1
+    sig <= PARAM1 + PARAM2;
+    var := PARAM1 + PARAM2;
+    sig <= PARAM1 when true else PARAM2;
+    var := PARAM1 when true else PARAM2;
+    with PARAM5 select PARAM4 :=
+      PARAM1 when 1,
+      PARAM2 when 0,
+      PARAM3 when others;
+    with PARAM4 select PARAM5 <=
+      PARAM1 when 1,
+      PARAM2 when 0,
+      PARAM3 when others;
+
+    return PARAM1;
+
+  end function my_func;
+
 begin
 
 end architecture rtl;
