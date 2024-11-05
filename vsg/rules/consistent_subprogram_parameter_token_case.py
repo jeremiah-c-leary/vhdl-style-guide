@@ -48,9 +48,10 @@ class consistent_subprogram_parameter_token_case(case.Rule):
             lSubprogram = oFile.get_function_subprogram_body()
 
         for oSubprogram in lSubprogram:
-            lSubprogramInterfaces = lInterfaces[oSubprogram.iLine]
-            oToi = extract_all_tokens(oSubprogram)
-            validate_interface_name_in_token_list(self, lSubprogramInterfaces, oToi)
+            if oSubprogram.iLine in lInterfaces.keys():
+                lSubprogramInterfaces = lInterfaces[oSubprogram.iLine]
+                oToi = extract_all_tokens(oSubprogram)
+                validate_interface_name_in_token_list(self, lSubprogramInterfaces, oToi)
 
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
