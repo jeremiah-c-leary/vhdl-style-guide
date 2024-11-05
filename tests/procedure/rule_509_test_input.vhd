@@ -1,7 +1,7 @@
 
 architecture rtl of test is
 
-  procedure my_func (
+  procedure my_proc (
     param1          : in integer;
     variable param2 : out integer;
     constant param3 : in integer;
@@ -12,7 +12,7 @@ architecture rtl of test is
     constant con : integer := PARAM1;
     variable var : integer := PARAM4;
 
-    function my_proc (
+    function my_func (
       PARAM1          : in integer;
       variable PARAM2 : out integer;
       constant PARAM3 : in integer;
@@ -26,7 +26,7 @@ architecture rtl of test is
       end loop;
     end function;
 
-    procedure my_func (
+    procedure my_proc (
       Param1          : in integer;
       variable Param2 : out integer;
       constant Param3 : in integer;
@@ -55,7 +55,7 @@ architecture rtl of test is
 
       return PARAM1;
 
-    end procedure my_func;
+    end procedure my_proc;
 
   begin
 
@@ -73,7 +73,7 @@ architecture rtl of test is
       Param2 when 0,
       Param3 when others;
 
-    return my_func(
+    return my_proc(
       Param1 => Param1,
       Param2 => Param2,
       Param3 => Param3,
@@ -81,9 +81,9 @@ architecture rtl of test is
       Param5 => Param5
     );
 
-  end procedure my_func;
+  end procedure my_proc;
 
-  procedure my_func (
+  procedure my_proc (
     Param1          : in integer;
     variable Param2 : out integer;
     constant Param3 : in integer;
@@ -112,7 +112,32 @@ architecture rtl of test is
 
     return PARAM1;
 
-  end procedure my_func;
+  end procedure my_proc;
+
+  procedure my_proc is
+
+    constant con : integer := PARAM1;
+    variable var : integer := PARAM4;
+
+  begin
+
+    -- PARAM1
+    sig <= PARAM1 + PARAM2;
+    var := PARAM1 + PARAM2;
+    sig <= PARAM1 when true else PARAM2;
+    var := PARAM1 when true else PARAM2;
+    with PARAM5 select PARAM4 :=
+      PARAM1 when 1,
+      PARAM2 when 0,
+      PARAM3 when others;
+    with PARAM4 select PARAM5 <=
+      PARAM1 when 1,
+      PARAM2 when 0,
+      PARAM3 when others;
+
+    return PARAM1;
+
+  end procedure my_proc;
 
 begin
 
