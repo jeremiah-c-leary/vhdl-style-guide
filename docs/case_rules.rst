@@ -290,7 +290,7 @@ This rule checks for code after the **=>** operator.
 case_013
 ########
 
-This rule has been superseded by `null_statement_300 <null_statement_rules.html#null-statement-300>`_
+This rule has been superseded by `null_statement_300 <null_statement_rules.html#null-statement-300>`_.
 
 case_014
 ########
