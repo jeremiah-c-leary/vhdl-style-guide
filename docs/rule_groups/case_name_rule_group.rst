@@ -25,7 +25,6 @@ Rules Enforcing Case::Name Rule Group
 * `function_017 <../function_rules.html#function-017>`_
 * `function_506 <../function_rules.html#function-506>`_
 * `function_507 <../function_rules.html#function-507>`_
-* `function_508 <../function_rules.html#function-508>`_
 * `generic_007 <../generic_rules.html#generic-007>`_
 * `generic_map_002 <../generic_map_rules.html#generic-map-002>`_
 * `instantiation_009 <../instantiation_rules.html#instantiation-009>`_
@@ -41,7 +40,6 @@ Rules Enforcing Case::Name Rule Group
 * `procedure_501 <../procedure_rules.html#procedure-501>`_
 * `procedure_506 <../procedure_rules.html#procedure-506>`_
 * `procedure_508 <../procedure_rules.html#procedure-508>`_
-* `procedure_509 <../procedure_rules.html#procedure-509>`_
 * `procedure_call_502 <../procedure_call_rules.html#procedure-call-502>`_
 * `signal_004 <../signal_rules.html#signal-004>`_
 * `subtype_501 <../subtype_rules.html#subtype-501>`_

@@ -103,7 +103,6 @@ Rules Enforcing Case Rule Group
 * `function_502 <../function_rules.html#function-502>`_
 * `function_506 <../function_rules.html#function-506>`_
 * `function_507 <../function_rules.html#function-507>`_
-* `function_508 <../function_rules.html#function-508>`_
 * `function_509 <../function_rules.html#function-509>`_
 * `function_510 <../function_rules.html#function-510>`_
 * `function_511 <../function_rules.html#function-511>`_
@@ -182,7 +181,6 @@ Rules Enforcing Case Rule Group
 * `procedure_506 <../procedure_rules.html#procedure-506>`_
 * `procedure_507 <../procedure_rules.html#procedure-507>`_
 * `procedure_508 <../procedure_rules.html#procedure-508>`_
-* `procedure_509 <../procedure_rules.html#procedure-509>`_
 * `procedure_510 <../procedure_rules.html#procedure-510>`_
 * `procedure_511 <../procedure_rules.html#procedure-511>`_
 * `procedure_call_500 <../procedure_call_rules.html#procedure-call-500>`_
