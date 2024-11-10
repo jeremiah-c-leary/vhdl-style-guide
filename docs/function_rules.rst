@@ -583,6 +583,33 @@ This rule checks the function designator has proper case on the end function dec
 
    end function overflow;
 
+function_507
+############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks that the parameter names have proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  function my_func (
+    PARAM1 : in integer;
+    PaRaM2 : out integer
+  ) return integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  function my_func (
+    param1 : in integer;
+    param2 : out integer
+  ) return integer;
+
 function_509
 ############
 

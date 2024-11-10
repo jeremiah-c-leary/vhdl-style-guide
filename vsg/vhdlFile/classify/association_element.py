@@ -12,7 +12,7 @@ def detect(iCurrent, lObjects):
 
     An association element will either end in a close parenthesis or a comma that is not within parenthesis.
 
-    accociation_element [)|,]
+    association_element [)|,]
 
     """
     iOpenParenthesis = 0
