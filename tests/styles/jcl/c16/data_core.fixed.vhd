@@ -46,7 +46,7 @@ end entity DATA_CORE;
 
 architecture BEHAVIORAL of DATA_CORE is
 
-  function b8 (A : std_logic) return std_logic_vector is
+  function b8 (a : std_logic) return std_logic_vector is
   begin
 
     return A & A & A & A & A & A & A & A;
