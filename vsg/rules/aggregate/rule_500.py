@@ -12,7 +12,7 @@ oEnd = token.aggregate.close_parenthesis
 
 class rule_500(Rule):
     """
-    This rule checks the *others* keyword has proper case in aggregates.
+    This rule checks the *others* keyword in aggregates has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 

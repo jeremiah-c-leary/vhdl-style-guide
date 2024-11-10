@@ -8,7 +8,7 @@ aggregate_500
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *others* keyword has proper case in aggregates.
+This rule checks the *others* keyword in aggregates has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
