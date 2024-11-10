@@ -34,5 +34,6 @@ from .rule_504 import rule_504
 from .rule_505 import rule_505
 from .rule_506 import rule_506
 from .rule_507 import rule_507
+from .rule_508 import rule_508
 from .rule_510 import rule_510
 from .rule_511 import rule_511
