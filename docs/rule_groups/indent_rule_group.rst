@@ -56,6 +56,8 @@ Rules Enforcing Indent Rule Group
 * `loop_statement_300 <../loop_statement_rules.html#loop-statement-300>`_
 * `loop_statement_301 <../loop_statement_rules.html#loop-statement-301>`_
 * `loop_statement_302 <../loop_statement_rules.html#loop-statement-302>`_
+* `next_statement_300 <../next_statement_rules.html#next-statement-300>`_
+* `null_statement_300 <../null_statement_rules.html#null-statement-300>`_
 * `package_001 <../package_rules.html#package-001>`_
 * `package_015 <../package_rules.html#package-015>`_
 * `package_body_300 <../package_body_rules.html#package-body-300>`_
@@ -80,6 +82,7 @@ Rules Enforcing Indent Rule Group
 * `record_type_definition_301 <../record_type_definition_rules.html#record-type-definition-301>`_
 * `report_statement_300 <../report_statement_rules.html#report-statement-300>`_
 * `return_statement_300 <../return_statement_rules.html#return-statement-300>`_
+* `return_statement_301 <../return_statement_rules.html#return-statement-301>`_
 * `selected_assignment_300 <../selected_assignment_rules.html#selected-assignment-300>`_
 * `sequential_001 <../sequential_rules.html#sequential-001>`_
 * `signal_001 <../signal_rules.html#signal-001>`_

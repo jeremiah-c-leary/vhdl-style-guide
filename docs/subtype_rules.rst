@@ -99,6 +99,47 @@ The default new subtype prefix is *st_*.
 
    subtype st_my_subtype is range 0 to 9;
 
+subtype_005
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks the identifier is on the same line as the **subtype** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype
+   st_counter is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype st_counter
+   is
+
+subtype_006
+###########
+
+|phase_1| |error| |structure|
+
+This rule checks the **is** keyword is on the same line as the identifier.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype st_counter
+   is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype st_counter is
+
 subtype_100
 ###########
 
@@ -119,6 +160,122 @@ This rule checks for a single space before the identifier.
 .. code-block:: vhdl
 
    subtype my_subtype is range 0 to 9;
+
+subtype_101
+###########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **is** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype counter    is unsigned(4 downto 0);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype counter is unsigned(4 downto 0);
+
+subtype_102
+###########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **is** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype counter is     unsigned(4 downto 0);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype counter is unsigned(4 downto 0);
+
+subtype_200
+###########
+
+|phase_3| |disabled| |error| |blank_line|
+
+This rule checks for a blank line below a **subtype** declaration unless there is another **subtype** declaration.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype counter_t is unsigned(4 downto 0);
+   subtype counter is unsigned(4 downto 0);
+   constant width : integer := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype counter_t is unsigned(4 downto 0);
+   subtype counter is unsigned(4 downto 0);
+
+   constant width : integer := 32;
+
+subtype_201
+###########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines or comments above the **subtype** declaration.
+
+|configuring_previous_line_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal wr_en : std_logic;
+   subtype counter is unsigned(4 downto 0);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal wr_en : std_logic;
+
+   subtype counter is unsigned(4 downto 0);
+
+subtype_202
+###########
+
+|phase_3| |error| |blank_line|
+
+This rule checks for a blank line below the **subtype** declaration.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   subtype counter is unsigned(4 downto 0);
+   signal sm : state_machine;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   subtype counter is unsigned(4 downto 0);
+
+   signal sm : state_machine;
 
 subtype_500
 ###########

@@ -52,6 +52,8 @@ The rules are divided into categories depending on the part of the VHDL code bei
    library_rules.rst
    logical_operator_rules.rst
    loop_statement_rules.rst
+   next_statement_rules.rst
+   null_statement_rules.rst
    package_rules.rst
    package_body_rules.rst
    port_rules.rst

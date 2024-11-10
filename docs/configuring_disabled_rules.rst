@@ -91,6 +91,7 @@ Rules Disabled by Default
 * `subtype_002 <subtype_rules.html#subtype-002>`_
 * `subtype_004 <subtype_rules.html#subtype-004>`_
 * `subtype_100 <subtype_rules.html#subtype-100>`_
+* `subtype_200 <subtype_rules.html#subtype-200>`_
 * `subtype_600 <subtype_rules.html#subtype-600>`_
 * `type_014 <type_rules.html#type-014>`_
 * `type_015 <type_rules.html#type-015>`_
