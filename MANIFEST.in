@@ -19,6 +19,7 @@ recursive-include docs *.gif
 recursive-include docs *.png
 recursive-include docs *.rst
 recursive-include docs *.svg
+recursive-include docs *.csv
 recursive-include tests *.json
 recursive-include tests *.py
 recursive-include tests *.rst
