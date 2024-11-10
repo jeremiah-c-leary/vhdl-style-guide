@@ -1,37 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg.rules import token_indent
-
-lTokens = []
-lTokens.append(token.null_statement.label)
-lTokens.append(token.null_statement.null_keyword)
+from vsg import deprecated_rule
 
 
-class rule_013(token_indent):
+class rule_013(deprecated_rule.Rule):
     """
-    This rule checks the indent of the **null** keyword.
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-         when others =>
-            null;
-
-         when others =>
-       null;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       when others =>
-         null;
-
-       when others =>
-         null;
+    This rule has been superseded by `null_statement_300 <null_statement_rules.html#null-statement-300>`_
     """
 
     def __init__(self):
-        super().__init__(lTokens)
+        super().__init__()
+        self.message.append("Rule " + self.unique_id + " has been superseded by null_statement_300.")
