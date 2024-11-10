@@ -1,0 +1,141 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+3 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+4 |   port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+5 |     port1 : in std_logic;
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+6 |     port1 : out std_logic;
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+7 |     port1 : inout std_logic bus;
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+8 |     port1 : buffer std_logic bus := "asdf";
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.buffer_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+9 |     port1 : linkage std_logic := "asdf";
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.mode.linkage_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+10 |     port1 : std_logic
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+--------------------------------------------------------------------------------
+11 |   );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+12 | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+13 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 | entity FIFO is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+15 |   port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+16 |     signal port1 : in std_logic;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+17 |     signal port1 : out std_logic;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+18 |     signal port1 : inout std_logic;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.inout_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+19 |     signal port1 : buffer std_logic;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.buffer_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+20 |     signal port1 : linkage std_logic;
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.mode.linkage_keyword'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.interface_list.semicolon'>
+--------------------------------------------------------------------------------
+21 |     signal port1 : std_logic
+<class 'vsg.token.interface_signal_declaration.signal_keyword'>
+<class 'vsg.token.interface_signal_declaration.identifier'>
+<class 'vsg.token.interface_signal_declaration.colon'>
+<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+--------------------------------------------------------------------------------
+22 |   );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+23 | end entity FIFO;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
