@@ -21,7 +21,7 @@ It will not stop if a violation has occurred.
 
 This option can be useful when integrating VSG into an editor that supports linters.
 It is important to note there are dependencies between some rules.
-If violations for a later phase are fixed before violations on an earlier phase, it could lead to reoccurances of violations until the correct order is followed.
+If violations for a later phase are fixed before violations on an earlier phase, it could lead to reoccurrences of violations until the correct order is followed.
 
 --json
 ######
