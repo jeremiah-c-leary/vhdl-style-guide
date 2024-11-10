@@ -338,7 +338,6 @@ indent:
             semicolon:
                 token : current
                 after : '-1'
-
         null_statement:
             label:
                 token : current
@@ -437,6 +436,9 @@ indent:
                 token : current
                 after : '-1'
         return_statement:
+            label:
+                token : current
+                after : current
             return_keyword:
                 token : current
                 after : '+1'
