@@ -255,7 +255,7 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
     return False
 
 
-def find_earliest_occurance(lEnd, iToken, lObjects):
+def find_earliest_occurrence(lEnd, iToken, lObjects):
     iEarliest = len(lObjects)
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
@@ -266,7 +266,7 @@ def find_earliest_occurance(lEnd, iToken, lObjects):
     return sEarliest
 
 
-def find_earliest_occurance_not_in_paren(lEnd, iToken, lObjects):
+def find_earliest_occurrence_not_in_paren(lEnd, iToken, lObjects):
     iEarliest = len(lObjects)
     iParen = 0
     for sEnd in lEnd:

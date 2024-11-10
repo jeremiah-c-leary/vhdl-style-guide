@@ -293,3 +293,31 @@ This rule checks the **postponed** keyword has proper case.
 .. code-block:: vhdl
 
    postponed WR_EN(parameter)
+
+procedure_call_502
+##################
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks that the parameter names have proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+
+  my_proc (
+    PARAM1 => MY_PARAM1,
+    PaRaM2 => MY_PARAM2
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  my_proc (
+    param1 => MY_PARAM1,
+    param2 => MY_PARAM2
+  );
