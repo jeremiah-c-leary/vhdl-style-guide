@@ -154,6 +154,8 @@ from vsg.rules import pragma
 from vsg.rules import procedure
 from vsg.rules import procedure_call
 from vsg.rules import process
+from vsg.rules import protected_type
+from vsg.rules import protected_type_body
 from vsg.rules import ranges
 from vsg.rules import record_type_definition
 from vsg.rules import report_statement
