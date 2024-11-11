@@ -16,7 +16,6 @@ Rules Enforcing Indent Rule Group
 * `block_301 <../block_rules.html#block-301>`_
 * `block_302 <../block_rules.html#block-302>`_
 * `case_001 <../case_rules.html#case-001>`_
-* `case_013 <../case_rules.html#case-013>`_
 * `comment_010 <../comment_rules.html#comment-010>`_
 * `component_001 <../component_rules.html#component-001>`_
 * `component_009 <../component_rules.html#component-009>`_
