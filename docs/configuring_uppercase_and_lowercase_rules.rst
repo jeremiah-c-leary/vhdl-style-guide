@@ -449,6 +449,16 @@ Rules Enforcing Case
 * `process_017 <process_rules.html#process-017>`_
 * `process_019 <process_rules.html#process-019>`_
 
+* `protected_type_500 <protected_type_rules.html#protected-type-500>`_
+* `protected_type_501 <protected_type_rules.html#protected-type-501>`_
+* `protected_type_502 <protected_type_rules.html#protected-type-502>`_
+* `protected_type_body_500 <protected_type_rules.html#protected-type-body-500>`_
+
+* `protected_type_body_501 <protected_type_rules.html#protected-type-body-501>`_
+* `protected_type_body_502 <protected_type_rules.html#protected-type-body-502>`_
+* `protected_type_body_503 <protected_type_rules.html#protected-type-body-503>`_
+* `protected_type_body_504 <protected_type_rules.html#protected-type-body-504>`_
+
 * `range_001 <range_rules.html#range-001>`_
 * `range_002 <range_rules.html#range-002>`_
 
