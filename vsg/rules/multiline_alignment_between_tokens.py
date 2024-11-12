@@ -578,4 +578,7 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
 
 
 def toi_is_an_array(oToi):
-    return utils.are_next_consecutive_tokens_ignoring_whitespace(["<=", "("], 0, oToi.get_tokens())
+    for sAssignmentToken in ["<=", ":="]:
+        if utils.are_next_consecutive_tokens_ignoring_whitespace([sAssignmentToken, "("], 0, oToi.get_tokens()):
+            return True
+    return False
