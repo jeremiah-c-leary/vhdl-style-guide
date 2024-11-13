@@ -218,6 +218,10 @@ Rules Enforcing Whitespace
 * `package_009 <package_rules.html#package-009>`_
 * `package_body_100 <package_body_rules.html#package-body-100>`_
 * `package_body_101 <package_body_rules.html#package-body-101>`_
+* `package_instantiation_100 <package_instantiation_rules.html#package-instantiation-100>`_
+* `package_instantiation_101 <package_instantiation_rules.html#package-instantiation-101>`_
+* `package_instantiation_102 <package_instantiation_rules.html#package-instantiation-102>`_
+* `package_instantiation_103 <package_instantiation_rules.html#package-instantiation-103>`_
 * `port_003 <port_rules.html#port-003>`_
 * `port_020 <port_rules.html#port-020>`_
 * `port_100 <port_rules.html#port-100>`_
