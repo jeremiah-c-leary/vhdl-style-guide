@@ -359,6 +359,10 @@ indent:
             end_keyword:
                 token : '-1'
                 after : '-1'
+        package_instantiation_declaration:
+            package_keyword:
+                token : current
+                after : current
         port_clause:
             port_keyword:
                 token : current
