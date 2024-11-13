@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
+from vsg.token import package_instantiation_declaration as token
 from vsg.rules import previous_line
 
 lTokens = []
-lTokens.append(token.package_instantiation_declaration.package_keyword)
+lTokens.append(token.package_keyword)
 
 
 class rule_200(previous_line):
