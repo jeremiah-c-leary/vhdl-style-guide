@@ -173,6 +173,8 @@ class testMain(unittest.TestCase):
         lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        package_declaration:"))
         lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("        package_instantiation_declaration:"))
+        lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        port_clause:"))
         lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        port_map_aspect:"))
