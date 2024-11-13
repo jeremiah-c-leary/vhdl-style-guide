@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.token import package_instantiation_declaration as token
 from vsg.rules import move_token_next_to_another_token
+from vsg.token import package_instantiation_declaration as token
 
 
 class rule_003(move_token_next_to_another_token):
