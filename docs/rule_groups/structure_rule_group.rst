@@ -80,6 +80,7 @@ Rules Enforcing Structure Rule Group
 * `generic_map_004 <../generic_map_rules.html#generic-map-004>`_
 * `generic_map_005 <../generic_map_rules.html#generic-map-005>`_
 * `generic_map_008 <../generic_map_rules.html#generic-map-008>`_
+* `generic_map_009 <../generic_map_rules.html#generic-map-009>`_
 * `if_002 <../if_rules.html#if-002>`_
 * `if_020 <../if_rules.html#if-020>`_
 * `if_021 <../if_rules.html#if-021>`_
@@ -122,6 +123,7 @@ Rules Enforcing Structure Rule Group
 * `port_map_008 <../port_map_rules.html#port-map-008>`_
 * `port_map_009 <../port_map_rules.html#port-map-009>`_
 * `port_map_010 <../port_map_rules.html#port-map-010>`_
+* `port_map_011 <../port_map_rules.html#port-map-011>`_
 * `procedure_012 <../procedure_rules.html#procedure-012>`_
 * `procedure_013 <../procedure_rules.html#procedure-013>`_
 * `procedure_014 <../procedure_rules.html#procedure-014>`_
