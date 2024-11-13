@@ -110,6 +110,6 @@ def print_violations(dRunInfo):
     else:
         return ""
 
+
 def get_longest_violation_rule_name(lViolations):
     return max([len(d["rule"]) for d in lViolations])
-
