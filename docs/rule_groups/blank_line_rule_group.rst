@@ -64,6 +64,7 @@ Rules Enforcing Blank Line Rule Group
 * `package_body_202 <../package_body_rules.html#package-body-202>`_
 * `package_body_203 <../package_body_rules.html#package-body-203>`_
 * `package_instantiation_200 <../package_instantiation_rules.html#package-instantiation-200>`_
+* `package_instantiation_201 <../package_instantiation_rules.html#package-instantiation-201>`_
 * `port_001 <../port_rules.html#port-001>`_
 * `port_022 <../port_rules.html#port-022>`_
 * `port_024 <../port_rules.html#port-024>`_
