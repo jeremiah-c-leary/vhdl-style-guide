@@ -38,24 +38,24 @@ def print_phase_information(iPhaseNumber):
     return "Phase " + str(iPhaseNumber) + " of 7... Reporting\n"
 
 
-def print_divider():
+def print_divider(iRuleColumnWidth):
     """
     Prints a divider that matches the column divisions in the violations.
     """
-    return "-" * 28 + "+" + "-" * 12 + "+" + "-" * 12 + "+" + "-" * 38 + "\n"
+    return "-" * iRuleColumnWidth + "+" + "-" * 12 + "+" + "-" * 12 + "+" + "-" * 38 + "\n"
 
 
-def print_violation_header():
-    top_divider = print_divider()
+def print_violation_header(iMaxRuleNameLength):
+    top_divider = print_divider(iMaxRuleNameLength + 3)
     sOutputString = "  "
-    sOutputString += "Rule".ljust(25)
+    sOutputString += "Rule".ljust(iMaxRuleNameLength)
     sOutputString += " | "
     sOutputString += "severity".center(10)
     sOutputString += " | "
     sOutputString += "line(s)".center(10)
     sOutputString += " | "
     sOutputString += "Solution\n"
-    bottom_divider = print_divider()
+    bottom_divider = print_divider(iMaxRuleNameLength + 3)
     return top_divider + sOutputString + bottom_divider
 
 
@@ -89,10 +89,11 @@ def print_violations(dRunInfo):
     Returns: Nothing
     """
     if dRunInfo["total_violations"] > 0:
-        sOutputString = print_violation_header()
+        iMaxRuleNameLength = get_longest_violation_rule_name(dRunInfo["violations"])
+        sOutputString = print_violation_header(iMaxRuleNameLength)
         for dViolation in dRunInfo["violations"]:
             sOutputString += "  "
-            sOutputString += dViolation["rule"].ljust(25)
+            sOutputString += dViolation["rule"].ljust(iMaxRuleNameLength)
             sOutputString += " | "
             sOutputString += dViolation["severity"]["name"].ljust(10)
             sOutputString += " | "
@@ -103,8 +104,12 @@ def print_violations(dRunInfo):
             except TypeError:
                 sOutputString += "None"
             sOutputString += "\n"
-        sOutputString += print_divider()
+        sOutputString += print_divider(iMaxRuleNameLength + 3)
         sOutputString += "NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information."
         return sOutputString
     else:
         return ""
+
+def get_longest_violation_rule_name(lViolations):
+    return max([len(d["rule"]) for d in lViolations])
+
