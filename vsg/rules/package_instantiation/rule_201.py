@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.token import package_instantiation_declaration as token
 from vsg.rules import blank_line_below_line_ending_with_token
+from vsg.token import package_instantiation_declaration as token
 
 lTokens = []
 lTokens.append(token.uninstantiated_package_name)
