@@ -21,7 +21,7 @@ class test_port_map_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-11    def test_rule_101(self):
+    def test_rule_101(self):
         oRule = port_map.rule_101()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "port_map")
