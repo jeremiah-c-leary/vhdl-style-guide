@@ -24,4 +24,4 @@ class rule_001(move_token_next_to_another_token):
 
     def __init__(self):
         super().__init__(token.package_instantiation_declaration.package_keyword, token.identifier.identifier)
-        self.solution = 'Ensure the new package identifier is on the same line as the *package* keyword.'
+        self.solution = "Ensure the new package identifier is on the same line as the *package* keyword."

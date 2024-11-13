@@ -24,4 +24,4 @@ class rule_004(move_token_next_to_another_token):
 
     def __init__(self):
         super().__init__(token.new_keyword, token.uninstantiated_package_name)
-        self.solution = 'Ensure the uninstantiated package name is on the same line as the *new* keyword.'
+        self.solution = "Ensure the uninstantiated package name is on the same line as the *new* keyword."

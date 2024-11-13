@@ -24,4 +24,4 @@ class rule_003(move_token_next_to_another_token):
 
     def __init__(self):
         super().__init__(token.is_keyword, token.new_keyword)
-        self.solution = 'Ensure the *new* keyword is on the same line as the *is* keyword.'
+        self.solution = "Ensure the *new* keyword is on the same line as the *is* keyword."
