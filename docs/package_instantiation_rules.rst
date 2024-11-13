@@ -3,6 +3,55 @@
 Package Instantiation Rules
 ---------------------------
 
+package_instantiation_200
+#########################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines or comments above the **package** keyword.
+
+|configuring_previous_line_rules_link|
+
+The default style is :code:`no_code`.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   library ieee;
+   package my_pkg is new my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   library ieee;
+
+   package my_pkg is new my_generic_pkg
+
+package_instantiation_300
+#########################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the package declaration.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   library ieee;
+
+     package my_pkg is new my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   library ieee;
+
+   package my_pkg is new my_generic_pkg
+
 package_instantiation_500
 #########################
 
