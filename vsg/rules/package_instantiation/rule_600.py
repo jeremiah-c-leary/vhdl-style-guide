@@ -33,4 +33,3 @@ class rule_600(token_suffix_between_tokens):
     def __init__(self):
         super().__init__(lTokens, oStart, oEnd)
         self.suffixes = ["_pkg"]
-        self.solution = "Instantiated package identifier"
