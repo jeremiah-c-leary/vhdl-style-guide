@@ -9,6 +9,7 @@ lTokens.append(token.identifier.identifier)
 oStart = token.package_instantiation_declaration.package_keyword
 oEnd = token.package_instantiation_declaration.is_keyword
 
+
 class rule_600(token_suffix_between_tokens):
     """
     This rule checks for valid suffixes on package identifiers.
