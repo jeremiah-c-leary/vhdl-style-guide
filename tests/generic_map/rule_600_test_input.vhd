@@ -60,6 +60,12 @@ begin
       PORT_3 => w_port_3
     );
 
+  U_INST2 : INST2
+  generic map (
+    GEN_1_W(W_GEN_1) => 3,
+    GEN_2_G(W_GEN_1) => 10
+  );
+
   my_block : block is
     generic (
       g_test : BOOLEAN
