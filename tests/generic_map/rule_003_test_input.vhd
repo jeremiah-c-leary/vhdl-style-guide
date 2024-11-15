@@ -119,4 +119,3 @@ package my_pkg_g is new my_pkg
   (
     g_test => c_test
   );
-
