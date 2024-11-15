@@ -77,7 +77,6 @@ package my_pkg_g is new my_pkg
     g_test => c_test
   );
 
-
 architecture ARCH of ENTITY1 is
 
   function my_func is new my_func
@@ -115,4 +114,3 @@ package my_pkg_g is new my_pkg
   generic map (
     g_test => c_test
   );
-
