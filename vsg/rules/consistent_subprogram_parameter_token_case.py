@@ -2,6 +2,7 @@
 
 from vsg import token, violation
 from vsg.rule_group import case
+from vsg.vhdlFile import utils
 
 lTokens = []
 lTokens.append(token.interface_unknown_declaration.identifier)
@@ -50,7 +51,7 @@ class consistent_subprogram_parameter_token_case(case.Rule):
         for oSubprogram in lSubprogram:
             if oSubprogram.iLine in lInterfaces.keys():
                 lSubprogramInterfaces = lInterfaces[oSubprogram.iLine]
-                oToi = extract_all_tokens(oSubprogram)
+                oToi = extract_tokens(oSubprogram)
                 validate_interface_name_in_token_list(self, lSubprogramInterfaces, oToi)
 
     def _fix_violation(self, oViolation):
@@ -67,18 +68,50 @@ def no_interfaces_detected(lInterfaces):
 
 
 def validate_interface_name_in_token_list(self, lMyInterfaces, oToi):
+    # if subprogram start, nesting level +1
+    # if token name matches any subprograms and is right type of token, then add it to oToi
+    # get_tokens_matching as template
+    # lReturn.append(tokens.New(iIndex, iLine, [lAllTokens[iIndex]]))
+
     lMyInterfacesLower = []
     dInterfaceMap = {}
     for sInterfaceName in lMyInterfaces:
         lMyInterfacesLower.append(sInterfaceName.lower())
         dInterfaceMap[sInterfaceName.lower()] = sInterfaceName
 
+    iSubprogramNestingLevel = 0
+    dHiddenInterfaces = {}
+
     lTokens = oToi.get_tokens()
     for iToken, oToken in enumerate(lTokens):
-        sToken = oToken.get_value()
-        if interface_case_mismatch(sToken, lMyInterfaces, lMyInterfacesLower):
-            oViolation = create_violation(sToken, iToken, dInterfaceMap, oToi)
-            self.add_violation(oViolation)
+        oTokenClass = oToken.__class__
+        if oTokenClass in [token.procedure_specification.procedure_keyword, token.function_specification.function_keyword]:
+            iSubprogramNestingLevel += 1
+        elif oTokenClass is token.subprogram_body.end_keyword:
+            dHiddenInterfaces = {t:n for t,n in dHiddenInterfaces.items() if n != iSubprogramNestingLevel}
+            iSubprogramNestingLevel -= 1
+        elif oTokenClass in [
+            token.interface_unknown_declaration.identifier,
+            token.interface_constant_declaration.identifier,
+            token.interface_variable_declaration.identifier,
+            token.interface_signal_declaration.identifier,
+            token.interface_file_declaration.identifier,
+            token.interface_file_declaration.identifier,
+            token.constant_declaration.identifier,
+            token.variable_declaration.identifier,
+            token.signal_declaration.identifier,
+            token.file_declaration.identifier,
+        ]:
+            sToken = oToken.get_value()
+            if sToken.lower() in lMyInterfacesLower and sToken.lower() not in dHiddenInterfaces.keys():
+                dHiddenInterfaces[sToken.lower()] = iSubprogramNestingLevel
+        else:
+            sToken = oToken.get_value()
+            if sToken.lower() in lMyInterfacesLower and sToken.lower() not in dHiddenInterfaces.keys():
+                sToken = oToken.get_value()
+                if interface_case_mismatch(sToken, lMyInterfaces, lMyInterfacesLower):
+                    oViolation = create_violation(sToken, iToken, dInterfaceMap, oToi)
+                    self.add_violation(oViolation)
 
 
 def create_violation(sToken, iToken, dInterfaceMap, oToi):
@@ -97,8 +130,11 @@ def interface_case_mismatch(sToken, lInterfaces, lInterfacesLower):
     return False
 
 
-def extract_all_tokens(oSubprogram):
+def extract_tokens(oSubprogram):
+    lTokens = oSubprogram.get_tokens()
     iStart = 0
+    while not utils.does_token_type_match(lTokens[iStart], token.subprogram_body.is_keyword):
+        iStart +=1
     iEnd = len(oSubprogram.get_tokens())
     return oSubprogram.extract_tokens(iStart, iEnd)
 
