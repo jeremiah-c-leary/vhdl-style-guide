@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token, violation
+from vsg import token, parser, violation
 from vsg.rule_group import case
 from vsg.vhdlFile import utils
 
@@ -88,7 +88,7 @@ def validate_interface_name_in_token_list(self, lMyInterfaces, oToi):
         if oTokenClass in [token.procedure_specification.procedure_keyword, token.function_specification.function_keyword]:
             iSubprogramNestingLevel += 1
         elif oTokenClass is token.subprogram_body.end_keyword:
-            dHiddenInterfaces = {t:n for t,n in dHiddenInterfaces.items() if n != iSubprogramNestingLevel}
+            dHiddenInterfaces = {t: n for t, n in dHiddenInterfaces.items() if n != iSubprogramNestingLevel}
             iSubprogramNestingLevel -= 1
         elif oTokenClass in [
             token.interface_unknown_declaration.identifier,
@@ -105,10 +105,23 @@ def validate_interface_name_in_token_list(self, lMyInterfaces, oToi):
             sToken = oToken.get_value()
             if sToken.lower() in lMyInterfacesLower and sToken.lower() not in dHiddenInterfaces.keys():
                 dHiddenInterfaces[sToken.lower()] = iSubprogramNestingLevel
-        else:
+        elif oTokenClass in [
+            parser.todo,
+            token.todo.name,
+            token.concurrent_conditional_signal_assignment.target,
+            token.selected_variable_assignment.target,
+            token.concurrent_selected_signal_assignment.target,
+            token.concurrent_simple_signal_assignment.target,
+            token.conditional_waveform_assignment.target,
+            token.association_element.actual_part,
+            token.selected_waveform_assignment.target,
+            token.selected_force_assignment.target,
+            token.simple_waveform_assignment.target,
+            token.simple_force_assignment.target,
+            token.simple_release_assignment.target,
+        ]:
             sToken = oToken.get_value()
             if sToken.lower() in lMyInterfacesLower and sToken.lower() not in dHiddenInterfaces.keys():
-                sToken = oToken.get_value()
                 if interface_case_mismatch(sToken, lMyInterfaces, lMyInterfacesLower):
                     oViolation = create_violation(sToken, iToken, dInterfaceMap, oToi)
                     self.add_violation(oViolation)
@@ -134,7 +147,7 @@ def extract_tokens(oSubprogram):
     lTokens = oSubprogram.get_tokens()
     iStart = 0
     while not utils.does_token_type_match(lTokens[iStart], token.subprogram_body.is_keyword):
-        iStart +=1
+        iStart += 1
     iEnd = len(oSubprogram.get_tokens())
     return oSubprogram.extract_tokens(iStart, iEnd)
 
