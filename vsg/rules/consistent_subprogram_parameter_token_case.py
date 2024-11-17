@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token, parser, violation
+from vsg import parser, token, violation
 from vsg.rule_group import case
 from vsg.vhdlFile import utils
 
