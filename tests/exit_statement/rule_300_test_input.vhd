@@ -8,9 +8,7 @@ begin
 
       exit;
 
-    exit_label : exit;
-
- exit_label : exit;
+  exit;
 
   end process;
 

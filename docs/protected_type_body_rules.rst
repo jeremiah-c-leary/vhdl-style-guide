@@ -3,6 +3,27 @@
 Protected Type Body Rules
 -------------------------
 
+protected_type_body_300
+#######################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the end protected type body declaration.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type flag_pt is protected body
+        end protected body;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type flag_pt is protected body
+   end protected body;
+
 protected_type_body_400
 #######################
 
