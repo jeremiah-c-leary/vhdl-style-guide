@@ -16,6 +16,7 @@ Rules Enforcing Indent Rule Group
 * `block_301 <../block_rules.html#block-301>`_
 * `block_302 <../block_rules.html#block-302>`_
 * `case_001 <../case_rules.html#case-001>`_
+* `case_300 <../case_rules.html#case-300>`_
 * `comment_010 <../comment_rules.html#comment-010>`_
 * `component_001 <../component_rules.html#component-001>`_
 * `component_009 <../component_rules.html#component-009>`_
@@ -28,6 +29,7 @@ Rules Enforcing Indent Rule Group
 * `entity_009 <../entity_rules.html#entity-009>`_
 * `entity_300 <../entity_rules.html#entity-300>`_
 * `exit_statement_300 <../exit_statement_rules.html#exit-statement-300>`_
+* `exit_statement_301 <../exit_statement_rules.html#exit-statement-301>`_
 * `file_001 <../file_rules.html#file-001>`_
 * `function_001 <../function_rules.html#function-001>`_
 * `function_008 <../function_rules.html#function-008>`_
@@ -56,7 +58,9 @@ Rules Enforcing Indent Rule Group
 * `loop_statement_301 <../loop_statement_rules.html#loop-statement-301>`_
 * `loop_statement_302 <../loop_statement_rules.html#loop-statement-302>`_
 * `next_statement_300 <../next_statement_rules.html#next-statement-300>`_
+* `next_statement_301 <../next_statement_rules.html#next-statement-301>`_
 * `null_statement_300 <../null_statement_rules.html#null-statement-300>`_
+* `null_statement_301 <../null_statement_rules.html#null-statement-301>`_
 * `package_001 <../package_rules.html#package-001>`_
 * `package_015 <../package_rules.html#package-015>`_
 * `package_body_300 <../package_body_rules.html#package-body-300>`_
@@ -93,3 +97,4 @@ Rules Enforcing Indent Rule Group
 * `variable_001 <../variable_rules.html#variable-001>`_
 * `variable_assignment_001 <../variable_assignment_rules.html#variable-assignment-001>`_
 * `wait_001 <../wait_rules.html#wait-001>`_
+* `wait_300 <../wait_rules.html#wait-300>`_

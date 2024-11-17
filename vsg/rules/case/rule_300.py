@@ -4,28 +4,27 @@ from vsg import token
 from vsg.rules import token_indent
 
 lTokens = []
-lTokens.append(token.exit_statement.exit_keyword)
+lTokens.append(token.case_statement.case_label)
 
 
 class rule_300(token_indent):
     """
-    This rule checks the indent of the **exit** keyword.
-
+    This rule checks the indentation of the label.
     **Violation**
 
     .. code-block:: vhdl
 
-       end if;
+       case_label : case data is
 
-         exit;
+      end case;
 
     **Fix**
 
     .. code-block:: vhdl
 
-       end if;
+      case_label : case data is
 
-       exit;
+      end case;
     """
 
     def __init__(self):

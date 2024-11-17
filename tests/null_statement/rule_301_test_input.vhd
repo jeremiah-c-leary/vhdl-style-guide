@@ -5,7 +5,7 @@ architecture RTL of FIFO is
 
     loop
 
-      null;
+      null_label : null;
 
     end loop;
 
@@ -15,8 +15,8 @@ architecture RTL of FIFO is
 
     loop
 
-      null;
-      null;
+  null_label : null;
+            null_label : null;
 
     end loop;
 

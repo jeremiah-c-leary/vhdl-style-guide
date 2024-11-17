@@ -4,12 +4,12 @@ from vsg import token
 from vsg.rules import token_indent
 
 lTokens = []
-lTokens.append(token.exit_statement.exit_keyword)
+lTokens.append(token.exit_statement.label)
 
 
-class rule_300(token_indent):
+class rule_301(token_indent):
     """
-    This rule checks the indent of the **exit** keyword.
+    This rule checks the indent of the label.
 
     **Violation**
 
@@ -17,7 +17,7 @@ class rule_300(token_indent):
 
        end if;
 
-         exit;
+         exit_label : exit;
 
     **Fix**
 
@@ -25,7 +25,7 @@ class rule_300(token_indent):
 
        end if;
 
-       exit;
+       exit_label : exit;
     """
 
     def __init__(self):

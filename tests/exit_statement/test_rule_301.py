@@ -5,38 +5,38 @@ import unittest
 
 from tests import utils
 from vsg import vhdlFile
-from vsg.rules import null_statement
+from vsg.rules import exit_statement
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_300_test_input.vhd"))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_301_test_input.vhd"))
 
 dIndentMap = utils.read_indent_file()
 
 lExpected = []
 lExpected.append("")
-utils.read_file(os.path.join(sTestDir, "rule_300_test_input.fixed.vhd"), lExpected)
+utils.read_file(os.path.join(sTestDir, "rule_301_test_input.fixed.vhd"), lExpected, False)
 
 
-class test_null_statement_rule(unittest.TestCase):
+class test_exit_statement_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
 
-    def test_rule_300(self):
-        oRule = null_statement.rule_300()
+    def test_rule_301(self):
+        oRule = exit_statement.rule_301()
         self.assertTrue(oRule)
-        self.assertEqual(oRule.name, "null_statement")
-        self.assertEqual(oRule.identifier, "300")
+        self.assertEqual(oRule.name, "exit_statement")
+        self.assertEqual(oRule.identifier, "301")
 
-        lExpected = [18, 19]
+        lExpected = [9, 11]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_300(self):
-        oRule = null_statement.rule_300()
+    def test_fix_rule_301(self):
+        oRule = exit_statement.rule_301()
 
         oRule.fix(self.oFile)
 

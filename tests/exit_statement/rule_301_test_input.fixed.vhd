@@ -4,11 +4,11 @@ architecture rtl of fifo is
 begin
 
   process is begin
-    exit;
+    exit_label : exit;
 
-    exit;
+    exit_label : exit;
 
-    exit;
+    exit_label : exit;
 
   end process;
 

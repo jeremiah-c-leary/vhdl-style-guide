@@ -4,25 +4,25 @@ from vsg import token
 from vsg.rules import token_indent as Rule
 
 lTokens = []
-lTokens.append(token.null_statement.null_keyword)
+lTokens.append(token.null_statement.label)
 
 
-class rule_300(Rule):
+class rule_301(Rule):
     """
-    This rule checks the indentation of the **null** keyword.
+    This rule checks the indentation of the label.
 
     **Violation**
 
     .. code-block:: vhdl
 
-         null;
+         null_label : null;
          end loop;
 
     **Fix**
 
     .. code-block:: vhdl
 
-           null;
+           null_label : null;
          end loop;
     """
 

@@ -4,12 +4,12 @@ from vsg import token
 from vsg.rules import token_indent
 
 lTokens = []
-lTokens.append(token.wait_statement.wait_keyword)
+lTokens.append(token.wait_statement.label)
 
 
-class rule_001(token_indent):
+class rule_300(token_indent):
     """
-    This rule checks for indentation of the **wait** keyword.
+    This rule checks for indentation of the label.
     Proper indentation enhances comprehension.
 
     **Violation**
@@ -18,9 +18,8 @@ class rule_001(token_indent):
 
        begin
 
-           wait for 10ns;
         wait on a,b;
-              wait until a = '0';
+              wait_label : wait until a = '0';
 
     **Fix**
 
@@ -28,9 +27,8 @@ class rule_001(token_indent):
 
        begin
 
-         wait for 10ns;
          wait on a,b;
-         wait until a = '0';
+         wait_label : wait until a = '0';
     """
 
     def __init__(self):
