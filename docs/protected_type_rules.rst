@@ -3,6 +3,27 @@
 Protected Type Rules
 --------------------
 
+protected_type_300
+##################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the end protected type declaration.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type flag_pt is protected
+        end protected;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type flag_pt is protected
+   end protected;
+
 protected_type_500
 ##################
 
