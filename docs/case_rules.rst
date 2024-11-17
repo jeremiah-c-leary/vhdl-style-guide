@@ -533,6 +533,28 @@ The default style is :code:`allow_comment`.
      -- Comment
      when 4 =>
 
+case_300
+########
+
+|phase_4| |error| |indent|
+
+This rule checks the indentation of the label.
+**Violation**
+
+.. code-block:: vhdl
+
+   case_label : case data is
+
+  end case;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  case_label : case data is
+
+  end case;
+
 case_500
 ########
 
