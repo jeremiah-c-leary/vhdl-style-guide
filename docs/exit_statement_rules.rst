@@ -26,6 +26,29 @@ This rule checks the indent of the **exit** keyword.
 
    exit;
 
+exit_statement_301
+##################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the label.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   end if;
+
+     exit_label : exit;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   end if;
+
+   exit_label : exit;
+
 exit_statement_500
 ##################
 
