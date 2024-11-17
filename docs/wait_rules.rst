@@ -31,6 +31,32 @@ Proper indentation enhances comprehension.
      wait on a,b;
      wait until a = '0';
 
+wait_300
+########
+
+|phase_4| |error| |indent|
+
+This rule checks for indentation of the label.
+Proper indentation enhances comprehension.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   begin
+
+    wait on a,b;
+          wait_label : wait until a = '0';
+
+**Fix**
+
+.. code-block:: vhdl
+
+   begin
+
+     wait on a,b;
+     wait_label : wait until a = '0';
+
 wait_500
 ########
 
