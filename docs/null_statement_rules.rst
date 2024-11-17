@@ -24,6 +24,27 @@ This rule checks the indentation of the **null** keyword.
        null;
      end loop;
 
+null_statement_301
+##################
+
+|phase_4| |error| |indent|
+
+This rule checks the indentation of the label.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     null_label : null;
+     end loop;
+
+**Fix**
+
+.. code-block:: vhdl
+
+       null_label : null;
+     end loop;
+
 null_statement_500
 ##################
 
