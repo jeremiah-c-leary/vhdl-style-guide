@@ -290,29 +290,7 @@ This rule checks for code after the **=>** operator.
 case_013
 ########
 
-|phase_4| |error| |indent|
-
-This rule checks the indent of the **null** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     when others =>
-        null;
-
-     when others =>
-   null;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   when others =>
-     null;
-
-   when others =>
-     null;
+This rule has been superseded by `null_statement_300 <null_statement_rules.html#null-statement-300>`_.
 
 case_014
 ########
@@ -554,6 +532,28 @@ The default style is :code:`allow_comment`.
 
      -- Comment
      when 4 =>
+
+case_300
+########
+
+|phase_4| |error| |indent|
+
+This rule checks the indentation of the label.
+**Violation**
+
+.. code-block:: vhdl
+
+   case_label : case data is
+
+  end case;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  case_label : case data is
+
+  end case;
 
 case_500
 ########

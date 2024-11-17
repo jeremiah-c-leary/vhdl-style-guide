@@ -5,6 +5,7 @@ Case::Keyword Rule Group
 Rules Enforcing Case::Keyword Rule Group
 ########################################
 
+* `aggregate_500 <../aggregate_rules.html#aggregate-500>`_
 * `alias_declaration_500 <../alias_declaration_rules.html#alias-declaration-500>`_
 * `alias_declaration_501 <../alias_declaration_rules.html#alias-declaration-501>`_
 * `architecture_004 <../architecture_rules.html#architecture-004>`_
@@ -138,6 +139,14 @@ Rules Enforcing Case::Keyword Rule Group
 * `process_008 <../process_rules.html#process-008>`_
 * `process_009 <../process_rules.html#process-009>`_
 * `process_013 <../process_rules.html#process-013>`_
+* `protected_type_500 <../protected_type_rules.html#protected-type-500>`_
+* `protected_type_501 <../protected_type_rules.html#protected-type-501>`_
+* `protected_type_502 <../protected_type_rules.html#protected-type-502>`_
+* `protected_type_body_500 <../protected_type_rules.html#protected-type-body-500>`_
+* `protected_type_body_501 <../protected_type_rules.html#protected-type-body-501>`_
+* `protected_type_body_502 <../protected_type_rules.html#protected-type-body-502>`_
+* `protected_type_body_503 <../protected_type_rules.html#protected-type-body-503>`_
+* `protected_type_body_504 <../protected_type_rules.html#protected-type-body-504>`_
 * `range_001 <../range_rules.html#range-001>`_
 * `range_002 <../range_rules.html#range-002>`_
 * `record_type_definition_500 <../record_type_definition_rules.html#record-type-definition-500>`_

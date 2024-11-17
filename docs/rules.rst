@@ -7,6 +7,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    :maxdepth: 2
 
    after_rules.rst
+   aggregate_rules.rst
    alias_declaration_rules.rst
    architecture_rules.rst
    assert_rules.rst
@@ -62,6 +63,8 @@ The rules are divided into categories depending on the part of the VHDL code bei
    procedure_rules.rst
    procedure_call_rules.rst
    process_rules.rst
+   protected_type_rules.rst
+   protected_type_body_rules.rst
    range_rules.rst
    record_type_definition_rules.rst
    report_statement_rules.rst
