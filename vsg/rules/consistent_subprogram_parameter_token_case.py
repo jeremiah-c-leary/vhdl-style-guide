@@ -67,64 +67,69 @@ def no_interfaces_detected(lInterfaces):
     return False
 
 
-def validate_interface_name_in_token_list(self, lMyInterfaces, oToi):
-    # if subprogram start, nesting level +1
-    # if token name matches any subprograms and is right type of token, then add it to oToi
-    # get_tokens_matching as template
-    # lReturn.append(tokens.New(iIndex, iLine, [lAllTokens[iIndex]]))
-
-    lMyInterfacesLower = []
-    dInterfaceMap = {}
-    for sInterfaceName in lMyInterfaces:
-        lMyInterfacesLower.append(sInterfaceName.lower())
-        dInterfaceMap[sInterfaceName.lower()] = sInterfaceName
-
-    iSubprogramNestingLevel = 0
+def validate_interface_name_in_token_list(self, lInterfaces, oToi):
+    lInterfacesLower = [sInterfaceName.lower() for sInterfaceName in lInterfaces]
+    dInterfaceMap = {sInterfaceName.lower(): sInterfaceName for sInterfaceName in lInterfaces}
+    iSubprogramNestingDepth = 0
     dHiddenInterfaces = {}
 
     lTokens = oToi.get_tokens()
     for iToken, oToken in enumerate(lTokens):
         oTokenClass = oToken.__class__
+        sToken = oToken.get_value()
         if oTokenClass in [token.procedure_specification.procedure_keyword, token.function_specification.function_keyword]:
-            iSubprogramNestingLevel += 1
+            iSubprogramNestingDepth += 1
         elif oTokenClass is token.subprogram_body.end_keyword:
-            dHiddenInterfaces = {t: n for t, n in dHiddenInterfaces.items() if n != iSubprogramNestingLevel}
-            iSubprogramNestingLevel -= 1
-        elif oTokenClass in [
-            token.interface_unknown_declaration.identifier,
-            token.interface_constant_declaration.identifier,
-            token.interface_variable_declaration.identifier,
-            token.interface_signal_declaration.identifier,
-            token.interface_file_declaration.identifier,
-            token.interface_file_declaration.identifier,
-            token.constant_declaration.identifier,
-            token.variable_declaration.identifier,
-            token.signal_declaration.identifier,
-            token.file_declaration.identifier,
-        ]:
-            sToken = oToken.get_value()
-            if sToken.lower() in lMyInterfacesLower and sToken.lower() not in dHiddenInterfaces.keys():
-                dHiddenInterfaces[sToken.lower()] = iSubprogramNestingLevel
-        elif oTokenClass in [
-            parser.todo,
-            token.todo.name,
-            token.concurrent_conditional_signal_assignment.target,
-            token.selected_variable_assignment.target,
-            token.concurrent_selected_signal_assignment.target,
-            token.concurrent_simple_signal_assignment.target,
-            token.conditional_waveform_assignment.target,
-            token.association_element.actual_part,
-            token.selected_waveform_assignment.target,
-            token.selected_force_assignment.target,
-            token.simple_waveform_assignment.target,
-            token.simple_force_assignment.target,
-            token.simple_release_assignment.target,
-        ]:
-            sToken = oToken.get_value()
-            if sToken.lower() in lMyInterfacesLower and sToken.lower() not in dHiddenInterfaces.keys():
-                if interface_case_mismatch(sToken, lMyInterfaces, lMyInterfacesLower):
+            dHiddenInterfaces = pop_hidden_interfaces_at_nesting_depth(dHiddenInterfaces, iSubprogramNestingDepth)
+            iSubprogramNestingDepth -= 1
+        elif does_token_string_match_non_hidden_interface_name(sToken.lower(), lInterfacesLower, dHiddenInterfaces):
+            if is_token_of_class_potentially_hiding_interface_name(oTokenClass):
+                dHiddenInterfaces[sToken.lower()] = iSubprogramNestingDepth
+            elif is_token_of_class_potential_instance_of_interface_name(oTokenClass):
+                if interface_case_mismatch(sToken, lInterfaces, lInterfacesLower):
                     oViolation = create_violation(sToken, iToken, dInterfaceMap, oToi)
                     self.add_violation(oViolation)
+
+
+def pop_hidden_interfaces_at_nesting_depth(dHiddenInterfaces, iCurrentNestingDepth):
+    return {sInterfaceName: iNestingLevel for sInterfaceName, iNestingLevel in dHiddenInterfaces.items() if iNestingLevel != iCurrentNestingDepth}
+
+
+def does_token_string_match_non_hidden_interface_name(sToken, lInterfacesLower, dHiddenInterfaces):
+    return sToken.lower() in lInterfacesLower and sToken.lower() not in dHiddenInterfaces.keys()
+
+
+def is_token_of_class_potentially_hiding_interface_name(oTokenClass):
+    return oTokenClass in [
+        token.interface_unknown_declaration.identifier,
+        token.interface_constant_declaration.identifier,
+        token.interface_variable_declaration.identifier,
+        token.interface_signal_declaration.identifier,
+        token.interface_file_declaration.identifier,
+        token.interface_file_declaration.identifier,
+        token.constant_declaration.identifier,
+        token.variable_declaration.identifier,
+        token.signal_declaration.identifier,
+        token.file_declaration.identifier,
+    ]
+
+
+def is_token_of_class_potential_instance_of_interface_name(oTokenClass):
+    return oTokenClass in [
+        parser.todo,
+        token.todo.name,
+        token.concurrent_conditional_signal_assignment.target,
+        token.selected_variable_assignment.target,
+        token.concurrent_selected_signal_assignment.target,
+        token.concurrent_simple_signal_assignment.target,
+        token.conditional_waveform_assignment.target,
+        token.association_element.actual_part,
+        token.selected_waveform_assignment.target,
+        token.selected_force_assignment.target,
+        token.simple_waveform_assignment.target,
+        token.simple_force_assignment.target,
+        token.simple_release_assignment.target,
+    ]
 
 
 def create_violation(sToken, iToken, dInterfaceMap, oToi):
