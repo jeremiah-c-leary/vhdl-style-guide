@@ -4,7 +4,6 @@ from vsg import token
 from vsg.rules import token_indent
 
 lTokens = []
-lTokens.append(token.exit_statement.label)
 lTokens.append(token.exit_statement.exit_keyword)
 
 
