@@ -33,11 +33,9 @@ class test_procedure_rule(unittest.TestCase):
         self.assertEqual(oRule.groups, ["case", "case::name"])
 
         lExpected = []
-        lExpected.extend([12, 13, 16, 17, 18, 19, 20, 30, 31, 32, 33, 34, 37, 37, 38, 38, 43, 43, 43, 43, 44, 44, 44])
-        lExpected.extend([44, 45, 45, 45, 45, 46, 46, 46, 46, 47, 47, 47, 47, 48, 48, 49, 49, 50, 50, 51, 51, 51, 51])
-        lExpected.extend([52, 52, 53, 53, 54, 54, 56, 56, 63, 63, 64, 64, 65, 65, 66, 66, 67, 67, 68, 69, 70, 71, 71])
-        lExpected.extend([72, 73, 74, 77, 77, 78, 78, 79, 79, 80, 80, 81, 81, 94, 95, 100, 100, 101, 101, 102, 102])
-        lExpected.extend([103, 103, 104, 104, 105, 106, 107, 108, 108, 109, 110, 111, 113])
+        lExpected.extend([13, 14, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 25, 26, 27, 27, 28, 29, 30, 75, 78, 155])
+        lExpected.extend([158, 158, 169, 175, 176, 177, 178, 180, 184, 188, 195, 195, 196, 196, 197, 197, 198, 198])
+        lExpected.extend([199, 199, 200, 201, 202, 203, 203, 204, 205, 206, 209, 210, 211, 212, 213])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
