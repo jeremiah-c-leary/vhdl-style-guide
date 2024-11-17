@@ -24,6 +24,27 @@ This rule checks the indentation of the **next** keyword.
        next when condition;
      end function;
 
+next_statement_301
+##################
+
+|phase_4| |error| |indent|
+
+This rule checks the indentation of the label.
+
+**Violation**
+
+.. code-block:: vhdl
+
+     next_label : next when condition;
+     end function;
+
+**Fix**
+
+.. code-block:: vhdl
+
+       next_label : next when condition;
+     end function;
+
 next_statement_500
 ##################
 

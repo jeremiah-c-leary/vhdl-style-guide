@@ -5,6 +5,7 @@ Case::Keyword Rule Group
 Rules Enforcing Case::Keyword Rule Group
 ########################################
 
+* `aggregate_500 <../aggregate_rules.html#aggregate-500>`_
 * `alias_declaration_500 <../alias_declaration_rules.html#alias-declaration-500>`_
 * `alias_declaration_501 <../alias_declaration_rules.html#alias-declaration-501>`_
 * `architecture_004 <../architecture_rules.html#architecture-004>`_
