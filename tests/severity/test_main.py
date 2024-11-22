@@ -40,7 +40,7 @@ class test_severity_using_main(unittest.TestCase):
 
     def test_entity_without_configuration(self):
         try:
-            subprocess.check_output(["bin/vsg", "-f", self._sEntityFileName])
+            subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName])
         except subprocess.CalledProcessError as e:
             lActual = e.output.decode("utf-8").split("\n")
             iExitStatus = e.returncode
@@ -52,7 +52,7 @@ class test_severity_using_main(unittest.TestCase):
 
     def test_entity_with_configuration(self):
         try:
-            subprocess.check_output(["bin/vsg", "-f", self._sEntityFileName, "-c", sConfigFile])
+            subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, "-c", sConfigFile])
         except subprocess.CalledProcessError as e:
             lActual = e.output.decode("utf-8").split("\n")
             iExitStatus = e.returncode
@@ -63,7 +63,7 @@ class test_severity_using_main(unittest.TestCase):
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), self._sEntityFileName, sEntityFileName), lExpected)
 
     def test_entity_with_configuration_and_fixed(self):
-        lActual = subprocess.check_output(["bin/vsg", "-f", self._sEntityFileName, "-c", sConfigFile, "--fix"]).decode("utf-8").split("\n")
+        lActual = subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, "-c", sConfigFile, "--fix"]).decode("utf-8").split("\n")
 
         lExpected = pathlib.Path(sOutputFileWithConfigFixed).read_text().split("\n")
 
@@ -71,7 +71,7 @@ class test_severity_using_main(unittest.TestCase):
 
     def test_architecture_without_configuration(self):
         try:
-            subprocess.check_output(["bin/vsg", "-f", self._sArchitectureFileName])
+            subprocess.check_output([*utils.vsg_exec(), "-f", self._sArchitectureFileName])
         except subprocess.CalledProcessError as e:
             lActual = e.output.decode("utf-8").split("\n")
             iExitStatus = e.returncode
@@ -83,7 +83,7 @@ class test_severity_using_main(unittest.TestCase):
 
     def test_architecture_with_configuration(self):
         try:
-            subprocess.check_output(["bin/vsg", "-f", self._sArchitectureFileName, "-c", sConfigFile])
+            subprocess.check_output([*utils.vsg_exec(), "-f", self._sArchitectureFileName, "-c", sConfigFile])
         except subprocess.CalledProcessError as e:
             lActual = e.output.decode("utf-8").split("\n")
             iExitStatus = e.returncode
@@ -94,7 +94,7 @@ class test_severity_using_main(unittest.TestCase):
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), self._sArchitectureFileName, sArchitectureFileName), lExpected)
 
     def test_architecture_with_configuration_and_fixed(self):
-        lActual = subprocess.check_output(["bin/vsg", "-f", self._sArchitectureFileName, "-c", sConfigFile, "--fix"]).decode("utf-8").split("\n")
+        lActual = subprocess.check_output([*utils.vsg_exec(), "-f", self._sArchitectureFileName, "-c", sConfigFile, "--fix"]).decode("utf-8").split("\n")
 
         lExpected = pathlib.Path(sArchitectureOutputFileWithConfigFixed).read_text().split("\n")
 
@@ -102,7 +102,7 @@ class test_severity_using_main(unittest.TestCase):
 
     def test_both_with_configuration(self):
         try:
-            subprocess.check_output(["bin/vsg", "-f", self._sEntityFileName, self._sArchitectureFileName, "-c", sConfigFile])
+            subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, self._sArchitectureFileName, "-c", sConfigFile])
         except subprocess.CalledProcessError as e:
             lActual = e.output.decode("utf-8").split("\n")
             iExitStatus = e.returncode
@@ -122,7 +122,7 @@ class test_severity_using_main(unittest.TestCase):
 
     def test_both_with_configuration_and_fixed(self):
         lActual = (
-            subprocess.check_output(["bin/vsg", "-f", self._sEntityFileName, self._sArchitectureFileName, "-c", sConfigFile, "--fix"])
+            subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, self._sArchitectureFileName, "-c", sConfigFile, "--fix"])
             .decode("utf-8")
             .split("\n")
         )
@@ -141,7 +141,7 @@ class test_severity_using_main(unittest.TestCase):
 
     def test_junit_output(self):
         try:
-            subprocess.check_output(["bin/vsg", "-f", self._sEntityFileName, "-c", sConfigFile, "-j", self._sJUnitFileName])
+            subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, "-c", sConfigFile, "-j", self._sJUnitFileName])
         except subprocess.CalledProcessError as e:
             iExitStatus = e.returncode
 

@@ -2,6 +2,8 @@
 import subprocess
 import unittest
 
+from tests import utils
+
 
 class command_line_args:
     """This is used as an input into the version command."""
@@ -72,7 +74,7 @@ class testVsg(unittest.TestCase):
         iExitStatus = -1
 
         try:
-            subprocess.check_output(["bin/vsg", "-rc", "unknown_rule_001"])
+            subprocess.check_output([*utils.vsg_exec(), "-rc", "unknown_rule_001"])
         except subprocess.CalledProcessError as e:
             lActual = str(e.output.decode("utf-8")).split("\n")
             iExitStatus = e.returncode

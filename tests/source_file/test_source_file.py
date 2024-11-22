@@ -30,7 +30,7 @@ class testOSError(unittest.TestCase):
 
     def test_file_not_found(self):
         try:
-            subprocess.check_output(["bin/vsg", "-f", "no_file.vhd"], stderr=subprocess.STDOUT)
+            subprocess.check_output([*utils.vsg_exec(), "-f", "no_file.vhd"], stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
             exit_status: int = e.returncode
 
@@ -43,7 +43,7 @@ class testOSError(unittest.TestCase):
         pathlib.Path(sNoPermissionTempFile).touch(mode=0o222, exist_ok=True)
 
         try:
-            subprocess.check_output(["bin/vsg", "-f", sNoPermissionTempFile])
+            subprocess.check_output([*utils.vsg_exec(), "-f", sNoPermissionTempFile])
         except subprocess.CalledProcessError as e:
             lActual = str(e.output.decode("utf-8")).split("\n")
             iExitStatus = e.returncode
@@ -55,7 +55,7 @@ class testOSError(unittest.TestCase):
 
     def test_file_empty(self):
         try:
-            subprocess.check_output(["bin/vsg", "-f", "tests/source_file/" + sEmptyFile])
+            subprocess.check_output([*utils.vsg_exec(), "-f", "tests/source_file/" + sEmptyFile])
         except subprocess.CalledProcessError as e:
             lActual = str(e.output.decode("utf-8")).split("\n")
             iExitStatus = e.returncode

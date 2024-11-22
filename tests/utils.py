@@ -3,6 +3,7 @@ import ctypes
 import os
 import pprint
 import re
+import sys
 
 import yaml
 
@@ -141,3 +142,7 @@ def is_user_admin():
         pass
 
     return ctypes.windll.shell32.IsUserAnAdmin() == 1
+
+
+def vsg_exec():
+    return [sys.executable, "bin/vsg"]
