@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import ctypes
 import os
 import pprint
 import re
@@ -128,3 +129,15 @@ def replace_total_count_summary(lOutput):
 
 def replace_token(lOutput, src, dst):
     return [line.replace(src, dst) for line in lOutput]
+
+
+def is_user_admin():
+    if "SUDO_UID" in os.environ.keys():
+        return True
+
+    try:
+        return os.getuid() == 0
+    except AttributeError:
+        pass
+
+    return ctypes.windll.shell32.IsUserAnAdmin() == 1

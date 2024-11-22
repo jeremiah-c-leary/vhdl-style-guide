@@ -343,7 +343,7 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(iExitStatus, 1)
 
-    @unittest.skipIf("SUDO_UID" in os.environ.keys() or os.geteuid() == 0, "We are root. Root always has permissions so test will fail.")
+    @unittest.skipIf(utils.is_user_admin(), "We are root. Root always has permissions so test will fail.")
     def test_no_permission_configuration_file(self):
         sNoPermissionFile = os.path.join(self._tmpdir.name, "no_permission.yml")
         pathlib.Path(sNoPermissionFile).touch(mode=0o222, exist_ok=True)

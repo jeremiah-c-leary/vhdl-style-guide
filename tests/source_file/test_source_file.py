@@ -36,7 +36,7 @@ class testOSError(unittest.TestCase):
 
         self.assertEqual(exit_status, 1)
 
-    @unittest.skipIf("SUDO_UID" in os.environ.keys() or os.geteuid() == 0, "We are root. Root always has permissions so test will fail.")
+    @unittest.skipIf(utils.is_user_admin(), "We are root. Root always has permissions so test will fail.")
     def test_file_no_permission(self):
         sNoPermissionTempFile = os.path.join(self._tmpdir.name, sNoPermissionFile)
 
