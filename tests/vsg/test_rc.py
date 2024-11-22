@@ -70,13 +70,12 @@ class testVsg(unittest.TestCase):
     def test_rc_command_line_argument_w_invalid_rule(self):
         lExpected = []
         lExpected.append("ERROR: rule unknown_rule_001 was not found.")
-        lExpected.append("")
         iExitStatus = -1
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "-rc", "unknown_rule_001"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)

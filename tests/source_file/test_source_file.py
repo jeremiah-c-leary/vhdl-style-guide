@@ -45,10 +45,10 @@ class testOSError(unittest.TestCase):
         try:
             subprocess.check_output([*utils.vsg_exec(), "-f", sNoPermissionTempFile])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
-        lExpected = pathlib.Path(sOutputNoPermission).read_text().split("\n")
+        lExpected = pathlib.Path(sOutputNoPermission).read_text().splitlines()
 
         self.assertEqual(iExitStatus, 1)
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), sNoPermissionTempFile, sNoPermissionFile), lExpected)
@@ -57,10 +57,10 @@ class testOSError(unittest.TestCase):
         try:
             subprocess.check_output([*utils.vsg_exec(), "-f", "tests/source_file/" + sEmptyFile])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
-        lExpected = pathlib.Path(sOutputEmptyFile).read_text().split("\n")
+        lExpected = pathlib.Path(sOutputEmptyFile).read_text().splitlines()
 
         self.assertEqual(iExitStatus, 1)
         self.assertEqual(utils.replace_total_count(lActual), lExpected)

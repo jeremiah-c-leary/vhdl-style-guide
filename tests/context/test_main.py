@@ -30,9 +30,9 @@ class test_context_using_main(unittest.TestCase):
 
     def test_classification_file(self):
         self.maxDiff = None
-        subprocess.check_output([*utils.vsg_exec(), "-f", self._sFileName, "--fix"]).decode("utf-8").split("\n")
+        subprocess.check_output([*utils.vsg_exec(), "-f", self._sFileName, "--fix"]).decode("utf-8").splitlines()
 
-        lActual = pathlib.Path(self._sFileName).read_text().split("\n")
-        lExpected = pathlib.Path(sFixedFile).read_text().split("\n")
+        lActual = pathlib.Path(self._sFileName).read_text().splitlines()
+        lExpected = pathlib.Path(sFixedFile).read_text().splitlines()
 
         self.assertEqual(lExpected, lActual)

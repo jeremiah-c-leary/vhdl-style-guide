@@ -30,14 +30,13 @@ class testVsg(unittest.TestCase):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
         lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
-        lExpected.append("")
 
         try:
             subprocess.check_output(
                 [*utils.vsg_exec(), "--configuration", "tests/vsg/config_1.json", "tests/vsg/config_2.json", "--output_format", "syntastic"],
             )
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -47,12 +46,11 @@ class testVsg(unittest.TestCase):
     def test_single_configuration_w_filelist(self):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
-        lExpected.append("")
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "--configuration", "tests/vsg/config_1.json", "--output_format", "syntastic"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -61,12 +59,11 @@ class testVsg(unittest.TestCase):
 
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
-        lExpected.append("")
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "--configuration", "tests/vsg/config_2.json", "--output_format", "syntastic"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -75,18 +72,16 @@ class testVsg(unittest.TestCase):
 
     def test_single_configuration_w_rule_disable(self):
         lExpected = []
-        lExpected.append("")
 
         lActual = subprocess.check_output(
             [*utils.vsg_exec(), "--configuration", "tests/vsg/config_3.json", "--output_format", "syntastic", "-f", "tests/vsg/entity1.vhd"],
         )
-        lActual = str(lActual.decode("utf-8")).split("\n")
+        lActual = str(lActual.decode("utf-8")).splitlines()
         self.assertEqual(lActual, lExpected)
 
     def test_multiple_configuration_w_rule_disable(self):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
-        lExpected.append("")
 
         try:
             subprocess.check_output(
@@ -102,7 +97,7 @@ class testVsg(unittest.TestCase):
                 ],
             )
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -111,7 +106,6 @@ class testVsg(unittest.TestCase):
 
     def test_reverse_multiple_configuration_w_rule_disable(self):
         lExpected = []
-        lExpected.append("")
 
         lActual = subprocess.check_output(
             [
@@ -125,7 +119,7 @@ class testVsg(unittest.TestCase):
                 "tests/vsg/entity1.vhd",
             ],
         )
-        lActual = str(lActual.decode("utf-8")).split("\n")
+        lActual = str(lActual.decode("utf-8")).splitlines()
         self.assertEqual(lActual, lExpected)
 
     def test_invalid_configuration(self):
@@ -134,7 +128,6 @@ class testVsg(unittest.TestCase):
         lExpected.append("while parsing a flow node")
         lExpected.append("expected the node content, but found ','")
         lExpected.append('  in "tests/vsg/config_error.json", line 2, column 16')
-        lExpected.append("")
         config_error_file = os.path.join(self._tmpdir.name, "config_error.actual.xml")
         try:
             lActual = subprocess.check_output(
@@ -151,7 +144,7 @@ class testVsg(unittest.TestCase):
                 ],
             )
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(lActual, lExpected)
@@ -170,7 +163,6 @@ class testVsg(unittest.TestCase):
 
     def test_local_rules(self):
         lExpected = ["ERROR: tests/vsg/entity_architecture.vhd(1)localized_001 -- Split entity and architecture into separate files."]
-        lExpected.append("")
 
         try:
             subprocess.check_output(
@@ -178,7 +170,7 @@ class testVsg(unittest.TestCase):
             )
             iExitStatus = 0
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -188,7 +180,6 @@ class testVsg(unittest.TestCase):
     def test_invalid_local_rule_directory(self):
         lExpected = [
             "ERROR: encountered FileNotFoundError, No such file or directory tests/vsg/invalid_local_rule_directory when trying to open local rules file.",
-            "",
         ]
 
         try:
@@ -196,7 +187,7 @@ class testVsg(unittest.TestCase):
                 [*utils.vsg_exec(), "-f", "tests/vsg/entity_architecture.vhd", "-of", "syntastic", "-lr", "tests/vsg/invalid_local_rule_directory"],
             )
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -206,12 +197,11 @@ class testVsg(unittest.TestCase):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
         lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
-        lExpected.append("")
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "--configuration", "tests/vsg/config_glob.json", "--output_format", "syntastic"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         #        print(lActual)
@@ -221,19 +211,17 @@ class testVsg(unittest.TestCase):
             lExpected = []
             lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
             lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
-            lExpected.append("")
 
         self.assertEqual(lActual, lExpected)
 
     def test_single_yaml_configuration_w_filelist(self):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
-        lExpected.append("")
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "--configuration", "tests/vsg/config_1.yaml", "--output_format", "syntastic"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -242,12 +230,11 @@ class testVsg(unittest.TestCase):
 
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
-        lExpected.append("")
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "--configuration", "tests/vsg/config_2.json", "--output_format", "syntastic"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -258,14 +245,13 @@ class testVsg(unittest.TestCase):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
         lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
-        lExpected.append("")
 
         try:
             subprocess.check_output(
                 [*utils.vsg_exec(), "--configuration", "tests/vsg/config_1.yaml", "tests/vsg/config_2.yaml", "--output_format", "syntastic"],
             )
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -274,18 +260,16 @@ class testVsg(unittest.TestCase):
 
     def test_single_yaml_configuration_w_rule_disable(self):
         lExpected = []
-        lExpected.append("")
 
         lActual = subprocess.check_output(
             [*utils.vsg_exec(), "--configuration", "tests/vsg/config_3.yaml", "--output_format", "syntastic", "-f", "tests/vsg/entity1.vhd"],
         )
-        lActual = str(lActual.decode("utf-8")).split("\n")
+        lActual = str(lActual.decode("utf-8")).splitlines()
         self.assertEqual(lActual, lExpected)
 
     def test_multiple_yaml_configuration_w_rule_disable(self):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
-        lExpected.append("")
 
         try:
             subprocess.check_output(
@@ -301,7 +285,7 @@ class testVsg(unittest.TestCase):
                 ],
             )
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -310,7 +294,6 @@ class testVsg(unittest.TestCase):
 
     def test_reverse_yaml_multiple_configuration_w_rule_disable(self):
         lExpected = []
-        lExpected.append("")
 
         lActual = subprocess.check_output(
             [
@@ -324,19 +307,18 @@ class testVsg(unittest.TestCase):
                 "tests/vsg/entity1.vhd",
             ],
         )
-        lActual = str(lActual.decode("utf-8")).split("\n")
+        lActual = str(lActual.decode("utf-8")).splitlines()
         self.assertEqual(lActual, lExpected)
 
     def test_globbing_filenames_in_yaml_configuration(self):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
         lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
-        lExpected.append("")
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "--configuration", "tests/vsg/config_glob.yaml", "--output_format", "syntastic"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -345,16 +327,14 @@ class testVsg(unittest.TestCase):
             lExpected = []
             lExpected.append("ERROR: tests/vsg/entity1.vhd(7)port_007 -- Change number of spaces after *in* to 4.")
             lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
-            lExpected.append("")
 
         self.assertEqual(lActual, lExpected)
 
     def test_oc_command_line_argument(self):
         lExpected = []
-        lExpected.append("")
 
         lActual = subprocess.check_output([*utils.vsg_exec(), "-oc", os.path.join(self._tmpdir.name, "deleteme.json")])
-        lActual = str(lActual.decode("utf-8")).split("\n")
+        lActual = str(lActual.decode("utf-8")).splitlines()
         self.assertEqual(lActual, lExpected)
 
     def test_missing_configuration_file(self):
@@ -385,12 +365,11 @@ class testVsg(unittest.TestCase):
     def test_missing_files_in_configuration_file(self):
         lExpected = []
         lExpected.append("ERROR: Could not find file missing_file.vhd in configuration file tests/vsg/missing_file_config.yaml")
-        lExpected.append("")
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "-c", "tests/vsg/missing_file_config.yaml", "--output_format", "syntastic"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -398,15 +377,15 @@ class testVsg(unittest.TestCase):
         self.assertEqual(lActual, lExpected)
 
     def test_summary_output_format_error(self):
-        lExpectedStdErr = ["File: tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]", ""]
-        lExpectedStdOut = [""]
+        lExpectedStdErr = ["File: tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]"]
+        lExpectedStdOut = []
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "-f", "tests/vsg/entity_architecture.vhd", "-of", "summary"], stderr=subprocess.PIPE)
             iExitStatus = 0
         except subprocess.CalledProcessError as e:
-            lActualStdOut = str(e.output.decode("utf-8")).split("\n")
-            lActualStdErr = str(e.stderr.decode("utf-8")).split("\n")
+            lActualStdOut = str(e.output.decode("utf-8")).splitlines()
+            lActualStdErr = str(e.stderr.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -415,8 +394,8 @@ class testVsg(unittest.TestCase):
         self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
 
     def test_summary_output_format_error_with_local_rules(self):
-        lExpectedStdErr = ["File: tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]", ""]
-        lExpectedStdOut = [""]
+        lExpectedStdErr = ["File: tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]"]
+        lExpectedStdOut = []
 
         try:
             subprocess.check_output(
@@ -425,8 +404,8 @@ class testVsg(unittest.TestCase):
             )
             iExitStatus = 0
         except subprocess.CalledProcessError as e:
-            lActualStdOut = str(e.output.decode("utf-8")).split("\n")
-            lActualStdErr = str(e.stderr.decode("utf-8")).split("\n")
+            lActualStdOut = str(e.output.decode("utf-8")).splitlines()
+            lActualStdErr = str(e.stderr.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -435,12 +414,12 @@ class testVsg(unittest.TestCase):
         self.assertEqual(utils.replace_total_count_summary(lActualStdOut), lExpectedStdOut)
 
     def test_summary_output_format_ok(self):
-        lExpected = ["File: tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]", ""]
+        lExpected = ["File: tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]"]
 
         lActual = (
             subprocess.check_output([*utils.vsg_exec(), "-f", "tests/vsg/entity_architecture.fixed.vhd", "-of", "summary"], stderr=subprocess.STDOUT)
             .decode("utf-8")
-            .split("\n")
+            .splitlines()
         )
 
         self.assertEqual(utils.replace_total_count_summary(lActual), lExpected)
@@ -450,9 +429,8 @@ class testVsg(unittest.TestCase):
             "File: tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]",
             "File: tests/vsg/entity1.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]",
             "File: tests/vsg/entity2.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]",
-            "",
         ]
-        lExpectedStdOut = ["File: tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]", ""]
+        lExpectedStdOut = ["File: tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]"]
 
         try:
             subprocess.check_output(
@@ -470,8 +448,8 @@ class testVsg(unittest.TestCase):
             )
             iExitStatus = 0
         except subprocess.CalledProcessError as e:
-            lActualStdOut = str(e.output.decode("utf-8")).split("\n")
-            lActualStdErr = str(e.stderr.decode("utf-8")).split("\n")
+            lActualStdOut = str(e.output.decode("utf-8")).splitlines()
+            lActualStdErr = str(e.stderr.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -484,9 +462,8 @@ class testVsg(unittest.TestCase):
             "File: tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]",
             "File: tests/vsg/entity1.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]",
             "File: tests/vsg/entity2.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]",
-            "",
         ]
-        lExpectedStdOut = ["File: tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]", ""]
+        lExpectedStdOut = ["File: tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]"]
 
         try:
             subprocess.check_output(
@@ -505,8 +482,8 @@ class testVsg(unittest.TestCase):
             )
             iExitStatus = 0
         except subprocess.CalledProcessError as e:
-            lActualStdOut = str(e.output.decode("utf-8")).split("\n")
-            lActualStdErr = str(e.stderr.decode("utf-8")).split("\n")
+            lActualStdOut = str(e.output.decode("utf-8")).splitlines()
+            lActualStdErr = str(e.stderr.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -519,9 +496,8 @@ class testVsg(unittest.TestCase):
             "File: tests/vsg/entity_architecture.vhd ERROR (200 rules checked) [Error: 11] [Warning: 0]",
             "File: tests/vsg/entity1.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]",
             "File: tests/vsg/entity2.vhd ERROR (200 rules checked) [Error: 1] [Warning: 0]",
-            "",
         ]
-        lExpectedStdOut = ["File: tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]", ""]
+        lExpectedStdOut = ["File: tests/vsg/entity_architecture.fixed.vhd OK (200 rules checked) [Error: 0] [Warning: 0]"]
 
         try:
             subprocess.check_output(
@@ -540,8 +516,8 @@ class testVsg(unittest.TestCase):
             )
             iExitStatus = 0
         except subprocess.CalledProcessError as e:
-            lActualStdOut = str(e.output.decode("utf-8")).split("\n")
-            lActualStdErr = str(e.stderr.decode("utf-8")).split("\n")
+            lActualStdOut = str(e.output.decode("utf-8")).splitlines()
+            lActualStdErr = str(e.stderr.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(iExitStatus, 1)
@@ -552,12 +528,11 @@ class testVsg(unittest.TestCase):
     def test_globbing_filenames_in_configuration_with_file_rules(self):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
-        lExpected.append("")
 
         try:
             subprocess.check_output([*utils.vsg_exec(), "--configuration", "tests/vsg/config_glob_with_file_rules.yaml", "--output_format", "syntastic"])
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(lActual, lExpected)
@@ -565,14 +540,13 @@ class testVsg(unittest.TestCase):
     def test_configuration_with_file_rules_and_no_file_list_entity2(self):
         lExpected = []
         lExpected.append("ERROR: tests/vsg/entity2.vhd(8)port_008 -- Change number of spaces after *out* to 3.")
-        lExpected.append("")
 
         try:
             subprocess.check_output(
                 [*utils.vsg_exec(), "--configuration", "tests/vsg/config_file_rules.yaml", "-f", "tests/vsg/entity2.vhd", "--output_format", "syntastic"],
             )
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(lActual, lExpected)
@@ -587,7 +561,7 @@ class testVsg(unittest.TestCase):
                 [*utils.vsg_exec(), "--configuration", "tests/vsg/config_file_rules.yaml", "-f", "tests/vsg/entity1.vhd", "--output_format", "syntastic"],
             )
         except subprocess.CalledProcessError as e:
-            lActual = str(e.output.decode("utf-8")).split("\n")
+            lActual = str(e.output.decode("utf-8")).splitlines()
             iExitStatus = e.returncode
 
         self.assertEqual(lActual, lExpected)
@@ -595,11 +569,10 @@ class testVsg(unittest.TestCase):
     def test_file_as_stdin(self):
         with open("tests/vsg/entity1.vhd") as file1:
             lExpected = []
-            lExpected.append("")
 
             lActual = subprocess.check_output(
                 [*utils.vsg_exec(), "--configuration", "tests/vsg/config_3.yaml", "--output_format", "syntastic", "--stdin"],
                 stdin=file1,
             )
-            lActual = str(lActual.decode("utf-8")).split("\n")
+            lActual = str(lActual.decode("utf-8")).splitlines()
             self.assertEqual(lActual, lExpected)

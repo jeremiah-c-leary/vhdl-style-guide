@@ -42,10 +42,10 @@ class test_severity_using_main(unittest.TestCase):
         try:
             subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName])
         except subprocess.CalledProcessError as e:
-            lActual = e.output.decode("utf-8").split("\n")
+            lActual = e.output.decode("utf-8").splitlines()
             iExitStatus = e.returncode
 
-        lExpected = pathlib.Path(sOutputFileWoConfig).read_text().split("\n")
+        lExpected = pathlib.Path(sOutputFileWoConfig).read_text().splitlines()
 
         self.assertEqual(iExitStatus, 1)
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), self._sEntityFileName, sEntityFileName), lExpected)
@@ -54,18 +54,18 @@ class test_severity_using_main(unittest.TestCase):
         try:
             subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, "-c", sConfigFile])
         except subprocess.CalledProcessError as e:
-            lActual = e.output.decode("utf-8").split("\n")
+            lActual = e.output.decode("utf-8").splitlines()
             iExitStatus = e.returncode
 
-        lExpected = pathlib.Path(sOutputFileWithConfig).read_text().split("\n")
+        lExpected = pathlib.Path(sOutputFileWithConfig).read_text().splitlines()
 
         self.assertEqual(iExitStatus, 1)
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), self._sEntityFileName, sEntityFileName), lExpected)
 
     def test_entity_with_configuration_and_fixed(self):
-        lActual = subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, "-c", sConfigFile, "--fix"]).decode("utf-8").split("\n")
+        lActual = subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, "-c", sConfigFile, "--fix"]).decode("utf-8").splitlines()
 
-        lExpected = pathlib.Path(sOutputFileWithConfigFixed).read_text().split("\n")
+        lExpected = pathlib.Path(sOutputFileWithConfigFixed).read_text().splitlines()
 
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), self._sEntityFileName, sEntityFileName), lExpected)
 
@@ -73,10 +73,10 @@ class test_severity_using_main(unittest.TestCase):
         try:
             subprocess.check_output([*utils.vsg_exec(), "-f", self._sArchitectureFileName])
         except subprocess.CalledProcessError as e:
-            lActual = e.output.decode("utf-8").split("\n")
+            lActual = e.output.decode("utf-8").splitlines()
             iExitStatus = e.returncode
 
-        lExpected = pathlib.Path(sArchitectureOutputFileWoConfig).read_text().split("\n")
+        lExpected = pathlib.Path(sArchitectureOutputFileWoConfig).read_text().splitlines()
 
         self.assertEqual(iExitStatus, 1)
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), self._sArchitectureFileName, sArchitectureFileName), lExpected)
@@ -85,18 +85,18 @@ class test_severity_using_main(unittest.TestCase):
         try:
             subprocess.check_output([*utils.vsg_exec(), "-f", self._sArchitectureFileName, "-c", sConfigFile])
         except subprocess.CalledProcessError as e:
-            lActual = e.output.decode("utf-8").split("\n")
+            lActual = e.output.decode("utf-8").splitlines()
             iExitStatus = e.returncode
 
-        lExpected = pathlib.Path(sArchitectureOutputFileWithConfig).read_text().split("\n")
+        lExpected = pathlib.Path(sArchitectureOutputFileWithConfig).read_text().splitlines()
 
         self.assertEqual(iExitStatus, 1)
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), self._sArchitectureFileName, sArchitectureFileName), lExpected)
 
     def test_architecture_with_configuration_and_fixed(self):
-        lActual = subprocess.check_output([*utils.vsg_exec(), "-f", self._sArchitectureFileName, "-c", sConfigFile, "--fix"]).decode("utf-8").split("\n")
+        lActual = subprocess.check_output([*utils.vsg_exec(), "-f", self._sArchitectureFileName, "-c", sConfigFile, "--fix"]).decode("utf-8").splitlines()
 
-        lExpected = pathlib.Path(sArchitectureOutputFileWithConfigFixed).read_text().split("\n")
+        lExpected = pathlib.Path(sArchitectureOutputFileWithConfigFixed).read_text().splitlines()
 
         self.assertEqual(utils.replace_token(utils.replace_total_count(lActual), self._sArchitectureFileName, sArchitectureFileName), lExpected)
 
@@ -104,11 +104,11 @@ class test_severity_using_main(unittest.TestCase):
         try:
             subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, self._sArchitectureFileName, "-c", sConfigFile])
         except subprocess.CalledProcessError as e:
-            lActual = e.output.decode("utf-8").split("\n")
+            lActual = e.output.decode("utf-8").splitlines()
             iExitStatus = e.returncode
 
-        lExpected1 = pathlib.Path(sOutputFileWithConfig).read_text().rstrip("\n").split("\n")
-        lExpected2 = pathlib.Path(sArchitectureOutputFileWithConfig).read_text().split("\n")
+        lExpected1 = pathlib.Path(sOutputFileWithConfig).read_text().splitlines()
+        lExpected2 = pathlib.Path(sArchitectureOutputFileWithConfig).read_text().splitlines()
 
         self.assertEqual(iExitStatus, 1)
         self.assertEqual(
@@ -124,11 +124,11 @@ class test_severity_using_main(unittest.TestCase):
         lActual = (
             subprocess.check_output([*utils.vsg_exec(), "-f", self._sEntityFileName, self._sArchitectureFileName, "-c", sConfigFile, "--fix"])
             .decode("utf-8")
-            .split("\n")
+            .splitlines()
         )
 
-        lExpected1 = pathlib.Path(sOutputFileWithConfigFixed).read_text().rstrip("\n").split("\n")
-        lExpected2 = pathlib.Path(sArchitectureOutputFileWithConfigFixed).read_text().split("\n")
+        lExpected1 = pathlib.Path(sOutputFileWithConfigFixed).read_text().splitlines()
+        lExpected2 = pathlib.Path(sArchitectureOutputFileWithConfigFixed).read_text().splitlines()
 
         self.assertEqual(
             utils.replace_token(
@@ -145,8 +145,8 @@ class test_severity_using_main(unittest.TestCase):
         except subprocess.CalledProcessError as e:
             iExitStatus = e.returncode
 
-        lActual = pathlib.Path(self._sJUnitFileName).read_text().split("\n")
-        lExpected = pathlib.Path(sJUnitFile).read_text().split("\n")
+        lActual = pathlib.Path(self._sJUnitFileName).read_text().splitlines()
+        lExpected = pathlib.Path(sJUnitFile).read_text().splitlines()
 
         self.assertEqual(iExitStatus, 1)
 
