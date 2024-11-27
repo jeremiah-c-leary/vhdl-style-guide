@@ -488,9 +488,7 @@ def post_token_assignments(lTokens):
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
         sValue = oToken.get_value()
-        if (
-            isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, attribute_name.name, todo.name))
-        ):
+        if isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, attribute_name.name, todo.name)):
             sLowerValue = oToken.get_lower_value()
             ### IEEE values
             if sLowerValue in dIeeeTypeStringMap.keys():
