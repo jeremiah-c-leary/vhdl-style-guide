@@ -1017,3 +1017,14 @@ def extract_line_with_token_index_of(iToken, lObjects):
     for oObject in lObjects[iStart:iEnd]:
         sReturn += oObject.get_value()
     return sReturn
+
+
+def skip_tokens_until_matching_closing_paren(iToken, lObjects):
+    iCounter = 1
+    iCurrent = iToken
+    while iCurrent < len(lObjects):
+        iCurrent = find_next_token(iCurrent, lObjects)
+        iCounter = update_paren_counter(iCurrent, lObjects, iCounter)
+        if token_is_close_parenthesis(iCurrent, lObjects) and iCounter == 0:
+            return iCurrent
+        iCurrent += 1
