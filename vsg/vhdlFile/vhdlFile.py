@@ -4,6 +4,7 @@ from vsg import config, exceptions, parser, token, tokens
 from vsg.token import (
     adding_operator,
     aggregate,
+    attribute_name,
     choices,
     direction,
     exponent,
@@ -494,14 +495,14 @@ def post_token_assignments(lTokens):
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
         sValue = oToken.get_value()
-        if isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, todo.name)):
+        if isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, attribute_name.name, todo.name)):
             sLowerValue = oToken.get_lower_value()
             ### IEEE values
             if sLowerValue in dIeeeTypeStringMap.keys():
                 oTokenClass = dIeeeTypeStringMap[sLowerValue]
                 lTokens[iToken] = oTokenClass(sValue)
 
-        elif isinstance(oToken, type_mark.attribute):
+        elif isinstance(oToken, attribute_name.attribute):
             if sValue.lower() in predefined_attribute.values:
                 lTokens[iToken] = predefined_attribute.keyword(sValue)
 
@@ -513,11 +514,11 @@ def post_token_assignments(lTokens):
 
             elif sLowerValue in dUnaryOrBinaryAdditionOperatorStringMap.keys():
                 dTokenTypes = dUnaryOrBinaryAdditionOperatorStringMap[sLowerValue]
-                assign_token_of_addition_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
+                assign_token_of_addition_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
 
             elif sLowerValue in dUnaryOrBinaryLogicalOperatorStringMap.keys():
                 dTokenTypes = dUnaryOrBinaryLogicalOperatorStringMap[sLowerValue]
-                assign_token_of_logical_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
+                assign_token_of_logical_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
 
             elif sValue == "(":
                 lTokens[iToken] = parser.open_parenthesis()
@@ -652,7 +653,7 @@ def remove_beginning_of_file_tokens(lTokens):
     return lReturn
 
 
-def assign_token_of_addition_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
+def assign_token_of_addition_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
     if (
         utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens)
         or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.keyword], iToken - 1, lTokens)
@@ -665,7 +666,7 @@ def assign_token_of_addition_operator_that_can_be_both_unary_and_binary(iToken, 
         lTokens[iToken] = dTokenTypes["binary"](sValue)
 
 
-def assign_token_of_logical_operator_that_can_be_both_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
+def assign_token_of_logical_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
     if (
         utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken - 1, lTokens)
         or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.assignment], iToken - 1, lTokens)
