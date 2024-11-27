@@ -76,9 +76,9 @@
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
-<class 'vsg.token.type_mark.name'>
-<class 'vsg.token.type_mark.tic'>
-<class 'vsg.token.type_mark.attribute'>
+<class 'vsg.token.attribute_name.name'>
+<class 'vsg.token.attribute_name.tic'>
+<class 'vsg.token.attribute_name.attribute'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
 13 |
