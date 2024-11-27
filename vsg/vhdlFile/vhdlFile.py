@@ -4,6 +4,7 @@ from vsg import config, exceptions, parser, token, tokens
 from vsg.token import (
     adding_operator,
     aggregate,
+    attribute_name,
     choices,
     direction,
     exponent,
@@ -487,14 +488,16 @@ def post_token_assignments(lTokens):
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
         sValue = oToken.get_value()
-        if isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, todo.name)):
+        if (
+            isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, attribute_name.name, todo.name))
+        ):
             sLowerValue = oToken.get_lower_value()
             ### IEEE values
             if sLowerValue in dIeeeTypeStringMap.keys():
                 oTokenClass = dIeeeTypeStringMap[sLowerValue]
                 lTokens[iToken] = oTokenClass(sValue)
 
-        elif isinstance(oToken, type_mark.attribute):
+        elif isinstance(oToken, attribute_name.attribute):
             if sValue.lower() in predefined_attribute.values:
                 lTokens[iToken] = predefined_attribute.keyword(sValue)
 

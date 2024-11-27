@@ -289,13 +289,39 @@
 62 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-63 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+63 |   type EXAMPLE_T is record
+<class 'vsg.token.full_type_declaration.type_keyword'>
+<class 'vsg.token.full_type_declaration.identifier'>
+<class 'vsg.token.full_type_declaration.is_keyword'>
+<class 'vsg.token.record_type_definition.record_keyword'>
 --------------------------------------------------------------------------------
-64 |
+64 |     axis : m_axis_o(0)'SUBTYPE;
+<class 'vsg.token.identifier_list.identifier'>
+<class 'vsg.token.element_declaration.colon'>
+<class 'vsg.token.attribute_name.name'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.attribute_name.tic'>
+<class 'vsg.token.attribute_name.attribute'>
+<class 'vsg.token.element_declaration.semicolon'>
+--------------------------------------------------------------------------------
+65 |   end record EXAMPLE_T;
+<class 'vsg.token.record_type_definition.end_keyword'>
+<class 'vsg.token.record_type_definition.end_record_keyword'>
+<class 'vsg.token.record_type_definition.record_type_simple_name'>
+<class 'vsg.token.full_type_declaration.semicolon'>
+--------------------------------------------------------------------------------
+66 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-65 | end architecture RTL;
+67 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+68 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+69 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
