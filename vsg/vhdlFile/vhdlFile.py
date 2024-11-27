@@ -4,6 +4,7 @@ from vsg import config, exceptions, parser, token, tokens
 from vsg.token import (
     adding_operator,
     aggregate,
+    attribute_name,
     choices,
     direction,
     exponent,
@@ -448,11 +449,16 @@ def post_token_assignments(lTokens):
     iParenId = 0
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
-        if isinstance(oToken, resolution_indication.resolution_function_name) or isinstance(oToken, type_mark.name) or isinstance(oToken, todo.name):
+        if (
+            isinstance(oToken, resolution_indication.resolution_function_name)
+            or isinstance(oToken, type_mark.name)
+            or isinstance(oToken, attribute_name.name)
+            or isinstance(oToken, todo.name)
+        ):
             sValue = oToken.get_value()
             sLowerValue = oToken.get_lower_value()
 
-        elif isinstance(oToken, type_mark.attribute):
+        elif isinstance(oToken, attribute_name.attribute):
             sValue = oToken.get_value()
             if sValue.lower() in predefined_attribute.values:
                 lTokens[iToken] = predefined_attribute.keyword(sValue)
