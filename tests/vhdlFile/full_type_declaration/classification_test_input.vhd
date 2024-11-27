@@ -60,6 +60,10 @@ architecture RTL of ENTITY_NAME is
     sud3 = 10 sud2;
   end units physical_type_simple_name;
 
+  type EXAMPLE_T is record
+    axis : m_axis_o(0)'SUBTYPE;
+  end record EXAMPLE_T;
+
 begin
 
 end architecture RTL;
