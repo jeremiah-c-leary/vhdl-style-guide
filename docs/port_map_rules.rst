@@ -138,6 +138,31 @@ This rule checks for a port assignment on the same line as the **port map** keyw
        OVERFLOW => overflow
      );
 
+port_map_006
+############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **map** keyword and the (.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port map(
+
+   port map   (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port map (
+
+   port map (
+
 port_map_007
 ############
 
