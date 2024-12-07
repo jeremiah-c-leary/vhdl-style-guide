@@ -12,6 +12,7 @@ lNames.append(token.simple_variable_assignment.simple_name)
 lNames.append(token.simple_variable_assignment.target)
 lNames.append(token.selected_variable_assignment.target)
 lNames.append(token.conditional_variable_assignment.target)
+lNames.append(token.association_element.actual_part)
 
 
 class rule_011(Rule):
