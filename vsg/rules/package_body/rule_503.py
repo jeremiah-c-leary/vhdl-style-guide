@@ -17,13 +17,13 @@ class rule_503(token_case):
 
     .. code-block:: vhdl
 
-       package fifo_pkg IS
+       package body fifo_pkg IS
 
     **Fix**
 
     .. code-block:: vhdl
 
-       package fifo_pkg is
+       package body fifo_pkg is
     """
 
     def __init__(self):

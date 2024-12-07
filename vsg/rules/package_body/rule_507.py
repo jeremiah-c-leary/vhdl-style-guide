@@ -9,7 +9,7 @@ lTokens.append(token.package_body.end_package_simple_name)
 
 class rule_507(token_case_with_prefix_suffix):
     """
-    This rule checks the package name has proper case on the end package declaration.
+    This rule checks the package name has proper case on the end package body declaration.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
@@ -23,7 +23,7 @@ class rule_507(token_case_with_prefix_suffix):
 
     .. code-block:: vhdl
 
-       end package fifo_pkg;
+       end package body fifo_pkg;
     """
 
     def __init__(self):
