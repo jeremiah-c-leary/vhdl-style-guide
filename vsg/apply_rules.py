@@ -2,6 +2,7 @@
 
 import os
 import shutil
+import stat
 
 from . import config, junit, rule_list, utils, vhdlFile
 from .exceptions import ClassifyError, ConfigurationError
@@ -137,10 +138,12 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
 
 def write_vhdl_file(oVhdlFile, dConfig):
     tmpfile = f"{oVhdlFile.filename}.tmp"
+    myStat = os.stat(oVhdlFile.filename)
     try:
         with open(tmpfile, "w", encoding="utf-8", newline=dConfig.get("linesep")) as oFile:
             oFile.write("\n".join(oVhdlFile.get_lines()[1:]))
             oFile.write("\n")
+        os.chmod(tmpfile, myStat.st_mode)
         os.replace(tmpfile, oVhdlFile.filename)
     except PermissionError as err:
         print(err, "Could not write fixes back to file.")
