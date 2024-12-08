@@ -986,6 +986,8 @@ Rules Enforcing Keyword Alignment
 * `process_035 <process_rules.html#process-035>`_
 * `process_400 <process_rules.html#process-400>`_
 * `process_401 <process_rules.html#process-401>`_
+* `protected_type_body_401 <protected_type_body_rules.html#protected-type-body-401>`_
+* `protected_type_body_402 <protected_type_body_rules.html#protected-type-body-402>`_
 * `sequential_400 <sequential_rules.html#sequential-400>`_
 * `subprogram_body_400 <subprogram_body_rules.html#subprogram-body-400>`_
 * `subprogram_body_401 <subprogram_body_rules.html#subprogram-body-401>`_
