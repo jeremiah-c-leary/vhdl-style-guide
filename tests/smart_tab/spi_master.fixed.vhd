@@ -290,19 +290,19 @@ begin
 	--  GENERICS CONSTRAINTS CHECKING
 	--=============================================================================================
 	-- minimum word width is 8 bits
-	assert n >= 8
+	assert N >= 8
 		report "Generic parameter 'N' (shift register size) needs to be 8 bits minimum"
 		severity FAILURE;
 	-- minimum prefetch lookahead check
-	assert prefetch >= 1
+	assert PREFETCH >= 1
 		report "Generic parameter 'PREFETCH' (lookahead count) needs to be 1 minimum"
 		severity FAILURE;
 	-- maximum prefetch lookahead check
-	assert prefetch <= n - 5
+	assert PREFETCH <= N - 5
 		report "Generic parameter 'PREFETCH' (lookahead count) out of range, needs to be N-5 maximum"
 		severity FAILURE;
 	-- SPI_2X_CLK_DIV clock divider value must not be zero
-	assert spi_2x_clk_div > 0
+	assert SPI_2X_CLK_DIV > 0
 		report "Generic parameter 'SPI_2X_CLK_DIV' must not be zero"
 		severity FAILURE;
 
@@ -368,12 +368,12 @@ begin
 	--=============================================================================================
 	-- spi clk generator: generate spi_clk from core_clk depending on CPOL
 
-	spi_sck_cpol_0_proc : if cpol = '0' generate
+	spi_sck_cpol_0_proc : if CPOL = '0' generate
 	begin
 		spi_clk <= core_clk; -- for CPOL=0, spi clk has idle LOW
 	end generate spi_sck_cpol_0_proc;
 
-	spi_sck_cpol_1_proc : if cpol = '1' generate
+	spi_sck_cpol_1_proc : if CPOL = '1' generate
 	begin
 		spi_clk <= core_n_clk; -- for CPOL=1, spi clk has idle HIGH
 	end generate spi_sck_cpol_1_proc;
@@ -382,12 +382,12 @@ begin
 	-- Sampling clock enable generation: generate 'samp_ce' from 'core_ce' or 'core_n_ce' depending on CPHA
 	-- always sample data at the half-cycle of the fsm update cell
 
-	samp_ce_cpha_0_proc : if cpha = '0' generate
+	samp_ce_cpha_0_proc : if CPHA = '0' generate
 	begin
 		samp_ce <= core_ce;
 	end generate samp_ce_cpha_0_proc;
 
-	samp_ce_cpha_1_proc : if cpha = '1' generate
+	samp_ce_cpha_1_proc : if CPHA = '1' generate
 	begin
 		samp_ce <= core_n_ce;
 	end generate samp_ce_cpha_1_proc;
@@ -395,12 +395,12 @@ begin
 	-----------------------------------------------------------------------------------------------
 	-- FSM clock enable generation: generate 'fsm_ce' from core_ce or core_n_ce depending on CPHA
 
-	fsm_ce_cpha_0_proc : if cpha = '0' generate
+	fsm_ce_cpha_0_proc : if CPHA = '0' generate
 	begin
 		fsm_ce <= core_n_ce; -- for CPHA=0, latch registers at rising edge of negative core clock enable
 	end generate fsm_ce_cpha_0_proc;
 
-	fsm_ce_cpha_1_proc : if cpha = '1' generate
+	fsm_ce_cpha_1_proc : if CPHA = '1' generate
 	begin
 		fsm_ce <= core_ce; -- for CPHA=1, latch registers at rising edge of positive core clock enable
 	end generate fsm_ce_cpha_1_proc;
@@ -549,7 +549,7 @@ begin
 
 				spi_mosi_o              <= sh_reg(n - 1);                                     -- shift out tx bit from the MSb
 				di_req_next             <= '0';                                               -- prefetch data request: deassert when shifting data
-				sh_next(N - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
+				sh_next(n - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
 				sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
 				wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
 				state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
@@ -559,7 +559,7 @@ begin
 				spi_mosi_o              <= sh_reg(n - 1);                                     -- shift out tx bit from the MSb
 				di_req_next             <= '0';                                               -- prefetch data request: deassert when shifting data
 				do_transfer_next        <= '0';                                               -- reset 'do_valid' transfer signal
-				sh_next(N - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
+				sh_next(n - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
 				sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
 				wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
 				state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
@@ -568,7 +568,7 @@ begin
 
 				spi_mosi_o              <= sh_reg(n - 1);                                     -- shift out tx bit from the MSb
 				di_req_next             <= '1';                                               -- request data in advance to allow for pipeline delays
-				sh_next(N - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
+				sh_next(n - 1 downto 1) <= sh_reg(n - 2 downto 0);                            -- shift inner bits
 				sh_next(0)              <= rx_bit_reg;                                        -- shift in rx bit into LSb
 				wr_ack_next             <= '0';                                               -- remove write acknowledge for all but the load stages
 				state_next              <= state_reg - 1;                                     -- update next state at each sck pulse
@@ -577,7 +577,7 @@ begin
 
 				spi_mosi_o                     <= sh_reg(n - 1);                              -- shift out tx bit from the MSb
 				di_req_next                    <= '1';                                        -- request data in advance to allow for pipeline delays
-				do_buffer_next(N - 1 downto 1) <= sh_reg(n - 2 downto 0);                     -- shift rx data directly into rx buffer
+				do_buffer_next(n - 1 downto 1) <= sh_reg(n - 2 downto 0);                     -- shift rx data directly into rx buffer
 				do_buffer_next(0)              <= rx_bit_reg;                                 -- shift last rx bit into rx buffer
 				do_transfer_next               <= '1';                                        -- signal transfer to do_buffer
 

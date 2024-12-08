@@ -23,6 +23,7 @@ class test_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
+        self.maxDiff = None
 
     def test_rule(self):
         oRule = architecture.rule_600()
@@ -30,9 +31,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "architecture")
         self.assertEqual(oRule.identifier, "600")
 
-        lExpected = [18, 20, 25, 27]
-        lExpected.extend([34, 36, 41, 43])
-        lExpected.extend([50, 52, 57, 59])
+        lExpected = [18, 20, 25, 27, 34, 36, 41, 43, 50, 52, 57, 59, 93, 93, 103, 103, 112, 112]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
