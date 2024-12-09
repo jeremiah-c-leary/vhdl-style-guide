@@ -19,6 +19,20 @@ architecture RTL of FIFO is
   begin
   end procedure proc1;
 
+  procedure proc1 is
+    -- Checking exclusions
+    constant c_abc : integer;
+    function my_func return integer is
+      constant c_abc : integer;
+    begin
+    end function;
+    constant c_abc : integer;
+    type     flag_pt is protected body
+      variable flag  : boolean;
+    end protected body;
+  begin
+  end procedure proc1;
+
   function func1 return integer is
     constant   c    : integer;
     variable  v       : integer;

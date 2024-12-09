@@ -32,7 +32,8 @@ class test_package_body_rule(unittest.TestCase):
         lExpected.extend([21, 22, 23, 25, 26])
         lExpected.extend([30, 31])
         lExpected.append(44)
-        lExpected.extend([83, 84, 85])
+        lExpected.append(65)
+        lExpected.extend([94, 95, 96])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

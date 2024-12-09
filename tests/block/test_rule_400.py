@@ -27,7 +27,7 @@ class test_block_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "block")
         self.assertEqual(oRule.identifier, "400")
 
-        lExpected = [8, 10, 11]
+        lExpected = [8, 10, 11, 20]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

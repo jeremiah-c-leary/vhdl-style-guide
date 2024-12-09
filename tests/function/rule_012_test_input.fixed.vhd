@@ -16,6 +16,18 @@ architecture RTL of FIFO is
     file f     : something;
     alias a    : subtype_indicator is name;
     alias a    is name;
+
+    -- Checking exclusions
+    constant c_abc   : integer;
+    function my_func return integer is
+      constant c_abc : integer;
+    begin
+    end function;
+    constant c_abc   : integer;
+    type flag_pt is protected body
+      variable flag : boolean;
+    end protected body;
+
   begin
   end function func1;
 

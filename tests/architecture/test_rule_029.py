@@ -24,7 +24,7 @@ class test_architecture_rule(unittest.TestCase):
     def test_rule_029(self):
         oRule = architecture.rule_029()
 
-        lExpected = [6, 8, 9, 10, 11, 23, 25, 26, 28, 29, 48]
+        lExpected = [6, 8, 9, 10, 11, 23, 25, 26, 28, 29, 48, 69]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
