@@ -3,6 +3,29 @@
 For Generate Statement Rules
 ----------------------------
 
+for_generate_statement_001
+##########################
+
+|phase_1| |disabled| |error| |structure| |structure_optional|
+
+This rule checks for the existence of the **begin** keyword.
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   ram_array : for i in 0 to 7 generate begin
+   end generate;
+
 for_generate_statement_500
 ##########################
 

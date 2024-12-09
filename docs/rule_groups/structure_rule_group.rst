@@ -64,6 +64,7 @@ Rules Enforcing Structure Rule Group
 * `entity_027 <../entity_rules.html#entity-027>`_
 * `entity_028 <../entity_rules.html#entity-028>`_
 * `entity_029 <../entity_rules.html#entity-029>`_
+* `for_generate_statement_001 <../for_generate_statement_rules.html#for-generate-statement-001>`_
 * `function_018 <../function_rules.html#function-018>`_
 * `function_019 <../function_rules.html#function-019>`_
 * `function_020 <../function_rules.html#function-020>`_
@@ -80,6 +81,7 @@ Rules Enforcing Structure Rule Group
 * `generic_map_004 <../generic_map_rules.html#generic-map-004>`_
 * `generic_map_005 <../generic_map_rules.html#generic-map-005>`_
 * `generic_map_008 <../generic_map_rules.html#generic-map-008>`_
+* `if_generate_statement_001 <../if_generate_statement_rules.html#if-generate-statement-001>`_
 * `if_002 <../if_rules.html#if-002>`_
 * `if_020 <../if_rules.html#if-020>`_
 * `if_021 <../if_rules.html#if-021>`_
