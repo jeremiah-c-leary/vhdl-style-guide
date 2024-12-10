@@ -465,3 +465,36 @@ package body pkg_test is
   end function function2;
 
 end package body pkg_test;
+
+--=============================================================================
+-- Issue #1335 test
+--=============================================================================
+
+architecture rtl of test is
+
+  procedure my_proc (
+    signal param1   : integer;
+    variable param2 : integer
+  ) is
+  begin
+
+  end procedure my_proc;
+
+  signal sig1 : integer;
+
+begin
+
+  process1 : process is
+
+    variable var1 : integer;
+
+  begin
+
+    my_proc(
+            param1 => SIG1,
+            param2 => var1
+          );
+
+  end process process1;
+
+end architecture rtl;
