@@ -1,0 +1,209 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | architecture rtl of test is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 |   begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |     a <= (y)sll(y)srl(y)sla(y)sra(y)rol(y)ror(y);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.sll'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.srl'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.sla'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.sra'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.rol'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.ror'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+7 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 |     a <= (x)sll(y);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.sll'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+9 |     a <= (x)srl(y);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.srl'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+10 |     a <= (x)sla(y);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.sla'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+11 |     a <= (x)sra(y);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.sra'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+12 |     a <= (x)rol(y);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.rol'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+13 |     a <= (x)ror(y);
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.shift_operator.ror'>
+<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+14 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 |     a <= y sll y srl y sla y sra y rol y ror y;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.sll'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.srl'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.sla'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.sra'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.rol'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.ror'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+16 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+17 |     a <= x sll y;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.sll'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+18 |     a <= x srl y;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.srl'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+19 |     a <= x sla y;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.sla'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+20 |     a <= x sra y;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.sra'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+21 |     a <= x rol y;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.rol'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+22 |     a <= x ror y;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.shift_operator.ror'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+23 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 |   end architecture rtl;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
