@@ -71,5 +71,15 @@ begin
 
   end process PROC_2;
 
+  -- Check that array assignments are ignored.
+  PROC_2 : process is
+  begin
+    a :=
+    (
+      0 => f.a,
+      1 => f.b,
+      2 => f.c
+    );
+  end process PROC_2;
 
 end architecture ARCH;
