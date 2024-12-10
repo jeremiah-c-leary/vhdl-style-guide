@@ -19,10 +19,14 @@ Follow these steps:
 
    $ git push --tags origin master
 
-4)  Download wheel from CI action
+4)  Build the Wheel
+
+.. code-block:: bash
+
+   $ tox -e wheel-py38
 
 5)  Submit to PyPI
 
 .. code-block:: bash
 
-   $ twine upload dist/*
+   $ twine upload dist/wheel-py38/*
