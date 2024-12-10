@@ -31,7 +31,7 @@ class test_generic_map_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "generic_map")
         self.assertEqual(oRule.identifier, "001")
 
-        lExpected = [21, 21, 28, 35]
+        lExpected = [10, 10, 15, 20, 39, 39, 46, 53, 73, 73, 83, 93, 107, 107, 112, 117]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -43,7 +43,7 @@ class test_generic_map_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "generic_map")
         self.assertEqual(oRule.identifier, "001")
 
-        lExpected = [7, 7, 28, 35]
+        lExpected = [5, 5, 15, 20, 27, 27, 46, 53, 63, 63, 83, 93, 102, 102, 112, 117]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
