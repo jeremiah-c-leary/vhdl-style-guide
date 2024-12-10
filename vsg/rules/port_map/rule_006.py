@@ -4,7 +4,7 @@ from vsg import token
 from vsg.rules.whitespace_between_token_pairs import Rule
 
 lTokens = []
-lTokens.append([token.generic_map_aspect.map_keyword, token.generic_map_aspect.open_parenthesis])
+lTokens.append([token.port_map_aspect.map_keyword, token.port_map_aspect.open_parenthesis])
 
 
 class rule_006(Rule):
@@ -17,17 +17,17 @@ class rule_006(Rule):
 
     .. code-block:: vhdl
 
-       generic map(
+       port map(
 
-       generic map   (
+       port map   (
 
     **Fix**
 
     .. code-block:: vhdl
 
-       generic map (
+       port map (
 
-       generic map (
+       port map (
     """
 
     def __init__(self):
