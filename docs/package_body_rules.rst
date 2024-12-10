@@ -377,7 +377,7 @@ package_body_502
 
 |phase_6| |error| |case| |case_name|
 
-This rule checks the package name has proper case in the package declaration.
+This rule checks the package name has proper case in the package body declaration.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -406,13 +406,13 @@ This rule checks the **is** keyword has proper case.
 
 .. code-block:: vhdl
 
-   package fifo_pkg IS
+   package body fifo_pkg IS
 
 **Fix**
 
 .. code-block:: vhdl
 
-   package fifo_pkg is
+   package body fifo_pkg is
 
 package_body_504
 ################
@@ -427,13 +427,13 @@ This rule checks the **end** keyword has proper case.
 
 .. code-block:: vhdl
 
-   END package fifo_pkg;
+   END package body fifo_pkg;
 
 **Fix**
 
 .. code-block:: vhdl
 
-   end package fifo_pkg;
+   end package body fifo_pkg;
 
 package_body_505
 ################
@@ -482,7 +482,7 @@ package_body_507
 
 |phase_6| |error| |case| |case_name|
 
-This rule checks the package name has proper case on the end package declaration.
+This rule checks the package name has proper case on the end package body declaration.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -496,7 +496,7 @@ This rule checks the package name has proper case on the end package declaration
 
 .. code-block:: vhdl
 
-   end package fifo_pkg;
+   end package body fifo_pkg;
 
 package_body_600
 ################
