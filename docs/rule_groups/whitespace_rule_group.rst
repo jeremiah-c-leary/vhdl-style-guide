@@ -112,6 +112,10 @@ Rules Enforcing Whitespace Rule Group
 * `package_009 <../package_rules.html#package-009>`_
 * `package_body_100 <../package_body_rules.html#package-body-100>`_
 * `package_body_101 <../package_body_rules.html#package-body-101>`_
+* `package_instantiation_100 <../package_instantiation_rules.html#package-instantiation-100>`_
+* `package_instantiation_101 <../package_instantiation_rules.html#package-instantiation-101>`_
+* `package_instantiation_102 <../package_instantiation_rules.html#package-instantiation-102>`_
+* `package_instantiation_103 <../package_instantiation_rules.html#package-instantiation-103>`_
 * `port_003 <../port_rules.html#port-003>`_
 * `port_007 <../port_rules.html#port-007>`_
 * `port_008 <../port_rules.html#port-008>`_
