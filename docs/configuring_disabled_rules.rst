@@ -69,6 +69,8 @@ Rules Disabled by Default
 * `package_017 <package_rules.html#package-017>`_
 * `package_body_600 <package_body_rules.html#package-body-600>`_
 * `package_body_601 <package_body_rules.html#package-body-601>`_
+* `package_instantiation_600 <package_instantiation_rules.html#package-instantiation-600>`_
+* `package_instantiation_601 <package_instantiation_rules.html#package-instantiation-601>`_
 * `port_011 <port_rules.html#port-011>`_
 * `port_025 <port_rules.html#port-025>`_
 * `port_600 <port_rules.html#port-600>`_
