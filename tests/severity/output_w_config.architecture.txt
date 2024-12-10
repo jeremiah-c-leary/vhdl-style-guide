@@ -7,10 +7,10 @@ Total Violations:    2
   Error   :     1
   Warning :     1
   ToDo    :     0
-----------------------------+------------+------------+--------------------------------------
-  Rule                      |  severity  |  line(s)   | Solution
-----------------------------+------------+------------+--------------------------------------
-  whitespace_200            | Error      |          1 | Remove 1 blank line(s) below
-  architecture_024          | Warning    |          7 | Add architecture simple name
-----------------------------+------------+------------+--------------------------------------
+-------------------+------------+------------+--------------------------------------
+  Rule             |  severity  |  line(s)   | Solution
+-------------------+------------+------------+--------------------------------------
+  whitespace_200   | Error      |          1 | Remove 1 blank line(s) below
+  architecture_024 | Warning    |          7 | Add architecture simple name
+-------------------+------------+------------+--------------------------------------
 NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.
