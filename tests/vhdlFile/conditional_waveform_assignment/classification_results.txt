@@ -18,7 +18,7 @@
 <class 'vsg.token.function_specification.function_keyword'>
 <class 'vsg.token.function_specification.designator'>
 <class 'vsg.token.function_specification.return_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
 5 |   begin

@@ -22,7 +22,7 @@
 <class 'vsg.token.external_constant_name.constant_keyword'>
 <class 'vsg.token.external_constant_name.external_pathname'>
 <class 'vsg.token.external_constant_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_constant_name.double_greater_than'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -37,7 +37,7 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -52,7 +52,7 @@
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -72,7 +72,7 @@
 <class 'vsg.token.external_constant_name.constant_keyword'>
 <class 'vsg.token.external_constant_name.external_pathname'>
 <class 'vsg.token.external_constant_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_constant_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -81,7 +81,7 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -90,7 +90,7 @@
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -104,7 +104,7 @@
 <class 'vsg.token.external_constant_name.constant_keyword'>
 <class 'vsg.token.external_constant_name.external_pathname'>
 <class 'vsg.token.external_constant_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_constant_name.double_greater_than'>
 <class 'vsg.token.sensitivity_list.comma'>
 --------------------------------------------------------------------------------
@@ -113,7 +113,7 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.sensitivity_list.comma'>
 --------------------------------------------------------------------------------
@@ -122,7 +122,7 @@
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.process_statement.close_parenthesis'>
 <class 'vsg.token.process_statement.is_keyword'>
@@ -140,7 +140,7 @@
 <class 'vsg.token.external_constant_name.constant_keyword'>
 <class 'vsg.token.external_constant_name.external_pathname'>
 <class 'vsg.token.external_constant_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_constant_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -149,7 +149,7 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -158,7 +158,7 @@
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.simple_waveform_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -171,7 +171,7 @@
 <class 'vsg.token.external_constant_name.constant_keyword'>
 <class 'vsg.token.external_constant_name.external_pathname'>
 <class 'vsg.token.external_constant_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_constant_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -180,7 +180,7 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -189,7 +189,7 @@
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
@@ -202,7 +202,7 @@
 <class 'vsg.token.external_constant_name.constant_keyword'>
 <class 'vsg.token.external_constant_name.external_pathname'>
 <class 'vsg.token.external_constant_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_constant_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -211,7 +211,7 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -220,7 +220,7 @@
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.if_statement.then_keyword'>
 --------------------------------------------------------------------------------
@@ -239,21 +239,21 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.parser.comma'>
 <class 'vsg.token.external_signal_name.double_less_than'>
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.parser.comma'>
 <class 'vsg.token.external_variable_name.double_less_than'>
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -270,21 +270,21 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.parser.comma'>
 <class 'vsg.token.external_signal_name.double_less_than'>
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.parser.comma'>
 <class 'vsg.token.external_variable_name.double_less_than'>
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.simple_variable_assignment.semicolon'>
@@ -306,21 +306,21 @@
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.adding_operator.concat'>
 <class 'vsg.token.external_signal_name.double_less_than'>
 <class 'vsg.token.external_signal_name.signal_keyword'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.adding_operator.concat'>
 <class 'vsg.token.external_variable_name.double_less_than'>
 <class 'vsg.token.external_variable_name.variable_keyword'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.case_statement.is_keyword'>
 --------------------------------------------------------------------------------
@@ -356,7 +356,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.external_constant_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_constant_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -368,7 +368,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -380,7 +380,7 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
@@ -406,7 +406,7 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.external_constant_name.external_pathname'>
 <class 'vsg.token.external_constant_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_constant_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -427,7 +427,7 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.external_signal_name.external_pathname'>
 <class 'vsg.token.external_signal_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_signal_name.double_greater_than'>
 <class 'vsg.token.logical_operator.or_operator'>
 --------------------------------------------------------------------------------
@@ -448,7 +448,7 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.external_variable_name.external_pathname'>
 <class 'vsg.token.external_variable_name.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.external_variable_name.double_greater_than'>
 <class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
 --------------------------------------------------------------------------------
