@@ -372,25 +372,25 @@ def _analyze_align_left_no_align_paren_yes(
                     iColumn = dTemp["column"]
                 #                    print(f"iColumn = {iColumn}")
                 else:
-                    iColumn = dTemp["column"] + iTemp - len(dActualIndent[iLine]) + iIndentStep - 1
+                    if bIgnoreStartParen:
+                        iColumn = dTemp["column"] + iTemp - len(dActualIndent[iLine])
+                    else:
+                        iColumn = dTemp["column"] + iTemp - len(dActualIndent[iLine]) + iIndentStep - 1
                     if iParens == 1:
                         #                        print('Got Here')
                         iColumn -= iIndentAfterParen
                 #                    print(f"iColumn = {dTemp['column']} + ({iTemp} - {len({dActualIndent[iLine]})}) + {iIndentStep} - 1 = {iColumn}")
                 lColumn.append(iColumn)
-                if bIgnoreStartParen:
-                    dExpectedIndent[iLine + 1] = iColumn + 1
-                else:
-                    dExpectedIndent[iLine + 1] = iColumn
+                dExpectedIndent[iLine + 1] = iColumn
             else:
                 iParens -= 1
                 lColumn.pop()
-                if bIgnoreStartParen:
-                    dExpectedIndent[iLine + 1] = lColumn[-1] + 1
-                else:
-                    dExpectedIndent[iLine + 1] = lColumn[-1]
+                dExpectedIndent[iLine + 1] = lColumn[-1]
                 if dTemp["begin_line"]:
-                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
+                    if bIgnoreStartParen:
+                        dExpectedIndent[iLine] = dExpectedIndent[iLine] - 1
+                    else:
+                        dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
         #                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - 2
 
         #            print(f'lColumn = {lColumn}')
