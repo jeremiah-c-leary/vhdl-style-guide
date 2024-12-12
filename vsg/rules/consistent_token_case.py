@@ -39,15 +39,10 @@ class consistent_token_case(case.Rule):
 
     def _get_tokens_of_interest(self, oFile):
         lNameTokens = cc_utils.get_all_name_tokens(oFile, self.lNames)
-
         Identifiers = cc_utils.get_all_identifiers(oFile, self.lTokens)
-
         lProcessDicts = cc_utils.get_process_indexes(oFile)
-        #
         lArchitectureDicts = cc_utils.get_architecture_indexes(oFile)
-        #
         lSubprogramBodyDicts = cc_utils.get_subprogram_body_indexes(oFile)
-
         lBlockDicts = cc_utils.get_block_indexes(oFile)
 
         lComponentDicts = cc_utils.get_component_declaration_indexes(oFile)
