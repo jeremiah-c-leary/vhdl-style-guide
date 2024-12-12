@@ -27,7 +27,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "architecture")
         self.assertEqual(oRule.identifier, "026")
 
-        lExpected = [5, 6, 7, 8, 9, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 25]
+        lExpected = [5, 6, 7, 8, 9, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 25, 28, 33]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -42,7 +42,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "architecture")
         self.assertEqual(oRule.identifier, "026")
 
-        lExpected = [5, 6, 7, 8, 9, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 25]
+        lExpected = [5, 6, 7, 8, 9, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 25, 28, 33]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -75,7 +75,7 @@ class test_rule(unittest.TestCase):
         oRule.comment_line_ends_group = "no"
         oRule.include_type_is_keyword = "no"
 
-        lExpected = [4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 17, 19, 20, 22, 23, 24, 25]
+        lExpected = [4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 17, 19, 20, 22, 23, 24, 25, 28, 33]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -87,7 +87,7 @@ class test_rule(unittest.TestCase):
         oRule.comment_line_ends_group = False
         oRule.include_type_is_keyword = False
 
-        lExpected = [4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 17, 19, 20, 22, 23, 24, 25]
+        lExpected = [4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 17, 19, 20, 22, 23, 24, 25, 28, 33]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -210,7 +210,7 @@ class test_rule(unittest.TestCase):
         oRule.comment_line_ends_group = "no"
         oRule.include_type_is_keyword = "yes"
 
-        lExpected = [4, 5, 6, 7, 8, 9, 10, 12, 13, 15, 17, 18, 19, 20, 22, 23, 25]
+        lExpected = [4, 5, 6, 7, 8, 9, 10, 12, 13, 15, 17, 18, 19, 20, 22, 23, 25, 34]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -222,7 +222,7 @@ class test_rule(unittest.TestCase):
         oRule.comment_line_ends_group = False
         oRule.include_type_is_keyword = True
 
-        lExpected = [4, 5, 6, 7, 8, 9, 10, 12, 13, 15, 17, 18, 19, 20, 22, 23, 25]
+        lExpected = [4, 5, 6, 7, 8, 9, 10, 12, 13, 15, 17, 18, 19, 20, 22, 23, 25, 34]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

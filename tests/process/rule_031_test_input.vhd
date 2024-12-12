@@ -119,4 +119,13 @@ begin
   begin
   end process PROC;
 
+  -- Test protected type body in the process declarative region
+  PROC : process (a) is
+    constant c_abc : integer;
+    type flag_pt is protected body
+      variable flag  : boolean;
+    end protected body;
+  begin
+  end process PROC;
+
 end architecture RTL;
