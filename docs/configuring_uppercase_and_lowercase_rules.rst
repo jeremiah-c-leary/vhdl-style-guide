@@ -221,8 +221,6 @@ For example, if you want to uppercase everything except the entity name, you cou
 Rules Enforcing Case
 ####################
 
-* `aggregate_500 <aggregate_rules.html#aggregate-500>`_
-
 * `alias_declaration_500 <alias_declaration_rules.html#alias-declaration-500>`_
 * `alias_declaration_501 <alias_declaration_rules.html#alias-declaration-501>`_
 * `alias_declaration_502 <alias_declaration_rules.html#alias-declaration-502>`_
@@ -268,13 +266,13 @@ Rules Enforcing Case
 * `case_016 <case_rules.html#case-016>`_
 * `case_017 <case_rules.html#case-017>`_
 * `case_018 <case_rules.html#case-018>`_
-* `case_500 <case_rules.html#case-500>`_
 
 * `case_generate_alternative_500 <case_generate_alternative_rules.html#case-generate-alternative-500>`_
-* `case_generate_alternative_501 <case_generate_alternative_rules.html#case-generate-alternative-501>`_
 
 * `case_generate_statement_500 <case_generate_statement_rules.html#case-generate-statement-500>`_
 * `case_generate_statement_501 <case_generate_statement_rules.html#case-generate-statement-501>`_
+
+* `choice_500 <choice_rules.html#choice-500>`_
 
 * `component_004 <component_rules.html#component-004>`_
 * `component_006 <component_rules.html#component-006>`_
