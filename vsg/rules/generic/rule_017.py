@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules import token_case_n_token_after_tokens_between_tokens_unless_between_tokens
+from vsg.rules import (
+    token_case_n_token_after_tokens_between_tokens_unless_between_tokens,
+)
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.colon)

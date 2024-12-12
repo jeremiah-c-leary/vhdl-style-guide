@@ -45,12 +45,12 @@ end architecture rol;  -- 'rol' since 1993
 entity b is
   generic (
     function foo (
-      a : natural; 
+      a : natural;
       b : DATA_TYPE
     ) return natural;
     impure function bar (
-      a          : integer; 
-      b          : integer; 
+      a          : integer;
+      b          : integer;
       constant c : integer
     ) return natural
   );

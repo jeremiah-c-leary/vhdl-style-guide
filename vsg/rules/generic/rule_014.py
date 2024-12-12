@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules.whitespace_before_tokens_in_between_tokens_unless_between_tokens import Rule
+from vsg.rules.whitespace_before_tokens_in_between_tokens_unless_between_tokens import (
+    Rule,
+)
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.colon)

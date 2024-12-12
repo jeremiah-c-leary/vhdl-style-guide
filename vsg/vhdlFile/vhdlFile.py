@@ -358,8 +358,15 @@ class vhdlFile:
         return extract.get_token_and_n_tokens_before_it_in_between_tokens(lTokens, iTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_token_and_n_tokens_before_it_in_between_tokens_unless_between_tokens(self, lTokens, iTokens, oStart, oEnd, lUnless):
-        return extract.get_token_and_n_tokens_before_it_in_between_tokens_unless_between_tokens(lTokens, iTokens, oStart, oEnd, lUnless, self.lAllObjects, self.oTokenMap)
-
+        return extract.get_token_and_n_tokens_before_it_in_between_tokens_unless_between_tokens(
+            lTokens,
+            iTokens,
+            oStart,
+            oEnd,
+            lUnless,
+            self.lAllObjects,
+            self.oTokenMap,
+        )
 
     def get_token_and_n_tokens_before_it_in_between_tokens_unless_token_is_found(self, lTokens, iTokens, oStart, oEnd, oStop):
         return extract.get_token_and_n_tokens_before_it_in_between_tokens_unless_token_is_found(
@@ -379,7 +386,15 @@ class vhdlFile:
         return extract.get_token_and_n_tokens_after_it_when_between_tokens(lTokens, iTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
     def get_token_and_n_tokens_after_it_when_between_tokens_unless_between_tokens(self, lTokens, iTokens, oStart, oEnd, lUnless):
-        return extract.get_token_and_n_tokens_after_it_when_between_tokens_unless_between_tokens(lTokens, iTokens, oStart, oEnd, lUnless, self.lAllObjects, self.oTokenMap)
+        return extract.get_token_and_n_tokens_after_it_when_between_tokens_unless_between_tokens(
+            lTokens,
+            iTokens,
+            oStart,
+            oEnd,
+            lUnless,
+            self.lAllObjects,
+            self.oTokenMap,
+        )
 
     def get_blank_lines_below_line_ending_with_token(self, lTokens, lHierarchy=None):
         return extract.get_blank_lines_below_line_ending_with_token(lTokens, lHierarchy, self.lAllObjects, self.oTokenMap)

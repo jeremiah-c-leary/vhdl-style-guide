@@ -40,7 +40,13 @@ class insert_carriage_return_after_token_if_it_is_not_followed_by_a_comment_when
         lToi = []
         for lTokenPair in self.lTokenPairs:
             for oToken in self.lTokens:
-                lToi_a = oFile.get_token_and_n_tokens_after_it_when_between_tokens_unless_between_tokens([oToken], 2, lTokenPair[0], lTokenPair[1], self.lUnless)
+                lToi_a = oFile.get_token_and_n_tokens_after_it_when_between_tokens_unless_between_tokens(
+                    [oToken],
+                    2,
+                    lTokenPair[0],
+                    lTokenPair[1],
+                    self.lUnless,
+                )
                 lToi = utils.combine_two_token_class_lists(lToi, lToi_a)
         return lToi
 
