@@ -16,4 +16,10 @@ class token_indent_between_tokens_unless_between_tokens(Rule):
         self.bInclusive = bInclusive
 
     def _get_tokens_of_interest(self, oFile):
-        return oFile.get_tokens_at_beginning_of_line_matching_between_tokens_unless_between_tokens(self.lTokens, self.oStart, self.oEnd, self.lUnless, self.bInclusive)
+        return oFile.get_tokens_at_beginning_of_line_matching_between_tokens_unless_between_tokens(
+            self.lTokens,
+            self.oStart,
+            self.oEnd,
+            self.lUnless,
+            self.bInclusive,
+        )

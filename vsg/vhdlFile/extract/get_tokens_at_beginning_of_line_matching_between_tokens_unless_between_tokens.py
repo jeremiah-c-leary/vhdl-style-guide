@@ -5,7 +5,6 @@ from vsg.vhdlFile.extract import tokens, utils
 
 
 def get_tokens_at_beginning_of_line_matching_between_tokens_unless_between_tokens(lTokens, oStart, oEnd, lUnless, bInclusive, lAllTokens, oTokenMap):
-
     lIndexes = utils.get_indexes_of_token_list(lTokens, oTokenMap)
     lIndexes = utils.filter_indexes_in_unless_regions(lIndexes, lUnless, oTokenMap)
 
