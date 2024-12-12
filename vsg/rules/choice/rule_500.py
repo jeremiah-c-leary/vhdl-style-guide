@@ -28,3 +28,4 @@ class rule_500(token_case):
 
     def __init__(self):
         super().__init__(lTokens)
+        self.groups.append("case::keyword")
