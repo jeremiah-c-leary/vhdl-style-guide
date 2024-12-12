@@ -49,6 +49,8 @@ class test_variable_rule(unittest.TestCase):
         lExpected = []
         lExpected.extend(range(5, 20))
         lExpected.extend(range(22, 26))
+        lExpected.extend(range(28, 32))
+        lExpected.extend(range(34, 36))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -93,6 +95,8 @@ class test_variable_rule(unittest.TestCase):
         lExpected = []
         lExpected.extend(range(4, 20))
         lExpected.extend(range(22, 26))
+        lExpected.extend(range(28, 32))
+        lExpected.extend(range(34, 36))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -137,6 +141,8 @@ class test_variable_rule(unittest.TestCase):
         lExpected = []
         lExpected.extend(range(4, 20))
         lExpected.extend(range(22, 26))
+        lExpected.extend(range(28, 32))
+        lExpected.extend(range(34, 36))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -181,6 +187,8 @@ class test_variable_rule(unittest.TestCase):
         lExpected = []
         lExpected.extend(range(5, 20))
         lExpected.extend(range(22, 26))
+        lExpected.extend(range(28, 32))
+        lExpected.extend(range(34, 36))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
