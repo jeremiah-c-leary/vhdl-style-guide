@@ -226,6 +226,9 @@ class vhdlFile:
     def get_tokens_matching_in_range_bounded_by_tokens(self, lTokens, oStart, oEnd):
         return extract.get_tokens_matching_in_range_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
+    def get_tokens_matching_in_range_bounded_by_tokens_unless_between_tokens(self, lTokens, oStart, oEnd, lUnless):
+        return extract.get_tokens_matching_in_range_bounded_by_tokens_unless_between_tokens(lTokens, oStart, oEnd, lUnless, self.lAllObjects, self.oTokenMap)
+
     def get_tokens_bounded_by(
         self,
         oLeft,
