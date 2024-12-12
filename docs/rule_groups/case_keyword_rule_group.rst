@@ -119,6 +119,9 @@ Rules Enforcing Case::Keyword Rule Group
 * `package_body_504 <../package_body_rules.html#package-body-504>`_
 * `package_body_505 <../package_body_rules.html#package-body-505>`_
 * `package_body_506 <../package_body_rules.html#package-body-506>`_
+* `package_instantiation_500 <../package_instantiation_rules.html#package-instantiation-500>`_
+* `package_instantiation_502 <../package_instantiation_rules.html#package-instantiation-502>`_
+* `package_instantiation_503 <../package_instantiation_rules.html#package-instantiation-503>`_
 * `port_017 <../port_rules.html#port-017>`_
 * `port_018 <../port_rules.html#port-018>`_
 * `port_019 <../port_rules.html#port-019>`_

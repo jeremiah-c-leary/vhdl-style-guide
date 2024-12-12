@@ -416,6 +416,12 @@ Rules Enforcing Case
 * `package_body_506 <package_body_rules.html#package-body-506>`_
 * `package_body_507 <package_body_rules.html#package-body-507>`_
 
+* `package_instantiation_500 <package_instantiation_rules.html#package-instantiation-500>`_
+* `package_instantiation_501 <package_instantiation_rules.html#package-instantiation-501>`_
+* `package_instantiation_502 <package_instantiation_rules.html#package-instantiation-502>`_
+* `package_instantiation_503 <package_instantiation_rules.html#package-instantiation-503>`_
+* `package_instantiation_504 <package_instantiation_rules.html#package-instantiation-504>`_
+
 * `port_010 <port_rules.html#port-010>`_
 * `port_017 <port_rules.html#port-017>`_
 * `port_018 <port_rules.html#port-018>`_
