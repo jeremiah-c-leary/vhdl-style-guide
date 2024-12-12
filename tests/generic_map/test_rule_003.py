@@ -20,6 +20,7 @@ class test_generic_map_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
+        self.maxDiff = None
 
     def test_rule_003(self):
         oRule = generic_map.rule_003()
@@ -27,7 +28,7 @@ class test_generic_map_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "generic_map")
         self.assertEqual(oRule.identifier, "003")
 
-        lExpected = [33]
+        lExpected = [83, 91, 108, 118]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

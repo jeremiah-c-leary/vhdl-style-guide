@@ -55,6 +55,17 @@ package body RTL is
 
   constant sig1 : std_logic;
 
+  -- Checking exclusions
+  constant c_abc : integer;
+  function my_func return integer is
+    constant c_abc : integer;
+  begin
+  end function;
+  constant c_abc : integer;
+  type flag_pt is protected body
+    variable flag : boolean;
+  end protected body;
+
 end package body RTL;
 
 -- Test functions and procedures defined in architectures
