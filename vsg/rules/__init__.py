@@ -150,6 +150,7 @@ from vsg.rules import next_statement
 from vsg.rules import null_statement
 from vsg.rules import package
 from vsg.rules import package_body
+from vsg.rules import package_instantiation
 from vsg.rules import port
 from vsg.rules import port_map
 from vsg.rules import pragma

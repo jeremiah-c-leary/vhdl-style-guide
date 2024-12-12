@@ -36,6 +36,8 @@ Rules Enforcing Case::Name Rule Group
 * `package_010 <../package_rules.html#package-010>`_
 * `package_body_502 <../package_body_rules.html#package-body-502>`_
 * `package_body_507 <../package_body_rules.html#package-body-507>`_
+* `package_instantiation_501 <../package_instantiation_rules.html#package-instantiation-501>`_
+* `package_instantiation_504 <../package_instantiation_rules.html#package-instantiation-504>`_
 * `port_010 <../port_rules.html#port-010>`_
 * `port_map_002 <../port_map_rules.html#port-map-002>`_
 * `procedure_501 <../procedure_rules.html#procedure-501>`_
