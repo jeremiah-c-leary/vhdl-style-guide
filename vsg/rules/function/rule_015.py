@@ -15,6 +15,7 @@ lAlign.append(token.alias_declaration.alias_designator)
 
 lUnless = []
 lUnless.append([token.procedure_specification.procedure_keyword, token.subprogram_body.semicolon])
+lUnless.append([token.protected_type_body.body_keyword, token.protected_type_body.end_body_keyword])
 
 
 class rule_015(align_tokens_in_region_between_tokens_unless_between_tokens):
