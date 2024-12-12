@@ -121,6 +121,7 @@ def create_tois(lAllDicts, oFile):
                             oToi = tokens.New(iName, iLine, [oFile.lAllObjects[iName]])
                             oToi.set_meta_data("expected", sIdentifier)
                             lReturn.append(oToi)
+                        break
             except KeyError:
                 pass
 
