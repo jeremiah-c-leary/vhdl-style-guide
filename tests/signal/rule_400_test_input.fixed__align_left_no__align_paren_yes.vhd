@@ -18,6 +18,12 @@ architecture rtl of fifo is
                               element7(7 downto 0)
                              );
 
+  signal s : MY_TYPE := (
+                          a => '0',
+                          ddddd => (others => '0'),
+                          ffff => (others => '0')
+                        );
+
 begin
 
 end architecture rtl;

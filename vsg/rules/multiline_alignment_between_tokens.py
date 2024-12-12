@@ -345,8 +345,10 @@ def _analyze_align_left_no_align_paren_yes(
 
     if bIgnoreStartParen:
         iIndent = iAssignColumn + iFirstTokenLength
+        iIgnoreStartParenOffset = 1
     else:
         iIndent = iAssignColumn + iFirstTokenLength + 1
+        iIgnoreStartParenOffset = 0
 
     iColumn = iIndent
     lColumn = [iIndent]
@@ -398,7 +400,7 @@ def _analyze_align_left_no_align_paren_yes(
         #        print(f'iParens = {iParens}')
 
         if len(lTemp) == 0:
-            dExpectedIndent[iLine + 1] = lColumn[-1]
+            dExpectedIndent[iLine + 1] = lColumn[-1] + iIgnoreStartParenOffset
 
     #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
     #    print(dExpectedIndent)
@@ -578,4 +580,7 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
 
 
 def toi_is_an_array(oToi):
-    return utils.are_next_consecutive_tokens_ignoring_whitespace(["<=", "("], 0, oToi.get_tokens())
+    for sAssignmentToken in ["<=", ":="]:
+        if utils.are_next_consecutive_tokens_ignoring_whitespace([sAssignmentToken, "("], 0, oToi.get_tokens()):
+            return True
+    return False
