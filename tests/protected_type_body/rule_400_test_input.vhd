@@ -62,6 +62,11 @@ package body RTL is
     begin
     end function;
   end protected body;
+
+  constant c_cons1 : std_logic;
+  type t_typ1 is (idle, write, read);
+  subtype s_sub1 is integer range 0 to 9;
+
 end package body RTL;
 
 -- Test functions and procedures defined in protected body

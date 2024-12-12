@@ -28,7 +28,7 @@ class test_protected_type_body_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, "400")
 
         lExpected = []
-        lExpected.extend([7, 8, 9, 10, 21, 22, 23, 25, 26, 30, 31, 44, 90, 91, 92])
+        lExpected.extend([7, 8, 9, 10, 21, 22, 23, 25, 26, 30, 31, 44, 95, 96, 97])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

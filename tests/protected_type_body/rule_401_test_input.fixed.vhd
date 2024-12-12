@@ -27,4 +27,7 @@ package body RTL is
     end function;
   end protected body;
 
+  constant c_cons1 : std_logic;
+  constant c_cons_longer : std_logic;
+
 end package body RTL;
