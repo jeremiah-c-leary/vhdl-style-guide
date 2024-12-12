@@ -290,7 +290,7 @@ class testMain(unittest.TestCase):
             except SystemExit:
                 pass
 
-        lActual = temp_stdout.getvalue().strip().split("\n")
+        lActual = temp_stdout.getvalue().strip().splitlines()
 
         if lActual[0] == lExpected[1]:
             lExpected = [lExpected[1], lExpected[0]]
@@ -422,7 +422,7 @@ class testMain(unittest.TestCase):
             except SystemExit:
                 pass
 
-        lActual = temp_stdout.getvalue().strip().split("\n")
+        lActual = temp_stdout.getvalue().strip().splitlines()
 
         if lActual[0] == lExpected[1]:
             lExpected = [lExpected[1], lExpected[0]]
