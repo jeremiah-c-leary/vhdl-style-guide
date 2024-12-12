@@ -31,7 +31,7 @@ class consistent_token_case(case.Rule):
         self.lNames = lNames
         self.bIncludeDeclarativePartNames = False
         self.bIncludeArchitectureBodyDeclarationsInSubprogramBody = False
-        if lIgnore == None:
+        if lIgnore is None:
             self.lIgnoreTokens = []
         else:
             self.lIgnoreTokens = lIgnore
@@ -39,26 +39,16 @@ class consistent_token_case(case.Rule):
 
     def _get_tokens_of_interest(self, oFile):
         lNameTokens = cc_utils.get_all_name_tokens(oFile, self.lNames)
-        #        print(f'lNames = {lNameTokens}')
-        #        for iName in lNameTokens:
-        #            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
 
         Identifiers = cc_utils.get_all_identifiers(oFile, self.lTokens)
-        #        print(f'lVariables = {Identifiers}')
-        #        for iName in Identifiers:
-        #            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
 
         lProcessDicts = cc_utils.get_process_indexes(oFile)
-        #        print(f'lProcessDicts = {lProcessDicts}')
         #
         lArchitectureDicts = cc_utils.get_architecture_indexes(oFile)
-        #        print(f'lArchitectureDicts = {lArchitectureDicts}')
         #
         lSubprogramBodyDicts = cc_utils.get_subprogram_body_indexes(oFile)
-        #        print(f'lSubprogramBodyDicts = {lSubprogramBodyDicts}')
 
         lBlockDicts = cc_utils.get_block_indexes(oFile)
-        #        print(f'lBlockDicts = {lBlockDicts}')
 
         lComponentDicts = cc_utils.get_component_declaration_indexes(oFile)
 
@@ -94,9 +84,6 @@ class consistent_token_case(case.Rule):
 
         if self.bIncludeArchitectureBodyDeclarationsInSubprogramBody:
             lAllDicts = cc_utils.add_identifiers_from_to("architecture_body", "subprogram_body", lAllDicts)
-
-        #        for tmp in lAllDicts:
-        #            print(tmp)
 
         return cc_utils.create_tois(lAllDicts, oFile)
 

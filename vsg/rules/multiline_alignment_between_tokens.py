@@ -91,7 +91,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
                 if isinstance(oToken, parser.carriage_return):
                     iColumn = 0
-                    bSkipCommentLine = rules_utils.does_line_start_with_comment(lTokens[iToken + 1 : iToken + 3])
+                    bSkipCommentLine = rules_utils.does_line_start_with_comment(lTokens[iToken + 1: iToken + 3])
                     if bSkipCommentLine:
                         dActualIndent[iLine] = None
                     else:
@@ -171,12 +171,9 @@ class multiline_alignment_between_tokens(alignment.Rule):
                     self.bIgnoreStartParen,
                 )
 
-            #            print(f'Actual = {dActualIndent}')
-            #            print(f'Expect = {dExpectedIndent}')
-            #            print(f'Index  = {dIndex}')
-
             if self.indent_style == "smart_tabs":
-                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
+                alignment_utils.convert_expected_indent_to_smart_tab(
+                    dExpectedIndent, self.indent_size, iFirstLineIndent)
 
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] is None:
@@ -190,7 +187,6 @@ class multiline_alignment_between_tokens(alignment.Rule):
     def _fix_violation(self, oViolation):
         lTokens = oViolation.get_tokens()
         dAction = oViolation.get_action()
-        #        print(dAction)
         if dAction["action"] == "adjust":
             lTokens[0].set_value(dAction["column"])
         else:
@@ -252,7 +248,6 @@ def calculate_start_column(oFile, oToi):
     iReturn = oFile.get_column_of_token_index(oToi.get_start_index())
     iReturn += len(oToi.get_tokens()[0].get_value())
     iReturn += 1
-    #    print(f'Start Column = {iReturn}')
     return iReturn
 
 
@@ -276,8 +271,8 @@ def _set_column_adjustment(iToken, lTokens):
     return iReturn
 
 
-def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent, bStartsWithParen, bIgnoreStartParen, bOverride):
-    #    print('--> _analyze_align_left_yes_align_paren_no <-' + '-'*70)
+def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens,
+                                           iIndentStep, dActualIndent, bStartsWithParen, bIgnoreStartParen, bOverride):
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
@@ -290,11 +285,9 @@ def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, iInde
 
     iIndent = iFirstIndent
 
-    #    print(f'{dExpectedIndent[iFirstLine]}|{iIndent}')
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
-        #        print('-->  ' + str(iLine) + '  <--------------------------')
 
         lTemp = []
         for dParen in lParens:
@@ -315,9 +308,7 @@ def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, iInde
 
         iIndent = iFirstIndent + iParens * iIndentStep
 
-        #        print(f'indent = {iIndent} | iPerens = {iParens}')
         dExpectedIndent[iLine + 1] = iIndent
-    #        print(dExpectedIndent)
 
     dReturn = {}
     dReturn[iFirstLine] = dExpectedIndent[iFirstLine]
@@ -339,7 +330,6 @@ def _analyze_align_left_no_align_paren_yes(
     bIgnoreStartParen,
     iIndentAfterParen,
 ):
-    #    print('--> _analyze_align_left_no_align_paren_yes <-' + '-'*70)
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
@@ -353,32 +343,24 @@ def _analyze_align_left_no_align_paren_yes(
     iColumn = iIndent
     lColumn = [iIndent]
 
-    #    print('*'*80)
-    #    print(lParens)
-
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
-        #        print('-->  ' + str(iLine) + '  <' + '-'*80)
         lTemp = []
         for dParen in lParens:
             if dParen["line"] == iLine:
                 lTemp.append(dParen)
 
-        #        print(f'lTemp = {lTemp}')
         iTemp = lColumn[-1]
         for dTemp in lTemp:
             if dTemp["type"] == "open":
                 iParens += 1
                 if iLine == iFirstLine:
                     iColumn = dTemp["column"]
-                #                    print(f"iColumn = {iColumn}")
                 else:
                     iColumn = dTemp["column"] + iTemp - len(dActualIndent[iLine]) + iIndentStep - 1
                     if iParens == 1:
-                        #                        print('Got Here')
                         iColumn -= iIndentAfterParen
-                #                    print(f"iColumn = {dTemp['column']} + ({iTemp} - {len({dActualIndent[iLine]})}) + {iIndentStep} - 1 = {iColumn}")
                 lColumn.append(iColumn)
                 dExpectedIndent[iLine + 1] = iColumn + iIgnoreStartParenOffset
             else:
@@ -387,18 +369,10 @@ def _analyze_align_left_no_align_paren_yes(
                 dExpectedIndent[iLine + 1] = lColumn[-1] + iIgnoreStartParenOffset
                 if dTemp["begin_line"]:
                     dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
-        #                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - 2
-
-        #            print(f'lColumn = {lColumn}')
-
-        #        print(f'iParens = {iParens}')
 
         if len(lTemp) == 0:
             dExpectedIndent[iLine + 1] = lColumn[-1] + iIgnoreStartParenOffset
 
-    #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
-    #    print(dExpectedIndent)
-    #    print(convert_numbers_to_spaces(dExpectedIndent))
     return convert_numbers_to_spaces(dExpectedIndent)
 
 
@@ -422,7 +396,6 @@ def _analyze_align_paren_yes_align_left_yes(
     bIgnoreStartParen,
     bConstraint,
 ):
-    #    print('--> _analyze_align_paren_yes_align_left_yes <-' + '-'*70)
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
@@ -431,26 +404,18 @@ def _analyze_align_paren_yes_align_left_yes(
         iColumn = iIndent
         lColumn = [dActualIndent[iFirstLine]]
     else:
-        #       if bIgnoreStartParen:
-        #           iIndent = dActualIndent[iFirstLine]
-        #       else:
         iIndent = iAssignColumn + 2 + 1
         iColumn = iIndent
         lColumn = [iIndent]
-    #    print(iIndent)
-    #    print('*'*80)
-    #    print(lParens)
 
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
-        #        print('-->  ' + str(iLine) + '  <--------------------------')
         lTemp = []
         for dParen in lParens:
             if dParen["line"] == iLine:
                 lTemp.append(dParen)
 
-        #        print(f'lTemp = {lTemp}')
         iTemp = lColumn[-1]
         for dTemp in lTemp:
             if dTemp["type"] == "open":
@@ -459,7 +424,6 @@ def _analyze_align_paren_yes_align_left_yes(
                     iColumn = dTemp["column"] + iIndentStep - 1
                 else:
                     iColumn = dTemp["column"] + (iTemp - len(dActualIndent[iLine])) + iIndentStep - 1
-                #                print(f"iColumn = {dTemp['column']} + ({iTemp} - {dActualIndent[iLine]}) + {iIndentStep} - 1 = {iColumn}")
                 lColumn.append(iColumn)
                 dExpectedIndent[iLine + 1] = iColumn
             else:
@@ -468,8 +432,6 @@ def _analyze_align_paren_yes_align_left_yes(
                 dExpectedIndent[iLine + 1] = lColumn[-1]
                 if dTemp["begin_line"]:
                     dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
-
-        #        print(f'iParens = {iParens}')
 
         if len(lTemp) == 0:
             dExpectedIndent[iLine + 1] = lColumn[-1]
@@ -501,18 +463,13 @@ def _analyze_align_paren_yes_align_left_yes(
                 else:
                     dExpectedIndent[iLine + 1] -= 1
 
-    #        print(f'{iLine} | {lColumn} | {dExpectedIndent}')
-
     return convert_numbers_to_spaces(dExpectedIndent)
 
 
-def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActualIndent, iIndentStep, bStartsWithParen, iAssignColumn, bIgnoreStartParen):
-    #    print('--> _analyze_align_paren_no <-' + '-'*70)
-    #    print(iAssignColumn)
-    #    print(lParens)
+def _analyze_align_paren_no_align_left_no(
+        iFirstLine, iLastLine, lParens, dActualIndent, iIndentStep, bStartsWithParen, iAssignColumn, bIgnoreStartParen):
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
-    #    print(iIndent)
     if bStartsWithParen:
         iFirstIndent = dActualIndent[iFirstLine]
     elif bIgnoreStartParen:
@@ -525,7 +482,6 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
-        #        print('-->  ' + str(iLine) + '  <--------------------------')
 
         lTemp = []
         for dParen in lParens:
@@ -562,7 +518,6 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
             else:
                 iIndent = iFirstIndent + iParens * iIndentStep
 
-        #        print(f'indent = {iIndent} | iPerens = {iParens}')
         dExpectedIndent[iLine + 1] = iIndent
 
     dReturn = {}

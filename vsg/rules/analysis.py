@@ -94,18 +94,14 @@ def check_for_carriage_returns_between_tokens_ignoring_leading_and_trailing_whit
                 iEndIndex = rules_utils.get_index_of_token_in_list(lTokenPairs[1], lTokens)
                 if iEndIndex is None:
                     continue
-                #                print(f'{iToken}, {iEndIndex}')
                 iStartIndex = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
                 iEndIndex = utils.find_previous_non_whitespace_token(iEndIndex - 1, lTokens)
                 iNumberCarriageReturns = rules_utils.number_of_carriage_returns(lTokens[iStartIndex : iEndIndex + 1])
-                #                print(f'{iNumberCarriageReturns}')
                 if iNumberCarriageReturns > 0:
                     sSolution = "jcl-fix this"
 
-                    #                    print(lTokens[iStartIndex:iEndIndex + 1])
                     iViolation_line_number = iLine + rules_utils.number_of_carriage_returns(lTokens[0:iStartIndex])
                     oMyToi = oToi.extract_tokens(iStartIndex, iEndIndex)
-                    #                    print(oMyToi.get_tokens())
                     oViolation = violation.New(iViolation_line_number, oMyToi, "jcl-fix this")
                     dAction = {}
                     dAction["action"] = "remove_new_line"

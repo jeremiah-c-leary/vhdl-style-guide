@@ -59,16 +59,17 @@ class multiline_structure(structure.Rule):
     def _get_tokens_of_interest(self, oFile):
         lToi = []
         for lTokenPair in self.lTokenPairs:
-            aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken, bIncludeTillEndOfLine=True)
+            aToi = oFile.get_tokens_bounded_by(
+                lTokenPair[0],
+                lTokenPair[1],
+                bExcludeLastToken=self.bExcludeLastToken,
+                bIncludeTillEndOfLine=True)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
 
         lReturn = []
         for oToi in lToi:
             if rules_utils.is_single_line(oToi) and self.ignore_single_line == "yes":
                 continue
-
-            #            if not _is_open_paren_after_assignment(self, oToi):
-            #                continue
 
             lReturn.append(oToi)
 
@@ -549,7 +550,7 @@ def _fix_assign_on_single_line(oViolation):
 
 
 def _inside_others_clause(iToken, lTokens):
-    for oToken in lTokens[iToken + 1 :]:
+    for oToken in lTokens[iToken + 1:]:
         if utils.token_is_whitespace_or_comment(oToken):
             continue
         elif rules_utils.token_is_parenthesis(oToken):

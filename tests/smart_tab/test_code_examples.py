@@ -57,10 +57,6 @@ class testCodeExample(unittest.TestCase):
         self.assertIsNone(eSpiSlaveError)
         self.assertIsNone(eSpiMasterError)
 
-    #        self.assertIsNone(eGrpDebouncerError)
-    #        self.assertIsNone(ePICError)
-    #        self.assertIsNone(eLibraryStatementsError)
-
     def test_timestamp_vhdl(self):
         oRuleList = rule_list.rule_list(oTimestamp, oSeverityList)
         oRuleList.configure(oStyle)

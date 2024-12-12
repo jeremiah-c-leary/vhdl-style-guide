@@ -87,7 +87,6 @@ class rule_008(alignment.Rule):
             for iIndex in range(0, len(lTokens)):
                 iToken += 1
                 oToken = lTokens[iIndex]
-                #               print(f'{oToken} | {oToken.get_value()}')
 
                 if bStartFound:
                     if isinstance(oToken, parser.carriage_return):
@@ -115,7 +114,6 @@ class rule_008(alignment.Rule):
                             continue
 
                     elif isinstance(oToken, parser.comment):
-                        #                       print(f'--> Comment Found     | {iLine} | {iColumn}')
                         dAnalysis[iLine] = {}
                         dAnalysis[iLine]["token_column"] = iColumn
                         dAnalysis[iLine]["token_index"] = iToken
@@ -162,13 +160,11 @@ class rule_008(alignment.Rule):
                 if bStartFound:
                     for oEndToken in self.lEnd:
                         if isinstance(oToken, oEndToken):
-                            #                           print(f'--> End Token Found   | {iLine} | {iColumn}')
                             bEndFound = True
                             break
                 else:
                     for oStartToken in self.lStart:
                         if isinstance(oToken, oStartToken):
-                            #                           print(f'--> Start Token Found | {iLine} | {iColumn} | {oToken}')
                             bStartFound = True
                             break
 
