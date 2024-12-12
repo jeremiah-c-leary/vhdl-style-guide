@@ -11,6 +11,17 @@ begin
     alias alias1  : subtype_indicator is name;
     alias alias1  is name;
 
+    -- Checking exclusions
+    constant c_abc : integer;
+    function my_func return integer is
+      constant c_abc : integer;
+    begin
+    end function;
+    constant c_abc : integer;
+    type flag_pt is protected body
+      variable flag : boolean;
+    end protected body;
+
   begin
   end block BLOCK_LABEL;
 
