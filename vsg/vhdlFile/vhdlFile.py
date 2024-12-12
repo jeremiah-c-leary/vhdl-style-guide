@@ -223,6 +223,9 @@ class vhdlFile:
     def get_n_token_after_tokens_between_tokens(self, iToken, lTokens, oStart, oEnd):
         return extract.get_n_token_after_tokens_between_tokens(iToken, lTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
+    def get_n_token_after_tokens_between_tokens_unless_between_tokens(self, iToken, lTokens, oStart, oEnd, lUnless):
+        return extract.get_n_token_after_tokens_between_tokens_unless_between_tokens(iToken, lTokens, oStart, oEnd, lUnless, self.lAllObjects, self.oTokenMap)
+
     def get_tokens_matching_in_range_bounded_by_tokens(self, lTokens, oStart, oEnd):
         return extract.get_tokens_matching_in_range_bounded_by_tokens(lTokens, oStart, oEnd, self.lAllObjects, self.oTokenMap)
 
