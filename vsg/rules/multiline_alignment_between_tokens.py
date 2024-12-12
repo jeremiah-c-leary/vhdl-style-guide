@@ -551,7 +551,6 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
                     else:
                         dExpectedIndent[iLine] -= iIndentStep
 
-
         if iLine == iFirstLine:
             if bStartsWithParen:
                 iIndent = iFirstIndent + iParens * iIndentStep
