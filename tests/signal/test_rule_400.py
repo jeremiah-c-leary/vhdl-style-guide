@@ -35,6 +35,7 @@ class test_signal_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
         self.oFile.set_indent_map(dIndentMap)
+        self.maxDiff = None
 
     def test_rule_400__align_left_yes__align_paren_no(self):
         oRule = signal.rule_400()
@@ -47,6 +48,7 @@ class test_signal_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(5, 20))
+        lExpected.extend(range(22, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -62,6 +64,7 @@ class test_signal_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(5, 20))
+        lExpected.extend(range(22, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -91,6 +94,7 @@ class test_signal_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(4, 20))
+        lExpected.extend(range(22, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -106,6 +110,7 @@ class test_signal_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(4, 20))
+        lExpected.extend(range(22, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -135,6 +140,7 @@ class test_signal_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(4, 20))
+        lExpected.extend(range(22, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -150,6 +156,7 @@ class test_signal_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(4, 20))
+        lExpected.extend(range(22, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -179,6 +186,7 @@ class test_signal_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(5, 20))
+        lExpected.extend(range(22, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -194,6 +202,7 @@ class test_signal_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(5, 20))
+        lExpected.extend(range(22, 26))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

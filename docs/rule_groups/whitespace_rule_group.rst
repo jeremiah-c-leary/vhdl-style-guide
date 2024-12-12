@@ -123,6 +123,7 @@ Rules Enforcing Whitespace Rule Group
 * `port_020 <../port_rules.html#port-020>`_
 * `port_100 <../port_rules.html#port-100>`_
 * `port_101 <../port_rules.html#port-101>`_
+* `port_map_006 <../port_map_rules.html#port-map-006>`_
 * `port_map_007 <../port_map_rules.html#port-map-007>`_
 * `port_map_100 <../port_map_rules.html#port-map-100>`_
 * `procedure_100 <../procedure_rules.html#procedure-100>`_
