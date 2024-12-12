@@ -91,7 +91,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
                 if isinstance(oToken, parser.carriage_return):
                     iColumn = 0
-                    bSkipCommentLine = rules_utils.does_line_start_with_comment(lTokens[iToken + 1: iToken + 3])
+                    bSkipCommentLine = rules_utils.does_line_start_with_comment(lTokens[iToken + 1 : iToken + 3])
                     if bSkipCommentLine:
                         dActualIndent[iLine] = None
                     else:
@@ -172,8 +172,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
                 )
 
             if self.indent_style == "smart_tabs":
-                alignment_utils.convert_expected_indent_to_smart_tab(
-                    dExpectedIndent, self.indent_size, iFirstLineIndent)
+                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
 
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] is None:
@@ -271,8 +270,7 @@ def _set_column_adjustment(iToken, lTokens):
     return iReturn
 
 
-def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens,
-                                           iIndentStep, dActualIndent, bStartsWithParen, bIgnoreStartParen, bOverride):
+def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens, iIndentStep, dActualIndent, bStartsWithParen, bIgnoreStartParen, bOverride):
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
@@ -288,7 +286,6 @@ def _analyze_align_left_yes_align_paren_no(iFirstLine, iLastLine, lParens,
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
-
         lTemp = []
         for dParen in lParens:
             if dParen["line"] == iLine:
@@ -466,8 +463,7 @@ def _analyze_align_paren_yes_align_left_yes(
     return convert_numbers_to_spaces(dExpectedIndent)
 
 
-def _analyze_align_paren_no_align_left_no(
-        iFirstLine, iLastLine, lParens, dActualIndent, iIndentStep, bStartsWithParen, iAssignColumn, bIgnoreStartParen):
+def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActualIndent, iIndentStep, bStartsWithParen, iAssignColumn, bIgnoreStartParen):
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
     if bStartsWithParen:
@@ -482,7 +478,6 @@ def _analyze_align_paren_no_align_left_no(
     iParens = 0
 
     for iLine in range(iFirstLine, iLastLine + 1):
-
         lTemp = []
         for dParen in lParens:
             if dParen["line"] == iLine:

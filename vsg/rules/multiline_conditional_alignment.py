@@ -165,8 +165,7 @@ class multiline_conditional_alignment(alignment.Rule):
             )
 
             if self.indent_style == "smart_tabs":
-                alignment_utils.convert_expected_indent_to_smart_tab(
-                    dExpectedIndent, self.indent_size, iFirstLineIndent)
+                alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
 
             for iLine in range(iFirstLine + 1, iLastLine + 1):
                 if dActualIndent[iLine] == dExpectedIndent[iLine]:
@@ -198,9 +197,7 @@ class multiline_conditional_alignment(alignment.Rule):
                             dAction["column"] = dExpect["column"]
                             dAction["adjust"] = dExpect["adjust"]
                             sSolution = "Align when with other whens at column " + str(dExpect["column"])
-                            oViolation = violation.New(
-                                dAction["line"], oToi.extract_tokens(
-                                    dActual["iToken"] - 1, dActual["iToken"] - 1), sSolution)
+                            oViolation = violation.New(dAction["line"], oToi.extract_tokens(dActual["iToken"] - 1, dActual["iToken"] - 1), sSolution)
                             oViolation.set_action(dAction)
                             self.add_violation(oViolation)
 
@@ -214,9 +211,7 @@ class multiline_conditional_alignment(alignment.Rule):
                             dAction["column"] = dExpect["column"]
                             dAction["adjust"] = dExpect["adjust"]
                             sSolution = "Align else with other elses at column " + str(dExpect["column"])
-                            oViolation = violation.New(
-                                dAction["line"], oToi.extract_tokens(
-                                    dActual["iToken"] - 1, dActual["iToken"] - 1), sSolution)
+                            oViolation = violation.New(dAction["line"], oToi.extract_tokens(dActual["iToken"] - 1, dActual["iToken"] - 1), sSolution)
                             oViolation.set_action(dAction)
                             self.add_violation(oViolation)
 
@@ -263,8 +258,7 @@ def is_token_before_carriage_return(tToken, lTokens):
     return False
 
 
-def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithParen,
-                             iIndentStep, iAssignColumn, iFirstIndent):
+def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
     iFirstLine = alignment_utils.get_first_line(dActualIndent)
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
@@ -305,8 +299,7 @@ def _apply_align_left_option(sConfig, lStructure, dActualIndent, bStartsWithPare
     return dExpectedIndent, lReturnStructure
 
 
-def _apply_align_paren_option(sConfig, lStructure, dActualIndent, bStartsWithParen,
-                              iIndentStep, iAssignColumn, iFirstIndent):
+def _apply_align_paren_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
     if sConfig == "no":
         return dActualIndent, lStructure
     iFirstLine = alignment_utils.get_first_line(dActualIndent)
@@ -373,8 +366,7 @@ def _apply_align_paren_option(sConfig, lStructure, dActualIndent, bStartsWithPar
     return dExpectedIndent, lReturnStructure
 
 
-def _apply_align_when_keywords_option(sConfig, lStructure, dActualIndent,
-                                      bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
+def _apply_align_when_keywords_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
     if sConfig == "no":
         return dActualIndent, lStructure
 
@@ -400,8 +392,7 @@ def _apply_align_when_keywords_option(sConfig, lStructure, dActualIndent,
     return dActualIndent, lNewStruct
 
 
-def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithParen,
-                               iIndentStep, iAssignColumn, iFirstIndent):
+def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
     if sConfig == "no":
         return dActualIndent, lStructure
     iFirstLine = alignment_utils.get_first_line(dActualIndent)
@@ -456,8 +447,7 @@ def _apply_wrap_at_when_option(sConfig, lStructure, dActualIndent, bStartsWithPa
     return dExpectedIndent, lReturnStructure
 
 
-def _apply_align_paren_after_when(lStructure, dActualIndent, bStartsWithParen,
-                                  iIndentStep, iAssignColumn, iFirstIndent):
+def _apply_align_paren_after_when(lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
     iFirstLine = alignment_utils.get_first_line(dActualIndent)
     iLastLine = alignment_utils.get_last_line(dActualIndent)
 
@@ -521,9 +511,7 @@ def _apply_align_paren_after_when(lStructure, dActualIndent, bStartsWithParen,
     return dExpectedIndent, lReturnStructure
 
 
-def _apply_align_else_keywords_option(sConfig, lStructure, dActualIndent,
-                                      bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
-
+def _apply_align_else_keywords_option(sConfig, lStructure, dActualIndent, bStartsWithParen, iIndentStep, iAssignColumn, iFirstIndent):
     if sConfig == "no":
         return dActualIndent, lStructure
 

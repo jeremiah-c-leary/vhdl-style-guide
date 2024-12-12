@@ -8,8 +8,7 @@ from vsg.rules import architecture, process
 
 # Read in test file used for all tests
 
-lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(
-    os.path.dirname(__file__), "next_line_code_tag_test_input.vhd"))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(os.path.dirname(__file__), "next_line_code_tag_test_input.vhd"))
 oFile = vhdlFile.vhdlFile(lFile)
 
 

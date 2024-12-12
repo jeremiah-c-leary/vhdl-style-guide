@@ -99,5 +99,5 @@ def merge_tokens(iStartIndex, iEndIndex, lObjects):
         sNewValue = ""
         for iIndex in range(iStartIndex, iEndIndex + 1):
             sNewValue += lObjects[iIndex].get_value()
-        del lObjects[iStartIndex: iEndIndex + 1]
+        del lObjects[iStartIndex : iEndIndex + 1]
         lObjects.insert(iStartIndex, token.text(sNewValue))

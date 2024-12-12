@@ -11,7 +11,6 @@ class command_line_args:
 
 
 class testVsg(unittest.TestCase):
-
     def test_rc_command_line_argument_w_invalid_rule(self):
         lExpected = []
         lExpected.append("ERROR: rule unknown_rule_001 was not found.")
