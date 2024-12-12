@@ -13,14 +13,16 @@ lAlign.append(token.variable_declaration.colon)
 lAlign.append(token.alias_declaration.colon)
 lAlign.append(token.alias_declaration.is_keyword)
 
+oStart = token.protected_type_body.body_keyword
+oEnd = token.protected_type_body.end_body_keyword
+
 lUnless = []
 lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
-lUnless.append([token.protected_type_body.body_keyword, token.protected_type_body.end_body_keyword])
 
 
-class rule_026(Rule):
+class rule_401(Rule):
     """
-    This rule checks the colons are in the same column for all declarations in the architecture declarative part.
+    This rule checks the colons are in the same column for all declarations in the protected type body declarative part.
 
     |configuring_keyword_alignment_rules_link|
 
@@ -28,31 +30,32 @@ class rule_026(Rule):
 
     .. code-block:: vhdl
 
-       architecture rtl of my_entity is
+       type my_type protected body is
 
          signal   wr_en : std_logic;
          signal   rd_en   : std_logic;
          constant c_period : time;
 
-       begin
+       end protected body;
 
     **Fix**
 
     .. code-block:: vhdl
 
-       architecture rtl of my_entity is
+       type my_type protected body is
 
          signal   wr_en    : std_logic;
          signal   rd_en    : std_logic;
          constant c_period : time;
 
-       begin
+       end protected body;
     """
 
     def __init__(self):
-        super().__init__(lAlign, token.architecture_body.is_keyword, token.architecture_body.begin_keyword, lUnless)
-        self.solution = "Align identifier."
+        super().__init__(lAlign, oStart, oEnd, lUnless)
+        self.solution = "Align colon."
         self.subphase = 3
-        self.configuration.append("include_type_is_keyword")
-        self.is_keyword = token.full_type_declaration.is_keyword
         self.configuration.remove("separate_generic_port_alignment")
+        self.configuration.remove("if_control_statements_ends_group")
+        self.configuration.remove("case_control_statements_ends_group")
+        self.configuration.remove("loop_control_statements_ends_group")
