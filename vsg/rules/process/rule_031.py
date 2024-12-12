@@ -18,6 +18,7 @@ oEnd = token.process_statement.begin_keyword
 
 lUnless = []
 lUnless.append([token.subprogram_body.is_keyword, token.subprogram_body.begin_keyword])
+lUnless.append([token.protected_type_body.body_keyword, token.protected_type_body.end_body_keyword])
 
 
 class rule_031(align_tokens_in_region_between_tokens_unless_between_tokens):

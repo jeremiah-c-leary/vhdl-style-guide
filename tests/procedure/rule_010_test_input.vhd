@@ -107,6 +107,43 @@ architecture RTL of ENT is
     signal b : in std_logic;
     variable c : in std_logic_vector(3 downto 0);
     signal d : out std_logic) is
+    -- Checking exclusions
+    constant c_abc : integer;
+    function my_func return integer is
+      constant c_abc : integer;
+    begin
+    end function;
+    constant c_abc : integer;
+    type flag_pt is protected body
+      variable flag : boolean;
+    end protected body;
+  begin
+  end procedure AVERAGE_SAMPLES;
+
+  procedure AVERAGE_SAMPLES (constant x : in integer;
+    constant a : in integer;
+    signal b : in std_logic;
+    variable c : in std_logic_vector(3 downto 0);
+    signal d : out std_logic) is
+
+    -- Checking exclusions
+    constant c_abc : integer;
+    function my_func return integer is
+      constant c_abc : integer;
+    begin
+    end function;
+    constant c_abc : integer;
+    type     flag_pt is protected body
+      variable flag : boolean;
+    end protected body;
+  begin
+  end procedure AVERAGE_SAMPLES;
+
+  procedure AVERAGE_SAMPLES (constant x : in integer;
+    constant a : in integer;
+    signal b : in std_logic;
+    variable c : in std_logic_vector(3 downto 0);
+    signal d : out std_logic) is
     variable sig1 : std_logic;
     file     file1 : something;
     constant var1 : integer;
