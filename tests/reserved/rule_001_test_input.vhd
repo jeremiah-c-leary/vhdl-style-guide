@@ -40,3 +40,18 @@ begin
   wilbur <= not rst when rising_edge(clk); -- this line is legal
 
 end architecture rol;  -- 'rol' since 1993
+
+-- Testing return is not triggered
+entity b is
+  generic (
+    function foo (
+      a : natural; 
+      b : DATA_TYPE
+    ) return natural;
+    impure function bar (
+      a          : integer; 
+      b          : integer; 
+      constant c : integer
+    ) return natural
+  );
+end entity b;
