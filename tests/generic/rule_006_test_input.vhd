@@ -23,3 +23,25 @@ entity FIFO is
     I_PORT2 : out std_logic :='1'
   );
 end entity FIFO;
+
+-- functions passed as a generic
+entity b is
+  generic (
+    type DATA_TYPE;
+    function foo (
+      a : natural :=0;
+      b : DATA_TYPE
+    ) return natural;
+    impure function bar (
+      a          : integer :=1;
+      b          : integer :=32;
+      constant c : integer
+    ) return natural;
+    procedure baz (
+      c        : boolean;
+      signal d : in std_logic
+    );
+    val : natural := 0;
+    val2 : natural := 0
+  );
+end entity b;
