@@ -6,20 +6,4 @@ Aggregate Rules
 aggregate_500
 #############
 
-|phase_6| |error| |case| |case_keyword|
-
-This rule checks the *others* keyword in aggregates has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   signal counter : t_counter := (OTHERS => '1');
-
-**Fix**
-
-.. code-block:: vhdl
-
-   signal counter : t_counter := (others => '1');
+This rule has been deprecated and replaced with rule `choice_500 <choice_rules.html#choice-500>`_.
