@@ -108,6 +108,10 @@ Rules Enforcing Structure Rule Group
 * `package_body_001 <../package_body_rules.html#package-body-001>`_
 * `package_body_002 <../package_body_rules.html#package-body-002>`_
 * `package_body_003 <../package_body_rules.html#package-body-003>`_
+* `package_instantiation_001 <../package_instantiation_rules.html#package-instantiation-001>`_
+* `package_instantiation_002 <../package_instantiation_rules.html#package-instantiation-002>`_
+* `package_instantiation_003 <../package_instantiation_rules.html#package-instantiation-003>`_
+* `package_instantiation_004 <../package_instantiation_rules.html#package-instantiation-004>`_
 * `port_012 <../port_rules.html#port-012>`_
 * `port_013 <../port_rules.html#port-013>`_
 * `port_014 <../port_rules.html#port-014>`_
