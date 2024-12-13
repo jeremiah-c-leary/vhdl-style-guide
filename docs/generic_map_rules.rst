@@ -56,7 +56,7 @@ generic_map_003
 
 |phase_1| |error| |structure|
 
-This rule checks the ( is on the same line as the **generic map** keywords.
+This rule checks the ( is on the same line as the **map** keyword.
 
 **Violation**
 
@@ -215,6 +215,35 @@ Use explicit port mapping.
      OVERFLOW => OVERFLOW
    );
 
+generic_map_009
+###############
+
+|phase_1| |error| |structure|
+
+This rule checks the **map** keyword is on the same line as the **generic** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic
+   map (
+     WIDTH => 32,
+     DEPTH => 512
+   )
+
+**Fix**
+
+Use explicit port mapping.
+
+.. code-block:: vhdl
+
+   generic map (
+
+     WIDTH => 32,
+     DEPTH => 512
+   )
+
 generic_map_100
 ###############
 
@@ -241,6 +270,27 @@ This rules checks for whitespace before the assignment operator.
      WIDTH => 32,
      DEPTH => 512
    );
+
+generic_map_101
+###############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **generic** keyword and the **map** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic       map(
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic map (
 
 generic_map_600
 ###############

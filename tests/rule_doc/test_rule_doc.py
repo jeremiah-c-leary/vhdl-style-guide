@@ -60,15 +60,12 @@ class testDocGen(unittest.TestCase):
                 continue
             dConfigurationFiles[oRule.configuration_documentation_link].append(oRule.unique_id)
 
-        #        print(dConfigurationFiles)
         for sKey in list(dConfigurationFiles.keys()):
             if sKey == "configuring_prefix_and_suffix_rules_link":
                 continue
             if sKey.endswith("_link"):
                 sFileName = sKey[: -len("_link")] + ".rst"
                 sFullPathFileName = os.path.join("docs", sFileName)
-            #            print(sFileName)
-            #            print(sFullPathFileName)
             lFile = []
             utils.read_file(sFullPathFileName, lFile)
             lActual = []
@@ -80,7 +77,6 @@ class testDocGen(unittest.TestCase):
                         lActual.append(lLine[1][1:])
                 if sLine.startswith("Rules Enforcing"):
                     bStartProcessing = True
-            #            print(lActual)
             self.assertEqual(dConfigurationFiles[sKey], lActual)
 
     def test_rule_link_in_configuration_documentation_for_underscores(self):
@@ -117,7 +113,6 @@ class testDocGen(unittest.TestCase):
         for sKey in list(dConfigurationFiles.keys()):
             sFileName = sKey.replace("::", "_") + "_rule_group.rst"
             sFullPathFileName = os.path.join("docs", "rule_groups", sFileName)
-            #            print(sFullPathFileName)
             lFile = []
             utils.read_file(sFullPathFileName, lFile)
             lActual = []
@@ -129,7 +124,6 @@ class testDocGen(unittest.TestCase):
                         lActual.append(lLine[1][1:])
                 if sLine.startswith("Rules Enforcing"):
                     bStartProcessing = True
-            #            print(dConfigurationFiles[sKey])
             self.assertEqual(dConfigurationFiles[sKey], lActual)
 
     def test_configuring_disabled_rules_doc(self):

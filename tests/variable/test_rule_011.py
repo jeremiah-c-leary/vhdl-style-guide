@@ -44,6 +44,7 @@ class test_rule(unittest.TestCase):
         lExpected.extend([287, 287, 287, 287, 290])
         lExpected.extend([321, 321, 321, 321, 324])
         lExpected.extend([331, 331, 331, 331, 334])
+        lExpected.extend([495])
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

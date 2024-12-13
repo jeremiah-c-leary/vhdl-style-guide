@@ -91,10 +91,8 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(14)
         lExpected.append(17)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
-
         lExpected.extend(range(42, 56))
         lExpected.extend(range(58, 74))
         lExpected.extend(range(80, 96))
@@ -123,10 +121,8 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(14)
         lExpected.append(17)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
-
         lExpected.extend(range(42, 56))
         lExpected.extend(range(58, 74))
         lExpected.extend(range(80, 96))
@@ -184,10 +180,8 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(14)
         lExpected.append(17)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
-
         lExpected.extend(range(42, 56))
         lExpected.extend(range(58, 74))
         lExpected.extend(range(80, 96))
@@ -214,10 +208,8 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(14)
         lExpected.append(17)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
-
         lExpected.extend(range(42, 56))
         lExpected.extend(range(58, 74))
         lExpected.extend(range(80, 96))
@@ -231,7 +223,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_012_align_left_yes_align_paren_no(self):
-        #        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = "yes"
         oRule.align_paren = "no"
@@ -260,10 +251,8 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(14)
         lExpected.append(17)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
-
         lExpected.extend(range(42, 56))
         lExpected.extend(range(58, 74))
         lExpected.extend(range(80, 96))
@@ -290,10 +279,8 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(14)
         lExpected.append(17)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
-
         lExpected.extend(range(42, 56))
         lExpected.extend(range(58, 74))
         lExpected.extend(range(80, 96))
@@ -307,7 +294,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_012_align_left_yes_align_paren_yes(self):
-        #        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = "yes"
         oRule.align_paren = "yes"
@@ -323,7 +309,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_012_align_left_yes_indent_step_2(self):
-        #        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.align_left = "yes"
         oRule.align_paren = "no"
@@ -354,10 +339,8 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(17)
         lExpected.append(18)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
-
         lExpected.extend(range(42, 56))
         lExpected.extend(range(58, 74))
         lExpected.extend(range(80, 96))
@@ -371,7 +354,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_012_align_left_true_align_paren_false_smart_tabs(self):
-        #        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.indent_style = "smart_tabs"
         oRule.align_left = "yes"
@@ -405,10 +387,8 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(17)
         lExpected.append(18)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
-
         lExpected.extend(range(42, 56))
         lExpected.extend(range(58, 74))
         lExpected.extend(range(80, 96))
@@ -454,7 +434,6 @@ class test_constant_rule(unittest.TestCase):
         lExpected.append(17)
         lExpected.append(18)
         lExpected.extend(range(21, 25))
-        #        lExpected.extend(range(27, 39))
         lExpected.extend(range(27, 33))
         lExpected.extend(range(34, 40))
         lExpected.extend(range(42, 56))
@@ -470,7 +449,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_fix_rule_012_align_left_true_align_paren_true_smart_tabs(self):
-        #        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.indent_style = "smart_tabs"
         oRule.align_left = "yes"
@@ -503,7 +481,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_012_align_left_true_indent_step_2_smart_tabs(self):
-        #        self.maxDiff = None
         oRule = constant.rule_012()
         oRule.indent_style = "smart_tabs"
         oRule.align_left = "yes"

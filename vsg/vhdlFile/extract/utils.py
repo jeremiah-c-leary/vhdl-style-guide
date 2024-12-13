@@ -163,3 +163,22 @@ def is_token_at_index_carriage_return(oTokenMap, iIndex):
     if oTokenMap.is_token_at_index(parser.carriage_return, iIndex):
         return True
     return False
+
+
+def filter_indexes_in_unless_regions(lIndexes, lUnless, oTokenMap):
+    lReturn = []
+
+    lUnlessIndexes = get_indexes_of_token_pairs(lUnless, oTokenMap)
+    if len(lUnlessIndexes) == 0:
+        return lIndexes
+
+    for iIndex in lIndexes:
+        bAppend = True
+        for unless in lUnlessIndexes:
+            if iIndex >= unless[0] and iIndex <= unless[1]:
+                bAppend = False
+                break
+        if bAppend:
+            lReturn.append(iIndex)
+
+    return lReturn
