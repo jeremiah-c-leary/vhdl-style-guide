@@ -20,6 +20,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    case_rules.rst
    case_generate_alternative_rules.rst
    case_generate_statement_rules.rst
+   choice_rules.rst
    comment_rules.rst
    component_rules.rst
    concurrent_rules.rst
