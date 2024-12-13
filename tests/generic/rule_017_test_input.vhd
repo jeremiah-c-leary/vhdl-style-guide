@@ -31,3 +31,23 @@ entity FIFO is
   );
 
 end entity FIFO;
+
+-- functions passed as a generic
+entity b is
+  generic (
+    type DATA_TYPE;
+    function foo (
+      a : std_logic :=0;
+      b : DATA_TYPE
+    ) return natural;
+    impure function bar (
+      a          : integer :=1;
+      b          : STD_LOGIC :=32;
+      constant c : std_logic
+    ) return natural;
+    procedure baz (
+      c        : STD_LOGIC;
+      signal d : in std_logic
+    )
+  );
+end entity b;

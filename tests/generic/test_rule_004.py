@@ -30,7 +30,7 @@ class test_generic_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "generic")
         self.assertEqual(oRule.identifier, "004")
 
-        lExpected = [14, 15, 21, 22, 28, 29]
+        lExpected = [14, 15, 21, 22, 28, 29, 49, 50]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
