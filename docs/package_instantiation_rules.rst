@@ -3,6 +3,86 @@
 Package Instantiation Rules
 ---------------------------
 
+package_instantiation_001
+#########################
+
+|phase_1| |error| |structure|
+
+This rule checks the new package identifier is on the same line as the **package** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package
+   my_pkg is new my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
+package_instantiation_002
+#########################
+
+|phase_1| |error| |structure|
+
+This rule checks the **is** keyword is on the same line as the new package identifier.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_pkg
+   is new my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
+package_instantiation_003
+#########################
+
+|phase_1| |error| |structure|
+
+This rule checks the **new** keyword is on the same line as the **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_pkg is
+   new my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
+package_instantiation_004
+#########################
+
+|phase_1| |error| |structure|
+
+This rule checks the uninstantiated package name is on the same line as the **new** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_pkg is new
+   my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
 package_instantiation_500
 #########################
 
