@@ -12,7 +12,6 @@ oSeverityList = severity.create_list({})
 
 class testVsg(unittest.TestCase):
     def test_extract_violation_dictionary(self):
-        #        self.maxDiff = None
         lFile = []
         utils.read_file("tests/styles/code_examples/spi_master.vhd", lFile)
         oFile = vhdlFile.vhdlFile(lFile)
@@ -24,7 +23,6 @@ class testVsg(unittest.TestCase):
         self.assertEqual(dExpected, oRules.extract_violation_dictionary())
 
     def test_extract_violation_dictionary_w_all_phases_enabled(self):
-        #        self.maxDiff = None
         lFile = []
         utils.read_file("tests/styles/code_examples/spi_master.vhd", lFile)
         oFile = vhdlFile.vhdlFile(lFile)

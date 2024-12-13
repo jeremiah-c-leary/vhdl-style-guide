@@ -441,7 +441,6 @@ def array_detected_after_assignment_operator(assignment_operator, oToi):
         iParen = update_paren_counter(oToken, iParen)
         if not bFirstTokenFound:
             bFirstTokenFound = token_is_open_paren(oToken)
-    #        print(f'{iParen}|{bFirstTokenFound}|{oToken}')
 
     return True
 
