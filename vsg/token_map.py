@@ -158,9 +158,7 @@ def extract_unique_id(oToken):
 def process_tokens(lTokens):
     dMap = build_default_map()
     for iToken, oToken in enumerate(lTokens):
-        #        print(oToken)
         sBase, sSub = oToken.get_unique_id()
-        #        print(f'{sBase}:{sSub}')
         if sBase is not None:
             try:
                 dMap[sBase][sSub].append(iToken)

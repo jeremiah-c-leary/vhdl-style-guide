@@ -548,7 +548,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_016_all_true(self):
-        #        self.maxDiff = None
         oRule = constant.rule_016()
         oRule.first_paren_new_line = "yes"
         oRule.last_paren_new_line = "yes"
@@ -568,7 +567,6 @@ class test_constant_rule(unittest.TestCase):
         self.assertEqual(oRule.violations, [])
 
     def test_fix_rule_016_all_false(self):
-        #        self.maxDiff = None
         oRule = constant.rule_016()
         oRule.first_paren_new_line = "no"
         oRule.last_paren_new_line = "no"

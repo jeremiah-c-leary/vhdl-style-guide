@@ -40,7 +40,6 @@ def create_rule_documentation(path):
 
 
 def build_rule_class_doc(path, sRuleName, dRules):
-    #    for sRuleName in lRuleName:
     lRuleClassDoc = []
     lRuleClassDoc.append(".. include:: includes.rst")
     lRuleClassDoc.extend(blank_line())

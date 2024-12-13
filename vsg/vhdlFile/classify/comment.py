@@ -33,22 +33,10 @@ def classify_single_line_comment(iToken, lObjects, oOptions):
     sToken = lObjects[iToken].get_value()
     if not oOptions.inside_delimited_comment() and sToken.startswith("--"):
         # Find index of last space token
-        blastSpaceTokenFound = False
-        iIndex = iToken
-
         if lObjects[-1].get_value().isspace():
             iEndIndex = len(lObjects) - 1
         else:
             iEndIndex = len(lObjects)
-
-        #        for i in range(len(lObjects) - 1, iToken + 1, -1):
-        ##             print(i)
-        #             iIndex = i
-        #             print(lObjects[i])
-        #             if lObjects[i].get_value().isspace():
-        #                 bLastSpaceTokenFound = True
-        #             elif not lObjects[i].get_value().isspace():
-        #                 break
 
         # Combine comment tokens for all non space tokens
         for i in range(iToken + 1, iEndIndex):
