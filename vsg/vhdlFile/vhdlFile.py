@@ -14,6 +14,7 @@ from vsg.token import (
     predefined_attribute,
     relational_operator,
     resolution_indication,
+    shift_operator,
     sign,
     todo,
     type_mark,
@@ -67,6 +68,12 @@ dParserTodoStringMap = {
     "event": parser.event_keyword,
     "rising_edge": function.rising_edge,
     "falling_edge": function.falling_edge,
+    "sll": shift_operator.sll,
+    "srl": shift_operator.srl,
+    "sla": shift_operator.sla,
+    "sra": shift_operator.sra,
+    "rol": shift_operator.rol,
+    "ror": shift_operator.ror,
 }
 
 dUnaryOrBinaryAdditionOperatorStringMap = {
