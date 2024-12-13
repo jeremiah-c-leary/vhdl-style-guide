@@ -30,7 +30,6 @@ def classify(iToken, lObjects):
                 utils.assign_token(lObjects, iCurrent, token.comma)
             else:
                 iCurrent = name.classify_until([","], iCurrent, lObjects)
-    #                utils.assign_token(lObjects, iCurrent, parser.todo)
     return iCurrent
 
 
@@ -48,5 +47,4 @@ def classify_until(lUntils, iToken, lObjects):
         if lObjects[utils.find_next_token(iCurrent, lObjects)].get_lower_value() in lUntils:
             return iCurrent
         iCurrent = utils.assign_next_token_if(",", token.comma, iCurrent, lObjects)
-        #        iCurrent = utils.assign_next_token(parser.todo, iCurrent, lObjects)
         iCurrent = name.classify_until(lMyUntils, iCurrent, lObjects)

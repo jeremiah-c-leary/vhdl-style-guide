@@ -54,9 +54,7 @@ def validate_file_exists(sFilename, sConfigName):
         sExpandedFilename = list(sFilename.keys())[0]
     else:
         sExpandedFilename = sFilename
-    #    print(sExpandedFilename)
     lFileNames = glob.glob(utils.expand_filename(sExpandedFilename), recursive=True)
-    #    print(lFileNames)
     if len(lFileNames) == 0:
         print("ERROR: Could not find file " + sFilename + " in configuration file " + sConfigName)
         sys.exit(1)

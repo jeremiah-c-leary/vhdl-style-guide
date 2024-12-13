@@ -83,6 +83,90 @@ This rule checks the uninstantiated package name is on the same line as the **ne
 
    package my_pkg is new my_generic_pkg
 
+package_instantiation_100
+#########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **package** keyword and the new package identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package    my_pkg is new my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
+package_instantiation_101
+#########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the new package identifier and the **is** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_pkg    is new my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
+package_instantiation_102
+#########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **is** keyword and the **new** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_pkg is    new my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
+package_instantiation_103
+#########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between **new** keyword and the uninstantiated package name.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_pkg is new    my_generic_pkg
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
 package_instantiation_500
 #########################
 
