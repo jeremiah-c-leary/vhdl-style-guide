@@ -109,6 +109,32 @@ The default style is :code:`no_code`.
 
    package my_pkg is new my_generic_pkg
 
+package_instantiation_201
+#########################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines below the architecture declaration.
+
+|configuring_blank_lines_link|
+
+The default style is :code:`no_blank_line`.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+
+     generic map (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   package my_pkg is new my_generic_pkg
+     generic map (
+
 package_instantiation_300
 #########################
 
