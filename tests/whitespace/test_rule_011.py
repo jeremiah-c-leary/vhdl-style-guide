@@ -42,8 +42,6 @@ class test_context_rule(unittest.TestCase):
         lExpected.extend(range(106, 111))
         lExpected.extend(range(112, 117))
 
-        #        utils.print_objects(self.oFile,True)
-
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
