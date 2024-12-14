@@ -26,7 +26,7 @@ class test_whitespace_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "whitespace")
         self.assertEqual(oRule.identifier, "101")
 
-        lExpected = [12, 12, 12, 12, 12, 12, 12]
+        lExpected = [12, 12, 12, 12, 12, 12]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
