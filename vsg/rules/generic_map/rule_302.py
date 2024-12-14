@@ -4,23 +4,23 @@ from vsg import token
 from vsg.rules import token_indent
 
 lTokens = []
-lTokens.append(token.generic_map_aspect.generic_keyword)
+lTokens.append(token.generic_map_aspect.close_parenthesis)
 
 
-class rule_300(token_indent):
+class rule_302(token_indent):
     """
-    This rule checks for the proper indentation of the **generic** keyword in generic maps.
+    This rule checks for the proper indentation of the closing parenthesis in generic maps.
 
     **Violation**
 
     .. code-block:: vhdl
 
        U_FIFO : FIFO
-           generic map (
+         generic map (
            G_GEN1 => g_gen1,
            G_GEN2 => g_gen2,
            G_GEN3 => g_gen3
-         );
+              );
 
     **Fix**
 
