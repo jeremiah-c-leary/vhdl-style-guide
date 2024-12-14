@@ -269,6 +269,27 @@ This rule checks for at least a single space before and after relational operato
   if readAddr >= writeAddr then
   if readAddr >= writeAddr then
 
+whitespace_101
+##############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for at least a single space before and after logical operators.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  if (a = '1')sll(b = '0')
+  if (a = '0')rol (b = '1')
+
+**Fix**
+
+.. code-block:: vhdl
+
+  if (a = '1') sll (b = '0')
+  if (a = '0') rol (b = '1')
+
 whitespace_200
 ##############
 
