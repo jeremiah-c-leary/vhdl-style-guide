@@ -4,28 +4,28 @@ LIBRARY ieee;
 
 ENTITY blah IS
   GENERIC (
-    g_blah : std_logic
+    g_blah : STD_LOGIC
   );
   PORT (
-    i_input  : IN    std_logic;
-    o_output : OUT   std_logic;
-    io_inout : INOUT std_logic
+    i_input  : IN    STD_LOGIC;
+    o_output : OUT   STD_LOGIC;
+    io_inout : INOUT STD_LOGIC
   );
 END ENTITY blah;
 
 ARCHITECTURE rtl OF blah IS
 
-  CONSTANT con_a : std_logic;
-  SIGNAL   sig_a : std_logic;
+  CONSTANT con_a : STD_LOGIC;
+  SIGNAL   sig_a : STD_LOGIC;
 
   COMPONENT comp_1 IS
     GENERIC (
-      g_gen_1 : integer
+      g_gen_1 : INTEGER
     );
     PORT (
-      i_input  : IN    integer;
-      o_output : OUT   std_logic;
-      io_inout : INOUT integer
+      i_input  : IN    INTEGER;
+      o_output : OUT   STD_LOGIC;
+      io_inout : INOUT INTEGER
     );
   END COMPONENT comp_1;
 
@@ -33,7 +33,7 @@ BEGIN
 
   proc_label : PROCESS (Ab, Cd, Ef) IS
 
-    VARIABLE var_a : std_logic_vector(7 DOWNTO 0);
+    VARIABLE var_a : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
   BEGIN
 
@@ -55,7 +55,7 @@ PACKAGE some_pkg IS
 
   PROCEDURE proc_1;
 
-  FUNCTION func_1 RETURN integer;
+  FUNCTION func_1 RETURN INTEGER;
 
 END PACKAGE some_pkg;
 
