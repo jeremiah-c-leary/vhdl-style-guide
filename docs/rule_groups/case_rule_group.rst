@@ -5,6 +5,7 @@ Case Rule Group
 Rules Enforcing Case Rule Group
 ###############################
 
+* `after_500 <../after_rules.html#after-500>`_
 * `alias_declaration_500 <../alias_declaration_rules.html#alias-declaration-500>`_
 * `alias_declaration_501 <../alias_declaration_rules.html#alias-declaration-501>`_
 * `alias_declaration_502 <../alias_declaration_rules.html#alias-declaration-502>`_
