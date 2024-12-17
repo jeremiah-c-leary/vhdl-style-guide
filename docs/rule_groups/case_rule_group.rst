@@ -217,6 +217,7 @@ Rules Enforcing Case Rule Group
 * `selected_assignment_501 <../selected_assignment_rules.html#selected-assignment-501>`_
 * `selected_assignment_502 <../selected_assignment_rules.html#selected-assignment-502>`_
 * `selected_assignment_503 <../selected_assignment_rules.html#selected-assignment-503>`_
+* `shift_operator_500 <../shift_operator_rules.html#shift-operator-500>`_
 * `signal_002 <../signal_rules.html#signal-002>`_
 * `signal_004 <../signal_rules.html#signal-004>`_
 * `signal_014 <../signal_rules.html#signal-014>`_

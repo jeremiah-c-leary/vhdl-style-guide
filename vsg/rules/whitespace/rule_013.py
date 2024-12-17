@@ -28,5 +28,5 @@ class rule_013(n_spaces_before_and_after_tokens):
 
     def __init__(self):
         super().__init__(1, lTokens, bNIsMinimum=True)
-        self.solution = "Ensure a single space before and after concat operator."
+        self.solution = "Ensure a single space before and after logical operator."
         self.configuration_documentation_link = None

@@ -9,10 +9,10 @@ from vsg.rules import whitespace
 
 sTestDir = os.path.dirname(__file__)
 
-lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_006_test_input.vhd"))
+lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_101_test_input.vhd"))
 lExpected = []
 lExpected.append("")
-utils.read_file(os.path.join(sTestDir, "rule_006_test_input.fixed.vhd"), lExpected)
+utils.read_file(os.path.join(sTestDir, "rule_101_test_input.fixed.vhd"), lExpected)
 
 
 class test_whitespace_rule(unittest.TestCase):
@@ -20,20 +20,19 @@ class test_whitespace_rule(unittest.TestCase):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
 
-    def test_rule_006(self):
-        oRule = whitespace.rule_006()
+    def test_rule_101(self):
+        oRule = whitespace.rule_101()
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "whitespace")
-        self.assertEqual(oRule.identifier, "006")
-        self.assertEqual(oRule.groups, ["whitespace"])
+        self.assertEqual(oRule.identifier, "101")
 
-        lExpected = [6, 16, 16, 16, 19]
+        lExpected = [12, 12, 12, 12, 12, 12]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
-    def test_fix_rule_006(self):
-        oRule = whitespace.rule_006()
+    def test_fix_rule_101(self):
+        oRule = whitespace.rule_101()
 
         oRule.fix(self.oFile)
 

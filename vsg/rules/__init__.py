@@ -175,6 +175,7 @@ from vsg.rules import return_statement
 from vsg.rules import selected_assignment
 from vsg.rules import sequential
 from vsg.rules import signal
+from vsg.rules import shift_operator
 from vsg.rules import source_file
 from vsg.rules import subprogram_body
 from vsg.rules import subtype
