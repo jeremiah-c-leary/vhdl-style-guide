@@ -46,7 +46,7 @@ def build_fingerprint(dFile, dViolation, iViolation):
     sHashString += dFile["file_path"]
     sHashString += str(dViolation["linenumber"])
     sHashString += str(iViolation)
-    sHash = hashlib.md5(sHashString.encode("utf-8")).hexdigest()
+    sHash = hashlib.new("md5", sHashString.encode("utf-8"), usedforsecurity=False).hexdigest()
     return sHash
 
 
