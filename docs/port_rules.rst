@@ -356,7 +356,7 @@ port_015
 
 |phase_4| |error| |indent|
 
-This rule checks the indent of the closing parenthesis for port maps.
+This rule checks the indent of the closing parenthesis for port clauses.
 
 **Violation**
 
