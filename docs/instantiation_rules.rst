@@ -6,31 +6,15 @@ Instantiation Rules
 instantiation_001
 #################
 
-|phase_4| |error| |indent|
+This rule has been split into the following rules:
 
-This rule checks for the proper indentation of instantiations.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     U_FIFO : FIFO
-  port map (
-           WR_EN    => wr_en,
-   RD_EN    => rd_en,
-         OVERFLOW => overflow
-                );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     port map (
-       WR_EN    => wr_en,
-       RD_EN    => rd_en,
-       OVERFLOW => overflow
-     );
+* :ref:`instantiation_300`
+* :ref:`generic_map_300`
+* :ref:`generic_map_301`
+* :ref:`generic_map_302`
+* :ref:`port_map_300`
+* :ref:`port_map_301`
+* :ref:`port_map_302`
 
 instantiation_002
 #################
@@ -550,6 +534,37 @@ This rule checks the semicolon is not on its own line.
      port map (
        A => B,
        B => C);
+
+instantiation_300
+#################
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of instantiations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   count <= val;
+       U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   count <= val;
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
 
 instantiation_500
 #################
