@@ -92,6 +92,7 @@ Rules Enforcing Whitespace Rule Group
 * `generic_map_006 <../generic_map_rules.html#generic-map-006>`_
 * `generic_map_007 <../generic_map_rules.html#generic-map-007>`_
 * `generic_map_100 <../generic_map_rules.html#generic-map-100>`_
+* `generic_map_101 <../generic_map_rules.html#generic-map-101>`_
 * `if_003 <../if_rules.html#if-003>`_
 * `if_004 <../if_rules.html#if-004>`_
 * `if_005 <../if_rules.html#if-005>`_
@@ -112,6 +113,10 @@ Rules Enforcing Whitespace Rule Group
 * `package_009 <../package_rules.html#package-009>`_
 * `package_body_100 <../package_body_rules.html#package-body-100>`_
 * `package_body_101 <../package_body_rules.html#package-body-101>`_
+* `package_instantiation_100 <../package_instantiation_rules.html#package-instantiation-100>`_
+* `package_instantiation_101 <../package_instantiation_rules.html#package-instantiation-101>`_
+* `package_instantiation_102 <../package_instantiation_rules.html#package-instantiation-102>`_
+* `package_instantiation_103 <../package_instantiation_rules.html#package-instantiation-103>`_
 * `port_003 <../port_rules.html#port-003>`_
 * `port_007 <../port_rules.html#port-007>`_
 * `port_008 <../port_rules.html#port-008>`_
@@ -119,8 +124,10 @@ Rules Enforcing Whitespace Rule Group
 * `port_020 <../port_rules.html#port-020>`_
 * `port_100 <../port_rules.html#port-100>`_
 * `port_101 <../port_rules.html#port-101>`_
+* `port_map_006 <../port_map_rules.html#port-map-006>`_
 * `port_map_007 <../port_map_rules.html#port-map-007>`_
 * `port_map_100 <../port_map_rules.html#port-map-100>`_
+* `port_map_101 <../port_map_rules.html#port-map-101>`_
 * `procedure_100 <../procedure_rules.html#procedure-100>`_
 * `procedure_101 <../procedure_rules.html#procedure-101>`_
 * `procedure_call_100 <../procedure_call_rules.html#procedure-call-100>`_
@@ -150,6 +157,8 @@ Rules Enforcing Whitespace Rule Group
 * `signal_101 <../signal_rules.html#signal-101>`_
 * `signal_102 <../signal_rules.html#signal-102>`_
 * `subtype_100 <../subtype_rules.html#subtype-100>`_
+* `subtype_101 <../subtype_rules.html#subtype-101>`_
+* `subtype_102 <../subtype_rules.html#subtype-102>`_
 * `type_006 <../type_rules.html#type-006>`_
 * `type_007 <../type_rules.html#type-007>`_
 * `type_100 <../type_rules.html#type-100>`_
@@ -173,3 +182,4 @@ Rules Enforcing Whitespace Rule Group
 * `whitespace_011 <../whitespace_rules.html#whitespace-011>`_
 * `whitespace_013 <../whitespace_rules.html#whitespace-013>`_
 * `whitespace_100 <../whitespace_rules.html#whitespace-100>`_
+* `whitespace_101 <../whitespace_rules.html#whitespace-101>`_

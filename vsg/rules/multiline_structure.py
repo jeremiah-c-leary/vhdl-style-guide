@@ -67,9 +67,6 @@ class multiline_structure(structure.Rule):
             if rules_utils.is_single_line(oToi) and self.ignore_single_line == "yes":
                 continue
 
-            #            if not _is_open_paren_after_assignment(self, oToi):
-            #                continue
-
             lReturn.append(oToi)
 
         lMyReturn = remove_non_arrays(self.assignment_operator, lReturn)

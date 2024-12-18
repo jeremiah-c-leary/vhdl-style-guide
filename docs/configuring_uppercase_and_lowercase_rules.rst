@@ -221,6 +221,8 @@ For example, if you want to uppercase everything except the entity name, you cou
 Rules Enforcing Case
 ####################
 
+* `after_500 <after_rules.html#after-500>`_
+
 * `alias_declaration_500 <alias_declaration_rules.html#alias-declaration-500>`_
 * `alias_declaration_501 <alias_declaration_rules.html#alias-declaration-501>`_
 * `alias_declaration_502 <alias_declaration_rules.html#alias-declaration-502>`_
@@ -266,13 +268,13 @@ Rules Enforcing Case
 * `case_016 <case_rules.html#case-016>`_
 * `case_017 <case_rules.html#case-017>`_
 * `case_018 <case_rules.html#case-018>`_
-* `case_500 <case_rules.html#case-500>`_
 
 * `case_generate_alternative_500 <case_generate_alternative_rules.html#case-generate-alternative-500>`_
-* `case_generate_alternative_501 <case_generate_alternative_rules.html#case-generate-alternative-501>`_
 
 * `case_generate_statement_500 <case_generate_statement_rules.html#case-generate-statement-500>`_
 * `case_generate_statement_501 <case_generate_statement_rules.html#case-generate-statement-501>`_
+
+* `choice_500 <choice_rules.html#choice-500>`_
 
 * `component_004 <component_rules.html#component-004>`_
 * `component_006 <component_rules.html#component-006>`_
@@ -300,6 +302,10 @@ Rules Enforcing Case
 * `context_ref_003 <context_ref_rules.html#context-ref-003>`_
 * `context_ref_500 <context_ref_rules.html#context-ref-500>`_
 * `context_ref_501 <context_ref_rules.html#context-ref-501>`_
+
+* `delay_mechanism_500 <delay_mechanism_rules.html#delay-mechanism-500>`_
+* `delay_mechanism_501 <delay_mechanism_rules.html#delay-mechanism-501>`_
+* `delay_mechanism_502 <delay_mechanism_rules.html#delay-mechanism-502>`_
 
 * `entity_004 <entity_rules.html#entity-004>`_
 * `entity_006 <entity_rules.html#entity-006>`_
@@ -338,8 +344,11 @@ Rules Enforcing Case
 * `function_501 <function_rules.html#function-501>`_
 * `function_502 <function_rules.html#function-502>`_
 * `function_506 <function_rules.html#function-506>`_
+* `function_507 <function_rules.html#function-507>`_
+* `function_509 <function_rules.html#function-509>`_
 * `function_510 <function_rules.html#function-510>`_
 * `function_511 <function_rules.html#function-511>`_
+* `function_512 <function_rules.html#function-512>`_
 
 * `generate_005 <generate_rules.html#generate-005>`_
 * `generate_009 <generate_rules.html#generate-009>`_
@@ -413,6 +422,12 @@ Rules Enforcing Case
 * `package_body_506 <package_body_rules.html#package-body-506>`_
 * `package_body_507 <package_body_rules.html#package-body-507>`_
 
+* `package_instantiation_500 <package_instantiation_rules.html#package-instantiation-500>`_
+* `package_instantiation_501 <package_instantiation_rules.html#package-instantiation-501>`_
+* `package_instantiation_502 <package_instantiation_rules.html#package-instantiation-502>`_
+* `package_instantiation_503 <package_instantiation_rules.html#package-instantiation-503>`_
+* `package_instantiation_504 <package_instantiation_rules.html#package-instantiation-504>`_
+
 * `port_010 <port_rules.html#port-010>`_
 * `port_017 <port_rules.html#port-017>`_
 * `port_018 <port_rules.html#port-018>`_
@@ -430,11 +445,13 @@ Rules Enforcing Case
 * `procedure_504 <procedure_rules.html#procedure-504>`_
 * `procedure_505 <procedure_rules.html#procedure-505>`_
 * `procedure_506 <procedure_rules.html#procedure-506>`_
+* `procedure_508 <procedure_rules.html#procedure-508>`_
 * `procedure_510 <procedure_rules.html#procedure-510>`_
 * `procedure_511 <procedure_rules.html#procedure-511>`_
 
 * `procedure_call_500 <procedure_call_rules.html#procedure-call-500>`_
 * `procedure_call_501 <procedure_call_rules.html#procedure-call-501>`_
+* `procedure_call_502 <procedure_call_rules.html#procedure-call-502>`_
 
 * `process_004 <process_rules.html#process-004>`_
 * `process_005 <process_rules.html#process-005>`_
@@ -443,6 +460,16 @@ Rules Enforcing Case
 * `process_013 <process_rules.html#process-013>`_
 * `process_017 <process_rules.html#process-017>`_
 * `process_019 <process_rules.html#process-019>`_
+
+* `protected_type_500 <protected_type_rules.html#protected-type-500>`_
+* `protected_type_501 <protected_type_rules.html#protected-type-501>`_
+* `protected_type_502 <protected_type_rules.html#protected-type-502>`_
+* `protected_type_body_500 <protected_type_rules.html#protected-type-body-500>`_
+
+* `protected_type_body_501 <protected_type_rules.html#protected-type-body-501>`_
+* `protected_type_body_502 <protected_type_rules.html#protected-type-body-502>`_
+* `protected_type_body_503 <protected_type_rules.html#protected-type-body-503>`_
+* `protected_type_body_504 <protected_type_rules.html#protected-type-body-504>`_
 
 * `range_001 <range_rules.html#range-001>`_
 * `range_002 <range_rules.html#range-002>`_
@@ -460,6 +487,8 @@ Rules Enforcing Case
 * `selected_assignment_501 <selected_assignment_rules.html#selected-assignment-501>`_
 * `selected_assignment_502 <selected_assignment_rules.html#selected-assignment-502>`_
 * `selected_assignment_503 <selected_assignment_rules.html#selected-assignment-503>`_
+
+* `shift_operator_500 <shift_operator_rules.html#shift-operator-500>`_
 
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_

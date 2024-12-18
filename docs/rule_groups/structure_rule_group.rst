@@ -80,6 +80,7 @@ Rules Enforcing Structure Rule Group
 * `generic_map_004 <../generic_map_rules.html#generic-map-004>`_
 * `generic_map_005 <../generic_map_rules.html#generic-map-005>`_
 * `generic_map_008 <../generic_map_rules.html#generic-map-008>`_
+* `generic_map_009 <../generic_map_rules.html#generic-map-009>`_
 * `if_002 <../if_rules.html#if-002>`_
 * `if_020 <../if_rules.html#if-020>`_
 * `if_021 <../if_rules.html#if-021>`_
@@ -108,6 +109,10 @@ Rules Enforcing Structure Rule Group
 * `package_body_001 <../package_body_rules.html#package-body-001>`_
 * `package_body_002 <../package_body_rules.html#package-body-002>`_
 * `package_body_003 <../package_body_rules.html#package-body-003>`_
+* `package_instantiation_001 <../package_instantiation_rules.html#package-instantiation-001>`_
+* `package_instantiation_002 <../package_instantiation_rules.html#package-instantiation-002>`_
+* `package_instantiation_003 <../package_instantiation_rules.html#package-instantiation-003>`_
+* `package_instantiation_004 <../package_instantiation_rules.html#package-instantiation-004>`_
 * `port_012 <../port_rules.html#port-012>`_
 * `port_013 <../port_rules.html#port-013>`_
 * `port_014 <../port_rules.html#port-014>`_
@@ -122,6 +127,7 @@ Rules Enforcing Structure Rule Group
 * `port_map_008 <../port_map_rules.html#port-map-008>`_
 * `port_map_009 <../port_map_rules.html#port-map-009>`_
 * `port_map_010 <../port_map_rules.html#port-map-010>`_
+* `port_map_011 <../port_map_rules.html#port-map-011>`_
 * `procedure_012 <../procedure_rules.html#procedure-012>`_
 * `procedure_013 <../procedure_rules.html#procedure-013>`_
 * `procedure_014 <../procedure_rules.html#procedure-014>`_
@@ -167,6 +173,8 @@ Rules Enforcing Structure Rule Group
 * `signal_015 <../signal_rules.html#signal-015>`_
 * `signal_017 <../signal_rules.html#signal-017>`_
 * `source_file_001 <../source_file_rules.html#source-file-001>`_
+* `subtype_005 <../subtype_rules.html#subtype-005>`_
+* `subtype_006 <../subtype_rules.html#subtype-006>`_
 * `type_008 <../type_rules.html#type-008>`_
 * `type_009 <../type_rules.html#type-009>`_
 * `type_017 <../type_rules.html#type-017>`_

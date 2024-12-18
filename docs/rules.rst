@@ -7,6 +7,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    :maxdepth: 2
 
    after_rules.rst
+   aggregate_rules.rst
    alias_declaration_rules.rst
    architecture_rules.rst
    assert_rules.rst
@@ -19,6 +20,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    case_rules.rst
    case_generate_alternative_rules.rst
    case_generate_statement_rules.rst
+   choice_rules.rst
    comment_rules.rst
    component_rules.rst
    concurrent_rules.rst
@@ -28,6 +30,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    context_rules.rst
    context_ref_rules.rst
    declarative_part_rules.rst
+   delay_mechanism_rules.rst
    element_association_rules.rst
    entity_rules.rst
    entity_specification_rules.rst
@@ -56,12 +59,15 @@ The rules are divided into categories depending on the part of the VHDL code bei
    null_statement_rules.rst
    package_rules.rst
    package_body_rules.rst
+   package_instantiation_rules.rst
    port_rules.rst
    port_map_rules.rst
    pragma_rules.rst
    procedure_rules.rst
    procedure_call_rules.rst
    process_rules.rst
+   protected_type_rules.rst
+   protected_type_body_rules.rst
    range_rules.rst
    record_type_definition_rules.rst
    report_statement_rules.rst
@@ -70,6 +76,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    selected_assignment_rules.rst
    sequential_rules.rst
    signal_rules.rst
+   shift_operator_rules.rst
    source_file_rules.rst
    subprogram_body_rules.rst
    subtype_rules.rst

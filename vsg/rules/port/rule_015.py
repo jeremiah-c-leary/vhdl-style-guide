@@ -9,7 +9,7 @@ lTokens.append(token.port_clause.close_parenthesis)
 
 class rule_015(token_indent):
     """
-    This rule checks the indent of the closing parenthesis for port maps.
+    This rule checks the indent of the closing parenthesis for port clauses.
 
     **Violation**
 

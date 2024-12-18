@@ -1,50 +1,28 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg.rules import token_indent_between_tokens
-
-lTokens = []
-lTokens.append(token.component_instantiation_statement.instantiation_label)
-lTokens.append(token.component_instantiation_statement.semicolon)
-
-lTokens.append(token.generic_map_aspect.generic_keyword)
-lTokens.append(token.generic_map_aspect.close_parenthesis)
-
-lTokens.append(token.port_map_aspect.port_keyword)
-lTokens.append(token.port_map_aspect.close_parenthesis)
-
-lTokens.append(token.association_element.formal_part)
-
-oStart = token.component_instantiation_statement.instantiation_label
-oEnd = token.component_instantiation_statement.semicolon
+from vsg import deprecated_rule
 
 
-class rule_001(token_indent_between_tokens):
+class rule_001(deprecated_rule.Rule):
     """
-    This rule checks for the proper indentation of instantiations.
+    This rule has been split into the following rules:
 
-    **Violation**
-
-    .. code-block:: vhdl
-
-         U_FIFO : FIFO
-      port map (
-               WR_EN    => wr_en,
-       RD_EN    => rd_en,
-             OVERFLOW => overflow
-                    );
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       U_FIFO : FIFO
-         port map (
-           WR_EN    => wr_en,
-           RD_EN    => rd_en,
-           OVERFLOW => overflow
-         );
+    * :ref:`instantiation_300`
+    * :ref:`generic_map_300`
+    * :ref:`generic_map_301`
+    * :ref:`generic_map_302`
+    * :ref:`port_map_300`
+    * :ref:`port_map_301`
+    * :ref:`port_map_302`
     """
 
     def __init__(self):
-        super().__init__(lTokens, oStart, oEnd, bInclusive=True)
+        super().__init__()
+        self.message.append("Rule " + self.unique_id + " has been split into the following rules:")
+        self.message.append("  instantiation_300")
+        self.message.append("  generic_map_300")
+        self.message.append("  generic_map_301")
+        self.message.append("  generic_map_302")
+        self.message.append("  port_map_300")
+        self.message.append("  port_map_301")
+        self.message.append("  port_map_302")

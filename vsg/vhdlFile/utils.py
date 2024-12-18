@@ -293,7 +293,7 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
     return False
 
 
-def find_earliest_occurance(lEnd, iToken, lObjects):
+def find_earliest_occurrence(lEnd, iToken, lObjects):
     iEarliest = len(lObjects)
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
@@ -304,7 +304,7 @@ def find_earliest_occurance(lEnd, iToken, lObjects):
     return sEarliest
 
 
-def find_earliest_occurance_not_in_paren(lEnd, iToken, lObjects):
+def find_earliest_occurrence_not_in_paren(lEnd, iToken, lObjects):
     iEarliest = len(lObjects)
     iParen = 0
     for sEnd in lEnd:
@@ -1055,3 +1055,14 @@ def extract_line_with_token_index_of(iToken, lObjects):
     for oObject in lObjects[iStart:iEnd]:
         sReturn += oObject.get_value()
     return sReturn
+
+
+def skip_tokens_until_matching_closing_paren(iToken, lObjects):
+    iCounter = 1
+    iCurrent = iToken
+    while iCurrent < len(lObjects):
+        iCurrent = find_next_token(iCurrent, lObjects)
+        iCounter = update_paren_counter(iCurrent, lObjects, iCounter)
+        if token_is_close_parenthesis(iCurrent, lObjects) and iCounter == 0:
+            return iCurrent
+        iCurrent += 1

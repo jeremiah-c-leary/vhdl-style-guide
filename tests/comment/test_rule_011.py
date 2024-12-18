@@ -51,5 +51,4 @@ class test_comment_rule(unittest.TestCase):
         oAllTokens = self.oFile.get_all_tokens()
         for oToken in oAllTokens.lTokens:
             if isinstance(oToken, parser.comment):
-                #                print(f'{oToken} | {oToken.indent}')
                 self.assertIsNotNone(oToken.indent)

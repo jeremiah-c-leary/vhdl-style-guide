@@ -114,21 +114,13 @@ def create_tois(lAllDicts, oFile):
             try:
                 for iIdentifier in dDict["identifiers"]:
                     iLine = oTokenMap.get_line_number_of_index(iName)
-                    #                    print(f'--> {iLine} :: {iIdentifier} :: {iName} <' + '-'*80)
                     sName = oFile.lAllObjects[iName].get_value()
                     sIdentifier = oFile.lAllObjects[iIdentifier].get_value()
                     if sIdentifier.lower() == sName.lower():
-                        #                        print(f'{iName}:{iIdentifier}')
-                        #                        print(f'{sName}:{sIdentifier}')
-                        #                        print(dDict)
                         if not sIdentifier == sName:
-                            #                            print(f'iLine = {iLine}')
                             oToi = tokens.New(iName, iLine, [oFile.lAllObjects[iName]])
                             oToi.set_meta_data("expected", sIdentifier)
                             lReturn.append(oToi)
-                        #                            print('  MISMATCH')
-                        #                        else:
-                        #                            print('   MATCH')
                         break
             except KeyError:
                 pass
@@ -146,11 +138,8 @@ def merge_dict_lists(lOne, lTwo):
 def get_all_name_tokens(oFile, lNames):
     lReturn = []
     oTokenMap = oFile.get_token_map()
-    #    oTokenMap.pretty_print()
     for oToken in lNames:
-        #        print(oToken)
         lReturn.extend(oTokenMap.get_token_indexes(oToken))
-    #    lReturn.extend(oTokenMap.get_token_indexes(parser.todo))
     lReturn.sort()
     return lReturn
 
@@ -256,24 +245,16 @@ def get_inner_indexes(lFirst, lSecond):
     lMyFirst = lFirst.copy()
     lMySecond = lSecond.copy()
     while len(lMyFirst) > 0:
-        #        print(lMyFirst)
         dDelta = {}
         lTemp = []
         for iFirst in lMyFirst:
             for iSecond in lMySecond:
-                #                print(f'{iFirst}:{iSecond} = {iFirst - iSecond}')
                 iDelta = iSecond - iFirst
                 if iDelta > 0:
                     dDelta[iDelta] = [iFirst, iSecond]
 
-        #        print(dDelta)
-
         lKeys = list(dDelta.keys())
         lKeys.sort()
-        #        print(lKeys)
-        #        print(lKeys[0])
-        #        print(dDelta[lKeys[0]])
-
         lReturn.append(dDelta[lKeys[0]])
         lMyFirst.remove(dDelta[lKeys[0]][0])
         lMySecond.remove(dDelta[lKeys[0]][1])
@@ -282,9 +263,6 @@ def get_inner_indexes(lFirst, lSecond):
 
 
 def merge_three_indexes_into_list(lFirst, lSecond, lThird, sType):
-    #    print(lFirst)
-    #    print(lSecond)
-    #    print(lThird)
     lReturn = []
     for i in range(0, len(lFirst)):
         dProc = {}
@@ -297,9 +275,6 @@ def merge_three_indexes_into_list(lFirst, lSecond, lThird, sType):
 
 
 def merge_four_indexes_into_list(lFirst, lSecond, lThird, lFourth, sType):
-    #    print(lFirst)
-    #    print(lSecond)
-    #    print(lThird)
     lReturn = []
     for i in range(0, len(lFirst)):
         dProc = {}

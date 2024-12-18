@@ -69,6 +69,8 @@ Rules Disabled by Default
 * `package_017 <package_rules.html#package-017>`_
 * `package_body_600 <package_body_rules.html#package-body-600>`_
 * `package_body_601 <package_body_rules.html#package-body-601>`_
+* `package_instantiation_600 <package_instantiation_rules.html#package-instantiation-600>`_
+* `package_instantiation_601 <package_instantiation_rules.html#package-instantiation-601>`_
 * `port_011 <port_rules.html#port-011>`_
 * `port_025 <port_rules.html#port-025>`_
 * `port_600 <port_rules.html#port-600>`_
@@ -90,6 +92,7 @@ Rules Disabled by Default
 * `signal_600 <signal_rules.html#signal-600>`_
 * `subtype_004 <subtype_rules.html#subtype-004>`_
 * `subtype_100 <subtype_rules.html#subtype-100>`_
+* `subtype_200 <subtype_rules.html#subtype-200>`_
 * `subtype_600 <subtype_rules.html#subtype-600>`_
 * `type_015 <type_rules.html#type-015>`_
 * `type_100 <type_rules.html#type-100>`_

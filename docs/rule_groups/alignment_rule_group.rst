@@ -64,6 +64,9 @@ Rules Enforcing Alignment Rule Group
 * `process_035 <../process_rules.html#process-035>`_
 * `process_400 <../process_rules.html#process-400>`_
 * `process_401 <../process_rules.html#process-401>`_
+* `protected_type_body_400 <../protected_type_body_rules.html#protected-type-body-400>`_
+* `protected_type_body_401 <../protected_type_body_rules.html#protected-type-body-401>`_
+* `protected_type_body_402 <../protected_type_body_rules.html#protected-type-body-402>`_
 * `report_statement_400 <../report_statement_rules.html#report-statement-400>`_
 * `selected_assignment_400 <../selected_assignment_rules.html#selected-assignment-400>`_
 * `sequential_004 <../sequential_rules.html#sequential-004>`_

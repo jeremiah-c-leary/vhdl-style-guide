@@ -5,6 +5,7 @@ Case::Keyword Rule Group
 Rules Enforcing Case::Keyword Rule Group
 ########################################
 
+* `after_500 <../after_rules.html#after-500>`_
 * `alias_declaration_500 <../alias_declaration_rules.html#alias-declaration-500>`_
 * `alias_declaration_501 <../alias_declaration_rules.html#alias-declaration-501>`_
 * `architecture_004 <../architecture_rules.html#architecture-004>`_
@@ -31,11 +32,10 @@ Rules Enforcing Case::Keyword Rule Group
 * `case_016 <../case_rules.html#case-016>`_
 * `case_017 <../case_rules.html#case-017>`_
 * `case_018 <../case_rules.html#case-018>`_
-* `case_500 <../case_rules.html#case-500>`_
 * `case_generate_alternative_500 <../case_generate_alternative_rules.html#case-generate-alternative-500>`_
-* `case_generate_alternative_501 <../case_generate_alternative_rules.html#case-generate-alternative-501>`_
 * `case_generate_statement_500 <../case_generate_statement_rules.html#case-generate-statement-500>`_
 * `case_generate_statement_501 <../case_generate_statement_rules.html#case-generate-statement-501>`_
+* `choice_500 <../choice_rules.html#choice-500>`_
 * `component_004 <../component_rules.html#component-004>`_
 * `component_006 <../component_rules.html#component-006>`_
 * `component_010 <../component_rules.html#component-010>`_
@@ -50,6 +50,9 @@ Rules Enforcing Case::Keyword Rule Group
 * `context_014 <../context_rules.html#context-014>`_
 * `context_015 <../context_rules.html#context-015>`_
 * `context_ref_003 <../context_ref_rules.html#context-ref-003>`_
+* `delay_mechanism_500 <../delay_mechanism_rules.html#delay-mechanism-500>`_
+* `delay_mechanism_501 <../delay_mechanism_rules.html#delay-mechanism-501>`_
+* `delay_mechanism_502 <../delay_mechanism_rules.html#delay-mechanism-502>`_
 * `entity_004 <../entity_rules.html#entity-004>`_
 * `entity_006 <../entity_rules.html#entity-006>`_
 * `entity_010 <../entity_rules.html#entity-010>`_
@@ -73,8 +76,10 @@ Rules Enforcing Case::Keyword Rule Group
 * `function_014 <../function_rules.html#function-014>`_
 * `function_501 <../function_rules.html#function-501>`_
 * `function_502 <../function_rules.html#function-502>`_
+* `function_509 <../function_rules.html#function-509>`_
 * `function_510 <../function_rules.html#function-510>`_
 * `function_511 <../function_rules.html#function-511>`_
+* `function_512 <../function_rules.html#function-512>`_
 * `generate_009 <../generate_rules.html#generate-009>`_
 * `generate_010 <../generate_rules.html#generate-010>`_
 * `generate_500 <../generate_rules.html#generate-500>`_
@@ -117,6 +122,9 @@ Rules Enforcing Case::Keyword Rule Group
 * `package_body_504 <../package_body_rules.html#package-body-504>`_
 * `package_body_505 <../package_body_rules.html#package-body-505>`_
 * `package_body_506 <../package_body_rules.html#package-body-506>`_
+* `package_instantiation_500 <../package_instantiation_rules.html#package-instantiation-500>`_
+* `package_instantiation_502 <../package_instantiation_rules.html#package-instantiation-502>`_
+* `package_instantiation_503 <../package_instantiation_rules.html#package-instantiation-503>`_
 * `port_017 <../port_rules.html#port-017>`_
 * `port_018 <../port_rules.html#port-018>`_
 * `port_019 <../port_rules.html#port-019>`_
@@ -136,6 +144,14 @@ Rules Enforcing Case::Keyword Rule Group
 * `process_008 <../process_rules.html#process-008>`_
 * `process_009 <../process_rules.html#process-009>`_
 * `process_013 <../process_rules.html#process-013>`_
+* `protected_type_500 <../protected_type_rules.html#protected-type-500>`_
+* `protected_type_501 <../protected_type_rules.html#protected-type-501>`_
+* `protected_type_502 <../protected_type_rules.html#protected-type-502>`_
+* `protected_type_body_500 <../protected_type_rules.html#protected-type-body-500>`_
+* `protected_type_body_501 <../protected_type_rules.html#protected-type-body-501>`_
+* `protected_type_body_502 <../protected_type_rules.html#protected-type-body-502>`_
+* `protected_type_body_503 <../protected_type_rules.html#protected-type-body-503>`_
+* `protected_type_body_504 <../protected_type_rules.html#protected-type-body-504>`_
 * `range_001 <../range_rules.html#range-001>`_
 * `range_002 <../range_rules.html#range-002>`_
 * `record_type_definition_500 <../record_type_definition_rules.html#record-type-definition-500>`_
@@ -148,6 +164,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `selected_assignment_501 <../selected_assignment_rules.html#selected-assignment-501>`_
 * `selected_assignment_502 <../selected_assignment_rules.html#selected-assignment-502>`_
 * `selected_assignment_503 <../selected_assignment_rules.html#selected-assignment-503>`_
+* `shift_operator_500 <../shift_operator_rules.html#shift-operator-500>`_
 * `signal_002 <../signal_rules.html#signal-002>`_
 * `subtype_500 <../subtype_rules.html#subtype-500>`_
 * `subtype_502 <../subtype_rules.html#subtype-502>`_

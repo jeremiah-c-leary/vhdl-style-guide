@@ -203,8 +203,6 @@ class testVsg(unittest.TestCase):
             lActual = str(e.output.decode("utf-8")).split("\n")
             iExitStatus = e.returncode
 
-        #        print(lActual)
-        #        print(lExpected)
         self.assertEqual(iExitStatus, 1)
         if lActual[0] == lExpected[1]:
             lExpected = []

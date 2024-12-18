@@ -60,7 +60,7 @@ port_map_003
 
 |phase_1| |error| |structure|
 
-This rule checks the "(" character is on the same line as the **port map** keywords.
+This rule checks the "(" character is on the same line as the **map** keyword.
 
 **Violation**
 
@@ -137,6 +137,31 @@ This rule checks for a port assignment on the same line as the **port map** keyw
        RD_EN    => rd_en,
        OVERFLOW => overflow
      );
+
+port_map_006
+############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **map** keyword and the (.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port map(
+
+   port map   (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port map (
+
+   port map (
 
 port_map_007
 ############
@@ -247,6 +272,37 @@ Refer to the entity for port types, port directions and purpose.
    WR_EN => w_wr_en;
    RD_EN => w_rd_en;
 
+port_map_011
+############
+
+|phase_1| |error| |structure|
+
+This rule checks the **map** keyword is on the same line as the **port** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port
+   map (
+     WR_EN    => WR_EN,
+     RD_EN    => RD_EN,
+     OVERFLOW => OVERFLOW
+   );
+
+**Fix**
+
+Use explicit port mapping.
+
+.. code-block:: vhdl
+
+   port map (
+
+     WR_EN    => WR_EN,
+     RD_EN    => RD_EN,
+     OVERFLOW => OVERFLOW
+   );
+
 port_map_100
 ############
 
@@ -275,6 +331,27 @@ This rules checks for whitespace before the assignment operator.
      RD_EN => w_rd_en,
      OVERFLOW => w_overflow
    );
+
+port_map_101
+############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **port** keyword and the **map** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   port   map (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   port map (
 
 port_map_200
 ############
@@ -305,3 +382,90 @@ This rule checks for a blank line below the open parenthesis in a port map.
     RD_EN => w_rd_en,
     OVERFLOW => w_overflow
   );
+
+port_map_300
+############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of the **port** keyword in port maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+       port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+port_map_301
+############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of association elements in port maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+           WR_EN    => wr_en,
+   RD_EN    => rd_en,
+         OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+port_map_302
+############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of the closing parenthesis in port maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+          );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );

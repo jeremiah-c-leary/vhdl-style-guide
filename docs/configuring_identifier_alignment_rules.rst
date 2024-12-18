@@ -148,3 +148,4 @@ Rules Enforcing Identifier Alignment
 * `package_019 <package_rules.html#package-019>`_
 * `package_body_400 <package_body_rules.html#package-body-400>`_
 * `procedure_010 <procedure_rules.html#procedure-010>`_
+* `protected_type_body_400 <protected_type_body_rules.html#protected-type-body-400>`_

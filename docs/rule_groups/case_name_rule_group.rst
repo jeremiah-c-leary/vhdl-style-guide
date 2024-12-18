@@ -24,6 +24,7 @@ Rules Enforcing Case::Name Rule Group
 * `entity_specification_503 <../entity_specification_rules.html#entity-specification-503>`_
 * `function_017 <../function_rules.html#function-017>`_
 * `function_506 <../function_rules.html#function-506>`_
+* `function_507 <../function_rules.html#function-507>`_
 * `generic_007 <../generic_rules.html#generic-007>`_
 * `generic_map_002 <../generic_map_rules.html#generic-map-002>`_
 * `instantiation_009 <../instantiation_rules.html#instantiation-009>`_
@@ -34,10 +35,14 @@ Rules Enforcing Case::Name Rule Group
 * `package_010 <../package_rules.html#package-010>`_
 * `package_body_502 <../package_body_rules.html#package-body-502>`_
 * `package_body_507 <../package_body_rules.html#package-body-507>`_
+* `package_instantiation_501 <../package_instantiation_rules.html#package-instantiation-501>`_
+* `package_instantiation_504 <../package_instantiation_rules.html#package-instantiation-504>`_
 * `port_010 <../port_rules.html#port-010>`_
 * `port_map_002 <../port_map_rules.html#port-map-002>`_
 * `procedure_501 <../procedure_rules.html#procedure-501>`_
 * `procedure_506 <../procedure_rules.html#procedure-506>`_
+* `procedure_508 <../procedure_rules.html#procedure-508>`_
+* `procedure_call_502 <../procedure_call_rules.html#procedure-call-502>`_
 * `signal_004 <../signal_rules.html#signal-004>`_
 * `subtype_501 <../subtype_rules.html#subtype-501>`_
 * `type_004 <../type_rules.html#type-004>`_
