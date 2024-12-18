@@ -198,7 +198,7 @@ package_instantiation_201
 
 |phase_3| |error| |blank_line|
 
-This rule checks for blank lines below the architecture declaration.
+This rule checks for blank lines below the package instantiation.
 
 |configuring_blank_lines_link|
 

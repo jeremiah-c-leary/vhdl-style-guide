@@ -9,7 +9,7 @@ lTokens.append(token.uninstantiated_package_name)
 
 class rule_201(blank_line_below_line_ending_with_token):
     """
-    This rule checks for blank lines below the architecture declaration.
+    This rule checks for blank lines below the package instantiation.
 
     |configuring_blank_lines_link|
 
