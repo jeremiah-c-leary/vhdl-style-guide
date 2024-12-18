@@ -30,6 +30,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    context_rules.rst
    context_ref_rules.rst
    declarative_part_rules.rst
+   delay_mechanism_rules.rst
    element_association_rules.rst
    entity_rules.rst
    entity_specification_rules.rst
@@ -75,6 +76,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    selected_assignment_rules.rst
    sequential_rules.rst
    signal_rules.rst
+   shift_operator_rules.rst
    source_file_rules.rst
    subprogram_body_rules.rst
    subtype_rules.rst
