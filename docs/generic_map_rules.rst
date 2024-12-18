@@ -292,6 +292,93 @@ This rule checks for a single space between the **generic** keyword and the **ma
 
    generic map (
 
+generic_map_300
+###############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of the **generic** keyword in generic maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+       generic map (
+       G_GEN1 => g_gen1,
+       G_GEN2 => g_gen2,
+       G_GEN3 => g_gen3
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+       G_GEN1 => g_gen1,
+       G_GEN2 => g_gen2,
+       G_GEN3 => g_gen3
+     );
+
+generic_map_301
+###############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of association elements in generic maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+           G_GEN1 => g_gen1,
+   G_GEN2 => g_gen2,
+         G_GEN3 => g_gen3
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+       G_GEN1 => g_gen1,
+       G_GEN2 => g_gen2,
+       G_GEN3 => g_gen3
+     );
+
+generic_map_302
+###############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of the closing parenthesis in generic maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+       G_GEN1 => g_gen1,
+       G_GEN2 => g_gen2,
+       G_GEN3 => g_gen3
+          );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     generic map (
+       G_GEN1 => g_gen1,
+       G_GEN2 => g_gen2,
+       G_GEN3 => g_gen3
+     );
+
 generic_map_600
 ###############
 

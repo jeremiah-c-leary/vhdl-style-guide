@@ -182,3 +182,4 @@ Rules Enforcing Whitespace Rule Group
 * `whitespace_011 <../whitespace_rules.html#whitespace-011>`_
 * `whitespace_013 <../whitespace_rules.html#whitespace-013>`_
 * `whitespace_100 <../whitespace_rules.html#whitespace-100>`_
+* `whitespace_101 <../whitespace_rules.html#whitespace-101>`_

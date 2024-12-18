@@ -43,13 +43,16 @@ Rules Enforcing Indent Rule Group
 * `generic_002 <../generic_rules.html#generic-002>`_
 * `generic_004 <../generic_rules.html#generic-004>`_
 * `generic_008 <../generic_rules.html#generic-008>`_
+* `generic_map_300 <../generic_map_rules.html#generic-map-300>`_
+* `generic_map_301 <../generic_map_rules.html#generic-map-301>`_
+* `generic_map_302 <../generic_map_rules.html#generic-map-302>`_
 * `if_generate_statement_300 <../if_generate_statement_rules.html#if-generate-statement-300>`_
 * `if_generate_statement_301 <../if_generate_statement_rules.html#if-generate-statement-301>`_
 * `if_001 <../if_rules.html#if-001>`_
 * `if_012 <../if_rules.html#if-012>`_
 * `if_013 <../if_rules.html#if-013>`_
 * `if_014 <../if_rules.html#if-014>`_
-* `instantiation_001 <../instantiation_rules.html#instantiation-001>`_
+* `instantiation_300 <../instantiation_rules.html#instantiation-300>`_
 * `iteration_scheme_300 <../iteration_scheme_rules.html#iteration-scheme-300>`_
 * `iteration_scheme_301 <../iteration_scheme_rules.html#iteration-scheme-301>`_
 * `library_001 <../library_rules.html#library-001>`_
@@ -69,6 +72,9 @@ Rules Enforcing Indent Rule Group
 * `port_002 <../port_rules.html#port-002>`_
 * `port_004 <../port_rules.html#port-004>`_
 * `port_015 <../port_rules.html#port-015>`_
+* `port_map_300 <../port_map_rules.html#port-map-300>`_
+* `port_map_301 <../port_map_rules.html#port-map-301>`_
+* `port_map_302 <../port_map_rules.html#port-map-302>`_
 * `pragma_300 <../pragma_rules.html#pragma-300>`_
 * `procedure_001 <../procedure_rules.html#procedure-001>`_
 * `procedure_002 <../procedure_rules.html#procedure-002>`_

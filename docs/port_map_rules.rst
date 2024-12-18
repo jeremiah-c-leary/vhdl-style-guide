@@ -382,3 +382,90 @@ This rule checks for a blank line below the open parenthesis in a port map.
     RD_EN => w_rd_en,
     OVERFLOW => w_overflow
   );
+
+port_map_300
+############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of the **port** keyword in port maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+       port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+port_map_301
+############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of association elements in port maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+           WR_EN    => wr_en,
+   RD_EN    => rd_en,
+         OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+port_map_302
+############
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of the closing parenthesis in port maps.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+          );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
