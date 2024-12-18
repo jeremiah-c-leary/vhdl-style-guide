@@ -79,7 +79,7 @@ architecture rtl of test is
       end loop;
     end procedure;
 
-    function my_func (
+    impure function my_func (
       variable Param2 : out integer;
       constant Param3 : in integer;
       signal Param4   : out integer;
@@ -159,7 +159,7 @@ architecture rtl of test is
       end loop;
     end procedure;
 
-    function my_func (
+    impure function my_func (
       variable Param2 : out integer;
       constant Param3 : in integer;
       signal Param4   : out integer;
