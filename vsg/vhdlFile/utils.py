@@ -34,7 +34,8 @@ def tag_production(iStart, iEnd, lObjects, sName, verbose=0):
     sName = sName.rsplit(".")[-1]  # keep only last element of the module hierarchy
     # Tag the starting token
     oToken = lObjects[find_next_non_whitespace_token(iStart, lObjects)]  # skip leading comments and whitespaces to keep them out of the production
-    assert not oToken.enter_prod, f"Tried to add a enter_classify name {sName} on Token {oToken} which already has {oToken.enter_prod}"
+    if oToken.enter_prod:
+        raise RuntimeError(f"Tried to add a enter_classify name {sName} on Token {oToken} which already has {oToken.enter_prod}")
     oToken.enter_prod.insert(0, sName)
     # Tag the ending token
     oToken = lObjects[iEnd - 1]
