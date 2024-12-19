@@ -68,6 +68,7 @@ Rules Enforcing Indent Rule Group
 * `package_015 <../package_rules.html#package-015>`_
 * `package_body_300 <../package_body_rules.html#package-body-300>`_
 * `package_body_301 <../package_body_rules.html#package-body-301>`_
+* `package_instantiation_300 <../package_instantiation_rules.html#package-instantiation-300>`_
 * `port_002 <../port_rules.html#port-002>`_
 * `port_004 <../port_rules.html#port-004>`_
 * `port_015 <../port_rules.html#port-015>`_

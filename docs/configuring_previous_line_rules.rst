@@ -254,6 +254,7 @@ Rules Enforcing Previous Lines
 * `loop_statement_202 <loop_statement_rules.html#loop-statement-202>`_
 * `package_003 <package_rules.html#package-003>`_
 * `package_body_200 <package_body_rules.html#package-body-200>`_
+* `package_instantiation_200 <../package_instantiation_rules.html#package-instantiation-200>`_
 * `pragma_400 <../pragma_rules.html#pragma-400>`_
 * `pragma_402 <../pragma_rules.html#pragma-402>`_
 * `procedure_200 <procedure_rules.html#procedure-200>`_

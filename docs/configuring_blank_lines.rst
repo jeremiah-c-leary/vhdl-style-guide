@@ -166,6 +166,7 @@ Rules Enforcing Blank Lines
 * `package_body_201 <package_body_rules.html#package-body-201>`_
 * `package_body_202 <package_body_rules.html#package-body-202>`_
 * `package_body_203 <package_body_rules.html#package-body-203>`_
+* `package_instantiation_201 <package_instantiation_rules.html#package-instantiation-201>`_
 * `port_001 <port_rules.html#port-001>`_
 * `port_map_200 <port_map_rules.html#port-map-200>`_
 * `pragma_401 <../pragma_rules.html#pragma-401>`_
