@@ -48,6 +48,9 @@ class New:
     def get_end_index(self):
         return self.iEndIndex
 
+    def does_first_token_match(self, oTokenType):
+        return isinstance(self.lTokens[0], oTokenType)
+
     def get_first_token_matching(self, oTokenType):
         for oToken in self.lTokens:
             if isinstance(oToken, oTokenType):
