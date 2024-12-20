@@ -31,53 +31,17 @@ class test_type_definition_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "type_mark")
         self.assertEqual(oRule.identifier, "500")
 
-        lExpected = [
-            88,
-            89,
-            90,
-            91,
-            92,
-            95,
-            96,
-            98,
-            99,
-            100,
-            101,
-            111,
-            112,
-            113,
-            114,
-            115,
-            116,
-            118,
-            119,
-            120,
-            121,
-            122,
-            123,
-            124,
-            125,
-            126,
-            127,
-            128,
-            129,
-            131,
-            132,
-            135,
-            137,
-            138,
-            144,
-            145,
-            146,
-            147,
-            148,
-            151,
-            152,
-            154,
-            155,
-            156,
-            157,
-        ]
+        lExpected = []
+        lExpected.extend(range(88, 93))
+        lExpected.extend(range(95, 103))
+        lExpected.extend(range(112, 117))
+        lExpected.extend([118])
+        lExpected.extend(range(126, 130))
+        lExpected.extend(range(131, 133))
+        lExpected.extend([135])
+        lExpected.extend(range(137, 139))
+        lExpected.extend(range(144, 149))
+        lExpected.extend(range(151, 159))
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -89,61 +53,18 @@ class test_type_definition_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "type_mark")
         self.assertEqual(oRule.identifier, "500")
 
-        lExpected = [
-            5,
-            6,
-            7,
-            8,
-            9,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18,
-            19,
-            28,
-            29,
-            30,
-            31,
-            32,
-            33,
-            35,
-            36,
-            37,
-            38,
-            39,
-            40,
-            41,
-            42,
-            43,
-            44,
-            45,
-            46,
-            48,
-            49,
-            52,
-            54,
-            55,
-            61,
-            62,
-            63,
-            64,
-            65,
-            68,
-            69,
-            70,
-            71,
-            72,
-            73,
-            74,
-            75,
-            97,
-            102,
-            153,
-            158,
-        ]
+        lExpected = []
+        lExpected.extend(range(5, 10))
+        lExpected.extend(range(12, 20))
+        lExpected.extend(range(29, 34))
+        lExpected.extend([35])
+        lExpected.extend(range(43, 47))
+        lExpected.extend(range(48, 50))
+        lExpected.extend([52])
+        lExpected.extend(range(54, 56))
+        lExpected.extend(range(61, 66))
+        lExpected.extend(range(68, 76))
+
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
