@@ -106,16 +106,15 @@ def populate_declarative_part_names(lAllDicts, lNames):
     return lReturn
 
 
-def get_token_of_interest_dicts(oFile, lNames, lTokens, bIncludeDeclarativePartNames, bIncludeArchitectureBodyDeclarationsInSubprogramBody, bIncludeGenericAndPortClauses):
+def get_token_of_interest_dicts(oFile, lNames, lTokens, bIncludeDeclarativePartNames, bIncludeArchitectureBodyDeclarationsInSubprogramBody, bIncludeEntityDeclarations):
     lNameTokens = get_all_name_tokens(oFile, lNames)
     Identifiers = get_all_identifiers(oFile, lTokens)
     lProcessDicts = get_process_indexes(oFile)
     lArchitectureDicts = get_architecture_indexes(oFile)
     lSubprogramBodyDicts = get_subprogram_body_indexes(oFile)
     lBlockDicts = get_block_indexes(oFile)
-    if bIncludeGenericAndPortClauses:
-        lGenericClauseDicts = get_generic_clause_indexes(oFile)
-        lPortClauseDicts = get_port_clause_indexes(oFile)
+    if bIncludeEntityDeclarations:
+        lEntityDicts = get_entity_declaration_indexes(oFile)
 
     lComponentDicts = get_component_declaration_indexes(oFile)
 
@@ -123,10 +122,8 @@ def get_token_of_interest_dicts(oFile, lNames, lTokens, bIncludeDeclarativePartN
     lAllDicts = merge_dict_lists(lAllDicts, lSubprogramBodyDicts)
     lAllDicts = merge_dict_lists(lAllDicts, lBlockDicts)
     lAllDicts = merge_dict_lists(lAllDicts, lComponentDicts)
-    if bIncludeGenericAndPortClauses:
-        lAllDicts = merge_dict_lists(lAllDicts, lGenericClauseDicts)
-        lAllDicts = merge_dict_lists(lAllDicts, lPortClauseDicts)
-
+    if bIncludeEntityDeclarations:
+        lAllDicts = merge_dict_lists(lAllDicts, lEntityDicts)
 
     lAllDicts = populate_identifiers(lAllDicts, Identifiers)
     if bIncludeDeclarativePartNames:
@@ -156,11 +153,9 @@ def get_token_of_interest_dicts(oFile, lNames, lTokens, bIncludeDeclarativePartN
     if bIncludeArchitectureBodyDeclarationsInSubprogramBody:
         lAllDicts = add_identifiers_from_to("architecture_body", "subprogram_body", lAllDicts)
 
-    if bIncludeGenericAndPortClauses:
-        lAllDicts = remove_duplicate_identifiers("architecture_body", "generic_clause", lAllDicts)
-        lAllDicts = remove_duplicate_names("architecture_body", "generic_clause", lAllDicts)
-        lAllDicts = remove_duplicate_identifiers("architecture_body", "port_clause", lAllDicts)
-        lAllDicts = remove_duplicate_names("architecture_body", "port_clause", lAllDicts)
+    if bIncludeEntityDeclarations:
+        lAllDicts = remove_duplicate_identifiers("architecture_body", "entity_declaration", lAllDicts)
+        lAllDicts = remove_duplicate_names("architecture_body", "entity_declaration", lAllDicts)
 
     return lAllDicts
 
