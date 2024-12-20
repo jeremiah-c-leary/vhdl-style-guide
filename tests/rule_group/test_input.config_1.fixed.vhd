@@ -55,7 +55,7 @@ PACKAGE some_pkg IS
 
   PROCEDURE proc_1;
 
-  FUNCTION func_1 RETURN INTEGER;
+  FUNCTION func_1 RETURN Integer;
 
 END PACKAGE some_pkg;
 
