@@ -39,7 +39,7 @@ architecture rtl of fifo is
   signal s_my_nat       : my_nat;
   signal s_my_pos       : my_pos;
   signal s_my_char      : my_char;
-  signal s_my_type_t    : my_type_t;
+  signal s_my_type_t    : my_type;
   signal s_int          : integer;
   signal s_nat          : natural;
   signal s_pos          : positive;
@@ -80,7 +80,7 @@ begin
 
 end architecture rtl;
 
---====== UPPERCASE before
+--====== UPPERCASE below
 
 entity FIFO is
 
@@ -94,12 +94,12 @@ entity FIFO is
   port (
     I_PORT1 : in INTEGER;
     I_PORT2 : in STD_LOGIC;
-    I_PORTA : in t_user2;
+    I_PORTA : in T_USER2;
     I_PORT3 : in STD_LOGIC_VECTOR(3 downto 0);
     I_PORT4 : in SIGNED(15 downto 0);
     I_PORT5 : in UNSIGNED(7 downto 0);
     I_PORT6 : in STD_ULOGIC;
-    I_PORT7 : in t_user1
+    I_PORT7 : in T_USER1
   );
 
 end entity FIFO;
@@ -122,7 +122,7 @@ architecture rtl of fifo is
   signal S_MY_NAT       : MY_NAT;
   signal S_MY_POS       : MY_POS;
   signal S_MY_CHAR      : MY_CHAR;
-  signal S_MY_TYPE_T    : MY_TYPE_T;
+  signal S_MY_TYPE_T    : MY_TYPE;
   signal S_INT          : INTEGER;
   signal S_NAT          : NATURAL;
   signal S_POS          : POSITIVE;
@@ -150,12 +150,12 @@ architecture rtl of fifo is
     port (
       I_PORT1 : in INTEGER;
       I_PORT2 : in STD_LOGIC;
-      I_PORTA : in t_user2;
+      I_PORTA : in T_USER2;
       I_PORT3 : in STD_LOGIC_VECTOR(3 downto 0);
       I_PORT4 : in SIGNED(15 downto 0);
       I_PORT5 : in UNSIGNED(7 downto 0);
       I_PORT6 : in STD_ULOGIC;
-      I_PORT7 : in t_user1
+      I_PORT7 : in T_USER1
     );
   end component;
 

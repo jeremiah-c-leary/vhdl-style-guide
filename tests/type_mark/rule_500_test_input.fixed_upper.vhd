@@ -25,7 +25,7 @@ architecture rtl of fifo is
 
   type my_type is range 10 to 100;
 
-  subtype my_subtype   is MY_TYPE range 10 to 20;
+  subtype my_subtype   is my_type range 10 to 20;
   subtype my_subtype_t is MY_EXTERNAL_TYPE range 10 to 20;
   subtype my_int       is INTEGER range 10 to 100;
   subtype my_nat       is NATURAL range 10 to 100;
@@ -33,13 +33,13 @@ architecture rtl of fifo is
   subtype my_char      is CHARACTER range 'a' downto 'b';
 
   signal s_my_subtype   : MY_EXTERNAL_SUBTYPE;
-  signal s_my_subtype   : MY_SUBTYPE;
-  signal s_my_subtype_t : MY_SUBTYPE_T;
-  signal s_my_int       : MY_INT;
-  signal s_my_nat       : MY_NAT;
-  signal s_my_pos       : MY_POS;
-  signal s_my_char      : MY_CHAR;
-  signal s_my_type_t    : MY_TYPE_T;
+  signal s_my_subtype   : my_subtype;
+  signal s_my_subtype_t : my_subtype_t;
+  signal s_my_int       : my_int;
+  signal s_my_nat       : my_nat;
+  signal s_my_pos       : my_pos;
+  signal s_my_char      : my_char;
+  signal s_my_type_t    : my_type;
   signal s_int          : INTEGER;
   signal s_nat          : NATURAL;
   signal s_pos          : POSITIVE;
@@ -80,7 +80,7 @@ begin
 
 end architecture rtl;
 
---====== UPPERCASE before
+--====== UPPERCASE below
 
 entity FIFO is
 
@@ -122,7 +122,7 @@ architecture rtl of fifo is
   signal S_MY_NAT       : MY_NAT;
   signal S_MY_POS       : MY_POS;
   signal S_MY_CHAR      : MY_CHAR;
-  signal S_MY_TYPE_T    : MY_TYPE_T;
+  signal S_MY_TYPE_T    : MY_TYPE;
   signal S_INT          : INTEGER;
   signal S_NAT          : NATURAL;
   signal S_POS          : POSITIVE;
