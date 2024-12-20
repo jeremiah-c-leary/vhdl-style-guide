@@ -81,6 +81,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    subprogram_body_rules.rst
    subtype_rules.rst
    type_rules.rst
+   type_mark_rules.rst
    unfixable_rules.rst
    use_clause_rules.rst
    variable_rules.rst
