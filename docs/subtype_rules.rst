@@ -36,7 +36,7 @@ This rule checks for indentation of the **subtype** keyword.
 subtype_002
 ###########
 
-|phase_6| |disabled| |error| |case|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of subtype names.
 

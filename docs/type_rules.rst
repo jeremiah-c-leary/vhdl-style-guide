@@ -310,7 +310,7 @@ This rule checks the **is** keyword in type definitions has proper case.
 type_014
 ########
 
-|phase_6| |disabled| |error| |case|
+|phase_6| |error| |case|
 
 This rule checks for consistent capitalization of type names.
 
