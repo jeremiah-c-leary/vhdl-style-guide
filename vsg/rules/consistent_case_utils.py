@@ -106,7 +106,14 @@ def populate_declarative_part_names(lAllDicts, lNames):
     return lReturn
 
 
-def get_token_of_interest_dicts(oFile, lNames, lTokens, bIncludeDeclarativePartNames, bIncludeArchitectureBodyDeclarationsInSubprogramBody, bIncludeEntityDeclarations):
+def get_token_of_interest_dicts(
+    oFile,
+    lNames,
+    lTokens,
+    bIncludeDeclarativePartNames,
+    bIncludeArchitectureBodyDeclarationsInSubprogramBody,
+    bIncludeEntityDeclarations,
+):
     lNameTokens = get_all_name_tokens(oFile, lNames)
     Identifiers = get_all_identifiers(oFile, lTokens)
     lProcessDicts = get_process_indexes(oFile)

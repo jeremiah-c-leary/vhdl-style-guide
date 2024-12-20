@@ -51,7 +51,7 @@ class rule_500(token_case_with_prefix_suffix):
             lDeclarationTokens,
             self.bIncludeDeclarativePartNames,
             self.bIncludeArchitectureBodyDeclarationsInSubprogramBody,
-            self.bIncludeEntityDeclarations
+            self.bIncludeEntityDeclarations,
         )
         lReturn = []
         oTokenMap = oFile.get_token_map()
