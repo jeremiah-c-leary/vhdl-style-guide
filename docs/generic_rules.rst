@@ -288,29 +288,9 @@ This rule checks for multiple generics defined on a single line.
 generic_017
 ###########
 
-|phase_6| |error| |case| |case_keyword|
+This rule was deprecated and replaced with the following rule:
 
-This rule checks the generic type has proper case if it is a VHDL keyword.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-  generic (
-    g_width : STD_LOGIC := '0';
-    g_depth : Std_logic := '1'
-  );
-
-**Fix**
-
-.. code-block:: vhdl
-
-  generic (
-    g_width : std_logic := '0';
-    g_depth : std_logic := '1'
-  );
+* :ref:`type_mark_500`
 
 generic_018
 ###########
