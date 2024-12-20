@@ -46,4 +46,3 @@ class rule_002(Rule):
     def __init__(self):
         super().__init__(lTokens, lNames)
         self.bIncludeDeclarativePartNames = True
-        self.disable = True

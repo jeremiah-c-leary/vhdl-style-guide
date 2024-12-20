@@ -36,4 +36,3 @@ class rule_014(Rule):
         super().__init__(lTokens, lNames)
         self.bIncludeDeclarativePartNames = True
         self.bIncludeArchitectureBodyDeclarationsInSubprogramBody = True
-        self.disable = True
