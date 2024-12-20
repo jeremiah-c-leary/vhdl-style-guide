@@ -40,6 +40,7 @@ class rule_500(token_case_with_prefix_suffix):
         super().__init__(lTokens)
         self.bIncludeDeclarativePartNames = True
         self.bIncludeArchitectureBodyDeclarationsInSubprogramBody = True
+        self.bIncludeEntityDeclarations = True
         self.groups.append("case::name")
 
     def _get_tokens_of_interest(self, oFile):
@@ -50,6 +51,7 @@ class rule_500(token_case_with_prefix_suffix):
             lDeclarationTokens,
             self.bIncludeDeclarativePartNames,
             self.bIncludeArchitectureBodyDeclarationsInSubprogramBody,
+            self.bIncludeEntityDeclarations
         )
         lReturn = []
         oTokenMap = oFile.get_token_map()

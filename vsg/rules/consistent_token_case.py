@@ -31,6 +31,7 @@ class consistent_token_case(case.Rule):
         self.lNames = lNames
         self.bIncludeDeclarativePartNames = False
         self.bIncludeArchitectureBodyDeclarationsInSubprogramBody = False
+        self.bIncludeEntityDeclarations = True
         if lIgnore is None:
             self.lIgnoreTokens = []
         else:
@@ -44,6 +45,7 @@ class consistent_token_case(case.Rule):
             self.lTokens,
             self.bIncludeDeclarativePartNames,
             self.bIncludeArchitectureBodyDeclarationsInSubprogramBody,
+            self.bIncludeEntityDeclarations,
         )
         return cc_utils.create_tois(lAllDicts, oFile)
 
