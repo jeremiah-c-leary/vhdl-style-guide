@@ -10,6 +10,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    aggregate_rules.rst
    alias_declaration_rules.rst
    architecture_rules.rst
+   array_constraint_rules.rst
    assert_rules.rst
    attribute_rules.rst
    attribute_declaration_rules.rst
