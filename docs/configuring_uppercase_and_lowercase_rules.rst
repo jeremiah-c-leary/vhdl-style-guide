@@ -237,6 +237,8 @@ Rules Enforcing Case
 * `architecture_021 <architecture_rules.html#architecture-021>`_
 * `architecture_028 <architecture_rules.html#architecture-028>`_
 
+* `array_constraint_500 <../array_constraint_rules.html#array-constraint-500>`_
+
 * `assert_500 <assert_rules.html#assert-500>`_
 * `assert_501 <assert_rules.html#assert-501>`_
 * `assert_502 <assert_rules.html#assert-502>`_

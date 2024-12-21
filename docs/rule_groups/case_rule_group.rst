@@ -21,6 +21,7 @@ Rules Enforcing Case Rule Group
 * `architecture_028 <../architecture_rules.html#architecture-028>`_
 * `architecture_600 <../architecture_rules.html#architecture-600>`_
 * `architecture_601 <../architecture_rules.html#architecture-601>`_
+* `array_constraint_500 <../array_constraint_rules.html#array-constraint-500>`_
 * `assert_500 <../assert_rules.html#assert-500>`_
 * `assert_501 <../assert_rules.html#assert-501>`_
 * `assert_502 <../assert_rules.html#assert-502>`_
