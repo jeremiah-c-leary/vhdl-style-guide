@@ -31,6 +31,7 @@ class consistent_token_case(case.Rule):
         self.lNames = lNames
         self.bIncludeDeclarativePartNames = False
         self.bIncludeArchitectureBodyDeclarationsInSubprogramBody = False
+        self.bIncludeEntityDeclarations = True
         if lIgnore is None:
             self.lIgnoreTokens = []
         else:
@@ -38,48 +39,14 @@ class consistent_token_case(case.Rule):
         self.configuration_documentation_link = None
 
     def _get_tokens_of_interest(self, oFile):
-        lNameTokens = cc_utils.get_all_name_tokens(oFile, self.lNames)
-        Identifiers = cc_utils.get_all_identifiers(oFile, self.lTokens)
-        lProcessDicts = cc_utils.get_process_indexes(oFile)
-        lArchitectureDicts = cc_utils.get_architecture_indexes(oFile)
-        lSubprogramBodyDicts = cc_utils.get_subprogram_body_indexes(oFile)
-        lBlockDicts = cc_utils.get_block_indexes(oFile)
-
-        lComponentDicts = cc_utils.get_component_declaration_indexes(oFile)
-
-        lAllDicts = cc_utils.merge_dict_lists(lArchitectureDicts, lProcessDicts)
-        lAllDicts = cc_utils.merge_dict_lists(lAllDicts, lSubprogramBodyDicts)
-        lAllDicts = cc_utils.merge_dict_lists(lAllDicts, lBlockDicts)
-        lAllDicts = cc_utils.merge_dict_lists(lAllDicts, lComponentDicts)
-
-        lAllDicts = cc_utils.populate_identifiers(lAllDicts, Identifiers)
-        if self.bIncludeDeclarativePartNames:
-            lAllDicts = cc_utils.populate_declarative_part_names(lAllDicts, lNameTokens)
-        lAllDicts = cc_utils.populate_statement_part_names(lAllDicts, lNameTokens)
-
-        lAllDicts = cc_utils.remove_duplicate_identifiers("architecture_body", "subprogram_body", lAllDicts)
-        lAllDicts = cc_utils.remove_duplicate_names("architecture_body", "subprogram_body", lAllDicts)
-
-        lAllDicts = cc_utils.remove_duplicate_identifiers("architecture_body", "process", lAllDicts)
-        lAllDicts = cc_utils.remove_duplicate_names("architecture_body", "process", lAllDicts)
-
-        lAllDicts = cc_utils.remove_duplicate_names("architecture_body", "component_declaration", lAllDicts)
-
-        lAllDicts = cc_utils.remove_duplicate_identifiers("process", "subprogram_body", lAllDicts)
-        lAllDicts = cc_utils.remove_duplicate_names("process", "subprogram_body", lAllDicts)
-
-        lAllDicts = cc_utils.remove_duplicate_identifiers("block_statement", "subprogram_body", lAllDicts)
-        lAllDicts = cc_utils.remove_duplicate_names("block_statement", "subprogram_body", lAllDicts)
-
-        lAllDicts = cc_utils.remove_duplicate_identifiers("block_statement", "process", lAllDicts)
-        lAllDicts = cc_utils.remove_duplicate_names("block_statement", "process", lAllDicts)
-
-        lAllDicts = cc_utils.add_identifiers_from_to("block_statement", "process", lAllDicts)
-        lAllDicts = cc_utils.add_identifiers_from_to("architecture_body", "process", lAllDicts)
-
-        if self.bIncludeArchitectureBodyDeclarationsInSubprogramBody:
-            lAllDicts = cc_utils.add_identifiers_from_to("architecture_body", "subprogram_body", lAllDicts)
-
+        lAllDicts = cc_utils.get_token_of_interest_dicts(
+            oFile,
+            self.lNames,
+            self.lTokens,
+            self.bIncludeDeclarativePartNames,
+            self.bIncludeArchitectureBodyDeclarationsInSubprogramBody,
+            self.bIncludeEntityDeclarations,
+        )
         return cc_utils.create_tois(lAllDicts, oFile)
 
     def _analyze(self, lToi):

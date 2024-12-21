@@ -1,49 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg.rules import token_case_n_token_after_tokens_between_tokens
+from vsg import deprecated_rule
 
 lTokens = []
-lTokens.append(token.interface_constant_declaration.colon)
-lTokens.append(token.interface_variable_declaration.colon)
-lTokens.append(token.interface_signal_declaration.colon)
-lTokens.append(token.interface_unknown_declaration.colon)
-
-oStart = token.port_clause.open_parenthesis
-oEnd = token.port_clause.close_parenthesis
 
 
-class rule_018(token_case_n_token_after_tokens_between_tokens):
+class rule_018(deprecated_rule.Rule):
     """
-    This rule checks the port type has proper case if it is a VHDL keyword.
+    This rule was deprecated and replaced with the following rule:
 
-    |configuring_uppercase_and_lowercase_rules_link|
-
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       port (
-         WR_EN    : in    STD_LOGIC;
-         RD_EN    : in    std_logic;
-         OVERFLOW : out   t_OVERFLOW;
-         DATA     : inout STD_LOGIC_VECTOR(31 downto 0)
-       );
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       port (
-         WR_EN    : in    std_logic;
-         RD_EN    : in    std_logic;
-         OVERFLOW : out   t_OVERFLOW;
-         DATA     : inout std_logic_vector(31 downto 0)
-       );
+    * :ref:`type_mark_500`
     """
 
     def __init__(self):
-        super().__init__(2, lTokens, oStart, oEnd, True)
-        self.disabled = True
-        self.groups.append("case::keyword")
+        super().__init__()
+        self.message.append("Rule " + self.unique_id + " has been replaced with the following rule:")
+        self.message.append("  type_mark_500")
