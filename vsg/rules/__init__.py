@@ -180,6 +180,7 @@ from vsg.rules import signal
 from vsg.rules import shift_operator
 from vsg.rules import source_file
 from vsg.rules import subprogram_body
+from vsg.rules import subprogram_kind
 from vsg.rules import subtype
 from vsg.rules import type_definition
 from vsg.rules import use_clause
