@@ -254,27 +254,7 @@ This rule checks the **end** keyword has proper case.
 procedure_009
 #############
 
-|phase_6| |error| |case| |case_keyword|
-
-This rule checks the **procedure** keyword in the **end procedure** has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   end PROCEDURE;
-
-   end Procedure proc;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   end procedure;
-
-   end procedure proc;
+This rule has been deprecated and replaced with rule `procedure_505 <procedure_rules.html#procedure-505>`_.
 
 procedure_010
 #############

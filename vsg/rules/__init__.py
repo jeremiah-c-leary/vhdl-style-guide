@@ -111,6 +111,7 @@ from vsg.rules import alias_declaration
 from vsg.rules import after
 from vsg.rules import aggregate
 from vsg.rules import architecture
+from vsg.rules import array_constraint
 from vsg.rules import assert_statement
 from vsg.rules import attribute
 from vsg.rules import attribute_declaration
@@ -150,6 +151,7 @@ from vsg.rules import generic_map
 from vsg.rules import ieee
 from vsg.rules import if_statement
 from vsg.rules import if_generate_statement
+from vsg.rules import index_subtype_definition
 from vsg.rules import instantiation
 from vsg.rules import iteration_scheme
 from vsg.rules import length
@@ -169,6 +171,7 @@ from vsg.rules import procedure_call
 from vsg.rules import process
 from vsg.rules import protected_type
 from vsg.rules import protected_type_body
+from vsg.rules import range_constraint
 from vsg.rules import ranges
 from vsg.rules import record_type_definition
 from vsg.rules import report_statement
