@@ -31,7 +31,7 @@ class test_procedure_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "procedure")
         self.assertEqual(oRule.identifier, "505")
 
-        lExpected = [6]
+        lExpected = [15]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -43,7 +43,8 @@ class test_procedure_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "procedure")
         self.assertEqual(oRule.identifier, "505")
 
-        lExpected = [4]
+        lExpected = [13]
+
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
