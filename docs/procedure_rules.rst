@@ -254,7 +254,7 @@ This rule checks the **end** keyword has proper case.
 procedure_009
 #############
 
-This rule has been deprecated and replaced with rule `procedure_505 <procedure_rules.html#procedure-505>`_.
+This rule has been deprecated and replaced with rule `subprogram_kind_500 <subprogram_kind_rules.html#subprogram-kind-500>`_.
 
 procedure_010
 #############
@@ -660,23 +660,7 @@ This rule checks the **end** keyword has proper case.
 procedure_505
 #############
 
-|phase_6| |error| |case| |case_keyword|
-
-This rule checks the **procedure** keyword in the **end procedure** has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   end PROCEDURE average_samples;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   end procedure average_samples;
+This rule has been deprecated and replaced with rule `subprogram_kind_500 <subprogram_kind_rules.html#subprogram-kind-500>`_.
 
 procedure_506
 #############
