@@ -133,6 +133,7 @@ Rules Enforcing Case Rule Group
 * `if_028 <../if_rules.html#if-028>`_
 * `if_029 <../if_rules.html#if-029>`_
 * `if_034 <../if_rules.html#if-034>`_
+* `index_subtype_definition_500 <../index_subtype_definition_rules.html#index-subtype-definition-500>`_
 * `instantiation_008 <../instantiation_rules.html#instantiation-008>`_
 * `instantiation_009 <../instantiation_rules.html#instantiation-009>`_
 * `instantiation_027 <../instantiation_rules.html#instantiation-027>`_
@@ -211,6 +212,7 @@ Rules Enforcing Case Rule Group
 * `protected_type_body_502 <../protected_type_rules.html#protected-type-body-502>`_
 * `protected_type_body_503 <../protected_type_rules.html#protected-type-body-503>`_
 * `protected_type_body_504 <../protected_type_rules.html#protected-type-body-504>`_
+* `range_constraint_500 <../range_constraint_rules.html#range-constraint-500>`_
 * `range_001 <../range_rules.html#range-001>`_
 * `range_002 <../range_rules.html#range-002>`_
 * `record_type_definition_500 <../record_type_definition_rules.html#record-type-definition-500>`_
