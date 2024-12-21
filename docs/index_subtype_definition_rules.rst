@@ -8,7 +8,7 @@ index_subtype_definition_500
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the **range** keyword in index subtype definitions have the proper case.
+This rule checks the **range** keyword in index subtype definitions has the proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 

@@ -9,7 +9,7 @@ lTokens.append(token.range_constraint.range_keyword)
 
 class rule_500(token_case):
     """
-    This rule checks the **range** keyword in range constraints have the proper case.
+    This rule checks the **range** keyword in range constraints has the proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
