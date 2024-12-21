@@ -49,6 +49,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    ieee_rules.rst
    if_rules.rst
    if_generate_statement_rules.rst
+   index_subtype_definition_rules.rst
    instantiation_rules.rst
    iteration_scheme_rules.rst
    length_rules.rst
@@ -68,6 +69,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    process_rules.rst
    protected_type_rules.rst
    protected_type_body_rules.rst
+   range_constraint_rules.rst
    range_rules.rst
    record_type_definition_rules.rst
    report_statement_rules.rst
