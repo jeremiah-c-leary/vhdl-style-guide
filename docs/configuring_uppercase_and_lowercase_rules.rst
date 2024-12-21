@@ -437,7 +437,6 @@ Rules Enforcing Case
 * `port_map_002 <port_map_rules.html#port-map-002>`_
 
 * `procedure_008 <procedure_rules.html#procedure-008>`_
-* `procedure_009 <procedure_rules.html#procedure-009>`_
 * `procedure_500 <procedure_rules.html#procedure-500>`_
 * `procedure_501 <procedure_rules.html#procedure-501>`_
 * `procedure_502 <procedure_rules.html#procedure-502>`_

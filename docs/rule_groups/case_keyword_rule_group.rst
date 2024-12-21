@@ -130,7 +130,6 @@ Rules Enforcing Case::Keyword Rule Group
 * `port_019 <../port_rules.html#port-019>`_
 * `port_map_001 <../port_map_rules.html#port-map-001>`_
 * `procedure_008 <../procedure_rules.html#procedure-008>`_
-* `procedure_009 <../procedure_rules.html#procedure-009>`_
 * `procedure_500 <../procedure_rules.html#procedure-500>`_
 * `procedure_502 <../procedure_rules.html#procedure-502>`_
 * `procedure_503 <../procedure_rules.html#procedure-503>`_
