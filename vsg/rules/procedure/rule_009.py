@@ -10,4 +10,4 @@ class rule_009(Rule):
 
     def __init__(self):
         Rule.__init__(self)
-        self.message.append("Rule " + self.unique_id + " has been merged into procedure_505.")
+        self.message.append("Rule " + self.unique_id + " has been replaced with procedure_505.")
