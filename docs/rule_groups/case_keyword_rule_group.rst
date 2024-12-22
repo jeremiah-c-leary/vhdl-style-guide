@@ -166,10 +166,8 @@ Rules Enforcing Case::Keyword Rule Group
 * `selected_assignment_503 <../selected_assignment_rules.html#selected-assignment-503>`_
 * `shift_operator_500 <../shift_operator_rules.html#shift-operator-500>`_
 * `signal_002 <../signal_rules.html#signal-002>`_
-* `subprogram_instantiation_500 <../subprogram_instantiation_rules.html#subprogram-instantiation-500>`_
 * `subprogram_instantiation_501 <../subprogram_instantiation_rules.html#subprogram-instantiation-501>`_
 * `subprogram_instantiation_502 <../subprogram_instantiation_rules.html#subprogram-instantiation-502>`_
-* `subprogram_instantiation_503 <../subprogram_instantiation_rules.html#subprogram-instantiation-503>`_
 * `subprogram_kind_500 <../subprogram_kind_rules.html#subprogram-kind-500>`_
 * `subprogram_kind_501 <../subprogram_kind_rules.html#subprogram-kind-501>`_
 * `subtype_500 <../subtype_rules.html#subtype-500>`_

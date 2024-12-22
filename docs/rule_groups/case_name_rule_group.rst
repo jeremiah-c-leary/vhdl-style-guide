@@ -46,6 +46,8 @@ Rules Enforcing Case::Name Rule Group
 * `procedure_509 <../procedure_rules.html#procedure-509>`_
 * `procedure_call_502 <../procedure_call_rules.html#procedure-call-502>`_
 * `signal_004 <../signal_rules.html#signal-004>`_
+* `subprogram_instantiation_500 <../subprogram_instantiation_rules.html#subprogram-instantiation-500>`_
+* `subprogram_instantiation_503 <../subprogram_instantiation_rules.html#subprogram-instantiation-503>`_
 * `subtype_501 <../subtype_rules.html#subtype-501>`_
 * `type_004 <../type_rules.html#type-004>`_
 * `type_500 <../type_rules.html#type-500>`_
