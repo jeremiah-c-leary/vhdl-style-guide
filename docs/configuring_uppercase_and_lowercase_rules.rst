@@ -496,6 +496,11 @@ Rules Enforcing Case
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_
 
+* `subprogram_instantiation_500 <subprogram_instantiation_rules.html#subprogram-instantiation-500>`_
+* `subprogram_instantiation_501 <subprogram_instantiation_rules.html#subprogram-instantiation-501>`_
+* `subprogram_instantiation_502 <subprogram_instantiation_rules.html#subprogram-instantiation-502>`_
+* `subprogram_instantiation_503 <subprogram_instantiation_rules.html#subprogram-instantiation-503>`_
+
 * `subtype_500 <../subtype_rules.html#subtype-500>`_
 * `subtype_501 <../subtype_rules.html#subtype-501>`_
 * `subtype_502 <../subtype_rules.html#subtype-502>`_
