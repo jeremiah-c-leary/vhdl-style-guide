@@ -324,11 +324,11 @@ Rules Enforcing Case
 
 * `exponent_500 <exponent_rules.html#exponent-500>`_
 
-* `external_constant_name_500 <../external_constant_name_rules.html#external-constant-name-500>`_
+* `external_constant_name_500 <external_constant_name_rules.html#external-constant-name-500>`_
 
-* `external_signal_name_500 <../external_signal_name_rules.html#external-signal-name-500>`_
+* `external_signal_name_500 <external_signal_name_rules.html#external-signal-name-500>`_
 
-* `external_variable_name_500 <../external_variable_name_rules.html#external-variable-name-500>`_
+* `external_variable_name_500 <external_variable_name_rules.html#external-variable-name-500>`_
 
 * `file_002 <file_rules.html#file-002>`_
 
@@ -493,9 +493,9 @@ Rules Enforcing Case
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_
 
-* `subtype_500 <../subtype_rules.html#subtype-500>`_
-* `subtype_501 <../subtype_rules.html#subtype-501>`_
-* `subtype_502 <../subtype_rules.html#subtype-502>`_
+* `subtype_500 <subtype_rules.html#subtype-500>`_
+* `subtype_501 <subtype_rules.html#subtype-501>`_
+* `subtype_502 <subtype_rules.html#subtype-502>`_
 
 * `type_002 <type_rules.html#type-002>`_
 * `type_004 <type_rules.html#type-004>`_
