@@ -501,6 +501,9 @@ Rules Enforcing Case
 * `subprogram_instantiation_502 <subprogram_instantiation_rules.html#subprogram-instantiation-502>`_
 * `subprogram_instantiation_503 <subprogram_instantiation_rules.html#subprogram-instantiation-503>`_
 
+* `subprogram_kind_500 <subprogram_kind_rules.html#subprogram-kind-500>`_
+* `subprogram_kind_501 <subprogram_kind_rules.html#subprogram-kind-501>`_
+
 * `subtype_500 <../subtype_rules.html#subtype-500>`_
 * `subtype_501 <../subtype_rules.html#subtype-501>`_
 * `subtype_502 <../subtype_rules.html#subtype-502>`_
