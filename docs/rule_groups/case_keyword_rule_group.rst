@@ -46,9 +46,9 @@ Rules Enforcing Case::Keyword Rule Group
 * `conditional_waveforms_500 <../conditional_waveforms_rules.html#conditional-waveforms-500>`_
 * `conditional_waveforms_501 <../conditional_waveforms_rules.html#conditional-waveforms-501>`_
 * `constant_002 <../constant_rules.html#constant-002>`_
-* `context_004 <../context_rules.html#context-004>`_
 * `constrained_array_definition_500 <../constrained_array_definition_rules.html#constrained-array-definition-500>`_
 * `constrained_array_definition_501 <../constrained_array_definition_rules.html#constrained-array-definition-501>`_
+* `context_004 <../context_rules.html#context-004>`_
 * `context_013 <../context_rules.html#context-013>`_
 * `context_014 <../context_rules.html#context-014>`_
 * `context_015 <../context_rules.html#context-015>`_
