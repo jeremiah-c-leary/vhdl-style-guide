@@ -28,6 +28,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    conditional_expressions_rules.rst
    conditional_waveforms_rules.rst
    constant_rules.rst
+   constrained_array_definition_rules.rst
    context_rules.rst
    context_ref_rules.rst
    declarative_part_rules.rst
@@ -85,6 +86,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    subtype_rules.rst
    type_rules.rst
    unfixable_rules.rst
+   unbounded_array_definition_rules.rst
    use_clause_rules.rst
    variable_rules.rst
    variable_assignment_rules.rst
