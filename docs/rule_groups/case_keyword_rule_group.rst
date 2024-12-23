@@ -47,6 +47,8 @@ Rules Enforcing Case::Keyword Rule Group
 * `conditional_waveforms_501 <../conditional_waveforms_rules.html#conditional-waveforms-501>`_
 * `constant_002 <../constant_rules.html#constant-002>`_
 * `context_004 <../context_rules.html#context-004>`_
+* `constrained_array_definition_500 <../constrained_array_definition_rules.html#constrained-array-definition-500>`_
+* `constrained_array_definition_501 <../constrained_array_definition_rules.html#constrained-array-definition-501>`_
 * `context_013 <../context_rules.html#context-013>`_
 * `context_014 <../context_rules.html#context-014>`_
 * `context_015 <../context_rules.html#context-015>`_
@@ -172,6 +174,8 @@ Rules Enforcing Case::Keyword Rule Group
 * `subtype_502 <../subtype_rules.html#subtype-502>`_
 * `type_002 <../type_rules.html#type-002>`_
 * `type_013 <../type_rules.html#type-013>`_
+* `unbounded_array_definition_500 <../unbounded_array_definition_rules.html#unbounded-array-definition-500>`_
+* `unbounded_array_definition_501 <../unbounded_array_definition_rules.html#unbounded-array-definition-501>`_
 * `use_clause_503 <../use_clause_rules.html#use-clause-503>`_
 * `variable_002 <../variable_rules.html#variable-002>`_
 * `wait_500 <../wait_rules.html#wait-500>`_
