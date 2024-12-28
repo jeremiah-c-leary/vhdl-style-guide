@@ -9,7 +9,7 @@ lTokens.append(token.case_generate_statement.case_keyword)
 
 class rule_500(Rule):
     """
-    This rule checks the *case* keyword has proper case.
+    This rule checks the **case** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
