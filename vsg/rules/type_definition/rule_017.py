@@ -7,7 +7,7 @@ from vsg.token import full_type_declaration as token
 
 class rule_017(Rule):
     """
-    This rule checks the identifier is on the same line as the type keyword.
+    This rule checks the identifier is on the same line as the **type** keyword.
 
     **Violation**
 
