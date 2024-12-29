@@ -65,3 +65,24 @@ This rule checks the **in** keyword has proper case.
 .. code-block:: vhdl
 
    gen_label : for lv_thing in t_thing generate
+
+for_generate_statement_503
+##########################
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks the parameter identifier has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   gen_label : for LV_THING in t_thing generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+   gen_label : for lv_thing in t_thing generate
