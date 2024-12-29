@@ -6,6 +6,7 @@ from vsg.rules import token_indent
 lTokens = []
 lTokens.append(token.subprogram_kind.function_keyword)
 
+
 class rule_301(token_indent):
     """
     This rule checks the indent of the **function** keyword.

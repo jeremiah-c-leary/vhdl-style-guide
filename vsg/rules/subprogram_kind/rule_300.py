@@ -6,6 +6,7 @@ from vsg.rules import token_indent
 lTokens = []
 lTokens.append(token.subprogram_kind.procedure_keyword)
 
+
 class rule_300(token_indent):
     """
     This rule checks the indent of the **procedure** keyword.
