@@ -30,6 +30,7 @@ class test_for_generate_statement_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "for_generate_statement")
         self.assertEqual(oRule.identifier, "503")
+        self.assertEqual(oRule.groups, ["case", "case::name"])
 
         lExpected = [10]
 

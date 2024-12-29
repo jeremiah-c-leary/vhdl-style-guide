@@ -30,7 +30,7 @@ class test_iteration_scheme_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "iteration_scheme")
         self.assertEqual(oRule.identifier, "503")
-        self.assertEqual(oRule.groups, ["case", "case::keyword"])
+        self.assertEqual(oRule.groups, ["case", "case::name"])
 
         lExpected = [10]
 
