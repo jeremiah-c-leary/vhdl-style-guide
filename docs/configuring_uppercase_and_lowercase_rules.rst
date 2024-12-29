@@ -294,6 +294,9 @@ Rules Enforcing Case
 * `constant_002 <constant_rules.html#constant-002>`_
 * `constant_004 <constant_rules.html#constant-004>`_
 
+* `constrained_array_definition_500 <constrained_array_definition_rules.html#constrained-array-definition-500>`_
+* `constrained_array_definition_501 <constrained_array_definition_rules.html#constrained-array-definition-501>`_
+
 * `context_004 <context_rules.html#context-004>`_
 * `context_012 <context_rules.html#context-012>`_
 * `context_013 <context_rules.html#context-013>`_
@@ -506,6 +509,9 @@ Rules Enforcing Case
 * `type_004 <type_rules.html#type-004>`_
 * `type_013 <type_rules.html#type-013>`_
 * `type_500 <type_rules.html#type-500>`_
+
+* `unbounded_array_definition_500 <unbounded_array_definition_rules.html#unbounded-array-definition-500>`_
+* `unbounded_array_definition_501 <unbounded_array_definition_rules.html#unbounded-array-definition-501>`_
 
 * `use_clause_500 <use_clause_rules.html#use-clause-500>`_
 * `use_clause_501 <use_clause_rules.html#use-clause-501>`_
