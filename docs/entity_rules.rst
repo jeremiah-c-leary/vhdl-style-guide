@@ -52,7 +52,7 @@ entity_003
 
 |phase_3| |error| |blank_line|
 
-This rule checks for blank lines or comments above the entity keyword.
+This rule checks for blank lines or comments above the **entity** keyword.
 
 |configuring_previous_line_rules_link|
 

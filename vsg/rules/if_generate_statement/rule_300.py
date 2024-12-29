@@ -9,7 +9,7 @@ lTokens.append(token.if_generate_statement.elsif_keyword)
 
 class rule_300(Rule):
     """
-    This rule checks the indent of the *elsif* keyword.
+    This rule checks the indent of the **elsif** keyword.
 
     **Violation**
 
