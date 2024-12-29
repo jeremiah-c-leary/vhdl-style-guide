@@ -6,7 +6,7 @@ from vsg.rules import move_token_next_to_another_token
 
 class rule_001(move_token_next_to_another_token):
     """
-    This rule checks the new **procedure** keyword is on the same line as the new subprogram identifier.
+    This rule checks the new subprogram identifier is on the same line as the **procedure** keyword.
 
     **Violation**
 
