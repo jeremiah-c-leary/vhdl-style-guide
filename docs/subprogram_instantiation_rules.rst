@@ -3,6 +3,106 @@
 Subprogram Instantiation Rules
 ------------------------------
 
+subprogram_instantiation_001
+############################
+
+|phase_1| |error| |structure|
+
+This rule checks the new subprogram identifier is on the same line as the **procedure** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure
+   my_proc is new my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
+subprogram_instantiation_002
+############################
+
+|phase_1| |error| |structure|
+
+This rule checks the new subprogram identifier is on the same line as the **function** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function
+   my_func is new my_generic_func
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function my_func is new my_generic_func
+
+subprogram_instantiation_003
+############################
+
+|phase_1| |error| |structure|
+
+This rule checks the **is** keyword is on the same line as the new subprogram identifier.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure my_proc
+   is new my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
+subprogram_instantiation_004
+############################
+
+|phase_1| |error| |structure|
+
+This rule checks the **new** keyword is on the same line as the **is** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure my_proc is
+   new my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
+subprogram_instantiation_005
+############################
+
+|phase_1| |error| |structure|
+
+This rule checks the uninstantiated subprogram name is on the same line as the **new** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new
+   my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
 subprogram_instantiation_500
 ############################
 
