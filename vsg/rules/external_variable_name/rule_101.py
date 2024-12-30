@@ -6,7 +6,7 @@ from vsg.token import external_variable_name as token
 
 class rule_101(Rule):
     """
-    This rule checks for a single space after the variable keyword.
+    This rule checks for a single space after the **variable** keyword.
 
     |configuring_whitespace_rules_link|
 

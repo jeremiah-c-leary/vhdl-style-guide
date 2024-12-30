@@ -31,7 +31,7 @@ external_variable_name_101
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space after the variable keyword.
+This rule checks for a single space after the **variable** keyword.
 
 |configuring_whitespace_rules_link|
 

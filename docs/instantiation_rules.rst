@@ -415,7 +415,7 @@ instantiation_031
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
+This rule checks the **component** keyword has proper case in component instantiations that use the **component** keyword.
 
 |configuring_uppercase_and_lowercase_rules_link|
 

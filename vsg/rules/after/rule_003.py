@@ -25,7 +25,7 @@ lEndAssignments.append(token.simple_release_assignment.semicolon)
 
 class rule_003(structure.Rule):
     """
-    This rule checks the *after* keywords do not exist in the reset portion of a clock process.
+    This rule checks the **after** keywords do not exist in the reset portion of a clock process.
 
     **Violation**
 
