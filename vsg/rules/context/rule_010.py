@@ -17,7 +17,7 @@ oEndToken = token.semicolon
 
 class rule_010(move_token_to_the_right_of_several_possible_tokens_if_it_exists_between_tokens):
     """
-    This rule checks the context identifier is on the same line as the end context keyword.
+    This rule checks the context identifier is on the same line as the **end** context keyword.
 
     **Violation**
 

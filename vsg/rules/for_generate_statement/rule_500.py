@@ -9,7 +9,7 @@ lTokens.append(token.for_generate_statement.for_keyword)
 
 class rule_500(Rule):
     """
-    This rule checks the *for* keyword has proper case.
+    This rule checks the **for** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
