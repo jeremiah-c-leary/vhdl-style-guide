@@ -39,7 +39,7 @@ case_generate_statement_500
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *case* keyword has proper case.
+This rule checks the **case** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -60,7 +60,7 @@ case_generate_statement_501
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *generate* keyword has proper case.
+This rule checks the **generate** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 

@@ -8,7 +8,7 @@ if_generate_statement_300
 
 |phase_4| |error| |indent|
 
-This rule checks the indent of the *elsif* keyword.
+This rule checks the indent of the **elsif** keyword.
 
 **Violation**
 
@@ -31,7 +31,7 @@ if_generate_statement_301
 
 |phase_4| |error| |indent|
 
-This rule checks the indent of the *else* keyword.
+This rule checks the indent of the **else** keyword.
 
 **Violation**
 
@@ -54,7 +54,7 @@ if_generate_statement_500
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *if* keyword has proper case.
+This rule checks the **if** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -75,7 +75,7 @@ if_generate_statement_501
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *generate* keyword has proper case.
+This rule checks the **generate** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -100,7 +100,7 @@ if_generate_statement_502
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *elsif* keyword has proper case.
+This rule checks the **elsif** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -121,7 +121,7 @@ if_generate_statement_503
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *else* keyword has proper case.
+This rule checks the **else** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 

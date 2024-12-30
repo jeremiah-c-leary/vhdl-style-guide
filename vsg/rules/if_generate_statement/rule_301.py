@@ -9,7 +9,7 @@ lTokens.append(token.if_generate_statement.else_keyword)
 
 class rule_301(Rule):
     """
-    This rule checks the indent of the *else* keyword.
+    This rule checks the indent of the **else** keyword.
 
     **Violation**
 

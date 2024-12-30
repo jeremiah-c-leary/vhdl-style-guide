@@ -9,7 +9,7 @@ lTokens.append(token.waveform_element.after_keyword)
 
 class rule_500(token_case):
     """
-    This rule checks the *after* keyword has proper case.
+    This rule checks the **after** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 

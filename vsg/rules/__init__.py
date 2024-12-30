@@ -129,6 +129,7 @@ from vsg.rules import concurrent
 from vsg.rules import conditional_expressions
 from vsg.rules import conditional_waveforms
 from vsg.rules import constant
+from vsg.rules import constrained_array_definition
 from vsg.rules import context
 from vsg.rules import context_ref
 from vsg.rules import declarative_part
@@ -187,6 +188,7 @@ from vsg.rules import subprogram_kind
 from vsg.rules import subprogram_instantiation
 from vsg.rules import subtype
 from vsg.rules import type_definition
+from vsg.rules import unbounded_array_definition
 from vsg.rules import use_clause
 from vsg.rules import variable
 from vsg.rules import variable_assignment
