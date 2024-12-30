@@ -41,10 +41,10 @@ There are several options to these rules:
    :code:`separate_generic_port_alignment`
 
 .. |separate_generic_port_alignment__yes| replace::
-   :code:`yes` = stop if port keyword detected.
+   :code:`yes` = stop if **port** keyword detected.
 
 .. |separate_generic_port_alignment__no| replace::
-   :code:`no` = continue if port keyword detected.
+   :code:`no` = continue if **port** keyword detected.
 
 .. |if_control_statements_ends_group| replace::
    :code:`if_control_statements_ends_group`
@@ -904,7 +904,7 @@ In the example below, the others aggregates are ignored which will allow the ENU
 Example: |align_to| set to :code:`current_indent`
 #################################################
 
-For example in rule :code:`process_028` the close parenthesis will be aligned with the process keyword.
+For example in rule :code:`process_028` the close parenthesis will be aligned with the **process** keyword.
 
     **Violation**
 

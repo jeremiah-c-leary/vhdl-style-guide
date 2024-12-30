@@ -9,7 +9,7 @@ lTokens.append(token.delay_mechanism.reject_keyword)
 
 class rule_502(token_case):
     """
-    This rule checks the *reject* keyword has proper case.
+    This rule checks the **reject** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 

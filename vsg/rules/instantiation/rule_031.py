@@ -9,7 +9,7 @@ lTokens.append(token.instantiated_unit.component_keyword)
 
 class rule_031(token_case):
     """
-    This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
+    This rule checks the **component** keyword has proper case in component instantiations that use the **component** keyword.
 
     |configuring_uppercase_and_lowercase_rules_link|
 

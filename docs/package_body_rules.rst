@@ -208,7 +208,7 @@ package_body_300
 
 |phase_4| |error| |indent|
 
-This rule checks the indent of the package body keyword.
+This rule checks the indent of the **package body** keyword.
 
 **Violation**
 
