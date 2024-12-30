@@ -22,7 +22,6 @@ Rules Enforcing Case::Name Rule Group
 * `entity_008 <../entity_rules.html#entity-008>`_
 * `entity_012 <../entity_rules.html#entity-012>`_
 * `entity_specification_503 <../entity_specification_rules.html#entity-specification-503>`_
-* `for_generate_statement_503 <../for_generate_statement_rules.html#for-generate-statement-503>`_
 * `function_017 <../function_rules.html#function-017>`_
 * `function_506 <../function_rules.html#function-506>`_
 * `function_507 <../function_rules.html#function-507>`_
@@ -32,7 +31,6 @@ Rules Enforcing Case::Name Rule Group
 * `instantiation_009 <../instantiation_rules.html#instantiation-009>`_
 * `instantiation_028 <../instantiation_rules.html#instantiation-028>`_
 * `instantiation_500 <../instantiation_rules.html#instantiation-500>`_
-* `iteration_scheme_503 <../iteration_scheme_rules.html#iteration-scheme-503>`_
 * `library_500 <../library_rules.html#library-500>`_
 * `package_008 <../package_rules.html#package-008>`_
 * `package_010 <../package_rules.html#package-010>`_

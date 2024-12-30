@@ -99,7 +99,6 @@ Rules Enforcing Case Rule Group
 * `for_generate_statement_500 <../for_generate_statement_rules.html#for-generate-statement-500>`_
 * `for_generate_statement_501 <../for_generate_statement_rules.html#for-generate-statement-501>`_
 * `for_generate_statement_502 <../for_generate_statement_rules.html#for-generate-statement-502>`_
-* `for_generate_statement_503 <../for_generate_statement_rules.html#for-generate-statement-503>`_
 * `function_004 <../function_rules.html#function-004>`_
 * `function_005 <../function_rules.html#function-005>`_
 * `function_010 <../function_rules.html#function-010>`_
@@ -147,7 +146,6 @@ Rules Enforcing Case Rule Group
 * `iteration_scheme_500 <../iteration_scheme_rules.html#iteration-scheme-500>`_
 * `iteration_scheme_501 <../iteration_scheme_rules.html#iteration-scheme-501>`_
 * `iteration_scheme_502 <../iteration_scheme_rules.html#iteration-scheme-502>`_
-* `iteration_scheme_503 <../iteration_scheme_rules.html#iteration-scheme-503>`_
 * `library_004 <../library_rules.html#library-004>`_
 * `library_005 <../library_rules.html#library-005>`_
 * `library_500 <../library_rules.html#library-500>`_
