@@ -9,7 +9,7 @@ lTokens.append(token.if_generate_statement.elsif_keyword)
 
 class rule_502(Rule):
     """
-    This rule checks the *elsif* keyword has proper case.
+    This rule checks the **elsif** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 

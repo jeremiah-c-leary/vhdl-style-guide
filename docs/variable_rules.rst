@@ -294,7 +294,7 @@ variable_101
 
 |phase_2| |error| |whitespace|
 
-This rule checks for a single space after the shared keyword.
+This rule checks for a single space after the **shared** keyword.
 
 |configuring_whitespace_rules_link|
 

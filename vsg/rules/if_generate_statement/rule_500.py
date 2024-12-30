@@ -9,7 +9,7 @@ lTokens.append(token.if_generate_statement.if_keyword)
 
 class rule_500(Rule):
     """
-    This rule checks the *if* keyword has proper case.
+    This rule checks the **if** keyword has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 

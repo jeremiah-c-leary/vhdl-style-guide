@@ -17,7 +17,7 @@ oValueToken = token.procedure_specification.procedure_keyword
 
 class rule_012(Rule):
     """
-    This rule checks the procedure keyword exist in the closing of the procedure specification.
+    This rule checks the **procedure** keyword exists in the closing of the procedure specification.
 
     |configuring_optional_items_link|
 

@@ -14,7 +14,7 @@ The method of indenting can be configured using one of the following options:
    The setting :code:`left` enforces multiline report statements using indents.
 
 .. |report_description| replace::
-   The setting :code:`report` aligns multiline report statements to the report keyword.
+   The setting :code:`report` aligns multiline report statements to the **report** keyword.
 
 .. |values| replace::
    :code:`left`, :code:`report`
@@ -46,7 +46,7 @@ This is an example of how to configure these options.
 Example: |alignment| set to |report|
 ####################################
 
-Align report expressions with the report keyword.
+Align report expressions with the **report** keyword.
 
 .. code-block:: vhdl
 
@@ -58,7 +58,7 @@ Align report expressions with the report keyword.
 Example: |alignment| set to |left|
 ##################################
 
-Align report expressions an additional indent level from the report keyword.
+Align report expressions an additional indent level from the **report** keyword.
 
 .. code-block:: vhdl
 

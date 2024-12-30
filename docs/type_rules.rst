@@ -388,7 +388,7 @@ type_017
 
 |phase_1| |error| |structure|
 
-This rule checks the identifier is on the same line as the type keyword.
+This rule checks the identifier is on the same line as the **type** keyword.
 
 **Violation**
 
