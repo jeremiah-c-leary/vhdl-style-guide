@@ -196,7 +196,7 @@ context_009
 
 |phase_1| |error| |structure|
 
-This rule checks the **context** keyword is on the same line as the end context keyword.
+This rule checks the **context** keyword is on the same line as the **end** context keyword.
 
 **Violation**
 
@@ -217,7 +217,7 @@ context_010
 
 |phase_1| |error| |structure|
 
-This rule checks the context identifier is on the same line as the end context keyword.
+This rule checks the context identifier is on the same line as the **end** context keyword.
 
 **Violation**
 
@@ -335,7 +335,7 @@ context_015
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the context keyword has proper case in the end context declaration.
+This rule checks the **context** keyword has proper case in the end context declaration.
 
 |configuring_uppercase_and_lowercase_rules_link|
 

@@ -8,7 +8,7 @@ delay_mechanism_500
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *transport* keyword has proper case.
+This rule checks the **transport** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -29,7 +29,7 @@ delay_mechanism_501
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *inertial* keyword has proper case.
+This rule checks the **inertial** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -50,7 +50,7 @@ delay_mechanism_502
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the *reject* keyword has proper case.
+This rule checks the **reject** keyword has proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 

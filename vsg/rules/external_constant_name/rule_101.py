@@ -6,7 +6,7 @@ from vsg.token import external_constant_name as token
 
 class rule_101(Rule):
     """
-    This rule checks for a single space after the constant keyword.
+    This rule checks for a single space after the **constant** keyword.
 
     |configuring_whitespace_rules_link|
 

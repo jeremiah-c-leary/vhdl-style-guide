@@ -291,7 +291,7 @@ procedure_012
 
 |phase_1| |error| |structure| |structure_optional|
 
-This rule checks the procedure keyword exist in the closing of the procedure specification.
+This rule checks the **procedure** keyword exists in the closing of the procedure specification.
 
 |configuring_optional_items_link|
 

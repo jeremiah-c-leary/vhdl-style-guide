@@ -64,6 +64,8 @@ Rules Enforcing Case Rule Group
 * `constant_002 <../constant_rules.html#constant-002>`_
 * `constant_004 <../constant_rules.html#constant-004>`_
 * `constant_013 <../constant_rules.html#constant-013>`_
+* `constrained_array_definition_500 <../constrained_array_definition_rules.html#constrained-array-definition-500>`_
+* `constrained_array_definition_501 <../constrained_array_definition_rules.html#constrained-array-definition-501>`_
 * `context_004 <../context_rules.html#context-004>`_
 * `context_012 <../context_rules.html#context-012>`_
 * `context_013 <../context_rules.html#context-013>`_
@@ -243,6 +245,8 @@ Rules Enforcing Case Rule Group
 * `type_014 <../type_rules.html#type-014>`_
 * `type_500 <../type_rules.html#type-500>`_
 * `type_501 <../type_rules.html#type-501>`_
+* `unbounded_array_definition_500 <../unbounded_array_definition_rules.html#unbounded-array-definition-500>`_
+* `unbounded_array_definition_501 <../unbounded_array_definition_rules.html#unbounded-array-definition-501>`_
 * `use_clause_500 <../use_clause_rules.html#use-clause-500>`_
 * `use_clause_501 <../use_clause_rules.html#use-clause-501>`_
 * `use_clause_502 <../use_clause_rules.html#use-clause-502>`_
