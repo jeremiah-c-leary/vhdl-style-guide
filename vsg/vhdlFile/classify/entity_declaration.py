@@ -26,6 +26,7 @@ def detect(iToken, lObjects):
         return iToken
 
 
+@utils.tagged_production
 def classify(iToken, lObjects):
     iCurrent = classify_opening_declaration(iToken, lObjects)
 

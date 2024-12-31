@@ -529,6 +529,14 @@ def split_on_carriage_return(lObjects):
     return lReturn
 
 
+def replace_token(iToken, lTokens, new_token, **kwargs):
+    lTokens[iToken] = lTokens[iToken].convert_to(new_token)
+
+    # Update  attributes of new token with values specified in kwargs
+    for key, value in kwargs.items():
+        setattr(lTokens[iToken], key, value)
+
+
 def post_token_assignments(lTokens):
     iParenId = 0
     lParenId = []
@@ -539,17 +547,17 @@ def post_token_assignments(lTokens):
             ### IEEE values
             if sLowerValue in dIeeeTypeStringMap.keys():
                 oTokenClass = dIeeeTypeStringMap[sLowerValue]
-                lTokens[iToken] = oTokenClass(sValue)
+                replace_token(iToken, lTokens, oTokenClass(sValue))
 
         elif isinstance(oToken, attribute_name.attribute):
             if sValue.lower() in predefined_attribute.values:
-                lTokens[iToken] = predefined_attribute.keyword(sValue)
+                replace_token(iToken, lTokens, predefined_attribute.keyword(sValue))
 
         elif isinstance(oToken, parser.todo):
             sLowerValue = oToken.get_lower_value()
             if sLowerValue in dParserTodoStringMap.keys():
                 oTokenClass = dParserTodoStringMap[sLowerValue]
-                lTokens[iToken] = oTokenClass(sValue)
+                replace_token(iToken, lTokens, oTokenClass(sValue))
 
             elif sLowerValue in dUnaryOrBinaryAdditionOperatorStringMap.keys():
                 dTokenTypes = dUnaryOrBinaryAdditionOperatorStringMap[sLowerValue]
@@ -560,38 +568,36 @@ def post_token_assignments(lTokens):
                 assign_token_of_logical_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes)
 
             elif sValue == "(":
-                lTokens[iToken] = parser.open_parenthesis()
                 iParenId += 1
                 lParenId.append(iParenId)
-                lTokens[iToken].iId = iParenId
+                replace_token(iToken, lTokens, parser.open_parenthesis(), iId=iParenId)
 
             elif sValue == ")":
-                lTokens[iToken] = parser.close_parenthesis()
-                lTokens[iToken].iId = lParenId.pop()
+                replace_token(iToken, lTokens, parser.close_parenthesis(), iId=lParenId.pop())
 
             elif sValue == "'":
-                lTokens[iToken] = parser.tic(sValue)
+                replace_token(iToken, lTokens, parser.tic(sValue))
                 utils.classify_predefined_types(lTokens, iToken + 1)
 
             elif len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
-                lTokens[iToken] = parser.character_literal(sValue)
+                replace_token(iToken, lTokens, parser.character_literal(sValue))
         else:
             if sValue == "+":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
                     pass
                 else:
-                    lTokens[iToken] = adding_operator.plus()
+                    replace_token(iToken, lTokens, adding_operator.plus())
             elif sValue == "-":
                 if utils.are_previous_consecutive_token_types_ignoring_whitespace([exponent.e_keyword], iToken - 1, lTokens):
                     pass
                 else:
-                    lTokens[iToken] = adding_operator.minus()
+                    replace_token(iToken, lTokens, adding_operator.minus())
             elif sValue == "*":
-                lTokens[iToken] = multiplying_operator.star(sValue)
+                replace_token(iToken, lTokens, multiplying_operator.star(sValue))
             elif sValue == "/":
-                lTokens[iToken] = multiplying_operator.slash(sValue)
+                replace_token(iToken, lTokens, multiplying_operator.slash(sValue))
             elif sValue == "**":
-                lTokens[iToken] = miscellaneous_operator.double_star(sValue)
+                replace_token(iToken, lTokens, miscellaneous_operator.double_star(sValue))
             elif sValue == "(":
                 iParenId += 1
                 lParenId.append(iParenId)
@@ -641,12 +647,9 @@ def set_aggregate_tokens(lTokens):
             iIndex = lOpenParens.pop()
             if isinstance(lTokens[iIndex], token.aggregate.open_parenthesis):
                 iId = oToken.iId
-                lTokens[iToken] = token.aggregate.close_parenthesis()
-                lTokens[iToken].iId = iId
+                replace_token(iToken, lTokens, token.aggregate.close_parenthesis(), iId=iId)
         if len(lOpenParens) > 0 and (isinstance(oToken, token.element_association.assignment) or type(oToken) == parser.comma):
-            iId = lTokens[lOpenParens[-1]].iId
-            lTokens[lOpenParens[-1]] = token.aggregate.open_parenthesis()
-            lTokens[lOpenParens[-1]].iId = iId
+            replace_token(lOpenParens[-1], lTokens, token.aggregate.open_parenthesis(), iId=lTokens[lOpenParens[-1]].iId)
 
 
 def set_todo_tokens(lTokens):
@@ -660,7 +663,7 @@ def set_todo_tokens(lTokens):
 def check_for_name(oToken, iToken, lTokens):
     if type(oToken) == parser.todo:
         if utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens):
-            lTokens[iToken] = oToken.convert_to(todo.name)
+            replace_token(iToken, lTokens, oToken.convert_to(todo.name))
 
 
 def check_for_open_parenthesis(oToken, iToken, lTokens, lOpenParens):
@@ -670,7 +673,7 @@ def check_for_open_parenthesis(oToken, iToken, lTokens, lOpenParens):
             or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.type], iToken - 1, lTokens)
             or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.function], iToken - 1, lTokens)
         ):
-            lTokens[iToken] = oToken.convert_to(todo.open_parenthesis)
+            replace_token(iToken, lTokens, oToken.convert_to(todo.open_parenthesis))
             lOpenParens.append(oToken)
 
 
@@ -679,7 +682,7 @@ def check_for_close_parenthesis(oToken, iToken, lTokens, lOpenParens):
         try:
             if oToken.iId == lOpenParens[-1].iId:
                 lOpenParens.pop()
-                lTokens[iToken] = oToken.convert_to(todo.close_parenthesis)
+                replace_token(iToken, lTokens, oToken.convert_to(todo.close_parenthesis))
         except IndexError:
             pass
 
@@ -700,9 +703,9 @@ def assign_token_of_addition_operator_that_can_be_either_unary_and_binary(iToken
         or utils.are_previous_consecutive_token_types_ignoring_whitespace([parser.comma], iToken - 1, lTokens)
         or utils.are_previous_consecutive_token_types_ignoring_whitespace([choices.bar], iToken - 1, lTokens)
     ):
-        lTokens[iToken] = dTokenTypes["unary"](sValue)
+        replace_token(iToken, lTokens, dTokenTypes["unary"](sValue))
     else:
-        lTokens[iToken] = dTokenTypes["binary"](sValue)
+        replace_token(iToken, lTokens, dTokenTypes["binary"](sValue))
 
 
 def assign_token_of_logical_operator_that_can_be_either_unary_and_binary(iToken, lTokens, sValue, dTokenTypes):
@@ -720,9 +723,9 @@ def assign_token_of_logical_operator_that_can_be_either_unary_and_binary(iToken,
             and utils.are_next_consecutive_token_types_ignoring_whitespace([parser.open_parenthesis], iToken + 1, lTokens)
         )
     ):
-        lTokens[iToken] = dTokenTypes["unary"](sValue)
+        replace_token(iToken, lTokens, dTokenTypes["unary"](sValue))
     else:
-        lTokens[iToken] = dTokenTypes["binary"](sValue)
+        replace_token(iToken, lTokens, dTokenTypes["binary"](sValue))
 
 
 class options:
