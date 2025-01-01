@@ -4,28 +4,28 @@ library ieee;
 
 entity BLAH is
   generic (
-    G_BLAH : std_logic
+    G_BLAH : STD_LOGIC
   );
   port (
-    I_INPUT  : in    std_logic;
-    O_OUTPUT : out   std_logic;
-    IO_INOUT : inout std_logic
+    I_INPUT  : in    STD_LOGIC;
+    O_OUTPUT : out   STD_LOGIC;
+    IO_INOUT : inout STD_LOGIC
   );
 end entity BLAH;
 
 architecture RTL of BLAH is
 
-  constant CON_A : std_logic;
-  signal   SIG_A : std_logic;
+  constant CON_A : STD_LOGIC;
+  signal   SIG_A : STD_LOGIC;
 
   component COMP_1 is
     generic (
-      G_GEN_1 : integer
+      G_GEN_1 : INTEGER
     );
     port (
-      I_INPUT  : in    integer;
-      O_OUTPUT : out   std_logic;
-      IO_INOUT : inout integer
+      I_INPUT  : in    INTEGER;
+      O_OUTPUT : out   STD_LOGIC;
+      IO_INOUT : inout INTEGER
     );
   end component COMP_1;
 
@@ -33,7 +33,7 @@ begin
 
   PROC_LABEL : process (Ab, Cd, Ef) is
 
-    variable VAR_A : std_logic_vector(7 downto 0);
+    variable VAR_A : STD_LOGIC_VECTOR(7 downto 0);
 
   begin
 
@@ -55,7 +55,7 @@ package SOME_PKG is
 
   procedure PROC_1;
 
-  function FUNC_1 return integer;
+  function FUNC_1 return Integer;
 
 end package SOME_PKG;
 

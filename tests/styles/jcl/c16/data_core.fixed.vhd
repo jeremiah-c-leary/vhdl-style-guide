@@ -28,7 +28,7 @@ entity DATA_CORE is
     -- write enable/select signal
     WE_RR   : in    std_logic;
     WE_LL   : in    std_logic;
-    WE_SP   : in    SP_OP;
+    WE_SP   : in    sp_op;
 
     -- data in signals
     IMM     : in    std_logic_vector(15 downto 0);      -- immediate data

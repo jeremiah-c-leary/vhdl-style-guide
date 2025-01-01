@@ -20,7 +20,7 @@ from vsg.token import (
     type_mark,
     unary_logical_operator,
 )
-from vsg.token.ieee.std_logic_1164 import function, types
+from vsg.token.ieee.std_logic_1164 import function
 from vsg.token_map import process_tokens
 from vsg.vhdlFile import code_tags, extract, utils
 from vsg.vhdlFile.classify import (
@@ -51,17 +51,6 @@ class command_line_args:
 default_cla = command_line_args()
 
 default_conf = config.New(default_cla)
-
-dIeeeTypeStringMap = {
-    "std_logic_vector": types.std_logic_vector,
-    "std_ulogic_vector": types.std_ulogic_vector,
-    "std_ulogic": types.std_ulogic,
-    "std_logic": types.std_logic,
-    "integer": types.integer,
-    "natural": types.natural,
-    "signed": types.signed,
-    "unsigned": types.unsigned,
-}
 
 dParserTodoStringMap = {
     "&": adding_operator.concat,
@@ -536,10 +525,6 @@ def post_token_assignments(lTokens):
         sValue = oToken.get_value()
         if isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, attribute_name.name, todo.name)):
             sLowerValue = oToken.get_lower_value()
-            ### IEEE values
-            if sLowerValue in dIeeeTypeStringMap.keys():
-                oTokenClass = dIeeeTypeStringMap[sLowerValue]
-                lTokens[iToken] = oTokenClass(sValue)
 
         elif isinstance(oToken, attribute_name.attribute):
             if sValue.lower() in predefined_attribute.values:

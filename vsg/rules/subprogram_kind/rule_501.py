@@ -25,9 +25,9 @@ class rule_501(token_case):
 
     .. code-block:: vhdl
 
-       end FUNCTION parity;
+       end function parity;
 
-       FUNCTION my_func is new my_generic_func
+       function my_func is new my_generic_func
     """
 
     def __init__(self):
