@@ -123,7 +123,7 @@
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.constrained_array_definition.of_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.full_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
 15 |
@@ -154,7 +154,7 @@
 <class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.constrained_array_definition.of_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.full_type_declaration.semicolon'>
 --------------------------------------------------------------------------------
 17 |

@@ -121,10 +121,8 @@ Rules Enforcing Case Rule Group
 * `generate_501 <../generate_rules.html#generate-501>`_
 * `generic_007 <../generic_rules.html#generic-007>`_
 * `generic_009 <../generic_rules.html#generic-009>`_
-* `generic_017 <../generic_rules.html#generic-017>`_
 * `generic_map_001 <../generic_map_rules.html#generic-map-001>`_
 * `generic_map_002 <../generic_map_rules.html#generic-map-002>`_
-* `ieee_500 <../ieee_rules.html#ieee-500>`_
 * `if_generate_statement_500 <../if_generate_statement_rules.html#if-generate-statement-500>`_
 * `if_generate_statement_501 <../if_generate_statement_rules.html#if-generate-statement-501>`_
 * `if_generate_statement_502 <../if_generate_statement_rules.html#if-generate-statement-502>`_
@@ -178,7 +176,6 @@ Rules Enforcing Case Rule Group
 * `package_instantiation_504 <../package_instantiation_rules.html#package-instantiation-504>`_
 * `port_010 <../port_rules.html#port-010>`_
 * `port_017 <../port_rules.html#port-017>`_
-* `port_018 <../port_rules.html#port-018>`_
 * `port_019 <../port_rules.html#port-019>`_
 * `port_map_001 <../port_map_rules.html#port-map-001>`_
 * `port_map_002 <../port_map_rules.html#port-map-002>`_
@@ -245,6 +242,7 @@ Rules Enforcing Case Rule Group
 * `type_014 <../type_rules.html#type-014>`_
 * `type_500 <../type_rules.html#type-500>`_
 * `type_501 <../type_rules.html#type-501>`_
+* `type_mark_500 <../type_mark_rules.html#type-mark-500>`_
 * `unbounded_array_definition_500 <../unbounded_array_definition_rules.html#unbounded-array-definition-500>`_
 * `unbounded_array_definition_501 <../unbounded_array_definition_rules.html#unbounded-array-definition-501>`_
 * `use_clause_500 <../use_clause_rules.html#use-clause-500>`_

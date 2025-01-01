@@ -30,7 +30,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 8 |     signal Y : out std_logic);
@@ -38,7 +38,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -53,13 +53,13 @@
 <class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 <class 'vsg.token.interface_variable_declaration.variable_keyword'>
 <class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_declaration.semicolon'>
 --------------------------------------------------------------------------------
@@ -89,7 +89,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -102,7 +102,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -115,7 +115,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.signed'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -158,11 +158,11 @@
 <class 'vsg.token.subprogram_header.open_parenthesis'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -174,7 +174,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subprogram_header.close_parenthesis'>
 --------------------------------------------------------------------------------
 24 |     parameter (signal Sig: inout Bit);
@@ -203,11 +203,11 @@
 <class 'vsg.token.subprogram_header.open_parenthesis'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_list.semicolon'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.interface_unknown_declaration.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
@@ -219,7 +219,7 @@
 <class 'vsg.token.identifier_list.comma'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subprogram_header.close_parenthesis'>
 --------------------------------------------------------------------------------
 29 |     generic map (complex_fixed_left => 3, complex_fixed_right => -12,
@@ -267,7 +267,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -287,7 +287,7 @@
 <class 'vsg.token.interface_constant_declaration.identifier'>
 <class 'vsg.token.interface_constant_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -307,7 +307,7 @@
 <class 'vsg.token.interface_variable_declaration.identifier'>
 <class 'vsg.token.interface_variable_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -326,7 +326,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic_vector'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.downto'>
@@ -692,7 +692,7 @@
 <class 'vsg.token.procedure_specification.open_parenthesis'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.natural'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.procedure_specification.close_parenthesis'>
 <class 'vsg.token.subprogram_body.is_keyword'>
 --------------------------------------------------------------------------------
