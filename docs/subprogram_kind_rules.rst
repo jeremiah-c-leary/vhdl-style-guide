@@ -70,9 +70,9 @@ This rule checks that the **procedure** keyword in subprogram kinds has the prop
 
 .. code-block:: vhdl
 
-   end PROCEDURE parity;
+   end procedure parity;
 
-   PROCEDURE my_proc is new my_generic_proc
+   procedure my_proc is new my_generic_proc
 
 subprogram_kind_501
 ###################
@@ -95,6 +95,6 @@ This rule checks that the **function** keyword in subprogram kinds has the prope
 
 .. code-block:: vhdl
 
-   end FUNCTION parity;
+   end function parity;
 
-   FUNCTION my_func is new my_generic_func
+   function my_func is new my_generic_func

@@ -87,9 +87,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `generate_500 <../generate_rules.html#generate-500>`_
 * `generate_501 <../generate_rules.html#generate-501>`_
 * `generic_009 <../generic_rules.html#generic-009>`_
-* `generic_017 <../generic_rules.html#generic-017>`_
 * `generic_map_001 <../generic_map_rules.html#generic-map-001>`_
-* `ieee_500 <../ieee_rules.html#ieee-500>`_
 * `if_generate_statement_500 <../if_generate_statement_rules.html#if-generate-statement-500>`_
 * `if_generate_statement_501 <../if_generate_statement_rules.html#if-generate-statement-501>`_
 * `if_generate_statement_502 <../if_generate_statement_rules.html#if-generate-statement-502>`_
@@ -129,7 +127,6 @@ Rules Enforcing Case::Keyword Rule Group
 * `package_instantiation_502 <../package_instantiation_rules.html#package-instantiation-502>`_
 * `package_instantiation_503 <../package_instantiation_rules.html#package-instantiation-503>`_
 * `port_017 <../port_rules.html#port-017>`_
-* `port_018 <../port_rules.html#port-018>`_
 * `port_019 <../port_rules.html#port-019>`_
 * `port_map_001 <../port_map_rules.html#port-map-001>`_
 * `procedure_008 <../procedure_rules.html#procedure-008>`_
