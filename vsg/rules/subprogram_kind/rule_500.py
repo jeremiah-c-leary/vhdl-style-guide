@@ -4,12 +4,12 @@ from vsg import token
 from vsg.rules import token_case
 
 lTokens = []
-lTokens.append(token.package_instantiation_declaration.new_keyword)
+lTokens.append(token.subprogram_kind.procedure_keyword)
 
 
-class rule_503(token_case):
+class rule_500(token_case):
     """
-    This rule checks the **new** keyword has proper case.
+    This rule checks that the **procedure** keyword in subprogram kinds has the proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
@@ -17,13 +17,17 @@ class rule_503(token_case):
 
     .. code-block:: vhdl
 
-       package my_pkg is NEW my_generic_pkg
+       end PROCEDURE parity;
+
+       PROCEDURE my_proc is new my_generic_proc
 
     **Fix**
 
     .. code-block:: vhdl
 
-       package my_pkg is new my_generic_pkg
+       end procedure parity;
+
+       procedure my_proc is new my_generic_proc
     """
 
     def __init__(self):

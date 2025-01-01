@@ -83,6 +83,8 @@ The rules are divided into categories depending on the part of the VHDL code bei
    shift_operator_rules.rst
    source_file_rules.rst
    subprogram_body_rules.rst
+   subprogram_instantiation_rules.rst
+   subprogram_kind_rules.rst
    subtype_rules.rst
    type_rules.rst
    unfixable_rules.rst

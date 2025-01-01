@@ -344,7 +344,6 @@ Rules Enforcing Case
 * `function_004 <function_rules.html#function-004>`_
 * `function_005 <function_rules.html#function-005>`_
 * `function_013 <function_rules.html#function-013>`_
-* `function_014 <function_rules.html#function-014>`_
 * `function_017 <function_rules.html#function-017>`_
 * `function_501 <function_rules.html#function-501>`_
 * `function_502 <function_rules.html#function-502>`_
@@ -449,7 +448,6 @@ Rules Enforcing Case
 * `procedure_502 <procedure_rules.html#procedure-502>`_
 * `procedure_503 <procedure_rules.html#procedure-503>`_
 * `procedure_504 <procedure_rules.html#procedure-504>`_
-* `procedure_505 <procedure_rules.html#procedure-505>`_
 * `procedure_506 <procedure_rules.html#procedure-506>`_
 * `procedure_508 <procedure_rules.html#procedure-508>`_
 * `procedure_510 <procedure_rules.html#procedure-510>`_
@@ -500,6 +498,14 @@ Rules Enforcing Case
 
 * `signal_002 <signal_rules.html#signal-002>`_
 * `signal_004 <signal_rules.html#signal-004>`_
+
+* `subprogram_instantiation_500 <subprogram_instantiation_rules.html#subprogram-instantiation-500>`_
+* `subprogram_instantiation_501 <subprogram_instantiation_rules.html#subprogram-instantiation-501>`_
+* `subprogram_instantiation_502 <subprogram_instantiation_rules.html#subprogram-instantiation-502>`_
+* `subprogram_instantiation_503 <subprogram_instantiation_rules.html#subprogram-instantiation-503>`_
+
+* `subprogram_kind_500 <subprogram_kind_rules.html#subprogram-kind-500>`_
+* `subprogram_kind_501 <subprogram_kind_rules.html#subprogram-kind-501>`_
 
 * `subtype_500 <subtype_rules.html#subtype-500>`_
 * `subtype_501 <subtype_rules.html#subtype-501>`_
