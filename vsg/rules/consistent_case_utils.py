@@ -106,6 +106,67 @@ def populate_declarative_part_names(lAllDicts, lNames):
     return lReturn
 
 
+def get_token_of_interest_dicts(
+    oFile,
+    lNames,
+    lTokens,
+    bIncludeDeclarativePartNames,
+    bIncludeArchitectureBodyDeclarationsInSubprogramBody,
+    bIncludeEntityDeclarations,
+):
+    lNameTokens = get_all_name_tokens(oFile, lNames)
+    Identifiers = get_all_identifiers(oFile, lTokens)
+    lProcessDicts = get_process_indexes(oFile)
+    lArchitectureDicts = get_architecture_indexes(oFile)
+    lSubprogramBodyDicts = get_subprogram_body_indexes(oFile)
+    lBlockDicts = get_block_indexes(oFile)
+    if bIncludeEntityDeclarations:
+        lEntityDicts = get_entity_declaration_indexes(oFile)
+
+    lComponentDicts = get_component_declaration_indexes(oFile)
+
+    lAllDicts = merge_dict_lists(lArchitectureDicts, lProcessDicts)
+    lAllDicts = merge_dict_lists(lAllDicts, lSubprogramBodyDicts)
+    lAllDicts = merge_dict_lists(lAllDicts, lBlockDicts)
+    lAllDicts = merge_dict_lists(lAllDicts, lComponentDicts)
+    if bIncludeEntityDeclarations:
+        lAllDicts = merge_dict_lists(lAllDicts, lEntityDicts)
+
+    lAllDicts = populate_identifiers(lAllDicts, Identifiers)
+    if bIncludeDeclarativePartNames:
+        lAllDicts = populate_declarative_part_names(lAllDicts, lNameTokens)
+    lAllDicts = populate_statement_part_names(lAllDicts, lNameTokens)
+
+    lAllDicts = remove_duplicate_identifiers("architecture_body", "subprogram_body", lAllDicts)
+    lAllDicts = remove_duplicate_names("architecture_body", "subprogram_body", lAllDicts)
+
+    lAllDicts = remove_duplicate_identifiers("architecture_body", "process", lAllDicts)
+    lAllDicts = remove_duplicate_names("architecture_body", "process", lAllDicts)
+
+    lAllDicts = remove_duplicate_names("architecture_body", "component_declaration", lAllDicts)
+
+    lAllDicts = remove_duplicate_identifiers("process", "subprogram_body", lAllDicts)
+    lAllDicts = remove_duplicate_names("process", "subprogram_body", lAllDicts)
+
+    lAllDicts = remove_duplicate_identifiers("block_statement", "subprogram_body", lAllDicts)
+    lAllDicts = remove_duplicate_names("block_statement", "subprogram_body", lAllDicts)
+
+    lAllDicts = remove_duplicate_identifiers("block_statement", "process", lAllDicts)
+    lAllDicts = remove_duplicate_names("block_statement", "process", lAllDicts)
+
+    lAllDicts = add_identifiers_from_to("block_statement", "process", lAllDicts)
+    lAllDicts = add_identifiers_from_to("architecture_body", "process", lAllDicts)
+
+    if bIncludeArchitectureBodyDeclarationsInSubprogramBody:
+        lAllDicts = add_identifiers_from_to("architecture_body", "subprogram_body", lAllDicts)
+
+    if bIncludeEntityDeclarations:
+        lAllDicts = remove_duplicate_identifiers("architecture_body", "entity_declaration", lAllDicts)
+        lAllDicts = remove_duplicate_names("architecture_body", "entity_declaration", lAllDicts)
+
+    return lAllDicts
+
+
 def create_tois(lAllDicts, oFile):
     lReturn = []
     oTokenMap = oFile.get_token_map()

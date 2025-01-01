@@ -432,34 +432,9 @@ This rule checks the **port** keyword has proper case.
 port_018
 ########
 
-|phase_6| |error| |case| |case_keyword|
+This rule was deprecated and replaced with the following rule:
 
-This rule checks the port type has proper case if it is a VHDL keyword.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-
-**Violation**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    STD_LOGIC;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   t_OVERFLOW;
-     DATA     : inout STD_LOGIC_VECTOR(31 downto 0)
-   );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   port (
-     WR_EN    : in    std_logic;
-     RD_EN    : in    std_logic;
-     OVERFLOW : out   t_OVERFLOW;
-     DATA     : inout std_logic_vector(31 downto 0)
-   );
+* :ref:`type_mark_500`
 
 port_019
 ########

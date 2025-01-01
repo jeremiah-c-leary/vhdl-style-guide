@@ -47,14 +47,14 @@
 <class 'vsg.token.constant_declaration.constant_keyword'>
 <class 'vsg.token.constant_declaration.identifier'>
 <class 'vsg.token.constant_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.std_logic'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.constant_declaration.semicolon'>
 --------------------------------------------------------------------------------
 9 |    variable v_var1 : integer;
 <class 'vsg.token.variable_declaration.variable_keyword'>
 <class 'vsg.token.variable_declaration.identifier'>
 <class 'vsg.token.variable_declaration.colon'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.variable_declaration.semicolon'>
 --------------------------------------------------------------------------------
 10 |
@@ -136,7 +136,7 @@
 <class 'vsg.token.subtype_declaration.subtype_keyword'>
 <class 'vsg.token.subtype_declaration.identifier'>
 <class 'vsg.token.subtype_declaration.is_keyword'>
-<class 'vsg.token.ieee.std_logic_1164.types.integer'>
+<class 'vsg.token.type_mark.name'>
 <class 'vsg.token.subtype_declaration.semicolon'>
 --------------------------------------------------------------------------------
 27 |

@@ -76,7 +76,6 @@ Rules Enforcing Case::Keyword Rule Group
 * `function_004 <../function_rules.html#function-004>`_
 * `function_005 <../function_rules.html#function-005>`_
 * `function_013 <../function_rules.html#function-013>`_
-* `function_014 <../function_rules.html#function-014>`_
 * `function_501 <../function_rules.html#function-501>`_
 * `function_502 <../function_rules.html#function-502>`_
 * `function_509 <../function_rules.html#function-509>`_
@@ -88,9 +87,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `generate_500 <../generate_rules.html#generate-500>`_
 * `generate_501 <../generate_rules.html#generate-501>`_
 * `generic_009 <../generic_rules.html#generic-009>`_
-* `generic_017 <../generic_rules.html#generic-017>`_
 * `generic_map_001 <../generic_map_rules.html#generic-map-001>`_
-* `ieee_500 <../ieee_rules.html#ieee-500>`_
 * `if_generate_statement_500 <../if_generate_statement_rules.html#if-generate-statement-500>`_
 * `if_generate_statement_501 <../if_generate_statement_rules.html#if-generate-statement-501>`_
 * `if_generate_statement_502 <../if_generate_statement_rules.html#if-generate-statement-502>`_
@@ -130,7 +127,6 @@ Rules Enforcing Case::Keyword Rule Group
 * `package_instantiation_502 <../package_instantiation_rules.html#package-instantiation-502>`_
 * `package_instantiation_503 <../package_instantiation_rules.html#package-instantiation-503>`_
 * `port_017 <../port_rules.html#port-017>`_
-* `port_018 <../port_rules.html#port-018>`_
 * `port_019 <../port_rules.html#port-019>`_
 * `port_map_001 <../port_map_rules.html#port-map-001>`_
 * `procedure_008 <../procedure_rules.html#procedure-008>`_
@@ -138,7 +134,6 @@ Rules Enforcing Case::Keyword Rule Group
 * `procedure_502 <../procedure_rules.html#procedure-502>`_
 * `procedure_503 <../procedure_rules.html#procedure-503>`_
 * `procedure_504 <../procedure_rules.html#procedure-504>`_
-* `procedure_505 <../procedure_rules.html#procedure-505>`_
 * `procedure_510 <../procedure_rules.html#procedure-510>`_
 * `procedure_511 <../procedure_rules.html#procedure-511>`_
 * `procedure_call_501 <../procedure_call_rules.html#procedure-call-501>`_
@@ -170,6 +165,10 @@ Rules Enforcing Case::Keyword Rule Group
 * `selected_assignment_503 <../selected_assignment_rules.html#selected-assignment-503>`_
 * `shift_operator_500 <../shift_operator_rules.html#shift-operator-500>`_
 * `signal_002 <../signal_rules.html#signal-002>`_
+* `subprogram_instantiation_501 <../subprogram_instantiation_rules.html#subprogram-instantiation-501>`_
+* `subprogram_instantiation_502 <../subprogram_instantiation_rules.html#subprogram-instantiation-502>`_
+* `subprogram_kind_500 <../subprogram_kind_rules.html#subprogram-kind-500>`_
+* `subprogram_kind_501 <../subprogram_kind_rules.html#subprogram-kind-501>`_
 * `subtype_500 <../subtype_rules.html#subtype-500>`_
 * `subtype_502 <../subtype_rules.html#subtype-502>`_
 * `type_002 <../type_rules.html#type-002>`_
