@@ -19,4 +19,15 @@ package body RTL is
   alias    a_alias1 is name;
   alias    a_alias2 : subtype_indictor is name;
 
+  -- Checking exclusions
+  constant c_abc : integer;
+  function my_func return integer is
+    constant c_abc : integer;
+  begin
+  end function;
+  constant c_abc : integer;
+  type flag_pt is protected body
+    variable flag : boolean;
+  end protected body;
+
 end package body RTL;

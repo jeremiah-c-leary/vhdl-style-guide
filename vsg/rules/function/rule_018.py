@@ -17,7 +17,7 @@ oValueToken = token.function_specification.function_keyword
 
 class rule_018(Rule):
     """
-    This rule checks the function keyword exist in the closing of the function specification.
+    This rule checks the **function** keyword exists in the closing of the function specification.
 
     |configuring_optional_items_link|
 

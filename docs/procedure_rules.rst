@@ -254,27 +254,7 @@ This rule checks the **end** keyword has proper case.
 procedure_009
 #############
 
-|phase_6| |error| |case| |case_keyword|
-
-This rule checks the **procedure** keyword in the **end procedure** has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   end PROCEDURE;
-
-   end Procedure proc;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   end procedure;
-
-   end procedure proc;
+This rule has been deprecated and replaced with rule `procedure_505 <procedure_rules.html#procedure-505>`_.
 
 procedure_010
 #############
@@ -311,7 +291,7 @@ procedure_012
 
 |phase_1| |error| |structure| |structure_optional|
 
-This rule checks the procedure keyword exist in the closing of the procedure specification.
+This rule checks the **procedure** keyword exists in the closing of the procedure specification.
 
 |configuring_optional_items_link|
 
@@ -771,3 +751,125 @@ This rule checks for consistent capitalization of procedure names.
      end process;
 
    end architecture rtl;
+
+procedure_508
+#############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks that the parameter names have proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  procedure my_proc (
+    PARAM1 : in integer;
+    PaRaM2 : out integer
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  procedure my_proc (
+    param1 : in integer;
+    param2 : out integer
+  );
+
+procedure_509
+#############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks for consistent capitalization of parameter names within the subprogram body.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  procedure my_proc (
+    param1 : in integer;
+    param2 : out integer
+  ) is
+  begin
+
+    SIG <= PARAM1 + PARAM2;
+
+  end procedure my_proc;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  procedure my_proc (
+    param1 : in integer;
+    param2 : out integer
+  ) is
+  begin
+
+    SIG <= param1 + param2;
+
+  end procedure my_proc;
+
+procedure_510
+#############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the parameter direction has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  procedure overflow (
+    a : IN  integer;
+    b : OUT integer
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  procedure overflow (
+    a : in  integer;
+    b : out integer
+  );
+
+procedure_511
+#############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the parameter class has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  procedure my_func (
+    a          : integer;
+    VARIABLE b : integer;
+    CONSTANT c : integer;
+    SIGNAL   d : integer;
+    FILE     e : file_type
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  procedure my_func (
+    a          : integer;
+    variable b : integer;
+    constant c : integer;
+    signal   d : integer;
+    file     e : file_type
+  );

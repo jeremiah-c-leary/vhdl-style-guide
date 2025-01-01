@@ -27,13 +27,13 @@ architecture BEHAVIORAL of BAUDGEN is
   -- by their common divisor...
   --
 
-  function gcd (M, N: integer) return integer is
+  function gcd (m, n: integer) return integer is
   begin
 
-    if ((M mod N) = 0) then
-      return N;
+    if ((m mod n) = 0) then
+      return n;
     else
-      return gcd(N, M mod N);
+      return gcd(n, m mod n);
     end if;
 
   end function gcd;

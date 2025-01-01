@@ -61,7 +61,7 @@ Links to the icons are stored in a file named :code:`icons.rst` and is included 
 The summary is a very brief description of what issue the rule is attempting to resolve.
 
 If the rule has configuration options, a link to the configuration information will be given.
-The links are sored in a file named :code:`links.rst` and in included into each file using an include at the top of every file.
+The links are stored in a file named :code:`links.rst` and in included into each file using an include at the top of every file.
 
 The Violation Example provides a visual indicating what the issue is.
 
@@ -76,7 +76,7 @@ Test directory structure
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The directory structure of the tests closely matches the rules directory.
-Every rule group has it's own directory.
+Every rule group has its own directory.
 
 .. code-block:: text
 

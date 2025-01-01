@@ -223,6 +223,9 @@ indent:
             function_keyword:
                 token : current
                 after : '+1'
+            open_parenthesis:
+                token : current
+                after : current
             close_parenthesis:
                 token : '-1'
                 after : current
@@ -328,6 +331,16 @@ indent:
             end_keyword:
                 token : '-1'
                 after : '-1'
+        next_statement:
+            label:
+                token : current
+                after : current
+            next_keyword:
+                token : current
+                after : '+1'
+            semicolon:
+                token : current
+                after : '-1'
         null_statement:
             label:
                 token : current
@@ -347,6 +360,13 @@ indent:
                 token : current
                 after : '+1'
             end_keyword:
+                token : '-1'
+                after : '-1'
+        package_instantiation_declaration:
+            package_keyword:
+                token : current
+                after : '+1'
+            semicolon:
                 token : '-1'
                 after : '-1'
         port_clause:
@@ -426,6 +446,9 @@ indent:
                 token : current
                 after : '-1'
         return_statement:
+            label:
+                token : current
+                after : current
             return_keyword:
                 token : current
                 after : '+1'
@@ -496,6 +519,13 @@ indent:
         subprogram_declaration:
             semicolon:
                 token : current
+                after : '-1'
+        subprogram_instantiation_declaration:
+            identifier:
+                token : current
+                after : '+1'
+            semicolon:
+                token : '-1'
                 after : '-1'
         subtype_declaration:
             subtype_keyword:

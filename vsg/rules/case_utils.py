@@ -4,9 +4,15 @@ import re
 
 from vsg import violation
 
-camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
-PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
-PascalSnakeCase = re.compile("(((?:[A-Z])+(?:[a-z0-9])*)+_?)+")
+#camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
+#PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
+#PascalSnakeCase = re.compile("(((?:[A-Z])+(?:[a-z0-9])*)+_?)+")
+
+camelCase = re.compile("(?!.*[A-Z]{3})[a-z][a-zA-Z0-9]*")
+relaxedCamelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
+PascalCase = re.compile("(?!.*[A-Z]{3})[A-Z][a-zA-Z0-9]*")
+RelaxedPascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
+PascalSnakeCase = re.compile("(?!.*[A-Z]{3})[A-Z][a-z0-9]*(?:_[A-Z0-9][a-z0-9]*)*")
 
 
 def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, check_whole=False, iIndex=0, iLine=None):
@@ -14,7 +20,7 @@ def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False,
     iMyLine = get_violation_line(oToi, iLine)
     oViolation = None
 
-    if does_not_contain_any_alpha_characters(sObjectValue):
+    if self.name != "bit_string_literal" and does_not_contain_any_alpha_characters(sObjectValue):
         return None
 
     elif case_exception_found(sObjectValue, self):
@@ -208,7 +214,7 @@ def check_for_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iLi
 
 
 def case_exception_found(sObjectValue, self):
-    if sObjectValue.lower() in self.case_exceptions_lower:
+    if sObjectValue in self.case_exceptions:
         return True
     return False
 

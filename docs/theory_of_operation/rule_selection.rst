@@ -19,7 +19,7 @@ Guidelines
 * [naming_001] Rule naming shall be of the form :code:`{identifier}_{number}`.
 * [naming_002] The identifier shall be the *left-hand side* of VHDL production.
 * [naming_003] The number shall be three digits.
-* [naming_004] The rule number shall indicate which phase the rule is executed.
+* [naming_004] The rule number shall indicate which phase the rule is executed in.
 * [naming_005] An identifier and number pair shall never be re-used.
 
 * [scoping_001] Rules shall be scoped to a VHDL production
@@ -69,7 +69,7 @@ Rules targeting the :code:`architecture_body` will only include those elements a
 
 For example:
 
-* architecture_body_100 = **architecture** on it's own line
+* architecture_body_100 = **architecture** on its own line
 * architecture_body_101 = identifier on same line as **architecture**
 * architecture_body_102 = **of** on same line as identifier
 * architecture_body_103 = entity_name on same line as **of** keyword
@@ -77,9 +77,9 @@ For example:
 
 
 * architecture_body_105 = no code after **is** keyword
-* architecture_body_106 = **begin** on it's own line
+* architecture_body_106 = **begin** on its own line
 * architecture_body_107 = no code after **begin** keyword
-* architecture_body_108 = **end** on it's own line
+* architecture_body_108 = **end** on its own line
 * architecture_body_109 = **architecture** on same line as **end**
 * architecture_body_110 = architecture_simple_name on same line as **end**
 * architecture_body_111 = semicolon on same line as **end**
@@ -172,7 +172,7 @@ Taking the next step down to the signal_declaration level:
 
 The following rules would be generated:
 
-* signal_declaration_100 = **signal** keyword on it's own line
+* signal_declaration_100 = **signal** keyword on its own line
 * signal_declaration_101 = identifier_list on same line as **signal** keyword
 * signal_declaration_102 = colon on same line as identifier_list
 * signal_declaration_103 = subtype_indication on same line as colon
@@ -210,7 +210,7 @@ I would make the argument that signal_kind case would be done by a signal_kind r
    signal_kind ::=
        register | bus
 
-One could make the argument that subtype_indication should be handled by it's own set of rules:
+One could make the argument that subtype_indication should be handled by its own set of rules:
 
 .. code-block:: text
 
@@ -234,5 +234,5 @@ And the same for constraint:
      | array_constraint
      | record_constraint
 
-If the subtype_indication and constraint rules were moved out of signal_declaration, and where ever else they are location, that it would reduce the number of rules.
+If the subtype_indication and constraint rules were moved out of signal_declaration, and where ever else they are located, that it would reduce the number of rules.
 VSG currently uses a base rule to handle constraints, which is extended where constraints are used.

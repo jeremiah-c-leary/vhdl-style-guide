@@ -63,6 +63,8 @@ Rules Enforcing Blank Line Rule Group
 * `package_body_201 <../package_body_rules.html#package-body-201>`_
 * `package_body_202 <../package_body_rules.html#package-body-202>`_
 * `package_body_203 <../package_body_rules.html#package-body-203>`_
+* `package_instantiation_200 <../package_instantiation_rules.html#package-instantiation-200>`_
+* `package_instantiation_201 <../package_instantiation_rules.html#package-instantiation-201>`_
 * `port_001 <../port_rules.html#port-001>`_
 * `port_022 <../port_rules.html#port-022>`_
 * `port_024 <../port_rules.html#port-024>`_
@@ -87,6 +89,9 @@ Rules Enforcing Blank Line Rule Group
 * `subprogram_body_203 <../subprogram_body_rules.html#subprogram-body-203>`_
 * `subprogram_body_204 <../subprogram_body_rules.html#subprogram-body-204>`_
 * `subprogram_body_205 <../subprogram_body_rules.html#subprogram-body-205>`_
+* `subtype_200 <../subtype_rules.html#subtype-200>`_
+* `subtype_201 <../subtype_rules.html#subtype-201>`_
+* `subtype_202 <../subtype_rules.html#subtype-202>`_
 * `type_010 <../type_rules.html#type-010>`_
 * `type_011 <../type_rules.html#type-011>`_
 * `type_200 <../type_rules.html#type-200>`_

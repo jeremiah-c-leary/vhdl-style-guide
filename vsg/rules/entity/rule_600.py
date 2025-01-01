@@ -52,14 +52,8 @@ class rule_600(Rule):
 
     def _get_tokens_of_interest(self, oFile):
         lNameTokens = cc_utils.get_all_name_tokens(oFile, self.lNames)
-        #        print(f'lNames = {lNameTokens}')
-        #        for iName in lNameTokens:
-        #            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
 
         lIdentifierss = cc_utils.get_all_identifiers(oFile, self.lTokens)
-        #        print(f'lIdentifiers = {lIdentifierss}')
-        #        for iName in lIdentifierss:
-        #            print(f'{iName} = {oFile.lAllObjects[iName].get_value()}')
 
         lEntityDicts = cc_utils.get_entity_declaration_indexes(oFile)
         lGenericDicts = cc_utils.get_generic_clause_indexes(oFile)
@@ -76,9 +70,5 @@ class rule_600(Rule):
 
         lAllDicts = cc_utils.remove_type("generic_clause", lAllDicts)
         lAllDicts = cc_utils.remove_type("port_clause", lAllDicts)
-
-        #        print('#'*80)
-        #        for tmp in lAllDicts:
-        #            print(tmp)
 
         return cc_utils.create_tois(lAllDicts, oFile)

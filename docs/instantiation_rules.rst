@@ -6,31 +6,15 @@ Instantiation Rules
 instantiation_001
 #################
 
-|phase_4| |error| |indent|
+This rule has been split into the following rules:
 
-This rule checks for the proper indentation of instantiations.
-
-**Violation**
-
-.. code-block:: vhdl
-
-     U_FIFO : FIFO
-  port map (
-           WR_EN    => wr_en,
-   RD_EN    => rd_en,
-         OVERFLOW => overflow
-                );
-
-**Fix**
-
-.. code-block:: vhdl
-
-   U_FIFO : FIFO
-     port map (
-       WR_EN    => wr_en,
-       RD_EN    => rd_en,
-       OVERFLOW => overflow
-     );
+* :ref:`instantiation_300`
+* :ref:`generic_map_300`
+* :ref:`generic_map_301`
+* :ref:`generic_map_302`
+* :ref:`port_map_300`
+* :ref:`port_map_301`
+* :ref:`port_map_302`
 
 instantiation_002
 #################
@@ -272,7 +256,10 @@ This rule has been renamed to `generic_map_005 <generic_map_rules.html#generic-m
 instantiation_018
 #################
 
-This rule has been renamed to `generic_map_006 <generic_map_rules.html#generic-map-006>`_.
+This rule was deprecated and replaced with rules:
+
+* `generic_map_006 <generic_map_rules.html#generic-map-006>`_.
+* `port_map_006 <port_map_rules.html#port-map-006>`_.
 
 instantiation_019
 #################
@@ -428,7 +415,7 @@ instantiation_031
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the component keyword has proper case in component instantiations that use the **component** keyword.
+This rule checks the **component** keyword has proper case in component instantiations that use the **component** keyword.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -547,6 +534,58 @@ This rule checks the semicolon is not on its own line.
      port map (
        A => B,
        B => C);
+
+instantiation_300
+#################
+
+|phase_4| |error| |indent|
+
+This rule checks for the proper indentation of instantiations.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   count <= val;
+       U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   count <= val;
+   U_FIFO : FIFO
+     port map (
+       WR_EN    => wr_en,
+       RD_EN    => rd_en,
+       OVERFLOW => overflow
+     );
+
+instantiation_500
+#################
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks the component library name has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   u_fifo : entity WORK.FIFO
+
+**Fix**
+
+.. code-block:: vhdl
+
+   u_fifo : entity work.FIFO
 
 instantiation_600
 #################

@@ -6,9 +6,9 @@ Total Rules Checked: 200
 Total Violations:    1
   Error   :     1
   Warning :     0
-----------------------------+------------+------------+--------------------------------------
-  Rule                      |  severity  |  line(s)   | Solution
-----------------------------+------------+------------+--------------------------------------
-  architecture_024          | Error      |          7 | Add architecture simple name
-----------------------------+------------+------------+--------------------------------------
+-------------------+------------+------------+--------------------------------------
+  Rule             |  severity  |  line(s)   | Solution
+-------------------+------------+------------+--------------------------------------
+  architecture_024 | Error      |          7 | Add architecture simple name
+-------------------+------------+------------+--------------------------------------
 NOTE: Refer to online documentation at https://vhdl-style-guide.readthedocs.io/en/latest/index.html for more information.

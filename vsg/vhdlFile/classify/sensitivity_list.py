@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
+import copy
 
 from vsg import parser
 from vsg.token import sensitivity_list as token
 from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import name
 
 
 def classify(iToken, lObjects):
     """
-    subtype_indication ::=
-        [ resolution_indication ] type_mark [ constraint ]
+    sensitivity_list ::=
+        *signal*_name { , *signal*_name}
     """
 
     iCurrent = iToken
@@ -27,7 +29,7 @@ def classify(iToken, lObjects):
             if utils.is_next_token(",", iCurrent, lObjects):
                 utils.assign_token(lObjects, iCurrent, token.comma)
             else:
-                utils.assign_token(lObjects, iCurrent, parser.todo)
+                iCurrent = name.classify_until([","], iCurrent, lObjects)
     return iCurrent
 
 
@@ -36,12 +38,13 @@ def classify_until(lUntils, iToken, lObjects):
     sensitivity_list ::=
         *signal*_name { , *signal*_name}
     """
-
     iCurrent = iToken
     iLast = 0
+    lMyUntils = copy.deepcopy(lUntils)
+    lMyUntils.append(",")
     while iLast != iCurrent:
         iLast = iCurrent
         if lObjects[utils.find_next_token(iCurrent, lObjects)].get_lower_value() in lUntils:
             return iCurrent
         iCurrent = utils.assign_next_token_if(",", token.comma, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(parser.todo, iCurrent, lObjects)
+        iCurrent = name.classify_until(lMyUntils, iCurrent, lObjects)

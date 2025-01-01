@@ -166,10 +166,11 @@ Rules Enforcing Blank Lines
 * `package_body_201 <package_body_rules.html#package-body-201>`_
 * `package_body_202 <package_body_rules.html#package-body-202>`_
 * `package_body_203 <package_body_rules.html#package-body-203>`_
+* `package_instantiation_201 <package_instantiation_rules.html#package-instantiation-201>`_
 * `port_001 <port_rules.html#port-001>`_
 * `port_map_200 <port_map_rules.html#port-map-200>`_
-* `pragma_401 <../pragma_rules.html#pragma-401>`_
-* `pragma_403 <../pragma_rules.html#pragma-403>`_
+* `pragma_401 <pragma_rules.html#pragma-401>`_
+* `pragma_403 <pragma_rules.html#pragma-403>`_
 * `process_011 <process_rules.html#process-011>`_
 * `process_021 <process_rules.html#process-021>`_
 * `process_022 <process_rules.html#process-022>`_
@@ -183,5 +184,7 @@ Rules Enforcing Blank Lines
 * `subprogram_body_203 <subprogram_body_rules.html#subprogram-body-203>`_
 * `subprogram_body_204 <subprogram_body_rules.html#subprogram-body-204>`_
 * `subprogram_body_205 <subprogram_body_rules.html#subprogram-body-205>`_
+* `subtype_200 <subtype_rules.html#subtype-200>`_
+* `subtype_202 <subtype_rules.html#subtype-202>`_
 * `type_011 <type_rules.html#type-011>`_
 * `type_200 <type_rules.html#type-200>`_

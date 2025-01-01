@@ -24,7 +24,6 @@ class testCodeExample(unittest.TestCase):
 
     def test_nested_generates(self):
         oRuleList = rule_list.rule_list(oNestedGenerates, oSeverityList)
-        #        oRuleList.configure(oConfig)
         oRuleList.fix()
 
         lExpected = [""]

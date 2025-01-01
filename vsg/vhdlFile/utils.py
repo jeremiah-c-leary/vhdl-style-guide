@@ -100,8 +100,24 @@ def assign_tokens_until_matching_closing_paren(token, iToken, lObjects):
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
 
 
+def assign_parenthesis_as_todo(iToken, lObjects):
+    iCurrent = iToken
+    if is_next_token("(", iCurrent, lObjects):
+        iCurrent = assign_next_token(parser.open_parenthesis, iCurrent, lObjects)
+        iCurrent = assign_tokens_until_matching_closing_paren(parser.todo, iCurrent, lObjects)
+        iCurrent = assign_next_token(parser.close_parenthesis, iCurrent, lObjects)
+    return iCurrent
+
+
 def object_value_is(lAllObjects, iToken, sString):
     if lAllObjects[iToken].get_lower_value() == sString.lower():
+        return True
+    return False
+
+
+def object_value_matches(lAllObjects, iToken, oRegex):
+    sToken = lAllObjects[iToken].get_lower_value()
+    if oRegex.fullmatch(sToken) is not None:
         return True
     return False
 
@@ -239,7 +255,7 @@ def find_in_next_n_tokens(sValue, iMax, iToken, lObjects):
     return False
 
 
-def find_earliest_occurance(lEnd, iToken, lObjects):
+def find_earliest_occurrence(lEnd, iToken, lObjects):
     iEarliest = len(lObjects)
     for sEnd in lEnd:
         for iIndex in range(iToken, len(lObjects) - 1):
@@ -250,7 +266,7 @@ def find_earliest_occurance(lEnd, iToken, lObjects):
     return sEarliest
 
 
-def find_earliest_occurance_not_in_paren(lEnd, iToken, lObjects):
+def find_earliest_occurrence_not_in_paren(lEnd, iToken, lObjects):
     iEarliest = len(lObjects)
     iParen = 0
     for sEnd in lEnd:
@@ -407,6 +423,13 @@ def token_is_assignment_operator(iObject, lObjects):
 
 def increment_token_count(iToken):
     return iToken + 1
+
+
+def matches_next_token(oRegex, iToken, lObjects):
+    iCurrent = find_next_token(iToken, lObjects)
+    if object_value_matches(lObjects, iCurrent, oRegex):
+        return True
+    return False
 
 
 def is_next_token(sToken, iToken, lObjects):
@@ -994,3 +1017,14 @@ def extract_line_with_token_index_of(iToken, lObjects):
     for oObject in lObjects[iStart:iEnd]:
         sReturn += oObject.get_value()
     return sReturn
+
+
+def skip_tokens_until_matching_closing_paren(iToken, lObjects):
+    iCounter = 1
+    iCurrent = iToken
+    while iCurrent < len(lObjects):
+        iCurrent = find_next_token(iCurrent, lObjects)
+        iCounter = update_paren_counter(iCurrent, lObjects, iCounter)
+        if token_is_close_parenthesis(iCurrent, lObjects) and iCounter == 0:
+            return iCurrent
+        iCurrent += 1

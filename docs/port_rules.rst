@@ -103,12 +103,12 @@ This rule checks the indent of port declarations.
 port_005
 ########
 
-This rule has been deprecated and it's function has been included in rules **port_007**, **port_008** and **port_009**.
+This rule has been deprecated and its function has been included in rules **port_007**, **port_008** and **port_009**.
 
 port_006
 ########
 
-This rule has been deprecated and it's function was include in rule **port_005**.
+This rule has been deprecated and its function was include in rule **port_005**.
 
 port_007
 ########
@@ -356,7 +356,7 @@ port_015
 
 |phase_4| |error| |indent|
 
-This rule checks the indent of the closing parenthesis for port maps.
+This rule checks the indent of the closing parenthesis for port clauses.
 
 **Violation**
 

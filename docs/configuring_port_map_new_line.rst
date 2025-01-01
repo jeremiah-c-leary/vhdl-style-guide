@@ -1,10 +1,10 @@
 
-.. _configuring-port-map-new-line
+.. _configuring-port-map-new-line:
 
 Configuring Port Map New Line
 -----------------------------
 
-There is a rule which will check for new lines before the port keyword in port map aspects relative to what preceded it.
+There is a rule which will check for new lines before the **port** keyword in port map aspects relative to what preceded it.
 
 .. code-block:: text
 

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules import token_case_in_range_bounded_by_tokens
+from vsg.rules import (
+    token_case_in_range_bounded_by_tokens_unless_between_tokens as Rule,
+)
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.identifier)
@@ -13,8 +15,12 @@ lTokens.append(token.interface_unknown_declaration.identifier)
 oStart = token.generic_clause.open_parenthesis
 oEnd = token.generic_clause.close_parenthesis
 
+lUnless = []
+lUnless.append([token.interface_function_specification.function_keyword, token.interface_function_specification.close_parenthesis])
+lUnless.append([token.interface_procedure_specification.procedure_keyword, token.interface_procedure_specification.close_parenthesis])
 
-class rule_007(token_case_in_range_bounded_by_tokens):
+
+class rule_007(Rule):
     """
     This rule checks the generic names have proper case.
 
@@ -34,7 +40,7 @@ class rule_007(token_case_in_range_bounded_by_tokens):
     """
 
     def __init__(self):
-        super().__init__(lTokens, oStart, oEnd)
+        super().__init__(lTokens, oStart, oEnd, lUnless)
         self.configuration.append("prefix_exceptions")
         self.configuration.append("suffix_exceptions")
         self.configuration.append("case_exceptions")

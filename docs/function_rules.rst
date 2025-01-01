@@ -357,7 +357,7 @@ function_018
 
 |phase_1| |error| |structure| |structure_optional|
 
-This rule checks the function keyword exist in the closing of the function specification.
+This rule checks the **function** keyword exists in the closing of the function specification.
 
 |configuring_optional_items_link|
 
@@ -582,6 +582,172 @@ This rule checks the function designator has proper case on the end function dec
 .. code-block:: vhdl
 
    end function overflow;
+
+function_507
+############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks that the parameter names have proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  function my_func (
+    PARAM1 : in integer;
+    PaRaM2 : out integer
+  ) return integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  function my_func (
+    param1 : in integer;
+    param2 : out integer
+  ) return integer;
+
+function_508
+############
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks for consistent capitalization of parameter names within the subprogram body.
+
+**Violation**
+
+.. code-block:: vhdl
+
+  function my_func (
+    param1 : in integer;
+    param2 : out integer
+  ) return integer is
+  begin
+
+    SIG <= PARAM1 + PARAM2;
+
+  end function my_func;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  function my_func (
+    param1 : in integer;
+    param2 : out integer
+  ) return integer is
+  begin
+
+    SIG <= param1 + param2;
+
+  end function my_func;
+
+   end architecture rtl;
+
+function_509
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **pure** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   PURE function overflow (a: integer) return integer is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   pure function overflow (a: integer) return integer is
+
+function_510
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the parameter direction has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  function overflow (
+    a : IN  integer;
+    b : OUT integer
+  ) return integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  function overflow (
+    a : in  integer;
+    b : out integer
+  ) return integer;
+
+function_511
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the parameter class has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  function my_func (
+    a          : integer;
+    VARIABLE b : integer;
+    CONSTANT c : integer;
+    SIGNAL   d : integer;
+    FILE     e : file_type
+  ) is return integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+  function my_func (
+    a          : integer;
+    variable b : integer;
+    constant c : integer;
+    signal   d : integer;
+    file     e : file_type
+  ) is return integer;
+
+function_512
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **impure** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   IMPURE function overflow (a: integer) return integer is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   impure function overflow (a: integer) return integer is
 
 function_600
 ############

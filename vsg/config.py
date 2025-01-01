@@ -28,7 +28,7 @@ def read_predefined_style(sStyleName):
 
 
 def open_configuration_file(sFileName, sJUnitFileName=None):
-    """Attempts to open a configuration file and read it's contents."""
+    """Attempts to open a configuration file and read its contents."""
     try:
         with open(sFileName) as yaml_file:
             dTemp = yaml.full_load(yaml_file)
@@ -54,9 +54,7 @@ def validate_file_exists(sFilename, sConfigName):
         sExpandedFilename = list(sFilename.keys())[0]
     else:
         sExpandedFilename = sFilename
-    #    print(sExpandedFilename)
     lFileNames = glob.glob(utils.expand_filename(sExpandedFilename), recursive=True)
-    #    print(lFileNames)
     if len(lFileNames) == 0:
         print("ERROR: Could not find file " + sFilename + " in configuration file " + sConfigName)
         sys.exit(1)

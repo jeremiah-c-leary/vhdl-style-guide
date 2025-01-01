@@ -3,7 +3,7 @@ Code Tags
 
 VSG supports inline tags embedded into code to enable or disable rules.
 This can be useful in fine tuning rule exceptions within a file.
-The code tags are embedded in comments similar to pragmas, and must be on it's own line.
+The code tags are embedded in comments similar to pragmas, and must be on its own line.
 
 Full rule exclusion
 -------------------
@@ -86,7 +86,7 @@ Multiple identifiers can be added to a single tag..
      -- vsg_disable_next_line process_018
    end process;
 
-In the above example, process_016 will only be disabled for the line with the process keyword.
+In the above example, process_016 will only be disabled for the line with the **process** keyword.
 Successive processes without labels will be flagged by process_016.
 
 Sequential next line exclusions will also be honored:
@@ -102,7 +102,7 @@ Sequential next line exclusions will also be honored:
      -- vsg_disable_next_line process_018
    end process;
 
-In the above example, both process_002 and process_016 will be disabled for the line starting with the process keyword.
+In the above example, both process_002 and process_016 will be disabled for the line starting with the **process** keyword.
 
 Comments in code tags
 ---------------------

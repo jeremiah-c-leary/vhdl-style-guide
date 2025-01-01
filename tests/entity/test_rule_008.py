@@ -23,8 +23,20 @@ class test_entity_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "entity")
         self.assertEqual(oRule.identifier, "008")
 
-        lExpected = [6, 10, 14, 22, 26, 30, 34, 38, 42, 46, 50, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([17, 18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -49,8 +61,23 @@ class test_entity_rule(unittest.TestCase):
         oRule = entity.rule_008()
         oRule.case = "upper"
 
-        lExpected = [2, 10, 18, 22, 26, 30, 34, 38, 42, 46, 50, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([17, 18, 19, 20])
+        lExpected.extend([23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
+
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -76,8 +103,22 @@ class test_entity_rule(unittest.TestCase):
         oRule = entity.rule_008()
         oRule.case = "camelCase"
 
-        lExpected = [6, 10, 14, 18, 22, 30, 34, 38, 42, 46, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([13, 14, 15])
+        lExpected.extend([17, 18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -87,8 +128,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "camelCase"
         oRule.prefix_exceptions.append("e_")
 
-        lExpected = [6, 10, 14, 18, 22, 34, 38, 46, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([14, 15])
+        lExpected.extend([17, 18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -98,8 +153,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "camelCase"
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [6, 10, 14, 18, 22, 30, 34, 38, 42, 46, 54, 58, 62]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([3, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([13, 15])
+        lExpected.extend([17, 18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([38, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([53, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([63, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -110,8 +179,17 @@ class test_entity_rule(unittest.TestCase):
         oRule.prefix_exceptions.append("e_")
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [6, 10, 14, 18, 22, 34, 38, 46, 54, 62]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([17, 18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -121,8 +199,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "camelCase"
         oRule.case_exceptions.append("e_MyFifo")
 
-        lExpected = [6, 10, 14, 18, 22, 30, 38, 42, 46, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([13, 14, 15])
+        lExpected.extend([17, 18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 34, 35])
+        lExpected.extend([38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -131,8 +223,22 @@ class test_entity_rule(unittest.TestCase):
         oRule = entity.rule_008()
         oRule.case = "PascalCase"
 
-        lExpected = [2, 6, 14, 18, 26, 30, 34, 38, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([33, 34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -142,8 +248,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "PascalCase"
         oRule.prefix_exceptions.append("e_")
 
-        lExpected = [2, 6, 14, 18, 26, 30, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -153,8 +273,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "PascalCase"
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [2, 6, 14, 18, 26, 30, 34, 38, 42, 50, 54, 58, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([33, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([58, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -165,8 +299,19 @@ class test_entity_rule(unittest.TestCase):
         oRule.prefix_exceptions.append("e_")
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [2, 6, 14, 18, 26, 30, 42, 50, 58, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -176,8 +321,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "PascalCase"
         oRule.case_exceptions.append("myFifo")
 
-        lExpected = [2, 6, 14, 18, 22, 30, 34, 38, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([33, 34, 35])
+        lExpected.extend([38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -186,8 +345,22 @@ class test_entity_rule(unittest.TestCase):
         oRule = entity.rule_008()
         oRule.case = "Pascal_Snake_Case"
 
-        lExpected = [2, 18, 26, 30, 34, 38, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -197,8 +370,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "Pascal_Snake_Case"
         oRule.prefix_exceptions.append("e_")
 
-        lExpected = [2, 18, 26, 30, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -208,8 +395,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "Pascal_Snake_Case"
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [2, 18, 26, 30, 34, 38, 42, 50, 54, 58, 66]
-        lExpected.extend([74, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([75, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -220,7 +421,20 @@ class test_entity_rule(unittest.TestCase):
         oRule.prefix_exceptions.append("e_")
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [2, 18, 26, 30, 42, 50, 58, 66]
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -230,8 +444,22 @@ class test_entity_rule(unittest.TestCase):
         oRule.case = "Pascal_Snake_Case"
         oRule.case_exceptions.append("myFifo")
 
-        lExpected = [2, 18, 22, 30, 34, 38, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([7, 8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([32, 33, 34, 35])
+        lExpected.extend([38, 39, 40])
+        lExpected.extend([42, 43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([57, 58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -239,10 +467,24 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
 
-        lExpected = [2, 14, 18, 26, 30, 34, 38, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([33, 34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -250,11 +492,25 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex_with_prefix(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
         oRule.prefix_exceptions.append("e_")
 
-        lExpected = [2, 14, 18, 26, 30, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([34, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -262,11 +518,25 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex_with_suffix(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [2, 14, 18, 26, 30, 34, 38, 42, 50, 54, 58, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([8, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([33, 35])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([43, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([58, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -274,12 +544,21 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex_with_prefix_and_suffix(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
         oRule.prefix_exceptions.append("e_")
         oRule.suffix_exceptions.append("_a")
 
-        lExpected = [2, 14, 18, 26, 30, 42, 50, 58, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([37, 38, 39, 40])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
@@ -287,11 +566,43 @@ class test_entity_rule(unittest.TestCase):
     def test_rule_008_regex_with_whole_exception(self):
         oRule = entity.rule_008()
         oRule.case = "regex"
-        oRule.regex = "[A-Z][A-Za-z\d]*"
+        oRule.regex = r"[A-Z][A-Za-z\d]*"
         oRule.case_exceptions.append("myFifo")
 
-        lExpected = [2, 14, 18, 22, 30, 34, 38, 42, 50, 54, 58, 62, 66]
-        lExpected.extend([72, 74, 76, 78])
+        lExpected = []
+        lExpected.extend([2, 3, 4, 5])
+        lExpected.extend([8, 9, 10])
+        lExpected.extend([12, 13, 14, 15])
+        lExpected.extend([18, 19, 20])
+        lExpected.extend([22, 23, 24, 25])
+        lExpected.extend([27, 28, 29, 30])
+        lExpected.extend([33, 34, 35])
+        lExpected.extend([38, 39, 40])
+        lExpected.extend([43, 44, 45])
+        lExpected.extend([47, 48, 49, 50])
+        lExpected.extend([52, 53, 54, 55])
+        lExpected.extend([58, 59, 60])
+        lExpected.extend([62, 63, 64, 65])
+        lExpected.extend([69, 70, 71, 72])
+        lExpected.extend([74, 75, 76, 77])
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
+
+#        lExpected = []
+#        lExpected.extend([2, 3, 4, 5])
+#        lExpected.extend([7, 8, 9, 10])
+#        lExpected.extend([12, 13, 14, 15])
+#        lExpected.extend([17, 18, 19, 20])
+#        lExpected.extend([22, 23, 24, 25])
+#        lExpected.extend([27, 28, 29, 30])
+#        lExpected.extend([32, 33, 34, 35])
+#        lExpected.extend([37, 38, 39, 40])
+#        lExpected.extend([42, 43, 44, 45])
+#        lExpected.extend([47, 48, 49, 50])
+#        lExpected.extend([52, 53, 54, 55])
+#        lExpected.extend([57, 58, 59, 60])
+#        lExpected.extend([62, 63, 64, 65])
+#        lExpected.extend([69, 70, 71, 72])
+#        lExpected.extend([74, 75, 76, 77])
+

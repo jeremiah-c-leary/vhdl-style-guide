@@ -158,9 +158,7 @@ def extract_unique_id(oToken):
 def process_tokens(lTokens):
     dMap = build_default_map()
     for iToken, oToken in enumerate(lTokens):
-        #        print(oToken)
         sBase, sSub = oToken.get_unique_id()
-        #        print(f'{sBase}:{sSub}')
         if sBase is not None:
             try:
                 dMap[sBase][sSub].append(iToken)
@@ -236,10 +234,10 @@ def extract_pairs(lStartIndexes, lEndIndexes):
         for iStart in lStartIndexes:
             lPair = extract_closest_pair(iStart, lEndIndexes, lPair, iMin)
 
-        lMyPairs.append(lPair)
-
         if pair_is_empty(lPair):
             break
+
+        lMyPairs.append(lPair)
 
         lStartIndexes.remove(lPair[0])
         lEndIndexes.remove(lPair[1])
@@ -259,9 +257,8 @@ def extract_closest_pair(iStart, lEndIndexes, lPair, iMin):
 
 def extract_indexes_from_pairs(lPairs):
     lStartIndexes = []
+    lPairs = remove_any_empty_pairs(lPairs)
     for pair in lPairs:
-        if pair_is_empty(pair):
-            break
         lStartIndexes.append(pair[0])
 
     lStartIndexes.sort()
@@ -281,3 +278,7 @@ def pair_is_empty(lPair):
     if len(lPair) == 0:
         return True
     return False
+
+
+def remove_any_empty_pairs(lPairs):
+    return [x for x in lPairs if x != []]

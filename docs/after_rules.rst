@@ -54,7 +54,7 @@ after_002
 
 |phase_5| |disabled| |error| |alignment|
 
-This rule checks the *after* keywords are aligned in a clock process.
+This rule checks the **after** keywords are aligned in a clock process.
 
 |configuring_keyword_alignment_rules_link|
 
@@ -93,7 +93,7 @@ after_003
 
 |phase_1| |disabled| |error| |structure|
 
-This rule checks the *after* keywords do not exist in the reset portion of a clock process.
+This rule checks the **after** keywords do not exist in the reset portion of a clock process.
 
 **Violation**
 
@@ -124,3 +124,24 @@ This rule checks the *after* keywords do not exist in the reset portion of a clo
        b <= c  after 1 ns;
      end if;
    end process clk_proc;
+
+after_500
+#########
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks the **after** keyword has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   a <= 1 AFTER 10 ns;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   a <= 1 after 10 ns;

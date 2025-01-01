@@ -15,7 +15,7 @@ lExpected.append("")
 utils.read_file(os.path.join(sTestDir, "rule_011_test_input.fixed.vhd"), lExpected)
 
 
-class test_context_rule(unittest.TestCase):
+class test_whitespace_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
@@ -41,8 +41,6 @@ class test_context_rule(unittest.TestCase):
         lExpected.extend(range(100, 105))
         lExpected.extend(range(106, 111))
         lExpected.extend(range(112, 117))
-
-        #        utils.print_objects(self.oFile,True)
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
