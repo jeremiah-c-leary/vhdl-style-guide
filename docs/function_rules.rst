@@ -257,27 +257,7 @@ This rule checks the **end** keyword has proper case.
 function_014
 ############
 
-|phase_6| |error| |case| |case_keyword|
-
-This rule checks the **function** keyword in the **end function** has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   end FUNCTION;
-
-   end Function foo;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   end function;
-
-   end function foo;
+This rule has been deprecated and replaced with rule `subprogram_kind_501 <subprogram_kind_rules.html#subprogram-kind-501>`_.
 
 function_015
 ############

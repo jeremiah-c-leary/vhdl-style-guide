@@ -87,8 +87,6 @@ from .split_line_at_token_if_on_same_line_as_token_if_token_pair_are_not_on_the_
 )
 from .remove_comments_from_end_of_lines_bounded_by_tokens import remove_comments_from_end_of_lines_bounded_by_tokens
 from .token_case_formal_part_of_association_element_in_map_between_tokens import token_case_formal_part_of_association_element_in_map_between_tokens
-from .token_case_n_token_after_tokens_between_tokens import token_case_n_token_after_tokens_between_tokens
-from .token_case_n_token_after_tokens_between_tokens_unless_between_tokens import token_case_n_token_after_tokens_between_tokens_unless_between_tokens
 from .existence_of_tokens_which_should_not_occur import existence_of_tokens_which_should_not_occur
 from .multiline_alignment_between_tokens import multiline_alignment_between_tokens
 from .multiline_structure import multiline_structure
@@ -184,8 +182,11 @@ from vsg.rules import signal
 from vsg.rules import shift_operator
 from vsg.rules import source_file
 from vsg.rules import subprogram_body
+from vsg.rules import subprogram_kind
+from vsg.rules import subprogram_instantiation
 from vsg.rules import subtype
 from vsg.rules import type_definition
+from vsg.rules import type_mark
 from vsg.rules import unbounded_array_definition
 from vsg.rules import use_clause
 from vsg.rules import variable

@@ -1,45 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg.rules import token_case
+from vsg import deprecated_rule
 
 lTokens = []
-lTokens.append(token.ieee.std_logic_1164.types.std_logic)
-lTokens.append(token.ieee.std_logic_1164.types.std_logic_vector)
-lTokens.append(token.ieee.std_logic_1164.types.std_ulogic)
-lTokens.append(token.ieee.std_logic_1164.types.std_ulogic_vector)
-lTokens.append(token.ieee.std_logic_1164.types.integer)
-lTokens.append(token.ieee.std_logic_1164.types.signed)
-lTokens.append(token.ieee.std_logic_1164.types.unsigned)
 
 
-class rule_500(token_case):
+class rule_500(deprecated_rule.Rule):
     """
-    This rule checks IEEE types have the proper case.
+    This rule was deprecated and replaced with the following rule:
 
-    |configuring_uppercase_and_lowercase_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       port (
-         WR_EN    : in    STD_LOGIC;
-         RD_EN    : in    STD_logic;
-         DATA     : inout STD_LOGIC_VECTOR(31 downto 0)
-       );
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       port (
-         WR_EN    : in    std_logic;
-         RD_EN    : in    std_logic;
-         DATA     : inout std_logic_vector(31 downto 0)
-       );
+    * :ref:`type_mark_500`
     """
 
     def __init__(self):
-        super().__init__(lTokens)
-        self.groups.append("case::keyword")
+        super().__init__()
+        self.message.append("Rule " + self.unique_id + " has been replaced with the following rule:")
+        self.message.append("  type_mark_500")

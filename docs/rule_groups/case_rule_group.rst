@@ -103,7 +103,6 @@ Rules Enforcing Case Rule Group
 * `function_005 <../function_rules.html#function-005>`_
 * `function_010 <../function_rules.html#function-010>`_
 * `function_013 <../function_rules.html#function-013>`_
-* `function_014 <../function_rules.html#function-014>`_
 * `function_017 <../function_rules.html#function-017>`_
 * `function_501 <../function_rules.html#function-501>`_
 * `function_502 <../function_rules.html#function-502>`_
@@ -122,10 +121,8 @@ Rules Enforcing Case Rule Group
 * `generate_501 <../generate_rules.html#generate-501>`_
 * `generic_007 <../generic_rules.html#generic-007>`_
 * `generic_009 <../generic_rules.html#generic-009>`_
-* `generic_017 <../generic_rules.html#generic-017>`_
 * `generic_map_001 <../generic_map_rules.html#generic-map-001>`_
 * `generic_map_002 <../generic_map_rules.html#generic-map-002>`_
-* `ieee_500 <../ieee_rules.html#ieee-500>`_
 * `if_generate_statement_500 <../if_generate_statement_rules.html#if-generate-statement-500>`_
 * `if_generate_statement_501 <../if_generate_statement_rules.html#if-generate-statement-501>`_
 * `if_generate_statement_502 <../if_generate_statement_rules.html#if-generate-statement-502>`_
@@ -179,7 +176,6 @@ Rules Enforcing Case Rule Group
 * `package_instantiation_504 <../package_instantiation_rules.html#package-instantiation-504>`_
 * `port_010 <../port_rules.html#port-010>`_
 * `port_017 <../port_rules.html#port-017>`_
-* `port_018 <../port_rules.html#port-018>`_
 * `port_019 <../port_rules.html#port-019>`_
 * `port_map_001 <../port_map_rules.html#port-map-001>`_
 * `port_map_002 <../port_map_rules.html#port-map-002>`_
@@ -189,7 +185,6 @@ Rules Enforcing Case Rule Group
 * `procedure_502 <../procedure_rules.html#procedure-502>`_
 * `procedure_503 <../procedure_rules.html#procedure-503>`_
 * `procedure_504 <../procedure_rules.html#procedure-504>`_
-* `procedure_505 <../procedure_rules.html#procedure-505>`_
 * `procedure_506 <../procedure_rules.html#procedure-506>`_
 * `procedure_507 <../procedure_rules.html#procedure-507>`_
 * `procedure_508 <../procedure_rules.html#procedure-508>`_
@@ -231,6 +226,12 @@ Rules Enforcing Case Rule Group
 * `signal_002 <../signal_rules.html#signal-002>`_
 * `signal_004 <../signal_rules.html#signal-004>`_
 * `signal_014 <../signal_rules.html#signal-014>`_
+* `subprogram_instantiation_500 <../subprogram_instantiation_rules.html#subprogram-instantiation-500>`_
+* `subprogram_instantiation_501 <../subprogram_instantiation_rules.html#subprogram-instantiation-501>`_
+* `subprogram_instantiation_502 <../subprogram_instantiation_rules.html#subprogram-instantiation-502>`_
+* `subprogram_instantiation_503 <../subprogram_instantiation_rules.html#subprogram-instantiation-503>`_
+* `subprogram_kind_500 <../subprogram_kind_rules.html#subprogram-kind-500>`_
+* `subprogram_kind_501 <../subprogram_kind_rules.html#subprogram-kind-501>`_
 * `subtype_002 <../subtype_rules.html#subtype-002>`_
 * `subtype_500 <../subtype_rules.html#subtype-500>`_
 * `subtype_501 <../subtype_rules.html#subtype-501>`_
@@ -241,6 +242,7 @@ Rules Enforcing Case Rule Group
 * `type_014 <../type_rules.html#type-014>`_
 * `type_500 <../type_rules.html#type-500>`_
 * `type_501 <../type_rules.html#type-501>`_
+* `type_mark_500 <../type_mark_rules.html#type-mark-500>`_
 * `unbounded_array_definition_500 <../unbounded_array_definition_rules.html#unbounded-array-definition-500>`_
 * `unbounded_array_definition_501 <../unbounded_array_definition_rules.html#unbounded-array-definition-501>`_
 * `use_clause_500 <../use_clause_rules.html#use-clause-500>`_

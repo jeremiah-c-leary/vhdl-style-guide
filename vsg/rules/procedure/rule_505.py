@@ -1,31 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg.rules import token_case
-
-lTokens = []
-lTokens.append(token.subprogram_kind.procedure_keyword)
+from vsg.deprecated_rule import Rule
 
 
-class rule_505(token_case):
+class rule_505(Rule):
     """
-    This rule checks the **procedure** keyword in the **end procedure** has proper case.
-
-    |configuring_uppercase_and_lowercase_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       end PROCEDURE average_samples;
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       end procedure average_samples;
+    This rule has been deprecated and replaced with rule `subprogram_kind_500 <subprogram_kind_rules.html#subprogram-kind-500>`_.
     """
 
     def __init__(self):
-        super().__init__(lTokens)
-        self.groups.append("case::keyword")
+        Rule.__init__(self)
+        self.message.append("Rule " + self.unique_id + " has been replaced with subprogram_kind_500.")
