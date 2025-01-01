@@ -78,7 +78,6 @@ class test_entity_rule(unittest.TestCase):
         lExpected.extend([69, 70, 71, 72])
         lExpected.extend([74, 75, 76, 77])
 
-
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
@@ -589,6 +588,7 @@ class test_entity_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
+
 #        lExpected = []
 #        lExpected.extend([2, 3, 4, 5])
 #        lExpected.extend([7, 8, 9, 10])
@@ -605,4 +605,3 @@ class test_entity_rule(unittest.TestCase):
 #        lExpected.extend([62, 63, 64, 65])
 #        lExpected.extend([69, 70, 71, 72])
 #        lExpected.extend([74, 75, 76, 77])
-

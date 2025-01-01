@@ -4,9 +4,9 @@ import re
 
 from vsg import violation
 
-#camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
-#PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
-#PascalSnakeCase = re.compile("(((?:[A-Z])+(?:[a-z0-9])*)+_?)+")
+# camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
+# PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
+# PascalSnakeCase = re.compile("(((?:[A-Z])+(?:[a-z0-9])*)+_?)+")
 
 camelCase = re.compile("(?!.*[A-Z]{3})[a-z][a-zA-Z0-9]*")
 relaxedCamelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
