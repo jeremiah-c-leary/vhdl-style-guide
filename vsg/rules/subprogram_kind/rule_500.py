@@ -25,9 +25,9 @@ class rule_500(token_case):
 
     .. code-block:: vhdl
 
-       end PROCEDURE parity;
+       end procedure parity;
 
-       PROCEDURE my_proc is new my_generic_proc
+       procedure my_proc is new my_generic_proc
     """
 
     def __init__(self):

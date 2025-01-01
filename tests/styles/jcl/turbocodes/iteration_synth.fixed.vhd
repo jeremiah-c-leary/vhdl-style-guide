@@ -40,11 +40,11 @@
 
 architecture SYNTH of ITERATION is
 
-  signal zout1         : ARRAY4c;
-  signal zout2         : ARRAY4c;
-  signal zout1perm     : ARRAY4c;
-  signal zoutint1      : ARRAY4c;
-  signal zout2int      : ARRAY4c;
+  signal zout1         : array4c;
+  signal zout2         : array4c;
+  signal zout1perm     : array4c;
+  signal zoutint1      : array4c;
+  signal zout2int      : array4c;
   signal tmp0          : std_logic_vector(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto 0);
   signal tmp1          : std_logic_vector(Z_WIDTH * 4 + SIG_WIDTH * 2 - 1 downto 0);
   signal tmp2          : std_logic_vector(SIG_WIDTH * 6 - 1 downto 0);
@@ -57,8 +57,8 @@ architecture SYNTH of ITERATION is
   signal tmp9          : std_logic_vector(SIG_WIDTH * 6 - 1 downto 0);
   signal tmp10         : std_logic_vector(SIG_WIDTH * 8 - 1 downto 0);
   signal tmp11         : std_logic_vector(SIG_WIDTH * 8 - 1 downto 0);
-  signal abdel1perm    : ARRAY2a;
-  signal abdel1permint : ARRAY2a;
+  signal abdel1perm    : array2a;
+  signal abdel1permint : array2a;
   signal adel1         : std_logic_vector(SIG_WIDTH - 1 downto 0);
   signal bdel1         : std_logic_vector(SIG_WIDTH - 1 downto 0);
   signal ydel1         : std_logic_vector(SIG_WIDTH - 1 downto 0);
