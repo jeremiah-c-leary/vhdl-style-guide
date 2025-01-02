@@ -63,6 +63,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    package_rules.rst
    package_body_rules.rst
    package_instantiation_rules.rst
+   parameter_specification_rules.rst
    port_rules.rst
    port_map_rules.rst
    pragma_rules.rst

@@ -431,6 +431,8 @@ Rules Enforcing Case
 * `package_instantiation_503 <package_instantiation_rules.html#package-instantiation-503>`_
 * `package_instantiation_504 <package_instantiation_rules.html#package-instantiation-504>`_
 
+* `parameter_specification_500 <parameter_specification_rules.html#parameter-specification-500>`_
+
 * `port_010 <port_rules.html#port-010>`_
 * `port_017 <port_rules.html#port-017>`_
 * `port_019 <port_rules.html#port-019>`_
