@@ -48,7 +48,7 @@ class test_use_clause_rule(unittest.TestCase):
         oRule = use_clause.rule_500()
         oRule.case_exceptions = ["My_Lib", "IEEE"]
 
-        lExpected = [3, 5, 7]
+        lExpected = [5, 7]
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)

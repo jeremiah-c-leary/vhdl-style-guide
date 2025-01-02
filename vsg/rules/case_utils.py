@@ -4,8 +4,15 @@ import re
 
 from vsg import violation
 
-camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*([A-Z])?")
-PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+([A-Z])?")
+# camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
+# PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
+# PascalSnakeCase = re.compile("(((?:[A-Z])+(?:[a-z0-9])*)+_?)+")
+
+camelCase = re.compile("(?!.*[A-Z]{3})[a-z][a-zA-Z0-9]*")
+relaxedCamelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
+PascalCase = re.compile("(?!.*[A-Z]{3})[A-Z][a-zA-Z0-9]*")
+RelaxedPascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
+PascalSnakeCase = re.compile("(?!.*[A-Z]{3})[A-Z][a-z0-9]*(?:_[A-Z0-9][a-z0-9]*)*")
 
 
 def check_for_case_violation(oToi, self, check_prefix=False, check_suffix=False, check_whole=False, iIndex=0, iLine=None):
@@ -132,6 +139,13 @@ def check_for_pascalcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iL
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
 
 
+def check_for_pascal_snake_case(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
+    sExpectedValue = sPrefix + sWord + sSuffix
+    if PascalSnakeCase.fullmatch(sWord) is None:
+        sSolution = "Format " + sActualValue + " into Pascal_Snake_Case"
+        return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
+
+
 def check_for_regex(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
     sExpectedValue = sPrefix + sWord + sSuffix
     if self.oRegex.fullmatch(sWord) is None:
@@ -200,7 +214,7 @@ def check_for_prefix_and_suffix_exceptions(sObjectValue, self, oToi, iIndex, iLi
 
 
 def case_exception_found(sObjectValue, self):
-    if sObjectValue.lower() in self.case_exceptions_lower:
+    if sObjectValue in self.case_exceptions:
         return True
     return False
 
@@ -223,6 +237,8 @@ dCase["camelCase"] = {}
 dCase["camelCase"]["check"] = check_for_camelcase
 dCase["PascalCase"] = {}
 dCase["PascalCase"]["check"] = check_for_pascalcase
+dCase["Pascal_Snake_Case"] = {}
+dCase["Pascal_Snake_Case"]["check"] = check_for_pascal_snake_case
 dCase["regex"] = {}
 dCase["regex"]["check"] = check_for_regex
 dCase["lower"] = {}
