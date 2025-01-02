@@ -173,6 +173,11 @@ Rules Enforcing Structure Rule Group
 * `signal_015 <../signal_rules.html#signal-015>`_
 * `signal_017 <../signal_rules.html#signal-017>`_
 * `source_file_001 <../source_file_rules.html#source-file-001>`_
+* `subprogram_instantiation_001 <../subprogram_instantiation_rules.html#subprogram-instantiation-001>`_
+* `subprogram_instantiation_002 <../subprogram_instantiation_rules.html#subprogram-instantiation-002>`_
+* `subprogram_instantiation_003 <../subprogram_instantiation_rules.html#subprogram-instantiation-003>`_
+* `subprogram_instantiation_004 <../subprogram_instantiation_rules.html#subprogram-instantiation-004>`_
+* `subprogram_instantiation_005 <../subprogram_instantiation_rules.html#subprogram-instantiation-005>`_
 * `subtype_005 <../subtype_rules.html#subtype-005>`_
 * `subtype_006 <../subtype_rules.html#subtype-006>`_
 * `type_008 <../type_rules.html#type-008>`_
