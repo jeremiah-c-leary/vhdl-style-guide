@@ -18,10 +18,11 @@ class Rule:
         self.disable = False
         self.fixable = True
         self.severity = severity.error("Error")
+        self.user_error_message = ""
         self.debug = False
         self.dFix = {}
         self.dFix["violations"] = {}
-        self.configuration = ["indent_style", "indent_size", "phase", "disable", "fixable", "severity"]
+        self.configuration = ["indent_style", "indent_size", "phase", "disable", "fixable", "severity", "user_error_message"]
         self.deprecated = False
         self.proposed = False
         self.groups = []
@@ -132,6 +133,8 @@ class Rule:
         Adds a linenumber to a violations list.
         """
         if not violation.has_code_tag(self.unique_id):
+            if self.user_error_message != "":
+                violation.sSolution = violation.sSolution + " [user_error_message: " + self.user_error_message + "]"
             self.violations.append(violation)
 
     def analyze(self, oFile):
