@@ -259,6 +259,11 @@ Rules Enforcing Whitespace
 * `signal_100 <signal_rules.html#signal-100>`_
 * `signal_101 <signal_rules.html#signal-101>`_
 * `signal_102 <signal_rules.html#signal-102>`_
+* `subprogram_instantiation_100 <subprogram_instantiation_rules.html#subprogram-instantiation-100>`_
+* `subprogram_instantiation_101 <subprogram_instantiation_rules.html#subprogram-instantiation-101>`_
+* `subprogram_instantiation_102 <subprogram_instantiation_rules.html#subprogram-instantiation-102>`_
+* `subprogram_instantiation_103 <subprogram_instantiation_rules.html#subprogram-instantiation-103>`_
+* `subprogram_instantiation_104 <subprogram_instantiation_rules.html#subprogram-instantiation-104>`_
 * `subtype_100 <subtype_rules.html#subtype-100>`_
 * `subtype_101 <subtype_rules.html#subtype-101>`_
 * `subtype_102 <subtype_rules.html#subtype-102>`_
