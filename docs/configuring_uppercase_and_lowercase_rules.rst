@@ -51,16 +51,16 @@ There are several options to these rules:
    |camelCase_value| = Enforce camelCase with two allowed uppercase characters in a row
 
 .. |case_option__relaxedCamelCase| replace::
-   |camelCase_value| = Enforce camelCase with any number of uppercase characters in a row
+   |relaxedCamelCase_value| = Enforce camelCase with any number of uppercase characters in a row
 
 .. |case_option__PascalCase| replace::
    |PascalCase_value| = Enforce PascalCase with two allowed uppercase characters in a row
 
 .. |case_option__RelaxedPascalCase| replace::
-   |PascalCase_value| = Enforce PascalCase with any number of uppercase characters in a row
+   |RelaxedPascalCase_value| = Enforce PascalCase with any number of uppercase characters in a row
 
 .. |case_option__PascalSnakeCase| replace::
-   |PascalCase_value| = Enforce Pascal_Snake_Case
+   |PascalSnakeCase_value| = Enforce Pascal_Snake_Case
 
 .. |case_option__regex| replace::
    |regex_value| = Enforce user defined regex
