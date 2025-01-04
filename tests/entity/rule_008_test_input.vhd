@@ -75,3 +75,13 @@ entity My_Fifo_Green_Red_Blue is end entity;
 entity e_My_Fifo_Green_Red_Blue is end entity;
 entity My_Fifo_Green_Red_Blue_a is end entity;
 entity e_My_Fifo_Green_Red_Blue_a is end entity;
+
+-- Test RelaxedPascalCase
+
+entity MyFifo is end entity;
+entity MyFIfo is end entity;
+entity MyFIFo is end entity;
+entity MyFIFO is end entity;
+entity MyFiFo is end entity;
+entity MyFifO is end entity;
+entity MyFiFO is end entity;

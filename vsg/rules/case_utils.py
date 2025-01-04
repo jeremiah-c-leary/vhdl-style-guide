@@ -4,14 +4,10 @@ import re
 
 from vsg import violation
 
-# camelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
-# PascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
-# PascalSnakeCase = re.compile("(((?:[A-Z])+(?:[a-z0-9])*)+_?)+")
-
 camelCase = re.compile("(?!.*[A-Z]{3})[a-z][a-zA-Z0-9]*")
-relaxedCamelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*")
+relaxedCamelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*([A-Z])?")
 PascalCase = re.compile("(?!.*[A-Z]{3})[A-Z][a-zA-Z0-9]*")
-RelaxedPascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+")
+RelaxedPascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+([A-Z]*)?")
 PascalSnakeCase = re.compile("(?!.*[A-Z]{3})[A-Z][a-z0-9]*(?:_[A-Z0-9][a-z0-9]*)*")
 
 
@@ -132,10 +128,24 @@ def check_for_camelcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLi
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
 
 
+def check_for_relaxedcamelcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
+    sExpectedValue = sPrefix + sWord + sSuffix
+    if relaxedCamelCase.fullmatch(sWord) is None:
+        sSolution = "Format " + sActualValue + " into relaxedCamelCase"
+        return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
+
+
 def check_for_pascalcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
     sExpectedValue = sPrefix + sWord + sSuffix
     if PascalCase.fullmatch(sWord) is None:
         sSolution = "Format " + sActualValue + " into PascalCase"
+        return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
+
+
+def check_for_relaxedpascalcase(sActualValue, sPrefix, sWord, sSuffix, oToi, iIndex, iLine, self):
+    sExpectedValue = sPrefix + sWord + sSuffix
+    if RelaxedPascalCase.fullmatch(sWord) is None:
+        sSolution = "Format " + sActualValue + " into RelaxedPascalCase"
         return create_case_violation(sActualValue, sExpectedValue, oToi, iIndex, iLine, sSolution)
 
 
@@ -235,8 +245,12 @@ def does_not_contain_any_alpha_characters(sObjectValue):
 dCase = {}
 dCase["camelCase"] = {}
 dCase["camelCase"]["check"] = check_for_camelcase
+dCase["relaxedCamelCase"] = {}
+dCase["relaxedCamelCase"]["check"] = check_for_relaxedcamelcase
 dCase["PascalCase"] = {}
 dCase["PascalCase"]["check"] = check_for_pascalcase
+dCase["RelaxedPascalCase"] = {}
+dCase["RelaxedPascalCase"]["check"] = check_for_relaxedpascalcase
 dCase["Pascal_Snake_Case"] = {}
 dCase["Pascal_Snake_Case"]["check"] = check_for_pascal_snake_case
 dCase["regex"] = {}
