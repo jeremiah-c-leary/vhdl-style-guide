@@ -155,4 +155,4 @@ This rule checks the **for** keyword has proper case.
 iteration_scheme_502
 ####################
 
-This rule has been deprecated and replaced with rule `parameter_specification_500 <parameter_specification_rules.html#parameter-specification-500>`_.
+This rule has been deprecated and replaced with rule `parameter_specification_501 <parameter_specification_rules.html#parameter-specification-501>`_.
