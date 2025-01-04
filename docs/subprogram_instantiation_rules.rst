@@ -3,6 +3,111 @@
 Subprogram Instantiation Rules
 ------------------------------
 
+subprogram_instantiation_100
+############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **procedure** keyword and the new subprogram identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure       my_proc is new my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
+subprogram_instantiation_101
+############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **function** keyword and the new subprogram identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   function       my_func is new my_generic_func
+
+**Fix**
+
+.. code-block:: vhdl
+
+   function my_func is new my_generic_func
+
+subprogram_instantiation_102
+############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the new subprogram identifier and the **is** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure my_proc    is new my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
+subprogram_instantiation_103
+############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the **is** keyword and the **new** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure my_proc is     new my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
+subprogram_instantiation_104
+############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between **new** keyword and the uninstantiated subprogram name.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new     my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
 subprogram_instantiation_200
 ############################
 
