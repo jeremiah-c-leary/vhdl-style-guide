@@ -48,20 +48,4 @@ This rule checks the **generate** keyword has proper case.
 for_generate_statement_502
 ##########################
 
-|phase_6| |error| |case| |case_keyword|
-
-This rule checks the **in** keyword has proper case.
-
-|configuring_uppercase_and_lowercase_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   gen_label : for lv_thing IN t_thing generate
-
-**Fix**
-
-.. code-block:: vhdl
-
-   gen_label : for lv_thing in t_thing generate
+This rule has been deprecated and replaced with rule `parameter_specification_501 <parameter_specification_rules.html#parameter-specification-501>`_.

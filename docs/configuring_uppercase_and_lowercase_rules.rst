@@ -339,7 +339,6 @@ Rules Enforcing Case
 
 * `for_generate_statement_500 <for_generate_statement_rules.html#for-generate-statement-500>`_
 * `for_generate_statement_501 <for_generate_statement_rules.html#for-generate-statement-501>`_
-* `for_generate_statement_502 <for_generate_statement_rules.html#for-generate-statement-502>`_
 
 * `function_004 <function_rules.html#function-004>`_
 * `function_005 <function_rules.html#function-005>`_
@@ -390,7 +389,6 @@ Rules Enforcing Case
 
 * `iteration_scheme_500 <iteration_scheme_rules.html#iteration-scheme-500>`_
 * `iteration_scheme_501 <iteration_scheme_rules.html#iteration-scheme-501>`_
-* `iteration_scheme_502 <iteration_scheme_rules.html#iteration-scheme-502>`_
 
 * `library_004 <library_rules.html#library-004>`_
 * `library_005 <library_rules.html#library-005>`_
@@ -432,6 +430,7 @@ Rules Enforcing Case
 * `package_instantiation_504 <package_instantiation_rules.html#package-instantiation-504>`_
 
 * `parameter_specification_500 <parameter_specification_rules.html#parameter-specification-500>`_
+* `parameter_specification_501 <parameter_specification_rules.html#parameter-specification-501>`_
 
 * `port_010 <port_rules.html#port-010>`_
 * `port_017 <port_rules.html#port-017>`_

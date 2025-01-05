@@ -1,34 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg.rules import token_case_in_range_bounded_by_tokens
-
-lTokens = []
-lTokens.append(token.parameter_specification.in_keyword)
-
-oStartToken = token.for_generate_statement.for_keyword
-oEndToken = token.for_generate_statement.generate_keyword
+from vsg.deprecated_rule import Rule
 
 
-class rule_502(token_case_in_range_bounded_by_tokens):
+class rule_502(Rule):
     """
-    This rule checks the **in** keyword has proper case.
-
-    |configuring_uppercase_and_lowercase_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       gen_label : for lv_thing IN t_thing generate
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       gen_label : for lv_thing in t_thing generate
+    This rule has been deprecated and replaced with rule `parameter_specification_501 <parameter_specification_rules.html#parameter-specification-501>`_.
     """
 
     def __init__(self):
-        super().__init__(lTokens, oStartToken, oEndToken)
-        self.groups.append("case::keyword")
+        Rule.__init__(self)
+        self.message.append("Rule " + self.unique_id + " has been replaced with parameter_specification_501.")
