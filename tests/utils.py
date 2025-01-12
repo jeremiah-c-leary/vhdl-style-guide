@@ -17,7 +17,7 @@ def debug_lines(oFile, iLineNumber, iNumberOfLines):
 
 
 def read_file(sFilename, lLines, bStrip=True):
-    with open(sFilename) as oFile:
+    with open(sFilename, encoding="utf-8") as oFile:
         for sLine in oFile:
             if bStrip:
                 lLines.append(sLine.rstrip())
