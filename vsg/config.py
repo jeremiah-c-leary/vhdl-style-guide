@@ -142,16 +142,26 @@ def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     for iIndex, sFilename in enumerate(tempConfiguration["file_list"]):
         validate_file_exists(sFilename, sConfigFilename)
         try:
-            for sGlobbedFilename in glob.glob(utils.expand_filename(sFilename), recursive=True):
+            for sGlobbedFilename in glob_filenames(sFilename):
                 dReturn["file_list"].append(sGlobbedFilename)
         except TypeError:
             sKey = list(sFilename.keys())[0]
-            for sGlobbedFilename in glob.glob(utils.expand_filename(sKey), recursive=True):
+            for sGlobbedFilename in glob_filenames(sKey):
                 dTemp = {}
                 dTemp[sGlobbedFilename] = {}
                 dTemp[sGlobbedFilename].update(tempConfiguration["file_list"][iIndex][sKey])
                 dReturn["file_list"].append(dTemp)
     return dReturn
+
+
+def glob_filenames(sFilename):
+    files = glob.glob(utils.expand_filename(sFilename), recursive=True)
+    return replace_backslash_with_forward_slash(files)
+    return(temp)
+
+
+def replace_backslash_with_forward_slash(lStrings):
+    return [f.replace("\\", "/") for f in lStrings]
 
 
 def write_invalid_configuration_junit_file(sFileName, sJUnitFileName):
