@@ -346,6 +346,7 @@ class testVsg(unittest.TestCase):
         self.assertEqual(iExitStatus, 1)
 
     @unittest.skipIf(utils.is_user_admin(), "We are root. Root always has permissions so test will fail.")
+    @unittest.skipIf(utils.is_windows(), "Permission based tests can not be run on Windows.")
     def test_no_permission_configuration_file(self):
         sNoPermissionFile = os.path.join(self._tmpdir.name, "no_permission.yml")
         pathlib.Path(sNoPermissionFile).touch(mode=0o222, exist_ok=True)
