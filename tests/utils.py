@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import ctypes
 import os
+import platform
 import pprint
 import re
 import sys
@@ -146,3 +147,9 @@ def is_user_admin():
 
 def vsg_exec():
     return [sys.executable, "bin/vsg"]
+
+
+def is_windows():
+    if platform.system() == "Windows":
+        return True
+    return False

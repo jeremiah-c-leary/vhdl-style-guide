@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import pathlib
+import stat
 import subprocess
 import sys
 import unittest
@@ -37,6 +38,7 @@ class testOSError(unittest.TestCase):
         self.assertEqual(exit_status, 1)
 
     @unittest.skipIf(utils.is_user_admin(), "We are root. Root always has permissions so test will fail.")
+    @unittest.skipIf(utils.is_windows(), "Permissions can not be tested on windows.")
     def test_file_no_permission(self):
         sNoPermissionTempFile = os.path.join(self._tmpdir.name, sNoPermissionFile)
 
