@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+import ctypes
 import os
+import platform
 import pprint
 import re
+import sys
 
 import yaml
 
@@ -15,7 +18,7 @@ def debug_lines(oFile, iLineNumber, iNumberOfLines):
 
 
 def read_file(sFilename, lLines, bStrip=True):
-    with open(sFilename) as oFile:
+    with open(sFilename, encoding="utf-8") as oFile:
         for sLine in oFile:
             if bStrip:
                 lLines.append(sLine.rstrip())
@@ -128,3 +131,25 @@ def replace_total_count_summary(lOutput):
 
 def replace_token(lOutput, src, dst):
     return [line.replace(src, dst) for line in lOutput]
+
+
+def is_user_admin():
+    if "SUDO_UID" in os.environ.keys():
+        return True
+
+    try:
+        return os.getuid() == 0
+    except AttributeError:
+        pass
+
+    return ctypes.windll.shell32.IsUserAnAdmin() == 1
+
+
+def vsg_exec():
+    return [sys.executable, "bin/vsg"]
+
+
+def is_windows():
+    if platform.system() == "Windows":
+        return True
+    return False

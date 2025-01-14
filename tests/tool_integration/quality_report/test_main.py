@@ -10,9 +10,11 @@ from tempfile import TemporaryDirectory
 from unittest import mock
 
 from vsg import __main__
+from tests import utils
 
 
 class testMain(unittest.TestCase):
+
     def setUp(self):
         self._tmpdir = TemporaryDirectory()
 
@@ -47,4 +49,11 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
         self.assertTrue(os.path.isfile(actual_file))
-        self.assertTrue(filecmp.cmp(actual_file, os.path.join("tests", "tool_integration", "quality_report", "expected.json")))
+
+        lActual = []
+        lActual = utils.read_file(actual_file, lActual)
+
+        lExpected = []
+        lExpected = utils.read_file(os.path.join("tests", "tool_integration", "quality_report", "expected.json"), lExpected)
+
+        self.assertEqual(lExpected, lActual)
