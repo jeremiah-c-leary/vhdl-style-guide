@@ -9,12 +9,11 @@ from io import StringIO
 from tempfile import TemporaryDirectory
 from unittest import mock
 
-from vsg import __main__
 from tests import utils
+from vsg import __main__
 
 
 class testMain(unittest.TestCase):
-
     def setUp(self):
         self._tmpdir = TemporaryDirectory()
 
