@@ -29,6 +29,10 @@ Rules Enforcing Whitespace Rule Group
 * `case_004 <../case_rules.html#case-004>`_
 * `case_005 <../case_rules.html#case-005>`_
 * `case_006 <../case_rules.html#case-006>`_
+* `case_generate_alternative_100 <../case_generate_alternative_rules.html#case-generate-alternative-100>`_
+* `case_generate_alternative_101 <../case_generate_alternative_rules.html#case-generate-alternative-101>`_
+* `case_generate_statement_100 <../case_generate_statement_rules.html#case-generate-statement-100>`_
+* `case_generate_statement_101 <../case_generate_statement_rules.html#case-generate-statement-101>`_
 * `comment_004 <../comment_rules.html#comment-004>`_
 * `comment_100 <../comment_rules.html#comment-100>`_
 * `component_002 <../component_rules.html#component-002>`_
