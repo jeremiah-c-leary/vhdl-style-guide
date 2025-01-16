@@ -95,7 +95,11 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
     try:
         oRules = rule_list.rule_list(oVhdlFile, oConfig.severity_list, commandLineArguments.local_rules)
     except OSError as e:
-        sOutputStd = f"ERROR: encountered {e.__class__.__name__}, {e.args[1]} " + commandLineArguments.local_rules + " when trying to open local rules file."
+        sOutputStd = (
+            f"ERROR: encountered {e.__class__.__name__}, No such file or directory "
+            + commandLineArguments.local_rules
+            + " when trying to open local rules file."
+        )
         sOutputErr = None
         return 1, None, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
 

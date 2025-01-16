@@ -23,8 +23,17 @@ There are several options to these rules:
 .. |camelCase_value| replace::
    :code:`camelCase`
 
+.. |relaxedCamelCase_value| replace::
+   :code:`relaxedCamelCase`
+
 .. |PascalCase_value| replace::
    :code:`PascalCase`
+
+.. |RelaxedPascalCase_value| replace::
+   :code:`RelaxedPascalCase`
+
+.. |PascalSnakeCase_value| replace::
+   :code:`Pascal_Snake_Case`
 
 .. |regex_value| replace::
    :code:`regex`
@@ -39,16 +48,25 @@ There are several options to these rules:
    |upper_or_lower_value| = Allow upper or lower case
 
 .. |case_option__camelCase| replace::
-   |camelCase_value| = Enforce camelCase
+   |camelCase_value| = Enforce camelCase with two allowed uppercase characters in a row
+
+.. |case_option__relaxedCamelCase| replace::
+   |relaxedCamelCase_value| = Enforce camelCase with any number of uppercase characters in a row
 
 .. |case_option__PascalCase| replace::
-   |PascalCase_value| = Enforce PascalCase
+   |PascalCase_value| = Enforce PascalCase with two allowed uppercase characters in a row
+
+.. |case_option__RelaxedPascalCase| replace::
+   |RelaxedPascalCase_value| = Enforce PascalCase with any number of uppercase characters in a row
+
+.. |case_option__PascalSnakeCase| replace::
+   |PascalSnakeCase_value| = Enforce Pascal_Snake_Case
 
 .. |case_option__regex| replace::
    |regex_value| = Enforce user defined regex
 
 .. |case_values| replace::
-   |upper_value|, |lower_value|, |upper_or_lower_value|, |camelCase_value|, |PascalCase_value|, |regex_value|
+   |upper_value|, |lower_value|, |upper_or_lower_value|, |camelCase_value|, |relaxedCamelCase_value|, |PascalCase_value|, |RelaxedPascalCase_value|, |regex_value|
 
 .. |case_default_value| replace::
    |lower_value|
@@ -101,24 +119,27 @@ There are several options to these rules:
 .. |regex_description| replace::
    Enforce case based on regex string
 
-+----------------------------+------------------------+-----------------------+-----------------------------------+
-| Option                     | Values                 | Default Value         | Description                       |
-+============================+========================+=======================+===================================+
-| |case_option|              | |case_values|          | |case_default_value|  | * |case_option__upper|            |
-|                            |                        |                       | * |case_option__lower|            |
-|                            |                        |                       | * |case_option__upper_or_lower|   |
-|                            |                        |                       | * |case_option__camelCase|        |
-|                            |                        |                       | * |case_option__PascalCase|       |
-|                            |                        |                       | * |case_option__regex|            |
-+----------------------------+------------------------+-----------------------+-----------------------------------+
-| |prefix_exceptions_option| | |pe_values|            | |pe_default_value|    | |pe_description|                  |
-+----------------------------+------------------------+-----------------------+-----------------------------------+
-| |suffix_exceptions_option| | |se_values|            | |se_default_value|    | |se_description|                  |
-+----------------------------+------------------------+-----------------------+-----------------------------------+
-| |case_exceptions_option|   | |ce_values|            | |ce_default_value|    | |ce_description|                  |
-+----------------------------+------------------------+-----------------------+-----------------------------------+
-| |regex_option|             | |regex_values|         | |regex_default_value| | |regex_description|               |
-+----------------------------+------------------------+-----------------------+-----------------------------------+
++----------------------------+---------------------------+-----------------------+------------------------------------+
+| Option                     | Values                    | Default Value         | Description                        |
++============================+===========================+=======================+====================================+
+| |case_option|              | |upper_value|             | |case_default_value|  | * |case_option__upper|             |
+|                            | |lower_value|             |                       | * |case_option__lower|             |
+|                            | |upper_or_lower_value|    |                       | * |case_option__upper_or_lower|    |
+|                            | |camelCase_value|         |                       | * |case_option__camelCase|         |
+|                            | |relaxedCamelCase_value|  |                       | * |case_option__relaxedCamelCase|  |
+|                            | |PascalCase_value|        |                       | * |case_option__PascalCase|        |
+|                            | |RelaxedPascalCase_value| |                       | * |case_option__RelaxedPascalCase| |
+|                            | |PascalSnakeCase_value|   |                       | * |case_option__PascalSnakeCase|   |
+|                            | |regex_value|             |                       | * |case_option__regex|             |
++----------------------------+---------------------------+-----------------------+------------------------------------+
+| |prefix_exceptions_option| | |pe_values|               | |pe_default_value|    | |pe_description|                   |
++----------------------------+---------------------------+-----------------------+------------------------------------+
+| |suffix_exceptions_option| | |se_values|               | |se_default_value|    | |se_description|                   |
++----------------------------+---------------------------+-----------------------+------------------------------------+
+| |case_exceptions_option|   | |ce_values|               | |ce_default_value|    | |ce_description|                   |
++----------------------------+---------------------------+-----------------------+------------------------------------+
+| |regex_option|             | |regex_values|            | |regex_default_value| | |regex_description|                |
++----------------------------+---------------------------+-----------------------+------------------------------------+
 
 This is an example of how to configure these options.
 
