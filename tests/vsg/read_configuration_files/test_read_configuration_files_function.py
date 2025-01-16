@@ -144,5 +144,6 @@ class test_read_configuration_function(unittest.TestCase):
         for iIndex, item in enumerate(dExpected["file_list"]):
             if isinstance(item, dict):
                 sKey = list(item.keys())[0]
+
                 iActualIndex = get_index_of_dictionary_in_list(dActual["file_list"], sKey)
                 self.assertEqual(dActual["file_list"][iActualIndex], dExpected["file_list"][iIndex])
