@@ -15,7 +15,7 @@ class rule_100(Rule):
 
     .. code-block:: vhdl
 
-      case data is
+      case data generate
 
         when   3 =>
 
@@ -23,7 +23,7 @@ class rule_100(Rule):
 
     .. code-block:: vhdl
 
-      case data is
+      case data generate
 
         when 3 =>
     """
