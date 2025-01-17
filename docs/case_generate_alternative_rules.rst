@@ -16,7 +16,7 @@ This rule checks for a single space after the **when** keyword.
 
 .. code-block:: vhdl
 
-  case data is
+  case data generate
 
     when   3 =>
 
@@ -24,7 +24,7 @@ This rule checks for a single space after the **when** keyword.
 
 .. code-block:: vhdl
 
-  case data is
+  case data generate
 
     when 3 =>
 
@@ -41,7 +41,7 @@ This rule checks for a single space before the **=>** operator.
 
 .. code-block:: vhdl
 
-  case data is
+  case data generate
 
     when 3   =>
 
@@ -49,7 +49,7 @@ This rule checks for a single space before the **=>** operator.
 
 .. code-block:: vhdl
 
-  case data is
+  case data generate
 
     when 3 =>
 
