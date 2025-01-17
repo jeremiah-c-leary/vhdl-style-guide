@@ -16,14 +16,14 @@ This rule checks for a single space after the **case** keyword.
 
 .. code-block:: vhdl
 
-   case    data is
+   case    data generate
 
 
 **Fix**
 
 .. code-block:: vhdl
 
-   case data is
+   case data generate
 
 case_generate_statement_101
 ###########################
