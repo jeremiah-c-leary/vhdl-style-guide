@@ -15,14 +15,14 @@ class rule_100(Rule):
 
     .. code-block:: vhdl
 
-       case    data is
+       case    data generate
 
 
     **Fix**
 
     .. code-block:: vhdl
 
-       case data is
+       case data generate
     """
 
     def __init__(self):
