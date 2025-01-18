@@ -23,6 +23,10 @@ def convert_expected_indent_to_smart_tab(dExpectedIndent, indent_size, iFirstLin
         dExpectedIndent[iLine] = "\t" + dExpectedIndent[iLine][iFirstLineIndent:]
 
 
+def convert_tabs_to_spaces(sString, indent_size):
+    return sString.replace("\t", " "*indent_size)
+
+
 def get_first_line(dActualIndent):
     lLines = list(dActualIndent.keys())
     lLines.sort()

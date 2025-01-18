@@ -51,7 +51,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
                 continue
             iLine, lTokens = utils.get_toi_parameters(oToi)
             oToi.set_meta_data("oFirstLineIndentToken", alignment_utils.get_first_line_indent_token(iLine, oFile))
-            oToi.set_meta_data("iAssignColumn", oFile.get_column_of_token_index(oToi.get_start_index()))
+            oToi.set_meta_data("iAssignColumn", oFile.get_column_of_token_index(oToi.get_start_index(), self.indent_size))
             lReturn.append(oToi)
 
         return lReturn
@@ -64,9 +64,9 @@ class multiline_alignment_between_tokens(alignment.Rule):
             iAssignColumn = oToi.get_meta_data("iAssignColumn")
             bStartsWithParen = alignment_utils.starts_with_paren(lTokens)
             oFirstLineIndentToken = oToi.get_meta_data("oFirstLineIndentToken")
+            sFirstLineIndentTokenValue = alignment_utils.convert_tabs_to_spaces(oFirstLineIndentToken.get_value(), self.indent_size)
             iFirstLineIndent = len(oFirstLineIndentToken.get_value())
             iColumn = iAssignColumn
-
             dActualIndent = {}
 
             dActualIndent[iLine] = iFirstLineIndent
@@ -237,13 +237,6 @@ def indents_match(iActual, iExpected):
     if iActual == iExpected:
         return True
     return False
-
-
-def calculate_start_column(oFile, oToi):
-    iReturn = oFile.get_column_of_token_index(oToi.get_start_index())
-    iReturn += len(oToi.get_tokens()[0].get_value())
-    iReturn += 1
-    return iReturn
 
 
 def is_token_before_carriage_return(tToken, lTokens):
