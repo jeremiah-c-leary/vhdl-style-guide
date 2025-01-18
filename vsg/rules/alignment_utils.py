@@ -36,6 +36,10 @@ def get_first_line_info(iLine, oFile):
     return iLine, iIndent
 
 
+def get_first_line_indent_token(iLine, oFile):
+    return oFile.get_tokens_from_line(iLine).get_tokens()[0]
+
+
 def get_last_line(dActualIndent):
     lLines = list(dActualIndent.keys())
     lLines.sort()
