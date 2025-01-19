@@ -1,10 +1,10 @@
 .. include:: includes.rst
 
-File Type Declaration Rules
----------------------------
+File Type Definition Rules
+--------------------------
 
-file_type_declaration_500
-#########################
+file_type_definition_500
+########################
 
 |phase_6| |error| |case| |case_keyword|
 
@@ -29,8 +29,8 @@ This rule checks the **file** keyword has proper case.
 
    begin
 
-file_type_declaration_501
-#########################
+file_type_definition_501
+########################
 
 |phase_6| |error| |case| |case_keyword|
 

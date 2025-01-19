@@ -100,8 +100,8 @@ Rules Enforcing Case Rule Group
 * `file_open_information_502 <../file_open_information_rules.html#file-open-information-502>`_
 * `file_002 <../file_rules.html#file-002>`_
 * `file_500 <../file_rules.html#file-500>`_
-* `file_type_declaration_500 <../file_type_declaration_rules.html#file-type-declaration-500>`_
-* `file_type_declaration_501 <../file_type_declaration_rules.html#file-type-declaration-501>`_
+* `file_type_definition_500 <../file_type_definition_rules.html#file-type-definition-500>`_
+* `file_type_definition_501 <../file_type_definition_rules.html#file-type-definition-501>`_
 * `for_generate_statement_500 <../for_generate_statement_rules.html#for-generate-statement-500>`_
 * `for_generate_statement_501 <../for_generate_statement_rules.html#for-generate-statement-501>`_
 * `function_004 <../function_rules.html#function-004>`_
