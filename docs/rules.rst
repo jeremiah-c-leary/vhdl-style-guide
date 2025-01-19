@@ -42,6 +42,8 @@ The rules are divided into categories depending on the part of the VHDL code bei
    external_signal_name_rules.rst
    external_variable_name_rules.rst
    file_rules.rst
+   file_open_information_rules.rst
+   file_type_declaration_rules.rst
    for_loop_rules.rst
    for_generate_statement_rules.rst
    function_rules.rst
