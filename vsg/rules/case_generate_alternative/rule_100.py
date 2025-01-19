@@ -4,10 +4,10 @@ from vsg import token
 from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
-lTokens.append(token.case_statement_alternative.when_keyword)
+lTokens.append(token.case_generate_alternative.when_keyword)
 
 
-class rule_004(Rule):
+class rule_100(Rule):
     """
     This rule checks for a single space after the **when** keyword.
 
@@ -17,7 +17,7 @@ class rule_004(Rule):
 
     .. code-block:: vhdl
 
-      case data is
+      case data generate
 
         when   3 =>
 
@@ -25,7 +25,7 @@ class rule_004(Rule):
 
     .. code-block:: vhdl
 
-      case data is
+      case data generate
 
         when 3 =>
     """

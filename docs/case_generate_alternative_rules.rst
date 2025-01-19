@@ -3,6 +3,56 @@
 Case Generate Alternative Rules
 -------------------------------
 
+case_generate_alternative_100
+#############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **when** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  case data generate
+
+    when   3 =>
+
+**Fix**
+
+.. code-block:: vhdl
+
+  case data generate
+
+    when 3 =>
+
+case_generate_alternative_101
+#############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **=>** operator.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  case data generate
+
+    when 3   =>
+
+**Fix**
+
+.. code-block:: vhdl
+
+  case data generate
+
+    when 3 =>
+
 case_generate_alternative_300
 #############################
 
