@@ -22,6 +22,7 @@ Rules Enforcing Case::Name Rule Group
 * `entity_008 <../entity_rules.html#entity-008>`_
 * `entity_012 <../entity_rules.html#entity-012>`_
 * `entity_specification_503 <../entity_specification_rules.html#entity-specification-503>`_
+* `file_500 <file_rules.html#file-500>`_
 * `function_017 <../function_rules.html#function-017>`_
 * `function_506 <../function_rules.html#function-506>`_
 * `function_507 <../function_rules.html#function-507>`_

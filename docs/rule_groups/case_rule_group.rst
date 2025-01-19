@@ -95,7 +95,11 @@ Rules Enforcing Case Rule Group
 * `external_constant_name_500 <../external_constant_name_rules.html#external-constant-name-500>`_
 * `external_signal_name_500 <../external_signal_name_rules.html#external-signal-name-500>`_
 * `external_variable_name_500 <../external_variable_name_rules.html#external-variable-name-500>`_
+* `file_open_information_500 <../file_open_information_rules.html#file-open-information-500>`_
+* `file_open_information_501 <../file_open_information_rules.html#file-open-information-501>`_
+* `file_open_information_502 <../file_open_information_rules.html#file-open-information-502>`_
 * `file_002 <../file_rules.html#file-002>`_
+* `file_500 <../file_rules.html#file-500>`_
 * `for_generate_statement_500 <../for_generate_statement_rules.html#for-generate-statement-500>`_
 * `for_generate_statement_501 <../for_generate_statement_rules.html#for-generate-statement-501>`_
 * `function_004 <../function_rules.html#function-004>`_

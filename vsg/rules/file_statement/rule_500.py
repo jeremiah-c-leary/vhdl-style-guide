@@ -9,7 +9,7 @@ lTokens.append(token.file_declaration.identifier)
 
 class rule_500(token_case):
     """
-    This rule checks the identifier has proper case.
+    This rule checks the file identifier has proper case.
 
     |configuring_uppercase_and_lowercase_rules_link|
 
