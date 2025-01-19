@@ -155,7 +155,6 @@ def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
 def glob_filenames(sFilename):
     files = glob.glob(utils.expand_filename(sFilename), recursive=True)
     return replace_backslash_with_forward_slash(files)
-    return temp
 
 
 def replace_backslash_with_forward_slash(lStrings):
