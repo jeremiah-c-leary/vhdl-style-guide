@@ -10,6 +10,7 @@ lTokens.append(token.case_statement.case_label)
 class rule_300(token_indent):
     """
     This rule checks the indentation of the label.
+
     **Violation**
 
     .. code-block:: vhdl

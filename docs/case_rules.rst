@@ -539,6 +539,7 @@ case_300
 |phase_4| |error| |indent|
 
 This rule checks the indentation of the label.
+
 **Violation**
 
 .. code-block:: vhdl
