@@ -4,7 +4,7 @@ from vsg import token
 from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
-lTokens.append(token.case_statement.when_keyword)
+lTokens.append(token.case_statement_alternative.when_keyword)
 
 
 class rule_004(Rule):
