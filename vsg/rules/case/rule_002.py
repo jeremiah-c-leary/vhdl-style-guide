@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg.rules.whitespace_between_tokens import Rule
-from vsg.token import case_statement as token
+from vsg import token
+from vsg.rules.whitespace_after_token import Rule
+
+lTokens = []
+lTokens.append(token.case_statement.case_keyword)
 
 
 class rule_002(Rule):
@@ -26,6 +28,4 @@ class rule_002(Rule):
     """
 
     def __init__(self):
-        Rule.__init__(self)
-        self.left_token = token.case_keyword
-        self.right_token = parser.todo
+        Rule.__init__(self, lTokens)

@@ -95,3 +95,32 @@ This rule checks for a single space before the identifier.
 .. code-block:: vhdl
 
    file defaultImage : load_file_type open read_mode is load_file_name;
+
+file_500
+########
+
+|phase_6| |error| |case| |case_name|
+
+This rule checks the file identifier has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+     file DEFAULTIMAGE : load_file_type open read_mode is load_file_name;
+
+   begin
+
+**Fix**
+
+.. code-block:: vhdl
+
+   architecture rtl of fifo is
+
+     file defaultImage : load_file_type open read_mode is load_file_name;
+
+   begin

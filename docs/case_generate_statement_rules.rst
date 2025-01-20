@@ -3,6 +3,49 @@
 Case Generate Statement Rules
 -----------------------------
 
+case_generate_statement_100
+###########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **case** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   case    data generate
+
+
+**Fix**
+
+.. code-block:: vhdl
+
+   case data generate
+
+case_generate_statement_101
+###########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **generate** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   case data    generate
+
+**Fix**
+
+.. code-block:: vhdl
+
+   case data generate
+
 case_generate_statement_400
 ###########################
 
