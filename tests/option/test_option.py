@@ -46,6 +46,7 @@ class testRuleMethods(unittest.TestCase):
         dExpected["fixable"] = True
         dExpected["severity"] = "Error"
         dExpected["option_name"] = "yes"
+        dExpected["user_error_message"] = ""
 
         dActual = self.oRule.get_configuration()
 

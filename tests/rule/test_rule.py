@@ -87,6 +87,7 @@ class testRuleMethods(unittest.TestCase):
         dExpected["indent_style"] = "spaces"
         dExpected["phase"] = 3
         dExpected["severity"] = "Error"
+        dExpected["user_error_message"] = ""
         dActual = oRule.get_configuration()
         for sKey in dExpected.keys():
             self.assertEqual(dActual[sKey], dExpected[sKey])
