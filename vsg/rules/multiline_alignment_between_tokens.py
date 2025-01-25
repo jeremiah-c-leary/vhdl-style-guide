@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser, token, violation
+from vsg import parser, token, utils as vsg_utils, violation
 from vsg.rule_group import alignment
 from vsg.rules import alignment_utils, utils as rules_utils
 from vsg.vhdlFile import utils
-from vsg import utils as vsg_utils
 
 
 class multiline_alignment_between_tokens(alignment.Rule):
@@ -59,7 +58,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
     def _analyze(self, lToi):
         for oToi in lToi:
-#            print('<-- oToi ' + '-'*80)
+            #            print('<-- oToi ' + '-'*80)
             iLine, lTokens = utils.get_toi_parameters(oToi)
 
             iFirstLine = iLine
@@ -121,7 +120,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
             iFirstTokenLength = len(lTokens[0].get_value())
 
-#            print(f'dActualIndent = {dActualIndent}')
+            #            print(f'dActualIndent = {dActualIndent}')
 
             if not align_paren(self) and align_left(self):
                 dExpectedIndent = _analyze_align_left_yes_align_paren_no(
@@ -171,12 +170,12 @@ class multiline_alignment_between_tokens(alignment.Rule):
                     self.bIgnoreStartParen,
                 )
 
-#            print(f'dExpectedIndent = {dExpectedIndent}')
+            #            print(f'dExpectedIndent = {dExpectedIndent}')
 
             if self.indent_style == "smart_tabs":
                 alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
 
-#            print(f'dExpectedIndent = {dExpectedIndent}')
+            #            print(f'dExpectedIndent = {dExpectedIndent}')
 
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] is None:
@@ -331,7 +330,7 @@ def _analyze_align_left_no_align_paren_yes(
     bIgnoreStartParen,
     iIndentAfterParen,
 ):
-#    print('<-- _analyze_align_left_no_align_paren_yes')
+    #    print('<-- _analyze_align_left_no_align_paren_yes')
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
@@ -352,7 +351,7 @@ def _analyze_align_left_no_align_paren_yes(
         for dParen in lParens:
             if dParen["line"] == iLine:
                 lTemp.append(dParen)
-#        print(f'lColumn = {lColumn}')
+        #        print(f'lColumn = {lColumn}')
         iTemp = lColumn[-1]
         for dTemp in lTemp:
             if dTemp["type"] == "open":
@@ -375,7 +374,7 @@ def _analyze_align_left_no_align_paren_yes(
         if len(lTemp) == 0:
             dExpectedIndent[iLine + 1] = lColumn[-1] + iIgnoreStartParenOffset
 
-#    print(f'dExpectedIndent = {dExpectedIndent}')
+    #    print(f'dExpectedIndent = {dExpectedIndent}')
     return convert_numbers_to_spaces(dExpectedIndent)
 
 

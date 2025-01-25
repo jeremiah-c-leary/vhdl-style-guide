@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import utils
+from vsg import parser, utils
 
 
 def get_column_of_token_index(iToken, indent_size, lAllTokens, oTokenMap):
