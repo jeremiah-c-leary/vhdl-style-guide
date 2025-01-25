@@ -53,7 +53,7 @@ class multiline_array_alignment(alignment.Rule):
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1])
             aToi = remove_non_arrays(self.assignment_operator, aToi)
-            populate_toi_parameters(aToi, oFile)
+            populate_toi_parameters(aToi, oFile, self.indent_size)
             aToi = remove_single_line_assignments(aToi)
             lToi = utils.combine_two_token_class_lists(lToi, aToi)
         return lToi
@@ -208,7 +208,7 @@ def set_last_line_number(oToi):
     oToi.iLastLine = iLine
 
 
-def populate_toi_parameters(aToi, oFile):
+def populate_toi_parameters(aToi, oFile, indent_size):
     for oToi in aToi:
         oToi.iFirstLine = oToi.iLine
         lTemp = oFile.get_tokens_from_line(oToi.iLine)
@@ -217,7 +217,7 @@ def populate_toi_parameters(aToi, oFile):
 
         oToi.iFirstLineIndentIndex = oFile.get_indent_of_line_at_index(oToi.get_start_index())
 
-        oToi.iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
+        oToi.iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index(), indent_size)
         set_last_line_number(oToi)
 
 

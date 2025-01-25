@@ -47,7 +47,7 @@ class rule_014(Rule):
         for oToi in lToi:
             iLine, lTokens = utils.get_toi_parameters(oToi)
             oToi.set_meta_data("oFirstLineIndentToken", alignment_utils.get_first_line_indent_token(iLine, oFile))
-            oToi.set_meta_data("iAssignColumn", oFile.get_column_of_token_index(oToi.get_start_index()))
+            oToi.set_meta_data("iAssignColumn", oFile.get_column_of_token_index(oToi.get_start_index(), self.indent_size))
 
         return lToi
 

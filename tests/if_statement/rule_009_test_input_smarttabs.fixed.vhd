@@ -8,12 +8,12 @@ begin
 	begin
 
 		if (a = '1' or b = '0' and
-		  c = '1' xor d = '1' and
-		  g = x) then
+		    c = '1' xor d = '1' and
+		    g = x) then
 			b <= '0';
 		elsif (a = '1' or b = '0' and
-		  c = '1' xor d = '1' and
-		  g = x) then
+		       c = '1' xor d = '1' and
+		       g = x) then
 			b <= '1';
 		else
 			b <= '1';
@@ -22,12 +22,12 @@ begin
 		-- Violations below
 
 		if (a = '1' or b = '0' and
-		  c = '1' xor d = '1' and
-		  g = x) then
+		    c = '1' xor d = '1' and
+		    g = x) then
 			b <= '0';
 		elsif (a = '1' or b = '0' and
-		  c = '1' xor d = '1' and
-		  g = x) then
+		       c = '1' xor d = '1' and
+		       g = x) then
 			b <= '1';
 		else
 			b <= '1';
@@ -50,7 +50,6 @@ begin
 		    b = 0) then
 			b <= '1';
 		end if;
-
 	end process;
 
 end architecture RTL;

@@ -17,10 +17,16 @@ def build_solution(sIndent):
 
 
 def convert_expected_indent_to_smart_tab(dExpectedIndent, indent_size, iFirstLineIndent):
+#    print('<-- convert_expected_indent_to_smart_tab')
+#    print(f'iFirstLineIndent = {iFirstLineIndent}')
+#    print(f'indent_size = {indent_size}')
     iFirstLine = get_first_line(dExpectedIndent)
     iLastLine = get_last_line(dExpectedIndent)
+    iIndentLevel = int(iFirstLineIndent/indent_size)
+#    print(f'iIndentLevel = {iIndentLevel}')
     for iLine in range(iFirstLine + 1, iLastLine + 1):
-        dExpectedIndent[iLine] = "\t" + dExpectedIndent[iLine][iFirstLineIndent:]
+        dExpectedIndent[iLine] = ("\t" * iIndentLevel) + dExpectedIndent[iLine][iFirstLineIndent:]
+#    print('--> convert_expected_indent_to_smart_tab')
 
 
 def get_first_line(dActualIndent):
