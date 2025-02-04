@@ -11,7 +11,4 @@ def detect(oDataStructure):
     if context_clause.detect(oDataStructure):
         return True
 
-    #    if library_unit.detect(oDataStructure):
-    #        return True
-
-    return False
+    return library_unit.detect(oDataStructure)

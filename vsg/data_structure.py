@@ -76,3 +76,8 @@ class design_file:
         self.advance_to_next_token()
         if self.current_token_lower_value_is(sString):
             self.replace_current_token_with(token)
+
+    def replace_next_token_with_if_not(self, sString, token):
+        self.advance_to_next_token()
+        if not self.current_token_lower_value_is(sString):
+            self.replace_current_token_with(token)

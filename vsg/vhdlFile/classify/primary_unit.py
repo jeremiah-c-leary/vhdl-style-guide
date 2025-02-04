@@ -9,7 +9,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     primary_unit ::=
         entity_declaration
@@ -20,24 +20,24 @@ def detect(iToken, lObjects):
       | PSL_Verification_Unit
     """
 
-    iReturned = context_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
+    if context_declaration.detect(oDataStructure):
+        return True
 
-    iReturned = entity_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
 
-    iReturned = package_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
-
-    iReturned = package_instantiation_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
-
-    iReturned = configuration_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
-
-    return iToken
+#    iReturned = entity_declaration.detect(iToken, lObjects)
+#    if iReturned != iToken:
+#        return iReturned
+#
+#    iReturned = package_declaration.detect(iToken, lObjects)
+#    if iReturned != iToken:
+#        return iReturned
+#
+#    iReturned = package_instantiation_declaration.detect(iToken, lObjects)
+#    if iReturned != iToken:
+#        return iReturned
+#
+#    iReturned = configuration_declaration.detect(iToken, lObjects)
+#    if iReturned != iToken:
+#        return iReturned
+#
+#    return iToken
