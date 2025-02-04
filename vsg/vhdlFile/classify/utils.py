@@ -3,16 +3,14 @@
 from vsg.vhdlFile import utils
 
 
-def classify_selected_name(iToken, lObjects, token):
-    iTokenIndex = utils.find_next_token(iToken, lObjects)
-    lTokens = lObjects[iTokenIndex].get_value().split(".")
-    if lObjects[iTokenIndex + 1].get_value().startswith('"'):
-        lTokens[-1] = lObjects.pop(iTokenIndex + 1).get_value()
+def classify_selected_name(oDataStructure, token):
+    oDataStructure.advance_to_next_token()
+    lTokens = oDataStructure.get_current_token_value().split(".")
+    if oDataStructure.get_next_token_value().startswith('"'):
+        lTokens[-1] = oDataStructure.get_next_token_value()
+        oDataStructure.remove_token_at_offset(1)
     lNewTokens = build_selected_name_token_list(lTokens, token)
-    replace_item_in_list_with_a_list_at_index(lObjects, lNewTokens, iTokenIndex)
-    iNewIndex = iToken + len(lNewTokens)
-
-    return iNewIndex
+    oDataStructure.replace_current_token_with_list_of_tokens(lNewTokens)
 
 
 def detect_production(oDesignFile, production):

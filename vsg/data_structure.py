@@ -36,6 +36,9 @@ class design_file:
     def get_current_token_value(self):
         return self.lAllObjects[self.iCurrent].get_value()
 
+    def get_next_token_value(self):
+        return self.lAllObjects[self.iCurrent + 1].get_value()
+
     def increment_current_index(self):
         self.iCurrent += 1
 
@@ -47,9 +50,16 @@ class design_file:
         self.advance_to_next_token()
         return self.get_current_token_lower_value() in lString
 
+    def remove_token_at_offset(self, iOffset):
+        self.lAllObjects.pop(self.iCurrent + iOffset)
+
     def replace_current_token_with(self, token):
         self.lAllObjects[self.iCurrent] = token(self.get_current_token_value())
         self.increment_current_index()
+
+    def replace_current_token_with_list_of_tokens(self, lTokens):
+        self.lAllObjects.pop(self.get_current_index())
+        self.lAllObjects[self.get_current_index() : self.get_current_index()] = lTokens
 
     def replace_next_token_with(self, token):
         self.advance_to_next_token()
