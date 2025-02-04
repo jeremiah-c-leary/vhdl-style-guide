@@ -15,6 +15,13 @@ def classify_selected_name(iToken, lObjects, token):
     return iNewIndex
 
 
+def detect_production(oDesignFile, production):
+    while oDesignFile.advance_to_next_token():
+        if not production.detect(oDesignFile):
+            return False
+    return False
+
+
 def build_selected_name_token_list(lTokens, token):
     if is_use_clause_selected_name(token):
         return build_use_clause_selected_name_token_list(lTokens, token)

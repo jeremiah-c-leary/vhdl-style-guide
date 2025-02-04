@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import context_item
+from vsg.vhdlFile.classify import context_item, utils
 
 
-def detect(oDesignFile):
+def detect(oDataStructure):
     """
     context_clause ::=
         { context_item }
     """
-    return utils.detect_production(oDesignFile, context_item)
+    return utils.detect_production(oDataStructure, context_item)

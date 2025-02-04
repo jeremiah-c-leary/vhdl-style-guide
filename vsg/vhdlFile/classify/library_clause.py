@@ -1,30 +1,23 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import library_clause as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import logical_name_list
 
 
-def detect(oDesignFile):
+def detect(oDataStructure):
     """
     library_clause ::=
         library logic_name_list ;
     """
-    if oDesignFile.is_next_token("library"):
-        return classify(oDesignFile)
+    if oDataStructure.is_next_token("library"):
+        classify(oDataStructure)
+        return True
     return False
 
-#    if utils.is_next_token("library", iToken, lObjects):
-#        iCurrent = classify(iToken, lObjects)
-#        return iCurrent
-#    return iToken
 
+def classify(oDataStructure):
+    oDataStructure.assign_next_token_required("library", token.keyword)
 
-def classify(oDesignFile):
-    utils.assign_next_token_required("library", token.keyword, oDesignFile)
+    logical_name_list.classify_until([";"], oDataStructure)
 
-    logical_name_list.classify_until([";"], oDesignFile)
-
-    utils.assign_next_token_required(";", token.semicolon, oDesignFile)
-
-    return True
+    oDataStructure.assign_next_token_required(";", token.semicolon)

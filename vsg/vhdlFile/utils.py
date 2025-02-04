@@ -35,6 +35,7 @@ def assign_tokens_until_ignoring_paren(sToken, token, iToken, lObjects):
 def assign_next_token(token, oDesignFile):
     oDesignFile.replace_next_token_with(token)
 
+
 def assign_token(lObjects, iToken, token):
     iCurrent = find_next_token(iToken, lObjects)
     try:
@@ -69,25 +70,6 @@ def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
         iCurrent += 1
         return iCurrent
     return iToken
-
-
-def assign_next_token_required(sToken, token, oDesignFile):
-    if oDesignFile.is_next_token(sToken):
-        oDesignFile.replace_current_token_with(token)
-    else:
-        print_error_message(sToken, token, oDesignFile)
-
-#    oDesignFile.advance_to_next_token()
-#
-#    
-#
-#    iCurrent = find_next_token(iToken, lObjects)
-#    if object_value_is(lObjects, iCurrent, sToken):
-#        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-#        return iCurrent + 1
-#    else:
-#        print_error_message(sToken, token, iCurrent, lObjects)
-#    return iToken
 
 
 def assign_tokens_until_matching_closing_paren(token, iToken, lObjects):
@@ -308,15 +290,6 @@ def find_previous_non_whitespace_token(iToken, lObjects):
             continue
         return iIndex
     return iCurrent
-
-
-def detect_production(oDesignFile, production):
-    while oDesignFile.advance_to_next_token():
-
-        if not production.detect(oDesignFile):
-            return False
-
-    return False
 
 
 def has_label(iObject, lObjects):

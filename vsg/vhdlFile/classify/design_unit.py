@@ -3,15 +3,15 @@
 from vsg.vhdlFile.classify import context_clause, library_unit
 
 
-def detect(oDesignFile):
+def detect(oDataStructure):
     """
     design_unit ::=
         context_clause library_unit
     """
-    if context_clause.detect(oDesignFile):
+    if context_clause.detect(oDataStructure):
         return True
 
-#    if library_unit.detect(oDesignFile):
-#        return True
+    #    if library_unit.detect(oDataStructure):
+    #        return True
 
     return False
