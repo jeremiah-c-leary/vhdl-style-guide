@@ -16,7 +16,7 @@ def detect(oDataStructure):
 
 
 def classify(oDataStructure):
-    oDataStructure.replace_next_token_required("use", token.keyword)
+    oDataStructure.replace_current_token_with(token.keyword)
 
     while not oDataStructure.is_next_token(";"):
         utils.classify_selected_name(oDataStructure, token)

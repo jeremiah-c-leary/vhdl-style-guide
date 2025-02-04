@@ -16,7 +16,7 @@ def detect(oDataStructure):
 
 
 def classify(oDataStructure):
-    oDataStructure.replace_next_token_required("library", token.keyword)
+    oDataStructure.replace_current_token_with(token.keyword)
 
     logical_name_list.classify_until([";"], oDataStructure)
 

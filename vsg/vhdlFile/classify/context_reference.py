@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import context_reference as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import utils as classify_utils
+from vsg.vhdlFile.classify import utils
 
 
 def detect(oDataStructure):
@@ -18,10 +17,11 @@ def detect(oDataStructure):
 
 
 def classify(oDataStructure):
-    oDataStructure.replace_next_token_with(token.keyword)
-    classify_utils.classify_selected_name(oDataStructure, token)
+    oDataStructure.replace_current_token_with(token.keyword)
+    utils.classify_selected_name(oDataStructure, token)
+
     while oDataStructure.is_next_token(","):
-        oDataStructure.replace_next_token_with(token.comma)
-        classify_utils.classify_selected_name(oDataStructure, token)
+        oDataStructure.replace_current_token_with(token.comma)
+        utils.classify_selected_name(oDataStructure, token)
 
     oDataStructure.replace_next_token_required(";", token.semicolon)
