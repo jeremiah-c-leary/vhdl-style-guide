@@ -7,13 +7,12 @@ def New(lAllObjects):
 
 
 class design_file:
-
     def __init__(self, lAllObjects):
         self.lAllObjects = lAllObjects
         self.iCurrent = 0
 
     def advance_to_next_token(self):
-        for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent::]):
+        for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent : :]):
             if type(oToken) == parser.item:
                 self.iCurrent = self.iCurrent + iIndex
                 return True
