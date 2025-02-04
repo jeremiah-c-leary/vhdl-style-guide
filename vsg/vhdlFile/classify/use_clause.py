@@ -16,10 +16,10 @@ def detect(oDataStructure):
 
 
 def classify(oDataStructure):
-    oDataStructure.assign_next_token_required("use", token.keyword)
+    oDataStructure.replace_next_token_required("use", token.keyword)
 
     while not oDataStructure.is_next_token(";"):
         utils.classify_selected_name(oDataStructure, token)
         oDataStructure.replace_next_token_with_if(",", token.comma)
 
-    oDataStructure.assign_next_token_required(";", token.semicolon)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

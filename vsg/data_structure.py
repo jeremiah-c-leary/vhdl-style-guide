@@ -18,12 +18,6 @@ class design_file:
                 return True
         return False
 
-    def assign_next_token_required(self, sToken, token):
-        if self.is_next_token(sToken):
-            self.replace_current_token_with(token)
-        else:
-            print_error_message(sToken, token, oDesignFile)
-
     def current_token_lower_value_is(self, sString):
         return self.get_current_token_lower_value() == sString
 
@@ -60,6 +54,12 @@ class design_file:
     def replace_current_token_with_list_of_tokens(self, lTokens):
         self.lAllObjects.pop(self.get_current_index())
         self.lAllObjects[self.get_current_index() : self.get_current_index()] = lTokens
+
+    def replace_next_token_required(self, sToken, token):
+        if self.is_next_token(sToken):
+            self.replace_current_token_with(token)
+        else:
+            print_error_message(sToken, token, oDesignFile)
 
     def replace_next_token_with(self, token):
         self.advance_to_next_token()
