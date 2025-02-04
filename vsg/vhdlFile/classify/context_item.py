@@ -17,10 +17,4 @@ def detect(oDataStructure):
     if use_clause.detect(oDataStructure):
         return True
 
-    #    iCurrent = context_reference.detect(iToken, lObjects)
-    #    if iCurrent != iToken:
-    #        return iCurrent
-    #
-    #    return iToken
-
-    return False
+    return context_reference.detect(oDataStructure)

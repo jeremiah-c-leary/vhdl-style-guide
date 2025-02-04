@@ -5,23 +5,23 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import utils as classify_utils
 
 
-def detect(iCurrent, lObjects):
+def detect(oDataStructure):
     """
     context_reference ::=
         context selected_name { , selected_name } ;
     """
-    if utils.object_value_is(lObjects, iCurrent, "context"):
-        if not utils.find_in_range("is", iCurrent, ";", lObjects):
-            return classify(iCurrent, lObjects)
-    return iCurrent
+    if oDataStructure.is_next_token("context"):
+        if not oDataStructure.does_string_exist_before_string("is", ";"):
+            classify(oDataStructure)
+            return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("context", token.keyword, iToken, lObjects)
-    iCurrent = classify_utils.classify_selected_name(iCurrent, lObjects, token)
-    while utils.is_next_token(",", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(",", token.comma, iCurrent, lObjects)
-        iCurrent = classify_utils.classify_selected_name(iCurrent, lObjects, token)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.keyword)
+    classify_utils.classify_selected_name(oDataStructure, token)
+    while oDataStructure.is_next_token(","):
+        oDataStructure.replace_next_token_with(token.comma)
+        classify_utils.classify_selected_name(oDataStructure, token)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

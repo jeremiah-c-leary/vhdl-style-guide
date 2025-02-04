@@ -21,6 +21,13 @@ class design_file:
     def current_token_lower_value_is(self, sString):
         return self.get_current_token_lower_value() == sString
 
+    def does_string_exist_before_string(self, sFirst, sSecond):
+        for oToken in self.lAllObjects[self.iCurrent : :]:
+            if oToken.lower_value == sSecond:
+                return False
+            if oToken.lower_value == sFirst:
+                return True
+
     def get_current_index(self):
         return self.iCurrent
 
