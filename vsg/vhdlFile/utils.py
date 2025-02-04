@@ -32,15 +32,8 @@ def assign_tokens_until_ignoring_paren(sToken, token, iToken, lObjects):
     return None
 
 
-def assign_next_token(token, iToken, lObjects):
-    iCurrent = find_next_token(iToken, lObjects)
-    try:
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-    except TypeError:
-        lObjects[iCurrent] = token()
-    iCurrent += 1
-    return iCurrent
-
+def assign_next_token(token, oDesignFile):
+    oDesignFile.replace_next_token_with(token)
 
 def assign_token(lObjects, iToken, token):
     iCurrent = find_next_token(iToken, lObjects)
@@ -78,14 +71,23 @@ def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
     return iToken
 
 
-def assign_next_token_required(sToken, token, iToken, lObjects):
-    iCurrent = find_next_token(iToken, lObjects)
-    if object_value_is(lObjects, iCurrent, sToken):
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-        return iCurrent + 1
+def assign_next_token_required(sToken, token, oDesignFile):
+    if oDesignFile.is_next_token(sToken):
+        oDesignFile.replace_current_token_with(token)
     else:
-        print_error_message(sToken, token, iCurrent, lObjects)
-    return iToken
+        print_error_message(sToken, token, oDesignFile)
+
+#    oDesignFile.advance_to_next_token()
+#
+#    
+#
+#    iCurrent = find_next_token(iToken, lObjects)
+#    if object_value_is(lObjects, iCurrent, sToken):
+#        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+#        return iCurrent + 1
+#    else:
+#        print_error_message(sToken, token, iCurrent, lObjects)
+#    return iToken
 
 
 def assign_tokens_until_matching_closing_paren(token, iToken, lObjects):
@@ -308,17 +310,13 @@ def find_previous_non_whitespace_token(iToken, lObjects):
     return iCurrent
 
 
-def detect_submodule(iToken, lObjects, module):
-    iLast = -1
-    iReturn = iToken
-    while iLast != iReturn:
-        if is_next_token("end", iReturn, lObjects):
-            return iToken
-        iReturn = find_next_token(iReturn, lObjects)
-        iLast = iReturn
-        iReturn = module.detect(iReturn, lObjects)
+def detect_production(oDesignFile, production):
+    while oDesignFile.advance_to_next_token():
 
-    return iReturn
+        if not production.detect(oDesignFile):
+            return False
+
+    return False
 
 
 def has_label(iObject, lObjects):

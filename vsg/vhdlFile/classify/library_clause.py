@@ -5,22 +5,26 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import logical_name_list
 
 
-def detect(iToken, lObjects):
+def detect(oDesignFile):
     """
     library_clause ::=
         library logic_name_list ;
     """
-    if utils.is_next_token("library", iToken, lObjects):
-        iCurrent = classify(iToken, lObjects)
-        return iCurrent
-    return iToken
+    if oDesignFile.is_next_token("library"):
+        return classify(oDesignFile)
+    return False
+
+#    if utils.is_next_token("library", iToken, lObjects):
+#        iCurrent = classify(iToken, lObjects)
+#        return iCurrent
+#    return iToken
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("library", token.keyword, iToken, lObjects)
+def classify(oDesignFile):
+    utils.assign_next_token_required("library", token.keyword, oDesignFile)
 
-    iCurrent = logical_name_list.classify_until([";"], iCurrent, lObjects)
+    logical_name_list.classify_until([";"], oDesignFile)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    utils.assign_next_token_required(";", token.semicolon, oDesignFile)
 
-    return iCurrent
+    return True

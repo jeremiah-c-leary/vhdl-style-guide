@@ -4,16 +4,11 @@ from vsg.token import logical_name_list as token
 from vsg.vhdlFile import utils
 
 
-def classify_until(lUntils, iToken, lObjects):
+def classify_until(lUntils, oDesignFile):
     """
     logical_name_list ::=
         logical_name { , logical_name }
     """
-    iCurrent = iToken
-    iLast = 0
-    while iLast != iCurrent:
-        iLast = iCurrent
-        if lObjects[utils.find_next_token(iCurrent, lObjects)].get_lower_value() in lUntils:
-            return iCurrent
-        iCurrent = utils.assign_next_token_if(",", token.comma, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.logical_name, iCurrent, lObjects)
+    while not oDesignFile.is_next_token_one_of(lUntils):
+        oDesignFile.replace_next_token_with(token.logical_name)
+        oDesignFile.replace_next_token_with_if(",", token.comma)

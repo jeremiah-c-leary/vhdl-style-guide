@@ -3,17 +3,15 @@
 from vsg.vhdlFile.classify import context_clause, library_unit
 
 
-def detect(iToken, lObjects):
+def detect(oDesignFile):
     """
     design_unit ::=
         context_clause library_unit
     """
-    iCurrent = context_clause.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if context_clause.detect(oDesignFile):
+        return True
 
-    iCurrent = library_unit.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+#    if library_unit.detect(oDesignFile):
+#        return True
 
-    return iToken
+    return False

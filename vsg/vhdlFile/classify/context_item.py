@@ -3,7 +3,7 @@
 from vsg.vhdlFile.classify import context_reference, library_clause, use_clause
 
 
-def detect(iToken, lObjects):
+def detect(oDesignFile):
     """
     context_item ::=
         library_clause
@@ -11,16 +11,17 @@ def detect(iToken, lObjects):
       | context_reference
     """
 
-    iCurrent = library_clause.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if library_clause.detect(oDesignFile):
+        return True
 
-    iCurrent = use_clause.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+#    iCurrent = use_clause.detect(oDesignFile)
+#    if iCurrent != iToken:
+#        return iCurrent
+#
+#    iCurrent = context_reference.detect(iToken, lObjects)
+#    if iCurrent != iToken:
+#        return iCurrent
+#
+#    return iToken
 
-    iCurrent = context_reference.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    return iToken
+    return False
