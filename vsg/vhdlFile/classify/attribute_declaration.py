@@ -5,14 +5,15 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import type_mark
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     attribute_declaration ::=
         attribute identifier : type_mark ;
     """
-    if utils.are_next_consecutive_tokens(["attribute", None, ":"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["attribute", None, ":"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

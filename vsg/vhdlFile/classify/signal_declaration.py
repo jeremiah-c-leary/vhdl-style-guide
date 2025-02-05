@@ -10,16 +10,16 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     signal_declaration ::=
         signal identifier_list : subtype_indication [ signal_kind ] [ := expression ] ;
     """
 
-    if utils.is_next_token("signal", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_token("signal"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

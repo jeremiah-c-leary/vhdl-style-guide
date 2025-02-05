@@ -13,9 +13,9 @@ def classify_selected_name(oDataStructure, token):
     oDataStructure.replace_current_token_with_list_of_tokens(lNewTokens)
 
 
-def detect_production(oDesignFile, production):
-    while oDesignFile.advance_to_next_token():
-        if not production.detect(oDesignFile):
+def detect_production(oDataStructure, production):
+    while oDataStructure.advance_to_next_token():
+        if not production.detect(oDataStructure):
             return False
     return False
 

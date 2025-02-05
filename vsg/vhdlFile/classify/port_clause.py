@@ -5,24 +5,23 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import port_list
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     port_clause ::=
         port ( port_list ) ;
     """
 
-    if utils.are_next_consecutive_tokens(["port", "("], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["port", "("]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("port", token.port_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.port_keyword)
+    oDataStructure.replace_next_token_with(token.open_parenthesis)
 
-    iCurrent = port_list.classify(iCurrent, lObjects)
+    port_list.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(")", token.close_parenthesis)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

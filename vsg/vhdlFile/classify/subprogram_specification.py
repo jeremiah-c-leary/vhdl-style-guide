@@ -3,19 +3,14 @@
 from vsg.vhdlFile.classify import function_specification, procedure_specification
 
 
-def detect(iCurrent, lObjects):
+def detect(oDataStructure):
     """
     subprogram_specification ::=
         procedure_specification
       | function_specification
     """
 
-    iReturn = procedure_specification.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    if procedure_specification.detect(oDataStructure):
+        return True
 
-    iReturn = function_specification.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
-
-    return iCurrent
+    return function_specification.detect(oDataStructure)

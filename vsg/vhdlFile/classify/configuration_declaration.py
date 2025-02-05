@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import block_configuration, configuration_declarative_part
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     configuration_declaration ::=
       configuration identifier of *entity*_name is
@@ -15,9 +15,10 @@ def detect(iToken, lObjects):
       end [ configuration ] [ *configuration*_simple_name ] ;
     """
 
-    if utils.is_next_token("configuration", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("configuration"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

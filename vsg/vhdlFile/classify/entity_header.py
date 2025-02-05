@@ -4,15 +4,13 @@
 from vsg.vhdlFile.classify import generic_clause, port_clause
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     entity_header ::=
         [ *formal*_generic_clause ]
         [ *formal*_port_clause ]
     """
 
-    iReturn = generic_clause.detect(iToken, lObjects)
+    generic_clause.detect(oDataStructure)
 
-    iReturn = port_clause.detect(iReturn, lObjects)
-
-    return iReturn
+    port_clause.detect(oDataStructure)

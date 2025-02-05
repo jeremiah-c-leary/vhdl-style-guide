@@ -5,16 +5,17 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect, identifier
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     package_instantiation_declaration ::=
         package identifier is new *uninstantiated_package*_name
             [ generic_map_aspect ] ;
     """
 
-    if utils.are_next_consecutive_tokens(["package", None, "is", "new"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["package", None, "is", "new"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

@@ -5,16 +5,16 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, identifier_list, subtype_indication
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     constant_declaration ::=
         constant identifier_list : subtype_indication [ := expression ] ;
     """
 
-    if utils.is_next_token("constant", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_token("constant"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

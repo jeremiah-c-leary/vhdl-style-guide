@@ -9,7 +9,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     subprogram_body ::=
         subprogram_specification is
@@ -19,9 +19,10 @@ def detect(iToken, lObjects):
         end [ subprogram_kind ] [ designator ] ;
     """
 
-    if utils.is_next_token("is", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("is"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

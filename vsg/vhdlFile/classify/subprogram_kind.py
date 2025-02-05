@@ -4,21 +4,19 @@ from vsg.token import subprogram_kind as token
 from vsg.vhdlFile import utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     subprogram_kind ::=
         procedure | function
     """
 
-    if utils.is_next_token("procedure", iToken, lObjects):
+    if oDataStructure.is_next_token("procedure"):
         return True
-    if utils.is_next_token("function", iToken, lObjects):
+    if oDataStructure.is_next_token("function"):
         return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_if("procedure", token.procedure_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("function", token.function_keyword, iToken, lObjects)
-
-    return iCurrent
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_if("procedure", token.procedure_keyword)
+    oDataStructure.replace_next_token_if("function", token.function_keyword)

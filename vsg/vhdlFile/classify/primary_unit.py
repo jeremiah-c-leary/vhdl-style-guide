@@ -23,21 +23,13 @@ def detect(oDataStructure):
     if context_declaration.detect(oDataStructure):
         return True
 
+    if entity_declaration.detect(oDataStructure):
+        return True
 
-#    iReturned = entity_declaration.detect(iToken, lObjects)
-#    if iReturned != iToken:
-#        return iReturned
-#
-#    iReturned = package_declaration.detect(iToken, lObjects)
-#    if iReturned != iToken:
-#        return iReturned
-#
-#    iReturned = package_instantiation_declaration.detect(iToken, lObjects)
-#    if iReturned != iToken:
-#        return iReturned
-#
-#    iReturned = configuration_declaration.detect(iToken, lObjects)
-#    if iReturned != iToken:
-#        return iReturned
-#
-#    return iToken
+    if package_declaration.detect(oDataStructure):
+        return True
+
+    if package_instantiation_declaration.detect(oDataStructure):
+        return True
+
+    return configuration_declaration.detect(oDataStructure)

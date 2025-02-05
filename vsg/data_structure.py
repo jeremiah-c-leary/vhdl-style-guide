@@ -10,6 +10,7 @@ class design_file:
     def __init__(self, lAllObjects):
         self.lAllObjects = lAllObjects
         self.iCurrent = 0
+        self.iSeek = 0
 
     def advance_to_next_token(self):
         for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent : :]):
@@ -17,6 +18,14 @@ class design_file:
                 self.iCurrent = self.iCurrent + iIndex
                 return True
         return False
+
+    def are_next_consecutive_tokens(self, lTokens):
+        for sToken in lTokens:
+            self.seek_to_next_token()
+            if sToken is not None:
+                if not self.seek_token_lower_value_is(sToken):
+                    return False
+        return True
 
     def current_token_lower_value_is(self, sString):
         return self.get_current_token_lower_value() == sString
@@ -27,6 +36,13 @@ class design_file:
                 return False
             if oToken.lower_value == sFirst:
                 return True
+
+    def exists_in_next_n_tokens(self, sString, iNumTokens):
+        for x in range(0, iNumTokens):
+            self.seek_to_next_token()
+            if self.seek_token_lower_value_is(sString):
+                return True
+        return False
 
     def get_current_index(self):
         return self.iCurrent
@@ -39,6 +55,9 @@ class design_file:
 
     def get_next_token_value(self):
         return self.lAllObjects[self.iCurrent + 1].get_value()
+
+    def get_seek_token_lower_value(self):
+        return self.lAllObjects[self.iSeek].lower_value
 
     def increment_current_index(self):
         self.iCurrent += 1
@@ -81,3 +100,16 @@ class design_file:
         self.advance_to_next_token()
         if not self.current_token_lower_value_is(sString):
             self.replace_current_token_with(token)
+
+    def seek_to_next_token(self):
+        # jcl - might need to watch out for going past the end of the lAllObjects list
+        if self.iSeek < self.iCurrent:
+            self.iSeek = self.iCurrent
+        for iIndex, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
+            if type(oToken) == parser.item:
+                self.iSeek = self.iSeek + iIndex
+                return True
+        return False
+
+    def seek_token_lower_value_is(self, sString):
+        return self.get_seek_token_lower_value() == sString

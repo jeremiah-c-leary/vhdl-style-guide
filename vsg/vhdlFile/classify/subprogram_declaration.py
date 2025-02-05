@@ -5,14 +5,13 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import subprogram_specification
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     subprogram_declaration ::=
         subprogram_specification ;
     """
 
-    iCurrent = subprogram_specification.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        if utils.is_next_token(";", iCurrent, lObjects):
-            return utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-    return iCurrent
+    if subprogram_specification.detect(oDataStructure):
+        oDataStructure.replace_next_token_required(";", token.semicolon)
+        return True
+    return False

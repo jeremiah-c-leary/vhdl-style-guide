@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import formal_parameter_list, subprogram_header
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     procedure_specification ::=
         procedure designator
@@ -13,10 +13,11 @@ def detect(iToken, lObjects):
             [ [ parameter ] ( formal_parameter_list ) ]
     """
 
-    if utils.is_next_token("procedure", iToken, lObjects):
-        if not utils.find_in_next_n_tokens("new", 4, iToken, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("procedure"):
+        if not oDataStructure.exists_in_next_n_tokens("new", 4):
+            classify(oDataStructure)
+            return True
+    return False
 
 
 def classify(iToken, lObjects):

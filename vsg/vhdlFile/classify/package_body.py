@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import package_body_declarative_part
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     package_body ::=
         package body *package*_simple_name is
@@ -13,9 +13,10 @@ def detect(iToken, lObjects):
         end [ package body ] [ *package*_simple_name ] ;
     """
 
-    if utils.are_next_consecutive_tokens(["package", "body", None, "is"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["package", "body", None, "is"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

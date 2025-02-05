@@ -5,20 +5,19 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect, signature, subprogram_kind
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     subprogram_instantiation_declaration ::=
         subprogram_kind identifier is new uninstantiated_subprogram_name [ signature ]
             [ generic_map_aspect ] ;
     """
 
-    if subprogram_kind.detect(iToken, lObjects):
-        if utils.find_in_next_n_tokens("is", 3, iToken, lObjects):
-            if utils.find_in_next_n_tokens("new", 4, iToken, lObjects):
-                return classify(iToken, lObjects)
-        else:
-            return iToken
-    return iToken
+    if subprogram_kind.detect(oDataStructure):
+        if oDataStructure.find_in_next_n_tokens("is", 3):
+            if oDataStructure.find_in_next_n_tokens("new", 4):
+                classify(oDataStructure)
+                return True
+    return False
 
 
 def classify(iToken, lObjects):

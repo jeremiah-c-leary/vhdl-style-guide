@@ -5,16 +5,16 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import name, signature, subtype_indication
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     alias_declaration ::=
         alias alias_designator [ : subtype_indication ] is name [ signature ] ;
     """
 
-    if utils.is_next_token("alias", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_token("alias"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

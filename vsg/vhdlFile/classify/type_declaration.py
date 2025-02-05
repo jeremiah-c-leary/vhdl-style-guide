@@ -4,19 +4,14 @@
 from vsg.vhdlFile.classify import full_type_declaration, incomplete_type_declaration
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     type_declaration ::=
         full_type_declaration
       | incomplete_type_declaration
     """
 
-    iReturn = full_type_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if full_type_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = incomplete_type_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return incomplete_type_declaration.detect(oDataStructure)

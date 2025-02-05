@@ -5,15 +5,16 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier, type_definition
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     full_type_declaration ::=
         type identifier is type_definition ;
     """
 
-    if utils.are_next_consecutive_tokens(["type", None, "is"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["type", None, "is"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

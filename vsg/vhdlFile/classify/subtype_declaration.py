@@ -5,16 +5,16 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier, subtype_indication
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     subtype_declaration ::=
         subtype identifier is subtype_indication ;
     """
 
-    if utils.is_next_token("subtype", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_token("subtype"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

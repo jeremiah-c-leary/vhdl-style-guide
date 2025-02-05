@@ -5,18 +5,16 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, identifier_list, subtype_indication
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     variable_declaration ::=
         [ shared ] variable identifier_list : subtype_indication [ := expression ] ;
     """
 
-    if utils.is_next_token("shared", iToken, lObjects):
-        return classify(iToken, lObjects)
-    elif utils.is_next_token("variable", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_token_one_of(["shared", "variable"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

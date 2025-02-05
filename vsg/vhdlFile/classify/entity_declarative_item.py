@@ -21,7 +21,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     entity_declarative_item ::=
         subprogram_declaration
@@ -48,69 +48,52 @@ def detect(iToken, lObjects):
       | PSL_Clock_Declaration
     """
 
-    iCurrent = subprogram_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        iCurrent = subprogram_body.detect(iCurrent, lObjects)
-        return iCurrent
+    if subprogram_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = subprogram_instantiation_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if subprogram_body.detect(oDataStructure):
+        return True
 
-    iCurrent = package_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if subprogram_instantiation_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = package_body.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if package_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = package_instantiation_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if package_body.detect(oDataStructure):
+        return True
 
-    iCurrent = type_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if package_instantiation_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = subtype_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if type_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = constant_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if subtype_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = signal_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if constant_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = variable_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if signal_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = file_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if variable_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = alias_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if file_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = component_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if alias_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = attribute_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if component_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = attribute_specification.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if attribute_declaration.detect(oDataStructure):
+        return True
 
-    iCurrent = use_clause.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if attribute_specification.detect(oDataStructure):
+        return True
 
-    return iToken
+    return use_clause.detect(oDataStructure)

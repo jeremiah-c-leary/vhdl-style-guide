@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import formal_parameter_list, subprogram_header, type_mark
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     function_specification ::=
         [ pure | impure ] function designator
@@ -13,10 +13,11 @@ def detect(iToken, lObjects):
             [ [ parameter ] ( formal_parameter_list ) ] return type_mark
     """
 
-    if utils.is_next_token_one_of(["pure", "impure", "function"], iToken, lObjects):
-        if not utils.find_in_next_n_tokens("new", 4, iToken, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token_one_of(["pure", "impure", "function"]):
+        if not oDataStructure.exists_in_next_n_tokens("new", 4):
+            classify(oDataStructure)
+            return True
+    return False
 
 
 def classify(iToken, lObjects):

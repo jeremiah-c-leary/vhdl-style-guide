@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_clause, port_clause
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     component_declaration ::=
         component identifier [ is ]
@@ -14,10 +14,10 @@ def detect(iToken, lObjects):
         end component [ *component*_simple_name ] ;
     """
 
-    if utils.is_next_token("component", iToken, lObjects):
-        return classify(iToken, lObjects)
-    else:
-        return iToken
+    if oDataStructure.is_next_token("component"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

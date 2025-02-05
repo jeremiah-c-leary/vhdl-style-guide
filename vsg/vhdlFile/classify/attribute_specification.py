@@ -5,14 +5,15 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_specification, expression
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     attribute_specification ::=
         attribute attribute_designator of entity_specification is expression ;
     """
-    if utils.are_next_consecutive_tokens(["attribute", None, "of"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["attribute", None, "of"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):
