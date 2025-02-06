@@ -13,12 +13,9 @@ class design_file:
         self.sFilename = ""
         self.iCurrent = 0
         self.iSeek = 0
-        self.iLine = 1
 
     def advance_to_next_token(self):
         for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent : :]):
-            if type(oToken) == parser.carriage_return:
-                self.iLine += 1
             if type(oToken) == parser.item:
                 self.iCurrent = self.iCurrent + iIndex
                 return True
@@ -56,6 +53,17 @@ class design_file:
                 return False
             if oToken.lower_value == sFirst:
                 return True
+
+    def does_string_exist_before_seek_index(self, sString):
+        iParen = 0
+        for iIndex in range(self.get_current_index(), self.get_seek_index()):
+            if self.lAllObjects[iIndex].lower_value == "(":
+                iParen += 1
+            if self.lAllObjects[iIndex].lower_value == ")":
+                iParen -= 1
+            if iParen == 0 and self.lAllObjects[iIndex].lower_value == sString:
+                return True
+        return False
 
     def exists_in_next_n_tokens(self, sString, iNumTokens):
         self.iSeek = self.iCurrent
