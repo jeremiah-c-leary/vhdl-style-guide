@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import block_configuration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     block_specification,
     configuration_item,
     use_clause,
-    utils as c_utils,
+    utils,
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     block_configuration ::=
         for block_specification
@@ -19,22 +18,21 @@ def detect(iToken, lObjects):
         end for ;
     """
 
-    if utils.is_next_token("for", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("for"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("for", token.for_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.for_keyword)
 
-    iCurrent = block_specification.classify(iCurrent, lObjects)
+    block_specification.classify(oDataStructure)
 
-    iCurrent = c_utils.classify_production(use_clause, iCurrent, lObjects)
-    iCurrent = c_utils.classify_production(configuration_item, iCurrent, lObjects)
+    utils.classify_production(use_clause, oDataStructure)
+    utils.classify_production(configuration_item, oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("for", token.end_for_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.unspecified, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("for", token.end_for_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if_not(";", token.unspecified, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required(";", token.semicolon, iCurrent, lObjects)

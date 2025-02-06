@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import configuration_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import block_configuration, configuration_declarative_part
 
 
@@ -21,32 +20,26 @@ def detect(oDataStructure):
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = classify_opening_declaration(iToken, lObjects)
+def classify(oDataStructure):
+    classify_opening_declaration(oDataStructure)
 
-    iCurrent = configuration_declarative_part.detect(iCurrent, lObjects)
+    configuration_declarative_part.detect(oDataStructure)
 
-    iCurrent = block_configuration.detect(iCurrent, lObjects)
+    block_configuration.detect(oDataStructure)
 
-    iCurrent = classify_closing_declaration(iToken, lObjects)
-
-    return iCurrent
+    classify_closing_declaration(oDataStructure)
 
 
-def classify_opening_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("configuration", token.configuration_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("of", token.of_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.entity_name, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
-
-    return iCurrent
+def classify_opening_declaration(oDataStructure):
+    oDataStructure.replace_next_token_with(token.configuration_keyword)
+    oDataStructure.replace_next_token_with(token.identifier)
+    oDataStructure.replace_next_token_required("of", token.of_keyword)
+    oDataStructure.replace_next_token_with(token.entity_name)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
 
-def classify_closing_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("configuration", token.end_configuration_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.configuration_simple_name, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+def classify_closing_declaration(oDataStructure):
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_if("configuration", token.end_configuration_keyword)
+    oDataStructure.replace_next_token_if_not(";", token.configuration_simple_name)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

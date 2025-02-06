@@ -3,7 +3,7 @@
 from vsg.vhdlFile.classify import attribute_specification, group_declaration, use_clause
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     configuration_declarative_item ::=
         use_clause
@@ -11,16 +11,10 @@ def detect(iToken, lObjects):
       | group_declaration
     """
 
-    iReturn = use_clause.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if use_clause.detect(oDataStructure):
+        return True
 
-    iReturn = attribute_specification.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if attribute_specification.detect(oDataStructure):
+        return True
 
-    iReturn = group_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return group_declaration.detect(oDataStructure)
