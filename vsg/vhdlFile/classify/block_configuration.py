@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import block_configuration as token
-from vsg.vhdlFile.classify import (
-    block_specification,
-    configuration_item,
-    use_clause,
-    utils,
-)
+from vsg.vhdlFile.classify import block_specification, configuration_item, use_clause
 
 
 def detect(oDataStructure):
@@ -29,8 +24,8 @@ def classify(oDataStructure):
 
     block_specification.classify(oDataStructure)
 
-    utils.classify_production(use_clause, oDataStructure)
-    utils.classify_production(configuration_item, oDataStructure)
+    use_clause.detect(oDataStructure)
+    configuration_item.detect(oDataStructure)
 
     oDataStructure.replace_next_token_required("end", token.end_keyword, iCurrent, lObjects)
     oDataStructure.replace_next_token_required("for", token.end_for_keyword, iCurrent, lObjects)
