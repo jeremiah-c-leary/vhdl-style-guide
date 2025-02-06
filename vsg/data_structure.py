@@ -54,12 +54,12 @@ class design_file:
             if oToken.lower_value == sFirst:
                 return True
 
-    def does_string_exist_before_seek_index(self, sString):
+    def does_string_exist_before_seek_index_honoring_parenthesis_hierarchy(self, sString):
         iParen = 0
         for iIndex in range(self.get_current_index(), self.get_seek_index()):
             if self.lAllObjects[iIndex].lower_value == "(":
                 iParen += 1
-            if self.lAllObjects[iIndex].lower_value == ")":
+            elif self.lAllObjects[iIndex].lower_value == ")":
                 iParen -= 1
             if iParen == 0 and self.lAllObjects[iIndex].lower_value == sString:
                 return True

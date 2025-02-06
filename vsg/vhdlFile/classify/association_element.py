@@ -39,7 +39,7 @@ def classify(oDataStructure):
 
 
 def classify_formal_part(oDataStructure):
-    if oDataStructure.does_string_exist_before_seek_index("=>"):
+    if oDataStructure.does_string_exist_before_seek_index_honoring_parenthesis_hierarchy("=>"):
         formal_part.classify(oDataStructure, token.formal_part)
         oDataStructure.replace_next_token_with(token.assignment)
 
