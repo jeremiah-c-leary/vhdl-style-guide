@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import package_instantiation_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect, identifier
 
 
@@ -11,24 +10,21 @@ def detect(oDataStructure):
         package identifier is new *uninstantiated_package*_name
             [ generic_map_aspect ] ;
     """
-
     if oDataStructure.are_next_consecutive_tokens(["package", None, "is", "new"]):
         classify(oDataStructure)
         return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("package", token.package_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("package", token.package_keyword)
 
-    iCurrent = identifier.classify(iCurrent, lObjects)
+    identifier.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("new", token.new_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.uninstantiated_package_name, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
+    oDataStructure.replace_next_token_required("new", token.new_keyword)
+    oDataStructure.replace_next_token_with(token.uninstantiated_package_name)
 
-    iCurrent = generic_map_aspect.detect(iCurrent, lObjects)
+    generic_map_aspect.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

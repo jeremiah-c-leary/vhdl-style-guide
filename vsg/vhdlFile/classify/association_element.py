@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import formal_part
 
 
-def detect(iCurrent, lObjects):
+def detect(oDataStructure):
     """
     association_element ::=
         [ formal_part => ] actual_part
@@ -17,43 +17,38 @@ def detect(iCurrent, lObjects):
     """
     iOpenParenthesis = 0
     iCloseParenthesis = 0
-    iToken = iCurrent
-    while not utils.token_is_semicolon(iToken, lObjects):
-        iToken = utils.find_next_token(iToken, lObjects)
-        if utils.token_is_open_parenthesis(iToken, lObjects):
+    oDataStructure.align_seek_index()
+    while not oDataStructure.is_next_seek_token(";"):
+        oDataStructure.advance_to_next_seek_token()
+        if oDataStructure.seek_token_lower_value_is("("):
             iOpenParenthesis += 1
-        if utils.token_is_close_parenthesis(iToken, lObjects):
+        if oDataStructure.seek_token_lower_value_is(")"):
             iCloseParenthesis += 1
         if iCloseParenthesis == iOpenParenthesis + 1:
-            classify(iCurrent, iToken, lObjects, ")")
-            return iToken
+            classify(oDataStructure, ")")
+            return True
         if iCloseParenthesis == iOpenParenthesis:
-            if utils.token_is_comma(iToken, lObjects):
-                classify(iCurrent, iToken, lObjects, ",")
-                return iToken
-        iToken += 1
-    return iToken
+            if oDataStructure.seek_token_lower_value_is(","):
+                classify(oDataStructure, ",")
+                return True
+        oDataStructure.increment_seek_index()
+    return False
 
 
-def classify(iStart, iEnd, lObjects, sEnd):
-    iCurrent = iStart
+def classify(oDataStructure, sEnd):
     # Classify formal part if it exists
-    if formal_part_detected(iStart, iEnd, lObjects):
-        iCurrent = formal_part.classify(token.formal_part, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required("=>", token.assignment, iCurrent, lObjects)
+    if formal_part_detected(oDataStructure):
+        formal_part.classify(oDataStructure, token.formal_part)
+        oDataStructure.replace_next_token_with(token.assignment)
 
     # Classify actual part
-    for iCurrent in range(iCurrent, iEnd):
-        if utils.is_item(lObjects, iCurrent):
-            utils.assign_token(lObjects, iCurrent, token.actual_part)
-
-    return iCurrent
+    oDataStructure.replace_tokens_from_current_to_seek_with(token.actual_part)
 
 
-def formal_part_detected(iStart, iEnd, lObjects):
+def formal_part_detected(oDataStructure):
     iParen = 0
-    for iIndex in range(iStart, iEnd):
-        iParen = utils.update_paren_counter(iIndex, lObjects, iParen)
-        if iParen == 0 and utils.object_value_is(lObjects, iIndex, "=>"):
+    for iIndex in range(oDataStructure.get_current_index(), oDataStructure.get_seek_index()):
+        iParen = utils.update_paren_counter(iIndex, oDataStructure.lAllObjects, iParen)
+        if iParen == 0 and utils.object_value_is(oDataStructure.lAllObjects, iIndex, "=>"):
             return True
     return False

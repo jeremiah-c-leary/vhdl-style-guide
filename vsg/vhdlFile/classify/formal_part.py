@@ -4,7 +4,7 @@ from vsg import parser
 from vsg.vhdlFile import utils
 
 
-def classify(oTokenType, iToken, lObjects):
+def classify(oDataStructure, oTokenType):
     """
     formal_part ::=
          formal_designator
@@ -14,10 +14,8 @@ def classify(oTokenType, iToken, lObjects):
     An association element will end with =>
     """
     # Assign first token as formal part
-    iCurrent = utils.assign_next_token(oTokenType, iToken, lObjects)
+    oDataStructure.replace_next_token_with(oTokenType)
 
     # Assign remaining tokens as todo
-    while not utils.are_next_consecutive_tokens_ignoring_whitespace(["=>"], iCurrent, lObjects):
-        iCurrent = utils.assign_next_token(parser.todo, iCurrent, lObjects)
-
-    return iCurrent
+    while not oDataStructure.is_next_token("=>"):
+        oDataStructure.replace_next_token_with(parser.todo)
