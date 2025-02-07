@@ -18,7 +18,6 @@ def detect(oDataStructure):
 
 
 def classify(oDataStructure):
-
     oDataStructure.assign_next_token_with(token.for_keyword)
 
     component_specification.classify(oDataStructure)
