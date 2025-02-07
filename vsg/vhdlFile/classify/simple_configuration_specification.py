@@ -5,29 +5,27 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import binding_indication, component_specification
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     simple_configuration_specification ::=
         **for** component_specification binding_indication ;
         [ **end** **for** ; ]
     """
-    if utils.is_next_token("for", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("for"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = iToken
+def classify(oDataStructure):
 
-    iCurrent = utils.assign_next_token_required("for", token.for_keyword, iCurrent, lObjects)
+    oDataStructure.assign_next_token_with(token.for_keyword)
 
-    iCurrent = component_specification.classify(iCurrent, lObjects)
-    iCurrent = binding_indication.classify(iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    component_specification.classify(oDataStructure)
+    binding_indication.classify(oDataStructure)
+    oDataStructure.assign_next_token_required(";", token.semicolon)
 
-    if utils.is_next_token("end", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required("for", token.end_for_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    if utils.is_next_token("end"):
+        oDataStructure.assign_next_token_required("end", token.end_keyword)
+        oDataStructure.assign_next_token_required("for", token.end_for_keyword)
+        oDataStructure.assign_next_token_required(";", token.semicolon)

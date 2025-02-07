@@ -22,7 +22,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     block_declarative_item ::=
         subprogram_declaration
@@ -51,73 +51,52 @@ def detect(iToken, lObjects):
       | PSL_Clock_Declaration
     """
 
-    iReturn = subprogram_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        iReturn = subprogram_body.detect(iReturn, lObjects)
-        return iReturn
+    if subprogram_declaration.detect(oDataStructure):
+        return subprogram_body.detect(iReturn, lObjects)
 
-    iReturn = subprogram_instantiation_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if subprogram_instantiation_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = package_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if package_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = package_body.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if package_body.detect(oDataStructure):
+        return True
 
-    iReturn = package_instantiation_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if package_instantiation_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = type_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if type_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = subtype_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if subtype_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = constant_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if constant_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = signal_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if signal_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = variable_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if variable_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = file_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if file_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = alias_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if alias_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = component_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if component_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = attribute_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if attribute_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = attribute_specification.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if attribute_specification.detect(oDataStructure):
+        return True
 
-    iReturn = use_clause.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if use_clause.detect(oDataStructure):
+        return True
 
-    iReturn = configuration_specification.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return configuration_specification.detect(oDataStructure)

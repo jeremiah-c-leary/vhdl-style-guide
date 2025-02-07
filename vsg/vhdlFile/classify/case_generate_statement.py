@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import case_generate_alternative, expression
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     case_generate_statement ::=
         *generate*_label :
@@ -15,13 +15,14 @@ def detect(iToken, lObjects):
             end generate [ *generate*_label ] ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "case"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    if utils.are_next_consecutive_tokens(["case"], iToken, lObjects):
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "case"]):
+        classify(oDataStructure)
+        return True
+    if oDataStructure.is_next_token("case"):
         iIndex = utils.find_next_token(iToken, lObjects)
         oToken = token.case_keyword(lObjects[iToken].get_value())
         utils.print_error_message("generate_label", oToken, iIndex, lObjects)
-    return iToken
+    return False
 
 
 def classify(iToken, lObjects):

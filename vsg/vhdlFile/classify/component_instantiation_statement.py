@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect, instantiated_unit, port_map_aspect
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     component_instantiation_statement ::=
         instantiation_label :
@@ -13,15 +13,12 @@ def detect(iToken, lObjects):
                 [ generic_map_aspect ]
                 [ port_map_aspect ] ;
     """
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    iCurrent = utils.increment_token_count(iCurrent)
-    iCurrent = utils.find_next_token(iCurrent, lObjects)
-    if not utils.object_value_is(lObjects, iCurrent, ":"):
-        return iToken
-    iCurrent = utils.increment_token_count(iCurrent)
-    if instantiated_unit.detect(iCurrent, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    oDataStructure.align_seek_index()
+    oDataStructure.increment_seek_index()
+    oDataStructure.advance_to_next_seek_token()
+    if not oDataStructure.seek_token_lower_value_is(":"):
+        return False
+    return instantiated_unit.detect(oDataStructure)
 
 
 def classify(iToken, lObjects):

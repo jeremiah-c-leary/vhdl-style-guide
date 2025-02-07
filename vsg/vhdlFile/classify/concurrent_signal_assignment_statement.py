@@ -9,7 +9,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     concurrent_signal_assignment_statement ::=
         [ label : ] [ postponed ] concurrent_simple_signal_assignment
@@ -17,20 +17,22 @@ def detect(iToken, lObjects):
       | [ label : ] [ postponed ] concurrent_selected_signal_assignment
     """
 
-    iCurrent = iToken
-    if concurrent_selected_signal_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = utils.tokenize_postponed(iCurrent, lObjects, token.postponed_keyword)
-        iCurrent = concurrent_selected_signal_assignment.classify(iCurrent, lObjects)
+    if concurrent_selected_signal_assignment.detect(oDataStructure):
+        iCurrent = utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        iCurrent = utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
+        iCurrent = concurrent_selected_signal_assignment.classify(oDataStructure)
+        return True
 
-    elif concurrent_conditional_signal_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = utils.tokenize_postponed(iCurrent, lObjects, token.postponed_keyword)
-        iCurrent = concurrent_conditional_signal_assignment.classify(iCurrent, lObjects)
+    elif concurrent_conditional_signal_assignment.detect(oDataStructure):
+        iCurrent = utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        iCurrent = utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
+        iCurrent = concurrent_conditional_signal_assignment.classify(oDataStructure)
+        return True
 
-    elif concurrent_simple_signal_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = utils.tokenize_postponed(iCurrent, lObjects, token.postponed_keyword)
-        iCurrent = concurrent_simple_signal_assignment.classify(iCurrent, lObjects)
+    elif concurrent_simple_signal_assignment.detect(oDataStructure):
+        iCurrent = utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        iCurrent = utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
+        iCurrent = concurrent_simple_signal_assignment.classify(oDataStructure)
+        return True
 
-    return iCurrent
+    return False

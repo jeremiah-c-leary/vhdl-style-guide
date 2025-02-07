@@ -9,7 +9,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     block_statement ::=
     block_label :
@@ -21,9 +21,10 @@ def detect(iToken, lObjects):
         end block [ block_label ] ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "block"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "block"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

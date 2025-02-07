@@ -3,14 +3,10 @@
 from vsg.vhdlFile.classify import simple_configuration_specification
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     configuration_specification ::=
         simple_configuration_specification
       | compound_configuration_specification
     """
-    iReturn = simple_configuration_specification.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return simple_configuration_specification.detect(oDataStructure)

@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import delay_mechanism, expression, selected_waveforms
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     concurrent_selected_signal_assignment ::=
         with expression select [ ? ]
@@ -13,8 +13,8 @@ def detect(iToken, lObjects):
 
     The key to detecting this is looking for the **with** keyword before the **select** keyword.
     """
-    if utils.find_in_next_n_tokens("with", 4, iToken, lObjects):
-        if not utils.find_in_next_n_tokens("end", 1, iToken, lObjects):
+    if oDataStructure.exists_in_next_n_tokens("with", 4):
+        if not oDataStructure.exists_in_next_n_tokens("end", 1):
             return True
     return False
 

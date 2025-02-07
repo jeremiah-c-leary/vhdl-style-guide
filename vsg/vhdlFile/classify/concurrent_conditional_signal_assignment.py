@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import conditional_waveforms, delay_mechanism
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
 
     [ label : ] [ postponed ] concurrent_conditional_signal_assignment
@@ -21,23 +21,24 @@ def detect(iToken, lObjects):
     The key to detecting this is looking for an assignment <= followed by the keyword **when** before a semicolon.
     """
 
-    iCurrent = iToken
     bAssignmentFound = False
+    oDataStructure.align_seek_index()
+    while not oDataStructure.seek_token_lower_value_is(";"):
 
-    while lObjects[iCurrent].get_value() != ";":
-        if utils.is_item(lObjects, iCurrent):
-            if bAssignmentFound:
-                if utils.object_value_is(lObjects, iCurrent, "when"):
-                    return True
-            else:
-                if utils.object_value_is(lObjects, iCurrent, "when"):
-                    return False
-                if utils.object_value_is(lObjects, iCurrent, "with"):
-                    return False
+        if bAssignmentFound:
+            if utils.object_value_is(lObjects, iCurrent, "when"):
+                return True
+        else:
+            if oDataStructure.seek_token_lower_value_is("when"):
+                return False
+            if oDataStructure.seek_token_lower_value_is("with"):
+                return False
 
-            if utils.object_value_is(lObjects, iCurrent, "<=") and not bAssignmentFound:
+            if oDataStructure.seek_token_lower_value_is("<="):
                 bAssignmentFound = True
-        iCurrent += 1
+
+        oDataStructure.increment_seek_index()
+        oDataStructure.advance_to_next_seek_token()
 
     return False
 

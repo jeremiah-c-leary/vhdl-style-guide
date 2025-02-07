@@ -7,7 +7,7 @@ from vsg.vhdlFile.classify import actual_parameter_part
 lExceptions = ["<=", "end", "map", "component", "entity", "configuration", "if"]
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     Calling functions:
 
@@ -25,14 +25,12 @@ def detect(iToken, lObjects):
     Differentiating a procedure call from anything else is essentially the absence of keywords.
     """
 
-    iCurrent = iToken
-
-    while lObjects[iCurrent].get_value() != ";":
-        if utils.is_item(lObjects, iCurrent):
-            if lObjects[iCurrent].get_lower_value() in lExceptions:
-                return False
-        iCurrent += 1
-
+    oDataStructure.align_seek_index()
+    while not oDataStructure.seek_token_lower_value_is(";"):
+        if oDataStructure.get_seek_token_lower_value() in lExceptions:
+            return False
+        oDataStructure.increment_seek_index()
+        oDataStructure.advance_to_next_seek_token()
     return True
 
 

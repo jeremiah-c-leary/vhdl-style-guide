@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import condition, generate_statement_body
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     if_generate_statement ::=
         *generate*_label :
@@ -18,13 +18,14 @@ def detect(iToken, lObjects):
             end generate [ *generate*_label ] ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "if"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    if utils.are_next_consecutive_tokens(["if"], iToken, lObjects):
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "if"]):
+        classify(oDataStructure)
+        return True
+    if oDataStructure.is_next_token("if"):
         iIndex = utils.find_next_token(iToken, lObjects)
         oToken = token.if_keyword(lObjects[iToken].get_value())
         utils.print_error_message("generate_label", oToken, iIndex, lObjects)
-    return iToken
+    return False
 
 
 def classify(iToken, lObjects):

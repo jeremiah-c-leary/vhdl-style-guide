@@ -4,10 +4,11 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import block_declarative_item
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     architecture_declarative_part ::=
         { block_declarative_item }
     """
 
-    return utils.detect_submodule(iToken, lObjects, block_declarative_item)
+    while block_declarative_item.detect(oDataStructure):
+        pass

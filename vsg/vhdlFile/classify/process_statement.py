@@ -9,7 +9,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     process_statement ::=
         [ *process*_label : ]
@@ -19,10 +19,11 @@ def detect(iToken, lObjects):
                 process_statement_part
             end [ postponed ] process [ *process*_label ] ;
     """
-    if utils.find_in_next_n_tokens("process", 4, iToken, lObjects):
-        if not utils.find_in_next_n_tokens(";", 3, iToken, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.exists_in_next_n_tokens("process", 4):
+        if not oDataStructure.exists_in_next_n_tokens(";", 3):
+            classify(oDataStructure)
+            return True
+    return False
 
 
 def classify(iToken, lObjects):

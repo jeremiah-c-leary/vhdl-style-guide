@@ -7,7 +7,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     generate_statement ::=
         for_generate_statement
@@ -15,16 +15,10 @@ def detect(iToken, lObjects):
       | case_generate_statement
     """
 
-    iCurrent = for_generate_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if for_generate_statement.detect(oDataStructure):
+        return True
 
-    iCurrent = if_generate_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if if_generate_statement.detect(oDataStructure):
+        return True
 
-    iCurrent = case_generate_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    return iCurrent
+    return case_generate_statement.detect(oDataStructure)

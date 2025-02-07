@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import delay_mechanism, waveform
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     [ label : ] [ postponed ] concurrent_simple_signal_assignment
 
@@ -16,11 +16,11 @@ def detect(iToken, lObjects):
     This will be the default if the other types are not found.
     """
 
-    if not utils.assignment_operator_found(iToken, lObjects):
-        return False
-    if utils.find_in_range("when", iToken, ";", lObjects):
-        return False
-    return True
+    if oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";"):
+        if oDataStructure.does_string_exist_before_string("when", ";"):
+            return False
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

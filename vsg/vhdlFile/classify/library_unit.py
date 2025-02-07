@@ -13,9 +13,4 @@ def detect(oDataStructure):
     if primary_unit.detect(oDataStructure):
         return True
 
-
-#    iCurrent = secondary_unit.detect(iToken, lObjects)
-#    if iCurrent != iToken:
-#        return iCurrent
-#
-#    return iToken
+    return secondary_unit.detect(oDataStructure)

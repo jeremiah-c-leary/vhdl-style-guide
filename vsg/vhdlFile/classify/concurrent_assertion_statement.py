@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import assertion
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     concurrent_assertion_statement ::=
         [ label : ] [ postponed ] assertion ;
@@ -17,9 +17,10 @@ def detect(iToken, lObjects):
 
     """
 
-    if utils.find_in_next_n_tokens("assert", 4, iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.exists_in_next_n_tokens("assert", 4):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

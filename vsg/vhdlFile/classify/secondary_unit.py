@@ -3,18 +3,13 @@
 from vsg.vhdlFile.classify import architecture_body, package_body
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     secondary_unit ::=
         architecture_body
       | package_body
     """
-    iReturned = architecture_body.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
+    if architecture_body.detect(oDataStructure):
+        return True
 
-    iReturned = package_body.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
-
-    return iToken
+    return package_body.detect(oDataStructure)
