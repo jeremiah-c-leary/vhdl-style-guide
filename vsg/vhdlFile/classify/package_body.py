@@ -19,31 +19,17 @@ def detect(oDataStructure):
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = classify_opening_declaration(iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.package_keyword)
+    oDataStructure.replace_next_token_required("body", token.body_keyword)
+    oDataStructure.replace_next_token_with(token.package_simple_name)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = package_body_declarative_part.detect(iCurrent, lObjects)
+    package_body_declarative_part.detect(oDataStructure)
 
-    iCurrent = classify_closing_declaration(iToken, lObjects)
-
-    return iCurrent
-
-
-def classify_opening_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("package", token.package_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("body", token.body_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.package_simple_name, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
-
-    return iCurrent
-
-
-def classify_closing_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    if utils.are_next_consecutive_tokens(["package"], iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("package", token.end_package_keyword, iToken, lObjects)
-        iCurrent = utils.assign_next_token_required("body", token.end_body_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_package_simple_name, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iToken, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    if oDataStructure.is_next_token("package"):
+        oDataStructure.replace_next_token_with(token.end_package_keyword)
+        oDataStructure.replace_next_token_required("body", token.end_body_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_package_simple_name)
+    oDataStructure.replace_next_token_required(";", token.semicolon)
