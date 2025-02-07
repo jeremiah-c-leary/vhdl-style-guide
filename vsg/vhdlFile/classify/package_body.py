@@ -28,8 +28,10 @@ def classify(oDataStructure):
     package_body_declarative_part.detect(oDataStructure)
 
     oDataStructure.replace_next_token_required("end", token.end_keyword)
+
     if oDataStructure.is_next_token("package"):
         oDataStructure.replace_next_token_with(token.end_package_keyword)
         oDataStructure.replace_next_token_required("body", token.end_body_keyword)
+
     oDataStructure.replace_next_token_with_if_not(";", token.end_package_simple_name)
     oDataStructure.replace_next_token_required(";", token.semicolon)
