@@ -14,7 +14,7 @@ def detect(oDataStructure):
     """
 
     if oDataStructure.is_next_token_one_of(["pure", "impure", "function"]):
-        if not oDataStructure.exists_in_next_n_tokens("new", 4):
+        if not oDataStructure.does_string_exist_in_next_n_tokens("new", 4):
             classify(oDataStructure)
             return True
     return False

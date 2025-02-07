@@ -19,8 +19,8 @@ def detect(oDataStructure):
                 process_statement_part
             end [ postponed ] process [ *process*_label ] ;
     """
-    if oDataStructure.exists_in_next_n_tokens("process", 4):
-        if not oDataStructure.exists_in_next_n_tokens(";", 3):
+    if oDataStructure.does_string_exist_in_next_n_tokens("process", 4):
+        if not oDataStructure.does_string_exist_in_next_n_tokens(";", 3):
             classify(oDataStructure)
             return True
     return False

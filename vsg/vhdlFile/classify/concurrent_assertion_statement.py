@@ -17,7 +17,7 @@ def detect(oDataStructure):
 
     """
 
-    if oDataStructure.exists_in_next_n_tokens("assert", 4):
+    if oDataStructure.does_string_exist_in_next_n_tokens("assert", 4):
         classify(oDataStructure)
         return True
     return False

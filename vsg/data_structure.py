@@ -44,9 +44,6 @@ class design_file:
     def current_token_lower_value_is(self, sString):
         return self.get_current_token_lower_value() == sString
 
-    def seek_token_lower_value_is(self, sString):
-        return self.get_seek_token_lower_value() == sString
-
     def does_string_exist_before_string(self, sFirst, sSecond):
         for oToken in self.lAllObjects[self.iCurrent : :]:
             if oToken.lower_value == sSecond:
@@ -77,7 +74,7 @@ class design_file:
                 return True
         return False
 
-    def exists_in_next_n_tokens(self, sString, iNumTokens):
+    def does_string_exist_in_next_n_tokens(self, sString, iNumTokens):
         self.iSeek = self.iCurrent
         for x in range(0, iNumTokens):
             self.seek_to_next_token()

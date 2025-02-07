@@ -13,8 +13,8 @@ def detect(oDataStructure):
 
     The key to detecting this is looking for the **with** keyword before the **select** keyword.
     """
-    if oDataStructure.exists_in_next_n_tokens("with", 4):
-        if not oDataStructure.exists_in_next_n_tokens("end", 1):
+    if oDataStructure.does_string_exist_in_next_n_tokens("with", 4):
+        if not oDataStructure.does_string_exist_in_next_n_tokens("end", 1):
             return True
     return False
 
