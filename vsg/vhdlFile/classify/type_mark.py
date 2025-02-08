@@ -6,16 +6,14 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import attribute_name
 
 
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     type_mark ::=
         *type*_name
       | *subtype*_name
     """
 
-    if attribute_name.detect(iToken, lObjects):
-        return attribute_name.classify(iToken, lObjects)
+    if attribute_name.detect(oDataStructure):
+        return attribute_name.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token(token.name, iToken, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_with(token.name)

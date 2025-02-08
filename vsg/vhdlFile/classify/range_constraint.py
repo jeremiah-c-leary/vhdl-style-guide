@@ -5,15 +5,16 @@ from vsg.token import range_constraint as token
 from vsg.vhdlFile import utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     range_constraint ::=
         **range** range
     """
-    if utils.is_next_token("range", iToken, lObjects):
-        return classify(iToken, lObjects)
+    if oDataStructure.is_next_token("range"):
+        classify(oDataStructure)
+        return True
 
-    return iToken
+    return False
 
 
 def classify(iToken, lObjects):

@@ -10,7 +10,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     external_name ::=
         external_constant_name
@@ -18,16 +18,10 @@ def detect(iToken, lObjects):
       | external_variable_name
     """
 
-    iReturn = external_constant_name.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if external_constant_name.detect(oDataStructure):
+        return True
 
-    iReturn = external_signal_name.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if external_signal_name.detect(oDataStructure):
+        return True
 
-    iReturn = external_variable_name.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return external_variable_name.detect(oDataStructure)

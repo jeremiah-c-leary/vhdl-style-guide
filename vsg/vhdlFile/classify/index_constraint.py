@@ -5,24 +5,24 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import discrete_range
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     index_constraint ::=
         ( discrete_range { , discrete_range } )
     """
-    if utils.is_next_token("(", iToken, lObjects):
-        iCurrent = utils.find_next_token(iToken, lObjects) + 1
-        if discrete_range.detect(iCurrent, lObjects):
+    oDataStructure.align_seek_index()
+    if oDataStructure.is_next_seek_token("("):
+        oDataStructure.increment_seek_index()
+        if discrete_range.detect(oDataStructure):
             return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.open_parenthesis)
 
-    while not utils.is_next_token(")", iCurrent, lObjects):
-        iCurrent = discrete_range.classify_until([","], iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_if(",", token.comma, iCurrent, lObjects)
+    while not oDataStructure.is_next_token(")"):
+        discrete_range.classify_until([","], oDataStructure)
+        oDataStructure.replace_next_token_with_if(",", token.comma)
 
-    iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-    return iCurrent
+    oDataStructure.replace_next_token_required(")", token.close_parenthesis)

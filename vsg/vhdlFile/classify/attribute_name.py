@@ -3,47 +3,40 @@
 from vsg import parser
 from vsg.token import attribute_name as token
 from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression, signature
+from vsg.vhdlFile.classify import expression, prefix, signature
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     attribute_name ::=
         prefix [ signature ] ' attribute_designator [ ( expression ) ]
     """
 
     # Skip over prefix
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    iCurrent = utils.find_next_token(iCurrent + 1, lObjects)
-
-    if utils.token_is_open_parenthesis(iCurrent, lObjects):
-        iCurrent += 1
-        iCurrent = utils.skip_tokens_until_matching_closing_paren(iCurrent, lObjects)
-        iCurrent += 1
+    oDataStructure.advance_seek_index_to_current_index()
+    oDataStructure.advance_to_next_seek_token()
+    skip_prefix(oDataStructure)
 
     # Check for signature
-    if utils.is_next_token("[", iCurrent, lObjects):
+    if oDataStructure.is_next_seek_token("["):
         return True
 
     # Check for tic
-    if utils.is_next_token("'", iCurrent, lObjects):
+    if oDataStructure.is_next_seek_token("'"):
         return True
 
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token(token.name, iToken, lObjects)
-    iCurrent = utils.find_next_token(iCurrent, lObjects)
+def skip_prefix(oDataStructure):
+    oDataStructure.increment_seek_index()
+    oDataStructure.advance_seek_over_parenthesis()
 
-    if utils.token_is_open_parenthesis(iCurrent, lObjects):
-        iCurrent = utils.assign_token(lObjects, iCurrent, parser.open_parenthesis)
-        iCurrent = utils.assign_tokens_until_matching_closing_paren(parser.todo, iCurrent, lObjects)
-        iCurrent = utils.assign_token(lObjects, iCurrent, parser.close_parenthesis)
 
-    signature.detect(iCurrent, lObjects)
+def classify(oDataStructure):
+    prefix.classify(oDataStructure, token)
 
-    iCurrent = utils.assign_next_token_required("'", token.tic, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.attribute, iCurrent, lObjects)
+    signature.detect(oDataStructure)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required("'", token.tic)
+    oDataStructure.replace_next_token_with(token.attribute)

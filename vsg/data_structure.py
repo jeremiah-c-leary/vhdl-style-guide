@@ -14,6 +14,10 @@ class design_file:
         self.iCurrent = 0
         self.iSeek = 0
 
+    def advance_seek_index_to_current_index(self):
+        if self.iSeek < self.iCurrent:
+            self.iSeek = self.iCurrent
+
     def advance_to_next_token(self):
         for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent : :]):
             if type(oToken) == parser.item:
@@ -44,12 +48,28 @@ class design_file:
     def current_token_lower_value_is(self, sString):
         return self.get_current_token_lower_value() == sString
 
+    def does_seek_token_match_regex(self, oRegex):
+        if oRegex.fullmatch(self.get_seek_token_lower_value()) is not None:
+            return True
+        return False
+    
     def does_string_exist_before_string(self, sFirst, sSecond):
         for oToken in self.lAllObjects[self.iCurrent : :]:
             if oToken.lower_value == sSecond:
                 return False
             if oToken.lower_value == sFirst:
                 return True
+
+    def does_string_exist_before_matching_close_parenthesis(self, sString):
+        iParen = 0
+        for oToken in self.lAllObjects[self.iSeek: :]:
+            if iParen == 0 and oToken.lower_value == sString:
+                return True
+            if oToken.lower_value == "(":
+                iParen += 1
+            elif oToken.lower_value == ")":
+                iParen -= 1
+        return False
 
     def does_string_exist_before_string_honoring_parenthesis_hierarchy(self, sFirst, sSecond):
         iParen = 0
@@ -109,7 +129,11 @@ class design_file:
 
     def is_next_seek_token(self, sString):
         self.advance_to_next_seek_token()
-        return self.current_token_lower_value_is(sString)
+        return self.seek_token_lower_value_is(sString)
+
+    def is_next_seek_token_one_of(self, lString):
+        self.advance_to_next_seek_token()
+        return self.get_seek_token_lower_value() in lString
 
     def is_next_token(self, sString):
         self.advance_to_next_token()
@@ -174,3 +198,18 @@ class design_file:
 
     def seek_token_lower_value_is(self, sString):
         return self.get_seek_token_lower_value() == sString
+
+    def advance_seek_over_parenthesis(self):
+        if not self.seek_token_lower_value_is("("):
+            return False
+
+        iParen = 0
+        for iToken, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
+            if oToken.lower_value == "(":
+                iParen += 1
+            elif oToken.lower_value == ")":
+                iParen -= 1
+            if iParen == 0:
+                self.iSeek += iToken
+                return True
+        return False

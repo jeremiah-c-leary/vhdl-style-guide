@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import signal_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     expression,
     identifier_list,
@@ -22,19 +21,19 @@ def detect(oDataStructure):
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("signal", token.signal_keyword, iToken, lObjects)
-    iCurrent = identifier_list.classify_until([":"], iCurrent, lObjects, token.identifier)
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.signal_keyword)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
+    identifier_list.classify_until([":"], oDataStructure, token.identifier)
 
-    iCurrent = signal_kind.detect(iToken, lObjects)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    if utils.is_next_token(":=", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(":=", token.assignment_operator, iCurrent, lObjects)
-        iCurrent = expression.classify_until([";"], iCurrent, lObjects)
+    subtype_indication.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    signal_kind.detect(oDataStructure)
 
-    return iCurrent
+    if oDataStructure.is_next_token(":="):
+        oDataStructure.replace_next_token_with(token.assignment_operator)
+        expression.classify_until([";"], oDataStructure)
+
+    oDataStructure.replace_next_token_required(";", token.semicolon)

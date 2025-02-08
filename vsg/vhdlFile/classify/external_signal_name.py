@@ -6,16 +6,16 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import subtype_indication
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     external_signal_name ::=
         << signal external_pathname : subtype_indication >>
     """
 
-    if utils.are_next_consecutive_tokens(["<<", "signal"], iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["<<", "signal"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

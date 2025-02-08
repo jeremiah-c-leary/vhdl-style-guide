@@ -5,16 +5,18 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import record_element_constraint
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     record_constraint ::=
         ( record_element_constraint { , record_element_constraint } )
     """
-    if utils.is_next_token("(", iToken, lObjects):
-        iTemp = utils.find_next_token(iToken, lObjects) + 1
-        if record_element_constraint.detect(iTemp, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    oDataStructure.align_seek_index()
+    if oDataStructure.is_next_seek_token("("):
+        oDataStructure.increment_seek_index()
+        if record_element_constraint.detect(oDataStructure):
+            classify(oDataStructure)
+            return True
+    return False
 
 
 def classify(iToken, lObjects):

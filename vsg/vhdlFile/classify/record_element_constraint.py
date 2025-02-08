@@ -5,14 +5,14 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import element_constraint
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     record_element_constraint ::=
         record_element_simple_name element_constraint
     """
-    if not utils.is_next_token("(", iToken, lObjects):
-        iTemp = utils.find_next_token(iToken, lObjects) + 1
-        if utils.is_next_token("(", iTemp, lObjects):
+    if not oDataStructure.is_next_seek_token("("):
+        oDataStructure.increment_seek_index()
+        if oDataStructure.is_next_seek_token("("):
             return True
     return False
 

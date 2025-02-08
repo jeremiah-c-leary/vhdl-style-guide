@@ -5,17 +5,17 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import type_mark
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     signature ::= **[** [ type_mark { , type_mark } ] [ return type_mark ] **]**
 
     NOTE:  The [ and ] enclosed by ** are required if the signature is provided.
     """
 
-    if utils.is_next_token("[", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_seek_token("["):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

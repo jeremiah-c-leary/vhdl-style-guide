@@ -3,27 +3,20 @@
 from vsg.vhdlFile.classify import array_constraint, range_constraint, record_constraint
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     constraint ::=
         range_constraint
       | array_constraint
       | record_constraint
     """
-    iReturn = range_constraint.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if range_constraint.detect(oDataStructure):
+        return True
 
-    iReturn = array_constraint.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if array_constraint.detect(oDataStructure):
+        return True
 
-    iReturn = record_constraint.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if record_constraint.detect(oDataStructure):
+        return True
 
-    iReturn = array_constraint.detect_discrete_subtype_indication(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return array_constraint.detect_discrete_subtype_indication(oDataStructure)
