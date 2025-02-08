@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.token import exponent
+from vsg import parser
+from vsg.token import exponent, direction
 from vsg.vhdlFile import utils
 
 
@@ -92,65 +93,65 @@ def classify_production(production, iToken, lObjects):
 def assign_special_tokens(oDataStructure, oType):
     sValue = oDataStructure.get_current_token_lower_value()
     if sValue == ")":
-        assign_token(lObjects, iCurrent, parser.close_parenthesis)
+        oDataStructure.replace_current_token_with(parser.close_parenthesis)
     elif sValue == "(":
-        assign_token(lObjects, iCurrent, parser.open_parenthesis)
+        oDataStructure.replace_current_token_with(parser.open_parenthesis)
     elif sValue == "-":
-        if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
-            assign_token(lObjects, iCurrent, exponent.minus_sign)
+        if isinstance(oDataStructure.lAllObjects[oDataStructure.iCurrent - 1], exponent.e_keyword):
+            oDataStructure.replace_current_token_with(exponent.minus_sign)
         else:
-            assign_token(lObjects, iCurrent, parser.todo)
+            oDataStructure.replace_current_token_with(parser.todo)
     elif sValue == "+":
         if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
-            assign_token(lObjects, iCurrent, exponent.plus_sign)
+            oDataStructure.replace_current_token_with(exponent.plus_sign)
         else:
-            assign_token(lObjects, iCurrent, parser.todo)
+            oDataStructure.replace_current_token_with(parser.todo)
     elif sValue == "*":
-        assign_token(lObjects, iCurrent, parser.todo)
+        oDataStructure.replace_current_token_with(parser.todo)
     elif sValue == "**":
-        assign_token(lObjects, iCurrent, parser.todo)
+        oDataStructure.replace_current_token_with(parser.todo)
     elif sValue == "/":
-        assign_token(lObjects, iCurrent, parser.todo)
+        oDataStructure.replace_current_token_with(parser.todo)
     elif sValue == "downto":
-        assign_token(lObjects, iCurrent, direction.downto)
+        oDataStructure.replace_current_token_with(direction.downto)
     elif sValue == "to":
-        assign_token(lObjects, iCurrent, direction.to)
+        oDataStructure.replace_current_token_with(direction.to)
     elif sValue == "others":
-        assign_token(lObjects, iCurrent, choice.others_keyword)
+        oDataStructure.replace_current_token_with(choice.others_keyword)
     elif sValue == "=>":
-        assign_token(lObjects, iCurrent, element_association.assignment)
+        oDataStructure.replace_current_token_with(element_association.assignment)
     elif sValue == "e":
         if lObjects[iCurrent + 1].get_value().isdigit() or lObjects[iCurrent + 1].get_value() == "-" or lObjects[iCurrent + 1].get_value() == "+":
-            assign_token(lObjects, iCurrent, exponent.e_keyword)
+            oDataStructure.replace_current_token_with(exponent.e_keyword)
         else:
-            assign_token(lObjects, iCurrent, oType)
+            oDataStructure.replace_current_token_with(oType)
     elif sValue == "=":
-        assign_token(lObjects, iCurrent, relational_operator.equal)
+        oDataStructure.replace_current_token_with(relational_operator.equal)
     elif sValue == "/=":
-        assign_token(lObjects, iCurrent, relational_operator.not_equal)
+        oDataStructure.replace_current_token_with(relational_operator.not_equal)
     elif sValue == "<":
-        assign_token(lObjects, iCurrent, relational_operator.less_than)
+        oDataStructure.replace_current_token_with(relational_operator.less_than)
     elif sValue == "<=":
-        assign_token(lObjects, iCurrent, relational_operator.less_than_or_equal)
+        oDataStructure.replace_current_token_with(relational_operator.less_than_or_equal)
     elif sValue == ">":
-        assign_token(lObjects, iCurrent, relational_operator.greater_than)
+        oDataStructure.replace_current_token_with(relational_operator.greater_than)
     elif sValue == ">=":
-        assign_token(lObjects, iCurrent, relational_operator.greater_than_or_equal)
+        oDataStructure.replace_current_token_with(relational_operator.greater_than_or_equal)
     elif sValue == "?=":
-        assign_token(lObjects, iCurrent, relational_operator.question_equal)
+        oDataStructure.replace_current_token_with(relational_operator.question_equal)
     elif sValue == "?/=":
-        assign_token(lObjects, iCurrent, relational_operator.question_not_equal)
+        oDataStructure.replace_current_token_with(relational_operator.question_not_equal)
     elif sValue == "?<":
-        assign_token(lObjects, iCurrent, relational_operator.question_less_than)
+        oDataStructure.replace_current_token_with(relational_operator.question_less_than)
     elif sValue == "?<=":
-        assign_token(lObjects, iCurrent, relational_operator.question_less_than_or_equal)
+        oDataStructure.replace_current_token_with(relational_operator.question_less_than_or_equal)
     elif sValue == "?>":
-        assign_token(lObjects, iCurrent, relational_operator.question_greater_than)
+        oDataStructure.replace_current_token_with(relational_operator.question_greater_than)
     elif sValue == "?>=":
-        assign_token(lObjects, iCurrent, relational_operator.question_greater_than_or_equal)
+        oDataStructure.replace_current_token_with(relational_operator.question_greater_than_or_equal)
 
     elif exponent_detected(oDataStructure):
-        assign_token(lObjects, iCurrent, exponent.integer)
+        oDataStructure.replace_current_token_with(exponent.integer)
     else:
         oDataStructure.replace_current_token_with(oType)
 

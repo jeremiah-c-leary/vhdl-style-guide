@@ -17,20 +17,18 @@ def detect(oDataStructure):
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("constant", token.constant_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.constant_keyword)
 
-    iCurrent = identifier_list.classify_until([":"], iCurrent, lObjects, token.identifier)
+    identifier_list.classify_until([":"], oDataStructure, token.identifier)
 
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
+    subtype_indication.classify(oDataStructure)
 
-    if utils.is_next_token(":=", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(":=", token.assignment_operator, iCurrent, lObjects)
+    if oDataStructure.is_next_token(":="):
+        oDataStructure.replace_next_token_with(token.assignment_operator)
 
-        iCurrent = expression.classify_until([";"], iCurrent, lObjects)
+        expression.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

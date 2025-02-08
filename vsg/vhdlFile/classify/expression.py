@@ -51,7 +51,6 @@ def classify_until(lUntils, oDataStructure, oType=parser.todo):
                 continue
 
             utils.assign_special_tokens(oDataStructure, oType)
-            oDataStructure.increment_current_index()
 
 
 def update_paren_counter(iParen, oDataStructure):
