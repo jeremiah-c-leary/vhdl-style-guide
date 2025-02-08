@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import attribute_name
+
 
 def detect(oDataStructure):
     """

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import constraint, resolution_indication, type_mark
 
 
@@ -10,5 +9,7 @@ def classify(oDataStructure):
         [ resolution_indication ] type_mark [ constraint ]
     """
     resolution_indication.detect(oDataStructure)
+
     type_mark.classify(oDataStructure)
+
     constraint.detect(oDataStructure)

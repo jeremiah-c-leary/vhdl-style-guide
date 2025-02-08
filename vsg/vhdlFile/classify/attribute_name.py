@@ -2,7 +2,6 @@
 
 from vsg import parser
 from vsg.token import attribute_name as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, prefix, signature
 
 
@@ -18,7 +17,7 @@ def detect(oDataStructure):
     skip_prefix(oDataStructure)
 
     # Check for signature
-    if oDataStructure.is_next_seek_token("["):
+    if signature.detect(oDataStructure):
         return True
 
     # Check for tic
@@ -36,7 +35,8 @@ def skip_prefix(oDataStructure):
 def classify(oDataStructure):
     prefix.classify(oDataStructure, token)
 
-    signature.detect(oDataStructure)
+    if signature.detect(oDataStructure):
+        signature.classify(oDataStructure)
 
     oDataStructure.replace_next_token_required("'", token.tic)
     oDataStructure.replace_next_token_with(token.attribute)

@@ -13,7 +13,6 @@ def detect(oDataStructure):
     if oDataStructure.is_next_token("range"):
         classify(oDataStructure)
         return True
-
     return False
 
 

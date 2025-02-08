@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
 from vsg.token import external_constant_name as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import subtype_indication
@@ -13,7 +12,7 @@ def detect(oDataStructure):
     """
 
     if oDataStructure.are_next_consecutive_tokens(["<<", "constant"]):
-        classify(iToken, lObjects)
+        classify(oDataStructure)
         return True
     return False
 

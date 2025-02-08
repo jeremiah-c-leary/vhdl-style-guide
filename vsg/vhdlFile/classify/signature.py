@@ -12,10 +12,7 @@ def detect(oDataStructure):
     NOTE:  The [ and ] enclosed by ** are required if the signature is provided.
     """
 
-    if oDataStructure.is_next_seek_token("["):
-        classify(oDataStructure)
-        return True
-    return False
+    return oDataStructure.is_next_seek_token("[")
 
 
 def classify(iToken, lObjects):

@@ -23,11 +23,11 @@ def classify_until(lUntils, oDataStructure, oType=parser.todo):
     while oDataStructure.advance_to_next_token():
         iParen = update_paren_counter(iParen, oDataStructure)
 
-        if unmatched_close_paren_found(iParen):
+        if utils.unmatched_close_paren_found(iParen):
             break
 
         if oDataStructure.get_current_token_lower_value() in lUntils:
-            if is_current_token_close_paren(oDataStructure):
+            if utils.is_current_token_close_paren(oDataStructure):
                 oDataStructure.replace_current_token_with(parser.close_parenthesis)
                 oDataStructure.increment_current_index()
             elif oDataStructure.current_token_lower_value_is(","):
@@ -50,18 +50,8 @@ def classify_until(lUntils, oDataStructure, oType=parser.todo):
 
 
 def update_paren_counter(iParen, oDataStructure):
-    if is_current_token_open_paren(oDataStructure):
+    if utils.is_current_token_open_paren(oDataStructure):
         return iParen + 1
-    elif is_current_token_close_paren(oDataStructure):
+    elif utils.is_current_token_close_paren(oDataStructure):
         return iParen - 1
     return iParen
-
-
-def unmatched_close_paren_found(iParen):
-    return iParen == -1
-
-def is_current_token_open_paren(oDataStructure):
-    return oDataStructure.current_token_lower_value_is("(")
-
-def is_current_token_close_paren(oDataStructure):
-    return oDataStructure.current_token_lower_value_is(")")

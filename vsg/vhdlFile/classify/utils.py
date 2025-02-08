@@ -167,3 +167,13 @@ def exponent_detected(oDataStructure):
     return False
 
 
+def is_current_token_open_paren(oDataStructure):
+    return oDataStructure.current_token_lower_value_is("(")
+
+
+def is_current_token_close_paren(oDataStructure):
+    return oDataStructure.current_token_lower_value_is(")")
+
+
+def unmatched_close_paren_found(iParen):
+    return iParen == -1
