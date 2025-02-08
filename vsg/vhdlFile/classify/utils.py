@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-from vsg.token import exponent, direction
+from vsg.token import direction, exponent
 from vsg.vhdlFile import utils
 
 

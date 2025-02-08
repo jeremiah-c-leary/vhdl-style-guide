@@ -439,7 +439,7 @@ class open_parenthesis(item):
     unique_id = parser : open_parenthesis
     """
 
-    def __init__(self, sString = "("):
+    def __init__(self, sString="("):
         super().__init__(sString)
 
 
@@ -448,7 +448,7 @@ class close_parenthesis(item):
     unique_id = parser : close_parenthesis
     """
 
-    def __init__(self, sString = ")"):
+    def __init__(self, sString=")"):
         super().__init__(sString)
 
 
