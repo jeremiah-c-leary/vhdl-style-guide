@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import constant_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, identifier_list, subtype_indication
 
 
