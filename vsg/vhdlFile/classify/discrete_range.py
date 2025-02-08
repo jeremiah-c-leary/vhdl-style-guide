@@ -30,9 +30,8 @@ def classify_until(lUntils, oDataStructure):
     iCloseParenthesis = 0
 
     while not oDataStructure.is_next_token_one_of(lUntils):
-
-#        if iCurrent == iPrevious:
-#            utils.print_missing_error_message(lUntils, iToken, lObjects)
+        #        if iCurrent == iPrevious:
+        #            utils.print_missing_error_message(lUntils, iToken, lObjects)
 
         if oDataStructure.current_token_lower_value_is("("):
             iOpenParenthesis += 1

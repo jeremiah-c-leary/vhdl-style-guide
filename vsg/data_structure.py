@@ -52,7 +52,7 @@ class design_file:
         if oRegex.fullmatch(self.get_seek_token_lower_value()) is not None:
             return True
         return False
-    
+
     def does_string_exist_before_string(self, sFirst, sSecond):
         for oToken in self.lAllObjects[self.iCurrent : :]:
             if oToken.lower_value == sSecond:
@@ -62,7 +62,7 @@ class design_file:
 
     def does_string_exist_before_matching_close_parenthesis(self, sString):
         iParen = 0
-        for oToken in self.lAllObjects[self.iSeek: :]:
+        for oToken in self.lAllObjects[self.iSeek : :]:
             if iParen == 0 and oToken.lower_value == sString:
                 return True
             if oToken.lower_value == "(":

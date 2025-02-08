@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
 from vsg.token import exponent
+from vsg.vhdlFile import utils
 
 
 def classify_selected_name(oDataStructure, token):

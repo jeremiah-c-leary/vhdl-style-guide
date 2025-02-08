@@ -30,11 +30,10 @@ def detect_discrete_subtype_indication(oDataStructure):
 
 
 def open_detected(oDataStructure):
-    return oDataStructure.are_next_consecutive_tokens(["(", "open"]) 
+    return oDataStructure.are_next_consecutive_tokens(["(", "open"])
 
 
 def classify_open(oDataStructure):
     oDataStructure.replace_next_token_with(token.open_parenthesis)
     oDataStructure.replace_next_token_with(token.open_keyword)
     oDataStructure.replace_next_token_required(")", token.close_parenthesis)
-
