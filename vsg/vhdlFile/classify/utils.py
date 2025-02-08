@@ -178,3 +178,11 @@ def is_current_token_close_paren(oDataStructure):
 
 def unmatched_close_paren_found(iParen):
     return iParen == -1
+
+
+def update_paren_counter(iParen, oDataStructure):
+    if is_current_token_open_paren(oDataStructure):
+        return iParen + 1
+    if is_current_token_close_paren(oDataStructure):
+        return iParen - 1
+    return iParen
