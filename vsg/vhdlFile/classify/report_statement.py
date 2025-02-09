@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import report_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression
+from vsg.vhdlFile.classify import expression, utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     report_statement ::=
         [ label : ]
@@ -13,9 +12,10 @@ def detect(iToken, lObjects):
                 [ severity expression ] ;
     """
 
-    if utils.keyword_found("report", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("report", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

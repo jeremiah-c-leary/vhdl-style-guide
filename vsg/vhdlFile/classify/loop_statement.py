@@ -5,7 +5,7 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import iteration_scheme, sequence_of_statements
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     loop_statement ::=
         [ loop_label : ]
@@ -13,20 +13,19 @@ def detect(iToken, lObjects):
                 sequence_of_statements
             end loop [ loop_label ] ;
     """
-    if utils.find_in_next_n_tokens(":", 2, iToken, lObjects):
-        iCurrent = utils.find_next_token(iToken, lObjects)
-        iCurrent += 1
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        iCurrent += 1
-    else:
-        iCurrent = iToken
+    oDataStructure.align_seek_index()
+    if oDataStructure.does_string_exist_in_next_n_tokens(":", 2):
+        oDataStructure.increment_seek_index()
+        oDataStructure.advance_to_next_seek_token()
+        oDataStructure.increment_seek_index()
 
-    if iteration_scheme.detect(iCurrent, lObjects):
-        return classify(iToken, lObjects)
-    if utils.is_next_token("loop", iCurrent, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_seek_token("loop"):
+        classify(oDataStructure)
+        return True
+    if iteration_scheme.detect(oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

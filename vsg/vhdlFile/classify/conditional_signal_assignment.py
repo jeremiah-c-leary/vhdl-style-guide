@@ -7,19 +7,19 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     conditional_signal_assignment ::=
         conditional_waveform_assignment
       | conditional_force_assignment
     """
 
-    if utils.is_next_token("when", iToken, lObjects):
+    if oDataStructure.is_next_token("when"):
         return False
-    if utils.find_in_next_n_tokens("if", 3, iToken, lObjects):
+    if oDataStructure.does_string_exist_in_next_n_tokens("if", 3):
         return False
-    if utils.find_in_range("<=", iToken, ";", lObjects):
-        if utils.find_in_range("when", iToken, ";", lObjects):
+    if oDataStructure.does_string_exist_before_string("<=", ";"):
+        if oDataStructure.does_string_exist_before_string("when", ";"):
             return True
     return False
 

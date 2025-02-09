@@ -7,31 +7,37 @@ from vsg.vhdlFile.classify import procedure_call
 lKeywords = ["null", "return", "exit", "next", "while", "for", "loop", "case", "if", "report", "assert", "wait", "end", "with", "else", "elsif", "when"]
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     procedure_call_statement ::=
         [ label : ] procedure_call ;
     """
 
-    iCurrent = iToken
-    # Move past label if it exists
-    if utils.find_in_next_n_tokens(":", 2, iCurrent, lObjects):
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        iCurrent += 1
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        iCurrent += 1
-    # Check if next token is keyword
-    iCurrent = utils.find_next_token(iCurrent, lObjects)
-    if lObjects[iCurrent].get_lower_value() in lKeywords:
-        return iToken
-    # Check if signal assignment operator exists
-    if not utils.all_assignments_inside_parenthesis(iToken, ";", lObjects):
-        return iToken
-    # Check if variable assignment operator exists
-    if utils.find_in_range(":=", iCurrent, ";", lObjects):
-        return iToken
-    # Otherwise it must be a procedure_call_statement
-    return classify(iToken, lObjects)
+    if procedure_call.detect(oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
+
+
+#    iCurrent = iToken
+#    # Move past label if it exists
+#    if utils.find_in_next_n_tokens(":", 2, iCurrent, lObjects):
+#        iCurrent = utils.find_next_token(iCurrent, lObjects)
+#        iCurrent += 1
+#        iCurrent = utils.find_next_token(iCurrent, lObjects)
+#        iCurrent += 1
+#    # Check if next token is keyword
+#    iCurrent = utils.find_next_token(iCurrent, lObjects)
+#    if lObjects[iCurrent].get_lower_value() in lKeywords:
+#        return iToken
+#    # Check if signal assignment operator exists
+#    if not utils.all_assignments_inside_parenthesis(iToken, ";", lObjects):
+#        return iToken
+#    # Check if variable assignment operator exists
+#    if utils.find_in_range(":=", iCurrent, ";", lObjects):
+#        return iToken
+#    # Otherwise it must be a procedure_call_statement
+#    return classify(iToken, lObjects)
 
 
 def classify(iToken, lObjects):

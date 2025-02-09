@@ -1,22 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import exit_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import condition
+from vsg.vhdlFile.classify import condition, utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     exit_statement ::=
         [ label : ] exit [ loop_label ] [ when condition ] ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "exit"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    if utils.is_next_token("exit", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if utils.keyword_found("exit", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

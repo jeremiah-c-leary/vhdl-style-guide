@@ -1,22 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import return_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression
+from vsg.vhdlFile.classify import expression, utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     return_statement ::=
         [ label : ] return [ expression ] ;
     """
 
-    if utils.find_in_next_n_tokens(":", 2, iToken, lObjects):
-        if utils.find_in_next_n_tokens("return", 3, iToken, lObjects):
-            return classify(iToken, lObjects)
-    if utils.is_next_token("return", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("return", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

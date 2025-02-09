@@ -4,15 +4,11 @@
 from vsg.vhdlFile.classify import process_declarative_item
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     process_declarative_part ::=
         { process_declarative_item }
     """
 
-    iLast = 0
-    iCurrent = iToken
-    while iLast != iCurrent:
-        iLast = iCurrent
-        iCurrent = process_declarative_item.detect(iCurrent, lObjects)
-    return iCurrent
+    while process_declarative_item.detect(oDataStructure):
+        pass

@@ -7,17 +7,17 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     selected_signal_assignment ::=
         selected_waveform_assignment
       | selected_force_assignment
     """
 
-    if utils.find_in_range("<=", iToken, ";", lObjects):
-        if utils.find_in_next_n_tokens("with", 3, iToken, lObjects):
+    if oDataStructure.does_string_exist_before_string("<=", ";"):
+        if oDataStructure.doess_string_exist_in_next_n_tokens("with", 3):
             return True
-        if utils.find_in_next_n_tokens("if", 3, iToken, lObjects):
+        if oDataStructure.doess_string_exist_in_next_n_tokens("if", 3):
             return True
     return False
 

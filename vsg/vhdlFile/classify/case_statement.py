@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import case_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import case_statement_alternative, expression
+from vsg.vhdlFile.classify import case_statement_alternative, expression, utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     case_statement ::=
         [ *case*_label : ]
@@ -14,9 +13,10 @@ def detect(iToken, lObjects):
                 { case_statement_alternative }
         end case [ ? ] [ case_label ] ;
     """
-    if utils.keyword_found("case", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("case", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

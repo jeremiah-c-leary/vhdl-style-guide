@@ -5,19 +5,28 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import conditional_expressions
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     conditional_variable_assignment ::=
         target := conditional_expressions ;
     """
 
-    if utils.is_next_token_one_of(["when", "if", "elsif", "else"], iToken, lObjects):
+    if oDataStructure.is_next_token_one_of(["when", "if", "elsif", "else"]):
         return False
-    if utils.find_in_range(":=", iToken, ";", lObjects):
-        if not utils.find_in_range("with", iToken, ";", lObjects):
-            if utils.find_in_range("when", iToken, ";", lObjects):
+    if oDataStructure.does_string_exist_before_string(":=", ";"):
+        if not oDataStructure.does_string_exist_before_string("with", ";"):
+            if oDataStructure.does_string_exist_before_string("when", ";"):
                 return True
     return False
+
+
+#    if utils.is_next_token_one_of(["when", "if", "elsif", "else"], iToken, lObjects):
+#        return False
+#    if utils.find_in_range(":=", iToken, ";", lObjects):
+#        if not utils.find_in_range("with", iToken, ";", lObjects):
+#            if utils.find_in_range("when", iToken, ";", lObjects):
+#                return True
+#    return False
 
 
 def classify(iToken, lObjects):

@@ -5,19 +5,18 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, selected_expressions
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     selected_variable_assignment ::=
         with expression select [ ? ]
            target := selected_expressions ;
     """
 
-    if utils.is_next_token_one_of(["when", "if", "elsif", "else"], iToken, lObjects):
+    if oDataStructure.is_next_token_one_of(["when", "if", "elsif", "else"]):
         return False
-    if utils.find_in_range(":=", iToken, ";", lObjects):
-        if utils.find_in_range("with", iToken, ";", lObjects):
+    if oDataStructure.does_string_exist_before_string(":=", ";"):
+        if oDataStructure.does_string_exist_before_string("with", ";"):
             return True
-        return False
     return False
 
 

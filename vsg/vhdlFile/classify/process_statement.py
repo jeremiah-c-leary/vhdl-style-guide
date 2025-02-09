@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import process_statement as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     process_declarative_part,
     process_sensitivity_list,
     process_statement_part,
+    utils,
 )
 
 
@@ -26,40 +26,34 @@ def detect(oDataStructure):
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = classify_opening_declaration(iToken, lObjects)
+def classify(oDataStructure):
+    classify_opening_declaration(oDataStructure)
 
-    iCurrent = process_declarative_part.detect(iCurrent, lObjects)
+    process_declarative_part.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("begin", token.begin_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("begin", token.begin_keyword)
 
-    iCurrent = process_statement_part.detect(iCurrent, lObjects)
+    process_statement_part.detect(oDataStructure)
 
-    iCurrent = classify_closing_declaration(iCurrent, lObjects)
-
-    return iCurrent
+    classify_closing_declaration(oDataStructure)
 
 
-def classify_opening_declaration(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.process_label, token.label_colon)
-    iCurrent = utils.assign_next_token_if("postponed", token.postponed_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("process", token.process_keyword, iCurrent, lObjects)
+def classify_opening_declaration(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.process_label, token.label_colon)
+    oDataStructure.replace_next_token_with_if("postponed", token.postponed_keyword)
+    oDataStructure.replace_next_token_required("process", token.process_keyword)
 
-    if utils.is_next_token("(", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
-        iCurrent = process_sensitivity_list.classify(iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
+    if oDataStructure.is_next_token("("):
+        oDataStructure.replace_next_token_with(token.open_parenthesis)
+        process_sensitivity_list.classify(oDataStructure)
+        oDataStructure.replace_next_token_required(")", token.close_parenthesis)
 
-    iCurrent = utils.assign_next_token_if("is", token.is_keyword, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_with_if("is", token.is_keyword)
 
 
-def classify_closing_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("postponed", token.end_postponed_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("process", token.end_process_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_process_label, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+def classify_closing_declaration(oDataStructure):
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_with_if("postponed", token.end_postponed_keyword)
+    oDataStructure.replace_next_token_required("process", token.end_process_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_process_label)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

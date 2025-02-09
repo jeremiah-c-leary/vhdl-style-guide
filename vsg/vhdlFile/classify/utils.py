@@ -121,7 +121,8 @@ def assign_special_tokens(oDataStructure, oType):
     elif sValue == "=>":
         oDataStructure.replace_current_token_with(element_association.assignment)
     elif sValue == "e":
-        if lObjects[iCurrent + 1].get_value().isdigit() or lObjects[iCurrent + 1].get_value() == "-" or lObjects[iCurrent + 1].get_value() == "+":
+        sNextValue = oDataStructure.lAllObjects[oDataStructure.get_current_index() + 1].get_lower_value()
+        if sNextValue.isdigit() or sNextValue == "-" or sNextValue == "+":
             oDataStructure.replace_current_token_with(exponent.e_keyword)
         else:
             oDataStructure.replace_current_token_with(oType)
@@ -186,3 +187,20 @@ def update_paren_counter(iParen, oDataStructure):
     if is_current_token_close_paren(oDataStructure):
         return iParen - 1
     return iParen
+
+
+def tokenize_label(oDataStructure, label_token, colon_token):
+    oDataStructure.advance_to_next_token()
+    iItemCount = 0
+    if oDataStructure.are_next_consecutive_tokens([None, ":"]):
+        oDataStructure.replace_current_token_with(label_token)
+        oDataStructure.advance_to_next_token()
+        oDataStructure.replace_current_token_with(colon_token)
+
+
+def keyword_found(sKeyword, oDataStructure):
+    if oDataStructure.is_next_token("wait"):
+        return True
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "wait"]):
+        return True
+    return False

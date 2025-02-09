@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import signal_assignment_statement as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     conditional_signal_assignment,
     selected_signal_assignment,
     simple_signal_assignment,
+    utils,
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     signal_assignment_statement ::=
         [ label : ] simple_signal_assignment
@@ -17,18 +17,19 @@ def detect(iToken, lObjects):
       | [ label : ] selected_signal_assignment
     """
 
-    iCurrent = iToken
+    if selected_signal_assignment.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+        selected_signal_assignment.classify(oDataStructure)
+        return True
 
-    if selected_signal_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
-        iCurrent = selected_signal_assignment.classify(iCurrent, lObjects)
+    if conditional_signal_assignment.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+        conditional_signal_assignment.classify(oDataStructure)
+        return True
 
-    elif conditional_signal_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
-        iCurrent = conditional_signal_assignment.classify(iCurrent, lObjects)
+    if simple_signal_assignment.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+        simple_signal_assignment.classify(oDataStructure)
+        return True
 
-    elif simple_signal_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
-        iCurrent = simple_signal_assignment.classify(iCurrent, lObjects)
-
-    return iCurrent
+    return False

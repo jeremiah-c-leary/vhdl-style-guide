@@ -1,18 +1,23 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import wait_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import condition_clause, sensitivity_clause, timeout_clause
+from vsg.vhdlFile.classify import (
+    condition_clause,
+    sensitivity_clause,
+    timeout_clause,
+    utils,
+)
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     wait_statement ::=
         [ label : ] wait [ sensitivity_clause ] [ condition_clause ] [ timeout_clause ] ;
     """
-    if utils.keyword_found("wait", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("wait", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

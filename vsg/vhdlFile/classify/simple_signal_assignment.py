@@ -8,7 +8,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     simple_signal_assignment ::=
         simple_waveform_assignment
@@ -16,15 +16,26 @@ def detect(iToken, lObjects):
       | simple_release_assignment
     """
 
-    if utils.find_in_next_n_tokens("if", 3, iToken, lObjects):
+    if oDataStructure.does_string_exist_in_next_n_tokens("if", 3):
         return False
-    if utils.find_in_range("<=", iToken, ";", lObjects):
-        if utils.find_in_range("when", iToken, ";", lObjects):
+    if oDataStructure.does_string_exist_before_string("<=", ";"):
+        if oDataStructure.does_string_exist_before_string("with", ";"):
             return False
-        if utils.find_in_range("with", iToken, ";", lObjects):
+        if oDataStructure.does_string_exist_before_string("when", ";"):
             return False
         return True
     return False
+
+
+#    if utils.find_in_next_n_tokens("if", 3, iToken, lObjects):
+#        return False
+#    if utils.find_in_range("<=", iToken, ";", lObjects):
+#        if utils.find_in_range("when", iToken, ";", lObjects):
+#            return False
+#        if utils.find_in_range("with", iToken, ";", lObjects):
+#            return False
+#        return True
+#    return False
 
 
 def classify(iToken, lObjects):

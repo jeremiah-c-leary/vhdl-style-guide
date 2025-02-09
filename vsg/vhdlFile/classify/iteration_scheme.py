@@ -5,19 +5,19 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import condition, parameter_specification
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     iteration_scheme ::=
         while condition
       | for *loop*_parameter_specification
     """
-    if utils.find_in_next_n_tokens(";", 3, iToken, lObjects):
+    if oDataStructure.does_string_exist_in_next_n_tokens(";", 3):
         return False
-    if utils.find_in_next_n_tokens("else", 3, iToken, lObjects):
+    if oDataStructure.does_string_exist_in_next_n_tokens("else", 3):
         return False
-    if utils.find_in_next_n_tokens("while", 3, iToken, lObjects):
+    if oDataStructure.does_string_exist_in_next_n_tokens("while", 3):
         return True
-    if utils.find_in_next_n_tokens("for", 3, iToken, lObjects):
+    if oDataStructure.does_string_exist_in_next_n_tokens("for", 3):
         return True
     return False
 

@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import null_statement as token
-from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     null_statement ::=
         [ label : ] null ;
     """
-    if utils.are_next_consecutive_tokens([None, ":", "null"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    if utils.is_next_token("null", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("null", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import if_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import condition, sequence_of_statements
+from vsg.vhdlFile.classify import condition, sequence_of_statements, utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     if_statement ::=
         [ if_label : ]
@@ -18,9 +17,10 @@ def detect(iToken, lObjects):
             end if [ if_label ] ;
     """
 
-    if utils.keyword_found("if", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("if", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

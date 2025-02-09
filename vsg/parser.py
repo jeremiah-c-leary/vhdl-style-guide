@@ -430,8 +430,8 @@ class label_colon(colon):
     unique_id = parser : label_colon
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, sString=":"):
+        super().__init__(sString)
 
 
 class open_parenthesis(item):
