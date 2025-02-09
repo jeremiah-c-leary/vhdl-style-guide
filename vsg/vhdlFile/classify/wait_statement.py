@@ -20,19 +20,17 @@ def detect(oDataStructure):
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("wait", token.wait_keyword, iCurrent, lObjects)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+    oDataStructure.replace_next_token_with(token.wait_keyword)
 
-    if sensitivity_clause.detect(iCurrent, lObjects):
-        iCurrent = sensitivity_clause.classify_until([";", "for", "until"], iCurrent, lObjects)
+    if sensitivity_clause.detect(oDataStructure):
+        sensitivity_clause.classify_until([";", "for", "until"], oDataStructure)
 
-    if condition_clause.detect(iCurrent, lObjects):
-        iCurrent = condition_clause.classify_until([";", "for"], iCurrent, lObjects)
+    if condition_clause.detect(oDataStructure):
+        condition_clause.classify_until([";", "for"], oDataStructure)
 
-    if timeout_clause.detect(iCurrent, lObjects):
-        iCurrent = timeout_clause.classify_until([";"], iCurrent, lObjects)
+    if timeout_clause.detect(oDataStructure):
+        timeout_clause.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

@@ -25,18 +25,13 @@ def classify(oDataStructure):
             name.classify_until([","], oDataStructure)
 
 
-def classify_until(lUntils, iToken, lObjects):
+def classify_until(lUntils, oDataStructure):
     """
     sensitivity_list ::=
         *signal*_name { , *signal*_name}
     """
-    iCurrent = iToken
-    iLast = 0
     lMyUntils = copy.deepcopy(lUntils)
     lMyUntils.append(",")
-    while iLast != iCurrent:
-        iLast = iCurrent
-        if lObjects[utils.find_next_token(iCurrent, lObjects)].get_lower_value() in lUntils:
-            return iCurrent
-        iCurrent = utils.assign_next_token_if(",", token.comma, iCurrent, lObjects)
-        iCurrent = name.classify_until(lMyUntils, iCurrent, lObjects)
+    while not oDataStructure.is_next_token_one_of(lUntils):
+        oDataStructure.replace_next_token_with_if(",", token.comma)
+        name.classify_until(lMyUntils, oDataStructure)

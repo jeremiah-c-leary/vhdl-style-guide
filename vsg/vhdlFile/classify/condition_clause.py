@@ -1,24 +1,21 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import condition_clause as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import condition
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     condition_clause ::=
         until condition
     """
 
-    if utils.is_next_token("until", iToken, lObjects):
+    if oDataStructure.is_next_token("until"):
         return True
     return False
 
 
-def classify_until(lUntils, iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("until", token.until_keyword, iToken, lObjects)
+def classify_until(lUntils, oDataStructure):
+    oDataStructure.replace_next_token_with(token.until_keyword)
 
-    iCurrent = condition.classify_until(lUntils, iCurrent, lObjects)
-
-    return iCurrent
+    condition.classify_until(lUntils, oDataStructure)

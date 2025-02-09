@@ -3,9 +3,9 @@
 from vsg.vhdlFile.classify import expression
 
 
-def classify_until(lUntils, iToken, lObjects):
+def classify_until(lUntils, oDataStructure):
     """
     condition ::=
         expression
     """
-    return expression.classify_until(lUntils, iToken, lObjects)
+    expression.classify_until(lUntils, oDataStructure)
