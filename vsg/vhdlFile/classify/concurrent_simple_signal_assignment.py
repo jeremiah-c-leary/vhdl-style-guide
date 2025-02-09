@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import concurrent_simple_signal_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import delay_mechanism, waveform
+from vsg.vhdlFile.classify import delay_mechanism, utils, waveform
 
 
 def detect(oDataStructure):
@@ -23,15 +22,13 @@ def detect(oDataStructure):
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("guarded", token.guarded_keyword, iCurrent, lObjects)
+def classify(oDataStructure):
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
+    oDataStructure.replace_next_token_with_if("guarded", token.guarded_keyword)
 
-    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
+    delay_mechanism.detect(oDataStructure)
 
-    iCurrent = waveform.classify_until([";"], iCurrent, lObjects)
+    waveform.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

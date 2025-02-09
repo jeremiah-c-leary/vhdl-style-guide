@@ -25,7 +25,7 @@ def detect(oDataStructure):
     oDataStructure.align_seek_index()
     while not oDataStructure.seek_token_lower_value_is(";"):
         if bAssignmentFound:
-            if utils.object_value_is(lObjects, iCurrent, "when"):
+            if oDataStructure.seek_token_lower_value_is("when"):
                 return True
         else:
             if oDataStructure.seek_token_lower_value_is("when"):

@@ -300,14 +300,6 @@ def has_label(iObject, lObjects):
     return False
 
 
-def tokenize_postponed(iObject, lObjects, token):
-    iIndex = find_next_token(iObject, lObjects)
-    if object_value_is(lObjects, iIndex, "postponed"):
-        assign_token(lObjects, iIndex, token)
-        return iIndex + 1
-    return iObject
-
-
 def tokenize_label(iToken, lObjects, label_token, colon_token):
     iCurrent = find_next_token(iToken, lObjects)
     iItemCount = 0

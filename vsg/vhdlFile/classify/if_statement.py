@@ -16,33 +16,31 @@ def detect(oDataStructure):
                 sequence_of_statements ]
             end if [ if_label ] ;
     """
-
     if utils.keyword_found("if", oDataStructure):
         classify(oDataStructure)
         return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.if_label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("if", token.if_keyword, iCurrent, lObjects)
-    iCurrent = condition.classify_until(["then"], iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("then", token.then_keyword, iCurrent, lObjects)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.if_label, token.label_colon)
+    oDataStructure.replace_next_token_required("if", token.if_keyword)
+    condition.classify_until(["then"], oDataStructure)
+    oDataStructure.replace_next_token_required("then", token.then_keyword)
 
-    iCurrent = sequence_of_statements.detect(iCurrent, lObjects)
+    sequence_of_statements.detect(oDataStructure)
 
-    while utils.is_next_token_one_of(["else", "elsif"], iCurrent, lObjects):
-        if utils.is_next_token("elsif", iCurrent, lObjects):
-            iCurrent = utils.assign_next_token_required("elsif", token.elsif_keyword, iCurrent, lObjects)
-            iCurrent = condition.classify_until(["then"], iCurrent, lObjects)
-            iCurrent = utils.assign_next_token_required("then", token.then_keyword, iCurrent, lObjects)
-            iCurrent = sequence_of_statements.detect(iCurrent, lObjects)
+    while oDataStructure.is_next_token_one_of(["else", "elsif"]):
+        if oDataStructure.is_next_token("elsif"):
+            oDataStructure.replace_next_token_with(token.elsif_keyword)
+            condition.classify_until(["then"], oDataStructure)
+            oDataStructure.replace_next_token_required("then", token.then_keyword)
+            iCurrent = sequence_of_statements.detect(oDataStructure)
         else:
-            iCurrent = utils.assign_next_token_required("else", token.else_keyword, iCurrent, lObjects)
-            iCurrent = sequence_of_statements.detect(iCurrent, lObjects)
+            oDataStructure.replace_next_token_with(token.else_keyword)
+            sequence_of_statements.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("if", token.end_if_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_if_label, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("if", token.end_if_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_if_label)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

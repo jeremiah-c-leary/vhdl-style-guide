@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import concurrent_signal_assignment_statement as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     concurrent_conditional_signal_assignment,
     concurrent_selected_signal_assignment,
     concurrent_simple_signal_assignment,
+    utils,
 )
 
 
@@ -18,21 +18,21 @@ def detect(oDataStructure):
     """
 
     if concurrent_selected_signal_assignment.detect(oDataStructure):
-        iCurrent = utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
-        iCurrent = utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
-        iCurrent = concurrent_selected_signal_assignment.classify(oDataStructure)
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
+        concurrent_selected_signal_assignment.classify(oDataStructure)
         return True
 
     elif concurrent_conditional_signal_assignment.detect(oDataStructure):
-        iCurrent = utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
-        iCurrent = utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
-        iCurrent = concurrent_conditional_signal_assignment.classify(oDataStructure)
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
+        concurrent_conditional_signal_assignment.classify(oDataStructure)
         return True
 
     elif concurrent_simple_signal_assignment.detect(oDataStructure):
-        iCurrent = utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
-        iCurrent = utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
-        iCurrent = concurrent_simple_signal_assignment.classify(oDataStructure)
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
+        concurrent_simple_signal_assignment.classify(oDataStructure)
         return True
 
     return False

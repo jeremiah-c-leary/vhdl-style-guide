@@ -5,15 +5,16 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     delay_mechanism ::=
         transport
       | [ reject *time*_expression ] inertial
     """
-    if utils.is_next_token_one_of(["transport", "reject", "inertial"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token_one_of(["transport", "reject", "inertial"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

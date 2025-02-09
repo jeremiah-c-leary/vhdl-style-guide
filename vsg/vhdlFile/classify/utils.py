@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
-from vsg.token import direction, exponent
+from vsg.token import choice, direction, element_association, exponent
 from vsg.vhdlFile import utils
 
 
@@ -199,9 +199,9 @@ def tokenize_label(oDataStructure, label_token, colon_token):
 
 
 def keyword_found(sKeyword, oDataStructure):
-    if oDataStructure.is_next_token("wait"):
+    if oDataStructure.is_next_token(sKeyword):
         return True
-    if oDataStructure.are_next_consecutive_tokens([None, ":", "wait"]):
+    if oDataStructure.are_next_consecutive_tokens([None, ":", sKeyword]):
         return True
     return False
 
@@ -209,3 +209,7 @@ def keyword_found(sKeyword, oDataStructure):
 def assign_tokens_until(sToken, token, oDataStructure):
     while not oDataStructure.is_next_token(sToken):
         oDataStructure.replace_next_token_with(token)
+
+
+def tokenize_postponed(oDataStructure, token):
+    oDataStructure.replace_next_token_with_if("postponed", token)
