@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import full_type_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier, type_definition
 
 
@@ -17,15 +16,13 @@ def detect(oDataStructure):
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("type", token.type_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.type_keyword)
 
-    iCurrent = identifier.classify(iCurrent, lObjects, token.identifier)
+    identifier.classify(oDataStructure, token.identifier)
 
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = type_definition.detect(iCurrent, lObjects)
+    type_definition.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

@@ -204,3 +204,8 @@ def keyword_found(sKeyword, oDataStructure):
     if oDataStructure.are_next_consecutive_tokens([None, ":", "wait"]):
         return True
     return False
+
+
+def assign_tokens_until(sToken, token, oDataStructure):
+    while not oDataStructure.is_next_token(sToken):
+        oDataStructure.replace_next_token_with(token)

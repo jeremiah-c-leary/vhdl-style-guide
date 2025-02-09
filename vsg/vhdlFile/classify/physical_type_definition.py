@@ -9,7 +9,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     physical_type_definition ::=
         range_constraint
@@ -18,9 +18,10 @@ def detect(iToken, lObjects):
                 { secondary_unit_declaration }
             **end** **units** [ physical_type_simple_name ]
     """
-    if units_keyword_found_before_semicolon(iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if units_keyword_found_before_semicolon(oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):
@@ -40,7 +41,7 @@ def classify(iToken, lObjects):
     return iCurrent
 
 
-def units_keyword_found_before_semicolon(iToken, lObjects):
-    if utils.find_in_range("units", iToken, ";", lObjects):
+def units_keyword_found_before_semicolon(oDataStructure):
+    if oDataStructure.does_string_exist_before_string("units", ";"):
         return True
     return False

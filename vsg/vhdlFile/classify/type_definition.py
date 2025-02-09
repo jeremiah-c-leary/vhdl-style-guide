@@ -9,7 +9,7 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     type_definition ::=
         scalar_type_definition
@@ -19,24 +19,16 @@ def detect(iToken, lObjects):
       | protected_type_definition
     """
 
-    iReturn = scalar_type_definition.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if scalar_type_definition.detect(oDataStructure):
+        return True
 
-    iReturn = access_type_definition.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if access_type_definition.detect(oDataStructure):
+        return True
 
-    iReturn = composite_type_definition.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if composite_type_definition.detect(oDataStructure):
+        return True
 
-    iReturn = file_type_definition.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if file_type_definition.detect(oDataStructure):
+        return True
 
-    iReturn = protected_type_definition.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return protected_type_definition.detect(oDataStructure)

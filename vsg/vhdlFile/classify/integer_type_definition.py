@@ -3,10 +3,10 @@
 from vsg.vhdlFile.classify import range_constraint
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     integer_type_definition ::=
         range_constraint
     """
 
-    return range_constraint.detect(iToken, lObjects)
+    range_constraint.detect(oDataStructure)

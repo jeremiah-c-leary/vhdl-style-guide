@@ -5,16 +5,16 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import subtype_indication
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     access_type_definition ::=
         access subtype_indication
     """
 
-    if utils.is_next_token("access", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_token("access"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):

@@ -4,15 +4,15 @@ from vsg.token import enumeration_type_definition as token
 from vsg.vhdlFile import utils
 
 
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     enumeration_type_definition ::=
         ( enumeration_literal { , enumeration_literal } )
     """
-    if utils.is_next_token("(", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_token("("):
+        classify(oDataStructure)
+        return True
+    return False
 
 
 def classify(iToken, lObjects):
