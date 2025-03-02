@@ -19,4 +19,3 @@ class identifier(parser.identifier):
 
     def __init__(self, sString):
         super().__init__(sString)
-
