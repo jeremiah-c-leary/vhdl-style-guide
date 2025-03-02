@@ -73,3 +73,28 @@ This rule checks for valid prefixes of type names.
 
    generic (
      type gt_generic_data_type
+
+interface_incomplete_type_declaration_601
+#########################################
+
+|phase_7| |disabled| |error| |unfixable| |naming|
+
+This rule checks for valid suffixes of type names.
+
+.. NOTE::  The default prefix is *_gt*.
+
+|configuring_prefix_and_suffix_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   generic (
+     type generic_data_type
+
+**Fix**
+
+.. code-block:: vhdl
+
+   generic (
+     type generic_data_type_gt

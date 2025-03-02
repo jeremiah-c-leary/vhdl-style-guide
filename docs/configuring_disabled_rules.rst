@@ -61,6 +61,7 @@ Rules Disabled by Default
 * `instantiation_601 <instantiation_rules.html#instantiation-601>`_
 
 * `interface_incomplete_type_declaration_600 <../interface_incomplete_type_declaration_rules.html#interface-incomplete-type-declaration-600>`_
+* `interface_incomplete_type_declaration_601 <../interface_incomplete_type_declaration_rules.html#interface-incomplete-type-declaration-601>`_
 
 * `loop_statement_006 <loop_statement_rules.html#loop-statement-006>`_
 * `loop_statement_007 <loop_statement_rules.html#loop-statement-007>`_

@@ -26,6 +26,7 @@ Rules Enforcing Naming Rule Group
 * `instantiation_601 <../instantiation_rules.html#instantiation-601>`_
 
 * `interface_incomplete_type_declaration_600 <../interface_incomplete_type_declaration_rules.html#interface-incomplete-type-declaration-600>`_
+* `interface_incomplete_type_declaration_601 <../interface_incomplete_type_declaration_rules.html#interface-incomplete-type-declaration-601>`_
 
 * `loop_statement_600 <../loop_statement_rules.html#loop-statement-600>`_
 * `loop_statement_601 <../loop_statement_rules.html#loop-statement-601>`_
