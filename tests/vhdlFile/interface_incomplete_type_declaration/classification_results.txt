@@ -1,0 +1,140 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | entity fifo is
+<class 'vsg.token.entity_declaration.entity_keyword'>
+<class 'vsg.token.entity_declaration.identifier'>
+<class 'vsg.token.entity_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 |   generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+4 |     type generic_data_type
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
+--------------------------------------------------------------------------------
+5 |   );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+6 |   port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+7 |     data_in : generic_data_type
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+--------------------------------------------------------------------------------
+8 |   );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+9 | end entity fifo;
+<class 'vsg.token.entity_declaration.end_keyword'>
+<class 'vsg.token.entity_declaration.end_entity_keyword'>
+<class 'vsg.token.entity_declaration.entity_simple_name'>
+<class 'vsg.token.entity_declaration.semicolon'>
+--------------------------------------------------------------------------------
+10 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+11 | architecture rtl of fifo is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+12 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+13 |   component buffer is
+<class 'vsg.token.component_declaration.component_keyword'>
+<class 'vsg.token.component_declaration.identifier'>
+<class 'vsg.token.component_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+14 |     generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+15 |         type generic_data_type
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
+--------------------------------------------------------------------------------
+16 |     );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+17 |     port (
+<class 'vsg.token.port_clause.port_keyword'>
+<class 'vsg.token.port_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+18 |         data_in : generic_data_type
+<class 'vsg.token.interface_unknown_declaration.identifier'>
+<class 'vsg.token.interface_unknown_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+--------------------------------------------------------------------------------
+19 |     );
+<class 'vsg.token.port_clause.close_parenthesis'>
+<class 'vsg.token.port_clause.semicolon'>
+--------------------------------------------------------------------------------
+20 |   end component buffer;
+<class 'vsg.token.component_declaration.end_keyword'>
+<class 'vsg.token.component_declaration.end_component_keyword'>
+<class 'vsg.token.component_declaration.component_simple_name'>
+<class 'vsg.token.component_declaration.semicolon'>
+--------------------------------------------------------------------------------
+21 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+23 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+24 |   buf1 : buffer
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_name'>
+--------------------------------------------------------------------------------
+25 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+26 |         generic_data_type => std_logic
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+27 |     )
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+--------------------------------------------------------------------------------
+28 |     port map (
+<class 'vsg.token.port_map_aspect.port_keyword'>
+<class 'vsg.token.port_map_aspect.map_keyword'>
+<class 'vsg.token.port_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+29 |         data_in => '0'
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+--------------------------------------------------------------------------------
+30 |     );
+<class 'vsg.token.port_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+31 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+32 | end architecture rtl;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
