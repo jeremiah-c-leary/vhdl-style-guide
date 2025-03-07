@@ -11,6 +11,7 @@ class Rule:
         self.unique_id = str(self.name) + "_" + str(self.identifier)
         self.solution = None
         self.violations = []
+        self.had_violations = False
         self.indent_style = "spaces"
         self.indent_size = 2
         self.phase = None
@@ -108,6 +109,7 @@ class Rule:
             self._filter_out_fix_only_violations(dFixOnly)
             for oViolation in self.violations[::-1]:
                 self._fix_violation(oViolation)
+                self.had_violations = True
             oFile.update(self.violations, self.remap)
             self.clear_violations()
 

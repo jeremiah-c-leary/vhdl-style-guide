@@ -121,6 +121,7 @@ class rule_list:
         self.oVhdlFile = oVhdlFile
         self.maximumPhase = maximum_phase(self.rules)
         self.violations = False
+        self.had_violations = False
         self.oSeverityList = oSeverityList
 
     def fix(self, iFixPhase=7, lSkipPhase=None, dFixOnly=None):
@@ -156,6 +157,8 @@ class rule_list:
                     # print(oRule.unique_id)
                     if oRule.severity.type == severity.error_type:
                         oRule.fix(self.oVhdlFile, dFixOnly)
+                        if oRule.had_violations:
+                            self.had_violations = True
                     else:
                         oRule.analyze(self.oVhdlFile)
 
