@@ -118,7 +118,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         if commandLineArguments.backup:
             create_backup_file(sFileName)
         oRules.fix(commandLineArguments.fix_phase, commandLineArguments.skip_phase, fix_only)
-        print(oRules.had_violations)
+
         if oRules.had_violations:
             write_vhdl_file(oVhdlFile, oConfig.dConfig)
 
