@@ -20,7 +20,7 @@ lExpected_before_0_after_1.append("")
 utils.read_file(os.path.join(sTestDir, "rule_007_test_input.fixed_before_0_after_1.vhd"), lExpected_before_0_after_1)
 
 
-class test_port_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

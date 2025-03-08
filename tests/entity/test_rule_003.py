@@ -28,7 +28,7 @@ lExpected_require_comment.append("")
 utils.read_file(os.path.join(sTestDir, "rule_003_test_input.fixed_require_comment.vhd"), lExpected_require_comment)
 
 
-class test_entity_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

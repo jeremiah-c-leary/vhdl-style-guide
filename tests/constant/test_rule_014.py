@@ -20,7 +20,7 @@ lExpected_align_left_true_align_paren_false.append("")
 utils.read_file(os.path.join(sTestDir, "rule_014_test_input.fixed_align_left_true_align_paren_false.vhd"), lExpected_align_left_true_align_paren_false)
 
 
-class test_constant_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

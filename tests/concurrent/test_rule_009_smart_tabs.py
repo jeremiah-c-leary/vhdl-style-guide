@@ -256,7 +256,7 @@ utils.read_file(
 )
 
 
-class test_concurrent_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

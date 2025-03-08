@@ -15,7 +15,7 @@ lExpected.append("")
 utils.read_file(os.path.join(sTestDir, "rule_007_test_input.fixed.vhd"), lExpected)
 
 
-class test_whitespace_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
