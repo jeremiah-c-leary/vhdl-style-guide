@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     subprogram_kind,
     subprogram_statement_part,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     subprogram_body ::=
@@ -25,6 +27,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("is", token.is_keyword, iToken, lObjects)
 

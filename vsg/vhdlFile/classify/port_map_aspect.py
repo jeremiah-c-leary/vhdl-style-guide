@@ -3,8 +3,10 @@
 from vsg.token import port_map_aspect as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import association_list
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     port_map_aspect ::=
@@ -16,6 +18,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("port", token.port_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token_required("map", token.map_keyword, iCurrent, lObjects)

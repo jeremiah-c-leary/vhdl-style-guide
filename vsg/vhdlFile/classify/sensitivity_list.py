@@ -4,8 +4,10 @@ import copy
 from vsg import parser
 from vsg.token import sensitivity_list as token
 from vsg.vhdlFile.classify import name, utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     """
     sensitivity_list ::=
@@ -25,6 +27,7 @@ def classify(oDataStructure):
             name.classify_until([","], oDataStructure)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure):
     """
     sensitivity_list ::=

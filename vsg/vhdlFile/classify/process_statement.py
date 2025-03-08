@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     process_statement_part,
     utils,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     process_statement ::=
@@ -26,6 +28,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     classify_opening_declaration(oDataStructure)
 
@@ -38,6 +41,7 @@ def classify(oDataStructure):
     classify_closing_declaration(oDataStructure)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_opening_declaration(oDataStructure):
     utils.tokenize_label(oDataStructure, token.process_label, token.label_colon)
     oDataStructure.replace_next_token_with_if("postponed", token.postponed_keyword)
@@ -51,6 +55,7 @@ def classify_opening_declaration(oDataStructure):
     oDataStructure.replace_next_token_with_if("is", token.is_keyword)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_closing_declaration(oDataStructure):
     oDataStructure.replace_next_token_required("end", token.end_keyword)
     oDataStructure.replace_next_token_with_if("postponed", token.end_postponed_keyword)

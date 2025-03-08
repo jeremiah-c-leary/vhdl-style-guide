@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     range_constraint,
     secondary_unit_declaration,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     physical_type_definition ::=
@@ -24,6 +26,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = range_constraint.detect(iToken, lObjects)
 
@@ -41,6 +44,7 @@ def classify(iToken, lObjects):
     return iCurrent
 
 
+@decorators.print_classifier_debug_info(__name__)
 def units_keyword_found_before_semicolon(oDataStructure):
     if oDataStructure.does_string_exist_before_string("units", ";"):
         return True

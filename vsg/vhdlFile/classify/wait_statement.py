@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     timeout_clause,
     utils,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     wait_statement ::=
@@ -20,6 +22,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     utils.tokenize_label(oDataStructure, token.label, token.label_colon)
     oDataStructure.replace_next_token_with(token.wait_keyword)

@@ -6,8 +6,10 @@ from vsg.vhdlFile.classify import (
     simple_release_assignment,
     simple_waveform_assignment,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     simple_signal_assignment ::=
@@ -38,6 +40,7 @@ def detect(oDataStructure):
 #    return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = iToken
     iCurrent = simple_force_assignment.detect(iToken, lObjects)

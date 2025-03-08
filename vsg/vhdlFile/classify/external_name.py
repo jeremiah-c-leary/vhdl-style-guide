@@ -5,8 +5,10 @@ from vsg.vhdlFile.classify import (
     external_signal_name,
     external_variable_name,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     external_name ::=

@@ -3,8 +3,10 @@
 from vsg.token import loop_statement as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import iteration_scheme, sequence_of_statements
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     loop_statement ::=
@@ -28,6 +30,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.tokenize_label(iToken, lObjects, token.loop_label, token.label_colon)
 

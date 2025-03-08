@@ -3,8 +3,10 @@
 from vsg import parser
 from vsg.token import direction
 from vsg.vhdlFile.classify import external_name, utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure, oType=parser.todo):
     """
       name ::=

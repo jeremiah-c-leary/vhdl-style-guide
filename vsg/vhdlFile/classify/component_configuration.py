@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     block_configuration,
     component_specification,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     if utils.is_next_token("for", iToken, lObjects):
         iCurrent = utils.find_next_token(iToken, lObjects) + 1
@@ -17,6 +19,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     component_configuration ::=

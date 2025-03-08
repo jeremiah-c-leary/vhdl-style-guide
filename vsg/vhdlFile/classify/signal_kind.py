@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import signal_kind as token
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     signal_kind ::=
@@ -15,6 +17,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with_if("register", token.register_keyword)
     oDataStructure.replace_next_token_with_if("bus", token.bus_keyword)

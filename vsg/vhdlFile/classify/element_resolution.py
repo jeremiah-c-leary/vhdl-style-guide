@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, iToken, lObjects):
     iCurrent = iToken
     iLast = 0

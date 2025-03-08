@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     protected_type_definition,
     scalar_type_definition,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     type_definition ::=

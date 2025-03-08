@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import identifier as token
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure, oType=token.identifier):
     """
     identifier ::=

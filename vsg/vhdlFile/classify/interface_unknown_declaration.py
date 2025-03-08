@@ -3,8 +3,10 @@
 from vsg.token import interface_unknown_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, identifier_list, mode, subtype_indication
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     This is a classification if the signal, constant, or variable keywords can not be found.
@@ -21,6 +23,7 @@ def detect(iToken, lObjects):
         return classify(iToken, lObjects)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = identifier_list.classify_until([":"], iToken, lObjects, token.identifier)
 

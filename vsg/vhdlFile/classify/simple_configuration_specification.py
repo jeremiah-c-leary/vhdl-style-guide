@@ -3,8 +3,10 @@
 from vsg.token import simple_configuration_specification as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import binding_indication, component_specification
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     simple_configuration_specification ::=
@@ -17,6 +19,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.assign_next_token_with(token.for_keyword)
 

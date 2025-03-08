@@ -2,8 +2,10 @@
 
 from vsg.token import package_header as token
 from vsg.vhdlFile.classify import generic_clause, generic_map_aspect
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     package_header ::=

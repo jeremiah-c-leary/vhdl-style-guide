@@ -2,8 +2,10 @@
 
 from vsg.token import package_declaration as token
 from vsg.vhdlFile.classify import package_declarative_part, package_header
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     package_declaration ::=
@@ -21,6 +23,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.package_keyword)
     oDataStructure.replace_next_token_with(token.identifier)

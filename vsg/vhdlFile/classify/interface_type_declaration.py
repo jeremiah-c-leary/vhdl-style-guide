@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import interface_incomplete_type_declaration
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     interface_type_declaration ::=

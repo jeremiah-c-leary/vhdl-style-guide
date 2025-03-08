@@ -3,8 +3,10 @@
 from vsg.token import subprogram_instantiation_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect, signature, subprogram_kind
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     subprogram_instantiation_declaration ::=
@@ -20,6 +22,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = subprogram_kind.classify(iToken, lObjects)
 

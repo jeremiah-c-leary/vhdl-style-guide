@@ -2,8 +2,10 @@
 
 from vsg.token import simple_variable_assignment as token
 from vsg.vhdlFile.classify import expression, target
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     simple_variable_assignment ::=
@@ -21,6 +23,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     target.classify(oDataStructure, token)
     oDataStructure.replace_next_token_required(":=", token.assignment)

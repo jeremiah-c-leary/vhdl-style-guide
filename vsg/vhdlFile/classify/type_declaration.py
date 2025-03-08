@@ -2,8 +2,10 @@
 
 
 from vsg.vhdlFile.classify import full_type_declaration, incomplete_type_declaration
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     type_declaration ::=

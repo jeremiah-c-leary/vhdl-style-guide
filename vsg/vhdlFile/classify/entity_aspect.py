@@ -2,8 +2,10 @@
 
 from vsg.token import entity_aspect as token
 from vsg.vhdlFile import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     entity_aspect ::=

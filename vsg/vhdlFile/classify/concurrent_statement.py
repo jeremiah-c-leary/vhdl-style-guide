@@ -9,8 +9,10 @@ from vsg.vhdlFile.classify import (
     generate_statement,
     process_statement,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     concurrent_statement ::=

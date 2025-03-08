@@ -3,8 +3,10 @@
 from vsg.token import file_type_definition as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import type_mark
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     file_type_definition ::=
@@ -17,6 +19,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("file", token.file_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token_required("of", token.of_keyword, iCurrent, lObjects)

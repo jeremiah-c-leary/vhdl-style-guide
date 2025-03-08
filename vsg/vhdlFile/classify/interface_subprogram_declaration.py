@@ -6,8 +6,10 @@ from vsg.vhdlFile.classify import (
     interface_subprogram_default,
     interface_subprogram_specification,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     interface_subprogram_declaration ::=
@@ -23,6 +25,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_if("is", token.is_keyword, iToken, lObjects)
     iCurrent = interface_subprogram_default.classify(iCurrent, lObjects)

@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     block_header,
     block_statement_part,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     block_statement ::=
@@ -27,6 +29,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.tokenize_label(iToken, lObjects, token.block_label, token.label_colon)
     iCurrent = utils.assign_next_token_required("block", token.block_keyword, iCurrent, lObjects)

@@ -3,8 +3,10 @@
 from vsg.token import concurrent_procedure_call_statement as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import procedure_call
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     concurrent_procedure_call_statement ::=

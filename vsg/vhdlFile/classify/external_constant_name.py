@@ -3,8 +3,10 @@
 from vsg.token import external_constant_name as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import subtype_indication
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     external_constant_name ::=
@@ -17,6 +19,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("<<", token.double_less_than, iToken, lObjects)
     iCurrent = utils.assign_next_token_required("constant", token.constant_keyword, iCurrent, lObjects)

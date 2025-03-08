@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     identifier_list,
     subtype_indication,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     file_declaration ::=
@@ -21,6 +23,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("file", token.file_keyword, iToken, lObjects)
     iCurrent = identifier_list.classify_until([":"], iCurrent, lObjects, token.identifier)

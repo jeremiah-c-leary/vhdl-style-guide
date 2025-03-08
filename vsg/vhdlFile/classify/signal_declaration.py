@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     signal_kind,
     subtype_indication,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     signal_declaration ::=
@@ -21,6 +23,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.signal_keyword)
 

@@ -3,8 +3,10 @@
 from vsg.token import record_element_constraint as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import element_constraint
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     record_element_constraint ::=
@@ -17,6 +19,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token(token.record_element_simple_name, iToken, lObjects)
     iCurrent = element_constraint.detect(iCurrent, lObjects)

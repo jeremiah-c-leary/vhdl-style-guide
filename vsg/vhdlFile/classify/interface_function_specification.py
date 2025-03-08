@@ -3,8 +3,10 @@
 from vsg.token import interface_function_specification as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import formal_parameter_list, type_mark
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     interface_function_specification ::=
@@ -21,6 +23,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_if("pure", token.pure_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token_if("impure", token.impure_keyword, iCurrent, lObjects)

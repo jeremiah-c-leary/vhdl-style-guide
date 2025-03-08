@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.token import logical_name_list as token
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure):
     """
     logical_name_list ::=

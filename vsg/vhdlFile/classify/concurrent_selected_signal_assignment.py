@@ -3,8 +3,10 @@
 from vsg.token import concurrent_selected_signal_assignment as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import delay_mechanism, expression, selected_waveforms
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     concurrent_selected_signal_assignment ::=
@@ -19,6 +21,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("with", token.with_keyword, iToken, lObjects)
 

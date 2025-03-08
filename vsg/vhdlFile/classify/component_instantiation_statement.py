@@ -3,8 +3,10 @@
 from vsg.token import component_instantiation_statement as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect, instantiated_unit, port_map_aspect
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     component_instantiation_statement ::=
@@ -21,6 +23,7 @@ def detect(oDataStructure):
     return instantiated_unit.detect(oDataStructure)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.tokenize_label(iToken, lObjects, token.instantiation_label, token.label_colon)
 

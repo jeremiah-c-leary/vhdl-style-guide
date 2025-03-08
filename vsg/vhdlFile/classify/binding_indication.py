@@ -3,8 +3,10 @@
 from vsg.token import binding_indication as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_aspect, generic_map_aspect, port_map_aspect
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     if utils.is_next_token("use", iToken, lObjects):
         return classify(iToken, lObjects)
@@ -15,6 +17,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     binding_indication ::=

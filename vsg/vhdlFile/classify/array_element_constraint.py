@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import element_constraint
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     array_element_constraint ::= element_constraint

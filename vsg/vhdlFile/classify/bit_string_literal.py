@@ -3,12 +3,14 @@
 import re
 
 from vsg.token import bit_string_literal as token
+from vsg import decorators
 
 oIntegerRegex = re.compile(r"\d+")
 oBaseSpecifierRegex = re.compile(r"(([us]?[box])|d)")
 oBitValueStringRegex = re.compile(r'"[0-9a-fhluwxz\-_]*"')
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     bit_string_literal ::=
@@ -30,6 +32,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure, bInt):
     if bInt:
         oDataStructure.replace_next_token_with(token.integer)

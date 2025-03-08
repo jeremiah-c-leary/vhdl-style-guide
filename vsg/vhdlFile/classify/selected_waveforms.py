@@ -4,8 +4,10 @@ from vsg import parser
 from vsg.token import selected_waveforms as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import choices, waveform
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, iToken, lObjects):
     """
     selected_waveforms ::=

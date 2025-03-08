@@ -3,8 +3,10 @@
 from vsg.token import file_open_information as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import file_logical_name
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     file_open_information ::=
@@ -16,6 +18,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = iToken
 

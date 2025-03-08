@@ -2,8 +2,10 @@
 
 from vsg.token import subprogram_kind as token
 from vsg.vhdlFile import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     subprogram_kind ::=
@@ -17,6 +19,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_if("procedure", token.procedure_keyword)
     oDataStructure.replace_next_token_if("function", token.function_keyword)

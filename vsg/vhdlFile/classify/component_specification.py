@@ -3,8 +3,10 @@
 from vsg.token import component_specification as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import instantiation_list
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     iCurrent = iToken
 
@@ -17,6 +19,7 @@ def detect(iToken, lObjects):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     component_specification ::=

@@ -3,8 +3,10 @@
 from vsg.token import incomplete_type_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     incomplete_type_declaration ::=
@@ -16,6 +18,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("type", token.type_keyword, iToken, lObjects)
 

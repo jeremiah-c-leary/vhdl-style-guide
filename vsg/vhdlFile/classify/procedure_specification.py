@@ -3,8 +3,10 @@
 from vsg.token import procedure_specification as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import formal_parameter_list, subprogram_header
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     procedure_specification ::=
@@ -20,6 +22,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("procedure", token.procedure_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token(token.designator, iCurrent, lObjects)

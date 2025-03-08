@@ -3,8 +3,10 @@
 from vsg.token import generate_statement_body as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import block_declarative_part, concurrent_statement
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     generate_statement_body ::=

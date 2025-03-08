@@ -8,8 +8,10 @@ from vsg.vhdlFile.classify import (
     port_clause,
     port_map_aspect,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     block_header ::=

@@ -2,8 +2,10 @@
 
 from vsg.token import index_subtype_definition as token
 from vsg.vhdlFile.classify import type_mark
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     """
     index_subtype_definition ::=

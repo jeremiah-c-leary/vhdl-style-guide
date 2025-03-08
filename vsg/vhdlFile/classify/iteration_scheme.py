@@ -3,8 +3,10 @@
 from vsg.token import iteration_scheme as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import condition, parameter_specification
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     iteration_scheme ::=
@@ -22,6 +24,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     if utils.is_next_token("while", iToken, lObjects):
         iCurrent = utils.assign_next_token_required("while", token.while_keyword, iToken, lObjects)

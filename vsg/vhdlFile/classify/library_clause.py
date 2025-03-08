@@ -2,8 +2,10 @@
 
 from vsg.token import library_clause as token
 from vsg.vhdlFile.classify import logical_name_list
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     library_clause ::=
@@ -15,6 +17,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_current_token_with(token.keyword)
 

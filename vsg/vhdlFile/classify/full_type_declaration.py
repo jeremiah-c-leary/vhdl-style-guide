@@ -2,8 +2,10 @@
 
 from vsg.token import full_type_declaration as token
 from vsg.vhdlFile.classify import identifier, type_definition
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     full_type_declaration ::=
@@ -16,6 +18,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.type_keyword)
 

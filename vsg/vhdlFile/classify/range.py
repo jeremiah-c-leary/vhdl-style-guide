@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import attribute_name
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     range ::=
@@ -14,6 +16,7 @@ def detect(oDataStructure):
     return detect_direction(oDataStructure)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect_direction(oDataStructure):
     if oDataStructure.does_string_exist_before_matching_close_parenthesis("downto"):
         return True

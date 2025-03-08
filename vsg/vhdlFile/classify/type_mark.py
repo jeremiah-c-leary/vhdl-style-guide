@@ -2,8 +2,10 @@
 
 from vsg.token import type_mark as token
 from vsg.vhdlFile.classify import attribute_name
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     """
     type_mark ::=

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import aggregate, utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure, oTokenClass):
     """
     target ::=

@@ -3,8 +3,10 @@
 from vsg.token import protected_type_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import protected_type_declarative_part
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     protected_type_declaration ::=
@@ -19,6 +21,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("protected", token.protected_keyword, iToken, lObjects)
 

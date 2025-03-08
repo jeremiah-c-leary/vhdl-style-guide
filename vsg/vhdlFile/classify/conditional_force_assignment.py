@@ -3,8 +3,10 @@
 from vsg.token import conditional_force_assignment as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import conditional_expressions, force_mode
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     conditional_force_assignment ::=
@@ -19,6 +21,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
     iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)

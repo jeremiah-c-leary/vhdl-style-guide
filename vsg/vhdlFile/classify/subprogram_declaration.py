@@ -3,8 +3,10 @@
 from vsg.token import subprogram_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import subprogram_specification
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     subprogram_declaration ::=

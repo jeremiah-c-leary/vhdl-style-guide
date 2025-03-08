@@ -3,8 +3,10 @@
 from vsg.token import port_clause as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import port_list
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     port_clause ::=
@@ -17,6 +19,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.port_keyword)
     oDataStructure.replace_next_token_with(token.open_parenthesis)

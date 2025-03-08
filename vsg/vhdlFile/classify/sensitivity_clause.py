@@ -3,8 +3,10 @@
 from vsg.token import sensitivity_clause as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import sensitivity_list
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     sensitivity_clause ::=
@@ -16,6 +18,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure):
     oDataStructure.replace_next_token_required("on", token.on_keyword)
 

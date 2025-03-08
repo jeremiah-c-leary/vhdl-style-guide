@@ -3,8 +3,10 @@
 from vsg import parser
 from vsg.token import waveform as token
 from vsg.vhdlFile.classify import waveform_element
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure):
     """
     waveform ::=

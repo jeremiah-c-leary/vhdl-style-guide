@@ -5,8 +5,10 @@ from vsg.vhdlFile.classify import (
     conditional_force_assignment,
     conditional_waveform_assignment,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     conditional_signal_assignment ::=
@@ -24,6 +26,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = conditional_force_assignment.detect(iToken, lObjects)
     if iCurrent != iToken:

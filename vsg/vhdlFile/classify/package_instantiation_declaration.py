@@ -2,8 +2,10 @@
 
 from vsg.token import package_instantiation_declaration as token
 from vsg.vhdlFile.classify import generic_map_aspect, identifier
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     package_instantiation_declaration ::=
@@ -16,6 +18,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_required("package", token.package_keyword)
 

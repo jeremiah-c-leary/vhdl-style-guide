@@ -19,8 +19,10 @@ from vsg.vhdlFile.classify import (
     use_clause,
     variable_declaration,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     entity_declarative_item ::=

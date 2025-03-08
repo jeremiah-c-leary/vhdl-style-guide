@@ -5,8 +5,10 @@ from vsg.vhdlFile.classify import (
     for_generate_statement,
     if_generate_statement,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     generate_statement ::=

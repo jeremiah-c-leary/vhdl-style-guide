@@ -3,8 +3,10 @@
 from vsg.token import block_specification as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generate_specification
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     block_specification ::=

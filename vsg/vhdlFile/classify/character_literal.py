@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     character_literal ::=
@@ -17,5 +19,6 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(parser.character_literal)

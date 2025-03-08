@@ -2,8 +2,10 @@
 
 from vsg.token import array_constraint as token
 from vsg.vhdlFile.classify import array_element_constraint, index_constraint
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     array_constraint ::=
@@ -21,6 +23,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect_discrete_subtype_indication(oDataStructure):
     oDataStructure.align_seek_index()
     if oDataStructure.is_next_seek_token("("):
@@ -29,6 +32,7 @@ def detect_discrete_subtype_indication(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def open_detected(oDataStructure):
     return oDataStructure.are_next_consecutive_tokens(["(", "open"])
 

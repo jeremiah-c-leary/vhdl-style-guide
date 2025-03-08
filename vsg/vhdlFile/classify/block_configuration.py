@@ -2,8 +2,10 @@
 
 from vsg.token import block_configuration as token
 from vsg.vhdlFile.classify import block_specification, configuration_item, use_clause
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     block_configuration ::=
@@ -19,6 +21,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.for_keyword)
 

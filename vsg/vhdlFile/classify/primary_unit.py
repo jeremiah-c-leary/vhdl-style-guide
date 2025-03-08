@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     package_declaration,
     package_instantiation_declaration,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     primary_unit ::=

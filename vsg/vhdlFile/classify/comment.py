@@ -2,8 +2,10 @@
 
 from vsg import parser
 from vsg.token import delimited_comment as token
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(lTokens, lObjects, oOptions):
     if len(lObjects) == 0 and oOptions.inside_delimited_comment():
         lObjects.append(token.text(""))
@@ -18,6 +20,7 @@ def classify(lTokens, lObjects, oOptions):
     merge_text_tokens(lObjects)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_closing_comment_delimiters(iToken, lObjects, oOptions):
     sToken = lObjects[iToken].get_value()
     if oOptions.inside_delimited_comment() and sToken == "*/":
@@ -25,10 +28,12 @@ def classify_closing_comment_delimiters(iToken, lObjects, oOptions):
         oOptions.clear_inside_delimited_comment()
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_opening_comment_delimiters(iToken, lObjects, oOptions):
     classify_delimited_comment_open_keyword(iToken, lObjects, oOptions)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_single_line_comment(iToken, lObjects, oOptions):
     sToken = lObjects[iToken].get_value()
     if not oOptions.inside_delimited_comment() and sToken.startswith("--"):
@@ -53,6 +58,7 @@ def classify_single_line_comment(iToken, lObjects, oOptions):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_delimited_comment_open_keyword(iToken, lObjects, oOptions):
     sToken = lObjects[iToken].get_value()
     if not oOptions.inside_delimited_comment() and sToken == "/*":
@@ -60,6 +66,7 @@ def classify_delimited_comment_open_keyword(iToken, lObjects, oOptions):
         oOptions.set_inside_delimited_comment()
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_delimited_comment_text(iToken, lObjects, oOptions):
     sToken = lObjects[iToken].get_value()
     if oOptions.inside_delimited_comment():

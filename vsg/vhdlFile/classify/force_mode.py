@@ -2,8 +2,10 @@
 
 from vsg.token import force_mode as token
 from vsg.vhdlFile import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     force_mode ::=

@@ -3,10 +3,12 @@
 from vsg.token import procedure_call_statement as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import procedure_call
+from vsg import decorators
 
 lKeywords = ["null", "return", "exit", "next", "while", "for", "loop", "case", "if", "report", "assert", "wait", "end", "with", "else", "elsif", "when"]
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     procedure_call_statement ::=
@@ -40,6 +42,7 @@ def detect(oDataStructure):
 #    return classify(iToken, lObjects)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.tokenize_label(iToken, lObjects, token.label, token.label_colon)
 

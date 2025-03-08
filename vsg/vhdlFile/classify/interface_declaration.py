@@ -6,8 +6,10 @@ from vsg.vhdlFile.classify import (
     interface_subprogram_declaration,
     interface_type_declaration,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     interface_declaration ::=

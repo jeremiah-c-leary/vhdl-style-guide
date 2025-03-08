@@ -2,8 +2,10 @@
 
 
 from vsg.vhdlFile.classify import generic_clause, port_clause
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     entity_header ::=

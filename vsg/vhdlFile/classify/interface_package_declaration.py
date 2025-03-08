@@ -3,8 +3,10 @@
 from vsg.token import interface_package_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier, interface_package_generic_map_aspect
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     interface_package_declaration ::=
@@ -16,6 +18,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("package", token.package_keyword, iToken, lObjects)
 

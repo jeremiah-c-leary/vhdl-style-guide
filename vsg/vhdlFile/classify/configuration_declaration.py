@@ -2,8 +2,10 @@
 
 from vsg.token import configuration_declaration as token
 from vsg.vhdlFile.classify import block_configuration, configuration_declarative_part
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     configuration_declaration ::=
@@ -20,6 +22,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     classify_opening_declaration(oDataStructure)
 
@@ -30,6 +33,7 @@ def classify(oDataStructure):
     classify_closing_declaration(oDataStructure)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_opening_declaration(oDataStructure):
     oDataStructure.replace_next_token_with(token.configuration_keyword)
     oDataStructure.replace_next_token_with(token.identifier)
@@ -38,6 +42,7 @@ def classify_opening_declaration(oDataStructure):
     oDataStructure.replace_next_token_required("is", token.is_keyword)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_closing_declaration(oDataStructure):
     oDataStructure.replace_next_token_required("end", token.end_keyword)
     oDataStructure.replace_next_token_if("configuration", token.end_configuration_keyword)

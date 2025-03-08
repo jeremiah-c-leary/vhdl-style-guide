@@ -2,8 +2,10 @@
 
 from vsg.token import secondary_unit_declaration as token
 from vsg.vhdlFile import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     secondary_unit_declaration ::= identifier = physical_literal;
@@ -13,6 +15,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = iToken
     iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)

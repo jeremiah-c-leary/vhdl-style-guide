@@ -3,8 +3,10 @@
 from vsg.token import alias_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import name, signature, subtype_indication
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     alias_declaration ::=
@@ -17,6 +19,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("alias", token.alias_keyword, iToken, lObjects)
 

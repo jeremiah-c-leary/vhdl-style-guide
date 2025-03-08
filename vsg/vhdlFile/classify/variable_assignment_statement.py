@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     simple_variable_assignment,
     utils,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     variable_assignment_statement ::=

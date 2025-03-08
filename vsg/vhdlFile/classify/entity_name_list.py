@@ -3,8 +3,10 @@
 from vsg.token import entity_name_list as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_designator
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     entity_name_list ::=

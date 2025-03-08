@@ -3,8 +3,10 @@
 from vsg.token import conditional_variable_assignment as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import conditional_expressions
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     conditional_variable_assignment ::=
@@ -29,6 +31,7 @@ def detect(oDataStructure):
 #    return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_tokens_until(":=", token.target, iToken, lObjects)
     iCurrent = utils.assign_next_token_required(":=", token.assignment, iCurrent, lObjects)

@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     interface_unknown_declaration,
     interface_variable_declaration,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iCurrent, lObjects):
     """
     interface_object_declaration ::=

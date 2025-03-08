@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     subprogram_instantiation_declaration,
     use_clause,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     protected_type_declarative_item ::=

@@ -2,8 +2,10 @@
 
 from vsg import parser
 from vsg.vhdlFile.classify import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure, oToken):
     oDataStructure.replace_next_token_with(oToken.name)
 

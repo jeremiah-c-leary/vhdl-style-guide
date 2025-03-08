@@ -3,8 +3,10 @@
 from vsg.token import parameter_specification as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import discrete_range
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, iToken, lObjects):
     """
     parameter_specification ::=

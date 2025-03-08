@@ -2,8 +2,10 @@
 
 from vsg.token import timeout_clause as token
 from vsg.vhdlFile.classify import expression
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     timeout_clause ::=
@@ -15,6 +17,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure):
     oDataStructure.replace_next_token_with(token.for_keyword)
 

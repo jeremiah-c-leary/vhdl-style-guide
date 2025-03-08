@@ -6,8 +6,10 @@ from vsg.vhdlFile.classify import (
     entity_header,
     entity_statement_part,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     entity_declaration ::=
@@ -25,6 +27,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_current_token_with(token.entity_keyword)
     oDataStructure.replace_next_token_with(token.identifier)

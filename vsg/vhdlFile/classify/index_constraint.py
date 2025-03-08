@@ -2,8 +2,10 @@
 
 from vsg.token import index_constraint as token
 from vsg.vhdlFile.classify import discrete_range
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     index_constraint ::=
@@ -17,6 +19,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.open_parenthesis)
 

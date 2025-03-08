@@ -3,8 +3,10 @@
 from vsg.token import attribute_specification as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_specification, expression
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     attribute_specification ::=
@@ -16,6 +18,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("attribute", token.attribute_keyword, iToken, lObjects)
     iCurrent = utils.assign_next_token(token.attribute_designator, iCurrent, lObjects)

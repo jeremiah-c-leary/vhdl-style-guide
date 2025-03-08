@@ -2,8 +2,10 @@
 
 from vsg.token import association_element as token
 from vsg.vhdlFile.classify import formal_part
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     association_element ::=
@@ -33,16 +35,19 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     classify_formal_part(oDataStructure)
     classify_actual_part(oDataStructure)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_formal_part(oDataStructure):
     if oDataStructure.does_string_exist_before_seek_index_honoring_parenthesis_hierarchy("=>"):
         formal_part.classify(oDataStructure, token.formal_part)
         oDataStructure.replace_next_token_with(token.assignment)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_actual_part(oDataStructure):
     oDataStructure.replace_tokens_from_current_to_seek_with(token.actual_part)

@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     external_name,
     utils,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     expression ::=
@@ -18,6 +20,7 @@ def classify(iToken, lObjects):
     return utils.assign_token(lObjects, iToken, parser.todo)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure, oType=parser.todo):
     """
     expression ::=
@@ -53,6 +56,7 @@ def classify_until(lUntils, oDataStructure, oType=parser.todo):
             utils.assign_special_tokens(oDataStructure, oType)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def update_paren_counter(iParen, oDataStructure):
     if utils.is_current_token_open_paren(oDataStructure):
         return iParen + 1

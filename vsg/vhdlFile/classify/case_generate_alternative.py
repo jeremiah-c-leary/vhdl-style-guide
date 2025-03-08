@@ -3,8 +3,10 @@
 from vsg.token import case_generate_alternative as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import choices, generate_statement_body
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     case_generate_alternative ::=
@@ -17,6 +19,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("when", token.when_keyword, iToken, lObjects)
 

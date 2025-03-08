@@ -2,8 +2,10 @@
 
 from vsg.token import condition_clause as token
 from vsg.vhdlFile.classify import condition
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     condition_clause ::=
@@ -15,6 +17,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure):
     oDataStructure.replace_next_token_with(token.until_keyword)
 

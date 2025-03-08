@@ -2,8 +2,10 @@
 
 from vsg.token import primary_unit_declaration as token
 from vsg.vhdlFile import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     primary_unit_declaration ::= identifier;
@@ -11,6 +13,7 @@ def detect(iToken, lObjects):
     return classify(iToken, lObjects)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = iToken
 

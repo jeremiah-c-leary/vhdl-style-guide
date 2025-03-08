@@ -2,8 +2,10 @@
 
 from vsg.token import assertion_statement as token
 from vsg.vhdlFile.classify import assertion, utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     assertion_statement ::=
@@ -15,6 +17,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.tokenize_label(iToken, lObjects, token.label, token.label_colon)
 

@@ -3,10 +3,12 @@
 from vsg.token import procedure_call as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import actual_parameter_part
+from vsg import decorators
 
 lExceptions = ["<=", "end", "map", "component", "entity", "configuration", "if"]
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     Calling functions:
@@ -34,6 +36,7 @@ def detect(oDataStructure):
     return True
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     procedure_call ::=

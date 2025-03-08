@@ -2,8 +2,10 @@
 
 from vsg.token import context_declaration as token
 from vsg.vhdlFile.classify import context_clause
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     context_declaration ::=
@@ -19,6 +21,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_current_token_with(token.context_keyword)
     oDataStructure.replace_next_token_with(token.identifier)

@@ -2,8 +2,10 @@
 
 from vsg.token import context_reference as token
 from vsg.vhdlFile.classify import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     context_reference ::=
@@ -16,6 +18,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_current_token_with(token.keyword)
     utils.classify_selected_name(oDataStructure, token)

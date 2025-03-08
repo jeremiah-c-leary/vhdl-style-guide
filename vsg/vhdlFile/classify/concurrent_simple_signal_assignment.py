@@ -2,8 +2,10 @@
 
 from vsg.token import concurrent_simple_signal_assignment as token
 from vsg.vhdlFile.classify import delay_mechanism, utils, waveform
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     [ label : ] [ postponed ] concurrent_simple_signal_assignment
@@ -22,6 +24,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     utils.assign_tokens_until("<=", token.target, oDataStructure)
     oDataStructure.replace_next_token_required("<=", token.assignment)

@@ -3,8 +3,10 @@
 from vsg import parser
 from vsg.token import attribute_name as token
 from vsg.vhdlFile.classify import expression, prefix, signature
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     attribute_name ::=
@@ -27,11 +29,13 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def skip_prefix(oDataStructure):
     oDataStructure.increment_seek_index()
     oDataStructure.advance_seek_over_parenthesis()
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     prefix.classify(oDataStructure, token)
 

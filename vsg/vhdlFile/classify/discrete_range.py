@@ -3,8 +3,10 @@
 from vsg import parser
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import range, subtype_indication
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     discrete_range ::=
@@ -16,6 +18,7 @@ def detect(oDataStructure):
     return range.detect(oDataStructure)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     discrete_range ::=
@@ -25,6 +28,7 @@ def classify(iToken, lObjects):
     return utils.assign_token(lObjects, iToken, parser.todo)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure):
     iOpenParenthesis = 0
     iCloseParenthesis = 0

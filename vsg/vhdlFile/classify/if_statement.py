@@ -2,8 +2,10 @@
 
 from vsg.token import if_statement as token
 from vsg.vhdlFile.classify import condition, sequence_of_statements, utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     if_statement ::=
@@ -22,6 +24,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     utils.tokenize_label(oDataStructure, token.if_label, token.label_colon)
     oDataStructure.replace_next_token_required("if", token.if_keyword)

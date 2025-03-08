@@ -3,8 +3,10 @@
 from vsg.token import group_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import group_constituent_list
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     group_declaration ::=
@@ -17,6 +19,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with("group", token.group_keyword, iToken, lObjects)
     oDataStructure.replace_next_token_with(token.identifier, iCurrent, lObjects)

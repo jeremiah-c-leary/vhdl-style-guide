@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from vsg.vhdlFile.classify import block_configuration, component_configuration
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     return classify(iToken, lObjects)
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     """
     configuration_item ::=

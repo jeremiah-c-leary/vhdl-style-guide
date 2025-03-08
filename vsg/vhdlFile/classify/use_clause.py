@@ -2,8 +2,10 @@
 
 from vsg.token import use_clause as token
 from vsg.vhdlFile.classify import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     use_clause ::=
@@ -15,6 +17,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_current_token_with(token.keyword)
 

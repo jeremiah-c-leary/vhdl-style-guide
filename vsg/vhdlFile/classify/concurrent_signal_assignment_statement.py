@@ -7,8 +7,10 @@ from vsg.vhdlFile.classify import (
     concurrent_simple_signal_assignment,
     utils,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     concurrent_signal_assignment_statement ::=

@@ -2,8 +2,10 @@
 
 from vsg.token import process_sensitivity_list as token
 from vsg.vhdlFile.classify import sensitivity_list
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     """
     process_sensitivity_list ::=

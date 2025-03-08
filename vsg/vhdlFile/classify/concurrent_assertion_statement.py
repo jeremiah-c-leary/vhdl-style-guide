@@ -3,8 +3,10 @@
 from vsg.token import concurrent_assertion_statement as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import assertion
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     concurrent_assertion_statement ::=
@@ -23,6 +25,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.tokenize_label(iToken, lObjects, token.label_name, token.label_colon)
 

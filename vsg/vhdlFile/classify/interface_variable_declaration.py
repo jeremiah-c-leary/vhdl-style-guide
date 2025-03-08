@@ -3,8 +3,10 @@
 from vsg.token import interface_variable_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, identifier_list, mode, subtype_indication
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     interface_variable_declaration ::=
@@ -16,6 +18,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("variable", token.variable_keyword, iToken, lObjects)
 

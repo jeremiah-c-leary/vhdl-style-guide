@@ -3,8 +3,10 @@
 from vsg.token import selected_variable_assignment as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, selected_expressions
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     selected_variable_assignment ::=
@@ -20,6 +22,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("with", token.with_keyword, iToken, lObjects)
 

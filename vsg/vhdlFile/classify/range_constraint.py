@@ -3,8 +3,10 @@
 from vsg import parser
 from vsg.token import range_constraint as token
 from vsg.vhdlFile.classify import utils
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     range_constraint ::=
@@ -16,6 +18,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.range_keyword)
 

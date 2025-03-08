@@ -5,8 +5,10 @@ from vsg.vhdlFile.classify import (
     integer_type_definition,
     physical_type_definition,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     scalar_type_definition ::=

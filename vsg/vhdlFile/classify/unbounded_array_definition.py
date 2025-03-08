@@ -2,8 +2,10 @@
 
 from vsg.token import unbounded_array_definition as token
 from vsg.vhdlFile.classify import index_subtype_definition, subtype_indication
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     unbounded_array_definition ::=
@@ -18,6 +20,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.array_keyword)
     oDataStructure.replace_next_token_required("(", token.open_parenthesis)

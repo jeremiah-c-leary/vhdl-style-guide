@@ -3,8 +3,10 @@
 from vsg.token import component_declaration as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_clause, port_clause
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     component_declaration ::=
@@ -20,6 +22,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = classify_opening_declaration(iToken, lObjects)
 

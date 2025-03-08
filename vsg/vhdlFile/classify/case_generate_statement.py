@@ -3,8 +3,10 @@
 from vsg.token import case_generate_statement as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import case_generate_alternative, expression
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     case_generate_statement ::=
@@ -25,6 +27,7 @@ def detect(oDataStructure):
     return False
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.tokenize_label(iToken, lObjects, token.generate_label, token.label_colon)
 

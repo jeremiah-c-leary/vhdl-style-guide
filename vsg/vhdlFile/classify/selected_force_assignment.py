@@ -3,8 +3,10 @@
 from vsg.token import selected_force_assignment as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, force_mode, selected_expressions
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(iToken, lObjects):
     """
     selected_force_assignment ::= [§ 10.5.4]
@@ -20,6 +22,7 @@ def detect(iToken, lObjects):
     return iToken
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("with", token.with_keyword, iToken, lObjects)
     iCurrent = expression.classify_until(["select"], iToken, lObjects)

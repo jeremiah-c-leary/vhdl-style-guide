@@ -17,8 +17,10 @@ from vsg.vhdlFile.classify import (
     variable_assignment_statement,
     wait_statement,
 )
+from vsg import decorators
 
 
+@decorators.print_classifier_debug_info(__name__)
 def detect(oDataStructure):
     """
     sequential_statement ::=
