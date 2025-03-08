@@ -2,10 +2,8 @@
 
 
 from vsg import parser
-from vsg import decorators
 
 
-@decorators.print_classifier_debug_info(__name__)
 def classify(lTokens, lObjects):
     """
     Classifies preprocessor commands
