@@ -8,6 +8,7 @@ from vsg.vhdlFile.classify import (
     concurrent_signal_assignment_statement,
     generate_statement,
     process_statement,
+    psl_psl_directive,
 )
 
 
@@ -33,6 +34,10 @@ def detect(iToken, lObjects):
         return iCurrent
 
     iCurrent = generate_statement.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
+
+    iCurrent = psl_psl_directive.detect(iToken, lObjects)
     if iCurrent != iToken:
         return iCurrent
 

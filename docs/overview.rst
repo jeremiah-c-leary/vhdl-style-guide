@@ -64,5 +64,5 @@ Known Limitations
 VSG is a continual work in progress.
 As such, this version has the following known limitations:
 
-* Parser will not process embedded PSL
+* Minumal support for embedded PSL
 * Parser will not process VHDL 2019

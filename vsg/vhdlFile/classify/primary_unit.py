@@ -6,6 +6,7 @@ from vsg.vhdlFile.classify import (
     entity_declaration,
     package_declaration,
     package_instantiation_declaration,
+    psl_verification_unit,
 )
 
 
@@ -37,6 +38,10 @@ def detect(iToken, lObjects):
         return iReturned
 
     iReturned = configuration_declaration.detect(iToken, lObjects)
+    if iReturned != iToken:
+        return iReturned
+
+    iReturned = psl_verification_unit.detect(iToken, lObjects)
     if iReturned != iToken:
         return iReturned
 

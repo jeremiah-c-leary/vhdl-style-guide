@@ -11,6 +11,9 @@ from vsg.vhdlFile.classify import (
     package_body,
     package_declaration,
     package_instantiation_declaration,
+    psl_clock_declaration,
+    psl_property_declaration,
+    psl_sequence_declaration,
     signal_declaration,
     subprogram_body,
     subprogram_declaration,
@@ -117,6 +120,18 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = configuration_specification.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = psl_clock_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = psl_property_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = psl_sequence_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
