@@ -56,7 +56,12 @@ class consistent_interface_token_case(case.Rule):
         lArchitectures = oFile.get_tokens_bounded_by(oStartToken, oEndToken)
         for oArchitecture in lArchitectures:
             oArchitecture.name = extract_entity_name(oArchitecture)
-            lArchitectureInterfaces = lInterfaces[oArchitecture.name]
+
+            try:
+                lArchitectureInterfaces = lInterfaces[oArchitecture.name]
+            except KeyError:
+                continue
+
             lToi = extract_token_pairs(oArchitecture, lPairs)
             lToi.extend(extract_component_instantiation_actual_parts(oArchitecture, self.map_aspect_token))
             for oToi in lToi:
