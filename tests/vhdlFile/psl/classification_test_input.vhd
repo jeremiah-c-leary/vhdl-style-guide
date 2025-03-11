@@ -39,7 +39,7 @@ entity fifo is
 
     restrict! something something;
 
-    cover something something [report something];
+    cover something something report something;
 
     fairness something something;
 
@@ -54,7 +54,7 @@ entity fifo is
 
     label1: restrict! something something;
 
-    label1: cover something something [report something];
+    label1: cover something something report something;
 
     label1: fairness something something;
 
@@ -82,7 +82,7 @@ begin
 
   restrict! something something;
 
-  cover something something [report something];
+  cover something something report something;
 
   fairness something something;
 
@@ -97,7 +97,7 @@ begin
 
   label1: restrict! something something;
 
-  label1: cover something something [report something];
+  label1: cover something something report something;
 
   label1: fairness something something;
 

@@ -177,10 +177,8 @@
 41 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-42 |     cover something something [report something];
+42 |     cover something something report something;
 <class 'vsg.token.psl.cover_directive.cover_keyword'>
-<class 'vsg.token.psl.cover_directive.todo'>
-<class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
@@ -260,12 +258,10 @@
 56 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-57 |     label1: cover something something [report something];
+57 |     label1: cover something something report something;
 <class 'vsg.token.psl.psl_directive.label_name'>
 <class 'vsg.token.psl.psl_directive.label_colon'>
 <class 'vsg.token.psl.cover_directive.cover_keyword'>
-<class 'vsg.token.psl.cover_directive.todo'>
-<class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
@@ -402,10 +398,8 @@
 84 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-85 |   cover something something [report something];
+85 |   cover something something report something;
 <class 'vsg.token.psl.cover_directive.cover_keyword'>
-<class 'vsg.token.psl.cover_directive.todo'>
-<class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
@@ -485,12 +479,10 @@
 99 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-100 |   label1: cover something something [report something];
+100 |   label1: cover something something report something;
 <class 'vsg.token.psl.psl_directive.label_name'>
 <class 'vsg.token.psl.psl_directive.label_colon'>
 <class 'vsg.token.psl.cover_directive.cover_keyword'>
-<class 'vsg.token.psl.cover_directive.todo'>
-<class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>
 <class 'vsg.token.psl.cover_directive.todo'>

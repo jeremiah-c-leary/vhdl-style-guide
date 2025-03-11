@@ -13,8 +13,7 @@ def detect(iToken, lObjects):
     """
 
     if utils.are_next_consecutive_tokens([None, ":", "cover"], iToken, lObjects) or utils.is_next_token("cover", iToken, lObjects):
-        if utils.find_in_range("[", iToken, ";", lObjects) and utils.find_in_range("report", iToken, ";", lObjects):
-            return True
+        return True
     return False
 
 
