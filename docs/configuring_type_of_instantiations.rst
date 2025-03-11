@@ -41,7 +41,7 @@ This is an example of how to configure these options.
 .. code-block:: yaml
 
    rule :
-     instantiation_010:
+     instantiation_034:
         method: 'component'
 
 Example: |method| set to |component_option|
