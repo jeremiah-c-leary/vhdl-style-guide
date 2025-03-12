@@ -4,6 +4,7 @@ from vsg.vhdlFile.classify import (
     concurrent_assertion_statement,
     concurrent_procedure_call_statement,
     process_statement,
+    psl_psl_directive,
 )
 
 
@@ -15,6 +16,10 @@ def detect(iToken, lObjects):
       | *passive*_process_statement
       | *PSL*_PSL_Directive
     """
+
+    iCurrent = psl_psl_directive.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
 
     iCurrent = process_statement.detect(iToken, lObjects)
     if iCurrent != iToken:

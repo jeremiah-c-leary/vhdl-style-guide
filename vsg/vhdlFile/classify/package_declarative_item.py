@@ -9,6 +9,8 @@ from vsg.vhdlFile.classify import (
     file_declaration,
     package_declaration,
     package_instantiation_declaration,
+    psl_property_declaration,
+    psl_sequence_declaration,
     signal_declaration,
     subprogram_declaration,
     subprogram_instantiation_declaration,
@@ -101,6 +103,14 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = use_clause.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = psl_property_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = psl_sequence_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 

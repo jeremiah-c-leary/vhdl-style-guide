@@ -10,6 +10,9 @@ from vsg.vhdlFile.classify import (
     package_body,
     package_declaration,
     package_instantiation_declaration,
+    psl_clock_declaration,
+    psl_property_declaration,
+    psl_sequence_declaration,
     signal_declaration,
     subprogram_body,
     subprogram_declaration,
@@ -110,6 +113,18 @@ def detect(iToken, lObjects):
         return iCurrent
 
     iCurrent = use_clause.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
+
+    iCurrent = psl_clock_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
+
+    iCurrent = psl_property_declaration.detect(iToken, lObjects)
+    if iCurrent != iToken:
+        return iCurrent
+
+    iCurrent = psl_sequence_declaration.detect(iToken, lObjects)
     if iCurrent != iToken:
         return iCurrent
 
