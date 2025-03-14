@@ -22,7 +22,7 @@ class test_rule(unittest.TestCase):
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "constant")
         self.assertEqual(oRule.identifier, "400")
-        self.assertEqual(len(oRule.configuration), 11)
+        self.assertEqual(len(oRule.configuration), 12)
 
     def test_rule_400_yes_no_no_no_no(self):
         oRule = constant.rule_400()

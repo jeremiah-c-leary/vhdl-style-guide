@@ -11,6 +11,7 @@ class Rule:
         self.unique_id = str(self.name) + "_" + str(self.identifier)
         self.solution = None
         self.violations = []
+        self.had_violations = False
         self.indent_style = "spaces"
         self.indent_size = 2
         self.phase = None
@@ -18,10 +19,11 @@ class Rule:
         self.disable = False
         self.fixable = True
         self.severity = severity.error("Error")
+        self.user_error_message = ""
         self.debug = False
         self.dFix = {}
         self.dFix["violations"] = {}
-        self.configuration = ["indent_style", "indent_size", "phase", "disable", "fixable", "severity"]
+        self.configuration = ["indent_style", "indent_size", "phase", "disable", "fixable", "severity", "user_error_message"]
         self.deprecated = False
         self.proposed = False
         self.groups = []
@@ -108,6 +110,7 @@ class Rule:
             self._filter_out_fix_only_violations(dFixOnly)
             for oViolation in self.violations[::-1]:
                 self._fix_violation(oViolation)
+                self.had_violations = True
             oFile.update(self.violations, self.remap)
             self.clear_violations()
 
@@ -132,6 +135,8 @@ class Rule:
         Adds a linenumber to a violations list.
         """
         if not violation.has_code_tag(self.unique_id):
+            if self.user_error_message != "":
+                violation.sSolution = violation.sSolution + " [user_error_message: " + self.user_error_message + "]"
             self.violations.append(violation)
 
     def analyze(self, oFile):
