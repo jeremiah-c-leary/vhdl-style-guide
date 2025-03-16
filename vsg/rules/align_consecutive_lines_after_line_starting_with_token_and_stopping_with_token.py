@@ -68,7 +68,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
 
     def _calculate_column(self, oFile, oToi, lTokens):
         if self.alignment == "report":
-            iSpaces = oFile.get_column_of_token_index(oToi.get_start_index()) + 7
+            iSpaces = oFile.get_column_of_token_index(oToi.get_start_index(), self.indent_size) + 7
         else:
             iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indent_size
         return iSpaces
@@ -81,7 +81,7 @@ class align_consecutive_lines_after_line_starting_with_token_and_stopping_with_t
                 return (lTokens[0].indent + self.indentAdjust) * "\t"
         else:
             if self.alignment == "report":
-                iSpaces = oFile.get_column_of_token_index(oToi.get_start_index()) + (len(lTokens[0].get_value()) + 1)
+                iSpaces = oFile.get_column_of_token_index(oToi.get_start_index(), self.indent_size) + (len(lTokens[0].get_value()) + 1)
             else:
                 iSpaces = (lTokens[0].indent + self.indentAdjust) * self.indent_size
             return iSpaces * " "
