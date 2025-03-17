@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import unbounded_array_definition as token
 from vsg.vhdlFile.classify import index_subtype_definition, subtype_indication
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

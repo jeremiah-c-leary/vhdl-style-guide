@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg.vhdlFile.classify import generic_clause, port_clause
 from vsg import decorators
+from vsg.vhdlFile.classify import generic_clause, port_clause
 
 
 @decorators.print_classifier_debug_info(__name__)

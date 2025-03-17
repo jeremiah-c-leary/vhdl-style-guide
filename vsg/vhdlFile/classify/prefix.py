@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
+from vsg import decorators, parser
 from vsg.vhdlFile.classify import utils
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

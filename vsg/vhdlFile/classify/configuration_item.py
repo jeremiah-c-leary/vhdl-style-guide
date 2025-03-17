@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import block_configuration, component_configuration
 from vsg import decorators
+from vsg.vhdlFile.classify import block_configuration, component_configuration
 
 
 @decorators.print_classifier_debug_info(__name__)

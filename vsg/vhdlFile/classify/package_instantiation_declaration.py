@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import package_instantiation_declaration as token
 from vsg.vhdlFile.classify import generic_map_aspect, identifier
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

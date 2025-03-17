@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import binding_indication as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_aspect, generic_map_aspect, port_map_aspect
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

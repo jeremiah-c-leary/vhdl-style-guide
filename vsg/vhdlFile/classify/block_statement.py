@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import block_statement as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
@@ -7,7 +8,6 @@ from vsg.vhdlFile.classify import (
     block_header,
     block_statement_part,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

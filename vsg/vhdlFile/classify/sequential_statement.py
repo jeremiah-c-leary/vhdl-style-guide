@@ -2,6 +2,7 @@
 
 # from vsg.vhdlFile import utils
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     assertion_statement,
     case_statement,
@@ -17,7 +18,6 @@ from vsg.vhdlFile.classify import (
     variable_assignment_statement,
     wait_statement,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

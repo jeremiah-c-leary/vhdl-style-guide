@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     case_generate_statement,
     for_generate_statement,
     if_generate_statement,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

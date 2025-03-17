@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     block_statement,
     component_instantiation_statement,
@@ -9,7 +10,6 @@ from vsg.vhdlFile.classify import (
     generate_statement,
     process_statement,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

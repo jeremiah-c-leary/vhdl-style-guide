@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     interface_object_declaration,
     interface_package_declaration,
     interface_subprogram_declaration,
     interface_type_declaration,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -32,6 +32,8 @@ def detect(oDataStructure):
         return interface_package_declaration.classify(oDataStructure)
 
     return False
+
+
 #    iCurrent = interface_object_declaration.detect(iToken, lObjects)
 #    if iCurrent != iToken:
 #        return iCurrent

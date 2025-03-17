@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import procedure_call_statement as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import procedure_call
-from vsg import decorators
 
 lKeywords = ["null", "return", "exit", "next", "while", "for", "loop", "case", "if", "report", "assert", "wait", "end", "with", "else", "elsif", "when"]
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.token import signal_kind as token
 from vsg import decorators
+from vsg.token import signal_kind as token
 
 
 @decorators.print_classifier_debug_info(__name__)

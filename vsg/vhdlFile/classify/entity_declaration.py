@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import entity_declaration as token
 from vsg.vhdlFile.classify import (
     entity_declarative_part,
     entity_header,
     entity_statement_part,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

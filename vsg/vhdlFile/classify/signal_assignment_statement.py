@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import signal_assignment_statement as token
 from vsg.vhdlFile.classify import (
     conditional_signal_assignment,
@@ -7,7 +8,6 @@ from vsg.vhdlFile.classify import (
     simple_signal_assignment,
     utils,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

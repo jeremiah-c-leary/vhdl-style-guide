@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import case_statement as token
 from vsg.vhdlFile.classify import case_statement_alternative, expression, utils
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

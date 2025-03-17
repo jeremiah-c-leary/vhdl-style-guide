@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     enumeration_type_definition,
     integer_type_definition,
     physical_type_definition,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

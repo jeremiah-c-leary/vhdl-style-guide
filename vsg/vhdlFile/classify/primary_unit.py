@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     configuration_declaration,
     context_declaration,
@@ -7,7 +8,6 @@ from vsg.vhdlFile.classify import (
     package_declaration,
     package_instantiation_declaration,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

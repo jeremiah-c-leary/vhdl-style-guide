@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import process_statement as token
 from vsg.vhdlFile.classify import (
     process_declarative_part,
@@ -7,7 +8,6 @@ from vsg.vhdlFile.classify import (
     process_statement_part,
     utils,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import array_type_definition, record_type_definition
 from vsg import decorators
+from vsg.vhdlFile.classify import array_type_definition, record_type_definition
 
 
 @decorators.print_classifier_debug_info(__name__)

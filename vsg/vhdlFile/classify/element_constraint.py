@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import array_constraint, record_constraint
 from vsg import decorators
+from vsg.vhdlFile.classify import array_constraint, record_constraint
 
 
 @decorators.print_classifier_debug_info(__name__)

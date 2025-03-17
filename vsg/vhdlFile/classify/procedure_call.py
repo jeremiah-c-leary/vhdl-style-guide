@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import procedure_call as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import actual_parameter_part
-from vsg import decorators
 
 lExceptions = ["<=", "end", "map", "component", "entity", "configuration", "if"]
 

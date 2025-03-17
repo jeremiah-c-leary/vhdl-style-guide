@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import conditional_variable_assignment as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import conditional_expressions
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

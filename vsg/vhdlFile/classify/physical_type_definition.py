@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import physical_type_definition as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
@@ -7,7 +8,6 @@ from vsg.vhdlFile.classify import (
     range_constraint,
     secondary_unit_declaration,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

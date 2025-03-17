@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     interface_constant_declaration,
     interface_file_declaration,
@@ -7,7 +8,6 @@ from vsg.vhdlFile.classify import (
     interface_unknown_declaration,
     interface_variable_declaration,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -36,6 +36,8 @@ def detect(oDataStructure):
         return interface_unknown_declaration.classify(oDataStructure)
 
     return False
+
+
 #    iReturn = interface_constant_declaration.detect(iCurrent, lObjects)
 #    if iReturn != iCurrent:
 #        return iReturn

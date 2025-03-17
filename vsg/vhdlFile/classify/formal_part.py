@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg import decorators
+from vsg import decorators, parser
 
 
 @decorators.print_classifier_debug_info(__name__)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import waveform_element as token
 from vsg.vhdlFile.classify import expression
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

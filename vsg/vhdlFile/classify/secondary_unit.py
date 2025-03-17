@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile.classify import architecture_body, package_body
 from vsg import decorators
+from vsg.vhdlFile.classify import architecture_body, package_body
 
 
 @decorators.print_classifier_debug_info(__name__)

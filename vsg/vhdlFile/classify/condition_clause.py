@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import condition_clause as token
 from vsg.vhdlFile.classify import condition
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

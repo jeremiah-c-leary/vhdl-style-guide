@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg.vhdlFile.classify import process_declarative_item
 from vsg import decorators
+from vsg.vhdlFile.classify import process_declarative_item
 
 
 @decorators.print_classifier_debug_info(__name__)

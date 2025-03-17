@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     simple_force_assignment,
     simple_release_assignment,
     simple_waveform_assignment,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

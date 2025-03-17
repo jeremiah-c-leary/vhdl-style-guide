@@ -2,8 +2,8 @@
 
 import re
 
-from vsg.token import bit_string_literal as token
 from vsg import decorators
+from vsg.token import bit_string_literal as token
 
 oIntegerRegex = re.compile(r"\d+")
 oBaseSpecifierRegex = re.compile(r"(([us]?[box])|d)")

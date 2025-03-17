@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     access_type_definition,
     composite_type_definition,
@@ -7,7 +8,6 @@ from vsg.vhdlFile.classify import (
     protected_type_definition,
     scalar_type_definition,
 )
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

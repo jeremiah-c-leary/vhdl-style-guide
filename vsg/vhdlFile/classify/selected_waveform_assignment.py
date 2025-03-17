@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import selected_waveform_assignment as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import delay_mechanism, expression, selected_waveforms
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

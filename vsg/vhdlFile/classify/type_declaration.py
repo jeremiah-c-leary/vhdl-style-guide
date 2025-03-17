@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg.vhdlFile.classify import full_type_declaration, incomplete_type_declaration
 from vsg import decorators
+from vsg.vhdlFile.classify import full_type_declaration, incomplete_type_declaration
 
 
 @decorators.print_classifier_debug_info(__name__)

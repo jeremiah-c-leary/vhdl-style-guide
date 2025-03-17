@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import choices as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import choice
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

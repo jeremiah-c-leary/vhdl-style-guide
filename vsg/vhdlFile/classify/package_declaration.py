@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import package_declaration as token
 from vsg.vhdlFile.classify import package_declarative_part, package_header
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import simple_variable_assignment as token
 from vsg.vhdlFile.classify import expression, target
-from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
