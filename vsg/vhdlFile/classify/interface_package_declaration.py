@@ -7,15 +7,13 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_package_declaration ::=
         package identifier is
             new *uninstantiated_package*_name interface_package_generic_map_aspect
     """
-    if utils.is_next_token("package", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.is_next_token("package")
 
 
 @decorators.print_classifier_debug_info(__name__)

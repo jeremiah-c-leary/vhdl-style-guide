@@ -5,10 +5,10 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     generic_list ::=
         *generic*_interface_list
     """
 
-    return interface_list.classify(iToken, lObjects)
+    interface_list.classify(oDataStructure)

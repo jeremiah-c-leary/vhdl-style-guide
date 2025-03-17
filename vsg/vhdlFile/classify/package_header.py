@@ -14,7 +14,8 @@ def detect(oDataStructure):
     """
 
     if generic_clause.detect(oDataStructure):
+        generic_clause.classify(oDataStructure)
         if generic_map_aspect.detect(oDataStructure):
             oDataStructure.assign_next_token_required(";", token.semicolon)
-            return True
+        return True
     return False

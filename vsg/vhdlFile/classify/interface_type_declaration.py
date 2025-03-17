@@ -5,10 +5,13 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_type_declaration ::=
         interface_incomplete_type_declaration
     """
 
-    return interface_incomplete_type_declaration.detect(iToken, lObjects)
+    if interface_incomplete_type_declaration.detect(oDataStructure):
+        return interface_incomplete_type_declaration.classify(oDataStructure)
+
+    return False

@@ -7,16 +7,14 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     interface_list ::=
         interface_element { ; interface_element }
     """
 
-    iCurrent = interface_element.classify(iToken, lObjects)
+    interface_element.classify(oDataStructure)
 
-    while utils.is_next_token(";", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-        iCurrent = interface_element.classify(iCurrent, lObjects)
-
-    return iCurrent
+    while oDataStructure.is_next_token(";"):
+        oDataStructure.replace_next_token_with(token.semicolon)
+        interface_element.classify(oDataStructure)

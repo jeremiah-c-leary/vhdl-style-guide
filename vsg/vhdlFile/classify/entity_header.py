@@ -13,6 +13,14 @@ def detect(oDataStructure):
         [ *formal*_port_clause ]
     """
 
-    generic_clause.detect(oDataStructure)
+    bGeneric = False
+    if generic_clause.detect(oDataStructure):
+        generic_clause.classify(oDataStructure)
+        bGeneric = True
 
-    port_clause.detect(oDataStructure)
+    bPort = False
+    if port_clause.detect(oDataStructure):
+        port_clause.classify(oDataStructure)
+        bPort = True
+
+    return bGeneric or bPort

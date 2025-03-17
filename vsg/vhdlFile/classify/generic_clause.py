@@ -11,10 +11,7 @@ def detect(oDataStructure):
     generic_clause ::=
         generic ( generic_list ) ;
     """
-    if oDataStructure.are_next_consecutive_tokens(["generic", "("]):
-        classify(iToken, lObjects)
-        return True
-    return False
+    return oDataStructure.are_next_consecutive_tokens(["generic", "("])
 
 
 @decorators.print_classifier_debug_info(__name__)

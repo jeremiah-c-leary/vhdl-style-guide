@@ -5,10 +5,10 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     interface_element ::=
         interface_declaration
     """
 
-    return interface_declaration.detect(iToken, lObjects)
+    interface_declaration.detect(oDataStructure)

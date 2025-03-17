@@ -7,15 +7,13 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_procedure_specification ::=
         procedure designator
             [ [ parameter ] ( formal_parameter_list ) ]
     """
-    if utils.is_next_token("procedure", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.is_next_token("procedure")
 
 
 @decorators.print_classifier_debug_info(__name__)

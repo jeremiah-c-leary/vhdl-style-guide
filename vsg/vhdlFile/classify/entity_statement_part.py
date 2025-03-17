@@ -6,10 +6,13 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     entity_statement_part ::=
         { entity_statement }
     """
 
-    return utils.detect_submodule(iToken, lObjects, entity_statement)
+    while entity_statement.detect(oDataStructure):
+        pass
+
+    return False

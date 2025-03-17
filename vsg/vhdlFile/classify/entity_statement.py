@@ -9,7 +9,7 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     entity_statement ::=
         concurrent_assertion_statement
@@ -18,16 +18,16 @@ def detect(iToken, lObjects):
       | *PSL*_PSL_Directive
     """
 
-    iCurrent = process_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if process_statement.detect(oDataStructure):
+        process_statement.classify(oDataStructure)
+        return True
 
-    iCurrent = concurrent_assertion_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if concurrent_assertion_statement.detect(oDataStructure):
+        concurrent_assertion_statement.classify(oDataStructure)
+        return True
 
-    iCurrent = concurrent_procedure_call_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if concurrent_procedure_call_statement.detect(oDataStructure):
+        concurrent_procedure_call_statement.classify(oDataStructure)
+        return True
 
-    return iToken
+    return False

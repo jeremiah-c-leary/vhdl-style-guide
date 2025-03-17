@@ -7,14 +7,12 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_incomplete_type_declaration ::=
         type identifier
     """
-    if utils.is_next_token("type", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.is_next_token("type")
 
 
 @decorators.print_classifier_debug_info(__name__)

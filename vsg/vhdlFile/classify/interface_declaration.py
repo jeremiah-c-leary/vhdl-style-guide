@@ -10,7 +10,7 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_declaration ::=
         interface_object_declaration
@@ -19,20 +19,33 @@ def detect(iToken, lObjects):
       | interface_package_declaration
     """
 
-    iCurrent = interface_object_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if interface_object_declaration.detect(oDataStructure):
+        return interface_object_declaration.classify(oDataStructure)
 
-    iCurrent = interface_type_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if interface_type_declaration.detect(oDataStructure):
+        return interface_type_declaration.classify(oDataStructure)
 
-    iCurrent = interface_subprogram_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if interface_subprogram_declaration.detect(oDataStructure):
+        return interface_subprogram_declaration.classify(oDataStructure)
 
-    iCurrent = interface_package_declaration.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if interface_package_declaration.detect(oDataStructure):
+        return interface_package_declaration.classify(oDataStructure)
 
-    return iToken
+    return False
+#    iCurrent = interface_object_declaration.detect(iToken, lObjects)
+#    if iCurrent != iToken:
+#        return iCurrent
+#
+#    iCurrent = interface_type_declaration.detect(iToken, lObjects)
+#    if iCurrent != iToken:
+#        return iCurrent
+#
+#    iCurrent = interface_subprogram_declaration.detect(iToken, lObjects)
+#    if iCurrent != iToken:
+#        return iCurrent
+#
+#    iCurrent = interface_package_declaration.detect(iToken, lObjects)
+#    if iCurrent != iToken:
+#        return iCurrent
+#
+#    return iToken

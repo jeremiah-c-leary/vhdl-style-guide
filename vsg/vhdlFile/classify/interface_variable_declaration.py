@@ -7,15 +7,13 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_variable_declaration ::=
     [ variable ] identifier_list : [ mode ] subtype_indication [ := static_expression ]
     """
 
-    if utils.is_next_token("variable", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.is_next_token("variable")
 
 
 @decorators.print_classifier_debug_info(__name__)

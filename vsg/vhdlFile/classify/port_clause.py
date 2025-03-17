@@ -13,10 +13,7 @@ def detect(oDataStructure):
         port ( port_list ) ;
     """
 
-    if oDataStructure.are_next_consecutive_tokens(["port", "("]):
-        classify(oDataStructure)
-        return True
-    return False
+    return oDataStructure.are_next_consecutive_tokens(["port", "("])
 
 
 @decorators.print_classifier_debug_info(__name__)

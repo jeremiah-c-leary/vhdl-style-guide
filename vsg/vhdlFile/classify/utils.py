@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
+from vsg import exceptions, parser
 from vsg.token import choice, direction, element_association, exponent
 from vsg.vhdlFile import utils
 
@@ -213,3 +213,28 @@ def assign_tokens_until(sToken, token, oDataStructure):
 
 def tokenize_postponed(oDataStructure, token):
     oDataStructure.replace_next_token_with_if("postponed", token)
+
+
+def print_error_message(sToken, token, oDataStructure):
+    sFoundToken = oDataStructure.get_current_token_value()
+    iLine = 0
+    iColumn = 0
+#    iLine = calculate_line_number(iToken, lObjects)
+#    iColumn = calculate_column(iToken, lObjects)
+    sModuleName = extract_module_name(token)
+    sFileName = oDataStructure.sFilename
+
+    sErrorMessage = "\n"
+    sErrorMessage += f"Error: Unexpected token detected while parsing {sModuleName} @ Line {iLine}, Column {iColumn} in file {sFileName}"
+    sErrorMessage += "\n"
+    sErrorMessage += f"       Expecting : {sToken}"
+    sErrorMessage += "\n"
+    sErrorMessage += f"       Found     : {sFoundToken}"
+    sErrorMessage += "\n"
+
+    raise exceptions.ClassifyError(sErrorMessage)
+
+
+def extract_module_name(token):
+    return token.__module__.split(".")[-1]
+

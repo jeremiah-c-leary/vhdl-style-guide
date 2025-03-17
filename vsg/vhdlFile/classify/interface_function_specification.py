@@ -7,20 +7,14 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_function_specification ::=
         [ pure | impure ] function designator
             [ [ parameter ] ( formal_parameter_list ) ] return type_mark
     """
 
-    if utils.is_next_token("pure", iToken, lObjects):
-        return classify(iToken, lObjects)
-    elif utils.is_next_token("impure", iToken, lObjects):
-        return classify(iToken, lObjects)
-    elif utils.is_next_token("function", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.is_next_token_one_of(["pure", "impure", "function"])
 
 
 @decorators.print_classifier_debug_info(__name__)

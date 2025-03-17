@@ -11,7 +11,7 @@ def print_method_name(func):
     return wrapper
 
 level = 0
-display = True
+display = False
 
 def print_classifier_debug_info(argument):
     print_classifier_debug_info.level = 0

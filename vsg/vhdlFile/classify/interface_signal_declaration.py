@@ -8,15 +8,13 @@ from vsg import decorators
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_signal_declaration ::=
         [ signal ] identifier_list : [ mode ] subtype_indication [ bus ] [ := *static*_expression ]
     """
 
-    if utils.is_next_token("signal", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.is_next_token("signal")
 
 
 @decorators.print_classifier_debug_info(__name__)
