@@ -19,10 +19,34 @@ def classify(lTokens, lObjects, oOptions):
 
 
 def classify_closing_comment_delimiters(iToken, lObjects, oOptions):
-    sToken = lObjects[iToken].get_value()
-    if oOptions.inside_delimited_comment() and sToken == "*/":
-        lObjects[iToken] = token.ending(sToken)
+    if ending_token_exists(iToken, lObjects, oOptions):
+        replace_token_with_ending_token(iToken, lObjects, oOptions)
         oOptions.clear_inside_delimited_comment()
+    elif ending_token_should_exist(iToken, lObjects, oOptions):
+        replace_token_with_ending_token(iToken, lObjects, oOptions)
+        remove_last_star_from_previous_token(iToken, lObjects, oOptions)
+        oOptions.clear_inside_delimited_comment()
+
+
+def ending_token_exists(iToken, lObjects, oOptions):
+    return oOptions.inside_delimited_comment() and lObjects[iToken].get_value() == "*/"
+
+
+def ending_token_should_exist(iToken, lObjects, oOptions):
+    return oOptions.inside_delimited_comment() and lObjects[iToken].get_value() == "/" and lObjects[iToken - 1].get_value().endswith("*")
+
+
+def replace_token_with_ending_token(iToken, lObjects, oOptions):
+    sToken = lObjects[iToken].get_value()
+    if sToken == "*/":
+        lObjects[iToken] = token.ending(sToken)
+    else:
+        lObjects[iToken] = token.ending("*" + sToken)
+
+
+def remove_last_star_from_previous_token(iToken, lObjects, oOptions):
+    sToken = lObjects[iToken - 1].get_value()[:-1]
+    lObjects[iToken - 1] = token.text(sToken)
 
 
 def classify_opening_comment_delimiters(iToken, lObjects, oOptions):
