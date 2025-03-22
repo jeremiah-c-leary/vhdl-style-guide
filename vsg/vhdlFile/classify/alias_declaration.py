@@ -20,20 +20,19 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("alias", token.alias_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.alias_keyword)
 
-    iCurrent = utils.assign_next_token(token.alias_designator, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with(token.alias_designator)
 
-    if utils.is_next_token(":", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
-        iCurrent = subtype_indication.classify(iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
+    if oDataStructure.is_next_token(":"):
+        oDataStructure.replace_next_token_with(token.colon)
+        subtype_indication.classify(oDataStructure)
 
-    iCurrent = name.classify_until([";", "["], iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = signature.detect(iCurrent, lObjects)
+    name.classify_until([";", "["], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    signature.detect(oDataStructure)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)
