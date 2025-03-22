@@ -7,15 +7,13 @@ from vsg.vhdlFile.classify import force_mode
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     simple_release_assignment ::=
         target <= release [ force_mode ] ;
     """
 
-    if utils.find_in_range("release", iToken, ";", lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.does_string_exist_before_string("release", ";")
 
 
 @decorators.print_classifier_debug_info(__name__)

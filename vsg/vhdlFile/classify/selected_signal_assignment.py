@@ -17,9 +17,9 @@ def detect(oDataStructure):
     """
 
     if oDataStructure.does_string_exist_before_string("<=", ";"):
-        if oDataStructure.doess_string_exist_in_next_n_tokens("with", 3):
+        if oDataStructure.does_string_exist_in_next_n_tokens("with", 3):
             return True
-        if oDataStructure.doess_string_exist_in_next_n_tokens("if", 3):
+        if oDataStructure.does_string_exist_in_next_n_tokens("if", 3):
             return True
     return False
 

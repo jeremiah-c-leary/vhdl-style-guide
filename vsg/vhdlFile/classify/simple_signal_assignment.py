@@ -18,7 +18,7 @@ def detect(oDataStructure):
       | simple_release_assignment
     """
 
-    if oDataStructure.does_string_exist_in_next_n_tokens("if", 3):
+    if oDataStructure.is_next_token_one_of(["if", "elsif", "else"]):
         return False
     if oDataStructure.does_string_exist_before_string("<=", ";"):
         if oDataStructure.does_string_exist_before_string("with", ";"):
@@ -29,28 +29,11 @@ def detect(oDataStructure):
     return False
 
 
-#    if utils.find_in_next_n_tokens("if", 3, iToken, lObjects):
-#        return False
-#    if utils.find_in_range("<=", iToken, ";", lObjects):
-#        if utils.find_in_range("when", iToken, ";", lObjects):
-#            return False
-#        if utils.find_in_range("with", iToken, ";", lObjects):
-#            return False
-#        return True
-#    return False
-
-
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = iToken
-    iCurrent = simple_force_assignment.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    iCurrent = simple_release_assignment.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    iCurrent = simple_waveform_assignment.detect(iToken, lObjects)
-
-    return iCurrent
+def classify(oDataStructure):
+    if simple_force_assignment.detect(oDataStructure):
+        simple_force_assignment.classify(oDataStructure)
+    elif simple_release_assignment.detect(oDataStructure):
+        simple_release_assignment.classify(oDataStructure)
+    elif simple_waveform_assignment.detect(oDataStructure):
+        simple_waveform_assignment.classify(oDataStructure)

@@ -73,7 +73,7 @@ class design_file:
 
     def does_string_exist_before_string_honoring_parenthesis_hierarchy(self, sFirst, sSecond):
         iParen = 0
-        for oToken in self.lAllObjects[self.iCurrent : :]:
+        for oToken in self.lAllObjects[self.iSeek : :]:
             if oToken.lower_value == sSecond:
                 return False
             if oToken.lower_value == "(":
@@ -82,6 +82,7 @@ class design_file:
                 iParen -= 1
             if iParen == 0 and oToken.lower_value == sFirst:
                 return True
+        return False
 
     def does_string_exist_before_seek_index_honoring_parenthesis_hierarchy(self, sString):
         iParen = 0
@@ -213,3 +214,7 @@ class design_file:
                 self.iSeek += iToken
                 return True
         return False
+
+    def debug_print(self, iNumTokens):
+        for oToken in self.lAllObjects[self.iCurrent : self.iSeek + iNumTokens + 1]:
+            print(oToken.get_value())

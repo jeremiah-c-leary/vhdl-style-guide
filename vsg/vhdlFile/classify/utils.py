@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from vsg import exceptions, parser
-from vsg.token import choice, direction, element_association, exponent
+from vsg.token import (
+    choice,
+    direction,
+    element_association,
+    exponent,
+    relational_operator,
+)
 from vsg.vhdlFile import utils
 
 
@@ -237,3 +243,7 @@ def print_error_message(sToken, token, oDataStructure):
 
 def extract_module_name(token):
     return token.__module__.split(".")[-1]
+
+
+def assignment_operator_found(oDataStructure):
+    return oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";")

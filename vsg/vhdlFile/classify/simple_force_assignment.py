@@ -7,18 +7,17 @@ from vsg.vhdlFile.classify import expression, force_mode
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     simple_force_assignment ::=
         target <= force [ force_mode ] expression ;
     """
 
-    if utils.is_next_token_one_of(["when", "if", "elsif", "else"], iToken, lObjects):
+    if oDataStructure.is_next_token_one_of(["when", "if", "elsif", "else"]):
         return False
-    if utils.find_in_range("<=", iToken, ";", lObjects):
-        if utils.find_in_range("force", iToken, ";", lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.does_string_exist_before_string("<=", ";"):
+        return oDataStructure.does_string_exist_before_string("force", ";")
+    return False
 
 
 @decorators.print_classifier_debug_info(__name__)
