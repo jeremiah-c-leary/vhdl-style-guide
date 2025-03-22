@@ -126,3 +126,25 @@ begin
   a <= -1 + 10;
 
 end architecture RTL;
+
+-- test attributes
+
+architecture rtl of fifo is
+
+begin
+
+   -- passing
+   a <= b'left + type_bits;
+   a <= b'right - type_bits;
+   a <= b'left / type_bits;
+   a <= b'right * type_bits;
+   a <= b'left ** type_bits;
+
+   -- failing
+   a <= b'left + type_bits;
+   a <= b'right - type_bits;
+   a <= b'left / type_bits;
+   a <= b'right * type_bits;
+   a <= b'left ** type_bits;
+
+end architecture rtl;
