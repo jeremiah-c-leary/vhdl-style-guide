@@ -126,7 +126,6 @@ class design_file:
     def get_seek_token_lower_value(self):
         return self.lAllObjects[self.iSeek].lower_value
 
-
     def increment_current_index(self):
         self.iCurrent += 1
 
@@ -199,7 +198,7 @@ class design_file:
         # jcl - might need to watch out for going past the end of the lAllObjects list
         if self.iSeek < self.iCurrent:
             self.iSeek = self.iCurrent
-        for iIndex, oToken in enumerate(self.lAllObjects[self.iSeek::]):
+        for iIndex, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
             if type(oToken) == parser.item:
                 self.iSeek = self.iSeek + iIndex
                 return True
@@ -227,4 +226,10 @@ class design_file:
         sOutput = ""
         for oToken in self.lAllObjects[self.iCurrent : self.iCurrent + iNumTokens]:
             sOutput += oToken.get_value()
-        print(f'>>[{sOutput}]<<')
+        print(f">>Current[{sOutput}]<<")
+
+    def debug_seek_print(self, iNumTokens):
+        sOutput = ""
+        for oToken in self.lAllObjects[self.iSeek : self.iSeek + iNumTokens]:
+            sOutput += oToken.get_value()
+        print(f">>Seek[{sOutput}]<<")

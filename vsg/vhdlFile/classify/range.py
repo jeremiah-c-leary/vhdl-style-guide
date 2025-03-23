@@ -11,6 +11,8 @@ def detect(oDataStructure):
         *range*_attribute_name
       | simple_expression direction simple_expression
     """
+    if oDataStructure.are_next_consecutive_tokens(["(", None, ")"]):
+        return True
     if attribute_name.detect(oDataStructure):
         return True
     return detect_direction(oDataStructure)
