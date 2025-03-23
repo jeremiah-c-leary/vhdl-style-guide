@@ -21,10 +21,10 @@ def detect(oDataStructure):
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.range_keyword)
 
+    # TODO:  Refactor the following into the data structure
     iParenCnt = 0
     while not oDataStructure.is_next_token_one_of([";", "units", ":="]):
         iParenCnt = utils.update_paren_counter(iParenCnt, oDataStructure)
         if iParenCnt == -1:
             break
-        oDataStructure.replace_next_token_with(parser.todo)
-        oDataStructure.increment_current_index()
+        oDataStructure.replace_current_token_with(parser.todo)

@@ -7,7 +7,7 @@ from vsg.vhdlFile.classify import protected_type_declarative_part
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     protected_type_declaration ::=
         **protected**
@@ -15,10 +15,11 @@ def detect(iToken, lObjects):
         **end** **protected** [ protected_type_simple_name ]
     """
 
-    if utils.is_next_token("protected", iToken, lObjects):
-        if not utils.are_next_consecutive_tokens(["protected", "body"], iToken, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("protected"):
+        if not oDataStructure.are_next_consecutive_tokens(["protected", "body"]):
+            classify(oDataStructure)
+            return True
+    return False
 
 
 @decorators.print_classifier_debug_info(__name__)

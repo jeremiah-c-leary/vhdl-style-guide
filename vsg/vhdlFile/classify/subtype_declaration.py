@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import subtype_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier, subtype_indication
 
 
@@ -20,15 +19,13 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("subtype", token.subtype_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("subtype", token.subtype_keyword)
 
-    iCurrent = identifier.classify(iCurrent, lObjects, token.identifier)
+    identifier.classify(oDataStructure, token.identifier)
 
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
+    subtype_indication.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

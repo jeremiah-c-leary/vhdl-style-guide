@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-
 from vsg import decorators
 from vsg.token import interface_signal_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, identifier_list, mode, subtype_indication
 
 
@@ -18,22 +16,20 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("signal", token.signal_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.signal_keyword)
 
-    iCurrent = identifier_list.classify_until([":"], iCurrent, lObjects, token.identifier)
+    identifier_list.classify_until([":"], oDataStructure, token.identifier)
 
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = mode.classify(iCurrent, lObjects)
+    mode.classify(oDataStructure)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
+    subtype_indication.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_if("bus", token.bus_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("bus", token.bus_keyword)
 
-    if utils.is_next_token(":=", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(":=", token.assignment, iCurrent, lObjects)
+    if oDataStructure.is_next_token(":="):
+        oDataStructure.replace_next_token_with(token.assignment)
 
-        iCurrent = expression.classify_until([";"], iCurrent, lObjects)
-
-    return iCurrent
+        expression.classify_until([";"], oDataStructure)

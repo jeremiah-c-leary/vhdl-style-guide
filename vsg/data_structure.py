@@ -10,6 +10,7 @@ def New(lAllObjects):
 class design_file:
     def __init__(self, lAllObjects):
         self.lAllObjects = lAllObjects
+        self.iEndIndex = len(lAllObjects) - 1
         self.sFilename = ""
         self.iCurrent = 0
         self.iSeek = 0
@@ -28,7 +29,10 @@ class design_file:
     def advance_to_next_seek_token(self):
         for iIndex, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
             if type(oToken) == parser.item:
-                self.iSeek = self.iSeek + iIndex
+                if self.iSeek > self.iEndIndex:
+                    self.iSeek = self.iEndIndex
+                else:
+                    self.iSeek = self.iSeek + iIndex
                 return True
         return False
 
@@ -122,11 +126,15 @@ class design_file:
     def get_seek_token_lower_value(self):
         return self.lAllObjects[self.iSeek].lower_value
 
+
     def increment_current_index(self):
         self.iCurrent += 1
 
     def increment_seek_index(self):
-        self.iSeek += 1
+        if self.iSeek < self.iEndIndex:
+            self.iSeek += 1
+        else:
+            self.iSeek = self.iEndIndex
 
     def is_next_seek_token(self, sString):
         self.advance_to_next_seek_token()
@@ -191,7 +199,7 @@ class design_file:
         # jcl - might need to watch out for going past the end of the lAllObjects list
         if self.iSeek < self.iCurrent:
             self.iSeek = self.iCurrent
-        for iIndex, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
+        for iIndex, oToken in enumerate(self.lAllObjects[self.iSeek::]):
             if type(oToken) == parser.item:
                 self.iSeek = self.iSeek + iIndex
                 return True
@@ -216,5 +224,7 @@ class design_file:
         return False
 
     def debug_print(self, iNumTokens):
-        for oToken in self.lAllObjects[self.iCurrent : self.iSeek + iNumTokens + 1]:
-            print(oToken.get_value())
+        sOutput = ""
+        for oToken in self.lAllObjects[self.iCurrent : self.iCurrent + iNumTokens]:
+            sOutput += oToken.get_value()
+        print(f'>>[{sOutput}]<<')

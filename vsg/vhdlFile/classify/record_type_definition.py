@@ -7,7 +7,7 @@ from vsg.vhdlFile.classify import element_declaration
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     record_type_definition ::=
         record
@@ -16,10 +16,11 @@ def detect(iToken, lObjects):
         end record [ *record_type*_simple_name ]
     """
 
-    if utils.is_next_token("record", iToken, lObjects):
-        return classify(iToken, lObjects)
+    if oDataStructure.is_next_token("record"):
+        classify(iToken, lObjects)
+        return True
 
-    return iToken
+    return False
 
 
 @decorators.print_classifier_debug_info(__name__)

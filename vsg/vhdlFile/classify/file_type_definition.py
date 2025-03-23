@@ -7,16 +7,17 @@ from vsg.vhdlFile.classify import type_mark
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     file_type_definition ::=
         file of type_mark
     """
 
-    if utils.is_next_token("file", iToken, lObjects):
-        return classify(iToken, lObjects)
+    if oDataStructure.is_next_token("file"):
+        classify(oDataStructure)
+        return True
 
-    return iToken
+    return False
 
 
 @decorators.print_classifier_debug_info(__name__)

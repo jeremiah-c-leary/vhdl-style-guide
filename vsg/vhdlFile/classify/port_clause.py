@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import port_clause as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import port_list
 
 
@@ -12,7 +11,6 @@ def detect(oDataStructure):
     port_clause ::=
         port ( port_list ) ;
     """
-
     return oDataStructure.are_next_consecutive_tokens(["port", "("])
 
 

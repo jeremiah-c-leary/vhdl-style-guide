@@ -32,12 +32,13 @@ def classify_element_resolution(iToken, lObjects):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify_resolution_function_name(iToken, lObjects):
-    return utils.assign_next_token(token.resolution_function_name, iToken, lObjects)
+def classify_resolution_function_name(oDataStructure):
+    oDataStructure.replace_next_token_with(token.resolution_function_name)
 
 
 @decorators.print_classifier_debug_info(__name__)
 def detect_element_resolution(oDataStructure):
+    # TODO:  Can this be is_next_token instead of is_next_seek_token?
     if oDataStructure.is_next_seek_token("("):
         return True
     return False

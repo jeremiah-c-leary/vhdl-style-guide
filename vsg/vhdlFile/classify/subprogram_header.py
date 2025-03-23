@@ -7,16 +7,17 @@ from vsg.vhdlFile.classify import generic_list, generic_map_aspect
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     subprogram_header ::=
         [ generic ( generic_list )
         [ generic_map_aspect ] ]
     """
 
-    if utils.is_next_token("generic", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("generic"):
+        classify(iToken, lObjects)
+        return True
+    return False
 
 
 @decorators.print_classifier_debug_info(__name__)

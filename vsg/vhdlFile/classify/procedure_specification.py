@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import procedure_specification as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import formal_parameter_list, subprogram_header
 
 
@@ -23,16 +22,15 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("procedure", token.procedure_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.designator, iCurrent, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.procedure_keyword)
+    oDataStructure.replace_next_token_with(token.designator)
 
-    iCurrent = subprogram_header.detect(iCurrent, lObjects)
+    subprogram_header.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_if("parameter", token.parameter_keyword, iCurrent, lObjects)
-    if utils.is_next_token("(", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
-        iCurrent = formal_parameter_list.classify(iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("parameter", token.parameter_keyword)
 
-    return iCurrent
+    if oDataStructure.is_next_token("("):
+        oDataStructure.replace_next_token_with(token.open_parenthesis)
+        formal_parameter_list.classify(oDataStructure)
+        oDataStructure.replace_next_token_required(")", token.close_parenthesis)

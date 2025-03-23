@@ -7,19 +7,16 @@ from vsg.vhdlFile.classify import index_constraint, subtype_indication
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     constrained_array_definition ::=
         array index_constraint of *element*_subtype_indication
     """
 
-    if utils.is_next_token("array", iToken, lObjects):
-        if not utils.find_in_next_n_tokens("<>", 5, iToken, lObjects):
-            return classify(iToken, lObjects)
-        else:
-            return iToken
-
-    return iToken
+    if oDataStructure.is_next_token("array"):
+        if not oDataStructure.does_string_exist_in_next_n_tokens("<>", 5):
+            return True
+    return False
 
 
 @decorators.print_classifier_debug_info(__name__)

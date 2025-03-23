@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import file_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     file_open_information,
     identifier_list,
@@ -24,15 +23,13 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("file", token.file_keyword, iToken, lObjects)
-    iCurrent = identifier_list.classify_until([":"], iCurrent, lObjects, token.identifier)
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.file_keyword)
+    identifier_list.classify_until([":"], oDataStructure, token.identifier)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
+    subtype_indication.classify(oDataStructure)
 
-    iCurrent = file_open_information.detect(iCurrent, lObjects)
+    file_open_information.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

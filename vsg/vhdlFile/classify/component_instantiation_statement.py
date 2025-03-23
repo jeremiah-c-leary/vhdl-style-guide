@@ -2,8 +2,7 @@
 
 from vsg import decorators
 from vsg.token import component_instantiation_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import generic_map_aspect, instantiated_unit, port_map_aspect
+from vsg.vhdlFile.classify import generic_map_aspect, instantiated_unit, port_map_aspect, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -15,24 +14,21 @@ def detect(oDataStructure):
                 [ generic_map_aspect ]
                 [ port_map_aspect ] ;
     """
-    oDataStructure.align_seek_index()
-    oDataStructure.increment_seek_index()
-    oDataStructure.advance_to_next_seek_token()
-    if not oDataStructure.seek_token_lower_value_is(":"):
-        return False
-    return instantiated_unit.detect(oDataStructure)
+    if oDataStructure.are_next_consecutive_tokens([None, ":"]):
+        if instantiated_unit.detect(oDataStructure):
+            classify(oDataStructure)
+            return True
+    return False
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.instantiation_label, token.label_colon)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.instantiation_label, token.label_colon)
 
-    iCurrent = instantiated_unit.classify(iCurrent, lObjects)
+    instantiated_unit.classify(oDataStructure)
 
-    iCurrent = generic_map_aspect.detect(iCurrent, lObjects)
+    generic_map_aspect.detect(oDataStructure)
 
-    iCurrent = port_map_aspect.detect(iCurrent, lObjects)
+    port_map_aspect.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

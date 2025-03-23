@@ -12,6 +12,7 @@ def detect(oDataStructure):
       | array_constraint
       | record_constraint
     """
+
     if range_constraint.detect(oDataStructure):
         return True
 
