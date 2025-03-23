@@ -20,7 +20,6 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
-
     if oDataStructure.is_next_token("open"):
         oDataStructure.replace_next_token_with(token.open_keyword)
         oDataStructure.replace_next_token_with(token.file_open_kind_expression)

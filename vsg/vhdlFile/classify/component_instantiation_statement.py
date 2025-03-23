@@ -2,7 +2,12 @@
 
 from vsg import decorators
 from vsg.token import component_instantiation_statement as token
-from vsg.vhdlFile.classify import generic_map_aspect, instantiated_unit, port_map_aspect, utils
+from vsg.vhdlFile.classify import (
+    generic_map_aspect,
+    instantiated_unit,
+    port_map_aspect,
+    utils,
+)
 
 
 @decorators.print_classifier_debug_info(__name__)

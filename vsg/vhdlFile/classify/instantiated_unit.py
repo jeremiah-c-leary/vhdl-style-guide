@@ -26,7 +26,6 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
-
     if oDataStructure.is_next_token("component"):
         oDataStructure.replace_next_token_with(token.component_keyword)
         oDataStructure.replace_next_token_with(token.component_name)
@@ -50,7 +49,6 @@ def classify(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def classify_entity_name(oDataStructure):
-
     oDataStructure.advance_to_next_token()
     sTokenValue = oDataStructure.get_current_token_value()
     if "." in sTokenValue:
