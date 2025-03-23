@@ -37,19 +37,17 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     procedure_call ::=
         *procedure*_name [ ( actual_parameter_part ) ]
     """
 
-    iCurrent = utils.assign_next_token(token.procedure_name, iToken, lObjects)
+    oDataStructure.replace_next_token_with(token.procedure_name)
 
-    if utils.is_next_token("(", iToken, lObjects):
-        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
+    if oDataStructure.is_next_token("("):
+        oDataStructure.replace_next_token_with("(", token.open_parenthesis)
 
-        iCurrent = actual_parameter_part.classify(iCurrent, lObjects)
+        actual_parameter_part.classify(oDataStructure)
 
-        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-
-    return iCurrent
+        oDataStructure.replace_next_token_required(")", token.close_parenthesis)

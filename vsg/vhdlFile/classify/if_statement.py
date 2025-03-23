@@ -31,19 +31,29 @@ def classify(oDataStructure):
     condition.classify_until(["then"], oDataStructure)
     oDataStructure.replace_next_token_required("then", token.then_keyword)
 
-    sequence_of_statements.detect(oDataStructure)
+    sequence_of_statements.detect(oDataStructure, ["elsif", "else", "end"])
 
     while oDataStructure.is_next_token_one_of(["else", "elsif"]):
         if oDataStructure.is_next_token("elsif"):
-            oDataStructure.replace_next_token_with(token.elsif_keyword)
-            condition.classify_until(["then"], oDataStructure)
-            oDataStructure.replace_next_token_required("then", token.then_keyword)
-            iCurrent = sequence_of_statements.detect(oDataStructure)
+            classify_elsif(oDataStructure)
         else:
-            oDataStructure.replace_next_token_with(token.else_keyword)
-            sequence_of_statements.detect(oDataStructure)
+            classify_else(oDataStructure)
 
     oDataStructure.replace_next_token_required("end", token.end_keyword)
     oDataStructure.replace_next_token_required("if", token.end_if_keyword)
     oDataStructure.replace_next_token_with_if_not(";", token.end_if_label)
     oDataStructure.replace_next_token_required(";", token.semicolon)
+
+
+@decorators.print_classifier_debug_info(__name__)
+def classify_elsif(oDataStructure):
+    oDataStructure.replace_next_token_with(token.elsif_keyword)
+    condition.classify_until(["then"], oDataStructure)
+    oDataStructure.replace_next_token_required("then", token.then_keyword)
+    sequence_of_statements.detect(oDataStructure, ["elsif", "else", "end"])
+
+
+@decorators.print_classifier_debug_info(__name__)
+def classify_else(oDataStructure):
+    oDataStructure.replace_next_token_with(token.else_keyword)
+    sequence_of_statements.detect(oDataStructure, ["end"])

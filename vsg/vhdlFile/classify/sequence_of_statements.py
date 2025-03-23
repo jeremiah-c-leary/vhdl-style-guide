@@ -5,10 +5,10 @@ from vsg.vhdlFile.classify import sequential_statement
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(oDataStructure):
+def detect(oDataStructure, lUnless):
     """
     sequence_of_statements ::=
         { sequential_statement }
     """
-    while sequential_statement.detect(oDataStructure):
-        pass
+    while not oDataStructure.is_next_token_one_of(lUnless):
+        sequential_statement.detect(oDataStructure)
