@@ -2,8 +2,7 @@
 
 from vsg import decorators
 from vsg.token import case_generate_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import case_generate_alternative, expression
+from vsg.vhdlFile.classify import case_generate_alternative, expression, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -28,20 +27,19 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.generate_label, token.label_colon)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.generate_label, token.label_colon)
 
-    iCurrent = utils.assign_next_token_required("case", token.case_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("case", token.case_keyword)
 
-    iCurrent = expression.classify_until(["generate"], iCurrent, lObjects)
+    expression.classify_until(["generate"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("generate", token.generate_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("generate", token.generate_keyword)
 
-    iToken = utils.detect_submodule(iToken, lObjects, case_generate_alternative)
+    while case_generate_alternative.detect(oDataStructure):
+        pass
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("generate", token.end_generate_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_generate_label, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("generate", token.end_generate_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_generate_label)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

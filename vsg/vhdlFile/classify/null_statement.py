@@ -18,9 +18,7 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("null", token.null_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+    oDataStructure.replace_next_token_required("null", token.null_keyword)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

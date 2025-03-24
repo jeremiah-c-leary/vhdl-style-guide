@@ -22,21 +22,20 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.case_label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("case", token.case_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("?", token.question_mark, iCurrent, lObjects)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.case_label, token.label_colon)
+    oDataStructure.replace_next_token_required("case", token.case_keyword)
+    oDataStructure.replace_next_token_with_if("?", token.question_mark)
 
-    iCurrent = expression.classify_until(["is"], iCurrent, lObjects)
+    expression.classify_until(["is"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = utils.detect_submodule(iCurrent, lObjects, case_statement_alternative)
+    while case_statement_alternative.detect(oDataStructure):
+        pass
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("case", token.end_case_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("?", token.question_mark, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_case_label, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("case", token.end_case_keyword)
+    oDataStructure.replace_next_token_with_if("?", token.question_mark)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_case_label)
+    oDataStructure.replace_next_token_required(";", token.semicolon)
