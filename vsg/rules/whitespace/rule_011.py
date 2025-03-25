@@ -12,7 +12,7 @@ lTokens.append(token.miscellaneous_operator.double_star)
 
 
 class rule_011(n_spaces_before_and_after_tokens):
-    """
+    r"""
     This rule checks for at least a single space before and after math operators +, -, /, * and \*\*.
 
     **Violation**
