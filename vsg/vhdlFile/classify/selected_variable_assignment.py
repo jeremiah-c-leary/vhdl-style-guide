@@ -2,8 +2,7 @@
 
 from vsg import decorators
 from vsg.token import selected_variable_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression, selected_expressions
+from vsg.vhdlFile.classify import expression, selected_expressions, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -23,18 +22,19 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("with", token.with_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("with", token.with_keyword)
 
-    iCurrent = expression.classify_until(["select"], iToken, lObjects)
+    expression.classify_until(["select"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("select", token.select_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("?", token.question_mark, iCurrent, lObjects)
-    iCurrent = utils.assign_tokens_until(":=", token.target, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(":=", token.assignment, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("select", token.select_keyword)
 
-    iCurrent = selected_expressions.classify_until([";"], iToken, lObjects)
+    oDataStructure.replace_next_token_with_if("?", token.question_mark)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    utils.assign_tokens_until(":=", token.target, oDataStructure)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required(":=", token.assignment)
+
+    selected_expressions.classify_until([";"], oDataStructure)
+
+    oDataStructure.replace_next_token_required(";", token.semicolon)
