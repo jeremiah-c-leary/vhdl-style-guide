@@ -2,8 +2,7 @@
 
 from vsg import decorators
 from vsg.token import concurrent_conditional_signal_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import conditional_waveforms, delay_mechanism
+from vsg.vhdlFile.classify import conditional_waveforms, delay_mechanism, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -45,19 +44,19 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     concurrent_conditional_signal_assignment ::=
         target <= [ guarded ] [ delay_mechanism ] conditional_waveforms ;
     """
-    iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("guarded", token.guarded_keyword, iCurrent, lObjects)
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
 
-    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
 
-    iCurrent = conditional_waveforms.classify_until([";"], iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("guarded", token.guarded_keyword)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    delay_mechanism.detect(oDataStructure)
 
-    return iCurrent
+    conditional_waveforms.classify_until([";"], oDataStructure)
+
+    oDataStructure.replace_next_token_required(";", token.semicolon)

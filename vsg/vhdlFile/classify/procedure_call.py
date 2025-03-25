@@ -46,7 +46,7 @@ def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.procedure_name)
 
     if oDataStructure.is_next_token("("):
-        oDataStructure.replace_next_token_with("(", token.open_parenthesis)
+        oDataStructure.replace_next_token_with(token.open_parenthesis)
 
         actual_parameter_part.classify(oDataStructure)
 

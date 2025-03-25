@@ -108,7 +108,7 @@ def assign_special_tokens(oDataStructure, oType):
         else:
             oDataStructure.replace_current_token_with(parser.todo)
     elif sValue == "+":
-        if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
+        if isinstance(oDataStructure.lAllObjects[oDataStructure.iCurrent - 1], exponent.e_keyword):
             oDataStructure.replace_current_token_with(exponent.plus_sign)
         else:
             oDataStructure.replace_current_token_with(parser.todo)

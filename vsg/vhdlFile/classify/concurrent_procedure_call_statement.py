@@ -2,8 +2,7 @@
 
 from vsg import decorators
 from vsg.token import concurrent_procedure_call_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import procedure_call
+from vsg.vhdlFile.classify import procedure_call, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -13,10 +12,14 @@ def detect(oDataStructure):
         [ label : ] [ postponed ] procedure_call ;
     """
     if procedure_call.detect(oDataStructure):
-        iCurrent = utils.tokenize_label(iToken, lObjects, token.label_name, token.label_colon)
-        iCurrent = utils.tokenize_postponed(iCurrent, lObjects, token.postponed_keyword)
-        iCurrent = procedure_call.classify(iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+
+        oDataStructure.replace_next_token_with_if("postponed", token.postponed_keyword)
+
+        procedure_call.classify(oDataStructure)
+
+        oDataStructure.replace_next_token_required(";", token.semicolon)
+
         return True
 
     return False
