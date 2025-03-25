@@ -27,11 +27,8 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = conditional_force_assignment.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+def classify(oDataStructure):
+    if conditional_force_assignment.detect(oDataStructure):
+        return None
 
-    iCurrent = conditional_waveform_assignment.detect(iToken, lObjects)
-
-    return iCurrent
+    conditional_waveform_assignment.detect(oDataStructure)

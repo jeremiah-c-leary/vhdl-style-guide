@@ -2,35 +2,35 @@
 
 from vsg import decorators
 from vsg.token import conditional_force_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import conditional_expressions, force_mode
+from vsg.vhdlFile.classify import conditional_expressions, force_mode, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     conditional_force_assignment ::=
         target <= force [ force_mode ] conditional_expressions ;
     """
 
-    if utils.is_next_token_one_of(["when", "if", "elsif", "else"], iToken, lObjects):
+    if oDataStructure.is_next_token_one_of(["when", "if", "elsif", "else"]):
         return False
-    if utils.find_in_range("<=", iToken, ";", lObjects):  #
-        if utils.find_in_range("force", iToken, ";", lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.does_string_exist_before_string("<=", ";"):
+        if oDataStructure.does_string_exist_before_string("force", ";"):
+            classify(oDataStructure)
+            return True
+    return False
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("force", token.force_keyword, iCurrent, lObjects)
+def classify(oDataStructure):
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
 
-    iCurrent = force_mode.detect(iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
 
-    iCurrent = conditional_expressions.classify_until([";"], iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("force", token.force_keyword)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    force_mode.detect(oDataStructure)
 
-    return iCurrent
+    conditional_expressions.classify_until([";"], oDataStructure)
+
+    oDataStructure.replace_next_token_required(";", token.semicolon)

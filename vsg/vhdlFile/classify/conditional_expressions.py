@@ -2,12 +2,11 @@
 
 from vsg import decorators
 from vsg.token import conditional_expressions as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import condition, expression
+from vsg.vhdlFile.classify import condition, expression, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify_until(lUntils, iToken, lObjects):
+def classify_until(lUntils, oDataStructure):
     """
     conditional_expressions ::=
         expression when condition
@@ -20,16 +19,14 @@ def classify_until(lUntils, iToken, lObjects):
     lMyWhenUntils = lUntils.copy()
     lMyWhenUntils.append("when")
 
-    iCurrent = expression.classify_until(["when"], iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("when", token.when_keyword, iCurrent, lObjects)
-    iCurrent = condition.classify_until(lMyElseUntils, iCurrent, lObjects)
+    expression.classify_until(["when"], oDataStructure)
+    oDataStructure.replace_next_token_required("when", token.when_keyword)
+    condition.classify_until(lMyElseUntils, oDataStructure)
 
-    while utils.is_next_token("else", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("else", token.else_keyword, iCurrent, lObjects)
-        iCurrent = expression.classify_until(lMyWhenUntils, iCurrent, lObjects)
-        if utils.is_next_token_in_list(lUntils, iCurrent, lObjects):
+    while oDataStructure.is_next_token("else"):
+        oDataStructure.replace_next_token_required("else", token.else_keyword)
+        expression.classify_until(lMyWhenUntils, oDataStructure)
+        if oDataStructure.is_next_token_one_of(lUntils):
             break
-        iCurrent = utils.assign_next_token_required("when", token.when_keyword, iCurrent, lObjects)
-        iCurrent = condition.classify_until(lMyElseUntils, iCurrent, lObjects)
-
-    return iCurrent
+        oDataStructure.replace_next_token_required("when", token.when_keyword)
+        condition.classify_until(lMyElseUntils, oDataStructure)
