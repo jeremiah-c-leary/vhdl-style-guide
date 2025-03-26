@@ -14,19 +14,7 @@
 3 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-4 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-5 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-6 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-7 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-8 |   alias ident : std_logic_vector(3 downto 0) is write_enable [name1, name2 return integer];
+4 |   alias ident : std_logic_vector(3 downto 0) is write_enable [name1, name2 return integer];
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.colon'>
@@ -42,6 +30,49 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.close_bracket'>
+<class 'vsg.token.alias_declaration.semicolon'>
+--------------------------------------------------------------------------------
+5 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+6 |   alias ident : std_logic_vector(3 downto 0) is write_enable [name1, name2];
+<class 'vsg.token.alias_declaration.alias_keyword'>
+<class 'vsg.token.alias_declaration.alias_designator'>
+<class 'vsg.token.alias_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.alias_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signature.open_bracket'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.comma'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.close_bracket'>
+<class 'vsg.token.alias_declaration.semicolon'>
+--------------------------------------------------------------------------------
+7 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+8 |   alias ident : std_logic_vector(3 downto 0) is write_enable [return integer];
+<class 'vsg.token.alias_declaration.alias_keyword'>
+<class 'vsg.token.alias_declaration.alias_designator'>
+<class 'vsg.token.alias_declaration.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.index_constraint.open_parenthesis'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.direction.downto'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.index_constraint.close_parenthesis'>
+<class 'vsg.token.alias_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.signature.return_keyword'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.close_bracket'>
@@ -50,50 +81,7 @@
 9 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-10 |   alias ident : std_logic_vector(3 downto 0) is write_enable [name1, name2];
-<class 'vsg.token.alias_declaration.alias_keyword'>
-<class 'vsg.token.alias_declaration.alias_designator'>
-<class 'vsg.token.alias_declaration.colon'>
-<class 'vsg.token.type_mark.name'>
-<class 'vsg.token.index_constraint.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.direction.downto'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.index_constraint.close_parenthesis'>
-<class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.signature.open_bracket'>
-<class 'vsg.token.type_mark.name'>
-<class 'vsg.token.signature.comma'>
-<class 'vsg.token.type_mark.name'>
-<class 'vsg.token.signature.close_bracket'>
-<class 'vsg.token.alias_declaration.semicolon'>
---------------------------------------------------------------------------------
-11 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-12 |   alias ident : std_logic_vector(3 downto 0) is write_enable [return integer];
-<class 'vsg.token.alias_declaration.alias_keyword'>
-<class 'vsg.token.alias_declaration.alias_designator'>
-<class 'vsg.token.alias_declaration.colon'>
-<class 'vsg.token.type_mark.name'>
-<class 'vsg.token.index_constraint.open_parenthesis'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.direction.downto'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.index_constraint.close_parenthesis'>
-<class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.signature.open_bracket'>
-<class 'vsg.token.signature.return_keyword'>
-<class 'vsg.token.type_mark.name'>
-<class 'vsg.token.signature.close_bracket'>
-<class 'vsg.token.alias_declaration.semicolon'>
---------------------------------------------------------------------------------
-13 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-14 |   alias ident : std_logic_vector(3 downto 0) is write_enable(15 downto 0);
+10 |   alias ident : std_logic_vector(3 downto 0) is write_enable(15 downto 0);
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.colon'>
@@ -112,13 +100,13 @@
 <class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
-15 |
+11 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-16 |
+12 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-17 |   alias ident is write_enable [name1, name2 return integer];
+13 |   alias ident is write_enable [name1, name2 return integer];
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.is_keyword'>
@@ -127,6 +115,35 @@
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.comma'>
 <class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.return_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.close_bracket'>
+<class 'vsg.token.alias_declaration.semicolon'>
+--------------------------------------------------------------------------------
+14 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+15 |   alias ident is write_enable [name1, name2];
+<class 'vsg.token.alias_declaration.alias_keyword'>
+<class 'vsg.token.alias_declaration.alias_designator'>
+<class 'vsg.token.alias_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signature.open_bracket'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.comma'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.signature.close_bracket'>
+<class 'vsg.token.alias_declaration.semicolon'>
+--------------------------------------------------------------------------------
+16 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+17 |   alias ident is write_enable [return integer];
+<class 'vsg.token.alias_declaration.alias_keyword'>
+<class 'vsg.token.alias_declaration.alias_designator'>
+<class 'vsg.token.alias_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.signature.open_bracket'>
 <class 'vsg.token.signature.return_keyword'>
 <class 'vsg.token.type_mark.name'>
 <class 'vsg.token.signature.close_bracket'>
@@ -135,52 +152,41 @@
 18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-19 |   alias ident is write_enable [name1, name2];
+19 |   alias ident is write_enable;
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
 <class 'vsg.token.alias_declaration.is_keyword'>
 <class 'vsg.parser.todo'>
-<class 'vsg.token.signature.open_bracket'>
-<class 'vsg.token.type_mark.name'>
-<class 'vsg.token.signature.comma'>
-<class 'vsg.token.type_mark.name'>
-<class 'vsg.token.signature.close_bracket'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
 20 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-21 |   alias ident is write_enable [return integer];
+21 |   alias alias_sop : std_logic is << signal .tb_top.submodule.i_rx_data : t_mac_interface >> .sop;
 <class 'vsg.token.alias_declaration.alias_keyword'>
 <class 'vsg.token.alias_declaration.alias_designator'>
-<class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.signature.open_bracket'>
-<class 'vsg.token.signature.return_keyword'>
+<class 'vsg.token.alias_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.signature.close_bracket'>
+<class 'vsg.token.alias_declaration.is_keyword'>
+<class 'vsg.token.external_signal_name.double_less_than'>
+<class 'vsg.token.external_signal_name.signal_keyword'>
+<class 'vsg.token.external_signal_name.external_pathname'>
+<class 'vsg.token.external_signal_name.colon'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.external_signal_name.double_greater_than'>
+<class 'vsg.parser.todo'>
 <class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
 22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-23 |   alias ident is write_enable;
-<class 'vsg.token.alias_declaration.alias_keyword'>
-<class 'vsg.token.alias_declaration.alias_designator'>
-<class 'vsg.token.alias_declaration.is_keyword'>
-<class 'vsg.parser.todo'>
-<class 'vsg.token.alias_declaration.semicolon'>
+23 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
 --------------------------------------------------------------------------------
 24 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-25 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
---------------------------------------------------------------------------------
-26 |
-<class 'vsg.parser.blank_line'>
---------------------------------------------------------------------------------
-27 | end architecture RTL;
+25 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
