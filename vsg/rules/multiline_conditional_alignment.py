@@ -65,7 +65,7 @@ class multiline_conditional_alignment(alignment.Rule):
             iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
             oToi.set_meta_data("iFirstLine", iFirstLine)
             oToi.set_meta_data("iFirstLineIndent", iFirstLineIndent)
-            oToi.set_meta_data("iAssignColumn", oFile.get_column_of_token_index(oToi.get_start_index()))
+            oToi.set_meta_data("iAssignColumn", oFile.get_column_of_token_index(oToi.get_start_index(), self.indent_size))
             oToi.set_meta_data("bStartsWithParen", _starts_with_paren(lTokens))
 
         return lToi
