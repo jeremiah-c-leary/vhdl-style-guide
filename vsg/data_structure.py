@@ -49,6 +49,7 @@ class design_file:
                     self.align_seek_index()
                     return False
             self.increment_seek_index()
+        self.align_seek_index()
         return True
 
     def at_end_of_file(self):

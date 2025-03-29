@@ -18,6 +18,7 @@ def detect(oDataStructure):
     if oDataStructure.are_next_consecutive_tokens([None, ":"]):
         oDataStructure.increment_seek_index()
         oDataStructure.advance_to_next_seek_token()
+        oDataStructure.increment_seek_index()
 
     if oDataStructure.is_next_seek_token("loop"):
         classify(oDataStructure)
