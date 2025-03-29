@@ -15,18 +15,17 @@ def detect(oDataStructure):
 
     if oDataStructure.is_next_token("array"):
         if not oDataStructure.does_string_exist_in_next_n_tokens("<>", 5):
+            classify(oDataStructure)
             return True
     return False
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("array", token.array_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.array_keyword)
 
-    iCurrent = index_constraint.classify(iToken, lObjects)
+    index_constraint.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("of", token.of_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("of", token.of_keyword)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
-
-    return iCurrent
+    subtype_indication.classify(oDataStructure)
