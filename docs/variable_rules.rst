@@ -240,6 +240,35 @@ The default variable prefix is *v_*.
 
    variable v_my_var : natural;
 
+variable_015
+############
+
+|phase_1| |error| |structure|
+
+This rule checks for multiple variable names defined in a single variable declaration.
+By default, this rule will only flag more than two variable declarations.
+
+|configuring_number_of_variables_in_variable_declaration_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable var1, var2
+     var3, var4,
+     var5
+     : std_logic;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable sig1 : std_logic;
+   variable sig2 : std_logic;
+   variable sig3 : std_logic;
+   variable sig4 : std_logic;
+   variable sig5 : std_logic;
+
 variable_017
 ############
 
