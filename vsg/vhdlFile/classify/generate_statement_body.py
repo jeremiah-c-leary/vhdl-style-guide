@@ -14,11 +14,15 @@ def classify(oDataStructure):
             { concurrent_statement }
         [ end [ alternative_label ] ; ]
     """
-    if block_declarative_part.detect(oDataStructure):
-        oDataStructure.replace_next_token_required("begin", token.begin_keyword)
 
+    block_declarative_part.detect(oDataStructure)
+
+    oDataStructure.replace_next_token_with_if("begin", token.begin_keyword)
+
+    # TODO:  push while loop into concurrent_statement.detect
     while not oDataStructure.is_next_token_one_of(["elsif", "else", "when", "end"]):
-        concurrent_statement.detect(oDataStructure)
+        if not concurrent_statement.detect(oDataStructure):
+            break
 
     if oDataStructure.is_next_token("end"):
         if not oDataStructure.are_next_consecutive_tokens(["end", "generate"]):
