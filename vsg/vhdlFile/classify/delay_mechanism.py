@@ -20,16 +20,13 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    if utils.is_next_token("transport", iToken, lObjects):
-        return utils.assign_next_token_required("transport", token.transport_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    if oDataStructure.is_next_token("transport"):
+        oDataStructure.replace_next_token_with(token.transport_keyword)
 
     else:
-        iCurrent = iToken
+        if oDataStructure.is_next_token("reject"):
+            oDataStructure.replace_next_token_with(token.reject_keyword)
+            expression.classify_until(["inertial"], oDataStructure)
 
-        if utils.is_next_token("reject", iCurrent, lObjects):
-            iCurrent = utils.assign_next_token_required("reject", token.reject_keyword, iCurrent, lObjects)
-            iCurrent = expression.classify_until(["inertial"], iCurrent, lObjects)
-
-        iCurrent = utils.assign_next_token_required("inertial", token.inertial_keyword, iCurrent, lObjects)
-        return iCurrent
+        oDataStructure.replace_next_token_required("inertial", token.inertial_keyword)
