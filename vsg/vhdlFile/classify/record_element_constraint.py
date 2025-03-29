@@ -20,8 +20,6 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token(token.record_element_simple_name, iToken, lObjects)
-    iCurrent = element_constraint.detect(iCurrent, lObjects)
-
-    return iCurrent
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.record_element_simple_name)
+    element_constraint.detect(oDataStructure)

@@ -49,6 +49,9 @@ class design_file:
             self.increment_seek_index()
         return True
 
+    def at_end_of_file(self):
+        return self.iCurrent == self.iEndIndex
+
     def current_token_lower_value_is(self, sString):
         return self.get_current_token_lower_value() == sString
 
@@ -64,8 +67,8 @@ class design_file:
             if oToken.lower_value == sFirst:
                 return True
 
-    def does_string_exist_before_matching_close_parenthesis(self, sString):
-        iParen = 0
+    def does_string_exist_before_matching_close_parenthesis(self, sString, myParen=0):
+        iParen = myParen
         for oToken in self.lAllObjects[self.iSeek : :]:
             if iParen == 0 and oToken.lower_value == sString:
                 return True
@@ -73,6 +76,8 @@ class design_file:
                 iParen += 1
             elif oToken.lower_value == ")":
                 iParen -= 1
+            if iParen == -1:
+                return False
         return False
 
     def does_string_exist_before_string_honoring_parenthesis_hierarchy(self, sFirst, sSecond):

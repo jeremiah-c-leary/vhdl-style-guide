@@ -15,6 +15,7 @@ def detect(oDataStructure):
     """
     if open_detected(oDataStructure):
         classify_open(oDataStructure)
+        array_element_constraint.detect(oDataStructure)
         return True
     if index_constraint.detect(oDataStructure):
         index_constraint.classify(oDataStructure)
@@ -41,5 +42,3 @@ def classify_open(oDataStructure):
     oDataStructure.replace_next_token_with(token.open_parenthesis)
     oDataStructure.replace_next_token_with(token.open_keyword)
     oDataStructure.replace_next_token_required(")", token.close_parenthesis)
-
-    array_element_constraint.detect(oDataStructure)

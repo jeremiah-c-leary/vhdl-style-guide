@@ -22,12 +22,10 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("(", token.open_parenthesis)
 
-    while not utils.is_next_token(")", iCurrent, lObjects):
-        iCurrent = record_element_constraint.classify(iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_if(",", token.comma, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-
-    return iCurrent
+    while not oDataStructure.is_next_token(")"):
+        record_element_constraint.classify(oDataStructure)
+        oDataStructure.replace_next_token_with_if(",", token.comma)
+    oDataStructure.replace_next_token_required(")", token.close_parenthesis)

@@ -32,15 +32,20 @@ def classify_until(lUntils, oDataStructure):
     iOpenParenthesis = 0
     iCloseParenthesis = 0
 
-    while not oDataStructure.is_next_token_one_of(lUntils):
-        #        if iCurrent == iPrevious:
-        #            utils.print_missing_error_message(lUntils, iToken, lObjects)
+    while not oDataStructure.at_end_of_file():
+        oDataStructure.advance_to_next_token()
 
         if oDataStructure.current_token_lower_value_is("("):
             iOpenParenthesis += 1
         elif oDataStructure.current_token_lower_value_is(")"):
             iCloseParenthesis += 1
+
         if iOpenParenthesis < iCloseParenthesis:
             break
+        elif iOpenParenthesis == iCloseParenthesis:
+            if oDataStructure.is_next_token_one_of(lUntils):
+                break
+            else:
+                oDataStructure.replace_current_token_with(parser.todo)
         else:
             oDataStructure.replace_current_token_with(parser.todo)
