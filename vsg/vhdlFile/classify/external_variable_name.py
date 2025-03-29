@@ -20,19 +20,17 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("<<", token.double_less_than, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("variable", token.variable_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.external_pathname, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.double_less_than)
+    oDataStructure.replace_next_token_with(token.variable_keyword)
+    oDataStructure.replace_next_token_with(token.external_pathname)
 
-    while utils.is_next_token("(", iCurrent, lObjects):
+    while oDataStructure.is_next_token("("):
         iCurrent = utils.assign_parenthesis_as_todo(iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_if_not(":", token.external_pathname, iCurrent, lObjects)
+        oDataStructure.replace_next_token_with_if_not(":", token.external_pathname)
 
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
+    subtype_indication.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(">>", token.double_greater_than, iToken, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(">>", token.double_greater_than)
