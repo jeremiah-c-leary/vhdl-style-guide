@@ -45,7 +45,7 @@ def detect(oDataStructure):
 
     if subprogram_declaration.detect(oDataStructure):
         if subprogram_body.detect(oDataStructure):
-            subprogram_body.classify(oDataStructure)
+            return True
         return True
 
     if subprogram_instantiation_declaration.detect(oDataStructure):
@@ -81,7 +81,6 @@ def detect(oDataStructure):
         return True
 
     if alias_declaration.detect(oDataStructure):
-        alias_declaration.classify(oDataStructure)
         return True
 
     if attribute_declaration.detect(oDataStructure):

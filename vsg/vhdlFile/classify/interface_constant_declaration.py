@@ -29,4 +29,4 @@ def classify(oDataStructure):
 
     if oDataStructure.is_next_token(":="):
         oDataStructure.replace_next_token_with(token.assignment)
-        expression.classify_until([";"], oDatStructure)
+        expression.classify_until([";"], oDataStructure)

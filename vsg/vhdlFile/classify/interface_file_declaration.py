@@ -17,13 +17,11 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("file", token.file_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.file_keyword)
 
-    iCurrent = identifier_list.classify_until([":"], iCurrent, lObjects, token.identifier)
+    identifier_list.classify_until([":"], oDataStructure, token.identifier)
 
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
-
-    return iCurrent
+    subtype_indication.classify(oDataStructure)
