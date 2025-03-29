@@ -25,15 +25,11 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    if utils.is_next_token("while", iToken, lObjects):
-        iCurrent = utils.assign_next_token_required("while", token.while_keyword, iToken, lObjects)
-        iCurrent = condition.classify_until(["loop"], iToken, lObjects)
-        return iCurrent
+def classify(oDataStructure):
+    if oDataStructure.is_next_token("while"):
+        oDataStructure.replace_next_token_required("while", token.while_keyword)
+        condition.classify_until(["loop"], oDataStructure)
 
-    if utils.is_next_token("for", iToken, lObjects):
-        iCurrent = utils.assign_next_token_required("for", token.for_keyword, iToken, lObjects)
-        iCurrent = parameter_specification.classify_until(["loop"], iToken, lObjects)
-        return iCurrent
-
-    return iToken
+    if oDataStructure.is_next_token("for"):
+        oDataStructure.replace_next_token_required("for", token.for_keyword)
+        parameter_specification.classify_until(["loop"], oDataStructure)

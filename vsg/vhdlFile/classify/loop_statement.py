@@ -2,8 +2,7 @@
 
 from vsg import decorators
 from vsg.token import loop_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import iteration_scheme, sequence_of_statements
+from vsg.vhdlFile.classify import iteration_scheme, sequence_of_statements, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -16,7 +15,7 @@ def detect(oDataStructure):
             end loop [ loop_label ] ;
     """
     oDataStructure.align_seek_index()
-    if oDataStructure.does_string_exist_in_next_n_tokens(":", 2):
+    if oDataStructure.are_next_consecutive_tokens([None, ":"]):
         oDataStructure.increment_seek_index()
         oDataStructure.advance_to_next_seek_token()
         oDataStructure.increment_seek_index()
@@ -31,18 +30,16 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.loop_label, token.label_colon)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.loop_label, token.label_colon)
 
-    iCurrent = iteration_scheme.classify(iCurrent, lObjects)
+    iteration_scheme.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("loop", token.loop_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("loop", token.loop_keyword)
 
-    iCurrent = sequence_of_statements.detect(iCurrent, lObjects)
+    sequence_of_statements.detect(oDataStructure, "end")
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("loop", token.end_loop_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_loop_label, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("loop", token.end_loop_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_loop_label)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

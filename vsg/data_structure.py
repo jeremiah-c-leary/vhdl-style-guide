@@ -41,10 +41,12 @@ class design_file:
 
     def are_next_consecutive_tokens(self, lTokens):
         self.align_seek_index()
+        myIndex = self.iSeek
         for sToken in lTokens:
             self.seek_to_next_token()
             if sToken is not None:
                 if not self.seek_token_lower_value_is(sToken):
+                    self.iSeek = myIndex
                     return False
             self.increment_seek_index()
         return True
