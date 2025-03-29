@@ -88,7 +88,6 @@ def detect(oDataStructure):
         return True
 
     if attribute_specification.detect(oDataStructure):
-        attribute_specification.classify(oDataStructure)
         return True
 
     if use_clause.detect(oDataStructure):
