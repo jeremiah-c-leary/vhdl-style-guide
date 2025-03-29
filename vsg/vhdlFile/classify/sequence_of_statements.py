@@ -11,4 +11,5 @@ def detect(oDataStructure, lUnless):
         { sequential_statement }
     """
     while not oDataStructure.is_next_token_one_of(lUnless):
-        sequential_statement.detect(oDataStructure)
+        if not sequential_statement.detect(oDataStructure):
+            return False
