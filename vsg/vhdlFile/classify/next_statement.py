@@ -23,10 +23,10 @@ def classify(oDataStructure):
     oDataStructure.replace_next_token_required("next", token.next_keyword)
 
     if not oDataStructure.is_next_token(";") and not oDataStructure.is_next_token("when"):
-        utils.assign_next_token(token.loop_label, oDataStructure)
+        oDataStructure.replace_next_token_with(token.loop_label)
 
     if oDataStructure.is_next_token("when"):
-        oDataStructure.replace_next_token_required("when", token.when_keyword)
+        oDataStructure.replace_next_token_with(token.when_keyword)
         condition.classify_until([";"], oDataStructure)
 
     oDataStructure.replace_next_token_required(";", token.semicolon)
