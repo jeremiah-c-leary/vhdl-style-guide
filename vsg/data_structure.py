@@ -190,16 +190,9 @@ class design_file:
             self.replace_current_token_with(token)
 
     def replace_tokens_from_current_to_seek_with(self, token):
-        self.reverse_to_previous_seek_token()
         while self.get_current_index() < self.get_seek_index():
             self.replace_next_token_with(token)
-
-    def reverse_to_previous_seek_token(self):
-        for iIndex in range(self.iSeek - 1, self.iCurrent, -1):
-            if type(self.lAllObjects[iIndex]) == parser.item:
-                self.iSeek = iIndex
-                return True
-        return False
+            self.advance_to_next_token()
 
     def seek_to_next_token(self):
         # jcl - might need to watch out for going past the end of the lAllObjects list

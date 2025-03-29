@@ -20,7 +20,8 @@ def detect(oDataStructure):
         [ port_map_aspect ; ] ]
     """
 
-    generic_clause.detect(oDataStructure)
+    if generic_clause.detect(oDataStructure):
+        generic_clause.classify(oDataStructure)
 
     if generic_map_aspect.detect(oDataStructure):
         oDataStructure.replace_next_token_required(";", token.semicolon)
