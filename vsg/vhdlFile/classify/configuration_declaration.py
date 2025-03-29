@@ -45,6 +45,6 @@ def classify_opening_declaration(oDataStructure):
 @decorators.print_classifier_debug_info(__name__)
 def classify_closing_declaration(oDataStructure):
     oDataStructure.replace_next_token_required("end", token.end_keyword)
-    oDataStructure.replace_next_token_if("configuration", token.end_configuration_keyword)
-    oDataStructure.replace_next_token_if_not(";", token.configuration_simple_name)
+    oDataStructure.replace_next_token_with_if("configuration", token.end_configuration_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.configuration_simple_name)
     oDataStructure.replace_next_token_required(";", token.semicolon)

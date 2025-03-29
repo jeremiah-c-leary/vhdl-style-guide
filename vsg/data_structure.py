@@ -46,7 +46,7 @@ class design_file:
             self.seek_to_next_token()
             if sToken is not None:
                 if not self.seek_token_lower_value_is(sToken):
-                    self.iSeek = myIndex
+                    self.align_seek_index()
                     return False
             self.increment_seek_index()
         return True
@@ -137,7 +137,8 @@ class design_file:
         self.iCurrent += 1
 
     def increment_seek_index(self):
-        if self.iSeek < self.iEndIndex:
+        # TODO:  find a way to calculate the length of lAllObjects less frequent
+        if self.iSeek < len(self.lAllObjects) - 1:
             self.iSeek += 1
         else:
             self.iSeek = self.iEndIndex
