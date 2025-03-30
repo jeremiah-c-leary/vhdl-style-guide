@@ -12,7 +12,8 @@ def detect(oDataStructure):
       | entity entity_name [ ( *architecture*_identifier ) ]
       | configuration configuration_name
     """
-    if oDataStructure.is_next_token_one_of(["component", "entity", "configuration"]):
+
+    if oDataStructure.is_next_seek_token_one_of(["component", "entity", "configuration"]):
         return True
     if oDataStructure.does_string_exist_in_next_n_tokens(";", 2):
         return True
