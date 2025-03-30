@@ -11,7 +11,7 @@ from vsg.vhdlFile.classify import (
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     protected_type_declarative_item ::=
         subprogram_declaration
@@ -20,21 +20,17 @@ def detect(iToken, lObjects):
       | use_clause
     """
 
-    iReturn = subprogram_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        iReturn = subprogram_body.detect(iReturn, lObjects)
-        return iReturn
+    if subprogram_declaration.detect(oDataStructure):
+        subprogram_body.detect(oDataStructure)
+        return True
 
-    iReturn = subprogram_instantiation_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if subprogram_instantiation_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = attribute_specification.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if attribute_specification.detect(oDataStructure):
+        return True
 
-    iReturn = use_clause.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if use_clause.detect(oDataStructure):
+        return True
 
-    return iToken
+    return False

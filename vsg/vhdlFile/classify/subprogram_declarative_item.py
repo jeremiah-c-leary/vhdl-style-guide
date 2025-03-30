@@ -91,7 +91,6 @@ def detect(oDataStructure):
         return True
 
     if use_clause.detect(oDataStructure):
-        use_clause.classify(oDataStructure)
         return True
 
     return False

@@ -13,7 +13,6 @@ def detect(oDataStructure):
     """
 
     if protected_type_declaration.detect(oDataStructure):
-        protected_type_declaration.classify(oDataStructure)
         return True
 
     if protected_type_body.detect(oDataStructure):

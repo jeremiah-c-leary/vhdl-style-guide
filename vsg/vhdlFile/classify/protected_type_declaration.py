@@ -23,13 +23,11 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("protected", token.protected_keyword, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("protected", token.protected_keyword)
 
-    iCurrent = protected_type_declarative_part.detect(iCurrent, lObjects)
+    protected_type_declarative_part.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("protected", token.end_protected_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.protected_type_simple_name, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("protected", token.end_protected_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.protected_type_simple_name)

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from vsg import parser
+from vsg import exceptions, parser
 from vsg.vhdlFile.classify import utils
 
 
@@ -29,10 +29,7 @@ class design_file:
     def advance_to_next_seek_token(self):
         for iIndex, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
             if type(oToken) == parser.item:
-                if self.iSeek > self.iEndIndex:
-                    self.iSeek = self.iEndIndex
-                else:
-                    self.iSeek = self.iSeek + iIndex
+                self.iSeek = self.iSeek + iIndex
                 return True
         return False
 
@@ -142,7 +139,9 @@ class design_file:
         if self.iSeek < len(self.lAllObjects) - 1:
             self.iSeek += 1
         else:
-            self.iSeek = self.iEndIndex
+            #            raise exceptions.IndexedPassedEndOfFile()
+            #            exit()
+            self.iSeek = len(self.lAllObjects) - 1
 
     def is_next_seek_token(self, sString):
         self.advance_to_next_seek_token()

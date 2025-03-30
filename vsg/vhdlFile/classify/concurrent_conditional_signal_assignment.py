@@ -23,7 +23,6 @@ def detect(oDataStructure):
     """
 
     bAssignmentFound = False
-    oDataStructure.align_seek_index()
     while not oDataStructure.seek_token_lower_value_is(";"):
         if bAssignmentFound:
             if oDataStructure.seek_token_lower_value_is("when"):
