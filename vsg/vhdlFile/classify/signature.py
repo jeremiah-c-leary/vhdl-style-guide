@@ -18,34 +18,27 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("[", token.open_bracket, iToken, lObjects)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("[", token.open_bracket)
 
-    detect_type_mark(iCurrent, lObjects)
+    detect_type_mark(oDataStructure)
 
-    detect_return(iCurrent, lObjects)
+    detect_return(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("]", token.close_bracket, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("]", token.close_bracket)
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect_return(iToken, lObjects):
-    iCurrent = iToken
-    if utils.is_next_token("return", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("return", token.return_keyword, iCurrent, lObjects)
-        iCurrent = type_mark.classify(iCurrent, lObjects)
-    return iCurrent
+def detect_return(oDataStructure):
+    if oDataStructure.is_next_token("return"):
+        oDataStructure.replace_next_token_with(token.return_keyword)
+        type_mark.classify(oDataStructure)
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect_type_mark(iToken, lObjects):
-    iCurrent = iToken
-    if not utils.is_next_token("return", iCurrent, lObjects):
-        iCurrent = type_mark.classify(iCurrent, lObjects)
-        while utils.is_next_token(",", iCurrent, lObjects):
-            iCurrent = utils.assign_next_token_required(",", token.comma, iCurrent, lObjects)
-            iCurrent = type_mark.classify(iCurrent, lObjects)
-
-    return iCurrent
+def detect_type_mark(oDataStructure):
+    if not oDataStructure.is_next_token("return"):
+        type_mark.classify(oDataStructure)
+        while oDataStructure.is_next_token(","):
+            oDataStructure.replace_next_token_required(",", token.comma)
+            type_mark.classify(oDataStructure)

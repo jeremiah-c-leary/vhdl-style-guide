@@ -32,7 +32,8 @@ def classify(oDataStructure):
     oDataStructure.replace_next_token_required("is", token.is_keyword)
 
     name.classify_until([";", "["], oDataStructure)
-
-    signature.detect(oDataStructure)
+    oDataStructure.debug_print(10)
+    if signature.detect(oDataStructure):
+        signature.classify(oDataStructure)
 
     oDataStructure.replace_next_token_required(";", token.semicolon)
