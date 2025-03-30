@@ -14,4 +14,5 @@ def classify(oDataStructure):
 
     oDataStructure.replace_next_token_with(token.entity_tag)
 
-    signature.detect(oDataStructure)
+    if signature.detect(oDataStructure):
+        signature.classify(oDataStructure)
