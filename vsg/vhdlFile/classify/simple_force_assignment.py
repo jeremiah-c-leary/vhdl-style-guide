@@ -2,8 +2,7 @@
 
 from vsg import decorators
 from vsg.token import simple_force_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression, force_mode
+from vsg.vhdlFile.classify import expression, force_mode, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -21,14 +20,12 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("force", token.force_keyword, iCurrent, lObjects)
+def classify(oDataStructure):
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
+    oDataStructure.replace_next_token_required("force", token.force_keyword)
 
-    iCurrent = force_mode.detect(iCurrent, lObjects)
-    iCurrent = expression.classify_until([";"], iCurrent, lObjects)
+    force_mode.detect(oDataStructure)
+    expression.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)
