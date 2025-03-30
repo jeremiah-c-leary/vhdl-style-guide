@@ -18,7 +18,12 @@ def detect(oDataStructure):
 
     """
 
-    if oDataStructure.does_string_exist_in_next_n_tokens("assert", 4):
+    if (
+        oDataStructure.are_next_consecutive_tokens([None, ":", "postponed", "assert"])
+        or oDataStructure.are_next_consecutive_tokens([None, ":", "assert"])
+        or oDataStructure.are_next_consecutive_tokens(["postponed", "assert"])
+        or oDataStructure.is_next_token("assert")
+    ):
         classify(oDataStructure)
         return True
     return False
