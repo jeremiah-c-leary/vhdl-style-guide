@@ -21,16 +21,14 @@ def detect(oDataStructure):
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("report", token.report_keyword, iCurrent, lObjects)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+    oDataStructure.replace_next_token_with(token.report_keyword)
 
-    iCurrent = expression.classify_until([";", "severity"], iCurrent, lObjects)
+    expression.classify_until([";", "severity"], oDataStructure)
 
-    if utils.is_next_token("severity", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("severity", token.severity_keyword, iCurrent, lObjects)
-        iCurrent = expression.classify_until([";"], iCurrent, lObjects)
+    if oDataStructure.is_next_token("severity"):
+        oDataStructure.replace_next_token_with(token.severity_keyword)
+        expression.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)
