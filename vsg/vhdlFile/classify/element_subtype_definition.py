@@ -5,10 +5,10 @@ from vsg.vhdlFile.classify import subtype_indication
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     element_subtype_definition ::=
         subtype_indication
     """
 
-    return subtype_indication.classify(iToken, lObjects)
+    subtype_indication.classify(oDataStructure)

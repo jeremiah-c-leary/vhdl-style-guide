@@ -7,18 +7,16 @@ from vsg.vhdlFile.classify import element_subtype_definition, identifier_list
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     element_declaration ::=
         identifier_list : element_subtype_definition ;
     """
 
-    iCurrent = identifier_list.classify_until([":"], iToken, lObjects)
+    identifier_list.classify_until([":"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = element_subtype_definition.classify(iCurrent, lObjects)
+    element_subtype_definition.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)
