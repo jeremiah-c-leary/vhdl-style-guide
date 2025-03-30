@@ -44,8 +44,7 @@ def detect(oDataStructure):
     """
 
     if subprogram_declaration.detect(oDataStructure):
-        if subprogram_body.detect(iReturn, lObjects):
-            return True
+        subprogram_body.detect(oDataStructure)
         return True
 
     if subprogram_instantiation_declaration.detect(oDataStructure):
