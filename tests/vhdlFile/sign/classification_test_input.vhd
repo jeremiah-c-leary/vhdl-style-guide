@@ -50,4 +50,13 @@ begin
 
   end process;
 
+  -- Check exponents
+
+  a <= 1e-6;
+
+  u_inst : inst
+    generic map (
+      real_generic => 1.23e-2
+    );
+
 end architecture RTL;

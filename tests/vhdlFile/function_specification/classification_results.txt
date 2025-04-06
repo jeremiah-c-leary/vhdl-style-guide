@@ -294,7 +294,7 @@
 <class 'vsg.token.association_list.comma'>
 <class 'vsg.token.association_element.formal_part'>
 <class 'vsg.token.association_element.assignment'>
-<class 'vsg.token.adding_operator.minus'>
+<class 'vsg.token.sign.minus'>
 <class 'vsg.token.association_element.actual_part'>
 <class 'vsg.token.association_list.comma'>
 --------------------------------------------------------------------------------
