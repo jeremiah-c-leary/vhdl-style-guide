@@ -45,7 +45,7 @@ def classify(iStart, iEnd, lObjects, sEnd):
     # Classify actual part
     for iCurrent in range(iCurrent, iEnd):
         if utils.is_item(lObjects, iCurrent):
-            utils.assign_token(lObjects, iCurrent, token.actual_part)
+            utils.assign_special_tokens(lObjects, iCurrent, token.actual_part)
 
     return iCurrent
 
