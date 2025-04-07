@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import component_configuration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     binding_indication,
     block_configuration,
@@ -11,16 +10,7 @@ from vsg.vhdlFile.classify import (
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
-    if utils.is_next_token("for", iToken, lObjects):
-        iCurrent = utils.find_next_token(iToken, lObjects) + 1
-        if component_specification.detect(iCurrent, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
-
-
-@decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def detect(oDataStructure):
     """
     component_configuration ::=
         for component_specification
@@ -30,19 +20,25 @@ def classify(iToken, lObjects):
         end for ;
     """
 
-    iCurrent = utils.assign_next_token_required("for", token.for_keyword, iToken, lObjects)
+    if oDataStructure.is_next_token("for"):
+        oDataStructure.increment_seek_index()
+        if component_specification.detect(oDataStructure):
+            classify(oDataStructure)
+            return True
+    return False
 
-    iCurrent = component_specification.classify(iCurrent, lObjects)
 
-    iPrevious = iCurrent
-    iCurrent = binding_indication.detect(iCurrent, lObjects)
-    if not iPrevious == iCurrent:
-        iCurrent = utils.assign_next_token_required(";", token.binding_indication_semicolon, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("for", token.for_keyword)
 
-    iCurrent = block_configuration.detect(iCurrent, lObjects)
+    component_specification.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("for", token.end_for_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    if binding_indication.detect(oDataStructure):
+        oDataStructure.replace_next_token_required(";", token.binding_indication_semicolon)
 
-    return iCurrent
+    block_configuration.detect(oDataStructure)
+
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("for", token.end_for_keyword)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

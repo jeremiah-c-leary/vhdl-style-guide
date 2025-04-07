@@ -221,11 +221,11 @@ def tokenize_postponed(oDataStructure, token):
     oDataStructure.replace_next_token_with_if("postponed", token)
 
 
-def print_error_message(sToken, token, oDataStructure):
+def print_error_message(sToken, token, currentToken, oDataStructure):
     sFoundToken = oDataStructure.get_current_token_value()
     iLine = 0
     iColumn = 0
-    #    iLine = calculate_line_number(iToken, lObjects)
+    iLine = currentToken.iLineNumber
     #    iColumn = calculate_column(iToken, lObjects)
     sModuleName = extract_module_name(token)
     sFileName = oDataStructure.sFilename

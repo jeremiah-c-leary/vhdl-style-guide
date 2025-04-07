@@ -128,12 +128,14 @@ class vhdlFile:
         oOptions = options()
 
         self.lAllObjects = []
+        iLineNumber = 1
         for sLine in self.filecontent:
             self.dVars["line"] = sLine
             lTokens = tokens.create(sLine.rstrip("\n").rstrip("\r"))
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
+                lObjects[-1].iLineNumber = iLineNumber
 
             blank.classify(lObjects, oOptions)
             whitespace.classify(lTokens, lObjects)
@@ -143,6 +145,7 @@ class vhdlFile:
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
+            iLineNumber += 1
 
         try:
             self.lAllObjects[0].set_filename(self.filename)

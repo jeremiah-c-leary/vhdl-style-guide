@@ -106,6 +106,9 @@ class design_file:
 
     def does_string_exist_in_next_n_tokens(self, sString, iNumTokens):
         self.iSeek = self.iCurrent
+        return self.does_string_exist_in_next_n_tokens_from_seek_index(sString, iNumTokens)
+
+    def does_string_exist_in_next_n_tokens_from_seek_index(self, sString, iNumTokens):
         for x in range(0, iNumTokens):
             self.seek_to_next_token()
             if self.seek_token_lower_value_is(sString):
@@ -115,6 +118,9 @@ class design_file:
 
     def get_current_index(self):
         return self.iCurrent
+
+    def get_current_token(self):
+        return self.lAllObjects[self.iCurrent]
 
     def get_current_token_lower_value(self):
         return self.lAllObjects[self.iCurrent].lower_value
@@ -174,7 +180,7 @@ class design_file:
         if self.is_next_token(sToken):
             self.replace_current_token_with(token)
         else:
-            utils.print_error_message(sToken, token, self)
+            utils.print_error_message(sToken, token, self.get_current_token(), self)
 
     def replace_next_token_with(self, token):
         self.advance_to_next_token()

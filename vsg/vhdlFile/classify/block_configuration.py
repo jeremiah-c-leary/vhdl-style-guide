@@ -27,10 +27,13 @@ def classify(oDataStructure):
 
     block_specification.classify(oDataStructure)
 
-    use_clause.detect(oDataStructure)
-    configuration_item.detect(oDataStructure)
+    while use_clause.detect(oDataStructure):
+        pass
 
-    oDataStructure.replace_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-    oDataStructure.replace_next_token_required("for", token.end_for_keyword, iCurrent, lObjects)
-    oDataStructure.replace_next_token_with_if_not(";", token.unspecified, iCurrent, lObjects)
-    oDataStructure.replace_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    while configuration_item.detect(oDataStructure):
+        pass
+
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("for", token.end_for_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.unspecified)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

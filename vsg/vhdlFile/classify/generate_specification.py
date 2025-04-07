@@ -5,7 +5,7 @@ from vsg.vhdlFile.classify import expression
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     generate_specification ::=
         static_discrete_range
@@ -13,4 +13,4 @@ def classify(iToken, lObjects):
       | alternative_label
     """
 
-    return expression.classify_until([")"], iToken, lObjects)
+    expression.classify_until([")"], oDataStructure)

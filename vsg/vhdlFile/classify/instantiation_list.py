@@ -2,28 +2,25 @@
 
 from vsg import decorators
 from vsg.token import instantiation_list as token
-from vsg.vhdlFile import utils
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
+def classify(oDataStructure):
     """
     instantiation_list ::=
         instantiation_label { , instantiation_label }
       | **others**
       | **all**
     """
+    if oDataStructure.is_next_token("others"):
+        oDataStructure.replace_next_token_required("others", token.others_keyword)
 
-    if utils.is_next_token("others", iToken, lObjects):
-        return utils.assign_next_token_required("others", token.others_keyword, iToken, lObjects)
+    elif oDataStructure.is_next_token("all"):
+        oDataStructure.replace_next_token_required("all", token.all_keyword)
 
-    if utils.is_next_token("all", iToken, lObjects):
-        return utils.assign_next_token_required("all", token.all_keyword, iToken, lObjects)
+    else:
+        oDataStructure.replace_next_token_with(token.instantiation_label)
 
-    iCurrent = utils.assign_next_token(token.instantiation_label, iToken, lObjects)
-
-    while utils.is_next_token(",", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(",", token.comma, iToken, lObjects)
-        iCurrent = utils.assign_next_token(token.instantiation_label, iToken, lObjects)
-
-    return iCurrent
+        while oDataStructure.is_next_token(","):
+            oDataStructure.replace_next_token_required(",", token.comma)
+            oDataStructure.replace_next_token_with(token.instantiation_label)
