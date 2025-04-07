@@ -5,7 +5,7 @@ from vsg.token import procedure_call as token
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import actual_parameter_part
 
-lExceptions = ["<=", "end", "map", "component", "entity", "configuration", "if"]
+lExceptions = ["end", "map", "component", "entity", "configuration", "if"]
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -27,6 +27,9 @@ def detect(oDataStructure):
     Differentiating a procedure call from anything else is essentially the absence of keywords.
     """
 
+    oDataStructure.align_seek_index()
+    if oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";"):
+        return False
     oDataStructure.align_seek_index()
     while not oDataStructure.seek_token_lower_value_is(";"):
         if oDataStructure.get_seek_token_lower_value() in lExceptions:

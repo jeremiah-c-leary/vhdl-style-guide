@@ -20,7 +20,8 @@ def detect(oDataStructure):
 
     if oDataStructure.is_next_token_one_of(["if", "elsif", "else"]):
         return False
-    if oDataStructure.does_string_exist_before_string("<=", ";"):
+    oDataStructure.align_seek_index()
+    if oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";"):
         if oDataStructure.does_string_exist_before_string("with", ";"):
             return False
         if oDataStructure.does_string_exist_before_string("when", ";"):
