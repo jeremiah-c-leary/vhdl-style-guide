@@ -19,15 +19,12 @@ def detect(oDataStructure):
     """
 
     if process_statement.detect(oDataStructure):
-        process_statement.classify(oDataStructure)
         return True
 
     if concurrent_assertion_statement.detect(oDataStructure):
-        concurrent_assertion_statement.classify(oDataStructure)
         return True
 
     if concurrent_procedure_call_statement.detect(oDataStructure):
-        concurrent_procedure_call_statement.classify(oDataStructure)
         return True
 
     return False
