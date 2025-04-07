@@ -21,13 +21,15 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
-    oDataStructure.assign_next_token_with(token.for_keyword)
+    oDataStructure.replace_next_token_with(token.for_keyword)
 
     component_specification.classify(oDataStructure)
-    binding_indication.classify(oDataStructure)
-    oDataStructure.assign_next_token_required(";", token.semicolon)
 
-    if utils.is_next_token("end"):
-        oDataStructure.assign_next_token_required("end", token.end_keyword)
-        oDataStructure.assign_next_token_required("for", token.end_for_keyword)
-        oDataStructure.assign_next_token_required(";", token.semicolon)
+    binding_indication.classify(oDataStructure)
+
+    oDataStructure.replace_next_token_required(";", token.semicolon)
+
+    if oDataStructure.is_next_token("end"):
+        oDataStructure.replace_next_token_with(token.end_keyword)
+        oDataStructure.replace_next_token_required("for", token.end_for_keyword)
+        oDataStructure.replace_next_token_required(";", token.semicolon)
