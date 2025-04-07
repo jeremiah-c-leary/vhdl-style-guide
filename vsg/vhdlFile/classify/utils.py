@@ -247,3 +247,21 @@ def extract_module_name(token):
 
 def assignment_operator_found(oDataStructure):
     return oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";")
+
+
+def assign_parenthesis_as_todo(oDataStructure):
+    if oDataStructure.is_next_token("("):
+        oDataStructure.replace_next_token_with(parser.open_parenthesis)
+
+        assign_tokens_until_matching_closing_paren(parser.todo, oDataStructure)
+
+        oDataStructure.replace_next_token_with(parser.close_parenthesis)
+
+
+def assign_tokens_until_matching_closing_paren(token, oDataStructure):
+    iCounter = 1
+    while oDataStructure.advance_to_next_token():
+        iCounter = update_paren_counter(iCounter, oDataStructure)
+        if is_current_token_close_paren(oDataStructure) and iCounter == 0:
+            break
+        oDataStructure.replace_current_token_with(token)

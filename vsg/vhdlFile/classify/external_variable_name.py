@@ -2,8 +2,7 @@
 
 from vsg import decorators
 from vsg.token import external_variable_name as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import subtype_indication
+from vsg.vhdlFile.classify import subtype_indication, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -26,7 +25,7 @@ def classify(oDataStructure):
     oDataStructure.replace_next_token_with(token.external_pathname)
 
     while oDataStructure.is_next_token("("):
-        iCurrent = utils.assign_parenthesis_as_todo(iCurrent, lObjects)
+        utils.assign_parenthesis_as_todo(oDataStructure)
         oDataStructure.replace_next_token_with_if_not(":", token.external_pathname)
 
     oDataStructure.replace_next_token_required(":", token.colon)
