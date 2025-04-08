@@ -15,21 +15,19 @@ def detect(oDataStructure):
     """
 
     if oDataStructure.is_next_token("generic"):
-        classify(iToken, lObjects)
+        classify(oDataStructure)
         return True
     return False
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    if utils.find_in_next_n_tokens("(", 2, iToken, lObjects):
-        iCurrent = utils.assign_next_token_required("generic", token.generic_keyword, iToken, lObjects)
-        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
+def classify(oDataStructure):
+    if oDataStructure.does_string_exist_in_next_n_tokens("(", 2):
+        oDataStructure.replace_next_token_required("generic", token.generic_keyword)
+        oDataStructure.replace_next_token_required("(", token.open_parenthesis)
 
-        iCurrent = generic_list.classify(iCurrent, lObjects)
+        generic_list.classify(oDataStructure)
 
-        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
+        oDataStructure.replace_next_token_required(")", token.close_parenthesis)
 
-    iCurrent = generic_map_aspect.detect(iToken, lObjects)
-
-    return iCurrent
+    generic_map_aspect.detect(oDataStructure)
