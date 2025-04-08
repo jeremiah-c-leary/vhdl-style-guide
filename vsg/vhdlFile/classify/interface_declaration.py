@@ -20,34 +20,18 @@ def detect(oDataStructure):
     """
 
     if interface_object_declaration.detect(oDataStructure):
-        return interface_object_declaration.classify(oDataStructure)
+        interface_object_declaration.classify(oDataStructure)
+        return True
 
     if interface_type_declaration.detect(oDataStructure):
-        return interface_type_declaration.classify(oDataStructure)
+        return True
 
     if interface_subprogram_declaration.detect(oDataStructure):
-        return interface_subprogram_declaration.classify(oDataStructure)
+        interface_subprogram_declaration.classify(oDataStructure)
+        return True
 
     if interface_package_declaration.detect(oDataStructure):
-        return interface_package_declaration.classify(oDataStructure)
+        interface_package_declaration.classify(oDataStructure)
+        return True
 
     return False
-
-
-#    iCurrent = interface_object_declaration.detect(iToken, lObjects)
-#    if iCurrent != iToken:
-#        return iCurrent
-#
-#    iCurrent = interface_type_declaration.detect(iToken, lObjects)
-#    if iCurrent != iToken:
-#        return iCurrent
-#
-#    iCurrent = interface_subprogram_declaration.detect(iToken, lObjects)
-#    if iCurrent != iToken:
-#        return iCurrent
-#
-#    iCurrent = interface_package_declaration.detect(iToken, lObjects)
-#    if iCurrent != iToken:
-#        return iCurrent
-#
-#    return iToken

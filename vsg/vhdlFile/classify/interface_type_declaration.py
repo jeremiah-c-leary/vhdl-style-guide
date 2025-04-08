@@ -12,6 +12,7 @@ def detect(oDataStructure):
     """
 
     if interface_incomplete_type_declaration.detect(oDataStructure):
-        return interface_incomplete_type_declaration.classify(oDataStructure)
+        interface_incomplete_type_declaration.classify(oDataStructure)
+        return True
 
     return False
