@@ -39,13 +39,12 @@ class alternative_label_name(parser.label):
         super().__init__(sString)
 
 
-# TODO:  This colon may not have a test
 class alternative_label_colon(parser.label_colon):
     """
     unique_id = if_generate_statement : alternative_label_colon
     """
 
-    def __init__(self):
+    def __init__(self, sString=None):
         super().__init__()
 
 
