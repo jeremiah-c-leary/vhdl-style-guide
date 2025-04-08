@@ -225,7 +225,7 @@ class design_file:
             elif oToken.lower_value == ")":
                 iParen -= 1
             if iParen == 0:
-                self.iSeek += iToken
+                self.iSeek += iToken + 1
                 return True
         return False
 

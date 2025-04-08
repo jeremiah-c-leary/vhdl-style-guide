@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import physical_type_definition as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     primary_unit_declaration,
     range_constraint,
@@ -20,32 +19,23 @@ def detect(oDataStructure):
                 { secondary_unit_declaration }
             **end** **units** [ physical_type_simple_name ]
     """
-    if units_keyword_found_before_semicolon(oDataStructure):
+    if oDataStructure.does_string_exist_before_string("units", ";"):
         classify(oDataStructure)
         return True
     return False
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = range_constraint.detect(iToken, lObjects)
+def classify(oDataStructure):
+    range_constraint.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("units", token.units_keyword, iToken, lObjects)
+    oDataStructure.replace_next_token_required("units", token.units_keyword)
 
-    iCurrent = primary_unit_declaration.detect(iCurrent, lObjects)
+    primary_unit_declaration.detect(oDataStructure)
 
-    while not utils.is_next_token("end", iCurrent, lObjects):
-        iCurrent = secondary_unit_declaration.detect(iCurrent, lObjects)
+    while not oDataStructure.is_next_token("end"):
+        secondary_unit_declaration.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token(token.end_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("units", token.end_units_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.simple_name, iCurrent, lObjects)
-
-    return iCurrent
-
-
-@decorators.print_classifier_debug_info(__name__)
-def units_keyword_found_before_semicolon(oDataStructure):
-    if oDataStructure.does_string_exist_before_string("units", ";"):
-        return True
-    return False
+    oDataStructure.replace_next_token_with(token.end_keyword)
+    oDataStructure.replace_next_token_required("units", token.end_units_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.simple_name)
