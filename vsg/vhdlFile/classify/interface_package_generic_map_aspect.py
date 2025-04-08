@@ -2,34 +2,32 @@
 
 from vsg import decorators
 from vsg.token import interface_package_generic_map_aspect as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect
 
 
 @decorators.print_classifier_debug_info(__name__)
-def detect(iToken, lObjects):
+def detect(oDataStructure):
     """
     interface_package_generic_map_aspect ::=
         generic_map_aspect
       | generic map ( <> )
       | generic map ( default )
     """
-    if utils.are_next_consecutive_tokens(["generic", "map", "(", "<>"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    elif utils.are_next_consecutive_tokens(["generic", "map", "(", "default"], iToken, lObjects):
-        return classify(iToken, lObjects)
+    if oDataStructure.are_next_consecutive_tokens(["generic", "map", "(", "<>"]):
+        classify(oDataStructure)
+        return True
+    elif oDataStructure.are_next_consecutive_tokens(["generic", "map", "(", "default"]):
+        classify(oDataStructure)
+        return True
     else:
-        return generic_map_aspect.classify(iToken, lObjects)
-    return iToken
+        return generic_map_aspect.detect(oDataStructure)
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("generic", token.generic_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("map", token.map_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("default", token.default_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("<>", token.undefined_range, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iToken, lObjects)
-
-    return iCurrent
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("generic", token.generic_keyword)
+    oDataStructure.replace_next_token_required("map", token.map_keyword)
+    oDataStructure.replace_next_token_required("(", token.open_parenthesis)
+    oDataStructure.replace_next_token_with_if("default", token.default_keyword)
+    oDataStructure.replace_next_token_with_if("<>", token.undefined_range)
+    oDataStructure.replace_next_token_required(")", token.close_parenthesis)
