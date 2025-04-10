@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import record_constraint as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import record_element_constraint
 
 
@@ -12,7 +11,7 @@ def detect(oDataStructure):
     record_constraint ::=
         ( record_element_constraint { , record_element_constraint } )
     """
-    oDataStructure.align_seek_index()
+
     if oDataStructure.is_next_seek_token("("):
         oDataStructure.increment_seek_index()
         if record_element_constraint.detect(oDataStructure):
