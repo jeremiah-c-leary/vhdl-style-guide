@@ -12,16 +12,11 @@ def detect(oDataStructure):
         prefix [ signature ] ' attribute_designator [ ( expression ) ]
     """
 
-    # Skip over prefix
-    oDataStructure.advance_seek_index_to_current_index()
-    oDataStructure.advance_to_next_seek_token()
     skip_prefix(oDataStructure)
 
-    # Check for signature
     if signature.detect(oDataStructure):
         return True
 
-    # Check for tic
     if oDataStructure.is_next_seek_token("'"):
         return True
 
@@ -30,6 +25,7 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def skip_prefix(oDataStructure):
+    oDataStructure.advance_to_next_seek_token()
     oDataStructure.increment_seek_index()
     oDataStructure.advance_seek_over_parenthesis()
 
