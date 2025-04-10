@@ -10,7 +10,7 @@ def detect(oDataStructure):
     signal_kind ::=
         register | bus
     """
-    oDataStructure.align_seek_index()
+
     if oDataStructure.is_next_seek_token_one_of(["register", "bus"]):
         classify(oDataStructure)
         return True
