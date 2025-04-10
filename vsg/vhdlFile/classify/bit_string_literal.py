@@ -16,7 +16,6 @@ def detect(oDataStructure):
     bit_string_literal ::=
         [ integer ] base_specifier " [ bit_value ] "
     """
-    oDataStructure.align_seek_index()
     bInt = False
     if oDataStructure.does_seek_token_match_regex(oIntegerRegex):
         oDataStructure.increment_seek_index()
