@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import decorators
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     simple_force_assignment,
     simple_release_assignment,
@@ -20,7 +19,7 @@ def detect(oDataStructure):
 
     if oDataStructure.is_next_token_one_of(["if", "elsif", "else"]):
         return False
-    oDataStructure.align_seek_index()
+
     if oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";"):
         if oDataStructure.does_string_exist_before_string("with", ";"):
             return False
