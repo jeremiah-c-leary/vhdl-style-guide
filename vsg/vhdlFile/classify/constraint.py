@@ -13,13 +13,28 @@ def detect(oDataStructure):
       | record_constraint
     """
 
+    oDataStructure.push_seek_index()
     if range_constraint.detect(oDataStructure):
+        oDataStructure.pop_seek_index()
         return True
 
+    oDataStructure.pop_seek_index()
+    oDataStructure.push_seek_index()
     if array_constraint.detect(oDataStructure):
+        oDataStructure.pop_seek_index()
         return True
 
+    oDataStructure.pop_seek_index()
+    oDataStructure.push_seek_index()
     if record_constraint.detect(oDataStructure):
+        oDataStructure.pop_seek_index()
         return True
 
-    return array_constraint.detect_discrete_subtype_indication(oDataStructure)
+    oDataStructure.pop_seek_index()
+    oDataStructure.push_seek_index()
+    if array_constraint.detect_discrete_subtype_indication(oDataStructure):
+        oDataStructure.pop_seek_index()
+        return True
+
+    oDataStructure.pop_seek_index()
+    return False

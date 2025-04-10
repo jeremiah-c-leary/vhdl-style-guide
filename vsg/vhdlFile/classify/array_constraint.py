@@ -28,7 +28,6 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def detect_discrete_subtype_indication(oDataStructure):
-    oDataStructure.align_seek_index()
     if oDataStructure.is_next_seek_token("("):
         index_constraint.classify(oDataStructure)
         return True
