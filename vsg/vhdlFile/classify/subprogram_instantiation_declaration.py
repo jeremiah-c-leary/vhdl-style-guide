@@ -31,7 +31,8 @@ def classify(oDataStructure):
     oDataStructure.replace_next_token_required("new", token.new_keyword)
     oDataStructure.replace_next_token_with(token.uninstantiated_subprogram_name)
 
-    signature.detect(oDataStructure)
+    if signature.detect(oDataStructure):
+        signature.classify(oDataStructure)
 
     generic_map_aspect.detect(oDataStructure)
 
