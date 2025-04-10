@@ -19,25 +19,28 @@ def detect(oDataStructure):
       | [ label : ] [ postponed ] concurrent_selected_signal_assignment
     """
 
-    oDataStructure.align_seek_index()
+    oDataStructure.push_seek_index()
     if concurrent_selected_signal_assignment.detect(oDataStructure):
         utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
         utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
         concurrent_selected_signal_assignment.classify(oDataStructure)
         return True
 
-    oDataStructure.align_seek_index()
+    oDataStructure.pop_seek_index()
+    oDataStructure.push_seek_index()
     if concurrent_conditional_signal_assignment.detect(oDataStructure):
         utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
         utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
         concurrent_conditional_signal_assignment.classify(oDataStructure)
         return True
 
-    oDataStructure.align_seek_index()
+    oDataStructure.pop_seek_index()
+    oDataStructure.push_seek_index()
     if concurrent_simple_signal_assignment.detect(oDataStructure):
         utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
         utils.tokenize_postponed(oDataStructure, token.postponed_keyword)
         concurrent_simple_signal_assignment.classify(oDataStructure)
         return True
 
+    oDataStructure.pop_seek_index()
     return False
