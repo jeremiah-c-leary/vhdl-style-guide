@@ -9,7 +9,6 @@ def detect(oDataStructure):
     character_literal ::=
         ' graphic_character '
     """
-    oDataStructure.align_seek_index()
     oDataStructure.advance_to_next_seek_token()
     sValue = oDataStructure.get_seek_token_lower_value()
     if len(sValue) == 3 and sValue.startswith("'") and sValue.endswith("'"):
