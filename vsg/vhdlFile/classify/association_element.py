@@ -17,7 +17,6 @@ def detect(oDataStructure):
 
     """
     iParen = 1
-#    oDataStructure.align_seek_index()
     while not oDataStructure.is_next_seek_token(";"):
         oDataStructure.advance_to_next_seek_token()
         if oDataStructure.seek_token_lower_value_is("("):
