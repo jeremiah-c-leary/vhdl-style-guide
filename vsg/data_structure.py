@@ -13,7 +13,9 @@ class design_file:
         self.iEndIndex = len(lAllObjects) - 1
         self.sFilename = ""
         self.iCurrent = 0
+        self.lCurrent = []
         self.iSeek = 0
+        self.lSeek = []
 
     def advance_seek_index_to_current_index(self):
         if self.iSeek < self.iCurrent:
@@ -23,6 +25,7 @@ class design_file:
         for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent : :]):
             if type(oToken) == parser.item:
                 self.iCurrent = self.iCurrent + iIndex
+#                self.align_seek_index()
                 return True
         return False
 
@@ -36,17 +39,21 @@ class design_file:
     def align_seek_index(self):
         self.iSeek = self.iCurrent
 
-    def are_next_consecutive_tokens(self, lTokens):
-        self.align_seek_index()
+    def are_next_consecutive_tokens(self, lTokens, bAlignSeekIndex=True):
+        # TODO:  Remove bAlignSeekIndex.  This decision should be made at a higher level
+        if bAlignSeekIndex:
+            self.align_seek_index()
         myIndex = self.iSeek
         for sToken in lTokens:
             self.seek_to_next_token()
             if sToken is not None:
                 if not self.seek_token_lower_value_is(sToken):
-                    self.align_seek_index()
+                    if bAlignSeekIndex:
+                        self.align_seek_index()
                     return False
             self.increment_seek_index()
-        self.align_seek_index()
+        if bAlignSeekIndex:
+            self.align_seek_index()
         return True
 
     def at_end_of_file(self):
@@ -70,12 +77,12 @@ class design_file:
     def does_string_exist_before_matching_close_parenthesis(self, sString, myParen=0):
         iParen = myParen
         for oToken in self.lAllObjects[self.iSeek : :]:
-            if iParen == 0 and oToken.lower_value == sString:
-                return True
             if oToken.lower_value == "(":
                 iParen += 1
             elif oToken.lower_value == ")":
                 iParen -= 1
+            if iParen == 0 and oToken.lower_value == sString:
+                return True
             if iParen == -1:
                 return False
         return False
@@ -171,6 +178,7 @@ class design_file:
     def replace_current_token_with(self, token):
         self.lAllObjects[self.iCurrent] = token(self.get_current_token_value())
         self.increment_current_index()
+#        self.align_seek_index()
 
     def replace_current_token_with_list_of_tokens(self, lTokens):
         self.lAllObjects.pop(self.get_current_index())
@@ -240,3 +248,15 @@ class design_file:
         for oToken in self.lAllObjects[self.iSeek : self.iSeek + iNumTokens]:
             sOutput += oToken.get_value()
         print(f">>Seek[{sOutput}]<<")
+
+    def push_seek_index(self):
+        self.lSeek.append(self.iSeek)
+
+    def pop_seek_index(self):
+        self.iSeek = self.lSeek.pop()
+
+    def push_current_index(self):
+        self.lCurrent.append(self.iCurrent)
+
+    def pop_current_index(self):
+        self.iCurrent = self.lCurrent.pop()

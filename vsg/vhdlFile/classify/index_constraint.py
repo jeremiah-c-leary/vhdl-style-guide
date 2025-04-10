@@ -11,7 +11,7 @@ def detect(oDataStructure):
     index_constraint ::=
         ( discrete_range { , discrete_range } )
     """
-    oDataStructure.align_seek_index()  # TODO:  Is this necessary?
+ 
     if oDataStructure.is_next_seek_token("("):
         oDataStructure.increment_seek_index()
         if discrete_range.detect(oDataStructure):

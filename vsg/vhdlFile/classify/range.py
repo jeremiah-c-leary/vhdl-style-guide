@@ -11,19 +11,21 @@ def detect(oDataStructure):
         *range*_attribute_name
       | simple_expression direction simple_expression
     """
+    oDataStructure.push_seek_index()
     if oDataStructure.are_next_consecutive_tokens(["(", None, ")"]):
         return True
     # TODO:  move mySeek into oDataStructure
-    mySeek = oDataStructure.iSeek
+    oDataStructure.pop_seek_index()
+    oDataStructure.push_seek_index()
     if attribute_name.detect(oDataStructure):
         return True
-    oDataStructure.iSeek = mySeek
+    oDataStructure.pop_seek_index()
     return detect_direction(oDataStructure)
 
 
 @decorators.print_classifier_debug_info(__name__)
 def detect_direction(oDataStructure):
-    #    oDataStructure.align_seek_index()
+ 
     if oDataStructure.does_string_exist_before_matching_close_parenthesis("downto", 0):
         return True
     if oDataStructure.does_string_exist_before_matching_close_parenthesis("to", 0):

@@ -13,10 +13,12 @@ def detect(oDataStructure):
       | ( open ) [ array_element_constraint ]
 
     """
+    oDataStructure.push_seek_index()
     if open_detected(oDataStructure):
         classify_open(oDataStructure)
         array_element_constraint.detect(oDataStructure)
         return True
+    oDataStructure.pop_seek_index()
     if index_constraint.detect(oDataStructure):
         index_constraint.classify(oDataStructure)
         array_element_constraint.detect(oDataStructure)

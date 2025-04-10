@@ -11,9 +11,19 @@ def detect(oDataStructure):
     discrete_range ::=
         *discrete*_subtype_indication | range
     """
-    if oDataStructure.are_next_consecutive_tokens([None, "(", None, ")"]):
+    oDataStructure.push_seek_index()
+
+    if oDataStructure.are_next_consecutive_tokens([None, "(", None, ")"], False):
+        oDataStructure.pop_seek_index()
+        oDataStructure.push_current_index()
+        oDataStructure.iCurrent = oDataStructure.iSeek
+
         subtype_indication.classify(oDataStructure)
+
+        oDataStructure.pop_current_index()
         return True
+
+    oDataStructure.pop_seek_index()
     return range.detect(oDataStructure)
 
 
