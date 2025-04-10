@@ -154,6 +154,7 @@ class vhdlFile:
 
         try:
             oDataStructure = data_structure.New(self.lAllObjects)
+            oDataStructure.set_filename(self.filename)
             design_file.tokenize(oDataStructure)
         except exceptions.ClassifyError as e:
             if self.commandLineArguments.force_fix and self.commandLineArguments.fix:

@@ -263,3 +263,6 @@ class design_file:
 
     def set_mark_index(self):
         self.iMark = self.iSeek
+
+    def set_filename(self, sString):
+        self.sFilename = sString
