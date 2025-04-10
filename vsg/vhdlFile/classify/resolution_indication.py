@@ -18,7 +18,6 @@ def detect(oDataStructure):
     elif detect_resolution_function_name(oDataStructure):
         classify_resolution_function_name(oDataStructure)
         return True
-    oDataStructure.align_seek_index()
     return False
 
 
