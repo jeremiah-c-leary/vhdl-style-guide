@@ -36,17 +36,19 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
+    oDataStructure.set_mark_index()
+
     classify_formal_part(oDataStructure)
     classify_actual_part(oDataStructure)
 
 
 @decorators.print_classifier_debug_info(__name__)
 def classify_formal_part(oDataStructure):
-    if oDataStructure.does_string_exist_before_seek_index_honoring_parenthesis_hierarchy("=>"):
+    if oDataStructure.does_string_exist_before_mark_index_honoring_parenthesis_hierarchy("=>"):
         formal_part.classify(oDataStructure, token.formal_part)
         oDataStructure.replace_next_token_with(token.assignment)
 
 
 @decorators.print_classifier_debug_info(__name__)
 def classify_actual_part(oDataStructure):
-    oDataStructure.replace_tokens_from_current_to_seek_with(token.actual_part)
+    oDataStructure.replace_tokens_from_current_to_mark_with(token.actual_part)

@@ -100,9 +100,9 @@ class design_file:
                 return True
         return False
 
-    def does_string_exist_before_seek_index_honoring_parenthesis_hierarchy(self, sString):
+    def does_string_exist_before_mark_index_honoring_parenthesis_hierarchy(self, sString):
         iParen = 0
-        for iIndex in range(self.get_current_index(), self.get_seek_index()):
+        for iIndex in range(self.get_current_index(), self.iMark):
             if self.lAllObjects[iIndex].lower_value == "(":
                 iParen += 1
             elif self.lAllObjects[iIndex].lower_value == ")":
@@ -178,7 +178,7 @@ class design_file:
     def replace_current_token_with(self, token):
         self.lAllObjects[self.iCurrent] = token(self.get_current_token_value())
         self.increment_current_index()
-#        self.align_seek_index()
+        self.align_seek_index()
 
     def replace_current_token_with_list_of_tokens(self, lTokens):
         self.lAllObjects.pop(self.get_current_index())
@@ -204,8 +204,8 @@ class design_file:
         if not self.current_token_lower_value_is(sString):
             self.replace_current_token_with(token)
 
-    def replace_tokens_from_current_to_seek_with(self, token):
-        while self.get_current_index() < self.get_seek_index():
+    def replace_tokens_from_current_to_mark_with(self, token):
+        while self.get_current_index() < self.iMark:
             self.replace_next_token_with(token)
             self.advance_to_next_token()
 
@@ -260,3 +260,6 @@ class design_file:
 
     def pop_current_index(self):
         self.iCurrent = self.lCurrent.pop()
+
+    def set_mark_index(self):
+        self.iMark = self.iSeek
