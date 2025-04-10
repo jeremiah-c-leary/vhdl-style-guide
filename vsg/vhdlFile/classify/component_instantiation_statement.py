@@ -20,7 +20,6 @@ def detect(oDataStructure):
                 [ port_map_aspect ] ;
     """
     if oDataStructure.are_next_consecutive_tokens([None, ":"]):
-        oDataStructure.align_seek_index()
         oDataStructure.advance_to_next_seek_token()
         oDataStructure.increment_seek_index()
         oDataStructure.advance_to_next_seek_token()
