@@ -325,8 +325,8 @@ class vhdlFile:
             self.oTokenMap,
         )
 
-    def get_column_of_token_index(self, iToken):
-        return extract.get_column_of_token_index(iToken, self.lAllObjects, self.oTokenMap)
+    def get_column_of_token_index(self, iToken, indent_size):
+        return extract.get_column_of_token_index(iToken, indent_size, self.lAllObjects, self.oTokenMap)
 
     def get_line_above_line_starting_with_token(self, lTokens, bIncludeComments):
         return extract.get_line_above_line_starting_with_token(lTokens, self.lAllObjects, self.oTokenMap, bIncludeComments)

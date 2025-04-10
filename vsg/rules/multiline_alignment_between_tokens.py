@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser, token, violation
+from vsg import parser, token, utils as vsg_utils, violation
 from vsg.rule_group import alignment
 from vsg.rules import alignment_utils, utils as rules_utils
 from vsg.vhdlFile import utils
@@ -50,25 +50,22 @@ class multiline_alignment_between_tokens(alignment.Rule):
             if self.check_for_array and toi_is_an_array(oToi):
                 continue
             iLine, lTokens = utils.get_toi_parameters(oToi)
-            iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
-            iAssignColumn = oFile.get_column_of_token_index(oToi.get_start_index())
-            oToi.set_meta_data("iFirstLine", iFirstLine)
-            oToi.set_meta_data("iFirstLineIndent", iFirstLineIndent)
-            oToi.set_meta_data("iAssignColumn", iAssignColumn)
-            oToi.set_meta_data("bStartsWithParen", alignment_utils.starts_with_paren(lTokens))
+            oToi.set_meta_data("oFirstLineIndentToken", alignment_utils.get_first_line_indent_token(iLine, oFile))
+            oToi.set_meta_data("iAssignColumn", oFile.get_column_of_token_index(oToi.get_start_index(), self.indent_size))
             lReturn.append(oToi)
 
         return lReturn
 
     def _analyze(self, lToi):
         for oToi in lToi:
+            #            print('<-- oToi ' + '-'*80)
             iLine, lTokens = utils.get_toi_parameters(oToi)
 
-            iFirstLine = oToi.get_meta_data("iFirstLine")
-            iFirstLineIndent = oToi.get_meta_data("iFirstLineIndent")
+            iFirstLine = iLine
             iAssignColumn = oToi.get_meta_data("iAssignColumn")
-            bStartsWithParen = oToi.get_meta_data("bStartsWithParen")
-
+            bStartsWithParen = alignment_utils.starts_with_paren(lTokens)
+            oFirstLineIndentToken = oToi.get_meta_data("oFirstLineIndentToken")
+            iFirstLineIndent = len(vsg_utils.convert_tabs_to_spaces(oFirstLineIndentToken.get_value(), self.indent_size))
             iColumn = iAssignColumn
 
             dActualIndent = {}
@@ -123,6 +120,8 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
             iFirstTokenLength = len(lTokens[0].get_value())
 
+            #            print(f'dActualIndent = {dActualIndent}')
+
             if not align_paren(self) and align_left(self):
                 dExpectedIndent = _analyze_align_left_yes_align_paren_no(
                     iFirstLine,
@@ -171,8 +170,12 @@ class multiline_alignment_between_tokens(alignment.Rule):
                     self.bIgnoreStartParen,
                 )
 
+            #            print(f'dExpectedIndent = {dExpectedIndent}')
+
             if self.indent_style == "smart_tabs":
                 alignment_utils.convert_expected_indent_to_smart_tab(dExpectedIndent, self.indent_size, iFirstLineIndent)
+
+            #            print(f'dExpectedIndent = {dExpectedIndent}')
 
             for iLine in range(iFirstLine, iLastLine + 1):
                 if dActualIndent[iLine] is None:
@@ -327,6 +330,7 @@ def _analyze_align_left_no_align_paren_yes(
     bIgnoreStartParen,
     iIndentAfterParen,
 ):
+    #    print('<-- _analyze_align_left_no_align_paren_yes')
     dExpectedIndent = {}
     dExpectedIndent[iFirstLine] = dActualIndent[iFirstLine]
 
@@ -347,7 +351,7 @@ def _analyze_align_left_no_align_paren_yes(
         for dParen in lParens:
             if dParen["line"] == iLine:
                 lTemp.append(dParen)
-
+        #        print(f'lColumn = {lColumn}')
         iTemp = lColumn[-1]
         for dTemp in lTemp:
             if dTemp["type"] == "open":
@@ -355,7 +359,7 @@ def _analyze_align_left_no_align_paren_yes(
                 if iLine == iFirstLine:
                     iColumn = dTemp["column"]
                 else:
-                    iColumn = dTemp["column"] + iTemp - len(dActualIndent[iLine]) + iIndentStep - 1
+                    iColumn = dTemp["column"] + iTemp - len(vsg_utils.convert_tabs_to_spaces(dActualIndent[iLine], iIndentStep)) + iIndentStep - 1
                     if iParens == 1:
                         iColumn -= iIndentAfterParen
                 lColumn.append(iColumn)
@@ -370,6 +374,7 @@ def _analyze_align_left_no_align_paren_yes(
         if len(lTemp) == 0:
             dExpectedIndent[iLine + 1] = lColumn[-1] + iIgnoreStartParenOffset
 
+    #    print(f'dExpectedIndent = {dExpectedIndent}')
     return convert_numbers_to_spaces(dExpectedIndent)
 
 

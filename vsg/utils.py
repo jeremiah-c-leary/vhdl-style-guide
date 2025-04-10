@@ -82,3 +82,7 @@ def extract_keys_from_dict(dFile):
     lReturn = []
     lReturn.extend(list(dFile.keys()))
     return lReturn
+
+
+def convert_tabs_to_spaces(sString, indent_size):
+    return sString.replace("\t", " " * indent_size)

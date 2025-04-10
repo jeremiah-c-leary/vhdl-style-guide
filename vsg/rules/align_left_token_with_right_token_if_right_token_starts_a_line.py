@@ -46,7 +46,7 @@ class align_left_token_with_right_token_if_right_token_starts_a_line(alignment.R
             if not utils.does_token_start_line(len(lTokens) - 1, lTokens):
                 continue
 
-            oToi.set_meta_data("iRightColumn", oFile.get_column_of_token_index(oToi.get_start_index()))
+            oToi.set_meta_data("iRightColumn", oFile.get_column_of_token_index(oToi.get_start_index(), self.indent_size))
             oToi.set_meta_data("indentLevel", oFile.get_indent_of_line_at_index(oToi.get_start_index()))
             lReturn.append(oToi)
 
