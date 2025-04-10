@@ -11,7 +11,7 @@ def detect(oDataStructure):
     resolution_indication ::=
         resolution_function_name | ( element_resolution )
     """
-    oDataStructure.advance_seek_index_to_current_index()
+
     if detect_element_resolution(oDataStructure):
         classify_element_resolution(oDataStructure)
         return True
