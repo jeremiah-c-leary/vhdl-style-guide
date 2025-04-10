@@ -14,7 +14,7 @@ def detect(oDataStructure):
                 sequence_of_statements
             end loop [ loop_label ] ;
     """
-    oDataStructure.align_seek_index()
+
     if oDataStructure.are_next_consecutive_tokens([None, ":"]):
         oDataStructure.increment_seek_index()
         oDataStructure.advance_to_next_seek_token()
