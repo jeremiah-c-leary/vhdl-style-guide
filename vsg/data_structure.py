@@ -130,7 +130,10 @@ class design_file:
         return self.lAllObjects[self.iCurrent]
 
     def get_current_token_lower_value(self):
-        return self.lAllObjects[self.iCurrent].lower_value
+        try:
+            return self.lAllObjects[self.iCurrent].lower_value
+        except IndexError:
+            return ""
 
     def get_current_token_value(self):
         return self.lAllObjects[self.iCurrent].get_value()
@@ -142,7 +145,10 @@ class design_file:
         return self.iSeek
 
     def get_seek_token_lower_value(self):
-        return self.lAllObjects[self.iSeek].lower_value
+        try:
+            return self.lAllObjects[self.iSeek].lower_value
+        except IndexError:
+            return ""
 
     def increment_current_index(self):
         self.iCurrent += 1
