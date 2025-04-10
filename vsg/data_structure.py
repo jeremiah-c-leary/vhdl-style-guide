@@ -11,7 +11,7 @@ class design_file:
     def __init__(self, lAllObjects):
         self.lAllObjects = lAllObjects
         self.iEndIndex = len(lAllObjects) - 1
-        self.sFilename = ""
+        self.sFilename = None
         self.iCurrent = 0
         self.lCurrent = []
         self.iSeek = 0

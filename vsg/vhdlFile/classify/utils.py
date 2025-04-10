@@ -226,7 +226,7 @@ def print_error_message(sToken, token, currentToken, oDataStructure):
     iLine = 0
     iColumn = 0
     iLine = currentToken.iLineNumber
-    #    iColumn = calculate_column(iToken, lObjects)
+    iColumn = calculate_column(oDataStructure)
     sModuleName = extract_module_name(token)
     sFileName = oDataStructure.sFilename
 
@@ -240,6 +240,16 @@ def print_error_message(sToken, token, currentToken, oDataStructure):
 
     raise exceptions.ClassifyError(sErrorMessage)
 
+
+def calculate_column(oDataStructure):
+    iReturn = 0 
+    for iIndex in range(oDataStructure.iCurrent - 1, 0, -1):
+        if isinstance(oDataStructure.lAllObjects[iIndex], parser.carriage_return):
+            break
+        iReturn += len(oDataStructure.lAllObjects[iIndex].get_value())
+    iReturn += 1
+    return iReturn 
+        
 
 def extract_module_name(token):
     return token.__module__.split(".")[-1]
