@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import alias_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import name, signature, subtype_indication
 
 

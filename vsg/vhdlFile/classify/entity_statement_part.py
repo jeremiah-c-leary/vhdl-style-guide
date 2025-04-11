@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import decorators
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_statement
 
 

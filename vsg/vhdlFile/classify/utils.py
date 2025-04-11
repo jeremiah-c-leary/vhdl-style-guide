@@ -8,7 +8,6 @@ from vsg.token import (
     exponent,
     relational_operator,
 )
-from vsg.vhdlFile import utils
 
 
 def classify_selected_name(oDataStructure, token):

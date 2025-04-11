@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import delay_mechanism as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression
 
 

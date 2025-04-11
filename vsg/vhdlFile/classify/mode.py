@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import mode as token
-from vsg.vhdlFile import utils
 
 
 @decorators.print_classifier_debug_info(__name__)

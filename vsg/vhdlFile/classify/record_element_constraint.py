@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import record_element_constraint as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import element_constraint
 
 

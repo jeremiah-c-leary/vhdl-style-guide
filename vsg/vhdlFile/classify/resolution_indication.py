@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from vsg import decorators, parser
+from vsg import decorators
 from vsg.token import resolution_indication as token
-from vsg.vhdlFile.classify import utils
+from vsg.vhdlFile.classify import element_resolution, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
@@ -24,7 +24,10 @@ def detect(oDataStructure):
 @decorators.print_classifier_debug_info(__name__)
 def classify_element_resolution(oDataStructure):
     oDataStructure.replace_next_token_required("(", token.open_parenthesis)
-    utils.assign_tokens_until_matching_closing_paren(parser.todo, oDataStructure)
+
+    element_resolution.classify(oDataStructure)
+#    utils.assign_tokens_until_matching_closing_paren(parser.todo, oDataStructure)
+
     oDataStructure.replace_next_token_required(")", token.close_parenthesis)
 
 

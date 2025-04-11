@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from vsg import decorators, parser
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import range, subtype_indication
 
 
@@ -25,16 +24,6 @@ def detect(oDataStructure):
 
     oDataStructure.pop_seek_index()
     return range.detect(oDataStructure)
-
-
-@decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    """
-    discrete_range ::=
-        *discrete*_subtype_indication | range
-    """
-
-    return utils.assign_token(lObjects, iToken, parser.todo)
 
 
 @decorators.print_classifier_debug_info(__name__)

@@ -2,7 +2,6 @@
 
 from vsg import decorators
 from vsg.token import subprogram_instantiation_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect, signature, subprogram_kind
 
 

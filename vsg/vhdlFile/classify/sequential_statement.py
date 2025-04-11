@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# from vsg.vhdlFile import utils
-
 from vsg import decorators
 from vsg.vhdlFile.classify import (
     assertion_statement,
