@@ -178,13 +178,13 @@ class design_file:
 #        self.iSeek = self.iCurrent
 
     def increment_seek_index(self):
-        # TODO:  find a way to calculate the length of lAllObjects less frequent
-        if self.iSeek < len(self.lAllObjects) - 1:
+        # TODO:  find a way to not do the comparison on every increment
+        if self.iSeek < self.iEndIndex:
             self.iSeek += 1
         else:
             #            raise exceptions.IndexedPassedEndOfFile()
             #            exit()
-            self.iSeek = len(self.lAllObjects) - 1
+            self.iSeek = self.iEndIndex
 
     def is_next_seek_token(self, sString):
         self.advance_to_next_seek_token()
@@ -226,6 +226,7 @@ class design_file:
     def replace_current_token_with_list_of_tokens(self, lTokens):
         self.lAllObjects.pop(self.get_current_index())
         self.lAllObjects[self.get_current_index() : self.get_current_index()] = lTokens
+        self.iEndIndex = len(self.lAllObjects) - 1
 
     def replace_next_token_required(self, sToken, token):
         if self.is_next_token(sToken):
