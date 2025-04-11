@@ -36,28 +36,3 @@ def detect(oDataStructure):
         return interface_unknown_declaration.classify(oDataStructure)
 
     return False
-
-
-#    iReturn = interface_constant_declaration.detect(iCurrent, lObjects)
-#    if iReturn != iCurrent:
-#        return iReturn
-#
-#    iReturn = interface_signal_declaration.detect(iCurrent, lObjects)
-#    if iReturn != iCurrent:
-#        return iReturn
-#
-#    iReturn = interface_variable_declaration.detect(iCurrent, lObjects)
-#    if iReturn != iCurrent:
-#        return iReturn
-#
-#    iReturn = interface_file_declaration.detect(iCurrent, lObjects)
-#    if iReturn != iCurrent:
-#        return iReturn
-#
-#    ### This captures constant, signal and variable declarations without optional keywords
-#    ### This is typically done in port lists
-#    iReturn = interface_unknown_declaration.detect(iCurrent, lObjects)
-#    if iReturn != iCurrent:
-#        return iReturn
-#
-#    return iCurrent

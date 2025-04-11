@@ -10,16 +10,6 @@ from vsg.vhdlFile.classify import (
 
 
 @decorators.print_classifier_debug_info(__name__)
-def classify(iToken, lObjects):
-    """
-    expression ::=
-        condition_operator primary
-      | logical_expression
-    """
-    return utils.assign_token(lObjects, iToken, parser.todo)
-
-
-@decorators.print_classifier_debug_info(__name__)
 def classify_until(lUntils, oDataStructure, oType=parser.todo):
     """
     expression ::=

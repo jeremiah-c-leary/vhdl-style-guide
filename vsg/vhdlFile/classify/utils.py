@@ -84,17 +84,6 @@ def is_use_clause_selected_name(token):
     return False
 
 
-def classify_production(production, iToken, lObjects):
-    iCurrent = iToken
-    iStop = len(lObjects)
-    while iCurrent < iStop:
-        iPrevious = iCurrent
-        iCurrent = production.detect(iCurrent, lObjects)
-        if iPrevious == iCurrent:
-            break
-    return iCurrent
-
-
 def assign_special_tokens(oDataStructure, oType):
     sValue = oDataStructure.get_current_token_lower_value()
     if sValue == ")":
