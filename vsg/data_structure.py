@@ -25,7 +25,7 @@ class design_file:
         for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent : :]):
             if type(oToken) == parser.item:
                 self.iCurrent = self.iCurrent + iIndex
-#                self.align_seek_index()
+#                self.iSeek = self.iCurrent
                 return True
         return False
 
@@ -152,6 +152,7 @@ class design_file:
 
     def increment_current_index(self):
         self.iCurrent += 1
+#        self.iSeek = self.iCurrent
 
     def increment_seek_index(self):
         # TODO:  find a way to calculate the length of lAllObjects less frequent
@@ -266,6 +267,7 @@ class design_file:
 
     def pop_current_index(self):
         self.iCurrent = self.lCurrent.pop()
+        self.iSeek = self.iCurrent
 
     def set_mark_index(self):
         self.iMark = self.iSeek

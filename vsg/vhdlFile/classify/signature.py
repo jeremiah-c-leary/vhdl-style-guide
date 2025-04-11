@@ -30,15 +30,15 @@ def classify(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def detect_return(oDataStructure):
-    if oDataStructure.is_next_token("return"):
+    if oDataStructure.is_next_seek_token("return"):
         oDataStructure.replace_next_token_with(token.return_keyword)
         type_mark.classify(oDataStructure)
 
 
 @decorators.print_classifier_debug_info(__name__)
 def detect_type_mark(oDataStructure):
-    if not oDataStructure.is_next_token("return"):
+    if not oDataStructure.is_next_seek_token("return"):
         type_mark.classify(oDataStructure)
-        while oDataStructure.is_next_token(","):
+        while oDataStructure.is_next_seek_token(","):
             oDataStructure.replace_next_token_required(",", token.comma)
             type_mark.classify(oDataStructure)

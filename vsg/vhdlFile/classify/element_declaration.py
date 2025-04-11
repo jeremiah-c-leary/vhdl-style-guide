@@ -6,12 +6,20 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import element_subtype_definition, identifier_list
 
 
-@decorators.print_classifier_debug_info(__name__)
-def classify(oDataStructure):
+def detect(oDataStructure):
     """
     element_declaration ::=
         identifier_list : element_subtype_definition ;
     """
+
+    if oDataStructure.does_string_exist_before_string(":", ";"):
+        classify(oDataStructure)
+        return True
+    return False
+
+
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
 
     identifier_list.classify_until([":"], oDataStructure)
 

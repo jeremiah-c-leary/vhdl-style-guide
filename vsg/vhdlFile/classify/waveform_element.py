@@ -13,13 +13,13 @@ def classify_until(lUntils, oDataStructure):
       | null [ after *time*_expression ]
     """
 
-    if oDataStructure.is_next_token("null"):
+    if oDataStructure.is_next_seek_token("null"):
         oDataStructure.replace_next_token_with(token.null_keyword)
     else:
         lMyUntils = lUntils
         lMyUntils.append("after")
         expression.classify_until(lMyUntils, oDataStructure)
 
-    if oDataStructure.is_next_token("after"):
+    if oDataStructure.is_next_seek_token("after"):
         oDataStructure.replace_next_token_with(token.after_keyword)
         expression.classify_until(lUntils, oDataStructure)

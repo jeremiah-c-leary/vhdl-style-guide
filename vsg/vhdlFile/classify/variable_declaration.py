@@ -13,7 +13,7 @@ def detect(oDataStructure):
         [ shared ] variable identifier_list : subtype_indication [ := expression ] ;
     """
 
-    if oDataStructure.is_next_token_one_of(["shared", "variable"]):
+    if oDataStructure.is_next_seek_token_one_of(["shared", "variable"]):
         classify(oDataStructure)
         return True
     return False
@@ -30,7 +30,7 @@ def classify(oDataStructure):
 
     subtype_indication.classify(oDataStructure)
 
-    if oDataStructure.is_next_token(":="):
+    if oDataStructure.is_next_seek_token(":="):
         oDataStructure.replace_next_token_with(token.assignment_operator)
         expression.classify_until([";"], oDataStructure)
 

@@ -13,7 +13,7 @@ def classify_until(lUntils, oDataStructure):
       | unaffected
     """
 
-    if oDataStructure.is_next_token("unaffected"):
+    if oDataStructure.is_next_seek_token("unaffected"):
         oDataStructure.replace_next_token_with(token.unaffected_keyword)
     else:
         lMyUntils = lUntils
@@ -21,7 +21,7 @@ def classify_until(lUntils, oDataStructure):
 
         waveform_element.classify_until(lMyUntils, oDataStructure)
 
-        while oDataStructure.is_next_token(","):
+        while oDataStructure.is_next_seek_token(","):
             oDataStructure.replace_next_token_with(token.comma)
             waveform_element.classify_until(lMyUntils, oDataStructure)
 

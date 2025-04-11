@@ -14,7 +14,7 @@ def detect(oDataStructure):
     oDataStructure.push_seek_index()
     if oDataStructure.are_next_consecutive_tokens(["(", None, ")"]):
         return True
-    # TODO:  move mySeek into oDataStructure
+
     oDataStructure.pop_seek_index()
     oDataStructure.push_seek_index()
     if attribute_name.detect(oDataStructure):
