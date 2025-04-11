@@ -17,10 +17,6 @@ class design_file:
         self.iSeek = 0
         self.lSeek = []
 
-    def advance_seek_index_to_current_index(self):
-        if self.iSeek < self.iCurrent:
-            self.iSeek = self.iCurrent
-
     def advance_seek_over_parenthesis(self):
         if not self.seek_token_lower_value_is("("):
             return False
@@ -256,6 +252,7 @@ class design_file:
             self.replace_next_token_with(token)
             self.advance_to_next_token()
 
+    # TODO:  I believe this can eventually be removed when iSeek will always be equal to or larger than iCurrent
     def seek_to_next_token(self):
         # jcl - might need to watch out for going past the end of the lAllObjects list
         if self.iSeek < self.iCurrent:
