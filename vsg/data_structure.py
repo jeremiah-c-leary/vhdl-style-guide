@@ -21,6 +21,21 @@ class design_file:
         if self.iSeek < self.iCurrent:
             self.iSeek = self.iCurrent
 
+    def advance_seek_over_parenthesis(self):
+        if not self.seek_token_lower_value_is("("):
+            return False
+
+        iParen = 0
+        for iToken, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
+            if oToken.lower_value == "(":
+                iParen += 1
+            elif oToken.lower_value == ")":
+                iParen -= 1
+            if iParen == 0:
+                self.iSeek += iToken + 1
+                return True
+        return False
+
     def advance_to_next_token(self):
         for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent : :]):
             if type(oToken) == parser.item:
@@ -62,6 +77,18 @@ class design_file:
     def current_token_lower_value_is(self, sString):
         return self.get_current_token_lower_value() == sString
 
+    def debug_print(self, iNumTokens):
+        sOutput = ""
+        for oToken in self.lAllObjects[self.iCurrent : self.iCurrent + iNumTokens]:
+            sOutput += oToken.get_value()
+        print(f">>Current[{sOutput}]<<")
+
+    def debug_seek_print(self, iNumTokens):
+        sOutput = ""
+        for oToken in self.lAllObjects[self.iSeek : self.iSeek + iNumTokens]:
+            sOutput += oToken.get_value()
+        print(f">>Seek[{sOutput}]<<")
+
     def does_seek_token_match_regex(self, oRegex):
         if oRegex.fullmatch(self.get_seek_token_lower_value()) is not None:
             return True
@@ -73,6 +100,17 @@ class design_file:
                 return False
             if oToken.lower_value == sFirst:
                 return True
+
+    def does_string_exist_before_mark_index_honoring_parenthesis_hierarchy(self, sString):
+        iParen = 0
+        for iIndex in range(self.get_current_index(), self.iMark):
+            if self.lAllObjects[iIndex].lower_value == "(":
+                iParen += 1
+            elif self.lAllObjects[iIndex].lower_value == ")":
+                iParen -= 1
+            if iParen == 0 and self.lAllObjects[iIndex].lower_value == sString:
+                return True
+        return False
 
     def does_string_exist_before_matching_close_parenthesis(self, sString, myParen=0):
         iParen = myParen
@@ -97,17 +135,6 @@ class design_file:
             elif oToken.lower_value == ")":
                 iParen -= 1
             if iParen == 0 and oToken.lower_value == sFirst:
-                return True
-        return False
-
-    def does_string_exist_before_mark_index_honoring_parenthesis_hierarchy(self, sString):
-        iParen = 0
-        for iIndex in range(self.get_current_index(), self.iMark):
-            if self.lAllObjects[iIndex].lower_value == "(":
-                iParen += 1
-            elif self.lAllObjects[iIndex].lower_value == ")":
-                iParen -= 1
-            if iParen == 0 and self.lAllObjects[iIndex].lower_value == sString:
                 return True
         return False
 
@@ -179,6 +206,19 @@ class design_file:
         self.advance_to_next_token()
         return self.get_current_token_lower_value() in lString
 
+    def push_current_index(self):
+        self.lCurrent.append(self.iCurrent)
+
+    def push_seek_index(self):
+        self.lSeek.append(self.iSeek)
+
+    def pop_current_index(self):
+        self.iCurrent = self.lCurrent.pop()
+        self.iSeek = self.iCurrent
+
+    def pop_seek_index(self):
+        self.iSeek = self.lSeek.pop()
+
     def remove_token_at_offset(self, iOffset):
         self.lAllObjects.pop(self.iCurrent + iOffset)
 
@@ -229,48 +269,8 @@ class design_file:
     def seek_token_lower_value_is(self, sString):
         return self.get_seek_token_lower_value() == sString
 
-    def advance_seek_over_parenthesis(self):
-        if not self.seek_token_lower_value_is("("):
-            return False
-
-        iParen = 0
-        for iToken, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
-            if oToken.lower_value == "(":
-                iParen += 1
-            elif oToken.lower_value == ")":
-                iParen -= 1
-            if iParen == 0:
-                self.iSeek += iToken + 1
-                return True
-        return False
-
-    def debug_print(self, iNumTokens):
-        sOutput = ""
-        for oToken in self.lAllObjects[self.iCurrent : self.iCurrent + iNumTokens]:
-            sOutput += oToken.get_value()
-        print(f">>Current[{sOutput}]<<")
-
-    def debug_seek_print(self, iNumTokens):
-        sOutput = ""
-        for oToken in self.lAllObjects[self.iSeek : self.iSeek + iNumTokens]:
-            sOutput += oToken.get_value()
-        print(f">>Seek[{sOutput}]<<")
-
-    def push_seek_index(self):
-        self.lSeek.append(self.iSeek)
-
-    def pop_seek_index(self):
-        self.iSeek = self.lSeek.pop()
-
-    def push_current_index(self):
-        self.lCurrent.append(self.iCurrent)
-
-    def pop_current_index(self):
-        self.iCurrent = self.lCurrent.pop()
-        self.iSeek = self.iCurrent
+    def set_filename(self, sString):
+        self.sFilename = sString
 
     def set_mark_index(self):
         self.iMark = self.iSeek
-
-    def set_filename(self, sString):
-        self.sFilename = sString
