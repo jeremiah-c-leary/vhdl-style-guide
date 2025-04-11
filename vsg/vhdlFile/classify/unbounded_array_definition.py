@@ -13,7 +13,7 @@ def detect(oDataStructure):
             of *element*_subtype_indication
     """
 
-    if oDataStructure.is_next_token("array"):
+    if oDataStructure.is_next_seek_token("array"):
         if oDataStructure.does_string_exist_in_next_n_tokens("<>", 5):
             classify(oDataStructure)
             return True
@@ -26,7 +26,7 @@ def classify(oDataStructure):
     oDataStructure.replace_next_token_required("(", token.open_parenthesis)
     index_subtype_definition.classify(oDataStructure)
 
-    while oDataStructure.is_next_token(","):
+    while oDataStructure.is_next_seek_token(","):
         oDataStructure.replace_next_token_with(token.comma)
         index_subtype_definition.classify(oDataStructure)
 

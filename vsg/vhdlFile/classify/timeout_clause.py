@@ -12,7 +12,7 @@ def detect(oDataStructure):
         for *time*_expression
     """
 
-    if oDataStructure.is_next_token("for"):
+    if oDataStructure.is_next_seek_token("for"):
         return True
     return False
 

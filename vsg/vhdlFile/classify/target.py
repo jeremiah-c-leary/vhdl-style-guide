@@ -11,7 +11,7 @@ def classify(oDataStructure, oTokenClass):
         name
       | aggregate
     """
-    if oDataStructure.is_next_token("("):
+    if oDataStructure.is_next_seek_token("("):
         aggregate.classify(oDataStructure, oTokenClass)
     else:
         utils.assign_tokens_until(":=", oTokenClass.simple_name, oDataStructure)

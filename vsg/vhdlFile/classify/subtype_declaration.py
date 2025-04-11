@@ -12,7 +12,7 @@ def detect(oDataStructure):
         subtype identifier is subtype_indication ;
     """
 
-    if oDataStructure.is_next_token("subtype"):
+    if oDataStructure.is_next_seek_token("subtype"):
         classify(oDataStructure)
         return True
     return False
