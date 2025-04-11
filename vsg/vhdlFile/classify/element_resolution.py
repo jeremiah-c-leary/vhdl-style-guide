@@ -8,8 +8,10 @@ from vsg.vhdlFile.classify import utils
 def classify(oDataStructure):
     """
     element_resolution ::=
-        array_constraint
-      | record_constraint
+        array_element_resolution
+      | record_resolution
+
+    TODO:  Add classifiers for array_elemment_resolution and record_resolution
     """
 
     utils.assign_tokens_until_matching_closing_paren(parser.todo, oDataStructure)
