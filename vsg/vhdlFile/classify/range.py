@@ -23,7 +23,6 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def detect_direction(oDataStructure):
- 
     if oDataStructure.does_string_exist_before_matching_close_parenthesis("downto", 0):
         return True
     if oDataStructure.does_string_exist_before_matching_close_parenthesis("to", 0):

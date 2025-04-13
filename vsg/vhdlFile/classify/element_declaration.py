@@ -19,7 +19,6 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
-
     identifier_list.classify_until([":"], oDataStructure)
 
     oDataStructure.replace_next_token_required(":", token.colon)

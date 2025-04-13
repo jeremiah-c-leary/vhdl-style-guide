@@ -27,7 +27,7 @@ def classify_element_resolution(oDataStructure):
     oDataStructure.replace_next_token_required("(", token.open_parenthesis)
 
     element_resolution.classify(oDataStructure)
-#    utils.assign_tokens_until_matching_closing_paren(parser.todo, oDataStructure)
+    #    utils.assign_tokens_until_matching_closing_paren(parser.todo, oDataStructure)
 
     oDataStructure.replace_next_token_required(")", token.close_parenthesis)
 

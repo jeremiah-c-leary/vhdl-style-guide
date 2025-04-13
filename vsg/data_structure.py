@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import exceptions, parser, decorators
+from vsg import decorators, exceptions, parser
 from vsg.vhdlFile.classify import utils
 
 
@@ -89,12 +89,12 @@ class design_file:
 
     @decorators.push_pop_seek_index
     def does_string_exist_before_string(self, sFirst, sSecond):
-        for oToken in self.lAllObjects[self.iSeek: :]:
+        for oToken in self.lAllObjects[self.iSeek : :]:
             if oToken.lower_value == sSecond:
                 return False
             if oToken.lower_value == sFirst:
                 return True
-        
+
     @decorators.push_pop_seek_index
     def does_string_exist_before_mark_index_honoring_parenthesis_hierarchy(self, sString):
         iParen = 0

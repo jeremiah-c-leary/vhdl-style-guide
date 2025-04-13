@@ -50,7 +50,6 @@ def print_classifier_debug_info(argument):
 def push_pop_seek_index(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-
         args[0].push_seek_index()
 
         results = func(*args, **kwargs)
@@ -65,7 +64,6 @@ def push_pop_seek_index(func):
 def push_pop_current_index(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-
         args[0].push_current_index()
 
         results = func(*args, **kwargs)

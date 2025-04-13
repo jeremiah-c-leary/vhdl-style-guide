@@ -18,6 +18,5 @@ def detect(oDataStructure):
 
 
 def classify(oDataStructure):
-
     oDataStructure.replace_next_token_with_if("in", token.in_keyword)
     oDataStructure.replace_next_token_with_if("out", token.out_keyword)

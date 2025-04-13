@@ -230,14 +230,14 @@ def print_error_message(sToken, token, currentToken, oDataStructure):
 
 
 def calculate_column(oDataStructure):
-    iReturn = 0 
+    iReturn = 0
     for iIndex in range(oDataStructure.iCurrent - 1, 0, -1):
         if isinstance(oDataStructure.lAllObjects[iIndex], parser.carriage_return):
             break
         iReturn += len(oDataStructure.lAllObjects[iIndex].get_value())
     iReturn += 1
-    return iReturn 
-        
+    return iReturn
+
 
 def extract_module_name(token):
     return token.__module__.split(".")[-1]
