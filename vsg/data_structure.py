@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from vsg import exceptions, parser
+
+from vsg import exceptions, parser, decorators
 from vsg.vhdlFile.classify import utils
 
 
@@ -36,7 +37,7 @@ class design_file:
         for iIndex, oToken in enumerate(self.lAllObjects[self.iCurrent : :]):
             if type(oToken) == parser.item:
                 self.iCurrent = self.iCurrent + iIndex
-#                self.iSeek = self.iCurrent
+                self.iSeek = self.iCurrent
                 return True
         return False
 
@@ -50,25 +51,21 @@ class design_file:
     def align_seek_index(self):
         self.iSeek = self.iCurrent
 
-    def are_next_consecutive_tokens(self, lTokens, bAlignSeekIndex=True):
-        # TODO:  Remove bAlignSeekIndex.  This decision should be made at a higher level
-        if bAlignSeekIndex:
-            self.align_seek_index()
-        myIndex = self.iSeek
+    @decorators.push_pop_seek_index
+    def are_next_consecutive_tokens(self, lTokens):
         for sToken in lTokens:
-            self.seek_to_next_token()
+            self.advance_to_next_seek_token()
             if sToken is not None:
                 if not self.seek_token_lower_value_is(sToken):
-                    if bAlignSeekIndex:
-                        self.align_seek_index()
                     return False
             self.increment_seek_index()
-        if bAlignSeekIndex:
-            self.align_seek_index()
         return True
 
     def at_end_of_file(self):
-        return self.iCurrent == self.iEndIndex
+        if self.iCurrent == self.iEndIndex:
+            # TODO:  Raise an exception when this occurs
+            exit()
+        return False
 
     def current_token_lower_value_is(self, sString):
         return self.get_current_token_lower_value() == sString
@@ -90,13 +87,15 @@ class design_file:
             return True
         return False
 
+    @decorators.push_pop_seek_index
     def does_string_exist_before_string(self, sFirst, sSecond):
-        for oToken in self.lAllObjects[self.iCurrent : :]:
+        for oToken in self.lAllObjects[self.iSeek: :]:
             if oToken.lower_value == sSecond:
                 return False
             if oToken.lower_value == sFirst:
                 return True
-
+        
+    @decorators.push_pop_seek_index
     def does_string_exist_before_mark_index_honoring_parenthesis_hierarchy(self, sString):
         iParen = 0
         for iIndex in range(self.get_current_index(), self.iMark):
@@ -135,15 +134,17 @@ class design_file:
         return False
 
     def does_string_exist_in_next_n_tokens(self, sString, iNumTokens):
-        self.iSeek = self.iCurrent
         return self.does_string_exist_in_next_n_tokens_from_seek_index(sString, iNumTokens)
 
     def does_string_exist_in_next_n_tokens_from_seek_index(self, sString, iNumTokens):
+        self.push_seek_index()
         for x in range(0, iNumTokens):
-            self.seek_to_next_token()
+            self.advance_to_next_seek_token()
             if self.seek_token_lower_value_is(sString):
+                self.pop_seek_index()
                 return True
             self.increment_seek_index()
+        self.pop_seek_index()
         return False
 
     def get_current_index(self):
@@ -175,7 +176,7 @@ class design_file:
 
     def increment_current_index(self):
         self.iCurrent += 1
-#        self.iSeek = self.iCurrent
+        self.iSeek = self.iCurrent
 
     def increment_seek_index(self):
         # TODO:  find a way to not do the comparison on every increment
@@ -212,16 +213,19 @@ class design_file:
         self.iCurrent = self.lCurrent.pop()
         self.iSeek = self.iCurrent
 
+    def pop_push_seek_index(self):
+        self.iSeek = self.lSeek[-1]
+
     def pop_seek_index(self):
         self.iSeek = self.lSeek.pop()
 
     def remove_token_at_offset(self, iOffset):
         self.lAllObjects.pop(self.iCurrent + iOffset)
+        self.iEndIndex = len(self.lAllObjects) - 1
 
     def replace_current_token_with(self, token):
         self.lAllObjects[self.iCurrent] = token(self.get_current_token_value())
         self.increment_current_index()
-        self.align_seek_index()
 
     def replace_current_token_with_list_of_tokens(self, lTokens):
         self.lAllObjects.pop(self.get_current_index())
@@ -252,17 +256,6 @@ class design_file:
         while self.get_current_index() < self.iMark:
             self.replace_next_token_with(token)
             self.advance_to_next_token()
-
-    # TODO:  I believe this can eventually be removed when iSeek will always be equal to or larger than iCurrent
-    def seek_to_next_token(self):
-        # jcl - might need to watch out for going past the end of the lAllObjects list
-        if self.iSeek < self.iCurrent:
-            self.iSeek = self.iCurrent
-        for iIndex, oToken in enumerate(self.lAllObjects[self.iSeek : :]):
-            if type(oToken) == parser.item:
-                self.iSeek = self.iSeek + iIndex
-                return True
-        return False
 
     def seek_token_lower_value_is(self, sString):
         return self.get_seek_token_lower_value() == sString

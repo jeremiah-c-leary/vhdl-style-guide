@@ -19,28 +19,19 @@ def detect(oDataStructure):
       | [ label : ] selected_signal_assignment
     """
 
-    oDataStructure.push_seek_index()
     if selected_signal_assignment.detect(oDataStructure):
         utils.tokenize_label(oDataStructure, token.label, token.label_colon)
         selected_signal_assignment.classify(oDataStructure)
-        oDataStructure.pop_seek_index()
         return True
 
-    oDataStructure.pop_seek_index()
-    oDataStructure.push_seek_index()
     if conditional_signal_assignment.detect(oDataStructure):
         utils.tokenize_label(oDataStructure, token.label, token.label_colon)
         conditional_signal_assignment.classify(oDataStructure)
-        oDataStructure.pop_seek_index()
         return True
 
-    oDataStructure.pop_seek_index()
-    oDataStructure.push_seek_index()
     if simple_signal_assignment.detect(oDataStructure):
         utils.tokenize_label(oDataStructure, token.label, token.label_colon)
         simple_signal_assignment.classify(oDataStructure)
-        oDataStructure.pop_seek_index()
         return True
 
-    oDataStructure.pop_seek_index()
     return False

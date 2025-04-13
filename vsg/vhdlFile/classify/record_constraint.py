@@ -6,6 +6,7 @@ from vsg.vhdlFile.classify import record_element_constraint
 
 
 @decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
 def detect(oDataStructure):
     """
     record_constraint ::=

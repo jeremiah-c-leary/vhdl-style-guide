@@ -11,15 +11,13 @@ def detect(oDataStructure):
         *range*_attribute_name
       | simple_expression direction simple_expression
     """
-    oDataStructure.push_seek_index()
-    if oDataStructure.are_next_consecutive_tokens(["(", None, ")"]):
+
+    if oDataStructure.are_next_consecutive_tokens([None, ")"]):
         return True
 
-    oDataStructure.pop_seek_index()
-    oDataStructure.push_seek_index()
     if attribute_name.detect(oDataStructure):
         return True
-    oDataStructure.pop_seek_index()
+
     return detect_direction(oDataStructure)
 
 

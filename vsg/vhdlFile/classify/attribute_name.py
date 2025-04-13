@@ -6,6 +6,7 @@ from vsg.vhdlFile.classify import expression, prefix, signature
 
 
 @decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
 def detect(oDataStructure):
     """
     attribute_name ::=

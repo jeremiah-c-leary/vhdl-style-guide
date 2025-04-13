@@ -11,6 +11,7 @@ def detect(oDataStructure):
     record_element_constraint ::=
         record_element_simple_name element_constraint
     """
+
     if not oDataStructure.is_next_seek_token("("):
         oDataStructure.increment_seek_index()
         if oDataStructure.is_next_seek_token("("):

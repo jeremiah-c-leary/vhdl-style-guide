@@ -8,6 +8,7 @@ lExceptions = ["end", "map", "component", "entity", "configuration", "if"]
 
 
 @decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
 def detect(oDataStructure):
     """
     Calling functions:
@@ -26,11 +27,9 @@ def detect(oDataStructure):
     Differentiating a procedure call from anything else is essentially the absence of keywords.
     """
 
-    oDataStructure.push_seek_index()
     if oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";"):
         return False
 
-    oDataStructure.pop_seek_index()
     while not oDataStructure.seek_token_lower_value_is(";"):
         if oDataStructure.get_seek_token_lower_value() in lExceptions:
             return False

@@ -13,20 +13,17 @@ def detect(oDataStructure):
       | ( open ) [ array_element_constraint ]
 
     """
-    oDataStructure.push_seek_index()
+
     if open_detected(oDataStructure):
         classify_open(oDataStructure)
         array_element_constraint.detect(oDataStructure)
-        oDataStructure.pop_seek_index()
         return True
-    oDataStructure.pop_seek_index()
-    oDataStructure.push_seek_index()
+
     if index_constraint.detect(oDataStructure):
         index_constraint.classify(oDataStructure)
         array_element_constraint.detect(oDataStructure)
-        oDataStructure.pop_seek_index()
         return True
-    oDataStructure.pop_seek_index()
+
     return False
 
 
@@ -43,6 +40,7 @@ def open_detected(oDataStructure):
     return oDataStructure.are_next_consecutive_tokens(["(", "open"])
 
 
+@decorators.print_classifier_debug_info(__name__)
 def classify_open(oDataStructure):
     oDataStructure.replace_next_token_with(token.open_parenthesis)
     oDataStructure.replace_next_token_with(token.open_keyword)

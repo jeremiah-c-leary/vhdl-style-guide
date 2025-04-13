@@ -45,3 +45,33 @@ def print_classifier_debug_info(argument):
         return wrapper
 
     return decorator
+
+
+def push_pop_seek_index(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+
+        args[0].push_seek_index()
+
+        results = func(*args, **kwargs)
+
+        args[0].pop_seek_index()
+
+        return results
+
+    return wrapper
+
+
+def push_pop_current_index(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+
+        args[0].push_current_index()
+
+        results = func(*args, **kwargs)
+
+        args[0].pop_current_index()
+
+        return results
+
+    return wrapper

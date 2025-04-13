@@ -6,6 +6,7 @@ from vsg.vhdlFile.classify import element_resolution, utils
 
 
 @decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
 def detect(oDataStructure):
     """
     resolution_indication ::=

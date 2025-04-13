@@ -6,11 +6,13 @@ from vsg.vhdlFile.classify import utils
 
 
 @decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
 def detect(oDataStructure):
     """
     range_constraint ::=
         **range** range
     """
+
     if oDataStructure.is_next_token("range"):
         classify(oDataStructure)
         return True

@@ -6,12 +6,14 @@ from vsg.vhdlFile.classify import discrete_range
 
 
 @decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
+@decorators.push_pop_current_index
 def detect(oDataStructure):
     """
     index_constraint ::=
         ( discrete_range { , discrete_range } )
     """
- 
+
     if oDataStructure.is_next_seek_token("("):
         oDataStructure.increment_seek_index()
         if discrete_range.detect(oDataStructure):
@@ -21,7 +23,7 @@ def detect(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
-    oDataStructure.replace_next_token_with(token.open_parenthesis)
+    oDataStructure.replace_next_token_required("(", token.open_parenthesis)
 
     while not oDataStructure.is_next_token(")"):
         discrete_range.classify_until([","], oDataStructure)
