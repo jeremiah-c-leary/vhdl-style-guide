@@ -39,8 +39,7 @@ def classify_resolution_function_name(oDataStructure):
 
 @decorators.print_classifier_debug_info(__name__)
 def detect_element_resolution(oDataStructure):
-    # TODO:  Can this be is_next_token instead of is_next_seek_token?
-    if oDataStructure.is_next_seek_token("("):
+    if oDataStructure.is_next_token("("):
         return True
     return False
 

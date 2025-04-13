@@ -179,13 +179,7 @@ class design_file:
         self.iSeek = self.iCurrent
 
     def increment_seek_index(self):
-        # TODO:  find a way to not do the comparison on every increment
-        if self.iSeek < self.iEndIndex:
-            self.iSeek += 1
-        else:
-            #            raise exceptions.IndexedPassedEndOfFile()
-            #            exit()
-            self.iSeek = self.iEndIndex
+        self.iSeek += 1
 
     def is_next_seek_token(self, sString):
         self.advance_to_next_seek_token()
