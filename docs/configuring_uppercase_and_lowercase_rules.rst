@@ -416,6 +416,9 @@ Rules Enforcing Case
 * `instantiation_031 <instantiation_rules.html#instantiation-031>`_
 * `instantiation_500 <instantiation_rules.html#instantiation-500>`_
 
+* `interface_incomplete_type_declaration_500 <../interface_incomplete_type_declaration_rules.html#interface-incomplete-type-declaration-500>`_
+* `interface_incomplete_type_declaration_501 <../interface_incomplete_type_declaration_rules.html#interface-incomplete-type-declaration-501>`_
+
 * `iteration_scheme_500 <iteration_scheme_rules.html#iteration-scheme-500>`_
 * `iteration_scheme_501 <iteration_scheme_rules.html#iteration-scheme-501>`_
 

@@ -892,12 +892,12 @@
 --------------------------------------------------------------------------------
 104 |     type typ1;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 105 |     type typ1;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 106 |
@@ -972,7 +972,7 @@
 --------------------------------------------------------------------------------
 114 |       type typ1) is proc_name;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_procedure_specification.close_parenthesis'>
 <class 'vsg.token.interface_subprogram_declaration.is_keyword'>
 <class 'vsg.token.interface_subprogram_default.subprogram_name'>
@@ -1047,7 +1047,7 @@
 --------------------------------------------------------------------------------
 122 |       type typ1) is <>;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_procedure_specification.close_parenthesis'>
 <class 'vsg.token.interface_subprogram_declaration.is_keyword'>
 <class 'vsg.token.interface_subprogram_default.undefined_range'>
@@ -1121,7 +1121,7 @@
 --------------------------------------------------------------------------------
 130 |       type typ1) is proc_name;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_procedure_specification.close_parenthesis'>
 <class 'vsg.token.interface_subprogram_declaration.is_keyword'>
 <class 'vsg.token.interface_subprogram_default.subprogram_name'>
@@ -1195,7 +1195,7 @@
 --------------------------------------------------------------------------------
 138 |       type typ1) is <>;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_procedure_specification.close_parenthesis'>
 <class 'vsg.token.interface_subprogram_declaration.is_keyword'>
 <class 'vsg.token.interface_subprogram_default.undefined_range'>
@@ -1302,7 +1302,7 @@
 --------------------------------------------------------------------------------
 153 |       type typ1) return boolean is <>;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_function_specification.close_parenthesis'>
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -1380,7 +1380,7 @@
 --------------------------------------------------------------------------------
 161 |       type typ1) return boolean is func1;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_function_specification.close_parenthesis'>
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -1458,7 +1458,7 @@
 --------------------------------------------------------------------------------
 169 |       type typ1) return boolean is <>;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_function_specification.close_parenthesis'>
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -1536,7 +1536,7 @@
 --------------------------------------------------------------------------------
 177 |       type typ1) return boolean is func1;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_function_specification.close_parenthesis'>
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -1616,7 +1616,7 @@
 --------------------------------------------------------------------------------
 186 |       type typ1) return boolean is <>;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_function_specification.close_parenthesis'>
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -1693,7 +1693,7 @@
 --------------------------------------------------------------------------------
 194 |       type typ1) return boolean is func1;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_function_specification.close_parenthesis'>
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -1770,7 +1770,7 @@
 --------------------------------------------------------------------------------
 202 |       type typ1) return boolean is <>;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_function_specification.close_parenthesis'>
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>
@@ -1847,7 +1847,7 @@
 --------------------------------------------------------------------------------
 210 |       type typ1) return boolean is func1;
 <class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
-<class 'vsg.token.identifier.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
 <class 'vsg.token.interface_function_specification.close_parenthesis'>
 <class 'vsg.token.interface_function_specification.return_keyword'>
 <class 'vsg.token.type_mark.name'>

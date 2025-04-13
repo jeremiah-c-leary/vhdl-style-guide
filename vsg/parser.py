@@ -452,6 +452,24 @@ class close_parenthesis(item):
         super().__init__(sString)
 
 
+class open_curly(item):
+    """
+    unique_id = parser : open_curly
+    """
+
+    def __init__(self):
+        super().__init__("{")
+
+
+class close_curly(item):
+    """
+    unique_id = parser : close_curly
+    """
+
+    def __init__(self):
+        super().__init__("}")
+
+
 class equal_sign(item):
     """
     unique_id = parser : equal_sign

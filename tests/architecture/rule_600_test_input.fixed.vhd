@@ -118,3 +118,10 @@ begin
     );
 
 end architecture;
+
+-- Testing case where entity name is not detected
+architecture beh of test3 is
+
+begin
+
+end architecture beh;

@@ -10,6 +10,8 @@ from vsg.vhdlFile.classify import (
     file_declaration,
     package_declaration,
     package_instantiation_declaration,
+    psl_property_declaration,
+    psl_sequence_declaration,
     signal_declaration,
     subprogram_declaration,
     subprogram_instantiation_declaration,
@@ -88,4 +90,10 @@ def detect(oDataStructure):
     if attribute_specification.detect(oDataStructure):
         return True
 
-    return use_clause.detect(oDataStructure)
+    if use_clause.detect(oDataStructure):
+        return True
+
+    if psl_property_declaration.detect(oDataStructure):
+        return True
+
+    return psl_sequence_declaration.detect(oDataStructure)

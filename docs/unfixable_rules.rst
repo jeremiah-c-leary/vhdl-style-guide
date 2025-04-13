@@ -103,6 +103,10 @@ With multiple options available, the user is required to make the decision.
 * `generic_map_601 <generic_map_rules.html#generic-map-601>`_
 * `instantiation_600 <instantiation_rules.html#instantiation-600>`_
 * `instantiation_601 <instantiation_rules.html#instantiation-601>`_
+
+* `interface_incomplete_type_declaration_600 <../interface_incomplete_type_declaration_rules.html#interface-incomplete-type-declaration-600>`_
+* `interface_incomplete_type_declaration_601 <../interface_incomplete_type_declaration_rules.html#interface-incomplete-type-declaration-601>`_
+
 * `loop_statement_600 <loop_statement_rules.html#loop-statement-600>`_
 * `loop_statement_601 <loop_statement_rules.html#loop-statement-601>`_
 * `loop_statement_602 <loop_statement_rules.html#loop-statement-602>`_

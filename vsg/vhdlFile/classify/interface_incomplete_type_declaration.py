@@ -17,4 +17,4 @@ def detect(oDataStructure):
 @decorators.print_classifier_debug_info(__name__)
 def classify(oDataStructure):
     oDataStructure.replace_next_token_with_if("type", token.type_keyword)
-    identifier.classify(oDataStructure)
+    identifier.classify(oDataStructure, token.identifier)

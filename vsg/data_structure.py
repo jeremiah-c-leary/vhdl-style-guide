@@ -247,8 +247,9 @@ class design_file:
             self.replace_current_token_with(token)
 
     def replace_tokens_from_current_to_mark_with(self, token):
+        self.advance_to_next_token()
         while self.get_current_index() < self.iMark:
-            self.replace_next_token_with(token)
+            utils.assign_special_tokens(self, token)
             self.advance_to_next_token()
 
     def seek_token_lower_value_is(self, sString):

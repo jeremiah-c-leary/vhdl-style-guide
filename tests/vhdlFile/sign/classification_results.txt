@@ -293,7 +293,50 @@
 52 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-53 | end architecture RTL;
+53 |   -- Check exponents
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+54 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+55 |   a <= 1e-6;
+<class 'vsg.token.concurrent_simple_signal_assignment.target'>
+<class 'vsg.token.concurrent_simple_signal_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.exponent.e_keyword'>
+<class 'vsg.token.exponent.minus_sign'>
+<class 'vsg.token.exponent.integer'>
+<class 'vsg.token.concurrent_simple_signal_assignment.semicolon'>
+--------------------------------------------------------------------------------
+56 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+57 |   u_inst : inst
+<class 'vsg.token.component_instantiation_statement.instantiation_label'>
+<class 'vsg.token.component_instantiation_statement.label_colon'>
+<class 'vsg.token.instantiated_unit.component_name'>
+--------------------------------------------------------------------------------
+58 |     generic map (
+<class 'vsg.token.generic_map_aspect.generic_keyword'>
+<class 'vsg.token.generic_map_aspect.map_keyword'>
+<class 'vsg.token.generic_map_aspect.open_parenthesis'>
+--------------------------------------------------------------------------------
+59 |       real_generic => 1.23e-2
+<class 'vsg.token.association_element.formal_part'>
+<class 'vsg.token.association_element.assignment'>
+<class 'vsg.token.association_element.actual_part'>
+<class 'vsg.token.exponent.e_keyword'>
+<class 'vsg.token.exponent.minus_sign'>
+<class 'vsg.token.exponent.integer'>
+--------------------------------------------------------------------------------
+60 |     );
+<class 'vsg.token.generic_map_aspect.close_parenthesis'>
+<class 'vsg.token.component_instantiation_statement.semicolon'>
+--------------------------------------------------------------------------------
+61 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+62 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>

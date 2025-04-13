@@ -6,6 +6,7 @@ from vsg.token import (
     aggregate,
     attribute_name,
     choices,
+    delimited_comment,
     direction,
     exponent,
     logical_operator,
@@ -529,6 +530,9 @@ def post_token_assignments(lTokens):
     lParenId = []
     for iToken, oToken in enumerate(lTokens):
         sValue = oToken.get_value()
+        if isinstance(oToken, delimited_comment.text):
+            continue
+
         if isinstance(oToken, (resolution_indication.resolution_function_name, type_mark.name, attribute_name.name, todo.name)):
             sLowerValue = oToken.get_lower_value()
 

@@ -55,6 +55,7 @@ The rules are divided into categories depending on the part of the VHDL code bei
    if_generate_statement_rules.rst
    index_subtype_definition_rules.rst
    instantiation_rules.rst
+   interface_incomplete_type_declaration_rules.rst
    iteration_scheme_rules.rst
    length_rules.rst
    library_rules.rst

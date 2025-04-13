@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 | /**
+<class 'vsg.token.delimited_comment.beginning'>
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+2 |
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+3 | This should pass
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+4 |
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+5 | */
+<class 'vsg.token.delimited_comment.ending'>
+--------------------------------------------------------------------------------
+6 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+7 | /**
+<class 'vsg.token.delimited_comment.beginning'>
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+8 |
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+9 | This should also pass
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+10 |
+<class 'vsg.token.delimited_comment.text'>
+--------------------------------------------------------------------------------
+11 | **/
+<class 'vsg.token.delimited_comment.text'>
+<class 'vsg.token.delimited_comment.ending'>

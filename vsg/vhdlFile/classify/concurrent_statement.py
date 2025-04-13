@@ -9,6 +9,7 @@ from vsg.vhdlFile.classify import (
     concurrent_signal_assignment_statement,
     generate_statement,
     process_statement,
+    psl_psl_directive,
 )
 
 
@@ -33,6 +34,9 @@ def detect(oDataStructure):
         return True
 
     if generate_statement.detect(oDataStructure):
+        return True
+
+    if psl_psl_directive.detect(oDataStructure):
         return True
 
     if concurrent_assertion_statement.detect(oDataStructure):

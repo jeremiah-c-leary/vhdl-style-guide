@@ -154,6 +154,7 @@ from vsg.rules import if_statement
 from vsg.rules import if_generate_statement
 from vsg.rules import index_subtype_definition
 from vsg.rules import instantiation
+from vsg.rules import interface_incomplete_type_declaration
 from vsg.rules import iteration_scheme
 from vsg.rules import length
 from vsg.rules import library

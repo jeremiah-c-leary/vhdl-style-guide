@@ -5,6 +5,7 @@ from vsg.vhdlFile.classify import (
     concurrent_assertion_statement,
     concurrent_procedure_call_statement,
     process_statement,
+    psl_psl_directive,
 )
 
 
@@ -17,6 +18,12 @@ def detect(oDataStructure):
       | *passive*_process_statement
       | *PSL*_PSL_Directive
     """
+
+    if process_statement.detect(oDataStructure):
+        return True
+
+    if psl_psl_directive.detect(oDataStructure):
+        return True
 
     if process_statement.detect(oDataStructure):
         return True
