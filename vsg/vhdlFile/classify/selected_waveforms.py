@@ -1,29 +1,31 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
+from vsg import decorators, parser
 from vsg.token import selected_waveforms as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import choices, waveform
 
 
-def classify_until(lUntils, iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
     """
     selected_waveforms ::=
         { waveform when choices , }
         waveform when choices
     """
-    iCurrent = iToken
     lMyUntils = lUntils
     lMyUntils.append(",")
 
-    iCurrent = waveform.classify_until(["when"], iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("when", token.when_keyword, iCurrent, lObjects)
-    iCurrent = choices.classify_until(lMyUntils, iCurrent, lObjects)
+    waveform.classify_until(["when"], oDataStructure)
 
-    while utils.is_next_token(",", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(",", token.comma, iCurrent, lObjects)
-        iCurrent = waveform.classify_until(["when"], iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required("when", token.when_keyword, iCurrent, lObjects)
-        iCurrent = choices.classify_until(lMyUntils, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("when", token.when_keyword)
 
-    return iCurrent
+    choices.classify_until(lMyUntils, oDataStructure)
+
+    while oDataStructure.is_next_token(","):
+        oDataStructure.replace_next_token_with(token.comma)
+
+        waveform.classify_until(["when"], oDataStructure)
+
+        oDataStructure.replace_next_token_required("when", token.when_keyword)
+
+        choices.classify_until(lMyUntils, oDataStructure)

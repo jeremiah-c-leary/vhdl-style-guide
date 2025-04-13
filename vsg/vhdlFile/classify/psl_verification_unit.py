@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token.psl import verification_unit as token
-from vsg.vhdlFile import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     psl_verification_unit ::=
         Vunit_Type PSL_Identifier [ ( Context_Spec ) ] **{**
@@ -17,25 +18,25 @@ def detect(iToken, lObjects):
         vunit | vpkg | vprop | vmode
     """
 
-    if utils.is_next_token_one_of(["vunit", "vpkg", "vprop", "vmode"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token_one_of(["vunit", "vpkg", "vprop", "vmode"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_if("vunit", token.vunit_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("vpkg", token.vpkg_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("vprop", token.vprop_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("vmode", token.vmode_keyword, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with_if("vunit", token.vunit_keyword)
+    oDataStructure.replace_next_token_with_if("vpkg", token.vpkg_keyword)
+    oDataStructure.replace_next_token_with_if("vprop", token.vprop_keyword)
+    oDataStructure.replace_next_token_with_if("vmode", token.vmode_keyword)
 
-    while not utils.is_next_token("{", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token(token.todo, iCurrent, lObjects)
+    while not oDataStructure.is_next_token("{"):
+        oDataStructure.replace_next_token_with(token.todo)
 
-    iCurrent = utils.assign_next_token_required("{", token.open_curly, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("{", token.open_curly)
 
-    while not utils.is_next_token("}", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token(token.todo, iCurrent, lObjects)
+    while not oDataStructure.is_next_token("}"):
+        oDataStructure.replace_next_token_with(token.todo)
 
-    iCurrent = utils.assign_next_token_required("}", token.close_curly, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("}", token.close_curly)

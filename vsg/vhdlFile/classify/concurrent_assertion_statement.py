@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import concurrent_assertion_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import assertion
+from vsg.vhdlFile.classify import assertion, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     concurrent_assertion_statement ::=
         [ label : ] [ postponed ] assertion ;
@@ -17,18 +18,23 @@ def detect(iToken, lObjects):
 
     """
 
-    if utils.find_in_next_n_tokens("assert", 4, iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if (
+        oDataStructure.are_next_consecutive_tokens([None, ":", "postponed", "assert"])
+        or oDataStructure.are_next_consecutive_tokens([None, ":", "assert"])
+        or oDataStructure.are_next_consecutive_tokens(["postponed", "assert"])
+        or oDataStructure.is_next_token("assert")
+    ):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.label_name, token.label_colon)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
 
-    iCurrent = utils.assign_next_token_if("postponed", token.postponed_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("postponed", token.postponed_keyword)
 
-    iCurrent = assertion.classify(iCurrent, lObjects)
+    assertion.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

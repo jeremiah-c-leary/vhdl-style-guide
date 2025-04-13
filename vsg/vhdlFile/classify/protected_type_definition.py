@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import protected_type_body, protected_type_declaration
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     protected_type_definition ::=
         protected_type_declaration
       | protected_type_body
     """
 
-    iReturn = protected_type_declaration.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if protected_type_declaration.detect(oDataStructure):
+        return True
 
-    iReturn = protected_type_body.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if protected_type_body.detect(oDataStructure):
+        return True
 
-    return iToken
+    return False

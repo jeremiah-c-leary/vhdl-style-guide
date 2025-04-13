@@ -17,7 +17,7 @@ class label_colon(parser.label_colon):
     unique_id = if_generate_statement : label_colon
     """
 
-    def __init__(self):
+    def __init__(self, sString=None):
         super().__init__()
 
 
@@ -44,7 +44,7 @@ class alternative_label_colon(parser.label_colon):
     unique_id = if_generate_statement : alternative_label_colon
     """
 
-    def __init__(self):
+    def __init__(self, sString=None):
         super().__init__()
 
 

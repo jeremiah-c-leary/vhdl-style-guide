@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import range_constraint
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     integer_type_definition ::=
         range_constraint
     """
 
-    return range_constraint.detect(iToken, lObjects)
+    range_constraint.detect(oDataStructure)

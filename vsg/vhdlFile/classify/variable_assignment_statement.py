@@ -1,32 +1,36 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import variable_assignment_statement as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     conditional_variable_assignment,
     selected_variable_assignment,
     simple_variable_assignment,
+    utils,
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     variable_assignment_statement ::=
         [ label : ] simple_variable_assignment
       | [ label : ] conditional_variable_assignment
       | [ label : ] selected_variable_assignment
     """
-    iCurrent = iToken
-    if selected_variable_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
-        iCurrent = selected_variable_assignment.classify(iCurrent, lObjects)
+    if selected_variable_assignment.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+        selected_variable_assignment.classify(oDataStructure)
+        return True
 
-    elif conditional_variable_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
-        iCurrent = conditional_variable_assignment.classify(iCurrent, lObjects)
+    if conditional_variable_assignment.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+        conditional_variable_assignment.classify(oDataStructure)
+        return True
 
-    elif simple_variable_assignment.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label, token.label_colon)
-        iCurrent = simple_variable_assignment.classify(iCurrent, lObjects)
+    if simple_variable_assignment.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+        simple_variable_assignment.classify(oDataStructure)
+        return True
 
-    return iCurrent
+    return False

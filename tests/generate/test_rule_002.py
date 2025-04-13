@@ -20,7 +20,7 @@ lExpected_w_0_spaces.append("")
 utils.read_file(os.path.join(sTestDir, "rule_002_test_input.fixed_w_0_spaces.vhd"), lExpected_w_0_spaces)
 
 
-class test_generate_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

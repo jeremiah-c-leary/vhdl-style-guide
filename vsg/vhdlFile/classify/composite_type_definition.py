@@ -1,22 +1,18 @@
 # -*- coding: utf-8 -*-
 
-
+from vsg import decorators
 from vsg.vhdlFile.classify import array_type_definition, record_type_definition
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     composite_type_definition ::=
         array_type_definition
       | record_type_definition
     """
 
-    iCurrent = array_type_definition.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if array_type_definition.detect(oDataStructure):
+        return True
 
-    iCurrent = record_type_definition.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    return iToken
+    return record_type_definition.detect(oDataStructure)

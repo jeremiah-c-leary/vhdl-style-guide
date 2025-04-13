@@ -1,30 +1,32 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
+from vsg import decorators, parser
 from vsg.token import range_constraint as token
-from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
+def detect(oDataStructure):
     """
     range_constraint ::=
         **range** range
     """
-    if utils.is_next_token("range", iToken, lObjects):
-        return classify(iToken, lObjects)
 
-    return iToken
+    if oDataStructure.is_next_token("range"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("range", token.range_keyword, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.range_keyword)
 
+    # TODO:  Refactor the following into the data structure
     iParenCnt = 0
-    while not utils.is_next_token_one_of([";", "units", ":="], iCurrent, lObjects):
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        iParenCnt = utils.update_paren_counter(iCurrent, lObjects, iParenCnt)
+    while not oDataStructure.is_next_token_one_of([";", "units", ":="]):
+        iParenCnt = utils.update_paren_counter(iParenCnt, oDataStructure)
         if iParenCnt == -1:
             break
-        iCurrent = utils.assign_next_token(parser.todo, iCurrent, lObjects)
-
-    return iCurrent
+        oDataStructure.replace_current_token_with(parser.todo)

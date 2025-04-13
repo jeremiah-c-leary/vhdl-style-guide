@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import subprogram_body as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     subprogram_declarative_part,
     subprogram_kind,
@@ -9,7 +9,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     subprogram_body ::=
         subprogram_specification is
@@ -19,26 +20,26 @@ def detect(iToken, lObjects):
         end [ subprogram_kind ] [ designator ] ;
     """
 
-    if utils.is_next_token("is", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("is"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.is_keyword)
 
-    iCurrent = subprogram_declarative_part.detect(iCurrent, lObjects)
+    subprogram_declarative_part.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("begin", token.begin_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("begin", token.begin_keyword)
 
-    iCurrent = subprogram_statement_part.detect(iCurrent, lObjects)
+    subprogram_statement_part.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
 
-    if subprogram_kind.detect(iCurrent, lObjects):
-        iCurrent = subprogram_kind.classify(iCurrent, lObjects)
+    if subprogram_kind.detect(oDataStructure):
+        subprogram_kind.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_if_not(";", token.designator, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_with_if_not(";", token.designator)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

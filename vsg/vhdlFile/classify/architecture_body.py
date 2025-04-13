@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import architecture_body as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     architecture_declarative_part,
     architecture_statement_part,
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     architecture identifier of *entity*_name is
         architecture_declarative_part
@@ -17,39 +18,27 @@ def detect(iToken, lObjects):
     end [ architecture ] [ *architecture*_simple_name ] ;
     """
 
-    if utils.is_next_token("architecture", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("architecture"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = classify_opening_declaration(iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.architecture_keyword)
+    oDataStructure.replace_next_token_with(token.identifier)
+    oDataStructure.replace_next_token_required("of", token.of_keyword)
+    oDataStructure.replace_next_token_with(token.entity_name)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = architecture_declarative_part.detect(iCurrent, lObjects)
+    architecture_declarative_part.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("begin", token.begin_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("begin", token.begin_keyword)
 
-    iCurrent = architecture_statement_part.classify_until(["end"], iCurrent, lObjects)
+    architecture_statement_part.detect(oDataStructure)
 
-    iCurrent = classify_closing_declaration(iToken, lObjects)
-
-    return iCurrent
-
-
-def classify_opening_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("architecture", token.architecture_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("of", token.of_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.entity_name, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
-
-    return iCurrent
-
-
-def classify_closing_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("architecture", token.end_architecture_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.architecture_simple_name, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_with_if("architecture", token.end_architecture_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.architecture_simple_name)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

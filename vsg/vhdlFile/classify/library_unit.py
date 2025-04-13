@@ -1,21 +1,18 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import primary_unit, secondary_unit
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     library_unit ::=
         primary_unit
       | secondary_unit
     """
 
-    iCurrent = primary_unit.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if primary_unit.detect(oDataStructure):
+        return True
 
-    iCurrent = secondary_unit.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    return iToken
+    return secondary_unit.detect(oDataStructure)

@@ -1,29 +1,30 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import return_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression
+from vsg.vhdlFile.classify import expression, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     return_statement ::=
         [ label : ] return [ expression ] ;
     """
 
-    if utils.find_in_next_n_tokens(":", 2, iToken, lObjects):
-        if utils.find_in_next_n_tokens("return", 3, iToken, lObjects):
-            return classify(iToken, lObjects)
-    if utils.is_next_token("return", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("return", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("return", token.return_keyword, iCurrent, lObjects)
-    if not utils.is_next_token(";", iCurrent, lObjects):
-        iCurrent = expression.classify_until([";"], iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.label, token.label_colon)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required("return", token.return_keyword)
+
+    if not oDataStructure.is_next_token(";"):
+        expression.classify_until([";"], oDataStructure)
+
+    oDataStructure.replace_next_token_required(";", token.semicolon)

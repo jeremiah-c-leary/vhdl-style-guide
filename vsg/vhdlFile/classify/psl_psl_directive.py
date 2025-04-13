@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token.psl import psl_directive as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     psl_assert_directive,
     psl_assume_directive,
@@ -9,10 +9,12 @@ from vsg.vhdlFile.classify import (
     psl_fairness_statement,
     psl_restrict_directive,
     psl_restrict_n_directive,
+    utils,
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     PSL_Directive ::=
         [ label : ] Verification_Directive
@@ -26,29 +28,34 @@ def detect(iToken, lObjects):
       | Fairness_Statement
     """
 
-    iCurrent = iToken
-    if psl_assert_directive.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = psl_assert_directive.classify(iCurrent, lObjects)
+    if psl_assert_directive.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        psl_assert_directive.classify(oDataStructure)
+        return True
 
-    elif psl_assume_directive.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = psl_assume_directive.classify(iCurrent, lObjects)
+    if psl_assume_directive.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        psl_assume_directive.classify(oDataStructure)
+        return True
 
-    elif psl_restrict_directive.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = psl_restrict_directive.classify(iCurrent, lObjects)
+    if psl_restrict_directive.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        psl_restrict_directive.classify(oDataStructure)
+        return True
 
-    elif psl_restrict_n_directive.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = psl_restrict_n_directive.classify(iCurrent, lObjects)
+    if psl_restrict_n_directive.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        psl_restrict_n_directive.classify(oDataStructure)
+        return True
 
-    elif psl_cover_directive.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = psl_cover_directive.classify(iCurrent, lObjects)
+    if psl_cover_directive.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        psl_cover_directive.classify(oDataStructure)
+        return True
 
-    elif psl_fairness_statement.detect(iToken, lObjects):
-        iCurrent = utils.tokenize_label(iCurrent, lObjects, token.label_name, token.label_colon)
-        iCurrent = psl_fairness_statement.classify(iCurrent, lObjects)
+    if psl_fairness_statement.detect(oDataStructure):
+        utils.tokenize_label(oDataStructure, token.label_name, token.label_colon)
+        psl_fairness_statement.classify(oDataStructure)
+        return True
 
-    return iCurrent
+    return False

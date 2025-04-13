@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     interface_constant_declaration,
     interface_file_declaration,
@@ -9,7 +10,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iCurrent, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     interface_object_declaration ::=
         interface_constant_declaration
@@ -18,26 +20,19 @@ def detect(iCurrent, lObjects):
       | interface_file_declaration
     """
 
-    iReturn = interface_constant_declaration.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    if interface_constant_declaration.detect(oDataStructure):
+        return interface_constant_declaration.classify(oDataStructure)
 
-    iReturn = interface_signal_declaration.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    if interface_signal_declaration.detect(oDataStructure):
+        return interface_signal_declaration.classify(oDataStructure)
 
-    iReturn = interface_variable_declaration.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    if interface_variable_declaration.detect(oDataStructure):
+        return interface_variable_declaration.classify(oDataStructure)
 
-    iReturn = interface_file_declaration.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    if interface_file_declaration.detect(oDataStructure):
+        return interface_file_declaration.classify(oDataStructure)
 
-    ### This captures constant, signal and variable declarations without optional keywords
-    ### This is typically done in port lists
-    iReturn = interface_unknown_declaration.detect(iCurrent, lObjects)
-    if iReturn != iCurrent:
-        return iReturn
+    if interface_unknown_declaration.detect(oDataStructure):
+        return interface_unknown_declaration.classify(oDataStructure)
 
-    return iCurrent
+    return False

@@ -2,36 +2,38 @@
 
 import re
 
+from vsg import decorators
 from vsg.token import bit_string_literal as token
-from vsg.vhdlFile import utils
 
 oIntegerRegex = re.compile(r"\d+")
 oBaseSpecifierRegex = re.compile(r"(([us]?[box])|d)")
 oBitValueStringRegex = re.compile(r'"[0-9a-fhluwxz\-_]*"')
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     bit_string_literal ::=
         [ integer ] base_specifier " [ bit_value ] "
     """
+    bInt = False
+    if oDataStructure.does_seek_token_match_regex(oIntegerRegex):
+        oDataStructure.increment_seek_index()
+        oDataStructure.advance_to_next_seek_token()
+        bInt = True
+    if oDataStructure.does_seek_token_match_regex(oBaseSpecifierRegex):
+        oDataStructure.increment_seek_index()
+        oDataStructure.advance_to_next_seek_token()
 
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    if utils.matches_next_token(oIntegerRegex, iToken, lObjects):
-        iCurrent += 1
-    if utils.matches_next_token(oBaseSpecifierRegex, iCurrent, lObjects):
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        iCurrent += 1
-        if utils.matches_next_token(oBitValueStringRegex, iCurrent, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+        if oDataStructure.does_seek_token_match_regex(oBitValueStringRegex):
+            classify(oDataStructure, bInt)
+            return True
+    return False
 
 
-def classify(iToken, lObjects):
-    if utils.matches_next_token(oIntegerRegex, iToken, lObjects):
-        iCurrent = utils.assign_next_token(token.integer, iToken, lObjects)
-    else:
-        iCurrent = iToken
-    iCurrent = utils.assign_next_token(token.base_specifier, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.bit_value_string, iCurrent, lObjects)
-    return iCurrent
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure, bInt):
+    if bInt:
+        oDataStructure.replace_next_token_with(token.integer)
+    oDataStructure.replace_next_token_with(token.base_specifier)
+    oDataStructure.replace_next_token_with(token.bit_value_string)

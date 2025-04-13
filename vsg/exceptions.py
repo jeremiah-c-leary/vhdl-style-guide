@@ -23,3 +23,11 @@ class ConfigurationError(Exception):
 
     def __str__(self):
         return self.message
+
+
+class IndexedPassedEndOfFile(Exception):
+    def __init__(self, message):
+        self.message = message
+
+    def __str__(self):
+        return self.message

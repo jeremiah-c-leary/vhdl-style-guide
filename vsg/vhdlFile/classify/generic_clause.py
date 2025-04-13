@@ -1,27 +1,25 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import generic_clause as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_list
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     generic_clause ::=
         generic ( generic_list ) ;
     """
-    if utils.are_next_consecutive_tokens(["generic", "("], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.are_next_consecutive_tokens(["generic", "("])
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("generic", token.generic_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("generic", token.generic_keyword)
+    oDataStructure.replace_next_token_required("(", token.open_parenthesis)
 
-    iCurrent = generic_list.classify(iCurrent, lObjects)
+    generic_list.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(")", token.close_parenthesis)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

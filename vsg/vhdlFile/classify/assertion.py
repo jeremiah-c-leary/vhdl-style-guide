@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import assertion as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import condition, expression
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     assertion ::=
         assert condition
@@ -15,16 +16,14 @@ def classify(iToken, lObjects):
     The key to detecting this is looking for the keyword **assert** before a semicolon.
     """
 
-    iCurrent = utils.assign_next_token_required("assert", token.keyword, iToken, lObjects)
+    oDataStructure.replace_next_token_required("assert", token.keyword)
 
-    iCurrent = condition.classify_until(["report", "severity", ";"], iCurrent, lObjects)
+    condition.classify_until(["report", "severity", ";"], oDataStructure)
 
-    if utils.is_next_token("report", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("report", token.report_keyword, iCurrent, lObjects)
-        iCurrent = expression.classify_until(["severity", ";"], iCurrent, lObjects)
+    if oDataStructure.is_next_token("report"):
+        oDataStructure.replace_next_token_with(token.report_keyword)
+        expression.classify_until(["severity", ";"], oDataStructure)
 
-    if utils.is_next_token("severity", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("severity", token.severity_keyword, iCurrent, lObjects)
-        iCurrent = expression.classify_until([";"], iCurrent, lObjects)
-
-    return iCurrent
+    if oDataStructure.is_next_token("severity"):
+        oDataStructure.replace_next_token_with(token.severity_keyword)
+        expression.classify_until([";"], oDataStructure)

@@ -1,32 +1,31 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     selected_force_assignment,
     selected_waveform_assignment,
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     selected_signal_assignment ::=
         selected_waveform_assignment
       | selected_force_assignment
     """
 
-    if utils.find_in_range("<=", iToken, ";", lObjects):
-        if utils.find_in_next_n_tokens("with", 3, iToken, lObjects):
+    if oDataStructure.does_string_exist_before_string("<=", ";"):
+        if oDataStructure.does_string_exist_in_next_n_tokens("with", 3):
             return True
-        if utils.find_in_next_n_tokens("if", 3, iToken, lObjects):
+        if oDataStructure.does_string_exist_in_next_n_tokens("if", 3):
             return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = selected_waveform_assignment.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    if selected_waveform_assignment.detect(oDataStructure):
+        return None
 
-    iCurrent = selected_force_assignment.detect(iToken, lObjects)
-
-    return iCurrent
+    selected_force_assignment.detect(oDataStructure)

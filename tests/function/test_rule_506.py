@@ -36,7 +36,7 @@ lExpected_upper_with_lower_suffix.append("")
 utils.read_file(os.path.join(sTestDir, "rule_506_test_input.fixed_upper_with_lower_suffix.vhd"), lExpected_upper_with_lower_suffix)
 
 
-class test_function_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

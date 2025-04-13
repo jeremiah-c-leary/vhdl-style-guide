@@ -1,47 +1,45 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import simple_waveform_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import delay_mechanism, waveform
+from vsg.vhdlFile.classify import delay_mechanism, utils, waveform
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     simple_waveform_assignment ::=
         target <= [ delay_mechanism ] waveform ;
     """
 
-    if utils.is_next_token_one_of(["when", "if", "elsif", "else"], iToken, lObjects):
-        return iToken
-    if is_a_simple_waveform_assignment(iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token_one_of(["when", "if", "elsif", "else"]):
+        return False
+    return is_a_simple_waveform_assignment(oDataStructure)
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
 
-    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
+    delay_mechanism.detect(oDataStructure)
 
-    iCurrent = waveform.classify_until([";"], iCurrent, lObjects)
+    waveform.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)
 
 
-def is_a_simple_waveform_assignment(iToken, lObjects):
-    if utils.assignment_operator_found(iToken, lObjects):
-        if force_or_release_keyword_found(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def is_a_simple_waveform_assignment(oDataStructure):
+    if utils.assignment_operator_found(oDataStructure):
+        if force_or_release_keyword_found(oDataStructure):
             return False
         return True
     return False
 
 
-def force_or_release_keyword_found(iToken, lObjects):
-    if utils.find_in_range("force", iToken, ";", lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def force_or_release_keyword_found(oDataStructure):
+    if oDataStructure.does_string_exist_before_string("force", ";"):
         return True
-    if utils.find_in_range("release", iToken, ";", lObjects):
-        return True
-    return False
+    return oDataStructure.does_string_exist_before_string("release", ";")

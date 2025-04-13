@@ -1,65 +1,63 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import instantiated_unit as token
-from vsg.vhdlFile import utils
 
 
-def detect(iCurrent, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     instantiated_unit ::=
         [ component ] component_name
       | entity entity_name [ ( *architecture*_identifier ) ]
       | configuration configuration_name
     """
-    iToken = iCurrent
-    if utils.is_next_token_one_of(["component", "entity", "configuration"], iToken, lObjects):
+
+    if oDataStructure.is_next_seek_token_one_of(["component", "entity", "configuration"]):
         return True
-    if utils.find_in_next_n_tokens(";", 2, iToken, lObjects):
+    if oDataStructure.does_string_exist_in_next_n_tokens(";", 2):
         return True
     # Check if this is a signal assignment
-    if utils.find_in_range("<=", iToken, ";", lObjects):
+    if oDataStructure.does_string_exist_before_string("<=", ";"):
         return False
-    if utils.find_in_range("generate", iToken, ";", lObjects):
+    if oDataStructure.does_string_exist_before_string("generate", ";"):
         return False
     return True
 
 
-def classify(iToken, lObjects):
-    iCurrent = iToken
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    if oDataStructure.is_next_token("component"):
+        oDataStructure.replace_next_token_with(token.component_keyword)
+        oDataStructure.replace_next_token_with(token.component_name)
 
-    if utils.is_next_token("component", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("component", token.component_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.component_name, iCurrent, lObjects)
+    elif oDataStructure.is_next_token("configuration"):
+        oDataStructure.replace_next_token_with(token.configuration_keyword)
+        oDataStructure.replace_next_token_with(token.configuration_name)
 
-    elif utils.is_next_token("configuration", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("configuration", token.configuration_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.configuration_name, iCurrent, lObjects)
+    elif oDataStructure.is_next_token("entity"):
+        oDataStructure.replace_next_token_with(token.entity_keyword)
 
-    elif utils.is_next_token("entity", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("entity", token.entity_keyword, iCurrent, lObjects)
+        classify_entity_name(oDataStructure)
 
-        iCurrent = classify_entity_name(iCurrent, lObjects)
-
-        if utils.is_next_token("(", iCurrent, lObjects):
-            iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
-            iCurrent = utils.assign_next_token_if_not(")", token.architecture_identifier, iCurrent, lObjects)
-            iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
+        if oDataStructure.is_next_token("("):
+            oDataStructure.replace_next_token_with(token.open_parenthesis)
+            oDataStructure.replace_next_token_with_if_not(")", token.architecture_identifier)
+            oDataStructure.replace_next_token_required(")", token.close_parenthesis)
     else:
-        iCurrent = utils.assign_next_token(token.component_name, iCurrent, lObjects)
-
-    return iCurrent
+        oDataStructure.replace_next_token_with(token.component_name)
 
 
-def classify_entity_name(iToken, lObjects):
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    sTokenValue = lObjects[iCurrent].get_value()
+@decorators.print_classifier_debug_info(__name__)
+def classify_entity_name(oDataStructure):
+    oDataStructure.advance_to_next_token()
+    sTokenValue = oDataStructure.get_current_token_value()
     if "." in sTokenValue:
         lTokenValue = sTokenValue.split(".")
-        lObjects[iCurrent] = token.library_name(lTokenValue[0])
-        lObjects.insert(iCurrent + 1, token.dot("."))
-        lObjects.insert(iCurrent + 2, token.entity_name(lTokenValue[1]))
-        iCurrent = iCurrent + 2
+        oDataStructure.lAllObjects[oDataStructure.iCurrent] = token.library_name(lTokenValue[0])
+        oDataStructure.lAllObjects.insert(oDataStructure.iCurrent + 1, token.dot("."))
+        oDataStructure.lAllObjects.insert(oDataStructure.iCurrent + 2, token.entity_name(lTokenValue[1]))
+        oDataStructure.iCurrent += 2
+        oDataStructure.iEndIndex += 2
     else:
-        iCurrent = utils.assign_next_token(token.entity_name, iCurrent, lObjects)
-
-    return iCurrent
+        oDataStructure.replace_next_token_with(token.entity_name)

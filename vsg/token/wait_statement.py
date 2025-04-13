@@ -17,8 +17,8 @@ class label_colon(parser.label_colon):
     unique_id = wait_statement : label_colon
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, sString=":"):
+        super().__init__(sString)
 
 
 class wait_keyword(parser.keyword):

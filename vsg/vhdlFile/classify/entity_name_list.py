@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import entity_name_list as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_designator
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     entity_name_list ::=
         entity_designator { , entity_designator }
@@ -13,18 +14,15 @@ def classify(iToken, lObjects):
       | all
     """
 
-    if utils.is_next_token("others", iToken, lObjects):
-        return utils.assign_next_token_required("others", token.others_keyword, iToken, lObjects)
+    if oDataStructure.is_next_token("others"):
+        oDataStructure.replace_next_token_with(token.others_keyword)
 
-    elif utils.is_next_token("all", iToken, lObjects):
-        return utils.assign_next_token_required("all", token.all_keyword, iToken, lObjects)
+    elif oDataStructure.is_next_token("all"):
+        oDataStructure.replace_next_token_with(token.all_keyword)
 
     else:
-        iCurrent = entity_designator.classify(iToken, lObjects)
+        entity_designator.classify(oDataStructure)
 
-        while utils.is_next_token(",", iCurrent, lObjects):
-            iCurrent = utils.assign_next_token_required(",", token.comma, iToken, lObjects)
-
-            entity_designator.classify(iToken, lObjects)
-
-    return iCurrent
+        while oDataStructure.is_next_token(","):
+            oDataStructure.replace_next_token_with(token.comma)
+            entity_designator.classify(oDataStructure)

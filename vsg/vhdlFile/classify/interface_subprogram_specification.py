@@ -1,24 +1,26 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     interface_function_specification,
     interface_procedure_specification,
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     interface_subprogram_specification ::=
         interface_procedure_specification
       | interface_function_specification
     """
 
-    iCurrent = interface_procedure_specification.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if interface_procedure_specification.detect(oDataStructure):
+        interface_procedure_specification.classify(oDataStructure)
+        return True
 
-    iCurrent = interface_function_specification.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if interface_function_specification.detect(oDataStructure):
+        interface_function_specification.classify(oDataStructure)
+        return True
 
-    return iToken
+    return False

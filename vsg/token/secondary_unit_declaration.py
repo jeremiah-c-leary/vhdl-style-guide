@@ -17,7 +17,7 @@ class equal_sign(parser.item):
     unique_id = secondary_unit_declaration : equal_sign
     """
 
-    def __init__(self):
+    def __init__(self, sString=None):
         super().__init__("=")
 
 
@@ -35,5 +35,5 @@ class semicolon(parser.semicolon):
     unique_id = secondary_unit_declaration : semicolon
     """
 
-    def __init__(self):
+    def __init__(self, sString=None):
         super().__init__()

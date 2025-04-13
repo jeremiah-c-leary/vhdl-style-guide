@@ -1,33 +1,32 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import case_generate_alternative as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import choices, generate_statement_body
+from vsg.vhdlFile.classify import choices, generate_statement_body, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     case_generate_alternative ::=
         when [ alternative_label : ] choices =>
             generate_statement_body
     """
 
-    if utils.is_next_token("when", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("when"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("when", token.when_keyword, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("when", token.when_keyword)
 
-    if utils.are_next_consecutive_tokens([None, ":"], iCurrent, lObjects):
-        iCurrent = utils.assign_next_token(token.alternative_label_name, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.alternative_label_colon, iCurrent, lObjects)
+    utils.tokenize_label(oDataStructure, token.alternative_label_name, token.alternative_label_colon)
 
-    iCurrent = choices.classify_until(["=>"], iCurrent, lObjects)
+    choices.classify_until(["=>"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("=>", token.assignment, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("=>", token.assignment)
 
-    iCurrent = generate_statement_body.classify(iCurrent, lObjects)
-
-    return iCurrent
+    generate_statement_body.classify(oDataStructure)

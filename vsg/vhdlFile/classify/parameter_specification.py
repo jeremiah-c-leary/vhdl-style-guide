@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import parameter_specification as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import discrete_range
 
 
-def classify_until(lUntils, iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
     """
     parameter_specification ::=
         identifier in discrete_range
     """
 
-    iCurrent = utils.assign_next_token(token.identifier, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("in", token.in_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with(token.identifier)
+    oDataStructure.replace_next_token_required("in", token.in_keyword)
 
-    iCurrent = discrete_range.classify_until(lUntils, iCurrent, lObjects)
-
-    return iCurrent
+    discrete_range.classify_until(lUntils, oDataStructure)

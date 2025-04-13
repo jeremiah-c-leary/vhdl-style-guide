@@ -20,7 +20,7 @@ lExpected_same_line.append("")
 utils.read_file(os.path.join(sTestDir, "rule_004_test_input.fixed_same_line.vhd"), lExpected_same_line, True)
 
 
-class test_port_map_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

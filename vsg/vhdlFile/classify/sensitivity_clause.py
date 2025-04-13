@@ -1,24 +1,24 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import sensitivity_clause as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import sensitivity_list
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     sensitivity_clause ::=
         on sensitivity_list
     """
 
-    if utils.is_next_token("on", iToken, lObjects):
+    if oDataStructure.is_next_token("on"):
         return True
     return False
 
 
-def classify_until(lUntils, iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("on", token.on_keyword, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
+    oDataStructure.replace_next_token_required("on", token.on_keyword)
 
-    iCurrent = sensitivity_list.classify_until(lUntils, iCurrent, lObjects)
-
-    return iCurrent
+    sensitivity_list.classify_until(lUntils, oDataStructure)

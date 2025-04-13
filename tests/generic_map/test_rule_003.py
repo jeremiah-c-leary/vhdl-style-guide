@@ -16,7 +16,7 @@ lExpected.append("")
 utils.read_file(os.path.join(sTestDir, "rule_003_test_input.fixed.vhd"), lExpected, False)
 
 
-class test_generic_map_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

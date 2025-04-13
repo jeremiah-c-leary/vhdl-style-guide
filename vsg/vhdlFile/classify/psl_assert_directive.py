@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token.psl import assert_directive as token
-from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     [ label : ] Assert_Directive
 
@@ -12,16 +14,16 @@ def detect(iToken, lObjects):
         assert Property [ report String ] ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "assert"], iToken, lObjects) or utils.is_next_token("assert", iToken, lObjects):
-        if utils.find_in_range("[", iToken, ";", lObjects) and utils.find_in_range("report", iToken, ";", lObjects):
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "assert"]) or oDataStructure.is_next_token("assert"):
+        if oDataStructure.does_string_exist_before_string("[", ";") and oDataStructure.does_string_exist_before_string("report", ";"):
             return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("assert", token.assert_keyword, iToken, lObjects)
-    iCurrent = utils.assign_tokens_until(";", token.todo, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("assert", token.assert_keyword)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    utils.assign_tokens_until(";", token.todo, oDataStructure)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

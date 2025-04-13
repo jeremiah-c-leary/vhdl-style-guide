@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     configuration_declaration,
     context_declaration,
@@ -10,7 +11,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     primary_unit ::=
         entity_declaration
@@ -21,28 +23,19 @@ def detect(iToken, lObjects):
       | PSL_Verification_Unit
     """
 
-    iReturned = context_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
+    if context_declaration.detect(oDataStructure):
+        return True
 
-    iReturned = entity_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
+    if entity_declaration.detect(oDataStructure):
+        return True
 
-    iReturned = package_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
+    if package_declaration.detect(oDataStructure):
+        return True
 
-    iReturned = package_instantiation_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
+    if package_instantiation_declaration.detect(oDataStructure):
+        return True
 
-    iReturned = configuration_declaration.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
+    if configuration_declaration.detect(oDataStructure):
+        return True
 
-    iReturned = psl_verification_unit.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
-
-    return iToken
+    return psl_verification_unit.detect(oDataStructure)

@@ -1,36 +1,36 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import constant_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, identifier_list, subtype_indication
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     constant_declaration ::=
         constant identifier_list : subtype_indication [ := expression ] ;
     """
 
-    if utils.is_next_token("constant", iToken, lObjects):
-        return classify(iToken, lObjects)
+    if oDataStructure.is_next_token("constant"):
+        classify(oDataStructure)
+        return True
+    return False
 
-    return iToken
 
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.constant_keyword)
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("constant", token.constant_keyword, iToken, lObjects)
+    identifier_list.classify_until([":"], oDataStructure, token.identifier)
 
-    iCurrent = identifier_list.classify_until([":"], iCurrent, lObjects, token.identifier)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+    subtype_indication.classify(oDataStructure)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
+    if oDataStructure.is_next_token(":="):
+        oDataStructure.replace_next_token_with(token.assignment_operator)
 
-    if utils.is_next_token(":=", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(":=", token.assignment_operator, iCurrent, lObjects)
+        expression.classify_until([";"], oDataStructure)
 
-        iCurrent = expression.classify_until([";"], iCurrent, lObjects)
-
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

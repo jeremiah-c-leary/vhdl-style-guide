@@ -1,38 +1,38 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import subprogram_instantiation_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_map_aspect, signature, subprogram_kind
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     subprogram_instantiation_declaration ::=
         subprogram_kind identifier is new uninstantiated_subprogram_name [ signature ]
             [ generic_map_aspect ] ;
     """
 
-    if subprogram_kind.detect(iToken, lObjects):
-        if utils.find_in_next_n_tokens("is", 3, iToken, lObjects):
-            if utils.find_in_next_n_tokens("new", 4, iToken, lObjects):
-                return classify(iToken, lObjects)
-        else:
-            return iToken
-    return iToken
+    if subprogram_kind.detect(oDataStructure):
+        if oDataStructure.does_string_exist_in_next_n_tokens("is", 3):
+            if oDataStructure.does_string_exist_in_next_n_tokens("new", 4):
+                classify(oDataStructure)
+                return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = subprogram_kind.classify(iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    subprogram_kind.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("new", token.new_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.uninstantiated_subprogram_name, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with(token.identifier)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
+    oDataStructure.replace_next_token_required("new", token.new_keyword)
+    oDataStructure.replace_next_token_with(token.uninstantiated_subprogram_name)
 
-    iCurrent = signature.detect(iCurrent, lObjects)
+    if signature.detect(oDataStructure):
+        signature.classify(oDataStructure)
 
-    iCurrent = generic_map_aspect.detect(iCurrent, lObjects)
+    generic_map_aspect.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

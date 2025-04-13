@@ -17,7 +17,7 @@ class label_colon(parser.label_colon):
     unique_id = case_statement : label_colon
     """
 
-    def __init__(self):
+    def __init__(self, sString=None):
         super().__init__()
 
 

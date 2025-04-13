@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import conditional_waveforms as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import condition, waveform
 
 
-def classify_until(lUntils, iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
     """
     conditional_waveforms ::=
         waveform when condition
@@ -18,16 +19,20 @@ def classify_until(lUntils, iToken, lObjects):
     lMyWhenUntils = lUntils.copy()
     lMyWhenUntils.append("when")
 
-    iCurrent = waveform.classify_until(["when"], iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("when", token.when_keyword, iCurrent, lObjects)
-    iCurrent = condition.classify_until(lMyElseUntils, iCurrent, lObjects)
+    waveform.classify_until(["when"], oDataStructure)
 
-    while utils.is_next_token("else", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("else", token.else_keyword, iCurrent, lObjects)
-        iCurrent = waveform.classify_until(lMyWhenUntils, iCurrent, lObjects)
-        if utils.is_next_token_in_list(lUntils, iToken, lObjects):
+    oDataStructure.replace_next_token_required("when", token.when_keyword)
+
+    condition.classify_until(lMyElseUntils, oDataStructure)
+
+    while oDataStructure.is_next_token("else"):
+        oDataStructure.replace_next_token_required("else", token.else_keyword)
+
+        waveform.classify_until(lMyWhenUntils, oDataStructure)
+
+        if oDataStructure.is_next_token_one_of(lUntils):
             break
-        iCurrent = utils.assign_next_token_required("when", token.when_keyword, iCurrent, lObjects)
-        iCurrent = condition.classify_until(lMyElseUntils, iCurrent, lObjects)
 
-    return iCurrent
+        oDataStructure.replace_next_token_required("when", token.when_keyword)
+
+        condition.classify_until(lMyElseUntils, oDataStructure)

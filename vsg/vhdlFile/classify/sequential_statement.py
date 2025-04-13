@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# from vsg.vhdlFile import utils
-
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     assertion_statement,
     case_statement,
@@ -19,7 +18,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     sequential_statement ::=
         wait_statement
@@ -37,55 +37,40 @@ def detect(iToken, lObjects):
       | null_statement
     """
 
-    iReturn = wait_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if wait_statement.detect(oDataStructure):
+        return True
 
-    iReturn = assertion_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if assertion_statement.detect(oDataStructure):
+        return True
 
-    iReturn = report_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if report_statement.detect(oDataStructure):
+        return True
 
-    iReturn = case_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if case_statement.detect(oDataStructure):
+        return True
 
-    iReturn = if_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if if_statement.detect(oDataStructure):
+        return True
 
-    iReturn = loop_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if loop_statement.detect(oDataStructure):
+        return True
 
-    iReturn = variable_assignment_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if variable_assignment_statement.detect(oDataStructure):
+        return True
 
-    iReturn = exit_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if exit_statement.detect(oDataStructure):
+        return True
 
-    iReturn = signal_assignment_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if signal_assignment_statement.detect(oDataStructure):
+        return True
 
-    iReturn = procedure_call_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if next_statement.detect(oDataStructure):
+        return True
 
-    iReturn = next_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if return_statement.detect(oDataStructure):
+        return True
 
-    iReturn = return_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if null_statement.detect(oDataStructure):
+        return True
 
-    iReturn = null_statement.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-    return iToken
+    return procedure_call_statement.detect(oDataStructure)

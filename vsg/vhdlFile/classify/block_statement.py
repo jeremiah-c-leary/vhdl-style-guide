@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import block_statement as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     block_declarative_part,
     block_header,
     block_statement_part,
+    utils,
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     block_statement ::=
     block_label :
@@ -21,33 +23,33 @@ def detect(iToken, lObjects):
         end block [ block_label ] ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "block"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "block"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.block_label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("block", token.block_keyword, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.block_label, token.label_colon)
+    oDataStructure.replace_next_token_with(token.block_keyword)
 
-    if utils.is_next_token("(", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("(", token.guard_open_parenthesis, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_if_not(")", token.guard_condition, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(")", token.guard_close_parenthesis, iCurrent, lObjects)
+    if oDataStructure.is_next_token("("):
+        oDataStructure.replace_next_token_with(token.guard_open_parenthesis)
+        oDataStructure.replace_next_token_with_if_not(")", token.guard_condition)
+        oDataStructure.replace_next_token_required(")", token.guard_close_parenthesis)
 
-    iCurrent = utils.assign_next_token_if("is", token.is_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("is", token.is_keyword)
 
-    iCurrent = block_header.detect(iCurrent, lObjects)
+    block_header.detect(oDataStructure)
 
-    iCurrent = block_declarative_part.detect(iCurrent, lObjects)
+    block_declarative_part.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("begin", token.begin_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("begin", token.begin_keyword)
 
-    iCurrent = block_statement_part.detect(iCurrent, lObjects)
+    block_statement_part.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("block", token.end_block_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_block_label, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("block", token.end_block_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_block_label)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

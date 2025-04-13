@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     simple_force_assignment,
     simple_release_assignment,
@@ -8,7 +8,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     simple_signal_assignment ::=
         simple_waveform_assignment
@@ -16,27 +17,23 @@ def detect(iToken, lObjects):
       | simple_release_assignment
     """
 
-    if utils.find_in_next_n_tokens("if", 3, iToken, lObjects):
+    if oDataStructure.is_next_token_one_of(["if", "elsif", "else"]):
         return False
-    if utils.find_in_range("<=", iToken, ";", lObjects):
-        if utils.find_in_range("when", iToken, ";", lObjects):
+
+    if oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";"):
+        if oDataStructure.does_string_exist_before_string("with", ";"):
             return False
-        if utils.find_in_range("with", iToken, ";", lObjects):
+        if oDataStructure.does_string_exist_before_string("when", ";"):
             return False
         return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = iToken
-    iCurrent = simple_force_assignment.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    iCurrent = simple_release_assignment.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    iCurrent = simple_waveform_assignment.detect(iToken, lObjects)
-
-    return iCurrent
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    if simple_force_assignment.detect(oDataStructure):
+        simple_force_assignment.classify(oDataStructure)
+    elif simple_release_assignment.detect(oDataStructure):
+        simple_release_assignment.classify(oDataStructure)
+    elif simple_waveform_assignment.detect(oDataStructure):
+        simple_waveform_assignment.classify(oDataStructure)

@@ -1,66 +1,54 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import bit_string_literal, external_name
+from vsg import decorators, parser
+from vsg.vhdlFile.classify import (
+    bit_string_literal,
+    character_literal,
+    external_name,
+    utils,
+)
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure, oType=parser.todo):
     """
     expression ::=
         condition_operator primary
       | logical_expression
     """
-    return utils.assign_token(lObjects, iToken, parser.todo)
+    iParen = 0
+    while oDataStructure.advance_to_next_token():
+        iParen = update_paren_counter(iParen, oDataStructure)
 
-
-def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
-    """
-    expression ::=
-        condition_operator primary
-      | logical_expression
-    """
-    iCurrent = iToken
-    iStop = len(lObjects) - 1
-    iOpenParenthesis = 0
-    iCloseParenthesis = 0
-    iPrevious = 0
-    while iCurrent < iStop:
-        if iCurrent == iPrevious:
+        if utils.unmatched_close_paren_found(iParen):
             break
-        iPrevious = iCurrent
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        if utils.token_is_open_parenthesis(iCurrent, lObjects):
-            iOpenParenthesis += 1
-        if utils.token_is_close_parenthesis(iCurrent, lObjects):
-            iCloseParenthesis += 1
 
-        if iOpenParenthesis < iCloseParenthesis:
-            break
-        elif lObjects[iCurrent].get_lower_value() in lUntils:
-            if utils.token_is_close_parenthesis(iCurrent, lObjects):
-                if iOpenParenthesis == iCloseParenthesis:
-                    utils.assign_token(lObjects, iCurrent, parser.close_parenthesis)
-                    iCurrent += 1
-                    continue
-                else:
-                    break
-            elif utils.token_is_comma(iCurrent, lObjects):
-                if iOpenParenthesis == iCloseParenthesis:
+        if oDataStructure.get_current_token_lower_value() in lUntils:
+            if utils.is_current_token_close_paren(oDataStructure):
+                oDataStructure.replace_current_token_with(parser.close_parenthesis)
+                oDataStructure.increment_current_index()
+            elif oDataStructure.current_token_lower_value_is(","):
+                if iParen == 0:
                     break
                 else:
-                    utils.assign_token(lObjects, iCurrent, parser.comma)
-                    iCurrent += 1
+                    oDataStructure.replace_current_token_with(parser.comma)
             else:
                 break
         else:
-            iPrevious = iCurrent
-            for oToken in [external_name, bit_string_literal]:
-                iCurrent = oToken.detect(iCurrent, lObjects)
-                if iCurrent != iPrevious:
-                    continue
-            if iCurrent != iPrevious:
+            if external_name.detect(oDataStructure):
                 continue
-            utils.assign_special_tokens(lObjects, iCurrent, oType)
-            iCurrent += 1
-    return iCurrent
+            elif bit_string_literal.detect(oDataStructure):
+                continue
+            elif character_literal.detect(oDataStructure):
+                continue
+
+            utils.assign_special_tokens(oDataStructure, oType)
+
+
+@decorators.print_classifier_debug_info(__name__)
+def update_paren_counter(iParen, oDataStructure):
+    if utils.is_current_token_open_paren(oDataStructure):
+        return iParen + 1
+    elif utils.is_current_token_close_paren(oDataStructure):
+        return iParen - 1
+    return iParen

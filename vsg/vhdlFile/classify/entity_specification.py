@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import entity_specification as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_name_list
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     entity_specification ::=
         entity_name_list : entity_class
     """
 
-    iCurrent = entity_name_list.classify(iToken, lObjects)
+    entity_name_list.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = utils.assign_next_token(token.entity_class, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_with(token.entity_class)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     enumeration_type_definition,
     integer_type_definition,
@@ -8,7 +8,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     scalar_type_definition ::=
         enumeration_type_definition
@@ -20,16 +21,10 @@ def detect(iToken, lObjects):
            They are very similar to integer types, and will hopefully not be required.
     """
 
-    iReturn = physical_type_definition.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if physical_type_definition.detect(oDataStructure):
+        return True
 
-    iReturn = enumeration_type_definition.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if enumeration_type_definition.detect(oDataStructure):
+        return True
 
-    iReturn = integer_type_definition.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return integer_type_definition.detect(oDataStructure)

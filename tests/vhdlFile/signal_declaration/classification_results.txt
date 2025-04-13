@@ -39,7 +39,7 @@
 7 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-8 |   signal fifo_wr : std_logic_vector(3 downto 0) := "000";
+8 |   signal fifo_wr : std_logic_vector(3 downto 0) := b"000";
 <class 'vsg.token.signal_declaration.signal_keyword'>
 <class 'vsg.token.signal_declaration.identifier'>
 <class 'vsg.token.signal_declaration.colon'>
@@ -50,7 +50,8 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
 <class 'vsg.token.signal_declaration.assignment_operator'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
 <class 'vsg.token.signal_declaration.semicolon'>
 --------------------------------------------------------------------------------
 9 |

@@ -1,28 +1,29 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import port_map_aspect as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import association_list
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     port_map_aspect ::=
         port map ( *port*_association_list )
     """
 
-    if utils.are_next_consecutive_tokens(["port", "map", "("], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["port", "map", "("]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("port", token.port_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("map", token.map_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.port_keyword)
+    oDataStructure.replace_next_token_with(token.map_keyword)
+    oDataStructure.replace_next_token_with(token.open_parenthesis)
 
-    iCurrent = association_list.classify(iCurrent, lObjects)
+    association_list.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(")", token.close_parenthesis)
