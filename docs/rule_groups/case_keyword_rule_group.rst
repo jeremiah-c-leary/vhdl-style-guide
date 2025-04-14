@@ -182,6 +182,7 @@ Rules Enforcing Case::Keyword Rule Group
 * `unbounded_array_definition_501 <../unbounded_array_definition_rules.html#unbounded-array-definition-501>`_
 * `use_clause_503 <../use_clause_rules.html#use-clause-503>`_
 * `variable_002 <../variable_rules.html#variable-002>`_
+* `variable_500 <../variable_rules.html#variable-500>`_
 * `wait_500 <../wait_rules.html#wait-500>`_
 * `wait_501 <../wait_rules.html#wait-501>`_
 * `wait_502 <../wait_rules.html#wait-502>`_

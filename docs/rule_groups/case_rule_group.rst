@@ -262,6 +262,7 @@ Rules Enforcing Case Rule Group
 * `variable_002 <../variable_rules.html#variable-002>`_
 * `variable_004 <../variable_rules.html#variable-004>`_
 * `variable_011 <../variable_rules.html#variable-011>`_
+* `variable_500 <../variable_rules.html#variable-500>`_
 * `wait_500 <../wait_rules.html#wait-500>`_
 * `wait_501 <../wait_rules.html#wait-501>`_
 * `wait_502 <../wait_rules.html#wait-502>`_
