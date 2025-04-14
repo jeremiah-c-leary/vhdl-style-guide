@@ -1,7 +1,7 @@
 
 architecture RTL of FIFO is
 
-  shared VARIABLE shar_var1 : integer;
+  SHARED VARIABLE shar_var1 : integer;
 
 begin
 
@@ -16,7 +16,7 @@ end architecture RTL;
 
 architecture RTL of FIFO is
 
-  shared VARIABLE shar_var1 : integer;
+  SHARED VARIABLE shar_var1 : integer;
 
 begin
 

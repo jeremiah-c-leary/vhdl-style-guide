@@ -37,7 +37,7 @@ variable_002
 
 |phase_6| |error| |case| |case_keyword|
 
-This rule checks the **variable** keyword has proper case.
+This rule checks that the keywords **shared** and **variable** have proper case.
 
 |configuring_uppercase_and_lowercase_rules_link|
 
@@ -47,11 +47,15 @@ This rule checks the **variable** keyword has proper case.
 
    VARIABLE count : integer;
 
+   SHARED VARIABLE size : integer;
+
 **Fix**
 
 .. code-block:: vhdl
 
    variable count : integer;
+
+   shared variable size : integer;
 
 variable_003
 ############
