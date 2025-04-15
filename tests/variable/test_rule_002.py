@@ -43,7 +43,7 @@ class test_variable_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "variable")
         self.assertEqual(oRule.identifier, "002")
 
-        lExpected = [4, 9]
+        lExpected = [4, 4, 9, 19]
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
