@@ -21,11 +21,8 @@ def classify_until(lUntils, iToken, lObjects, oType=parser.todo):
     NOTE: At the moment, everything will be set to parser.todo.
     """
 
-    iReturn = external_name.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    iCurrent = external_name.detect(iToken, lObjects)
 
-    iCurrent = iToken
     iStop = len(lObjects) - 1
     iOpenParenthesis = 0
     iCloseParenthesis = 0
