@@ -332,10 +332,8 @@ def _analyze_align_left_no_align_paren_yes(
 
     if bIgnoreStartParen:
         iIndent = iAssignColumn + iFirstTokenLength
-        iIgnoreStartParenOffset = 1
     else:
         iIndent = iAssignColumn + iFirstTokenLength + 1
-        iIgnoreStartParenOffset = 0
 
     iColumn = iIndent
     lColumn = [iIndent]
@@ -355,20 +353,26 @@ def _analyze_align_left_no_align_paren_yes(
                 if iLine == iFirstLine:
                     iColumn = dTemp["column"]
                 else:
-                    iColumn = dTemp["column"] + iTemp - len(dActualIndent[iLine]) + iIndentStep - 1
+                    if bIgnoreStartParen:
+                        iColumn = dTemp["column"] + iTemp - len(dActualIndent[iLine])
+                    else:
+                        iColumn = dTemp["column"] + iTemp - len(dActualIndent[iLine]) + iIndentStep - 1
                     if iParens == 1:
                         iColumn -= iIndentAfterParen
                 lColumn.append(iColumn)
-                dExpectedIndent[iLine + 1] = iColumn + iIgnoreStartParenOffset
+                dExpectedIndent[iLine + 1] = iColumn
             else:
                 iParens -= 1
                 lColumn.pop()
-                dExpectedIndent[iLine + 1] = lColumn[-1] + iIgnoreStartParenOffset
+                dExpectedIndent[iLine + 1] = lColumn[-1]
                 if dTemp["begin_line"]:
-                    dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
+                    if bIgnoreStartParen:
+                        dExpectedIndent[iLine] = dExpectedIndent[iLine] - 1
+                    else:
+                        dExpectedIndent[iLine] = dExpectedIndent[iLine] - iIndentStep
 
         if len(lTemp) == 0:
-            dExpectedIndent[iLine + 1] = lColumn[-1] + iIgnoreStartParenOffset
+            dExpectedIndent[iLine + 1] = lColumn[-1]
 
     return convert_numbers_to_spaces(dExpectedIndent)
 
@@ -469,7 +473,7 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
     if bStartsWithParen:
         iFirstIndent = dActualIndent[iFirstLine]
     elif bIgnoreStartParen:
-        iFirstIndent = lParens[0]["column"] + 1
+        iFirstIndent = lParens[0]["column"]
     else:
         iFirstIndent = iAssignColumn + 2 + 1
 
@@ -493,7 +497,10 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
             else:
                 iParens -= 1
                 if dTemp["begin_line"]:
-                    dExpectedIndent[iLine] -= iIndentStep
+                    if iParens == 0:
+                        dExpectedIndent[iLine] -= 1
+                    else:
+                        dExpectedIndent[iLine] -= iIndentStep
 
         if iLine == iFirstLine:
             if bStartsWithParen:
