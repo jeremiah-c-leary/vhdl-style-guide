@@ -169,6 +169,7 @@ Rules Enforcing Blank Lines
 * `package_instantiation_201 <package_instantiation_rules.html#package-instantiation-201>`_
 * `port_001 <port_rules.html#port-001>`_
 * `port_map_200 <port_map_rules.html#port-map-200>`_
+* `port_map_201 <port_map_rules.html#port-map-201>`_
 * `pragma_401 <pragma_rules.html#pragma-401>`_
 * `pragma_403 <pragma_rules.html#pragma-403>`_
 * `process_011 <process_rules.html#process-011>`_
