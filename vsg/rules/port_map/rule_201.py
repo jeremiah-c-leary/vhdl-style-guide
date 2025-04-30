@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+
+from vsg import token
+from vsg.rules import blank_lines_between_token_pairs as Rule
+
+lTokenPairs = []
+lTokenPairs.append([token.port_map_aspect.open_parenthesis, token.port_map_aspect.close_parenthesis])
+
+class rule_201(Rule):
+    """
+    This rule checks for blank lines in a port map.
+
+    |configuring_blank_lines_link|
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+      port map (
+        PORT_1 => w_port_1,
+
+        PORT_2 => w_port_2,
+        PORT_3 => w_port_3
+    );
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+      port map (
+      PORT_1 => w_port_1,
+      PORT_2 => w_port_2,
+      PORT_3 => w_port_3
+    );
+    """
+
+    def __init__(self):
+        super().__init__(lTokenPairs)
