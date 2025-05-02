@@ -16,22 +16,22 @@ context interfaces is
     -- use fpga.registers.all;
     use fpga.functions.all;
 
--- Comment last
+  -- Comment last
 
 end context interfaces;
 
 
 architecture RTL of FIFO is
 
--- failure
--- passed
--- failure
+  -- failure
+  -- passed
+  -- failure
 
 begin
 
--- failure
--- passed
--- failure
+  -- failure
+  -- passed
+  -- failure
 
 end architecture RTL;
 
@@ -63,27 +63,27 @@ begin end architecture RTL;
 library ieee;
 -- Comment 1
 architecture rtl of fifo is
--- Comment 2
+  -- Comment 2
 begin
--- Comment 3
+  -- Comment 3
 end architecture rtl;
 
 library ieee;
 -- Comment 1b
 entity fifo is
--- Comment 2b
+  -- Comment 2b
 end entity;
 
 library ieee;
 -- Comment 1c
 package body fifo_pkg is
--- Comment 2c
+  -- Comment 2c
 end package body;
 
 library ieee;
 -- Comment 1c
 package fifo_pkg is
--- Comment 2c
+  -- Comment 2c
 end package;
 
 package body function_pkg is

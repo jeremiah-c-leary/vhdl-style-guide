@@ -26,7 +26,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "pragma")
         self.assertEqual(oRule.identifier, "300")
 
-        lExpected = [2, 17, 19]
+        lExpected = [2, 14, 19]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

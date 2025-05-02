@@ -11,9 +11,9 @@ architecture rtl of fifo is
   -- altera something
   alias designator is name;
 
--- xilinx something
+  -- xilinx something
 
 begin
--- RTL_SYNTHESIS ON
+  -- RTL_SYNTHESIS ON
 end architecture rtl;
 -- synthesis translate_off

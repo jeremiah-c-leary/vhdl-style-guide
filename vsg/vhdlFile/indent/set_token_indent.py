@@ -204,14 +204,29 @@ def set_indent_of_block_comment(cParams, iToken, lTokens):
         oToken.set_indent(cParams.iIndent)
 
 
+def is_end_of_scope_token(oToken):
+    lEndOfScopeTokenNames = [
+        "begin_keyword",
+        "end_keyword",
+    ]
+
+    if type(oToken).__name__ in lEndOfScopeTokenNames:
+        return True
+
+    return False
+
+
 def get_indent_value_of_next_token(iToken, lTokens, cParams):
     iIndex = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
-    sUniqueId = lTokens[iIndex].get_unique_id(sJoin=":")
-    if sUniqueId in cParams.lTokenKeys:
-        token_key = cParams.dIndents[sUniqueId]["token"]
-        iTokenIndent = update_indent_var(cParams.iIndent, token_key)
-        return iTokenIndent
-    return cParams.iIndent
+    oNextToken = lTokens[iIndex]
+    sNextTokenUniqueId = oNextToken.get_unique_id(sJoin=":")
+
+    if not sNextTokenUniqueId in cParams.lTokenKeys or is_end_of_scope_token(oNextToken):
+        return cParams.iIndent
+
+    token_key = cParams.dIndents[sNextTokenUniqueId]["token"]
+    iTokenIndent = update_indent_var(cParams.iIndent, token_key)
+    return iTokenIndent
 
 
 class parameters:
