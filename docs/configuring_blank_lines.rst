@@ -157,6 +157,7 @@ Rules Enforcing Blank Lines
 * `entity_202 <entity_rules.html#entity-202>`_
 * `entity_203 <entity_rules.html#entity-203>`_
 * `generate_003 <generate_rules.html#generate-003>`_
+* `generic_map_201 <generic_map_rules.html#generic-map-201>`_
 * `if_030 <if_rules.html#if-030>`_
 * `instantiation_019 <instantiation_rules.html#instantiation-019>`_
 * `loop_statement_201 <loop_statement_rules.html#loop-statement-201>`_
