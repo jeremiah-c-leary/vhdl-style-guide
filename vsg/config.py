@@ -75,9 +75,8 @@ def read_configuration_files(dStyle, commandLineArguments):
 def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
     dReturn = dConfiguration
     for sKey in tempConfiguration.keys():
-        if sKey == "file_list":
+        if sKey == "file_list" or sKey == "file_rules":
             dReturn = process_file_list_key(dReturn, tempConfiguration, sKey, sConfigFilename)
-
         elif sKey == "rule":
             for sRule in tempConfiguration[sKey]:
                 try:
