@@ -135,20 +135,20 @@ def search_list(lDict, lDeprecatedKeys, sConfigFilename, lMessages):
 
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     dReturn = dConfig
-    if "file_list" not in dConfig:
-        dReturn["file_list"] = []
-    for iIndex, sFilename in enumerate(tempConfiguration["file_list"]):
+    if sKey not in dConfig:
+        dReturn[sKey] = []
+    for iIndex, sFilename in enumerate(tempConfiguration[sKey]):
         validate_file_exists(sFilename, sConfigFilename)
         try:
             for sGlobbedFilename in glob_filenames_clean(sFilename):
-                dReturn["file_list"].append(sGlobbedFilename)
+                dReturn[sKey].append(sGlobbedFilename)
         except TypeError:
-            sKey = list(sFilename.keys())[0]
-            for sGlobbedFilename in glob_filenames_clean(sKey):
+            sFilename = list(sFilename.keys())[0]
+            for sGlobbedFilename in glob_filenames_clean(sFilename):
                 dTemp = {}
                 dTemp[sGlobbedFilename] = {}
-                dTemp[sGlobbedFilename].update(tempConfiguration["file_list"][iIndex][sKey])
-                dReturn["file_list"].append(dTemp)
+                dTemp[sGlobbedFilename].update(tempConfiguration[sKey][iIndex][sFilename])
+                dReturn[sKey].append(dTemp)
     return dReturn
 
 
