@@ -56,7 +56,7 @@ def validate_file_exists(sFilename, sConfigName):
         sExpandedFilename = sFilename
     lFileNames = glob_filenames(sExpandedFilename)
     if len(lFileNames) == 0:
-        print("ERROR: Could not find file " + sFilename + " in configuration file " + sConfigName)
+        print("ERROR: Could not find file " + sExpandedFilename + " in configuration file " + sConfigName)
         sys.exit(1)
 
 
