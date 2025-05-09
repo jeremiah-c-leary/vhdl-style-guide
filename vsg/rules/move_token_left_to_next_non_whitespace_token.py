@@ -54,7 +54,7 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
-            sSolution = "Move **then** keyword to same line as " + lTokens[0].get_value()
+            sSolution = self.solution + " to same line as " + lTokens[0].get_value()
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
             oViolation.set_remap()
             oViolation.fix_blank_lines = True

@@ -35,3 +35,4 @@ class rule_007(Rule):
         super().__init__(lTokens)
         self.bInsertWhitespace = False
         self.subphase = 3
+        self.solution = "Move semicolon"
