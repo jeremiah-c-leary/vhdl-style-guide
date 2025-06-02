@@ -16,7 +16,7 @@ class rule_033(insert_token_left_of_token_if_it_does_not_exist_between_tokens):
     """
     This rule checks for the **component** keyword for a component instantiation.
 
-    |configuring_optional_items_link
+    |configuring_optional_items_link|
 
     **Violation**
 
