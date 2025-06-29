@@ -108,7 +108,7 @@ class vhdlFile:
        fileobject
     """
 
-    def __init__(self, filecontent, commandLineArguments=default_cla, sFilename=None, eError=None, configuration=default_conf):
+    def __init__(self, filecontent, commandLineArguments=default_cla, sFilename=None, eError=None, configuration=default_conf, sEncoding="utf-8"):
         self.filecontent = filecontent
         self.hasArchitecture = False
         self.hasEntity = False
@@ -123,6 +123,7 @@ class vhdlFile:
         self.stdin = commandLineArguments.stdin
         self.configuration = configuration
         self.commandLineArguments = commandLineArguments
+        self.sEncoding = sEncoding
         self._processFile()
 
     def _processFile(self):
