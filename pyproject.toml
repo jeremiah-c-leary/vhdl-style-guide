@@ -41,6 +41,7 @@ dependencies = [
 dev = [
     "pre-commit",
     "pylint",
+    "wheel",
 ]
 tests = [
     "pytest",
