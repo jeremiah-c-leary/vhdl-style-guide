@@ -39,7 +39,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pre-commit",
+    "pre-commit>=3.2.0",
     "pylint",
     "wheel",
 ]
