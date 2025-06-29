@@ -41,6 +41,7 @@ class test_whitespace_rule(unittest.TestCase):
         lExpected.extend(range(100, 105))
         lExpected.extend(range(106, 111))
         lExpected.extend(range(112, 117))
+        lExpected.extend(range(144, 149))
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
