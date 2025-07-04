@@ -16,11 +16,6 @@ import yaml
 from tests import utils
 from vsg import __main__, version
 
-for key, value in os.environ.items():
-    print(f"{key}: {value}")
-
-print(os.getenv("SKIP_TEST_ON_GITHUB"))
-print(os.getenv("GITHUB_ACTIONS"))
 
 class command_line_args:
     """This is used as an input into the version command."""
