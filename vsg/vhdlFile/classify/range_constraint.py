@@ -20,7 +20,7 @@ def classify(iToken, lObjects):
     iCurrent = utils.assign_next_token_required("range", token.range_keyword, iToken, lObjects)
 
     iParenCnt = 0
-    while not utils.is_next_token_one_of([";", "units", ":="], iCurrent, lObjects):
+    while not utils.is_next_token_one_of([";", "units", ":=", "is", ">>"], iCurrent, lObjects):
         iCurrent = utils.find_next_token(iCurrent, lObjects)
         iParenCnt = utils.update_paren_counter(iCurrent, lObjects, iParenCnt)
         if iParenCnt == -1:
