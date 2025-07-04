@@ -34,6 +34,8 @@ class command_line_args:
 class testMain(unittest.TestCase):
     def setUp(self):
         self._tmpdir = TemporaryDirectory()
+        print(os.getenv("SKIP_TEST_ON_GITHUB"))
+        print(os.getenv("GITHUB_ACTIONS"))
 
     def tearDown(self):
         self._tmpdir.cleanup()
