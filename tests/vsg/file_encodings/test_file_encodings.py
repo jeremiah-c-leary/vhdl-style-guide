@@ -38,7 +38,7 @@ class testMain(unittest.TestCase):
     def tearDown(self):
         self._tmpdir.cleanup()
 
-    @unittest.skipIf(os.getenv("GITHUB_ACTIONS") == "true", reason="GitHub may not have file available")
+    @unittest.skipIf(os.getenv("SKIP_TEST_ON_GITHUB") == "True", reason="GitHub may not have file available")
     @unittest.skipIf(utils.is_windows(), "The command 'file' does not exist on Windows.")
     @mock.patch("sys.stdout")
     def test_utf_8(self, mock_stdout):
@@ -61,7 +61,7 @@ class testMain(unittest.TestCase):
 
         self.assertTrue("UTF-8 Unicode text" in result.stdout)
 
-    @unittest.skipIf(os.getenv("GITHUB_ACTIONS") == "true", reason="GitHub may not have file available")
+    @unittest.skipIf(os.getenv("SKIP_TEST_ON_GITHUB") == "True", reason="GitHub may not have file available")
     @unittest.skipIf(utils.is_windows(), "The command 'file' does not exist on Windows.")
     @mock.patch("sys.stdout")
     def test_iso_8859_1(self, mock_stdout):
