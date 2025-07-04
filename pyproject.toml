@@ -39,8 +39,9 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pre-commit",
+    "pre-commit>=3.2.0",
     "pylint",
+    "wheel",
 ]
 tests = [
     "pytest",
@@ -59,9 +60,6 @@ docs = [
 [[project.authors]]
 name = "Jeremiah C Leary"
 email = "jeremiah.c.leary@gmail.com"
-
-[project.license]
-file = "LICENSE"
 
 [project.urls]
 Homepage = "https://github.com/jeremiah-c-leary/vhdl-style-guide"

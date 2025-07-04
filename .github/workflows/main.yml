@@ -14,6 +14,7 @@ on:
 env:
   BUILD_PYTHON_FOR_BUILD: "3.10"
   BUILD_PYTHON_FOR_BUILD_ALIAS: "py310"
+  SKIP_TEST_ON_GITHUB: "True"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

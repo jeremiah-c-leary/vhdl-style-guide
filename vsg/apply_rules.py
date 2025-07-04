@@ -79,9 +79,9 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
 
     iIndex, sFileName = tIndexFileName
     dJsonEntry = {}
-    lFileContent, eError = vhdlFile.utils.read_vhdlfile(sFileName)
+    lFileContent, eError, sEncoding = vhdlFile.utils.read_vhdlfile(sFileName, True)
     try:
-        oVhdlFile = vhdlFile.vhdlFile(lFileContent, commandLineArguments, sFileName, eError, oConfig)
+        oVhdlFile = vhdlFile.vhdlFile(lFileContent, commandLineArguments, sFileName, eError, oConfig, sEncoding)
     except ClassifyError as e:
         fExitStatus = True
         testCase = create_junit_testcase(sFileName, e)
@@ -145,8 +145,9 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
 def write_vhdl_file(oVhdlFile, dConfig):
     tmpfile = f"{oVhdlFile.filename}.tmp"
     myStat = os.stat(oVhdlFile.filename)
+    sEncoding = oVhdlFile.sEncoding
     try:
-        with open(tmpfile, "w", encoding="utf-8", newline=dConfig.get("linesep")) as oFile:
+        with open(tmpfile, "w", encoding=sEncoding, newline=dConfig.get("linesep")) as oFile:
             oFile.write("\n".join(oVhdlFile.get_lines()[1:]))
             oFile.write("\n")
         os.chmod(tmpfile, myStat.st_mode)

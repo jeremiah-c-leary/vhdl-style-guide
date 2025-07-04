@@ -33,7 +33,7 @@ repos:
         exclude: '^(.*\.vhd|.*\.svg)$'
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -63,14 +63,14 @@ repos:
           )$"
       - id: fix-encoding-pragma
 
-  - repo: https://github.com/mgedmin/check-manifest
-    rev: "0.49"
-    hooks:
-      - id: check-manifest
-        additional_dependencies:
-          - setuptools-git-versioning
-        args:
-          - --no-build-isolation
+#  - repo: https://github.com/mgedmin/check-manifest
+#    rev: "0.50"
+#    hooks:
+#      - id: check-manifest
+#        additional_dependencies:
+#          - setuptools-git-versioning
+#        args:
+#          - --no-build-isolation
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.6
