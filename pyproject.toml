@@ -61,9 +61,6 @@ docs = [
 name = "Jeremiah C Leary"
 email = "jeremiah.c.leary@gmail.com"
 
-[project.license]
-file = "LICENSE"
-
 [project.urls]
 Homepage = "https://github.com/jeremiah-c-leary/vhdl-style-guide"
 Download = "https://github.com/jeremiah-c-leary/vhdl-style-guide"
