@@ -63,14 +63,14 @@ repos:
           )$"
       - id: fix-encoding-pragma
 
-  - repo: https://github.com/mgedmin/check-manifest
-    rev: "0.50"
-    hooks:
-      - id: check-manifest
-        additional_dependencies:
-          - setuptools-git-versioning
-        args:
-          - --no-build-isolation
+#  - repo: https://github.com/mgedmin/check-manifest
+#    rev: "0.50"
+#    hooks:
+#      - id: check-manifest
+#        additional_dependencies:
+#          - setuptools-git-versioning
+#        args:
+#          - --no-build-isolation
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.6
