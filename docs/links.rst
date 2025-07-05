@@ -94,3 +94,6 @@
 
 .. |configuring_port_map_new_line_link| replace::
    Refer to :ref:`configuring-port-map-new-line` for configuration options.
+
+.. |configuring_comment_indenting_link| replace::
+   Refer to :ref:`configuring-comment-indenting` for configuration options.
