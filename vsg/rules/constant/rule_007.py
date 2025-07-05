@@ -33,3 +33,4 @@ class rule_007(Rule):
     def __init__(self):
         super().__init__(lTokens)
         self.bRemoveTrailingWhitespace = False
+        self.solution = "Move := operator"
