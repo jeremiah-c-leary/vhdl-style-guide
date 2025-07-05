@@ -10,6 +10,7 @@ def set_token_indent(dIndentMap, lTokens):
     cParams.lTokenKeys = lTokenKeys
     cParams.dIndents = dIndents
     cParams.library_name = []
+    cParams.dOptions = dIndentMap["indent"]["options"]
 
     for iToken, oToken in enumerate(lTokens):
         if isinstance(oToken, parser.whitespace):
@@ -184,8 +185,12 @@ def set_indent_of_comment(cParams, iToken, lTokens):
 
 def set_indent_of_normal_comment(cParams, iToken, lTokens):
     oToken = lTokens[iToken]
-    iTemp = get_indent_value_of_next_token(iToken, lTokens, cParams)
-    oToken.set_indent(iTemp)
+    if cParams.dOptions["comment"]["align_with_end_of_declarative_part"] and next_token_is_end_of_declarative_part(iToken, lTokens):
+        oToken.set_indent(cParams.iIndent)
+    elif cParams.dOptions["comment"]["align_with_end_of_statement_part"] and next_token_is_end_of_statement_part(iToken, lTokens):
+        oToken.set_indent(cParams.iIndent)
+    else:
+        oToken.set_indent(get_indent_value_of_next_token(iToken, lTokens, cParams))
 
 
 def set_indent_of_use_clause_comment(cParams, iToken, lTokens):
@@ -204,13 +209,29 @@ def set_indent_of_block_comment(cParams, iToken, lTokens):
         oToken.set_indent(cParams.iIndent)
 
 
-def is_end_of_scope_token(oToken):
-    lEndOfScopeTokenNames = [
-        "begin_keyword",
-        "end_keyword",
-    ]
+lEndOfStatementPartTokenNames = [
+    "end_keyword",
+]
 
-    if type(oToken).__name__ in lEndOfScopeTokenNames:
+
+def next_token_is_end_of_statement_part(iToken, lTokens):
+    return next_token_is_in_list(iToken, lTokens, lEndOfStatementPartTokenNames)
+
+
+lEndOfDeclarativePartTokenNames = [
+    "begin_keyword",
+]
+
+
+def next_token_is_end_of_declarative_part(iToken, lTokens):
+    return next_token_is_in_list(iToken, lTokens, lEndOfDeclarativePartTokenNames)
+
+
+def next_token_is_in_list(iToken, lTokens, lList):
+    iIndex = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
+    oNextToken = lTokens[iIndex]
+
+    if oNextToken.sub_token in lList:
         return True
 
     return False
@@ -218,15 +239,12 @@ def is_end_of_scope_token(oToken):
 
 def get_indent_value_of_next_token(iToken, lTokens, cParams):
     iIndex = utils.find_next_non_whitespace_token(iToken + 1, lTokens)
-    oNextToken = lTokens[iIndex]
-    sNextTokenUniqueId = oNextToken.get_unique_id(sJoin=":")
-
-    if not sNextTokenUniqueId in cParams.lTokenKeys or is_end_of_scope_token(oNextToken):
-        return cParams.iIndent
-
-    token_key = cParams.dIndents[sNextTokenUniqueId]["token"]
-    iTokenIndent = update_indent_var(cParams.iIndent, token_key)
-    return iTokenIndent
+    sUniqueId = lTokens[iIndex].get_unique_id(sJoin=":")
+    if sUniqueId in cParams.lTokenKeys:
+        token_key = cParams.dIndents[sUniqueId]["token"]
+        iTokenIndent = update_indent_var(cParams.iIndent, token_key)
+        return iTokenIndent
+    return cParams.iIndent
 
 
 class parameters:
@@ -236,6 +254,7 @@ class parameters:
         self.bLibraryFound = False
         self.bArchitectureFound = False
         self.insideConcurrentSignalAssignment = False
+        self.dOptions = {}
         self.iIndent = 0
 
 

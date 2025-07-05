@@ -9,6 +9,7 @@ Configuring
    configuring_array_multiline_structure_rules.rst
    configuring_blank_lines.rst
    configuring_block_comments.rst
+   configuring_comment_indenting.rst
    configuring_comment_keywords.rst
    configuring_conditional_multiline_indent_rules.rst
    configuring_consecutive_blank_line_rules.rst
