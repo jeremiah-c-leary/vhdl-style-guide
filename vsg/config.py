@@ -85,17 +85,6 @@ def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
                 except KeyError:
                     dReturn[sKey] = {}
                     dReturn[sKey][sRule] = tempConfiguration[sKey][sRule]
-        #        elif sKey == "indent":
-        #            try:
-        #                dReturn[sKey]["tokens"] = tempConfiguration[sKey]["tokens"]
-        #            except KeyError:
-        #                pass
-        #
-        #            try:
-        #                dReturn[sKey]["options"] = dReturn[sKey]["options"] | tempConfiguration[sKey]["options"]
-        #            except KeyError:
-        #                pass
-
         else:
             dReturn[sKey] = tempConfiguration[sKey]
     return dReturn
@@ -290,7 +279,7 @@ def report_invalid_indent_group(dReturn, sGroup):
     try:
         lTemp = list(dReturn["indent"]["tokens"][sGroup].keys())
     except KeyError:
-        print("The following group does not exist")
+        print("The following group does not exist:")
         print("")
         print("indent:")
         print("    tokens:")
@@ -309,7 +298,7 @@ def report_invalid_indent_token(dReturn, sGroup, sToken):
     try:
         lTemp = list(dReturn["indent"]["tokens"][sGroup][sToken].keys())
     except KeyError:
-        print("The following token does not exist")
+        print("The following token does not exist:")
         print("")
         print("indent:")
         print("    tokens:")
@@ -337,7 +326,7 @@ def report_invalid_option(dIndent, sOption):
     except KeyError:
         print("ERROR: Invalid indent option detected")
         print("")
-        print("The following option does not exist")
+        print("The following option does not exist:")
         print("")
         print("indent:")
         print("    options:")
@@ -358,7 +347,7 @@ def report_invalid_option_parameter(dIndent, sOption, sParameter):
     except KeyError:
         print("ERROR: Invalid indent option parameter detected")
         print("")
-        print("The following option parameter does not exist")
+        print("The following option parameter does not exist:")
         print("")
         print("indent:")
         print("    options:")
