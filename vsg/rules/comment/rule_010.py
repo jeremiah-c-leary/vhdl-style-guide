@@ -15,6 +15,8 @@ class rule_010(token_indent_unless_between_tokens):
     """
     This rule checks the indent lines starting with comments.
 
+    |configuring_comment_indenting_link|
+
     **Violation**
 
     .. code-block:: vhdl

@@ -1,5 +1,9 @@
 
 indent:
+    options:
+        comment:
+            align_with_end_of_declarative_part: False
+            align_with_end_of_statement_part: False
     tokens:
         alias_declaration:
             alias_keyword:

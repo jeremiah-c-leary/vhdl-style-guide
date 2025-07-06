@@ -1,0 +1,5 @@
+indent:
+    options:
+        comment:
+            align_with_end_of_declarative_part: True
+            blah: False

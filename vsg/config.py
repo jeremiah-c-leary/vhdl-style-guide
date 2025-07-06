@@ -207,29 +207,69 @@ def read_indent_configuration(dConfiguration):
 
     sFileName = os.path.join(os.path.dirname(__file__), "vhdlFile", "indent", "indent_config.yaml")
 
-    dReturn = open_configuration_file(sFileName)
+    dIndent = open_configuration_file(sFileName)
 
     if "indent" not in list(dConfiguration.keys()):
-        dConfiguration["indent"] = dReturn["indent"]
-        return dReturn
+        dConfiguration["indent"] = dIndent["indent"]
+        return dIndent
 
+    add_token_key_to_current_configuration(dConfiguration)
+
+    merge_indent_tokens(dIndent, dConfiguration)
+    merge_indent_options(dIndent, dConfiguration)
+
+    dConfiguration["indent"] = dIndent["indent"]
+
+    return dIndent
+
+
+def merge_indent_options(dIndent, dConfiguration):
+    ### This merges an indent configuration into the base indent dictionary
+    if not indent_option_exists(dConfiguration):
+        return None
+
+    try:
+        dOptions = dConfiguration["indent"]["options"]
+        for sOption in list(dOptions.keys()):
+            for sParameter in list(dOptions[sOption].keys()):
+                raise_keyerror_if_option_parameter_does_not_exist(dIndent, sOption, sParameter)
+                dIndent["indent"]["options"][sOption][sParameter] = dOptions[sOption][sParameter]
+    except KeyError:
+        report_indent_option_error(dIndent, sOption, sParameter)
+
+
+def indent_option_exists(dConfiguration):
+    try:
+        dOptions = dConfiguration["indent"]["options"]
+        return True
+    except KeyError:
+        return False
+
+
+def raise_keyerror_if_option_parameter_does_not_exist(dIndent, sOption, sParameter):
+    sTemp = dIndent["indent"]["options"][sOption][sParameter]
+
+
+def merge_indent_tokens(dIndent, dConfiguration):
     ### This merges an indent configuration into the base indent dictionary
     try:
         dGroups = dConfiguration["indent"]["tokens"]
         for sGroup in list(dGroups.keys()):
             for sToken in list(dGroups[sGroup].keys()):
                 for sParameter in list(dGroups[sGroup][sToken].keys()):
-                    dReturn["indent"]["tokens"][sGroup][sToken][sParameter] = dGroups[sGroup][sToken][sParameter]
+                    dIndent["indent"]["tokens"][sGroup][sToken][sParameter] = dGroups[sGroup][sToken][sParameter]
     except KeyError:
-        report_indent_configuration_error(dReturn, sGroup, sToken)
+        report_indent_configuration_error(dIndent, sGroup, sToken)
 
-    dConfiguration["indent"] = dReturn["indent"]
 
-    return dReturn
+def add_token_key_to_current_configuration(dConfiguration):
+    if "tokens" not in list(dConfiguration["indent"].keys()):
+        dConfiguration["indent"]["tokens"] = {}
 
 
 def report_indent_configuration_error(dReturn, sGroup, sToken):
     print("ERROR: Invalid indent configuration detected")
+    print("")
 
     report_invalid_indent_group(dReturn, sGroup)
     report_invalid_indent_token(dReturn, sGroup, sToken)
@@ -239,7 +279,7 @@ def report_invalid_indent_group(dReturn, sGroup):
     try:
         lTemp = list(dReturn["indent"]["tokens"][sGroup].keys())
     except KeyError:
-        print("The following group does not exist")
+        print("The following group does not exist:")
         print("")
         print("indent:")
         print("    tokens:")
@@ -258,7 +298,7 @@ def report_invalid_indent_token(dReturn, sGroup, sToken):
     try:
         lTemp = list(dReturn["indent"]["tokens"][sGroup][sToken].keys())
     except KeyError:
-        print("The following token does not exist")
+        print("The following token does not exist:")
         print("")
         print("indent:")
         print("    tokens:")
@@ -271,6 +311,55 @@ def report_invalid_indent_token(dReturn, sGroup, sToken):
         print("    tokens:")
         print(f"        {sGroup}:")
         for sMyToken in list(dReturn["indent"]["tokens"][sGroup].keys()):
+            print(f"            {sMyToken}:")
+        sys.exit(1)
+
+
+def report_indent_option_error(dIndent, sOption, sParameter):
+    report_invalid_option(dIndent, sOption)
+    report_invalid_option_parameter(dIndent, sOption, sParameter)
+
+
+def report_invalid_option(dIndent, sOption):
+    try:
+        lTemp = list(dIndent["indent"]["options"][sOption].keys())
+    except KeyError:
+        print("ERROR: Invalid indent option detected")
+        print("")
+        print("The following option does not exist:")
+        print("")
+        print("indent:")
+        print("    options:")
+        print(f"        {sOption}:")
+        print("")
+        print("The following options are available:")
+        print("")
+        print("indent:")
+        print("    options:")
+        for sMyToken in list(dIndent["indent"]["options"].keys()):
+            print(f"        {sMyToken}:")
+        sys.exit(1)
+
+
+def report_invalid_option_parameter(dIndent, sOption, sParameter):
+    try:
+        dTemp = dIndent["indent"]["options"][sOption][sParameter]
+    except KeyError:
+        print("ERROR: Invalid indent option parameter detected")
+        print("")
+        print("The following option parameter does not exist:")
+        print("")
+        print("indent:")
+        print("    options:")
+        print(f"        {sOption}:")
+        print(f"            {sParameter}:")
+        print("")
+        print("The following option parameters are available:")
+        print("")
+        print("indent:")
+        print("    options:")
+        print(f"        {sOption}:")
+        for sMyToken in list(dIndent["indent"]["options"][sOption].keys()):
             print(f"            {sMyToken}:")
         sys.exit(1)
 
