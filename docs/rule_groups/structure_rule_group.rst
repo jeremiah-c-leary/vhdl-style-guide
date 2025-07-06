@@ -94,6 +94,7 @@ Rules Enforcing Structure Rule Group
 * `instantiation_033 <../instantiation_rules.html#instantiation-033>`_
 * `instantiation_034 <../instantiation_rules.html#instantiation-034>`_
 * `instantiation_035 <../instantiation_rules.html#instantiation-035>`_
+* `instantiation_036 <../instantiation_rules.html#instantiation-036>`_
 * `library_010 <../library_rules.html#library-010>`_
 * `library_011 <../library_rules.html#library-011>`_
 * `loop_statement_001 <../loop_statement_rules.html#loop-statement-001>`_

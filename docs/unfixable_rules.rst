@@ -54,6 +54,7 @@ Identifier Restrictions
 With multiple options available, the user is required to make the decision.
 
 * `architecture_025 <architecture_rules.html#architecture-025>`_
+* `instantiation_036 <instantiation_rules.html#instantiation-036>`_
 
 Lengths
 -------

@@ -535,6 +535,29 @@ This rule checks the semicolon is not on its own line.
        A => B,
        B => C);
 
+instantiation_036
+#################
+
+|phase_1| |error| |unfixable| |structure| |structure_optional|
+
+This rule checks for the optional architecture specification in entity instantiations.
+
+The default action is "add".
+
+|configuring_optional_items_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   cmp_test : entity work.my_module;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   cmp_test : entity work.my_module(rtl);
+
 instantiation_300
 #################
 
