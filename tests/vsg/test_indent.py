@@ -43,6 +43,8 @@ class testMain(unittest.TestCase):
         lExpected = []
         lExpected.append(mock.call("ERROR: Invalid indent configuration detected"))
         lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("The following group does not exist"))
         lExpected.append(mock.call("\n"))
         lExpected.append(mock.call(""))
@@ -248,6 +250,8 @@ class testMain(unittest.TestCase):
         lExpected = []
         lExpected.append(mock.call("ERROR: Invalid indent configuration detected"))
         lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("The following token does not exist"))
         lExpected.append(mock.call("\n"))
         lExpected.append(mock.call(""))
@@ -281,6 +285,94 @@ class testMain(unittest.TestCase):
 
         sys.argv = ["vsg"]
         sys.argv.extend(["--configuration", "tests/vsg/indent/config_token.yaml"])
+        sys.argv.extend(["-p 1"])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch("sys.stdout")
+    def test_invalid_option(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call("ERROR: Invalid indent option detected"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("The following option does not exist"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("indent:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("    options:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(f"        blah:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("The following options are available:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("indent:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("    options:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(f"        comment:"))
+        lExpected.append(mock.call("\n"))
+
+        sys.argv = ["vsg"]
+        sys.argv.extend(["--configuration", "tests/vsg/indent/config_option.yaml"])
+        sys.argv.extend(["-p 1"])
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        mock_stdout.write.assert_has_calls(lExpected)
+
+    @mock.patch("sys.stdout")
+    def test_invalid_option_parameter(self, mock_stdout):
+        lExpected = []
+        lExpected.append(mock.call("ERROR: Invalid indent option parameter detected"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("The following option parameter does not exist"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("indent:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("    options:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(f"        comment:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(f"            blah:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("The following option parameters are available:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(""))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("indent:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("    options:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(f"        comment:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(f"            align_with_end_of_declarative_part:"))
+        lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call(f"            align_with_end_of_statement_part:"))
+        lExpected.append(mock.call("\n"))
+
+        sys.argv = ["vsg"]
+        sys.argv.extend(["--configuration", "tests/vsg/indent/config_option_parameter.yaml"])
         sys.argv.extend(["-p 1"])
 
         try:

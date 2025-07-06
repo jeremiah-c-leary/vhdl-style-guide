@@ -5,7 +5,7 @@ Configuring Comment Indenting
 
 The desired indenting of comments can vary depending on where the comment occurs.
 
-There is current a single option for configuring indents.
+There are currently two options for configuring indents.
 
 .. |boolean_value| replace::
    :code:`<boolean>`
