@@ -13,7 +13,7 @@ class rule_036(insert_tokens_right_of_token_if_it_does_not_exist_before_token):
     """
     This rule checks for the optional architecture specification in entity instantiations.
 
-    The default action is "remove".
+    The default action is "add".
 
     |configuring_optional_items_link|
 
@@ -35,4 +35,4 @@ class rule_036(insert_tokens_right_of_token_if_it_does_not_exist_before_token):
         self.solution = "architecture identifier"
         self.groups.append("structure::optional")
         self.fixable = False
-        self.action = "remove"
+        self.action = "add"

@@ -542,7 +542,7 @@ instantiation_036
 
 This rule checks for the optional architecture specification in entity instantiations.
 
-The default action is "remove".
+The default action is "add".
 
 |configuring_optional_items_link|
 
