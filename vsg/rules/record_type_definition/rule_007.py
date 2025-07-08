@@ -65,15 +65,3 @@ def extract_indexes(oToi):
     iLastIndex = oToi.get_length_of_tokens() - 1
     iStartIndex = utils.find_previous_non_whitespace_token(iLastIndex - 1, lTokens)
     return lTokens, iStartIndex, iLastIndex
-
-
-# def does_a_whitespace_token_separate_tokens(lTokens):
-#    if len(lTokens) == 3 and isinstance(lTokens[1], parser.whitespace):
-#        return True
-#    return False
-#
-#
-# def skip_based_on_whitespace(bInsertWhitespace, lTokens):
-#    if bInsertWhitespace and does_a_whitespace_token_separate_tokens(lTokens):
-#        return True
-#    return False
