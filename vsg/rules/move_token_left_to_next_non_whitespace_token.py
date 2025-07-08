@@ -31,7 +31,6 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         super().__init__()
         self.subphase = 2
         self.token_to_move = token_to_move
-        self.bRequireCarriageReturn = True
         self.bInsertWhitespace = True
         self.bRemoveTrailingWhitespace = True
         self.configuration_documentation_link = None
@@ -44,7 +43,7 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         lReturn = []
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if skip_based_on_whitespace(self.bRequireCarriageReturn, self.bInsertWhitespace, lTokens):
+            if self.skip_based_on_whitespace(self.bInsertWhitespace, lTokens):
                 continue
             if oToi.token_type_exists(token.pragma.pragma):
                 continue
@@ -78,24 +77,12 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
 
         oViolation.set_tokens(lNewTokens)
 
+    def does_a_whitespace_token_separate_tokens(self, lTokens):
+        if len(lTokens) == 3 and isinstance(lTokens[1], parser.whitespace):
+            return True
+        return False
 
-def does_a_carriage_return_token_separate_tokens(lTokens):
-    if len(lTokens) >= 3 and isinstance(lTokens[1], parser.carriage_return):
-        return True
-    return False
-
-
-def does_a_whitespace_token_separate_tokens(lTokens):
-    if len(lTokens) == 3 and isinstance(lTokens[1], parser.whitespace):
-        return True
-    return False
-
-
-def skip_based_on_whitespace(bRequireCarriageReturn, bInsertWhitespace, lTokens):
-    if bRequireCarriageReturn and not does_a_carriage_return_token_separate_tokens(lTokens):
-       return True
-
-    if bInsertWhitespace and does_a_whitespace_token_separate_tokens(lTokens):
-        return True
-
-    return False
+    def skip_based_on_whitespace(self, bInsertWhitespace, lTokens):
+        if bInsertWhitespace and self.does_a_whitespace_token_separate_tokens(lTokens):
+            return True
+        return False

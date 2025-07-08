@@ -2,7 +2,7 @@
 
 import sys
 
-from vsg import exceptions, parser
+from vsg import exceptions, parser, token
 from vsg.token import (
     choice,
     direction,
@@ -820,7 +820,7 @@ def is_whitespace(oObject):
     return False
 
 
-def read_vhdlfile(sFileName):
+def read_vhdlfile(sFileName, bIncludeEncoding=False):
     def _read(oFile):
         lLines = []
         for sLine in oFile:
@@ -828,15 +828,27 @@ def read_vhdlfile(sFileName):
         return lLines
 
     if sFileName == "stdin":
-        return _read(sys.stdin), None
+        if bIncludeEncoding:
+            return _read(sys.stdin), None, None
+        else:
+            return _read(sys.stdin), None
     try:
         with open(sFileName, encoding="utf-8") as oFile:
-            return _read(oFile), None
+            if bIncludeEncoding:
+                return _read(oFile), None, "utf-8"
+            else:
+                return _read(oFile), None
     except UnicodeDecodeError:
         with open(sFileName, encoding="ISO-8859-1") as oFile:
-            return _read(oFile), None
+            if bIncludeEncoding:
+                return _read(oFile), None, "ISO-8859-1"
+            else:
+                return _read(oFile), None
     except OSError as e:
-        return [], e
+        if bIncludeEncoding:
+            return [], e, None
+        else:
+            return [], e
 
 
 def is_token_at_end_of_line(iToken, lTokens):
@@ -1011,3 +1023,7 @@ def skip_tokens_until_matching_closing_paren(iToken, lObjects):
         if token_is_close_parenthesis(iCurrent, lObjects) and iCounter == 0:
             return iCurrent
         iCurrent += 1
+
+
+def pragma_exists_in_tokens(lTokens, iStartIndex):
+    return does_token_type_exist_in_list_of_tokens(token.pragma.pragma, lTokens[iStartIndex::])
