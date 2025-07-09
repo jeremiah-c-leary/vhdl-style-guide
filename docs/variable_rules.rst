@@ -383,6 +383,27 @@ This rule checks alignment of multiline constraints in variable declarations.
        element2(3 downto 0)
      );
 
+variable_500
+############
+
+|phase_6| |error| |case| |case_keyword|
+
+This rule checks that the keyword **shared** has proper case.
+
+|configuring_uppercase_and_lowercase_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   SHARED variable size : integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   shared variable size : integer;
+
 variable_600
 ############
 
