@@ -24,6 +24,7 @@ Configuring
    configuring_multiline_constraint_rules.rst
    configuring_multiline_indent_rules.rst
    configuring_number_of_signals_in_signal_declaration.rst
+   configuring_number_of_variables_in_variable_declaration.rst
    configuring_optional_items.rst
    configuring_port_map_new_line.rst
    configuring_port_mode_alignment.rst

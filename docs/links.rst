@@ -50,6 +50,9 @@
 .. |configuring_number_of_signals_in_signal_declaration_link| replace::
    Refer to :ref:`configuring-number-of-signals-in-signal-declaration` for more information.
 
+.. |configuring_number_of_variables_in_variable_declaration_link| replace::
+   Refer to :ref:`configuring-number-of-variables-in-variable-declaration` for more information.
+
 .. |configuring_optional_items_link| replace::
    Refer to :ref:`configuring-optional-items` for more information.
 
