@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
+from vsg import decorators
 from vsg.vhdlFile.classify import design_unit
 
 
-def tokenize(lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def tokenize(oDataStructure):
     """
     design_file ::=
         design_unit { design_unit }
     """
-    iCurrent = 0
-    while iCurrent < len(lObjects):
-        iReturn = design_unit.detect(iCurrent, lObjects)
-        if iReturn == iCurrent:
-            iCurrent += 1
-        else:
-            iCurrent = iReturn
+    while design_unit.detect(oDataStructure):
+        pass

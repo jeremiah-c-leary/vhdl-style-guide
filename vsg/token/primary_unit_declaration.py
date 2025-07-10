@@ -17,5 +17,5 @@ class semicolon(parser.semicolon):
     unique_id = primary_unit_declaration : semicolon
     """
 
-    def __init__(self):
+    def __init__(self, sString=None):
         super().__init__()

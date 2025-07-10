@@ -1,24 +1,25 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import record_element_constraint as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import element_constraint
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     record_element_constraint ::=
         record_element_simple_name element_constraint
     """
-    if not utils.is_next_token("(", iToken, lObjects):
-        iTemp = utils.find_next_token(iToken, lObjects) + 1
-        if utils.is_next_token("(", iTemp, lObjects):
+
+    if not oDataStructure.is_next_seek_token("("):
+        oDataStructure.increment_seek_index()
+        if oDataStructure.is_next_seek_token("("):
             return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token(token.record_element_simple_name, iToken, lObjects)
-    iCurrent = element_constraint.detect(iCurrent, lObjects)
-
-    return iCurrent
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.record_element_simple_name)
+    element_constraint.detect(oDataStructure)

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import component_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generic_clause, port_clause
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     component_declaration ::=
         component identifier [ is ]
@@ -14,36 +15,25 @@ def detect(iToken, lObjects):
         end component [ *component*_simple_name ] ;
     """
 
-    if utils.is_next_token("component", iToken, lObjects):
-        return classify(iToken, lObjects)
-    else:
-        return iToken
+    if oDataStructure.is_next_token("component"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = classify_opening_declaration(iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.component_keyword)
+    oDataStructure.replace_next_token_with(token.identifier)
+    oDataStructure.replace_next_token_with_if("is", token.is_keyword)
 
-    iCurrent = generic_clause.detect(iCurrent, lObjects)
+    if generic_clause.detect(oDataStructure):
+        generic_clause.classify(oDataStructure)
 
-    iCurrent = port_clause.detect(iCurrent, lObjects)
+    if port_clause.detect(oDataStructure):
+        port_clause.classify(oDataStructure)
 
-    iCurrent = classify_closing_declaration(iCurrent, lObjects)
-
-    return iCurrent
-
-
-def classify_opening_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("component", token.component_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("is", token.is_keyword, iCurrent, lObjects)
-
-    return iCurrent
-
-
-def classify_closing_declaration(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("component", token.end_component_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.component_simple_name, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("component", token.end_component_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.component_simple_name)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

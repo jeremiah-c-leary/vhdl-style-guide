@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token.psl import restrict_n_directive as token
-from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     [ label : ] Restrict!_Directive
 
@@ -12,15 +14,15 @@ def detect(iToken, lObjects):
         restrict! Sequence ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "restrict!"], iToken, lObjects) or utils.is_next_token("restrict!", iToken, lObjects):
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "restrict!"]) or oDataStructure.is_next_token("restrict!"):
         return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("restrict!", token.restrict_n_keyword, iToken, lObjects)
-    iCurrent = utils.assign_tokens_until(";", token.todo, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("restrict!", token.restrict_n_keyword)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    utils.assign_tokens_until(";", token.todo, oDataStructure)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

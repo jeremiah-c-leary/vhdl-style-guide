@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token.psl import fairness_statement as token
-from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     [ label : ] Fairness_Statement
 
@@ -14,21 +16,20 @@ def detect(iToken, lObjects):
     """
 
     if (
-        utils.are_next_consecutive_tokens([None, ":", "fairness"], iToken, lObjects)
-        or utils.is_next_token("fairness", iToken, lObjects)
-        or utils.are_next_consecutive_tokens([None, ":", "strong", "fairness"], iToken, lObjects)
-        or utils.are_next_consecutive_tokens(["strong", "fairness"], iToken, lObjects)
+        oDataStructure.are_next_consecutive_tokens([None, ":", "fairness"])
+        or oDataStructure.is_next_token("fairness")
+        or oDataStructure.are_next_consecutive_tokens([None, ":", "strong", "fairness"])
+        or oDataStructure.are_next_consecutive_tokens(["strong", "fairness"])
     ):
         return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_if("strong", token.strong_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("fairness", token.fairness_keyword, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with_if("strong", token.strong_keyword)
+    oDataStructure.replace_next_token_required("fairness", token.fairness_keyword)
 
-    iCurrent = utils.assign_tokens_until(";", token.todo, iCurrent, lObjects)
+    utils.assign_tokens_until(";", token.todo, oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import interface_list
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     port_list ::=
         *port*_interface_list
     """
 
-    return interface_list.classify(iToken, lObjects)
+    interface_list.classify(oDataStructure)

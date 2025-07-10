@@ -1,19 +1,16 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import context_clause, library_unit
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     design_unit ::=
         context_clause library_unit
     """
-    iCurrent = context_clause.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if context_clause.detect(oDataStructure):
+        return True
 
-    iCurrent = library_unit.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    return iToken
+    return library_unit.detect(oDataStructure)

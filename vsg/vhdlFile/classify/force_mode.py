@@ -1,16 +1,22 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import force_mode as token
-from vsg.vhdlFile import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     force_mode ::=
         in | out
     """
 
-    iCurrent = utils.assign_next_token_if("in", token.in_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("out", token.out_keyword, iCurrent, lObjects)
+    if oDataStructure.is_next_token_one_of(["in", "out"]):
+        classify(oDataStructure)
+        return True
+    return False
 
-    return iCurrent
+
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with_if("in", token.in_keyword)
+    oDataStructure.replace_next_token_with_if("out", token.out_keyword)

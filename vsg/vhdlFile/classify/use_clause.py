@@ -1,28 +1,28 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import use_clause as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import utils as classify_utils
+from vsg.vhdlFile.classify import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     use_clause ::=
         use selected_name { , selected_name } ;
     """
-    if utils.is_next_token("use", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("use"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("use", token.keyword, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_current_token_with(token.keyword)
 
-    while not utils.is_next_token(";", iCurrent, lObjects):
-        iCurrent = classify_utils.classify_selected_name(iCurrent, lObjects, token)
+    while not oDataStructure.is_next_token(";"):
+        utils.classify_selected_name(oDataStructure, token)
+        oDataStructure.replace_next_token_with_if(",", token.comma)
 
-        if utils.is_next_token(",", iCurrent, lObjects):
-            iCurrent = utils.assign_next_token_required(",", token.comma, iCurrent, lObjects)
-
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

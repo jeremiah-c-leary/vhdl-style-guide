@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token.psl import assume_directive as token
-from vsg.vhdlFile import utils
+from vsg.vhdlFile.classify import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     [ label : ] Assume_Directive
 
@@ -12,15 +14,14 @@ def detect(iToken, lObjects):
         assume Property ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "assume"], iToken, lObjects) or utils.is_next_token("assume", iToken, lObjects):
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "assume"]) or oDataStructure.is_next_token("assume"):
         return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("assume", token.assume_keyword, iToken, lObjects)
-    iCurrent = utils.assign_tokens_until(";", token.todo, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("assume", token.assume_keyword)
+    utils.assign_tokens_until(";", token.todo, oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

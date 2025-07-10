@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import interface_incomplete_type_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     interface_incomplete_type_declaration ::=
         type identifier
     """
-    if utils.is_next_token("type", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    return oDataStructure.is_next_token("type")
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_if("type", token.type_keyword, iToken, lObjects)
-    iCurrent = identifier.classify(iCurrent, lObjects, token.identifier)
-
-    return iCurrent
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with_if("type", token.type_keyword)
+    identifier.classify(oDataStructure, token.identifier)

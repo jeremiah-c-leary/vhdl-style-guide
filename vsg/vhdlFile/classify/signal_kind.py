@@ -1,25 +1,23 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import signal_kind as token
-from vsg.vhdlFile import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     signal_kind ::=
         register | bus
     """
 
-    if utils.is_next_token("register", iToken, lObjects):
-        return classify(iToken, lObjects)
-    elif utils.is_next_token("bus", iToken, lObjects):
-        return classify(iToken, lObjects)
-
-    return iToken
+    if oDataStructure.is_next_seek_token_one_of(["register", "bus"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_if("register", token.register_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("bus", token.bus_keyword, iToken, lObjects)
-
-    return iCurrent
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with_if("register", token.register_keyword)
+    oDataStructure.replace_next_token_with_if("bus", token.bus_keyword)

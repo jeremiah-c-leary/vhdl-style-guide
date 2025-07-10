@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import block_header as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import (
     generic_clause,
     generic_map_aspect,
@@ -10,7 +10,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     block_header ::=
         [ generic_clause
@@ -19,18 +20,14 @@ def detect(iToken, lObjects):
         [ port_map_aspect ; ] ]
     """
 
-    iCurrent = generic_clause.detect(iToken, lObjects)
+    if generic_clause.detect(oDataStructure):
+        generic_clause.classify(oDataStructure)
 
-    iLast = iCurrent
-    iCurrent = generic_map_aspect.detect(iCurrent, lObjects)
-    if iLast != iCurrent:
-        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    if generic_map_aspect.detect(oDataStructure):
+        oDataStructure.replace_next_token_required(";", token.semicolon)
 
-    iCurrent = port_clause.detect(iCurrent, lObjects)
+    if port_clause.detect(oDataStructure):
+        port_clause.classify(oDataStructure)
 
-    iLast = iCurrent
-    iCurrent = port_map_aspect.detect(iCurrent, lObjects)
-    if iLast != iCurrent:
-        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    if port_map_aspect.detect(oDataStructure):
+        oDataStructure.replace_next_token_required(";", token.semicolon)

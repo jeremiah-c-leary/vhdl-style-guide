@@ -1,24 +1,21 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     constrained_array_definition,
     unbounded_array_definition,
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     array_type_definition ::=
         unbounded_array_definition
       | constrained_array_definition
     """
 
-    iCurrent = unbounded_array_definition.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if unbounded_array_definition.detect(oDataStructure):
+        return True
 
-    iCurrent = constrained_array_definition.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    return iToken
+    return constrained_array_definition.detect(oDataStructure)

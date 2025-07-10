@@ -1,18 +1,16 @@
 # -*- coding: utf-8 -*-
 
 
+from vsg import decorators
 from vsg.vhdlFile.classify import process_declarative_item
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     process_declarative_part ::=
         { process_declarative_item }
     """
 
-    iLast = 0
-    iCurrent = iToken
-    while iLast != iCurrent:
-        iLast = iCurrent
-        iCurrent = process_declarative_item.detect(iCurrent, lObjects)
-    return iCurrent
+    while process_declarative_item.detect(oDataStructure):
+        pass

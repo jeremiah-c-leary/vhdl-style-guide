@@ -1,32 +1,30 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import entity_aspect as token
-from vsg.vhdlFile import utils
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     entity_aspect ::=
         **entity** entity_name [ ( architecture_identifier ) ]
       | **configuration** configuration_name
       | **open**
     """
-    iCurrent = iToken
 
-    if utils.is_next_token("open", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("open", token.open_keyword, iCurrent, lObjects)
+    if oDataStructure.is_next_token("open"):
+        oDataStructure.replace_next_token_with(token.open_keyword)
 
-    elif utils.is_next_token("configuration", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("configuration", token.configuration_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.configuration_name, iCurrent, lObjects)
+    elif oDataStructure.is_next_token("configuration"):
+        oDataStructure.replace_next_token_with(token.configuration_keyword)
+        oDataStructure.replace_next_token_with(token.configuration_name)
 
-    elif utils.is_next_token("entity", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("entity", token.entity_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.entity_name, iCurrent, lObjects)
+    elif oDataStructure.is_next_token("entity"):
+        oDataStructure.replace_next_token_with(token.entity_keyword)
+        oDataStructure.replace_next_token_with(token.entity_name)
 
-        if utils.is_next_token("(", iCurrent, lObjects):
-            iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
-            iCurrent = utils.assign_next_token(token.architecture_identifier, iCurrent, lObjects)
-            iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-
-    return iCurrent
+        if oDataStructure.is_next_token("("):
+            oDataStructure.replace_next_token_with(token.open_parenthesis)
+            oDataStructure.replace_next_token_with(token.architecture_identifier)
+            oDataStructure.replace_next_token_required(")", token.close_parenthesis)

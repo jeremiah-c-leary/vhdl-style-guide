@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
+from vsg import decorators
 
 
-def classify(iToken, lObjects, oTokenClass):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure, oTokenClass):
     """
     aggregate ::=
         ( element_association { , element_association } )
     """
-    iCurrent = utils.assign_next_token_required("(", oTokenClass.aggregate_open_parenthesis, iToken, lObjects)
-    iCurrent = utils.assign_next_token(oTokenClass.simple_name, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("(", oTokenClass.aggregate_open_parenthesis)
+    oDataStructure.replace_next_token_with(oTokenClass.simple_name)
 
-    while utils.is_next_token(",", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(",", oTokenClass.aggregate_comma, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(oTokenClass.simple_name, iCurrent, lObjects)
+    while oDataStructure.is_next_token(","):
+        oDataStructure.replace_next_token_with(oTokenClass.aggregate_comma)
+        oDataStructure.replace_next_token_with(oTokenClass.simple_name)
 
-    iCurrent = utils.assign_next_token_required(")", oTokenClass.aggregate_close_parenthesis, iToken, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(")", oTokenClass.aggregate_close_parenthesis)

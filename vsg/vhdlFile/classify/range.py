@@ -1,68 +1,30 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
+from vsg import decorators
+from vsg.vhdlFile.classify import attribute_name
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     range ::=
-        range_attribute_name
+        *range*_attribute_name
       | simple_expression direction simple_expression
     """
-    if check_for_range_attribute_name(iToken, lObjects):
-        return True
-    return detect_direction(iToken, lObjects)
 
-
-def check_for_range_attribute_name(iToken, lObjects):
-    if single_token_enclosed_in_parenthesis(iToken, lObjects):
+    if oDataStructure.are_next_consecutive_tokens([None, ")"]):
         return True
 
-    iParens = 0
-    for iIndex in range(iToken, len(lObjects)):
-        iParens = utils.update_paren_counter(iIndex, lObjects, iParens)
-
-        if token_is_matching_close_parenthesis(iParens):
-            return False
-        if token_is_tic(iParens, iIndex, lObjects):
-            return True
-
-    return False
-
-
-def single_token_enclosed_in_parenthesis(iToken, lObjects):
-    return utils.are_next_consecutive_tokens([None, ")"], iToken, lObjects)
-
-
-def token_is_matching_close_parenthesis(iParens):
-    if iParens == -1:
-        return True
-    return False
-
-
-def check_for_todo_token(iIndex, lObjects):
-    if utils.token_is_whitespace_or_comment(lObjects[iIndex]):
-        return False
-    return True
-
-
-def token_is_tic(iParens, iIndex, lObjects):
-    if iParens == 0 and utils.object_value_is(lObjects, iIndex, "'"):
+    if attribute_name.detect(oDataStructure):
         return True
 
-
-def detect_direction(iToken, lObjects):
-    iParens = 0
-    for iIndex in range(iToken, len(lObjects)):
-        iParens = utils.update_paren_counter(iIndex, lObjects, iParens)
-        if iParens == -1:
-            return False
-        if check_for_direction(iParens, iIndex, lObjects):
-            return True
-    return False
+    return detect_direction(oDataStructure)
 
 
-def check_for_direction(iParens, iIndex, lObjects):
-    if iParens == 0 and utils.is_next_token_one_of(["downto", "to"], iIndex, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect_direction(oDataStructure):
+    if oDataStructure.does_string_exist_before_matching_close_parenthesis("downto", 0):
+        return True
+    if oDataStructure.does_string_exist_before_matching_close_parenthesis("to", 0):
         return True
     return False

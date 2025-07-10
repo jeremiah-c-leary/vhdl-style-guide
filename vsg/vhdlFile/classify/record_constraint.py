@@ -1,28 +1,31 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import record_constraint as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import record_element_constraint
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
+def detect(oDataStructure):
     """
     record_constraint ::=
         ( record_element_constraint { , record_element_constraint } )
     """
-    if utils.is_next_token("(", iToken, lObjects):
-        iTemp = utils.find_next_token(iToken, lObjects) + 1
-        if record_element_constraint.detect(iTemp, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+
+    if oDataStructure.is_next_seek_token("("):
+        oDataStructure.increment_seek_index()
+        if record_element_constraint.detect(oDataStructure):
+            classify(oDataStructure)
+            return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("(", token.open_parenthesis)
 
-    while not utils.is_next_token(")", iCurrent, lObjects):
-        iCurrent = record_element_constraint.classify(iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_if(",", token.comma, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-
-    return iCurrent
+    while not oDataStructure.is_next_token(")"):
+        record_element_constraint.classify(oDataStructure)
+        oDataStructure.replace_next_token_with_if(",", token.comma)
+    oDataStructure.replace_next_token_required(")", token.close_parenthesis)

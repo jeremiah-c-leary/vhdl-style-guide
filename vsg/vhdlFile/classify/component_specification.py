@@ -1,33 +1,28 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import component_specification as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import instantiation_list
 
 
-def detect(iToken, lObjects):
-    iCurrent = iToken
-
-    while utils.find_in_next_n_tokens(",", 2, iCurrent, lObjects):
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        iCurrent = utils.find_next_token(iCurrent + 1, lObjects)
-
-    if utils.find_in_next_n_tokens(":", 2, iCurrent, lObjects):
-        return True
-    return False
-
-
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     component_specification ::=
         instantiation_list : component_name
     """
 
-    iCurrent = iToken
+    while oDataStructure.does_string_exist_in_next_n_tokens_from_seek_index(",", 2):
+        oDataStructure.increment_seek_index()
 
-    iCurrent = instantiation_list.classify(iToken, lObjects)
+    if oDataStructure.does_string_exist_in_next_n_tokens_from_seek_index(":", 2):
+        return True
+    return False
 
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.component_name, iCurrent, lObjects)
 
-    return iCurrent
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    instantiation_list.classify(oDataStructure)
+
+    oDataStructure.replace_next_token_required(":", token.colon)
+    oDataStructure.replace_next_token_with(token.component_name)

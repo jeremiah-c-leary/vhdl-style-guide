@@ -1,25 +1,25 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import secondary_unit_declaration as token
-from vsg.vhdlFile import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     secondary_unit_declaration ::= identifier = physical_literal;
     """
-    if utils.find_in_range("=", iToken, ";", lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.does_string_exist_before_string("=", ";"):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = iToken
-    iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.equal_sign, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.identifier)
+    oDataStructure.replace_next_token_with(token.equal_sign)
 
-    while not utils.is_next_token(";", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token(token.physical_literal, iCurrent, lObjects)
-    iCurrent = utils.assign_token(lObjects, iCurrent, token.semicolon)
-
-    return iCurrent
+    while not oDataStructure.is_next_token(";"):
+        oDataStructure.replace_current_token_with(token.physical_literal)
+    oDataStructure.replace_current_token_with(token.semicolon)

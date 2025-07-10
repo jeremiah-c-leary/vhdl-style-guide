@@ -1,27 +1,28 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import attribute_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import type_mark
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     attribute_declaration ::=
         attribute identifier : type_mark ;
     """
-    if utils.are_next_consecutive_tokens(["attribute", None, ":"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["attribute", None, ":"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("attribute", token.attribute_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(":", token.colon, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("attribute", token.attribute_keyword)
+    oDataStructure.replace_next_token_with(token.identifier)
+    oDataStructure.replace_next_token_required(":", token.colon)
 
-    iCurrent = type_mark.classify(iCurrent, lObjects)
+    type_mark.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import concurrent_conditional_signal_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import conditional_waveforms, delay_mechanism
+from vsg.vhdlFile.classify import conditional_waveforms, delay_mechanism, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
 
     [ label : ] [ postponed ] concurrent_conditional_signal_assignment
@@ -21,40 +22,40 @@ def detect(iToken, lObjects):
     The key to detecting this is looking for an assignment <= followed by the keyword **when** before a semicolon.
     """
 
-    iCurrent = iToken
     bAssignmentFound = False
+    while not oDataStructure.seek_token_lower_value_is(";"):
+        if bAssignmentFound:
+            if oDataStructure.seek_token_lower_value_is("when"):
+                return True
+        else:
+            if oDataStructure.seek_token_lower_value_is("when"):
+                return False
+            if oDataStructure.seek_token_lower_value_is("with"):
+                return False
 
-    while lObjects[iCurrent].get_value() != ";":
-        if utils.is_item(lObjects, iCurrent):
-            if bAssignmentFound:
-                if utils.object_value_is(lObjects, iCurrent, "when"):
-                    return True
-            else:
-                if utils.object_value_is(lObjects, iCurrent, "when"):
-                    return False
-                if utils.object_value_is(lObjects, iCurrent, "with"):
-                    return False
-
-            if utils.object_value_is(lObjects, iCurrent, "<=") and not bAssignmentFound:
+            if oDataStructure.seek_token_lower_value_is("<="):
                 bAssignmentFound = True
-        iCurrent += 1
+
+        oDataStructure.increment_seek_index()
+        oDataStructure.advance_to_next_seek_token()
 
     return False
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     concurrent_conditional_signal_assignment ::=
         target <= [ guarded ] [ delay_mechanism ] conditional_waveforms ;
     """
-    iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("guarded", token.guarded_keyword, iCurrent, lObjects)
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
 
-    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
 
-    iCurrent = conditional_waveforms.classify_until([";"], iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("guarded", token.guarded_keyword)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    delay_mechanism.detect(oDataStructure)
 
-    return iCurrent
+    conditional_waveforms.classify_until([";"], oDataStructure)
+
+    oDataStructure.replace_next_token_required(";", token.semicolon)

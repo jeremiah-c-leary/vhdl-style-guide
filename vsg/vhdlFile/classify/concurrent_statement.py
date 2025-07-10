@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     block_statement,
     component_instantiation_statement,
@@ -12,7 +13,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     concurrent_statement ::=
         block_statement
@@ -25,36 +27,25 @@ def detect(iToken, lObjects):
       | PSL_PSL_Directive
     """
 
-    iCurrent = process_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if process_statement.detect(oDataStructure):
+        return True
 
-    iCurrent = block_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if block_statement.detect(oDataStructure):
+        return True
 
-    iCurrent = generate_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if generate_statement.detect(oDataStructure):
+        return True
 
-    iCurrent = psl_psl_directive.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if psl_psl_directive.detect(oDataStructure):
+        return True
 
-    iCurrent = concurrent_assertion_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if concurrent_assertion_statement.detect(oDataStructure):
+        return True
 
-    iCurrent = concurrent_signal_assignment_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if concurrent_signal_assignment_statement.detect(oDataStructure):
+        return True
 
-    iCurrent = concurrent_procedure_call_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if concurrent_procedure_call_statement.detect(oDataStructure):
+        return True
 
-    iCurrent = component_instantiation_statement.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    return iToken
+    return component_instantiation_statement.detect(oDataStructure)

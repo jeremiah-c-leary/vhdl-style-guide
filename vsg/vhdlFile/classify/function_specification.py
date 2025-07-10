@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import function_specification as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import formal_parameter_list, subprogram_header, type_mark
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     function_specification ::=
         [ pure | impure ] function designator
@@ -13,28 +14,28 @@ def detect(iToken, lObjects):
             [ [ parameter ] ( formal_parameter_list ) ] return type_mark
     """
 
-    if utils.is_next_token_one_of(["pure", "impure", "function"], iToken, lObjects):
-        if not utils.find_in_next_n_tokens("new", 4, iToken, lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.is_next_token_one_of(["pure", "impure", "function"]):
+        if not oDataStructure.does_string_exist_in_next_n_tokens("new", 4):
+            classify(oDataStructure)
+            return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_if("pure", token.pure_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("impure", token.impure_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("function", token.function_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.designator, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with_if("pure", token.pure_keyword)
+    oDataStructure.replace_next_token_with_if("impure", token.impure_keyword)
+    oDataStructure.replace_next_token_required("function", token.function_keyword)
+    oDataStructure.replace_next_token_with(token.designator)
 
-    iCurrent = subprogram_header.detect(iCurrent, lObjects)
+    subprogram_header.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_if("parameter", token.parameter_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("parameter", token.parameter_keyword)
 
-    if utils.is_next_token("(", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
-        iCurrent = formal_parameter_list.classify(iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
+    if oDataStructure.is_next_token("("):
+        oDataStructure.replace_next_token_with(token.open_parenthesis)
+        formal_parameter_list.classify(oDataStructure)
+        oDataStructure.replace_next_token_required(")", token.close_parenthesis)
 
-    iCurrent = utils.assign_next_token_required("return", token.return_keyword, iToken, lObjects)
-    iCurrent = type_mark.classify(iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("return", token.return_keyword)
+    type_mark.classify(oDataStructure)

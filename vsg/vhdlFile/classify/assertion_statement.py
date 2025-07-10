@@ -1,25 +1,26 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import assertion_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import assertion
+from vsg.vhdlFile.classify import assertion, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     assertion_statement ::=
         [ label : ] assertion ;
     """
-    if utils.keyword_found("assert", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("assert", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.label, token.label_colon)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.label, token.label_colon)
 
-    iCurrent = assertion.classify(iCurrent, lObjects)
+    assertion.classify(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

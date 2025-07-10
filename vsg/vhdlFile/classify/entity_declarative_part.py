@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
+from vsg import decorators
 from vsg.vhdlFile.classify import entity_declarative_item
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     entity_declarative_part ::=
         { entity_declarative_item }
     """
 
-    return utils.detect_submodule(iToken, lObjects, entity_declarative_item)
+    while entity_declarative_item.detect(oDataStructure):
+        pass

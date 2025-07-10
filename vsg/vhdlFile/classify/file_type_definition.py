@@ -1,26 +1,27 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import file_type_definition as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import type_mark
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     file_type_definition ::=
         file of type_mark
     """
 
-    if utils.is_next_token("file", iToken, lObjects):
-        return classify(iToken, lObjects)
+    if oDataStructure.is_next_token("file"):
+        classify(oDataStructure)
+        return True
 
-    return iToken
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("file", token.file_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("of", token.of_keyword, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.file_keyword)
+    oDataStructure.replace_next_token_required("of", token.of_keyword)
 
-    iCurrent = type_mark.classify(iToken, lObjects)
-
-    return iCurrent
+    type_mark.classify(oDataStructure)

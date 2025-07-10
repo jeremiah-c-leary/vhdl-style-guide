@@ -7,7 +7,6 @@ from vsg.token import (
     choice,
     direction,
     element_association,
-    exponent,
     predefined_attribute,
     relational_operator,
 )
@@ -32,14 +31,8 @@ def assign_tokens_until_ignoring_paren(sToken, token, iToken, lObjects):
     return None
 
 
-def assign_next_token(token, iToken, lObjects):
-    iCurrent = find_next_token(iToken, lObjects)
-    try:
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-    except TypeError:
-        lObjects[iCurrent] = token()
-    iCurrent += 1
-    return iCurrent
+def assign_next_token(token, oDesignFile):
+    oDesignFile.replace_next_token_with(token)
 
 
 def assign_token(lObjects, iToken, token):
@@ -75,16 +68,6 @@ def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
         lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
         iCurrent += 1
         return iCurrent
-    return iToken
-
-
-def assign_next_token_required(sToken, token, iToken, lObjects):
-    iCurrent = find_next_token(iToken, lObjects)
-    if object_value_is(lObjects, iCurrent, sToken):
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
-        return iCurrent + 1
-    else:
-        print_error_message(sToken, token, iCurrent, lObjects)
     return iToken
 
 
@@ -308,19 +291,6 @@ def find_previous_non_whitespace_token(iToken, lObjects):
     return iCurrent
 
 
-def detect_submodule(iToken, lObjects, module):
-    iLast = -1
-    iReturn = iToken
-    while iLast != iReturn:
-        if is_next_token("end", iReturn, lObjects):
-            return iToken
-        iReturn = find_next_token(iReturn, lObjects)
-        iLast = iReturn
-        iReturn = module.detect(iReturn, lObjects)
-
-    return iReturn
-
-
 def has_label(iObject, lObjects):
     iCurrent = find_next_token(iObject, lObjects)
     iCurrent = increment_token_count(iCurrent)
@@ -328,14 +298,6 @@ def has_label(iObject, lObjects):
     if object_value_is(lObjects, iCurrent, ":"):
         return True
     return False
-
-
-def tokenize_postponed(iObject, lObjects, token):
-    iIndex = find_next_token(iObject, lObjects)
-    if object_value_is(lObjects, iIndex, "postponed"):
-        assign_token(lObjects, iIndex, token)
-        return iIndex + 1
-    return iObject
 
 
 def tokenize_label(iToken, lObjects, label_token, colon_token):
@@ -893,82 +855,6 @@ def assignment_operator_found(iToken, lObjects):
     if find_in_range("<=", iToken, ";", lObjects):
         if all_assignments_inside_parenthesis(iToken, ";", lObjects):
             return False
-        return True
-    return False
-
-
-def assign_special_tokens(lObjects, iCurrent, oType):
-    sValue = lObjects[iCurrent].get_lower_value()
-    if sValue == ")":
-        assign_token(lObjects, iCurrent, parser.close_parenthesis)
-    elif sValue == "(":
-        assign_token(lObjects, iCurrent, parser.open_parenthesis)
-    elif sValue == "-":
-        if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
-            assign_token(lObjects, iCurrent, exponent.minus_sign)
-        else:
-            assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == "+":
-        if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
-            assign_token(lObjects, iCurrent, exponent.plus_sign)
-        else:
-            assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == "*":
-        assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == "**":
-        assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == "/":
-        assign_token(lObjects, iCurrent, parser.todo)
-    elif sValue == "downto":
-        assign_token(lObjects, iCurrent, direction.downto)
-    elif sValue == "to":
-        assign_token(lObjects, iCurrent, direction.to)
-    elif sValue == "others":
-        assign_token(lObjects, iCurrent, choice.others_keyword)
-    elif sValue == "=>":
-        assign_token(lObjects, iCurrent, element_association.assignment)
-    elif sValue == "e":
-        if lObjects[iCurrent + 1].get_value().isdigit() or lObjects[iCurrent + 1].get_value() == "-" or lObjects[iCurrent + 1].get_value() == "+":
-            assign_token(lObjects, iCurrent, exponent.e_keyword)
-        else:
-            assign_token(lObjects, iCurrent, oType)
-    elif sValue == "=":
-        assign_token(lObjects, iCurrent, relational_operator.equal)
-    elif sValue == "/=":
-        assign_token(lObjects, iCurrent, relational_operator.not_equal)
-    elif sValue == "<":
-        assign_token(lObjects, iCurrent, relational_operator.less_than)
-    elif sValue == "<=":
-        assign_token(lObjects, iCurrent, relational_operator.less_than_or_equal)
-    elif sValue == ">":
-        assign_token(lObjects, iCurrent, relational_operator.greater_than)
-    elif sValue == ">=":
-        assign_token(lObjects, iCurrent, relational_operator.greater_than_or_equal)
-    elif sValue == "?=":
-        assign_token(lObjects, iCurrent, relational_operator.question_equal)
-    elif sValue == "?/=":
-        assign_token(lObjects, iCurrent, relational_operator.question_not_equal)
-    elif sValue == "?<":
-        assign_token(lObjects, iCurrent, relational_operator.question_less_than)
-    elif sValue == "?<=":
-        assign_token(lObjects, iCurrent, relational_operator.question_less_than_or_equal)
-    elif sValue == "?>":
-        assign_token(lObjects, iCurrent, relational_operator.question_greater_than)
-    elif sValue == "?>=":
-        assign_token(lObjects, iCurrent, relational_operator.question_greater_than_or_equal)
-
-    elif exponent_detected(lObjects, iCurrent):
-        assign_token(lObjects, iCurrent, exponent.integer)
-    else:
-        assign_token(lObjects, iCurrent, oType)
-
-
-def exponent_detected(lObjects, iCurrent):
-    if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
-        return True
-    if isinstance(lObjects[iCurrent - 1], exponent.plus_sign):
-        return True
-    if isinstance(lObjects[iCurrent - 1], exponent.minus_sign):
         return True
     return False
 

@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import context_item
+from vsg import decorators
+from vsg.vhdlFile.classify import context_item, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     context_clause ::=
         { context_item }
     """
-    iCurrent = utils.detect_submodule(iToken, lObjects, context_item)
-    return iCurrent
+    return utils.detect_production(oDataStructure, context_item)

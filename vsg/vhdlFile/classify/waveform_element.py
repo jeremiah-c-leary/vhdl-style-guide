@@ -1,26 +1,25 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import waveform_element as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression
 
 
-def classify_until(lUntils, iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
     """
     waveform_element ::=
         *value*_expression [ after *time*_expression ]
       | null [ after *time*_expression ]
     """
 
-    if utils.is_next_token("null", iToken, lObjects):
-        iCurrent = utils.assign_next_token_required("null", token.null_keyword, iToken, lObjects)
+    if oDataStructure.is_next_seek_token("null"):
+        oDataStructure.replace_next_token_with(token.null_keyword)
     else:
         lMyUntils = lUntils
         lMyUntils.append("after")
-        iCurrent = expression.classify_until(lMyUntils, iToken, lObjects)
+        expression.classify_until(lMyUntils, oDataStructure)
 
-    if utils.is_next_token("after", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("after", token.after_keyword, iCurrent, lObjects)
-        iCurrent = expression.classify_until(lUntils, iCurrent, lObjects)
-
-    return iCurrent
+    if oDataStructure.is_next_seek_token("after"):
+        oDataStructure.replace_next_token_with(token.after_keyword)
+        expression.classify_until(lUntils, oDataStructure)

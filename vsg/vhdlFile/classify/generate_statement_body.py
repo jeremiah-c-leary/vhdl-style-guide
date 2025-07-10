@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import generate_statement_body as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import block_declarative_part, concurrent_statement
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     generate_statement_body ::=
             [ block_declarative_part
@@ -13,27 +14,17 @@ def classify(iToken, lObjects):
             { concurrent_statement }
         [ end [ alternative_label ] ; ]
     """
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    iLast = iCurrent
-    iCurrent = block_declarative_part.detect(iCurrent, lObjects)
 
-    if iCurrent != iLast:
-        iCurrent = utils.assign_next_token_required("begin", token.begin_keyword, iCurrent, lObjects)
+    block_declarative_part.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_if("begin", token.begin_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("begin", token.begin_keyword)
 
-    iLast = 0
-    while iCurrent != iLast:
-        iLast = iCurrent
-        if utils.is_next_token_one_of(["elsif", "else", "when"], iCurrent, lObjects):
-            return iCurrent
-        if utils.is_next_token_one_of(["end"], iCurrent, lObjects):
+    while not oDataStructure.is_next_token_one_of(["elsif", "else", "when", "end"]):
+        if not concurrent_statement.detect(oDataStructure):
             break
-        iCurrent = concurrent_statement.detect(iCurrent, lObjects)
 
-    if not utils.are_next_consecutive_tokens(["end", "generate"], iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_if_not(";", token.alternative_label, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    if oDataStructure.is_next_token("end"):
+        if not oDataStructure.are_next_consecutive_tokens(["end", "generate"]):
+            oDataStructure.replace_next_token_required("end", token.end_keyword)
+            oDataStructure.replace_next_token_with_if_not(";", token.alternative_label)
+            oDataStructure.replace_next_token_required(";", token.semicolon)

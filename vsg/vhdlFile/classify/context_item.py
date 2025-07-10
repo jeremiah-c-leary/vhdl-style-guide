@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import context_reference, library_clause, use_clause
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     context_item ::=
         library_clause
@@ -11,16 +13,10 @@ def detect(iToken, lObjects):
       | context_reference
     """
 
-    iCurrent = library_clause.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if library_clause.detect(oDataStructure):
+        return True
 
-    iCurrent = use_clause.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
+    if use_clause.detect(oDataStructure):
+        return True
 
-    iCurrent = context_reference.detect(iToken, lObjects)
-    if iCurrent != iToken:
-        return iCurrent
-
-    return iToken
+    return context_reference.detect(oDataStructure)

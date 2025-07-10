@@ -1,50 +1,39 @@
 # -*- coding: utf-8 -*-
 import copy
 
-from vsg import parser
+from vsg import decorators, parser
 from vsg.token import sensitivity_list as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import name
+from vsg.vhdlFile.classify import name, utils
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     sensitivity_list ::=
         *signal*_name { , *signal*_name}
     """
 
-    iCurrent = iToken
-    iStop = len(lObjects) - 1
-    iOpenParenthesis = 0
-    iCloseParenthesis = 0
-    while iCurrent < iStop:
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
-        if utils.token_is_open_parenthesis(iCurrent, lObjects):
-            iOpenParenthesis += 1
-        if utils.token_is_close_parenthesis(iCurrent, lObjects):
-            iCloseParenthesis += 1
-        if iOpenParenthesis < iCloseParenthesis:
+    iParen = 0
+    while oDataStructure.advance_to_next_token():
+        iParen = utils.update_paren_counter(iParen, oDataStructure)
+
+        if utils.unmatched_close_paren_found(iParen):
             break
+
+        if oDataStructure.is_next_token(","):
+            oDataStructure.replace_next_token_with(token.comma)
         else:
-            if utils.is_next_token(",", iCurrent, lObjects):
-                utils.assign_token(lObjects, iCurrent, token.comma)
-            else:
-                iCurrent = name.classify_until([","], iCurrent, lObjects)
-    return iCurrent
+            name.classify_until([","], oDataStructure)
 
 
-def classify_until(lUntils, iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
     """
     sensitivity_list ::=
         *signal*_name { , *signal*_name}
     """
-    iCurrent = iToken
-    iLast = 0
     lMyUntils = copy.deepcopy(lUntils)
     lMyUntils.append(",")
-    while iLast != iCurrent:
-        iLast = iCurrent
-        if lObjects[utils.find_next_token(iCurrent, lObjects)].get_lower_value() in lUntils:
-            return iCurrent
-        iCurrent = utils.assign_next_token_if(",", token.comma, iCurrent, lObjects)
-        iCurrent = name.classify_until(lMyUntils, iCurrent, lObjects)
+    while not oDataStructure.is_next_token_one_of(lUntils):
+        oDataStructure.replace_next_token_with_if(",", token.comma)
+        name.classify_until(lMyUntils, oDataStructure)

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import concurrent_selected_signal_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import delay_mechanism, expression, selected_waveforms
+from vsg.vhdlFile.classify import delay_mechanism, expression, selected_waveforms, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     concurrent_selected_signal_assignment ::=
         with expression select [ ? ]
@@ -13,29 +14,29 @@ def detect(iToken, lObjects):
 
     The key to detecting this is looking for the **with** keyword before the **select** keyword.
     """
-    if utils.find_in_next_n_tokens("with", 4, iToken, lObjects):
-        if not utils.find_in_next_n_tokens("end", 1, iToken, lObjects):
+    if oDataStructure.does_string_exist_in_next_n_tokens("with", 4):
+        if not oDataStructure.does_string_exist_in_next_n_tokens("end", 1):
             return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("with", token.with_keyword, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("with", token.with_keyword)
 
-    iCurrent = expression.classify_until(["select"], iCurrent, lObjects)
+    expression.classify_until(["select"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("select", token.select_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("?", token.question_mark, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("select", token.select_keyword)
+    oDataStructure.replace_next_token_with_if("?", token.question_mark)
 
-    iCurrent = utils.assign_tokens_until("<=", token.target, iCurrent, lObjects)
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("guarded", token.guarded_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
 
-    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
+    oDataStructure.replace_next_token_with_if("guarded", token.guarded_keyword)
 
-    selected_waveforms.classify_until([";"], iToken, lObjects)
+    delay_mechanism.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    selected_waveforms.classify_until([";"], oDataStructure)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

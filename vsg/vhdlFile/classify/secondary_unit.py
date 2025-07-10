@@ -1,20 +1,17 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import architecture_body, package_body
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     secondary_unit ::=
         architecture_body
       | package_body
     """
-    iReturned = architecture_body.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
+    if architecture_body.detect(oDataStructure):
+        return True
 
-    iReturned = package_body.detect(iToken, lObjects)
-    if iReturned != iToken:
-        return iReturned
-
-    return iToken
+    return package_body.detect(oDataStructure)

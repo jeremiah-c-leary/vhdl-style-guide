@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg.token import direction
-from vsg.vhdlFile import utils
+from vsg import decorators
 from vsg.vhdlFile.classify import (
     external_constant_name,
     external_signal_name,
@@ -10,7 +8,8 @@ from vsg.vhdlFile.classify import (
 )
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     external_name ::=
         external_constant_name
@@ -18,16 +17,10 @@ def detect(iToken, lObjects):
       | external_variable_name
     """
 
-    iReturn = external_constant_name.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if external_constant_name.detect(oDataStructure):
+        return True
 
-    iReturn = external_signal_name.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
+    if external_signal_name.detect(oDataStructure):
+        return True
 
-    iReturn = external_variable_name.detect(iToken, lObjects)
-    if iReturn != iToken:
-        return iReturn
-
-    return iToken
+    return external_variable_name.detect(oDataStructure)

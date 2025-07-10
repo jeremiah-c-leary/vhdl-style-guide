@@ -1,31 +1,31 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import subtype_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier, subtype_indication
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     subtype_declaration ::=
         subtype identifier is subtype_indication ;
     """
 
-    if utils.is_next_token("subtype", iToken, lObjects):
-        return classify(iToken, lObjects)
+    if oDataStructure.is_next_seek_token("subtype"):
+        classify(oDataStructure)
+        return True
+    return False
 
-    return iToken
 
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_required("subtype", token.subtype_keyword)
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("subtype", token.subtype_keyword, iToken, lObjects)
+    identifier.classify(oDataStructure, token.identifier)
 
-    iCurrent = identifier.classify(iCurrent, lObjects, token.identifier)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
+    subtype_indication.classify(oDataStructure)
 
-    iCurrent = subtype_indication.classify(iCurrent, lObjects)
-
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

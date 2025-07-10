@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import context_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import context_clause
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     context_declaration ::=
         context identifier is
@@ -13,23 +14,22 @@ def detect(iToken, lObjects):
         end [ context ] [ context_simple_name ] ;
     """
 
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    if utils.object_value_is(lObjects, iCurrent, "context"):
-        if utils.find_in_range("is", iCurrent, ";", lObjects):
-            return classify(iCurrent, lObjects)
-    return iToken
+    if oDataStructure.is_next_token("context"):
+        if oDataStructure.does_string_exist_before_string("is", ";"):
+            classify(oDataStructure)
+            return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("context", token.context_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token(token.identifier, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_current_token_with(token.context_keyword)
+    oDataStructure.replace_next_token_with(token.identifier)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = context_clause.detect(iCurrent, lObjects)
+    context_clause.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("context", token.end_context_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.context_simple_name, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_with_if("context", token.end_context_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.context_simple_name)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

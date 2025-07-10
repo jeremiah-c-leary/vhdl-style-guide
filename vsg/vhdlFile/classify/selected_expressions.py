@@ -1,34 +1,32 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import selected_expressions as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import choices, expression
 
 
-def classify_until(lUntils, iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
     """
     selected_expressions ::=
         { expression when choices , }
         expression when choices
     """
 
-    iCurrent = iToken
     lMyUntils = lUntils
     lMyUntils.append(",")
 
-    iCurrent = expression.classify_until(["when"], iCurrent, lObjects)
+    expression.classify_until(["when"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("when", token.when_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("when", token.when_keyword)
 
-    iCurrent = choices.classify_until(lMyUntils, iCurrent, lObjects)
+    choices.classify_until(lMyUntils, oDataStructure)
 
-    while utils.is_next_token(",", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(",", token.comma, iCurrent, lObjects)
+    while oDataStructure.is_next_token(","):
+        oDataStructure.replace_next_token_required(",", token.comma)
 
-        iCurrent = expression.classify_until(["when"], iCurrent, lObjects)
+        expression.classify_until(["when"], oDataStructure)
 
-        iCurrent = utils.assign_next_token_required("when", token.when_keyword, iCurrent, lObjects)
+        oDataStructure.replace_next_token_required("when", token.when_keyword)
 
-        iCurrent = choices.classify_until(lMyUntils, iCurrent, lObjects)
-
-    return iCurrent
+        choices.classify_until(lMyUntils, oDataStructure)

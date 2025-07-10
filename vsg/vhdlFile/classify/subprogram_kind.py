@@ -1,24 +1,24 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import subprogram_kind as token
-from vsg.vhdlFile import utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     subprogram_kind ::=
         procedure | function
     """
 
-    if utils.is_next_token("procedure", iToken, lObjects):
+    if oDataStructure.is_next_token("procedure"):
         return True
-    if utils.is_next_token("function", iToken, lObjects):
+    if oDataStructure.is_next_token("function"):
         return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_if("procedure", token.procedure_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_if("function", token.function_keyword, iToken, lObjects)
-
-    return iCurrent
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with_if("procedure", token.procedure_keyword)
+    oDataStructure.replace_next_token_with_if("function", token.function_keyword)

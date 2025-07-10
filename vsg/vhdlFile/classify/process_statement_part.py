@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.vhdlFile.classify import sequential_statement
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     process_statement_part ::=
         { sequential_statement }
     """
 
-    iLast = 0
-    iCurrent = iToken
-    while iLast != iCurrent:
-        iLast = iCurrent
-        iCurrent = sequential_statement.detect(iCurrent, lObjects)
-    return iCurrent
+    while sequential_statement.detect(oDataStructure):
+        pass

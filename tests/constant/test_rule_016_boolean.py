@@ -87,7 +87,7 @@ lExpected_positional.append("")
 utils.read_file(os.path.join(sTestDir, "rule_016_test_input_positional.fixed.vhd"), lExpected_positional)
 
 
-class test_constant_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

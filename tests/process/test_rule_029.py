@@ -20,7 +20,7 @@ lExpected_edge.append("")
 utils.read_file(os.path.join(sTestDir, "rule_029_test_input.fixed_edge.vhd"), lExpected_edge)
 
 
-class test_process_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

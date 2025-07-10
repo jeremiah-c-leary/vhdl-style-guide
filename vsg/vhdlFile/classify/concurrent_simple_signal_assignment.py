@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import concurrent_simple_signal_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import delay_mechanism, waveform
+from vsg.vhdlFile.classify import delay_mechanism, utils, waveform
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     [ label : ] [ postponed ] concurrent_simple_signal_assignment
 
@@ -16,22 +17,21 @@ def detect(iToken, lObjects):
     This will be the default if the other types are not found.
     """
 
-    if not utils.assignment_operator_found(iToken, lObjects):
-        return False
-    if utils.find_in_range("when", iToken, ";", lObjects):
-        return False
-    return True
+    if oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";"):
+        if oDataStructure.does_string_exist_before_string("when", ";"):
+            return False
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("guarded", token.guarded_keyword, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
+    oDataStructure.replace_next_token_with_if("guarded", token.guarded_keyword)
 
-    iCurrent = delay_mechanism.detect(iCurrent, lObjects)
+    delay_mechanism.detect(oDataStructure)
 
-    iCurrent = waveform.classify_until([";"], iCurrent, lObjects)
+    waveform.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import group_constituent_list as token
-from vsg.vhdlFile import utils
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
-    association_list ::=
-        association_element { , association_element }
+    group_constituent_list ::=
+        group_constituent { , group_constituent }
     """
-    iCurrent = utils.assign_next_token(token.group_constituent, iToken, lObjects)
+    oDataStructure.replace_next_token_with(token.group_constituent)
 
-    while utils.is_next_token(",", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(",", token.comma, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.group_constituent, iToken, lObjects)
-
-    return iCurrent
+    while oDataStructure.is_next_token(","):
+        oDataStructure.replace_next_token_with(token.comma)
+        oDataStructure.replace_next_token_with(token.group_constituent)

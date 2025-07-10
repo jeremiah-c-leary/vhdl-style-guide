@@ -1,49 +1,42 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
+from vsg import decorators, parser
 from vsg.token import attribute_name as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression, signature
+from vsg.vhdlFile.classify import expression, prefix, signature
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
+def detect(oDataStructure):
     """
     attribute_name ::=
         prefix [ signature ] ' attribute_designator [ ( expression ) ]
     """
 
-    # Skip over prefix
-    iCurrent = utils.find_next_token(iToken, lObjects)
-    iCurrent = utils.find_next_token(iCurrent + 1, lObjects)
+    skip_prefix(oDataStructure)
 
-    if utils.token_is_open_parenthesis(iCurrent, lObjects):
-        iCurrent += 1
-        iCurrent = utils.skip_tokens_until_matching_closing_paren(iCurrent, lObjects)
-        iCurrent += 1
-
-    # Check for signature
-    if utils.is_next_token("[", iCurrent, lObjects):
+    if signature.detect(oDataStructure):
         return True
 
-    # Check for tic
-    if utils.is_next_token("'", iCurrent, lObjects):
+    if oDataStructure.is_next_seek_token("'"):
         return True
 
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token(token.name, iToken, lObjects)
-    iCurrent = utils.find_next_token(iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def skip_prefix(oDataStructure):
+    oDataStructure.advance_to_next_seek_token()
+    oDataStructure.increment_seek_index()
+    oDataStructure.advance_seek_over_parenthesis()
 
-    if utils.token_is_open_parenthesis(iCurrent, lObjects):
-        iCurrent = utils.assign_token(lObjects, iCurrent, parser.open_parenthesis)
-        iCurrent = utils.assign_tokens_until_matching_closing_paren(parser.todo, iCurrent, lObjects)
-        iCurrent = utils.assign_token(lObjects, iCurrent, parser.close_parenthesis)
 
-    signature.detect(iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    prefix.classify(oDataStructure, token)
 
-    iCurrent = utils.assign_next_token_required("'", token.tic, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token(token.attribute, iCurrent, lObjects)
+    if signature.detect(oDataStructure):
+        signature.classify(oDataStructure)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required("'", token.tic)
+    oDataStructure.replace_next_token_with(token.attribute)

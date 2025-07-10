@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import interface_list as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import interface_element
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     interface_list ::=
         interface_element { ; interface_element }
     """
 
-    iCurrent = interface_element.classify(iToken, lObjects)
+    interface_element.classify(oDataStructure)
 
-    while utils.is_next_token(";", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-        iCurrent = interface_element.classify(iCurrent, lObjects)
+    while oDataStructure.is_next_token(";"):
+        oDataStructure.replace_next_token_with(token.semicolon)
 
-    return iCurrent
+        interface_element.classify(oDataStructure)

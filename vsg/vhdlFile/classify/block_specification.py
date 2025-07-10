@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import block_specification as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import generate_specification
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     block_specification ::=
         architecture_name
@@ -13,12 +14,10 @@ def classify(iToken, lObjects):
       | generate_statement_label [ ( generate_specification ) ]
     """
 
-    if utils.find_in_next_n_tokens("(", 2, iToken, lObjects):
-        iCurrent = utils.assign_next_token(token.generate_statement_label, iToken, lObjects)
-        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
-        iCurrent = generate_specification.classify(iCurrent, lObjects)
-        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
+    if oDataStructure.does_string_exist_in_next_n_tokens("(", 2):
+        oDataStructure.replace_next_token_with(token.generate_statement_label)
+        oDataStructure.replace_next_token_required("(", token.open_parenthesis)
+        generate_specification.classify(oDataStructure)
+        oDataStructure.replace_next_token_required(")", token.close_parenthesis)
     else:
-        iCurrent = utils.assign_next_token(token.architecture_name, iToken, lObjects)
-
-    return iCurrent
+        oDataStructure.replace_next_token_with(token.architecture_name)

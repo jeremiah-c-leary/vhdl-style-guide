@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import if_generate_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import condition, generate_statement_body
+from vsg.vhdlFile.classify import condition, generate_statement_body, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     if_generate_statement ::=
         *generate*_label :
@@ -18,57 +19,63 @@ def detect(iToken, lObjects):
             end generate [ *generate*_label ] ;
     """
 
-    if utils.are_next_consecutive_tokens([None, ":", "if"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    if utils.are_next_consecutive_tokens(["if"], iToken, lObjects):
-        iIndex = utils.find_next_token(iToken, lObjects)
-        oToken = token.if_keyword(lObjects[iToken].get_value())
+    if oDataStructure.are_next_consecutive_tokens([None, ":", "if"]):
+        classify(oDataStructure)
+        return True
+    if oDataStructure.is_next_token("if"):
+        iIndex = utils.find_next_token(iCurrent, lObjects)
+        oToken = token.if_keyword(lObjects[iCurrent].get_value())
         utils.print_error_message("generate_label", oToken, iIndex, lObjects)
-    return iToken
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.generate_label, token.label_colon)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.generate_label, token.label_colon)
 
-    iCurrent = utils.assign_next_token_required("if", token.if_keyword, iCurrent, lObjects)
+    classify_if(oDataStructure)
 
-    if utils.are_next_consecutive_tokens([None, ":"], iCurrent, lObjects):
-        iCurrent = utils.assign_next_token(token.alternative_label_name, iCurrent, lObjects)
-        iCurrent = utils.assign_next_token(token.alternative_label_colon, iCurrent, lObjects)
+    while oDataStructure.is_next_token("elsif"):
+        classify_elsif(oDataStructure)
 
-    iCurrent = condition.classify_until(["generate"], iCurrent, lObjects)
+    if oDataStructure.is_next_token("else"):
+        classify_else(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("generate", token.generate_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("generate", token.end_generate_keyword)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_generate_label)
+    oDataStructure.replace_next_token_required(";", token.semicolon)
 
-    iCurrent = generate_statement_body.classify(iCurrent, lObjects)
 
-    while utils.is_next_token("elsif", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("elsif", token.elsif_keyword, iCurrent, lObjects)
+def classify_if(oDataStructure):
+    oDataStructure.replace_next_token_required("if", token.if_keyword)
 
-        if utils.are_next_consecutive_tokens([None, ":"], iCurrent, lObjects):
-            iCurrent = utils.assign_next_token(token.alternative_label_name, iCurrent, lObjects)
-            iCurrent = utils.assign_next_token(token.alternative_label_colon, iCurrent, lObjects)
+    classify_line(oDataStructure)
 
-        iCurrent = condition.classify_until(["generate"], iCurrent, lObjects)
 
-        iCurrent = utils.assign_next_token_required("generate", token.generate_keyword, iCurrent, lObjects)
+def classify_elsif(oDataStructure):
+    oDataStructure.replace_next_token_required("elsif", token.elsif_keyword)
 
-        iCurrent = generate_statement_body.classify(iCurrent, lObjects)
+    classify_line(oDataStructure)
 
-    if utils.is_next_token("else", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("else", token.else_keyword, iCurrent, lObjects)
 
-        if utils.are_next_consecutive_tokens([None, ":"], iCurrent, lObjects):
-            iCurrent = utils.assign_next_token(token.alternative_label_name, iCurrent, lObjects)
-            iCurrent = utils.assign_next_token(token.alternative_label_colon, iCurrent, lObjects)
+def classify_else(oDataStructure):
+    oDataStructure.replace_next_token_required("else", token.else_keyword)
 
-        iCurrent = utils.assign_next_token_required("generate", token.generate_keyword, iCurrent, lObjects)
+    classify_line(oDataStructure)
 
-        iCurrent = generate_statement_body.classify(iCurrent, lObjects)
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("generate", token.end_generate_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_generate_label, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+def classify_line(oDataStructure):
+    classify_alternative_label(oDataStructure)
 
-    return iCurrent
+    condition.classify_until(["generate"], oDataStructure)
+
+    oDataStructure.replace_next_token_required("generate", token.generate_keyword)
+
+    generate_statement_body.classify(oDataStructure)
+
+
+def classify_alternative_label(oDataStructure):
+    if oDataStructure.are_next_consecutive_tokens([None, ":"]):
+        oDataStructure.replace_next_token_with(token.alternative_label_name)
+        oDataStructure.replace_next_token_with(token.alternative_label_colon)

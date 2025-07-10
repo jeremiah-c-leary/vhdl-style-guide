@@ -1,32 +1,31 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import simple_force_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression, force_mode
+from vsg.vhdlFile.classify import expression, force_mode, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     simple_force_assignment ::=
         target <= force [ force_mode ] expression ;
     """
 
-    if utils.is_next_token_one_of(["when", "if", "elsif", "else"], iToken, lObjects):
+    if oDataStructure.is_next_token_one_of(["when", "if", "elsif", "else"]):
         return False
-    if utils.find_in_range("<=", iToken, ";", lObjects):
-        if utils.find_in_range("force", iToken, ";", lObjects):
-            return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.does_string_exist_before_string("<=", ";"):
+        return oDataStructure.does_string_exist_before_string("force", ";")
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_tokens_until("<=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("<=", token.assignment, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required("force", token.force_keyword, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.assign_tokens_until("<=", token.target, oDataStructure)
+    oDataStructure.replace_next_token_required("<=", token.assignment)
+    oDataStructure.replace_next_token_required("force", token.force_keyword)
 
-    iCurrent = force_mode.detect(iCurrent, lObjects)
-    iCurrent = expression.classify_until([";"], iCurrent, lObjects)
+    force_mode.detect(oDataStructure)
+    expression.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

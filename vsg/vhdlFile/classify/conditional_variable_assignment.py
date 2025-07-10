@@ -1,31 +1,32 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import conditional_variable_assignment as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import conditional_expressions
+from vsg.vhdlFile.classify import conditional_expressions, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     conditional_variable_assignment ::=
         target := conditional_expressions ;
     """
 
-    if utils.is_next_token_one_of(["when", "if", "elsif", "else"], iToken, lObjects):
+    if oDataStructure.is_next_token_one_of(["when", "if", "elsif", "else"]):
         return False
-    if utils.find_in_range(":=", iToken, ";", lObjects):
-        if not utils.find_in_range("with", iToken, ";", lObjects):
-            if utils.find_in_range("when", iToken, ";", lObjects):
+    if oDataStructure.does_string_exist_before_string(":=", ";"):
+        if not oDataStructure.does_string_exist_before_string("with", ";"):
+            if oDataStructure.does_string_exist_before_string("when", ";"):
                 return True
     return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_tokens_until(":=", token.target, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required(":=", token.assignment, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.assign_tokens_until(":=", token.target, oDataStructure)
 
-    iCurrent = conditional_expressions.classify_until([";"], iCurrent, lObjects)
+    oDataStructure.replace_next_token_required(":=", token.assignment)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
+    conditional_expressions.classify_until([";"], oDataStructure)
 
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

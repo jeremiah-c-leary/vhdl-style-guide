@@ -1,31 +1,28 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
+from vsg import decorators, parser
 from vsg.token import waveform as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import waveform_element
 
 
-def classify_until(lUntils, iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
     """
     waveform ::=
         waveform_element { , waveform_element }
       | unaffected
     """
 
-    if utils.is_next_token("unaffected", iToken, lObjects):
-        return utils.assign_next_token_required("unaffected", token.unaffected_keyword, iToken, lObjects)
+    if oDataStructure.is_next_seek_token("unaffected"):
+        oDataStructure.replace_next_token_with(token.unaffected_keyword)
+    else:
+        lMyUntils = lUntils
+        lMyUntils.append(",")
 
-    iCurrent = iToken
-    lMyUntils = lUntils
-    lMyUntils.append(",")
+        waveform_element.classify_until(lMyUntils, oDataStructure)
 
-    iCurrent = waveform_element.classify_until(lMyUntils, iCurrent, lObjects)
+        while oDataStructure.is_next_seek_token(","):
+            oDataStructure.replace_next_token_with(token.comma)
+            waveform_element.classify_until(lMyUntils, oDataStructure)
 
-    while utils.is_next_token(",", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required(",", token.comma, iCurrent, lObjects)
-        iCurrent = waveform_element.classify_until(lMyUntils, iCurrent, lObjects)
-
-    iCurrent = utils.assign_next_token_if(")", parser.todo, iCurrent, lObjects)
-
-    return iCurrent
+        oDataStructure.replace_next_token_with_if(")", parser.todo)

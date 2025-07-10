@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import report_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import expression
+from vsg.vhdlFile.classify import expression, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     report_statement ::=
         [ label : ]
@@ -13,21 +14,21 @@ def detect(iToken, lObjects):
                 [ severity expression ] ;
     """
 
-    if utils.keyword_found("report", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("report", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("report", token.report_keyword, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.label, token.label_colon)
+    oDataStructure.replace_next_token_with(token.report_keyword)
 
-    iCurrent = expression.classify_until([";", "severity"], iCurrent, lObjects)
+    expression.classify_until([";", "severity"], oDataStructure)
 
-    if utils.is_next_token("severity", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("severity", token.severity_keyword, iCurrent, lObjects)
-        iCurrent = expression.classify_until([";"], iCurrent, lObjects)
+    if oDataStructure.is_next_token("severity"):
+        oDataStructure.replace_next_token_with(token.severity_keyword)
+        expression.classify_until([";"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

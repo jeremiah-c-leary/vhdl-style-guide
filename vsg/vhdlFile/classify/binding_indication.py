@@ -1,35 +1,30 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import binding_indication as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import entity_aspect, generic_map_aspect, port_map_aspect
 
 
-def detect(iToken, lObjects):
-    if utils.is_next_token("use", iToken, lObjects):
-        return classify(iToken, lObjects)
-    if utils.is_next_token("generic", iToken, lObjects):
-        return classify(iToken, lObjects)
-    if utils.is_next_token("port", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
-
-
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     binding_indication ::=
         [ **use** entity_aspect ]
         [ generic_map_aspect ]
         [ port_map_aspect ]
     """
-    iCurrent = iToken
+    if oDataStructure.is_next_token_one_of(["use", "generic", "port"]):
+        classify(oDataStructure)
+        return True
+    return False
 
-    if utils.is_next_token("use", iCurrent, lObjects):
-        iCurrent = utils.assign_next_token_required("use", token.use_keyword, iCurrent, lObjects)
-        iCurrent = entity_aspect.classify(iCurrent, lObjects)
 
-    iCurrent = generic_map_aspect.detect(iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    if oDataStructure.is_next_token("use"):
+        oDataStructure.replace_next_token_with(token.use_keyword)
+        entity_aspect.classify(oDataStructure)
 
-    iCurrent = port_map_aspect.detect(iCurrent, lObjects)
+    generic_map_aspect.detect(oDataStructure)
 
-    return iCurrent
+    port_map_aspect.detect(oDataStructure)

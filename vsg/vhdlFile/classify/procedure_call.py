@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import procedure_call as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import actual_parameter_part
 
-lExceptions = ["<=", "end", "map", "component", "entity", "configuration", "if"]
+lExceptions = ["end", "map", "component", "entity", "configuration", "if"]
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+@decorators.push_pop_seek_index
+def detect(oDataStructure):
     """
     Calling functions:
 
@@ -25,30 +27,29 @@ def detect(iToken, lObjects):
     Differentiating a procedure call from anything else is essentially the absence of keywords.
     """
 
-    iCurrent = iToken
+    if oDataStructure.does_string_exist_before_string_honoring_parenthesis_hierarchy("<=", ";"):
+        return False
 
-    while lObjects[iCurrent].get_value() != ";":
-        if utils.is_item(lObjects, iCurrent):
-            if lObjects[iCurrent].get_lower_value() in lExceptions:
-                return False
-        iCurrent += 1
-
+    while not oDataStructure.seek_token_lower_value_is(";"):
+        if oDataStructure.get_seek_token_lower_value() in lExceptions:
+            return False
+        oDataStructure.increment_seek_index()
+        oDataStructure.advance_to_next_seek_token()
     return True
 
 
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
     """
     procedure_call ::=
         *procedure*_name [ ( actual_parameter_part ) ]
     """
 
-    iCurrent = utils.assign_next_token(token.procedure_name, iToken, lObjects)
+    oDataStructure.replace_next_token_with(token.procedure_name)
 
-    if utils.is_next_token("(", iToken, lObjects):
-        iCurrent = utils.assign_next_token_required("(", token.open_parenthesis, iCurrent, lObjects)
+    if oDataStructure.is_next_token("("):
+        oDataStructure.replace_next_token_with(token.open_parenthesis)
 
-        iCurrent = actual_parameter_part.classify(iCurrent, lObjects)
+        actual_parameter_part.classify(oDataStructure)
 
-        iCurrent = utils.assign_next_token_required(")", token.close_parenthesis, iCurrent, lObjects)
-
-    return iCurrent
+        oDataStructure.replace_next_token_required(")", token.close_parenthesis)

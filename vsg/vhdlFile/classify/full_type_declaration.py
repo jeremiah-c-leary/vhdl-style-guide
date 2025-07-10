@@ -1,30 +1,31 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import full_type_declaration as token
-from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import identifier, type_definition
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     full_type_declaration ::=
         type identifier is type_definition ;
     """
 
-    if utils.are_next_consecutive_tokens(["type", None, "is"], iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if oDataStructure.are_next_consecutive_tokens(["type", None, "is"]):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.assign_next_token_required("type", token.type_keyword, iToken, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    oDataStructure.replace_next_token_with(token.type_keyword)
 
-    iCurrent = identifier.classify(iCurrent, lObjects, token.identifier)
+    identifier.classify(oDataStructure, token.identifier)
 
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = type_definition.detect(iCurrent, lObjects)
+    type_definition.detect(oDataStructure)
 
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required(";", token.semicolon)

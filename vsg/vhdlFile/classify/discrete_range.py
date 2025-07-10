@@ -1,55 +1,47 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser
-from vsg.vhdlFile import utils
+from vsg import decorators, parser
 from vsg.vhdlFile.classify import range, subtype_indication
 
 
-def detect(iToken, lObjects):
-    """
-    discrete_range ::=
-        *discrete*_subtype_indication | range
-    """
-    if utils.are_next_consecutive_tokens([None, "(", None, ")"], iToken, lObjects):
-        return subtype_indication.classify(iToken, lObjects)
-    return range.detect(iToken, lObjects)
-
-
-def classify(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     discrete_range ::=
         *discrete*_subtype_indication | range
     """
 
-    return utils.assign_token(lObjects, iToken, parser.todo)
+    if oDataStructure.are_next_consecutive_tokens([None, "(", None, ")"]):
+        oDataStructure.iCurrent = oDataStructure.iSeek
+
+        oDataStructure.push_current_index()
+        subtype_indication.classify(oDataStructure)
+        oDataStructure.pop_current_index()
+
+        return True
+
+    return range.detect(oDataStructure)
 
 
-def classify_until(lUntils, iToken, lObjects):
-    iCurrent = iToken
-    iStop = len(lObjects) - 1
+@decorators.print_classifier_debug_info(__name__)
+def classify_until(lUntils, oDataStructure):
     iOpenParenthesis = 0
     iCloseParenthesis = 0
-    iPrevious = -1
 
-    while iCurrent < iStop:
-        iCurrent = utils.find_next_token(iCurrent, lObjects)
+    while not oDataStructure.at_end_of_file():
+        oDataStructure.advance_to_next_token()
 
-        if iCurrent == iPrevious:
-            utils.print_missing_error_message(lUntils, iToken, lObjects)
-
-        if utils.token_is_open_parenthesis(iCurrent, lObjects):
+        if oDataStructure.current_token_lower_value_is("("):
             iOpenParenthesis += 1
-        if utils.token_is_close_parenthesis(iCurrent, lObjects):
+        elif oDataStructure.current_token_lower_value_is(")"):
             iCloseParenthesis += 1
+
         if iOpenParenthesis < iCloseParenthesis:
             break
         elif iOpenParenthesis == iCloseParenthesis:
-            if lObjects[iCurrent].get_lower_value() in lUntils:
+            if oDataStructure.is_next_token_one_of(lUntils):
                 break
             else:
-                utils.assign_token(lObjects, iCurrent, parser.todo)
+                oDataStructure.replace_current_token_with(parser.todo)
         else:
-            utils.assign_token(lObjects, iCurrent, parser.todo)
-        iPrevious = iCurrent
-
-    return iCurrent
+            oDataStructure.replace_current_token_with(parser.todo)

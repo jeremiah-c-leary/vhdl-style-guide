@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from vsg import decorators
 from vsg.token import case_statement as token
-from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import case_statement_alternative, expression
+from vsg.vhdlFile.classify import case_statement_alternative, expression, utils
 
 
-def detect(iToken, lObjects):
+@decorators.print_classifier_debug_info(__name__)
+def detect(oDataStructure):
     """
     case_statement ::=
         [ *case*_label : ]
@@ -14,26 +15,27 @@ def detect(iToken, lObjects):
                 { case_statement_alternative }
         end case [ ? ] [ case_label ] ;
     """
-    if utils.keyword_found("case", iToken, lObjects):
-        return classify(iToken, lObjects)
-    return iToken
+    if utils.keyword_found("case", oDataStructure):
+        classify(oDataStructure)
+        return True
+    return False
 
 
-def classify(iToken, lObjects):
-    iCurrent = utils.tokenize_label(iToken, lObjects, token.case_label, token.label_colon)
-    iCurrent = utils.assign_next_token_required("case", token.case_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("?", token.question_mark, iCurrent, lObjects)
+@decorators.print_classifier_debug_info(__name__)
+def classify(oDataStructure):
+    utils.tokenize_label(oDataStructure, token.case_label, token.label_colon)
+    oDataStructure.replace_next_token_required("case", token.case_keyword)
+    oDataStructure.replace_next_token_with_if("?", token.question_mark)
 
-    iCurrent = expression.classify_until(["is"], iCurrent, lObjects)
+    expression.classify_until(["is"], oDataStructure)
 
-    iCurrent = utils.assign_next_token_required("is", token.is_keyword, iCurrent, lObjects)
+    oDataStructure.replace_next_token_required("is", token.is_keyword)
 
-    iCurrent = utils.detect_submodule(iCurrent, lObjects, case_statement_alternative)
+    while case_statement_alternative.detect(oDataStructure):
+        pass
 
-    iCurrent = utils.assign_next_token_required("end", token.end_keyword, iToken, lObjects)
-    iCurrent = utils.assign_next_token_required("case", token.end_case_keyword, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if("?", token.question_mark, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_if_not(";", token.end_case_label, iCurrent, lObjects)
-    iCurrent = utils.assign_next_token_required(";", token.semicolon, iCurrent, lObjects)
-
-    return iCurrent
+    oDataStructure.replace_next_token_required("end", token.end_keyword)
+    oDataStructure.replace_next_token_required("case", token.end_case_keyword)
+    oDataStructure.replace_next_token_with_if("?", token.question_mark)
+    oDataStructure.replace_next_token_with_if_not(";", token.end_case_label)
+    oDataStructure.replace_next_token_required(";", token.semicolon)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import config, exceptions, parser, token, tokens
+from vsg import config, data_structure, exceptions, parser, token, tokens
 from vsg.token import (
     adding_operator,
     aggregate,
@@ -128,13 +128,16 @@ class vhdlFile:
 
     def _processFile(self):
         oOptions = options()
+
         self.lAllObjects = []
+        iLineNumber = 1
         for sLine in self.filecontent:
             self.dVars["line"] = sLine
             lTokens = tokens.create(sLine.rstrip("\n").rstrip("\r"))
             lObjects = []
             for sToken in lTokens:
                 lObjects.append(parser.item(sToken))
+                lObjects[-1].iLineNumber = iLineNumber
 
             blank.classify(lObjects, oOptions)
             whitespace.classify(lTokens, lObjects)
@@ -144,6 +147,7 @@ class vhdlFile:
 
             self.lAllObjects.extend(lObjects)
             self.lAllObjects.append(parser.carriage_return())
+            iLineNumber += 1
 
         try:
             self.lAllObjects[0].set_filename(self.filename)
@@ -151,7 +155,9 @@ class vhdlFile:
             pass
 
         try:
-            design_file.tokenize(self.lAllObjects)
+            oDataStructure = data_structure.New(self.lAllObjects)
+            oDataStructure.set_filename(self.filename)
+            design_file.tokenize(oDataStructure)
         except exceptions.ClassifyError as e:
             if self.commandLineArguments.force_fix and self.commandLineArguments.fix:
                 print(e.message)
