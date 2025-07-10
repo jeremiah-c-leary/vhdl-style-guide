@@ -43,7 +43,7 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         lReturn = []
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if skip_based_on_whitespace(self.bInsertWhitespace, lTokens):
+            if self.skip_based_on_whitespace(self.bInsertWhitespace, lTokens):
                 continue
             if oToi.token_type_exists(token.pragma.pragma):
                 continue
@@ -54,7 +54,7 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
 
-            sSolution = "Move **then** keyword to same line as " + lTokens[0].get_value()
+            sSolution = self.solution + " to same line as " + lTokens[0].get_value()
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
             oViolation.set_remap()
             oViolation.fix_blank_lines = True
@@ -77,14 +77,12 @@ class move_token_left_to_next_non_whitespace_token(structure.Rule):
 
         oViolation.set_tokens(lNewTokens)
 
+    def does_a_whitespace_token_separate_tokens(self, lTokens):
+        if len(lTokens) == 3 and isinstance(lTokens[1], parser.whitespace):
+            return True
+        return False
 
-def does_a_whitespace_token_separate_tokens(lTokens):
-    if len(lTokens) == 3 and isinstance(lTokens[1], parser.whitespace):
-        return True
-    return False
-
-
-def skip_based_on_whitespace(bInsertWhitespace, lTokens):
-    if bInsertWhitespace and does_a_whitespace_token_separate_tokens(lTokens):
-        return True
-    return False
+    def skip_based_on_whitespace(self, bInsertWhitespace, lTokens):
+        if bInsertWhitespace and self.does_a_whitespace_token_separate_tokens(lTokens):
+            return True
+        return False

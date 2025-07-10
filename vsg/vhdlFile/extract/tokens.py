@@ -89,6 +89,9 @@ class New:
         iStart = iEnd - iNum
         return self.extract_tokens(iStart, iEnd)
 
+    def get_length_of_tokens(self):
+        return len(self.lTokens)
+
 
 def calculate_end_index(iStartIndex, lTokens):
     try:

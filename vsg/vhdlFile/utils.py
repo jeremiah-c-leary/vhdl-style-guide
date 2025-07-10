@@ -2,7 +2,7 @@
 
 import sys
 
-from vsg import exceptions, parser
+from vsg import exceptions, parser, token
 from vsg.token import (
     choice,
     direction,
@@ -1023,3 +1023,7 @@ def skip_tokens_until_matching_closing_paren(iToken, lObjects):
         if token_is_close_parenthesis(iCurrent, lObjects) and iCounter == 0:
             return iCurrent
         iCurrent += 1
+
+
+def pragma_exists_in_tokens(lTokens, iStartIndex):
+    return does_token_type_exist_in_list_of_tokens(token.pragma.pragma, lTokens[iStartIndex::])

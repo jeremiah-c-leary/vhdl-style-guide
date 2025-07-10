@@ -36,3 +36,4 @@ class rule_004(Rule):
 
     def __init__(self):
         super().__init__(lTokens)
+        self.solution = "Move <= operator"

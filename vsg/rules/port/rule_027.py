@@ -34,3 +34,4 @@ class rule_027(Rule):
     def __init__(self):
         super().__init__(lTokens)
         self.bInsertWhitespace = False
+        self.solution = "Move semicolon"

@@ -34,3 +34,4 @@ class rule_010(Rule):
 
     def __init__(self):
         super().__init__(lTokens)
+        self.solution = "Move **when** keyword"

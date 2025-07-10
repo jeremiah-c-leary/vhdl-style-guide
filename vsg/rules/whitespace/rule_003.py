@@ -23,5 +23,5 @@ class rule_003(remove_spaces_before_token_rule):
 
     def __init__(self):
         super().__init__(parser.semicolon)
-        self.solution = "Remove spaces before semicolons."
+        self.solution = "Remove spaces before semicolon."
         self.configuration_documentation_link = None

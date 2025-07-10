@@ -33,3 +33,4 @@ class rule_024(Rule):
         super().__init__(lTokens)
         self.subphase = 2
         self.bRemoveTrailingWhitespace = False
+        self.solution = "Move entity simple name"
