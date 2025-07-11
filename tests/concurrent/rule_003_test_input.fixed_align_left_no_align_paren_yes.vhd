@@ -12,12 +12,12 @@ begin
             resize(unsigned(I_FOO) +
                    unsigned(I_BAR), q_foo'length);
 
-   n_bar <= a or b and c
+   n_bar <= (a or b) and c
             xor z and x or
             w and z;
 
    n_bar <=
-            a or b and c
+            (a or b) and c
             xor z and x or
             w and z;
 
@@ -30,12 +30,12 @@ begin
             resize(unsigned(I_FOO) +
                    unsigned(I_BAR), q_foo'length);
 
-   n_bar <= a or b and c
+   n_bar <= (a or b) and c
             xor z and x or
             w and z;
 
    n_bar <=
-            a or b and c
+            (a or b) and c
             xor z and x or
             w and z;
 
@@ -48,12 +48,12 @@ begin
             resize(unsigned(I_FOO) +
                    unsigned(I_BAR), q_foo'length);
 
-   n_bar <= a or b and c
+   n_bar <= (a or b) and c
             xor z and x or
             w and z;
 
    n_bar <=
-            a or b and c
+            (a or b) and c
             xor z and x or
             w and z;
 
@@ -66,12 +66,12 @@ begin
             resize(unsigned(I_FOO) +
                    unsigned(I_BAR), q_foo'length);
 
-   n_bar <= a or b and c
+   n_bar <= (a or b) and c
             xor z and x or
             w and z;
 
    n_bar <=
-            a or b and c
+            (a or b) and c
             xor z and x or
             w and z;
 

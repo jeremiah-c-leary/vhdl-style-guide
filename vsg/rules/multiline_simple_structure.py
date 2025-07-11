@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser, token, violation
+from vsg import parser, violation
 from vsg.rule_group import structure
 from vsg.rules import utils as rules_utils
 from vsg.vhdlFile import utils
@@ -54,7 +54,7 @@ class multiline_simple_structure(structure.Rule):
 
         lReturn = []
         for oToi in lToi:
-            if toi_is_an_array(oToi):
+            if utils.toi_is_array(oToi):
                 continue
             lReturn.append(oToi)
 
@@ -128,11 +128,3 @@ def _create_action_dictionary(sType, sAction):
     dReturn["type"] = sType
     dReturn["action"] = sAction
     return dReturn
-
-
-def toi_is_an_array(oToi):
-    lTokens = oToi.get_tokens()
-    for oToken in lTokens:
-        if isinstance(oToken, token.aggregate.open_parenthesis):
-            return True
-    return False
