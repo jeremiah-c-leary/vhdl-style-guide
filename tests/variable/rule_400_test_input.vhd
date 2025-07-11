@@ -24,6 +24,16 @@ elementE(3 downto 0)(6 downto 0),
         ffff => (others => '0')
                 );
 
+  variable AxiMs : axi_ms_t (ar_id(IdRange_c), aw_id(IdRange_c),
+                ar_addr(AddrRange_c), aw_addr(AddrRange_c),
+                ar_user(UserRange_c), aw_user(UserRange_c), w_user(UserRange_c),
+                w_data(DataRange_c),
+                w_strb(ByteRange_c));
+
+  variable AxiSm : axi_sm_t (r_id(IdRange_c), b_id(IdRange_c),
+                r_user(UserRange_c), b_user(UserRange_c),
+                r_data(DataRange_c));
+
 begin
 
 end architecture rtl;
