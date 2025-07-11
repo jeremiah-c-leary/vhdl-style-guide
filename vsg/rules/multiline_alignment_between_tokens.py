@@ -102,6 +102,11 @@ class multiline_alignment_between_tokens(alignment.Rule):
                 iColumn += len(oToken.get_value())
 
                 if isinstance(oToken, parser.close_parenthesis):
+                    dLastParen = lParens[-1]
+                    if dLastParen["type"] == "open" and dLastParen["line"] == iLine:
+                        lParens.pop()
+                        continue
+
                     dParen = {}
                     dParen["type"] = "close"
                     dParen["line"] = iLine
@@ -120,6 +125,9 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
             if iFirstLine == iLastLine:
                 continue
+
+            if len(lParens) == 0 or lParens[0]["line"] != iFirstLine:
+                bStartsWithParen = False
 
             iFirstTokenLength = len(lTokens[0].get_value())
 
