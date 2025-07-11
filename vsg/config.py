@@ -54,9 +54,9 @@ def validate_file_exists(sFilename, sConfigName):
         sExpandedFilename = list(sFilename.keys())[0]
     else:
         sExpandedFilename = sFilename
-    lFileNames = glob.glob(utils.expand_filename(sExpandedFilename), recursive=True)
+    lFileNames = glob_filenames(sExpandedFilename)
     if len(lFileNames) == 0:
-        print("ERROR: Could not find file " + sFilename + " in configuration file " + sConfigName)
+        print("ERROR: Could not find file " + sExpandedFilename + " in configuration file " + sConfigName)
         sys.exit(1)
 
 
@@ -75,9 +75,8 @@ def read_configuration_files(dStyle, commandLineArguments):
 def process_config_file(dConfiguration, tempConfiguration, sConfigFilename):
     dReturn = dConfiguration
     for sKey in tempConfiguration.keys():
-        if sKey == "file_list":
+        if sKey == "file_list" or sKey == "file_rules":
             dReturn = process_file_list_key(dReturn, tempConfiguration, sKey, sConfigFilename)
-
         elif sKey == "rule":
             for sRule in tempConfiguration[sKey]:
                 try:
@@ -135,25 +134,29 @@ def search_list(lDict, lDeprecatedKeys, sConfigFilename, lMessages):
 
 def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     dReturn = dConfig
-    if "file_list" not in dConfig:
-        dReturn["file_list"] = []
-    for iIndex, sFilename in enumerate(tempConfiguration["file_list"]):
+    if sKey not in dConfig:
+        dReturn[sKey] = []
+    for iIndex, sFilename in enumerate(tempConfiguration[sKey]):
         validate_file_exists(sFilename, sConfigFilename)
         try:
-            for sGlobbedFilename in glob_filenames(sFilename):
-                dReturn["file_list"].append(sGlobbedFilename)
+            for sGlobbedFilename in glob_filenames_clean(sFilename):
+                dReturn[sKey].append(sGlobbedFilename)
         except TypeError:
-            sKey = list(sFilename.keys())[0]
-            for sGlobbedFilename in glob_filenames(sKey):
+            sFilename = list(sFilename.keys())[0]
+            for sGlobbedFilename in glob_filenames_clean(sFilename):
                 dTemp = {}
                 dTemp[sGlobbedFilename] = {}
-                dTemp[sGlobbedFilename].update(tempConfiguration["file_list"][iIndex][sKey])
-                dReturn["file_list"].append(dTemp)
+                dTemp[sGlobbedFilename].update(tempConfiguration[sKey][iIndex][sFilename])
+                dReturn[sKey].append(dTemp)
     return dReturn
 
 
 def glob_filenames(sFilename):
-    files = glob.glob(utils.expand_filename(sFilename), recursive=True)
+    return glob.glob(utils.expand_filename(sFilename), recursive=True)
+
+
+def glob_filenames_clean(sFilename):
+    files = glob_filenames(sFilename)
     return replace_backslash_with_forward_slash(files)
 
 
@@ -378,12 +381,12 @@ def update_command_line_arguments(commandLineArguments, configuration):
             if isinstance(sFilename, dict):
                 sFilename = list(sFilename.keys())[0]
             try:
-                lFileNames = glob.glob(utils.expand_filename(sFilename), recursive=True)
+                lFileNames = glob_filenames(sFilename)
                 for sFileName in lFileNames:
                     if sFileName not in commandLineArguments.filename:
                         commandLineArguments.filename.append(sFileName)
             except:
-                commandLineArguments.filename = glob.glob(utils.expand_filename(sFilename), recursive=True)
+                commandLineArguments.filename = glob_filenames(sFilename)
 
     if "local_rules" in configuration:
         commandLineArguments.local_rules = utils.expand_filename(configuration["local_rules"])
