@@ -25,6 +25,6 @@ We can use the following configuration to change the number of variables allowed
         consecutive : 1
 
 Rules Enforcing Number of variables
-#################################
+###################################
 
 * `variable_015 <variable_rules.html#variable-015>`_
