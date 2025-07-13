@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from vsg import parser, token, violation
+from vsg import parser, violation
 from vsg.rule_group import alignment
 from vsg.rules import alignment_utils, utils as rules_utils
 from vsg.vhdlFile import utils
@@ -37,7 +37,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
         self.iIndentAfterParen = 1
         self.override = False
         self.configuration_documentation_link = "configuring_multiline_indent_rules_link"
-        self.check_for_array = True
+        self.skip_array = True
 
     def _get_tokens_of_interest(self, oFile):
         lToi = []
@@ -47,7 +47,7 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
         lReturn = []
         for oToi in lToi:
-            if self.check_for_array and toi_is_an_array(oToi):
+            if self.skip_array and utils.toi_is_array(oToi):
                 continue
             iLine, lTokens = utils.get_toi_parameters(oToi)
             iFirstLine, iFirstLineIndent = alignment_utils.get_first_line_info(iLine, oFile)
@@ -102,6 +102,11 @@ class multiline_alignment_between_tokens(alignment.Rule):
                 iColumn += len(oToken.get_value())
 
                 if isinstance(oToken, parser.close_parenthesis):
+                    dLastParen = lParens[-1]
+                    if dLastParen["type"] == "open" and dLastParen["line"] == iLine:
+                        lParens.pop()
+                        continue
+
                     dParen = {}
                     dParen["type"] = "close"
                     dParen["line"] = iLine
@@ -120,6 +125,9 @@ class multiline_alignment_between_tokens(alignment.Rule):
 
             if iFirstLine == iLastLine:
                 continue
+
+            if len(lParens) == 0 or lParens[0]["line"] != iFirstLine:
+                bStartsWithParen = False
 
             iFirstTokenLength = len(lTokens[0].get_value())
 
@@ -528,10 +536,3 @@ def _analyze_align_paren_no_align_left_no(iFirstLine, iLastLine, lParens, dActua
         dReturn[iLine] = dExpectedIndent[iLine] * " "
 
     return dReturn
-
-
-def toi_is_an_array(oToi):
-    for sAssignmentToken in ["<=", ":="]:
-        if utils.are_next_consecutive_tokens_ignoring_whitespace([sAssignmentToken, "("], 0, oToi.get_tokens()):
-            return True
-    return False

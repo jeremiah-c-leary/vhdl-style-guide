@@ -4,6 +4,7 @@ import sys
 
 from vsg import exceptions, parser, token
 from vsg.token import (
+    aggregate,
     choice,
     direction,
     element_association,
@@ -749,6 +750,14 @@ def does_token_type_exist_in_list_of_tokens(oType, lTokens):
 
 def get_toi_parameters(oToi):
     return oToi.get_line_number(), oToi.get_tokens()
+
+
+def toi_is_array(oToi):
+    lTokens = oToi.get_tokens()
+    for oToken in lTokens:
+        if isinstance(oToken, aggregate.open_parenthesis):
+            return True
+    return False
 
 
 def does_token_start_line(iToken, lTokens):
