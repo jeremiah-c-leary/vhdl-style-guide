@@ -25,7 +25,7 @@ class test_reserved_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, "001")
         self.assertFalse(oRule.fixable)
 
-        lExpected = [7, 9, 10, 14, 18, 20, 20, 22, 23, 28, 28, 30, 36, 42]
+        lExpected = [7, 9, 10, 11, 14, 15, 19, 21, 21, 23, 24, 25, 30, 30, 32, 38, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -34,7 +34,7 @@ class test_reserved_rule(unittest.TestCase):
         oRule = reserved.rule_001()
         oRule.standard = "1987"
 
-        lExpected = [7, 10, 18, 20, 20, 23, 28, 42]
+        lExpected = [7, 11, 19, 21, 21, 25, 30, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -43,7 +43,7 @@ class test_reserved_rule(unittest.TestCase):
         oRule = reserved.rule_001()
         oRule.standard = "1987"
 
-        lExpected = [7, 10, 18, 20, 20, 23, 28, 42]
+        lExpected = [7, 11, 19, 21, 21, 25, 30, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -52,7 +52,7 @@ class test_reserved_rule(unittest.TestCase):
         oRule = reserved.rule_001()
         oRule.standard = "2000"
 
-        lExpected = [7, 10, 18, 20, 20, 22, 23, 28, 30, 42]
+        lExpected = [7, 11, 19, 21, 21, 24, 25, 30, 32, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -61,7 +61,7 @@ class test_reserved_rule(unittest.TestCase):
         oRule = reserved.rule_001()
         oRule.standard = "2002"
 
-        lExpected = [7, 10, 18, 20, 20, 22, 23, 28, 30, 42]
+        lExpected = [7, 11, 19, 21, 21, 24, 25, 30, 32, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
@@ -70,7 +70,16 @@ class test_reserved_rule(unittest.TestCase):
         oRule = reserved.rule_001()
         oRule.standard = "2008"
 
-        lExpected = [7, 9, 10, 14, 18, 20, 20, 23, 28, 28, 36, 42]
+        lExpected = [7, 10, 11, 15, 19, 21, 21, 25, 30, 30, 38, 44]
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_2019_standard(self):
+        oRule = reserved.rule_001()
+        oRule.standard = "2019"
+
+        lExpected = [7, 9, 10, 11, 14, 15, 19, 21, 21, 23, 25, 30, 30, 38, 44]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

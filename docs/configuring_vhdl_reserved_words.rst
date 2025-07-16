@@ -28,11 +28,14 @@ These rules provide the following options:
 .. |standard__2008| replace::
    :code:`2008` = Use reserved keywords from 2008 standard
 
+.. |standard__2019| replace::
+   :code:`2019` = Use reserved keywords from 2019 standard
+
 .. |standard__all| replace::
    :code:`all` = Use reserved keywords from all standards
 
 .. |values| replace::
-   :code:`1987`, :code:`1993`, :code:`2000`, :code:`2002`, :code:`2008`
+   :code:`1987`, :code:`1993`, :code:`2000`, :code:`2002`, :code:`2008`, :code:`2019`
 
 .. |default_value| replace::
    :code:`all`
@@ -45,6 +48,7 @@ These rules provide the following options:
 |                      |          |                 | * |standard__2000|         |
 |                      |          |                 | * |standard__2002|         |
 |                      |          |                 | * |standard__2008|         |
+|                      |          |                 | * |standard__2019|         |
 |                      |          |                 | * |standard__all|          |
 +----------------------+----------+-----------------+----------------------------+
 
@@ -93,6 +97,19 @@ The :code:`context` keyword is a reserved word in the 2008 standard.
     .. code-block:: yaml
 
        entity context is
+       end entity;
+
+
+Example: |standard_option| set to :code:`2019`
+##############################################
+
+The :code:`private` keyword is a reserved word in the 2019 standard.
+
+    **Violation**
+
+    .. code-block:: yaml
+
+       entity private is
        end entity;
 
 
