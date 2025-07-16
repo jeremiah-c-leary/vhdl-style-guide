@@ -4,7 +4,7 @@ from vsg import token
 from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
-lTokens.append(token.interface_unknown_declaration.assignment)
+lTokens.append(token.simple_mode_indication.assignment)
 
 
 class rule_101(Rule):

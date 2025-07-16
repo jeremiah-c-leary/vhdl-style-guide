@@ -7,6 +7,7 @@ from vsg.vhdlFile.classify import (
     component_declaration,
     constant_declaration,
     file_declaration,
+    mode_view_declaration,
     package_declaration,
     package_instantiation_declaration,
     psl_property_declaration,
@@ -30,6 +31,7 @@ def detect(iToken, lObjects):
       | package_instantiation_declaration
       | type_declaration
       | subtype_declaration
+      | mode_view_declaration
       | constant_declaration
       | signal_declaration
       | variable_declaration
@@ -67,6 +69,10 @@ def detect(iToken, lObjects):
         return iReturn
 
     iReturn = subtype_declaration.detect(iToken, lObjects)
+    if iReturn != iToken:
+        return iReturn
+
+    iReturn = mode_view_declaration.detect(iToken, lObjects)
     if iReturn != iToken:
         return iReturn
 
