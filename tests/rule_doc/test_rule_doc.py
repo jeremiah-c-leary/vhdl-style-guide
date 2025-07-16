@@ -15,6 +15,7 @@ class testDocGen(unittest.TestCase):
         utils.read_file(os.path.join("docs", f"{sRuleName}_rules.rst"), lExpected, bStrip=False)
         lActual = []
         utils.read_file(os.path.join(cls._tmpdir.name, f"{sRuleName}_rules.rst"), lActual, bStrip=False)
+        print(os.path.join(cls._tmpdir.name, f"{sRuleName}_rules.rst"))
 
         return lExpected, lActual
 
@@ -77,6 +78,8 @@ class testDocGen(unittest.TestCase):
                         lActual.append(lLine[1][1:])
                 if sLine.startswith("Rules Enforcing"):
                     bStartProcessing = True
+            if sKey == "configuring_blank_lines_link":
+                print("oui")
             self.assertEqual(dConfigurationFiles[sKey], lActual)
 
     def test_rule_link_in_configuration_documentation_for_underscores(self):
@@ -124,6 +127,8 @@ class testDocGen(unittest.TestCase):
                         lActual.append(lLine[1][1:])
                 if sLine.startswith("Rules Enforcing"):
                     bStartProcessing = True
+            if sKey == "blank_line":
+                print("oui")
             self.assertEqual(dConfigurationFiles[sKey], lActual)
 
     def test_configuring_disabled_rules_doc(self):
