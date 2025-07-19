@@ -4,8 +4,8 @@ import pathlib
 import shutil
 import sys
 import unittest
-from unittest import mock
 from tempfile import TemporaryDirectory
+from unittest import mock
 
 from vsg import __main__
 
@@ -36,10 +36,10 @@ class testMain(unittest.TestCase):
         Check a file is decodable using the encoding specified
         """
         file_path = pathlib.Path(file_path).resolve()
-        with open(file_path, 'rb') as f:
+        with open(file_path, "rb") as f:
             raw_data = f.read(8192)
             try:
-                raw_data.decode(expected_encoding, errors='strict')
+                raw_data.decode(expected_encoding, errors="strict")
             except UnicodeDecodeError as ude:
                 raise AssertionError(f"File {file_path} is not decodable using encoding {expected_encoding}") from ude
 
