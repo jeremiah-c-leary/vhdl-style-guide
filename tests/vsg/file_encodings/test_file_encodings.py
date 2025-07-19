@@ -4,6 +4,7 @@ import pathlib
 import shutil
 import sys
 import unittest
+from unittest import mock
 from tempfile import TemporaryDirectory
 
 from vsg import __main__
@@ -42,7 +43,8 @@ class testMain(unittest.TestCase):
             except UnicodeDecodeError as ude:
                 raise AssertionError(f"File {file_path} is not decodable using encoding {expected_encoding}") from ude
 
-    def test_utf_8(self):
+    @mock.patch("sys.stdout")
+    def test_utf_8(self, mock_stdout):
         test_file = os.path.join(self._tmpdir.name, "utf-8_encoded.vhd")
         # copy test file
         shutil.copy(os.path.join("tests", "vsg", "file_encodings", "utf-8_encoded.vhd"), test_file)
@@ -59,7 +61,8 @@ class testMain(unittest.TestCase):
         # check encoding after fixing
         self.check_file_encoding(test_file, "utf-8")
 
-    def test_iso_8859_1(self):
+    @mock.patch("sys.stdout")
+    def test_iso_8859_1(self, mock_stdout):
         # copy test file
         test_file = os.path.join(self._tmpdir.name, "iso-8859-1_encoded.vhd")
         shutil.copy(os.path.join("tests", "vsg", "file_encodings", "iso-8859-1_encoded.vhd"), test_file)
