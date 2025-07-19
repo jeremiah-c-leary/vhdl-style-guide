@@ -48,7 +48,7 @@ def open_configuration_file(sFileName, sJUnitFileName=None):
         sys.exit(1)
 
 
-def validate_file_exists(sFilename, sConfigName):
+def validate_file_exists(sFilename, sConfigName, errorWhenEmpty):
     """Validates a file exist while using the glob function to expand filenames."""
     if isinstance(sFilename, dict):
         sExpandedFilename = list(sFilename.keys())[0]
@@ -56,8 +56,11 @@ def validate_file_exists(sFilename, sConfigName):
         sExpandedFilename = sFilename
     lFileNames = glob_filenames(sExpandedFilename)
     if len(lFileNames) == 0:
-        print("ERROR: Could not find file " + sExpandedFilename + " in configuration file " + sConfigName)
-        sys.exit(1)
+        if errorWhenEmpty:
+            print("ERROR: Could not find file " + sExpandedFilename + " in configuration file " + sConfigName)
+            sys.exit(1)
+        else:
+            print("WARNING: Could not find file " + sExpandedFilename + " in configuration file " + sConfigName)
 
 
 def read_configuration_files(dStyle, commandLineArguments):
@@ -137,7 +140,7 @@ def process_file_list_key(dConfig, tempConfiguration, sKey, sConfigFilename):
     if sKey not in dConfig:
         dReturn[sKey] = []
     for iIndex, sFilename in enumerate(tempConfiguration[sKey]):
-        validate_file_exists(sFilename, sConfigFilename)
+        validate_file_exists(sFilename, sConfigFilename, sKey == "file_list")
         try:
             for sGlobbedFilename in glob_filenames_clean(sFilename):
                 dReturn[sKey].append(sGlobbedFilename)
