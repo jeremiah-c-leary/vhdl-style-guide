@@ -1,20 +1,13 @@
 # -*- coding: utf-8 -*-
-import contextlib
-import filecmp
 import os
 import pathlib
 import shutil
-import subprocess
 import sys
 import unittest
-from io import StringIO
 from tempfile import TemporaryDirectory
 from unittest import mock
 
-import yaml
-
-from tests import utils
-from vsg import __main__, version
+from vsg import __main__
 
 
 class command_line_args:
@@ -38,40 +31,27 @@ class testMain(unittest.TestCase):
     def tearDown(self):
         self._tmpdir.cleanup()
 
-    @unittest.skipIf(os.getenv("HOME") == "/home/runner", reason="GitHub may not have file available")
-    @unittest.skipIf(utils.is_windows(), "The command 'file' does not exist on Windows.")
+    def check_file_encoding(self, file_path, expected_encoding):
+        """
+        Check a file is decodable using the encoding specified
+        """
+        file_path = pathlib.Path(file_path).resolve()
+        with open(file_path, "rb") as f:
+            raw_data = f.read(8192)
+            try:
+                raw_data.decode(expected_encoding, errors="strict")
+            except UnicodeDecodeError as ude:
+                raise AssertionError(f"File {file_path} is not decodable using encoding {expected_encoding}") from ude
+
     @mock.patch("sys.stdout")
     def test_utf_8(self, mock_stdout):
+        test_file = os.path.join(self._tmpdir.name, "utf-8_encoded.vhd")
         # copy test file
-        shutil.copy(os.path.join("tests", "vsg", "file_encodings", "utf-8_encoded.vhd"), os.path.join(self._tmpdir.name, "utf-8_encoded.vhd"))
+        shutil.copy(os.path.join("tests", "vsg", "file_encodings", "utf-8_encoded.vhd"), test_file)
         # check encoding before fixing
-        result = subprocess.run(["file", os.path.join(self._tmpdir.name, "utf-8_encoded.vhd")], capture_output=True, text=True)
+        self.check_file_encoding(test_file, "utf-8")
 
-        self.assertTrue("UTF-8 Unicode text" in result.stdout)
-
-        sys.argv = ["vsg", "--fix", "-f", os.path.join(self._tmpdir.name, "utf-8_encoded.vhd"), "-p 1"]
-
-        try:
-            __main__.main()
-        except SystemExit:
-            pass
-
-        # check encoding before fixing
-        result = subprocess.run(["file", os.path.join(self._tmpdir.name, "utf-8_encoded.vhd")], capture_output=True, text=True)
-
-        self.assertTrue("UTF-8 Unicode text" in result.stdout)
-
-    @unittest.skipIf(os.getenv("HOME") == "/home/runner", reason="GitHub may not have file available")
-    @unittest.skipIf(utils.is_windows(), "The command 'file' does not exist on Windows.")
-    @mock.patch("sys.stdout")
-    def test_iso_8859_1(self, mock_stdout):
-        # copy test file
-        shutil.copy(os.path.join("tests", "vsg", "file_encodings", "iso-8859-1_encoded.vhd"), os.path.join(self._tmpdir.name, "iso-8859-1_encoded.vhd"))
-        # check encoding before fixing
-        result = subprocess.run(["file", os.path.join(self._tmpdir.name, "iso-8859-1_encoded.vhd")], capture_output=True, text=True)
-        self.assertTrue("ISO-8859 text" in result.stdout)
-
-        sys.argv = ["vsg", "--fix", "-f", os.path.join(self._tmpdir.name, "iso-8859-1_encoded.vhd"), "-p 1"]
+        sys.argv = ["vsg", "--fix", "-f", test_file, "-p 1"]
 
         try:
             __main__.main()
@@ -79,5 +59,37 @@ class testMain(unittest.TestCase):
             pass
 
         # check encoding after fixing
-        result = subprocess.run(["file", os.path.join(self._tmpdir.name, "iso-8859-1_encoded.vhd")], capture_output=True, text=True)
-        self.assertTrue("ISO-8859 text" in result.stdout)
+        self.check_file_encoding(test_file, "utf-8")
+
+    @mock.patch("sys.stdout")
+    def test_iso_8859_1(self, mock_stdout):
+        # copy test file
+        test_file = os.path.join(self._tmpdir.name, "iso-8859-1_encoded.vhd")
+        shutil.copy(os.path.join("tests", "vsg", "file_encodings", "iso-8859-1_encoded.vhd"), test_file)
+        # check encoding before fixing
+        self.check_file_encoding(test_file, "iso-8859-1")
+
+        sys.argv = ["vsg", "--fix", "-f", test_file, "-p 1"]
+
+        try:
+            __main__.main()
+        except SystemExit:
+            pass
+
+        # check encoding after fixing
+        self.check_file_encoding(test_file, "iso-8859-1")
+
+    def test_encoding_check(self):
+        iso8859_test_file = os.path.join("tests", "vsg", "file_encodings", "iso-8859-1_encoded.vhd")
+        utf8_test_file = os.path.join("tests", "vsg", "file_encodings", "utf-8_encoded.vhd")
+        # make sure encoding check fails on the wrong encoding
+        try:
+            self.check_file_encoding(iso8859_test_file, "utf-8")
+            self.fail("File should not be decodable using encoding 'utf-8' check_file_encoding is not working as expected")
+        except AssertionError:
+            pass
+        try:
+            self.check_file_encoding(utf8_test_file, "iso-8859-1")
+            self.fail("File should not be decodable using encoding 'iso-8859-1' check_file_encoding is not working as expected")
+        except AssertionError:
+            pass
