@@ -20,6 +20,8 @@ architecture RTL of FIFO is
 
   alias s_event_count : natural range 0 to 2**16 - 1 is << signal some.reference.some_signal : natural range 0 to 2**16 - 1 >>;
 
+  alias opposite_view is some_view'converse;
+
 begin
 
 end architecture RTL;
