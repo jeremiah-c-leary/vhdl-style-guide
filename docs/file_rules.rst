@@ -96,6 +96,27 @@ This rule checks for a single space before the identifier.
 
    file defaultImage : load_file_type open read_mode is load_file_name;
 
+file_101
+########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the identifier.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   file defaultImage        : load_file_type open read_mode is load_file_name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open read_mode is load_file_name;
+
 file_500
 ########
 
