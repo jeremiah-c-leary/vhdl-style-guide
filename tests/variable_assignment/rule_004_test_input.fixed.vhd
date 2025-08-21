@@ -82,4 +82,11 @@ begin
     );
   end process PROC_2;
 
+  -- Check that conditional assignments are ignored.
+  PROC_3 : process is
+  begin
+    a := 0 when b = '0' or
+                                 a = '1' else 10;
+  end process PROC_3;
+
 end architecture ARCH;
