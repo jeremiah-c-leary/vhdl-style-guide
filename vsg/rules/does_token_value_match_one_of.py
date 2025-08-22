@@ -35,11 +35,11 @@ class does_token_value_match_one_of(naming.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             sToken = lTokens[0].get_lower_value()
-            if not self.name_found(sToken) :
+            if not self.name_found(sToken):
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def generate_regexp_names(self):
-        self.regexp_names= []
+        self.regexp_names = []
         for name in self.names:
             regexp = re.compile(name, re.IGNORECASE)
             self.regexp_names.append(regexp)
@@ -49,4 +49,3 @@ class does_token_value_match_one_of(naming.Rule):
             if regexp.fullmatch(sToken) is not None:
                 return True
         return False
-
