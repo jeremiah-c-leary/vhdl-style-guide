@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import re
 
 from vsg import violation
 from vsg.rule_group import naming
 
 
-class is_token_value_one_of(naming.Rule):
+class does_token_value_match_one_of(naming.Rule):
     """
-    Checks if a token value is in a list of provided values.
+    Checks if a token value matches one of provided regex patterns.
     """
 
     def __init__(self, token):
@@ -18,11 +19,14 @@ class is_token_value_one_of(naming.Rule):
         self.configuration.append("names")
         self.token = token
         self.configuration_documentation_link = None
+        self.regexp_names = []
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching([self.token])
 
     def _analyze(self, lToi):
+        self.generate_regexp_names()
+
         self.solution = self._get_solution(None)
         lower_names = []
         for sName in self.names:
@@ -30,5 +34,18 @@ class is_token_value_one_of(naming.Rule):
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if not lTokens[0].get_lower_value() in lower_names:
+            sToken = lTokens[0].get_lower_value()
+            if not self.name_found(sToken) :
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+
+    def generate_regexp_names(self):
+        for name in self.names:
+            regexp = re.compile(name, re.IGNORECASE)
+            self.regexp_names.append(regexp)
+
+    def name_found(self, sToken):
+        for regexp in self.regexp_names:
+            if regexp.fullmatch(sToken) is not None:
+                return True
+        return False
+
