@@ -39,6 +39,7 @@ class does_token_value_match_one_of(naming.Rule):
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
     def generate_regexp_names(self):
+        self.regexp_names= []
         for name in self.names:
             regexp = re.compile(name, re.IGNORECASE)
             self.regexp_names.append(regexp)
