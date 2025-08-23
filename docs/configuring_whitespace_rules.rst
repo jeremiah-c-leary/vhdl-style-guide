@@ -283,3 +283,5 @@ Rules Enforcing Whitespace
 * `variable_assignment_002 <variable_assignment_rules.html#variable-assignment-002>`_
 * `variable_assignment_003 <variable_assignment_rules.html#variable-assignment-003>`_
 * `whitespace_007 <whitespace_rules.html#whitespace-007>`_
+* `whitespace_102 <whitespace_rules.html#whitespace-102>`_
+* `whitespace_103 <whitespace_rules.html#whitespace-103>`_
