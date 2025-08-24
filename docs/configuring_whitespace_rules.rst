@@ -160,6 +160,9 @@ Rules Enforcing Whitespace
 * `constant_010 <constant_rules.html#constant-010>`_
 * `constant_100 <constant_rules.html#constant-100>`_
 * `constant_101 <constant_rules.html#constant-101>`_
+* `constrained_array_definition_100 <constrained_array_definition_rules.html#constrained-array-definition-100>`_
+* `constrained_array_definition_101 <constrained_array_definition_rules.html#constrained-array-definition-101>`_
+* `constrained_array_definition_102 <constrained_array_definition_rules.html#constrained-array-definition-102>`_
 * `context_002 <context_rules.html#context-002>`_
 * `context_017 <context_rules.html#context-017>`_
 * `context_018 <context_rules.html#context-018>`_
@@ -274,6 +277,9 @@ Rules Enforcing Whitespace
 * `type_006 <type_rules.html#type-006>`_
 * `type_007 <type_rules.html#type-007>`_
 * `type_100 <type_rules.html#type-100>`_
+* `unbounded_array_definition_100 <unbounded_array_definition_rules.html#unbounded-array-definition-100>`_
+* `unbounded_array_definition_101 <unbounded_array_definition_rules.html#unbounded-array-definition-101>`_
+* `unbounded_array_definition_102 <unbounded_array_definition_rules.html#unbounded-array-definition-102>`_
 * `variable_005 <variable_rules.html#variable-005>`_
 * `variable_006 <variable_rules.html#variable-006>`_
 * `variable_100 <variable_rules.html#variable-100>`_
