@@ -1,11 +1,11 @@
 
-entity rule_100_test_input is
+entity fifo is
   port (
     i_data : in  signed      (15 downto 0);
     i_data : in  signed (15 downto 0);
-    i_data : in  signed(15 downto 0);
+    i_data : in  signed(15 downto 0)
   );
-end entity rule_100_test_input;
+end entity fifo;
 
 
 architecture rtl of fifo is
