@@ -10,7 +10,7 @@ index_constraint_100
 
 This rule checks for whitespace before the opening parenthesis.
 
-|configuring_uppercase_and_lowercase_rules_link|
+|configuring_whitespace_rules_link|
 
 **Violation**
 
