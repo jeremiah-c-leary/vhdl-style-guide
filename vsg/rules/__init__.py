@@ -153,6 +153,7 @@ from vsg.rules import generic_map
 from vsg.rules import ieee
 from vsg.rules import if_statement
 from vsg.rules import if_generate_statement
+from vsg.rules import index_constraint
 from vsg.rules import index_subtype_definition
 from vsg.rules import instantiation
 from vsg.rules import interface_incomplete_type_declaration
