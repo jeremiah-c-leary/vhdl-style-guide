@@ -27,7 +27,7 @@ class test_index_subtype_definition_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "range_constraint")
         self.assertEqual(oRule.identifier, "101")
 
-        lExpected = [12, 13, 14]
+        lExpected = [13, 14, 15]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
