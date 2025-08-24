@@ -52,7 +52,7 @@ class rule_005(whitespace.Rule):
             oRight = lTokens[-2]
             if isinstance(oRight, parser.whitespace):
                 if not utils.token_is_whitespace_or_comment(lTokens[-1]):
-                    if not (lTokens[-1].get_value().isnumeric() and (self.ignore_spaces_before_numbers == True)):
+                    if not (lTokens[-1].get_value().isnumeric() and self.ignore_spaces_before_numbers):
                         oViolation = violation.New(iLine, oToi, self.solution)
                         self.add_violation(oViolation)
 
