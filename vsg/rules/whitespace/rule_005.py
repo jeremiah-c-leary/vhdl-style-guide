@@ -38,6 +38,8 @@ class rule_005(whitespace.Rule):
         self.iSpaces = 0
         self.lTokens = [parser.open_parenthesis]
         self.configuration_documentation_link = None
+        self.ignore_spaces_before_numbers = True
+        self.configuration.append("ignore_spaces_before_numbers")
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_n_tokens_before_and_after_tokens(2, self.lTokens)
@@ -49,7 +51,7 @@ class rule_005(whitespace.Rule):
             oRight = lTokens[-2]
             if isinstance(oRight, parser.whitespace):
                 if not utils.token_is_whitespace_or_comment(lTokens[-1]):
-                    if not lTokens[-1].get_value().isnumeric():
+                    if not (lTokens[-1].get_value().isnumeric() and (self.ignore_spaces_before_numbers == True)):
                         oViolation = violation.New(iLine, oToi, self.solution)
                         self.add_violation(oViolation)
 
