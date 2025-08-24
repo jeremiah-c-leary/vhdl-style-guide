@@ -16,7 +16,7 @@ This rule checks for whitespace after the **array** keyword.
 
 .. code-block:: vhdl
 
-   type t_u_array_unconstrained is array (natural range <>) of unsigned;
+   type t_u_array_unconstrained is array(natural range <>) of unsigned;
    type t_u_array_unconstrained is array     (natural range <>) of unsigned;
 
 **Fix**

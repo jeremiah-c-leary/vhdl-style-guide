@@ -23,7 +23,7 @@ class rule_101(Rule):
 
     .. code-block:: vhdl
 
-       type t_u_array_unconstrained is array (natural range <>) of unsigned;
+       type t_u_array_unconstrained is array(natural range <>) of unsigned;
     """
 
     def __init__(self):
