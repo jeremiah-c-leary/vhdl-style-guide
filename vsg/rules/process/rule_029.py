@@ -53,7 +53,7 @@ class rule_029(structure.Rule):
     edge configuration
     ^^^^^^^^^^^^^^^^^^
 
-    .. NOTE::  Configure this by setting the *'clock'* attribute to *'edge'*
+    .. NOTE::  Configure this by setting the *'clock'* attribute to *'edge'*.
 
        .. code-block:: json
 
