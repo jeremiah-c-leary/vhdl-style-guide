@@ -20,7 +20,7 @@ lExpected_remove.append("")
 utils.read_file(os.path.join(sTestDir, "rule_024_test_input.fixed_remove.vhd"), lExpected_remove)
 
 
-class test_architecture_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

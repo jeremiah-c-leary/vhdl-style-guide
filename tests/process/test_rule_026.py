@@ -20,7 +20,7 @@ lExpected_require_blank.append("")
 utils.read_file(os.path.join(sTestDir, "rule_026_test_input.fixed_require_blank.vhd"), lExpected_require_blank)
 
 
-class test_process_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
