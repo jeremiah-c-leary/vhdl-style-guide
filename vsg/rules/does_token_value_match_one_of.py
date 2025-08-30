@@ -19,33 +19,22 @@ class does_token_value_match_one_of(naming.Rule):
         self.configuration.append("names")
         self.token = token
         self.configuration_documentation_link = None
-        self.regexp_names = []
 
     def _get_tokens_of_interest(self, oFile):
         return oFile.get_tokens_matching([self.token])
 
     def _analyze(self, lToi):
-        self.generate_regexp_names()
-
         self.solution = self._get_solution(None)
-        lower_names = []
-        for sName in self.names:
-            lower_names.append(sName.lower())
+        lRegexNames = [re.compile(name, re.IGNORECASE) for name in self.names]
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            sToken = lTokens[0].get_lower_value()
-            if not self.name_found(sToken):
+            if self._check_for_violation(lTokens[0].get_lower_value(), lRegexNames):
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
 
-    def generate_regexp_names(self):
-        self.regexp_names = []
-        for name in self.names:
-            regexp = re.compile(name, re.IGNORECASE)
-            self.regexp_names.append(regexp)
+    def _check_for_violation(self, sToken, lRegexNames):
+        for regex in lRegexNames:
+            if regex.fullmatch(sToken) is not None:
+                return False
+        return True
 
-    def name_found(self, sToken):
-        for regexp in self.regexp_names:
-            if regexp.fullmatch(sToken) is not None:
-                return True
-        return False
