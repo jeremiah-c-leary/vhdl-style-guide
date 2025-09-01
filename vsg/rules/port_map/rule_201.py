@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules import blank_lines_between_token_pairs as Rule
+from vsg.rules.blank_line_above_line_starting_with_token_when_between_tokens import Rule
 
-lTokenPairs = []
-lTokenPairs.append([token.port_map_aspect.open_parenthesis, token.port_map_aspect.close_parenthesis])
+lTokens = []
+lTokens.append(token.association_element.formal_part)
 
 
 class rule_201(Rule):
@@ -47,4 +47,6 @@ class rule_201(Rule):
     """
 
     def __init__(self):
-        super().__init__(lTokenPairs)
+        super().__init__(lTokens)
+        self.style = "no_blank_line"
+        self.lBetweenTokenPairs = [token.port_map_aspect.open_parenthesis, token.port_map_aspect.close_parenthesis]
