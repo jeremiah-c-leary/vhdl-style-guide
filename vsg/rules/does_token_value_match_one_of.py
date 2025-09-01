@@ -37,4 +37,3 @@ class does_token_value_match_one_of(naming.Rule):
             if regex.fullmatch(sToken) is not None:
                 return False
         return True
-
