@@ -241,6 +241,7 @@ Rules Enforcing Previous Lines
 * `block_200 <block_rules.html#block-200>`_
 * `case_007 <case_rules.html#case-007>`_
 * `case_201 <case_rules.html#case-201>`_
+* `case_generate_alternative_201 <case_generate_alternative_rules.html#case-generate-alternative-201>`_
 * `component_003 <component_rules.html#component-003>`_
 * `context_003 <context_rules.html#context-003>`_
 * `entity_003 <entity_rules.html#entity-003>`_
