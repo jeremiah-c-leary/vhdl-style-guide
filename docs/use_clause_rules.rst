@@ -3,6 +3,21 @@
 Use Clause Rules
 ----------------
 
+use_clause_001
+##############
+
+|phase_7| |error| |unfixable| |naming|
+
+This rule checks for packages that have been restricted by the user.
+
+.. NOTE:: This rule is configured to restrict the std_logic_arith package by default.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   use ieee.std_logic_arith.all;
+
 use_clause_500
 ##############
 

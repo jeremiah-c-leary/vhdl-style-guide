@@ -275,6 +275,21 @@ This rule checks the **use** keyword is on its own line.
    context c1 is library ieee;
        use ieee.std_logic_1164.all; end context c1;
 
+library_012
+###########
+
+|phase_7| |disabled| |error| |unfixable| |naming|
+
+This rule checks for libraries that have been restricted by the user.
+
+.. NOTE:: This rule is disabled by default.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   library bad_lib;
+
 library_500
 ###########
 
