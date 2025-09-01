@@ -11,5 +11,6 @@ from .rule_008 import rule_008
 from .rule_009 import rule_009
 from .rule_010 import rule_010
 from .rule_011 import rule_011
+from .rule_012 import rule_012
 from .rule_500 import rule_500
 from .rule_600 import rule_600
