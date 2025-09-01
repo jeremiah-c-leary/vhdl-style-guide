@@ -6,6 +6,7 @@ from vsg.rules import blank_lines_between_token_pairs as Rule
 lTokenPairs = []
 lTokenPairs.append([token.port_map_aspect.open_parenthesis, token.port_map_aspect.close_parenthesis])
 
+
 class rule_201(Rule):
     """
     This rule checks for blank lines in a port map.

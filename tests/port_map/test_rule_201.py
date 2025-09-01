@@ -17,7 +17,6 @@ utils.read_file(os.path.join(sTestDir, "rule_201_test_input.fixed.vhd"), lExpect
 
 
 class test_port_map_rule(unittest.TestCase):
-
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
