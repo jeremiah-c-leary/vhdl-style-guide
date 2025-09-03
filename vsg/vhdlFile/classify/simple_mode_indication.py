@@ -5,10 +5,10 @@ from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import expression, mode, subtype_indication
 
 
-def classify(iToken, lObjects):
+def detect(iToken, lObjects):
     """
     simple_mode_indication ::=
-        [ mode ] subtype_indication [ bus ] [ := static_expression ]
+        [ mode ] subtype_indication [ bus ] [ := static_conditional_expression ]
     """
 
     iCurrent = mode.classify(iToken, lObjects)

@@ -560,15 +560,6 @@ class choices(item):
         super().__init__(sString)
 
 
-class mode_indication(item):
-    """
-    unique_id = parser : mode_indication
-    """
-
-    def __init__(self, sString):
-        super().__init__(sString)
-
-
 class beginning_of_file(item):
     """
     unique_id = parser : choices

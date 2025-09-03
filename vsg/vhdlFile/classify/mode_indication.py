@@ -17,4 +17,4 @@ def classify(iToken, lObjects):
     if iReturn != iToken:
         return iReturn
 
-    return simple_mode_indication.classify(iToken, lObjects)
+    return simple_mode_indication.detect(iToken, lObjects)
