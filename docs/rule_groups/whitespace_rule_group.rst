@@ -188,7 +188,6 @@ Rules Enforcing Whitespace Rule Group
 * `whitespace_005 <../whitespace_rules.html#whitespace-005>`_
 * `whitespace_006 <../whitespace_rules.html#whitespace-006>`_
 * `whitespace_007 <../whitespace_rules.html#whitespace-007>`_
-* `whitespace_008 <../whitespace_rules.html#whitespace-008>`_
 * `whitespace_010 <../whitespace_rules.html#whitespace-010>`_
 * `whitespace_011 <../whitespace_rules.html#whitespace-011>`_
 * `whitespace_013 <../whitespace_rules.html#whitespace-013>`_
