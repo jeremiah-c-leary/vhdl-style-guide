@@ -156,23 +156,7 @@ This rule checks for spaces after a comma.
 whitespace_008
 ##############
 
-|phase_2| |error| |whitespace|
-
-This rule checks for spaces after the **std_logic_vector** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   signal data    : std_logic_vector (7 downto 0);
-   signal counter : std_logic_vector    (7 downto 0);
-
-**Fix**
-
-.. code-block:: vhdl
-
-   signal data    : std_logic_vector(7 downto 0);
-   signal counter : std_logic_vector(7 downto 0);
+This rule has been deprecated and replaced with rule `index_constraint_100 <index_constraint_rules.html#index_constraint-100>`_.
 
 whitespace_010
 ##############
@@ -198,7 +182,7 @@ whitespace_011
 
 |phase_2| |error| |whitespace|
 
-This rule checks for at least a single space before and after math operators +, -, /, * and **.
+This rule checks for at least a single space before and after math operators +, -, /, * and \*\*.
 
 **Violation**
 
