@@ -182,7 +182,7 @@ whitespace_011
 
 |phase_2| |error| |whitespace|
 
-This rule checks for at least a single space before and after math operators +, -, /, * and \*\*.
+This rule checks for at least a single space before and after math operators +, -, /, * and **.
 
 **Violation**
 
