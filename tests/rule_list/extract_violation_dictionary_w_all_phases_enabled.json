@@ -5305,60 +5305,6 @@
           "solution": "Remove spaces before close )."
         },
         {
-          "rule": "whitespace_008",
-          "linenumber": 191,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
-          "rule": "whitespace_008",
-          "linenumber": 195,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
-          "rule": "whitespace_008",
-          "linenumber": 202,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
-          "rule": "whitespace_008",
-          "linenumber": 207,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
-          "rule": "whitespace_008",
-          "linenumber": 243,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
-          "rule": "whitespace_008",
-          "linenumber": 244,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
-          "rule": "whitespace_008",
-          "linenumber": 248,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
-          "rule": "whitespace_008",
-          "linenumber": 260,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
-          "rule": "whitespace_008",
-          "linenumber": 261,
-          "severity": "Error",
-          "solution": "Remove spaces after std_logic_vector"
-        },
-        {
           "rule": "whitespace_011",
           "linenumber": 191,
           "severity": "Error",
