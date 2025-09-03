@@ -538,7 +538,7 @@ dMap["2008"] = [
     "xnor",
     "xor",
 ]
-# https://www.0x04.net/~mwk/vstd/ieee-1076-2019.pdf, p. 266-267, 15.10: Resserved Words
+# https://www.0x04.net/~mwk/vstd/ieee-1076-2019.pdf, p. 266-267, 15.10: Reserved Words
 dMap["2019"] = [
     "abs",
     "access",
