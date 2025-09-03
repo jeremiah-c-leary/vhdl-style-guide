@@ -1,0 +1,28 @@
+---
+rule:
+  entity_008:
+    disable : True
+  entity_012:
+    disable : True
+  port_010:
+    disable : True
+  architecture_011:
+    disable : True
+  architecture_013:
+    disable : True
+  architecture_014:
+    disable : True
+file_rules:
+  - tests/**/entity1.vhd :
+      rule:
+         port_007:
+            disable : True
+  - tests/**/*2.vhd :
+      rule:
+         port_008:
+            disable : True
+  - tests/**/nomatch.vhd :
+      rule:
+         port_008:
+            disable : True
+...

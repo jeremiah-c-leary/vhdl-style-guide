@@ -580,6 +580,33 @@ class testVsg(unittest.TestCase):
 
         self.assertEqual(lActual, lExpected)
 
+    def test_configuration_with_globbing_in_file_rules_and_no_match(self):
+        lExpected = ["WARNING: Could not find file tests/**/nomatch.vhd in configuration file tests/vsg/config_file_rules_w_globbing_no_match.yaml"]
+
+        lActual = []
+
+        try:
+            lActual = (
+                subprocess.check_output(
+                    [
+                        *utils.vsg_exec(),
+                        "--configuration",
+                        "tests/vsg/config_file_rules_w_globbing_no_match.yaml",
+                        "-f",
+                        "tests/vsg/*.vhd",
+                        "--output_format",
+                        "syntastic",
+                    ],
+                )
+                .decode("utf-8")
+                .splitlines()
+            )
+        except subprocess.CalledProcessError as e:
+            lActual = str(e.output.decode("utf-8")).splitlines()
+            iExitStatus = e.returncode
+
+        self.assertEqual(lActual, lExpected)
+
     def test_file_as_stdin(self):
         with open("tests/vsg/entity1.vhd") as file1:
             lExpected = []
