@@ -4,10 +4,11 @@
 
 -- Making identifiers out of reserved keywords to test the awesome vsg project
 
-entity null is            -- 'null' is a reserved keyword since 1987
+entity null is             -- 'null' is a reserved keyword since 1987
   generic (
-    default    : natural; -- 'default' is a reserved keyword since 2008
-    unaffected : natural  -- 'unaffected' is a reserved keyword since 1993
+    vpkg       : positive; -- 'vpkg' is a reserved keyword since 2019
+    default    : natural;  -- 'default' is a reserved keyword since 2008
+    unaffected : natural   -- 'unaffected' is a reserved keyword since 1993
   );
   port (
     private : out   natural;   -- 'private' since 2019
@@ -19,6 +20,7 @@ end entity null;  -- 'null' since 1987
 
 architecture rol of null is -- 'rol' since 1993, 'null' since 1987
 
+  signal view       : boolean;   -- 'view' since 2019
   signal procedural : natural;   -- 'procedural' reserved in 2002 and not in 2008
   signal open       : natural;   -- 'open' reserved since 1987
   signal wilbur     : std_logic; -- legal

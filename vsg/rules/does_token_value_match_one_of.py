@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import re
 
 from vsg import violation
 from vsg.rule_group import naming
 
 
-class is_token_value_one_of(naming.Rule):
+class does_token_value_match_one_of(naming.Rule):
     """
-    Checks if a token value is in a list of provided values.
+    Checks if a token value matches one of provided regex patterns.
     """
 
     def __init__(self, token):
@@ -24,11 +25,15 @@ class is_token_value_one_of(naming.Rule):
 
     def _analyze(self, lToi):
         self.solution = self._get_solution(None)
-        lower_names = []
-        for sName in self.names:
-            lower_names.append(sName.lower())
+        lRegexNames = [re.compile(name, re.IGNORECASE) for name in self.names]
 
         for oToi in lToi:
             lTokens = oToi.get_tokens()
-            if not lTokens[0].get_lower_value() in lower_names:
+            if self._check_for_violation(lTokens[0].get_lower_value(), lRegexNames):
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))
+
+    def _check_for_violation(self, sToken, lRegexNames):
+        for regex in lRegexNames:
+            if regex.fullmatch(sToken) is not None:
+                return False
+        return True

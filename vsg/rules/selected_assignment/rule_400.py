@@ -43,4 +43,4 @@ class rule_400(Rule):
         self.align_left = "yes"
         self.align_paren = "no"
         self.override = True
-        self.check_for_array = False
+        self.skip_array = False
