@@ -334,6 +334,31 @@ This rule checks the structure of signal constraints.
        element2(3 downto 0)
      );
 
+signal_018
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the **:=** is on the same line at the **signal** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal size : integer
+      := 1;
+   signal width : integer
+      := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal size    : integer :=
+     1;
+   signal width   : integer :=
+     32
+
 signal_100
 ##########
 
