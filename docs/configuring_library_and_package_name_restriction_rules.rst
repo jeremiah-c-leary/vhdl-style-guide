@@ -13,7 +13,7 @@ There is one option for these rules:
    :code:`names`
 
 .. |default| replace::
-   :code:`std_logic_arith`
+   :code:`std_logic_arith` for **use_clause_001**. None for **library_012**
 
 .. |values__names| replace::
    List of strings
@@ -49,12 +49,15 @@ The following code would fail with this option:
    library ieee;
      use ieee.std_logic_arith.all;
 
-Example: |names| set to ["work", "my_package"]
+Example: |names| set to ["std_logic_arith", "my_package"]
 ##############################################
 
 The following code would fail three times with this option:
 
 .. code-block:: vhdl
+
+   library ieee;
+     use ieee.std_logic_arith.all;
 
    library work;
      use work.my_package.all;
