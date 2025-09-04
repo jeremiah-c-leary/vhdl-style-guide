@@ -10,6 +10,8 @@ class rule_001(does_token_value_match_none_of):
 
     |configuring_library_and_package_name_restriction_rules_link|
 
+    .. NOTE:: This rule is disabled by default.
+
     .. NOTE:: This rule is configured to restrict the std_logic_arith package by default.
 
     **Violation**
@@ -21,7 +23,6 @@ class rule_001(does_token_value_match_none_of):
 
     def __init__(self):
         super().__init__(use_clause.package_name)
-        self.disable = False
         self.names = ["std_logic_arith"]
 
     def _get_solution(self, iLineNumber):

@@ -24,7 +24,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "use_clause")
         self.assertEqual(oRule.identifier, "001")
         self.assertFalse(oRule.fixable)
-        self.assertFalse(oRule.disable)
+        self.assertTrue(oRule.disable)
         self.assertEqual(oRule.groups, ["naming"])
 
         lExpected = []

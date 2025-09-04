@@ -37,7 +37,7 @@ This is an example of how to configure the option.
           - "work"
           - "std_logic_arith"
 
-.. NOTE:: All examples below are using the rule **port_map_004**.
+.. NOTE:: All examples below are using the rule **use_clause_001**.
 
 Example: |names| set to list ["std_logic_arith"]
 ################################################
