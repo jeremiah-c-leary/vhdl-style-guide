@@ -188,7 +188,12 @@ Rules Enforcing Whitespace
 * `external_variable_name_102 <external_variable_name_rules.html#external-variable-name-102>`_
 * `external_variable_name_103 <external_variable_name_rules.html#external-variable-name-103>`_
 * `external_variable_name_104 <external_variable_name_rules.html#external-variable-name-104>`_
+* `file_open_information_100 <file_open_information_rules.html#file-open-information-100>`_
+* `file_open_information_101 <file_open_information_rules.html#file-open-information-101>`_
+* `file_open_information_102 <file_open_information_rules.html#file-open-information-102>`_
+* `file_open_information_103 <file_open_information_rules.html#file-open-information-103>`_
 * `file_100 <file_rules.html#file-100>`_
+* `file_101 <file_rules.html#file-101>`_
 * `function_100 <function_rules.html#function-100>`_
 * `function_101 <function_rules.html#function-101>`_
 * `generate_002 <generate_rules.html#generate-002>`_
