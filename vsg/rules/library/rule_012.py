@@ -8,6 +8,8 @@ class rule_012(does_token_value_match_none_of):
     """
     This rule checks for libraries that have been restricted by the user.
 
+    |configuring_library_and_package_name_restriction_rules_link|
+
     .. NOTE:: This rule is disabled by default.
 
     **Violation**

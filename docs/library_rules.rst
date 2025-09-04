@@ -282,6 +282,8 @@ library_012
 
 This rule checks for libraries that have been restricted by the user.
 
+|configuring_library_and_package_name_restriction_rules_link|
+
 .. NOTE:: This rule is disabled by default.
 
 **Violation**

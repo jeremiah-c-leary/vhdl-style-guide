@@ -8,6 +8,8 @@ class rule_001(does_token_value_match_none_of):
     """
     This rule checks for packages that have been restricted by the user.
 
+    |configuring_library_and_package_name_restriction_rules_link|
+
     .. NOTE:: This rule is configured to restrict the std_logic_arith package by default.
 
     **Violation**

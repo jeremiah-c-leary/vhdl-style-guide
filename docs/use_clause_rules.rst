@@ -10,6 +10,8 @@ use_clause_001
 
 This rule checks for packages that have been restricted by the user.
 
+|configuring_library_and_package_name_restriction_rules_link|
+
 .. NOTE:: This rule is configured to restrict the std_logic_arith package by default.
 
 **Violation**
