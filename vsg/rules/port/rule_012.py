@@ -5,9 +5,8 @@ from vsg.rule_group import structure
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.assignment)
-lTokens.append(token.interface_signal_declaration.assignment)
 lTokens.append(token.interface_variable_declaration.assignment)
-lTokens.append(token.interface_unknown_declaration.assignment)
+lTokens.append(token.simple_mode_indication.assignment)
 
 
 class rule_012(structure.Rule):

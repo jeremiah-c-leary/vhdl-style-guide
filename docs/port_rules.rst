@@ -566,6 +566,7 @@ This rule checks for missing modes in port declarations.
      WR_EN    : std_logic;
      RD_EN    : std_logic;
      OVERFLOW : std_logic;
+     V_TEST   : some_view;
      DATA     : inout std_logic
    );
 
@@ -577,6 +578,7 @@ This rule checks for missing modes in port declarations.
      WR_EN    : in    std_logic;
      RD_EN    : in    std_logic;
      OVERFLOW : out   std_logic;
+     V_TEST   : view  some_view;
      DATA     : inout std_logic
    );
 
