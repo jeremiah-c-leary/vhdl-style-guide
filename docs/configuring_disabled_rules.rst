@@ -101,6 +101,7 @@ Rules Disabled by Default
 * `type_100 <type_rules.html#type-100>`_
 * `type_200 <type_rules.html#type-200>`_
 * `type_600 <type_rules.html#type-600>`_
+* `use_clause_001 <use_clause_rules.html#use-clause-001>`_
 * `variable_012 <variable_rules.html#variable-012>`_
 * `variable_100 <variable_rules.html#variable-100>`_
 * `variable_600 <variable_rules.html#variable-600>`_
