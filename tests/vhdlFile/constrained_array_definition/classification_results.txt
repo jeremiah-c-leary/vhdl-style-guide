@@ -55,13 +55,13 @@
 <class 'vsg.token.constrained_array_definition.array_keyword'>
 <class 'vsg.token.index_constraint.open_parenthesis'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.range_constraint.range_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.comma'>
 <class 'vsg.parser.todo'>
-<class 'vsg.parser.todo'>
+<class 'vsg.token.range_constraint.range_keyword'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.direction.to'>
 <class 'vsg.parser.todo'>

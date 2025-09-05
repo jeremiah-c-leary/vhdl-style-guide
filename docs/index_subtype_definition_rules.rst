@@ -3,6 +3,48 @@
 Index Subtype Definition Rules
 ------------------------------
 
+index_subtype_definition_100
+############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **range** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type my_array is array (natural     range <>) of integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type my_array is array (natural range <>) of integer;
+
+index_subtype_definition_101
+############################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **range** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   type my_array is array (natural range     <>) of integer;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   type my_array is array (natural range <>) of integer;
+
 index_subtype_definition_500
 ############################
 
