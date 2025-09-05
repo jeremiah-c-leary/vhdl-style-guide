@@ -334,6 +334,31 @@ This rule checks the structure of signal constraints.
        element2(3 downto 0)
      );
 
+signal_018
+##########
+
+|phase_1| |error| |structure|
+
+This rule checks the **:=** is on the same line at the **signal** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal size : integer
+      := 1;
+   signal width : integer
+      := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal size    : integer :=
+     1;
+   signal width   : integer :=
+     32
+
 signal_100
 ##########
 
@@ -455,6 +480,35 @@ This rule checks alignment of multiline constraints in signal declarations.
        element1(7 downto 0),
        element2(3 downto 0)
      );
+
+signal_401
+##########
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of assignment keywords in signal declarations.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal c_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data => true,
+     others => false
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal c_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data    => true,
+     others            => false
+   );
 
 signal_600
 ##########
