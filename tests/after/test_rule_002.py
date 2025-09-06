@@ -44,7 +44,7 @@ lExpected_no_no_no.append("")
 utils.read_file(os.path.join(sTestDir, "rule_002_test_input.fixed_no_no_no.vhd"), lExpected_no_no_no)
 
 
-class test_after_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

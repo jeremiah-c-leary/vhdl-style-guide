@@ -20,7 +20,7 @@ lExpected_new_line_after_assign_no.append("")
 utils.read_file(os.path.join(sTestDir, "rule_008_test_input.fixed_new_line_after_assign_no.vhd"), lExpected_new_line_after_assign_no)
 
 
-class test_sequential_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

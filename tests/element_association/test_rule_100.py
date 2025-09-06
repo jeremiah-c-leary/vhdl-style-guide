@@ -20,7 +20,7 @@ lExpected_spaces_gte2.append("")
 utils.read_file(os.path.join(sTestDir, "rule_100_test_input.fixed_spaces_gte2.vhd"), lExpected_spaces_gte2)
 
 
-class test_element_association_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

@@ -20,7 +20,7 @@ lExpected_indent_4.append("")
 utils.read_file(os.path.join(sTestDir, "rule_006_test_input_smart_tabs.fixed_indent_4.vhd"), lExpected_indent_4)
 
 
-class test_concurrent_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

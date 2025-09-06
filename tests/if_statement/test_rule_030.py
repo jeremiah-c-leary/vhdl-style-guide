@@ -20,7 +20,7 @@ lExpected_no_blank.append("")
 utils.read_file(os.path.join(sTestDir, "rule_030_test_input.fixed_no_blank.vhd"), lExpected_no_blank)
 
 
-class test_if_statement_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
