@@ -91,7 +91,8 @@ whitespace_005
 This rule checks for spaces after an open parenthesis.
 
 .. NOTE::
-   Spaces before numbers are allowed.
+   Spaces before numbers are ignored.
+   This can be disabled by setting the *'ignore_spaces_before_numbers'* attribute to *'False'*.
 
 **Violation**
 
