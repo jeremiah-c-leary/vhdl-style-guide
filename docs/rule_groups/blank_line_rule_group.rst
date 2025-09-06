@@ -22,6 +22,9 @@ Rules Enforcing Blank Line Rule Group
 * `case_010 <../case_rules.html#case-010>`_
 * `case_200 <../case_rules.html#case-200>`_
 * `case_201 <../case_rules.html#case-201>`_
+* `case_generate_alternative_200 <../case_generate_alternative_rules.html#case-generate-alternative-200>`_
+* `case_generate_alternative_201 <../case_generate_alternative_rules.html#case-generate-alternative-201>`_
+* `case_generate_statement_200 <../case_generate_statement_rules.html#case-generate-statement-200>`_
 * `component_003 <../component_rules.html#component-003>`_
 * `component_016 <../component_rules.html#component-016>`_
 * `component_018 <../component_rules.html#component-018>`_

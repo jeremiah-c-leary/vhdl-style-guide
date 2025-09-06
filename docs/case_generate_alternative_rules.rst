@@ -53,6 +53,61 @@ This rule checks for a single space before the **=>** operator.
 
     when 3 =>
 
+case_generate_alternative_200
+#############################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for a blank line below the **=>** keyword.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   when 0 =>
+     a <= b;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   when 0 =>
+
+     a <= b;
+
+case_generate_alternative_201
+#############################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines or comments above the **when** keyword.
+
+|configuring_previous_line_rules_link|
+
+The default style is :code:`allow_comment`.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   case data is
+     when 3 =>
+     -- Comment
+     when 4 =>
+
+**Fix**
+
+.. code-block:: vhdl
+
+   case data is
+
+     when 3 =>
+
+     -- Comment
+     when 4 =>
+
 case_generate_alternative_300
 #############################
 
