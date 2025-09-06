@@ -67,7 +67,7 @@ architecture BEHAVIORAL of PIC is
   signal int_type             : unsigned(1 downto 0) := "01";
   signal int_index, count_cmd : integer              := 0;
 
-  type prior_table is array (0 to 7) of unsigned(2 downto 0);
+  type prior_table is array(0 to 7) of unsigned(2 downto 0);
 
   signal pt                   : prior_table          := (others => (others => '0'));
   signal int_pt               : unsigned(2 downto 0) := "000";
