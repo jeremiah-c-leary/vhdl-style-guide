@@ -20,7 +20,7 @@ lExpected_parenthesis_remove.append("")
 utils.read_file(os.path.join(sTestDir, "rule_002_test_input.fixed_parenthesis_remove.vhd"), lExpected_parenthesis_remove)
 
 
-class test_if_statement_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

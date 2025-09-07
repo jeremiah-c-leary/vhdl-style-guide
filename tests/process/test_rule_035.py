@@ -20,7 +20,7 @@ lExpectedCompactAlignmentFalse.append("")
 utils.read_file(os.path.join(sTestDir, "rule_035_test_input.fixed_compact_alignment_false.vhd"), lExpectedCompactAlignmentFalse)
 
 
-class test_process_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

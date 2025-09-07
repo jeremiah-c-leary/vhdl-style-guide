@@ -20,7 +20,7 @@ lExpected_no_blank_line.append("")
 utils.read_file(os.path.join(sTestDir, "rule_201_test_input.fixed_no_blank_line.vhd"), lExpected_no_blank_line, False)
 
 
-class test_block_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)
