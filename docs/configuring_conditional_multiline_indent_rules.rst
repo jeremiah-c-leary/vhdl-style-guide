@@ -113,7 +113,7 @@ Example: |align_left| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1' when input = "0000" or (input = "1111" and
-         input2) = "0101" else
+         input2 = "0101") else
      sig_a or sig_b when input = "0001" and
        input = "1001" else
      sig_c and sig_d when input = "0010" else
@@ -125,7 +125,7 @@ Example: |align_paren| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1' when input = "0000" or (input = "1111" and
-                                          input2) = "0101" else
+                                          input2 = "0101") else
              sig_a or sig_b when input = "0001" and
                input = "1001" else
              sig_c and sig_d when input = "0010" else
@@ -137,7 +137,7 @@ Example: |align_when_keywords| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1'             when input = "0000" or (input = "1111" and
-                 input2) = "0101" else
+                 input2 = "0101") else
              sig_a or sig_b  when input = "0001" and
                input = "1001" else
              sig_c and sig_d when input = "0010" else
@@ -149,7 +149,7 @@ Example: |wrap_at_when| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1' when input = "0000" or (input = "1111" and
-                        input2) = "0101" else
+                        input2 = "0101") else
              sig_a or sig_b when input = "0001" and
                                  input = "1001" else
              sig_c and sig_d when input = "0010" else
@@ -161,7 +161,7 @@ Example: |align_else_keywords| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1' when input = "0000" or (input = "1111" and
-                 input2) = "0101"                else
+                 input2 = "0101")                else
              sig_a or sig_b when input = "0001" and
                input = "1001"                    else
              sig_c and sig_d when input = "0010" else
@@ -187,7 +187,7 @@ would result in the following formatting:
 .. code-block:: vhdl
 
   output <= '1' when input = "0000" or (input = "1111" and
-                                         input2) = "0101" else
+                                         input2 = "0101") else
             sig_a or sig_b when input = "0001" and
                                 input = "1001" else
             sig_c and sig_d when input = "0010" else
@@ -213,7 +213,7 @@ would result in the following formatting:
 .. code-block:: vhdl
 
    output <= '1'             when input = "0000" or (input = "1111" and
-                                                      input2) = "0101" else
+                                                      input2 = "0101") else
              sig_a or sig_b  when input = "0001" and
                                   input = "1001"                       else
              sig_c and sig_d when input = "0010"                       else
