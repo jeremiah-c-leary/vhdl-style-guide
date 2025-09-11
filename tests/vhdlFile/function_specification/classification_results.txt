@@ -223,7 +223,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
@@ -270,7 +270,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>

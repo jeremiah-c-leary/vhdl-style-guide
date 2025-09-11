@@ -78,8 +78,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -91,8 +91,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -104,8 +104,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -117,8 +117,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -130,8 +130,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -146,7 +146,7 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 20 |     signal sig1, sig2 : out     std_logic bus;
@@ -157,7 +157,7 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 21 |     signal sig1, sig2 : inout   std_logic bus;
@@ -168,7 +168,7 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 22 |     signal sig1, sig2 : buffer  std_logic bus;
@@ -179,7 +179,7 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 23 |     signal sig1, sig2 : linkage std_logic bus;
@@ -190,7 +190,7 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 24 |
@@ -203,8 +203,8 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -215,8 +215,8 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -227,8 +227,8 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -239,8 +239,8 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -251,8 +251,8 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -266,7 +266,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -277,7 +277,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -288,7 +288,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -299,7 +299,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -310,7 +310,7 @@
 <class 'vsg.token.interface_signal_declaration.identifier'>
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -600,8 +600,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -612,8 +612,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -624,8 +624,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -636,8 +636,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -648,8 +648,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -663,7 +663,7 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 76 |     sig1, sig2 : out     std_logic bus;
@@ -673,7 +673,7 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.out_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 77 |     sig1, sig2 : inout   std_logic bus;
@@ -683,7 +683,7 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.inout_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 78 |     sig1, sig2 : buffer  std_logic bus;
@@ -693,7 +693,7 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.buffer_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 79 |     sig1, sig2 : linkage std_logic bus;
@@ -703,7 +703,7 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.linkage_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
 80 |
@@ -715,8 +715,8 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -726,8 +726,8 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -737,8 +737,8 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -748,8 +748,8 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -759,8 +759,8 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -773,7 +773,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -783,7 +783,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -793,7 +793,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -803,7 +803,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -813,7 +813,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -920,8 +920,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -956,8 +956,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -995,8 +995,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1031,8 +1031,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1069,8 +1069,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1105,8 +1105,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1143,8 +1143,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1179,8 +1179,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1250,8 +1250,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1286,8 +1286,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1328,8 +1328,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1364,8 +1364,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1406,8 +1406,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1442,8 +1442,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1484,8 +1484,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1520,8 +1520,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1564,8 +1564,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1600,8 +1600,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1641,8 +1641,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1677,8 +1677,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1718,8 +1718,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1754,8 +1754,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1795,8 +1795,8 @@
 <class 'vsg.token.interface_signal_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_signal_declaration.bus_keyword'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------
@@ -1831,8 +1831,8 @@
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.mode.in_keyword'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.bus_keyword'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.bus_keyword'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 --------------------------------------------------------------------------------

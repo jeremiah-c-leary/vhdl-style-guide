@@ -14,7 +14,7 @@ lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_006_te
 dIndentMap = utils.read_indent_file()
 
 
-class test_loop_statement_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

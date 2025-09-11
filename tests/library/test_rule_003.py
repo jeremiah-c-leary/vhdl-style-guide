@@ -20,7 +20,7 @@ lExpected_allow_library_clause.append("")
 utils.read_file(os.path.join(sTestDir, "rule_003_test_input.fixed_allow_library_clause.vhd"), lExpected_allow_library_clause)
 
 
-class test_library_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

@@ -100,3 +100,6 @@
 
 .. |configuring_comment_indenting_link| replace::
    Refer to :ref:`configuring-comment-indenting` for configuration options.
+
+.. |configuring_library_and_package_name_restriction_rules_link| replace::
+   Refer to :ref:`configuring-library-and-package-name-restriction-rules` for configuration options.

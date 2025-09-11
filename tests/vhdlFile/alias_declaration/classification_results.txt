@@ -195,13 +195,25 @@
 22 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-23 | begin
-<class 'vsg.token.architecture_body.begin_keyword'>
+23 |   alias opposite_view is some_view'converse;
+<class 'vsg.token.alias_declaration.alias_keyword'>
+<class 'vsg.token.alias_declaration.alias_designator'>
+<class 'vsg.token.alias_declaration.is_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.parser.tic'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.alias_declaration.semicolon'>
 --------------------------------------------------------------------------------
 24 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-25 | end architecture RTL;
+25 | begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+26 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
