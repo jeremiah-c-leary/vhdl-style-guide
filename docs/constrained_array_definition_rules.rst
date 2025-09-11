@@ -8,29 +8,6 @@ constrained_array_definition_100
 
 |phase_2| |error| |whitespace|
 
-This rule checks for whitespace after the **array** keyword.
-
-|configuring_whitespace_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   type t_u_array is array (1 downto 0) of unsigned;
-   type t_u_array is array     (1 downto 0) of unsigned;
-
-**Fix**
-
-.. code-block:: vhdl
-
-   type t_u_array is array(1 downto 0) of unsigned;
-   type t_u_array is array(1 downto 0) of unsigned;
-
-constrained_array_definition_101
-################################
-
-|phase_2| |error| |whitespace|
-
 This rule checks for a single space before the **of** keyword.
 
 |configuring_whitespace_rules_link|
@@ -47,7 +24,7 @@ This rule checks for a single space before the **of** keyword.
 
    type t_u_array is array(1 downto 0) of unsigned;
 
-constrained_array_definition_102
+constrained_array_definition_101
 ################################
 
 |phase_2| |error| |whitespace|

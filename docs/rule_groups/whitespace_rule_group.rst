@@ -56,7 +56,6 @@ Rules Enforcing Whitespace Rule Group
 * `constant_101 <../constant_rules.html#constant-101>`_
 * `constrained_array_definition_100 <../constrained_array_definition_rules.html#constrained-array-definition-100>`_
 * `constrained_array_definition_101 <../constrained_array_definition_rules.html#constrained-array-definition-101>`_
-* `constrained_array_definition_102 <../constrained_array_definition_rules.html#constrained-array-definition-102>`_
 * `context_002 <../context_rules.html#context-002>`_
 * `context_017 <../context_rules.html#context-017>`_
 * `context_018 <../context_rules.html#context-018>`_

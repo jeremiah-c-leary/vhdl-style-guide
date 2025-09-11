@@ -30,7 +30,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.name, "constrained_array_definition")
         self.assertEqual(oRule.identifier, "100")
 
-        lExpected = [4, 5, 8, 9]
+        lExpected = [4, 7]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))

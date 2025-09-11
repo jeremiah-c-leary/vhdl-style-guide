@@ -16,7 +16,7 @@ This rule checks for whitespace after the **array** keyword.
 
 .. code-block:: vhdl
 
-   type t_u_array_unconstrained is array(natural range <>) of unsigned;
+   type t_u_array_unconstrained is array (natural range <>) of unsigned;
    type t_u_array_unconstrained is array     (natural range <>) of unsigned;
 
 **Fix**
@@ -45,7 +45,7 @@ This rule checks for a single space before the **of** keyword.
 
 .. code-block:: vhdl
 
-   type t_u_array_unconstrained is array (natural range <>) of unsigned;
+   type t_u_array_unconstrained is array(natural range <>) of unsigned;
 
 unbounded_array_definition_102
 ##############################
@@ -66,7 +66,7 @@ This rule checks for a single space after the **of** keyword.
 
 .. code-block:: vhdl
 
-   type t_u_array_unconstrained is array (natural range <>) of unsigned;
+   type t_u_array_unconstrained is array(natural range <>) of unsigned;
 
 unbounded_array_definition_500
 ##############################
