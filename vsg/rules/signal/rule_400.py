@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.token import signal_declaration as token
 from vsg.rules import multiline_alignment_between_tokens as Rule
+from vsg.token import signal_declaration as token
 from vsg.vhdlFile import utils
 
 lTokenPairs = []
@@ -41,7 +41,6 @@ class rule_400(Rule):
         self.bConstraint = True
 
     def _get_tokens_of_interest_list(self, oFile):
-
         oAssignmentToken = token.assignment_operator
         lReturn = []
 
