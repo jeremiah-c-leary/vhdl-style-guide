@@ -22,6 +22,7 @@ architecture RTL of FIFO is
 begin
 
   SOME_LABEL : case D_DEPTH generate
+
     -- When comment
     -- When comment
     when 0 =>

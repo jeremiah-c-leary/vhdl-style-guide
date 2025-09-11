@@ -46,6 +46,32 @@ This rule checks for a single space before the **generate** keyword.
 
    case data generate
 
+case_generate_statement_200
+###########################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines or comments above the **end** keyword.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+     when others =>
+       null;
+   end generate;
+
+**Fix**
+
+.. code-block:: vhdl
+
+     when others =>
+       null;
+
+   end generate;
+
 case_generate_statement_400
 ###########################
 
