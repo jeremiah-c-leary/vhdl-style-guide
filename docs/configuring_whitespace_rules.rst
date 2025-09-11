@@ -214,6 +214,8 @@ Rules Enforcing Whitespace
 * `if_005 <if_rules.html#if-005>`_
 * `if_015 <if_rules.html#if-015>`_
 * `index_constraint_100 <index_constraint_rules.html#index-constraint-100>`_
+* `index_subtype_definition_100 <index_subtype_definition_rules.html#index-subtype-definition-100>`_
+* `index_subtype_definition_101 <index_subtype_definition_rules.html#index-subtype-definition-101>`_
 * `instantiation_002 <instantiation_rules.html#instantiation-002>`_
 * `instantiation_003 <instantiation_rules.html#instantiation-003>`_
 * `instantiation_032 <instantiation_rules.html#instantiation-032>`_
@@ -251,6 +253,8 @@ Rules Enforcing Whitespace
 * `process_014 <process_rules.html#process-014>`_
 * `process_024 <process_rules.html#process-024>`_
 * `process_025 <process_rules.html#process-025>`_
+* `range_constraint_100 <range_constraint_rules.html#range-constraint-100>`_
+* `range_constraint_101 <range_constraint_rules.html#range-constraint-101>`_
 * `record_type_definition_100 <record_type_definition_rules.html#record-type-definition-100>`_
 * `record_type_definition_101 <record_type_definition_rules.html#record-type-definition-101>`_
 * `report_statement_100 <report_statement_rules.html#report-statement-100>`_
@@ -290,3 +294,5 @@ Rules Enforcing Whitespace
 * `variable_assignment_002 <variable_assignment_rules.html#variable-assignment-002>`_
 * `variable_assignment_003 <variable_assignment_rules.html#variable-assignment-003>`_
 * `whitespace_007 <whitespace_rules.html#whitespace-007>`_
+* `whitespace_102 <whitespace_rules.html#whitespace-102>`_
+* `whitespace_103 <whitespace_rules.html#whitespace-103>`_

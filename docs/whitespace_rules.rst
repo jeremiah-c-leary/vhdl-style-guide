@@ -91,7 +91,8 @@ whitespace_005
 This rule checks for spaces after an open parenthesis.
 
 .. NOTE::
-   Spaces before numbers are allowed.
+   Spaces before numbers are ignored.
+   This can be disabled by setting the *'ignore_spaces_before_numbers'* attribute to *'False'*.
 
 **Violation**
 
@@ -273,6 +274,52 @@ This rule checks for at least a single space before and after logical operators.
 
   if (a = '1') sll (b = '0')
   if (a = '0') rol (b = '1')
+
+whitespace_102
+##############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before direction keywords.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  x <= y(7     downto 0);
+  x <= y(0     to 7);
+
+**Fix**
+
+.. code-block:: vhdl
+
+  x <= y(7 downto 0);
+  x <= y(0 to 7);
+
+whitespace_103
+##############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after direction keywords.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  x <= y(7 downto      0);
+  x <= y(0 to      7);
+
+**Fix**
+
+.. code-block:: vhdl
+
+  x <= y(7 downto 0);
+  x <= y(0 to 7);
 
 whitespace_200
 ##############
