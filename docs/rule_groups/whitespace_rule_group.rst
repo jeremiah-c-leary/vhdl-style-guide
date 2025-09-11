@@ -15,6 +15,7 @@ Rules Enforcing Whitespace Rule Group
 * `architecture_031 <../architecture_rules.html#architecture-031>`_
 * `architecture_032 <../architecture_rules.html#architecture-032>`_
 * `architecture_033 <../architecture_rules.html#architecture-033>`_
+* `array_constraint_100 <../array_constraint_rules.html#array-constraint-100>`_
 * `assert_100 <../assert_rules.html#assert-100>`_
 * `assert_101 <../assert_rules.html#assert-101>`_
 * `assert_102 <../assert_rules.html#assert-102>`_
@@ -106,6 +107,7 @@ Rules Enforcing Whitespace Rule Group
 * `if_004 <../if_rules.html#if-004>`_
 * `if_005 <../if_rules.html#if-005>`_
 * `if_015 <../if_rules.html#if-015>`_
+* `index_constraint_100 <../index_constraint_rules.html#index-constraint-100>`_
 * `index_subtype_definition_100 <../index_subtype_definition_rules.html#index-subtype-definition-100>`_
 * `index_subtype_definition_101 <../index_subtype_definition_rules.html#index-subtype-definition-101>`_
 * `instantiation_002 <../instantiation_rules.html#instantiation-002>`_
@@ -195,7 +197,6 @@ Rules Enforcing Whitespace Rule Group
 * `whitespace_005 <../whitespace_rules.html#whitespace-005>`_
 * `whitespace_006 <../whitespace_rules.html#whitespace-006>`_
 * `whitespace_007 <../whitespace_rules.html#whitespace-007>`_
-* `whitespace_008 <../whitespace_rules.html#whitespace-008>`_
 * `whitespace_010 <../whitespace_rules.html#whitespace-010>`_
 * `whitespace_011 <../whitespace_rules.html#whitespace-011>`_
 * `whitespace_013 <../whitespace_rules.html#whitespace-013>`_
