@@ -40,11 +40,18 @@ class multiline_alignment_between_tokens(alignment.Rule):
         self.check_for_array = True
 
     def _get_tokens_of_interest(self, oFile):
-        lToi = []
+        lToi = self._get_tokens_of_interest_list(oFile)
+        return self._get_tokens_of_interest_meta_data(lToi, oFile)
+
+    def _get_tokens_of_interest_list(self, oFile):
+        lReturn = []
         for lTokenPair in self.lTokenPairs:
             aToi = oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken)
-            lToi = utils.combine_two_token_class_lists(lToi, aToi)
+            lReturn = utils.combine_two_token_class_lists(lReturn, aToi)
 
+        return lReturn
+
+    def _get_tokens_of_interest_meta_data(self, lToi, oFile):
         lReturn = []
         for oToi in lToi:
             if self.check_for_array and toi_is_an_array(oToi):
