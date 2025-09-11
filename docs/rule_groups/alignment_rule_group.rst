@@ -75,6 +75,7 @@ Rules Enforcing Alignment Rule Group
 * `sequential_402 <../sequential_rules.html#sequential-402>`_
 * `signal_012 <../signal_rules.html#signal-012>`_
 * `signal_400 <../signal_rules.html#signal-400>`_
+* `signal_401 <../signal_rules.html#signal-401>`_
 * `subprogram_body_400 <../subprogram_body_rules.html#subprogram-body-400>`_
 * `subprogram_body_401 <../subprogram_body_rules.html#subprogram-body-401>`_
 * `type_400 <../type_rules.html#type-400>`_
