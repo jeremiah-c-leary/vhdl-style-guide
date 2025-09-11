@@ -3,6 +3,90 @@
 File Open Information Rules
 ---------------------------
 
+file_open_information_100
+#########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **open** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type      open read_mode is load_file_name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open read_mode is load_file_name;
+
+file_open_information_101
+#########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **open** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open     read_mode is load_file_name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open read_mode is load_file_name;
+
+file_open_information_102
+#########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before the **is** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open read_mode     is load_file_name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open read_mode is load_file_name;
+
+file_open_information_103
+#########################
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **is** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open read_mode is         load_file_name;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   file defaultImage : load_file_type open read_mode is load_file_name;
+
 file_open_information_500
 #########################
 

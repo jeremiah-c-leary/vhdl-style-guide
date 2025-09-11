@@ -516,6 +516,7 @@ architecture_025
 This rule checks for valid names for the architecture.
 Typical architecture names are:  RTL, EMPTY, and BEHAVE.
 This rule allows the user to restrict what can be used for an architecture name.
+Note that regular expressions are accepted in the **names** field.
 
 .. NOTE:: This rule is disabled by default.
    You can enable and configure the names using the following configuration.
@@ -531,6 +532,7 @@ This rule allows the user to restrict what can be used for an architecture name.
             - rtl
             - empty
             - behave
+            - my_pattern.*
 
 **Violation**
 

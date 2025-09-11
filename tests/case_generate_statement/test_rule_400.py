@@ -16,7 +16,7 @@ lExpected_true.append("")
 utils.read_file(os.path.join(sTestDir, "rule_400_test_input.fixed_compact_alignment__true.vhd"), lExpected_true)
 
 
-class test_case_generate_statement_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

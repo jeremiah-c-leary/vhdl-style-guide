@@ -16,7 +16,7 @@ lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_029_te
 # utils.read_file(os.path.join(sTestDir, 'rule_029_test_input.fixed_allowing_comments_and_blank_lines.vhd'), lExpected)
 
 
-class test_architecture_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

@@ -6,10 +6,9 @@ from vsg.rules.whitespace_after_token import Rule
 
 lTokens = []
 lTokens.append(token.interface_constant_declaration.assignment)
-lTokens.append(token.interface_signal_declaration.assignment)
+lTokens.append(token.simple_mode_indication.assignment)
 lTokens.append(token.interface_variable_declaration.assignment)
 lTokens.append(token.interface_file_declaration.colon)
-lTokens.append(token.interface_unknown_declaration.assignment)
 
 oStart = token.generic_clause.open_parenthesis
 oEnd = token.generic_clause.close_parenthesis

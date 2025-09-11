@@ -28,7 +28,7 @@ lExpected_upper_with_exceptions.append("")
 utils.read_file(os.path.join(sTestDir, "rule_501_test_input.fixed_upper_with_exceptions.vhd"), lExpected_upper_with_exceptions)
 
 
-class test_use_clause_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

@@ -805,7 +805,7 @@ event configuration
 edge configuration
 ^^^^^^^^^^^^^^^^^^
 
-.. NOTE::  Configuration this by setting the *'clock'* attribute to *'edge'*
+.. NOTE::  Configure this by setting the *'clock'* attribute to *'edge'*.
 
    .. code-block:: json
 

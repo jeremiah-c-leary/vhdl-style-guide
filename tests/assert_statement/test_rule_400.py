@@ -32,7 +32,7 @@ lExpected_left_aligned_smart_tabs.append("")
 utils.read_file(os.path.join(sTestDir, "rule_400_test_input.fixed_left_aligned__smart_tabs.vhd"), lExpected_left_aligned_smart_tabs)
 
 
-class test_assert_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

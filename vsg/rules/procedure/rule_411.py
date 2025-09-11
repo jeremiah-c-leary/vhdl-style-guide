@@ -4,10 +4,9 @@ from vsg import token
 from vsg.rules import align_tokens_in_region_between_tokens
 
 lAlign = []
-lAlign.append(token.interface_signal_declaration.assignment)
 lAlign.append(token.interface_constant_declaration.assignment)
 lAlign.append(token.interface_variable_declaration.assignment)
-lAlign.append(token.interface_unknown_declaration.assignment)
+lAlign.append(token.simple_mode_indication.assignment)
 
 
 class rule_411(align_tokens_in_region_between_tokens):
