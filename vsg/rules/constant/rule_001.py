@@ -18,7 +18,7 @@ class rule_001(token_indent):
        architecture RTL of FIFO is
 
        constant size : integer := 1;
-           constant width : integer := 32
+           constant width : integer := 32;
 
     **Fix**
 
@@ -27,7 +27,7 @@ class rule_001(token_indent):
        architecture RTL of FIFO is
 
          constant size : integer := 1;
-         constant width : integer := 32
+         constant width : integer := 32;
     """
 
     def __init__(self):

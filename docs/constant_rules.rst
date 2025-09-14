@@ -17,7 +17,7 @@ This rule checks the indent of a constant declaration.
    architecture RTL of FIFO is
 
    constant size : integer := 1;
-       constant width : integer := 32
+       constant width : integer := 32;
 
 **Fix**
 
@@ -26,7 +26,7 @@ This rule checks the indent of a constant declaration.
    architecture RTL of FIFO is
 
      constant size : integer := 1;
-     constant width : integer := 32
+     constant width : integer := 32;
 
 constant_002
 ############
@@ -126,7 +126,7 @@ constant_007
 
 |phase_1| |error| |structure|
 
-This rule checks the **:=** is on the same line at the **constant** keyword.
+This rule checks the **:=** is on the same line as the **constant** keyword.
 
 **Violation**
 
@@ -144,7 +144,7 @@ This rule checks the **:=** is on the same line at the **constant** keyword.
    constant size    : integer :=
      1;
    constant width   : integer :=
-     32
+     32;
 
 constant_010
 ############
