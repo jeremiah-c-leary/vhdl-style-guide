@@ -14,7 +14,7 @@ oStartToken = token.variable_declaration.assignment_operator
 oEndToken = token.variable_declaration.semicolon
 
 
-class rule_400(Rule):
+class rule_401(Rule):
     """
     This rule checks the alignment of assignment keywords in variable declarations.
 
