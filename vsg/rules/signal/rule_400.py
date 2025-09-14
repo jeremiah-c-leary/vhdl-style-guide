@@ -4,7 +4,7 @@ from vsg.rules import multiline_alignment_between_tokens as Rule
 from vsg.token import signal_declaration as token
 
 lTokenPairs = []
-lTokenPairs.append([token.signal_keyword, token.assignment_operator])
+lTokenPairs.append([token.signal_keyword, token.semicolon])
 
 
 class rule_400(Rule):
