@@ -9,7 +9,7 @@ lTokens.append(token.variable_declaration.assignment_operator)
 
 class rule_018(Rule):
     """
-    This rule checks the **:=** is on the same line at the **variable** keyword.
+    This rule checks the **:=** is on the same line as the **variable** keyword.
 
     **Violation**
 

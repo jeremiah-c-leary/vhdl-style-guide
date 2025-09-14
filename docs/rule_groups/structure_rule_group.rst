@@ -188,6 +188,7 @@ Rules Enforcing Structure Rule Group
 * `variable_007 <../variable_rules.html#variable-007>`_
 * `variable_015 <../variable_rules.html#variable-015>`_
 * `variable_017 <../variable_rules.html#variable-017>`_
+* `variable_018 <../variable_rules.html#variable-018>`_
 * `variable_assignment_006 <../variable_assignment_rules.html#variable-assignment-006>`_
 * `variable_assignment_007 <../variable_assignment_rules.html#variable-assignment-007>`_
 * `variable_assignment_008 <../variable_assignment_rules.html#variable-assignment-008>`_
