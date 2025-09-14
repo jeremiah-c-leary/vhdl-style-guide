@@ -11,10 +11,6 @@ sTestDir = os.path.dirname(__file__)
 
 lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_029_test_input.vhd"))
 
-# lExpected = []
-# lExpected.append('')
-# utils.read_file(os.path.join(sTestDir, 'rule_029_test_input.fixed_allowing_comments_and_blank_lines.vhd'), lExpected)
-
 
 class test_rule(unittest.TestCase):
     def setUp(self):
