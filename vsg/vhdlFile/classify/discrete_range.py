@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from vsg import parser
+from vsg.token import range_constraint
 from vsg.vhdlFile import utils
 from vsg.vhdlFile.classify import range, subtype_indication
 
@@ -46,6 +47,13 @@ def classify_until(lUntils, iToken, lObjects):
         elif iOpenParenthesis == iCloseParenthesis:
             if lObjects[iCurrent].get_lower_value() in lUntils:
                 break
+            elif utils.is_next_token("'", iToken, lObjects):
+                # Ensure that range attributes are not misidentified as range keywords.
+                utils.assign_token(lObjects, iCurrent, parser.todo)
+                iCurrent = utils.find_next_token(iCurrent, lObjects)
+                utils.assign_token(lObjects, iCurrent, parser.todo)
+            elif utils.is_next_token("range", iToken, lObjects):
+                utils.assign_token(lObjects, iCurrent, range_constraint.range_keyword)
             else:
                 utils.assign_token(lObjects, iCurrent, parser.todo)
         else:

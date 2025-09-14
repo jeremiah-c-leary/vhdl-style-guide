@@ -32,7 +32,8 @@ from .insert_token_right_of_token_if_it_does_not_exist_between_tokens_using_valu
 from .insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token import (
     insert_token_next_to_token_if_it_does_not_exist_between_tokens_using_value_from_token,
 )
-from .is_token_value_one_of import is_token_value_one_of
+from .does_token_value_match_none_of import does_token_value_match_none_of
+from .does_token_value_match_one_of import does_token_value_match_one_of
 from .align_tokens_in_region_between_tokens import align_tokens_in_region_between_tokens
 from .align_tokens_in_region_between_tokens_unless_between_tokens import align_tokens_in_region_between_tokens_unless_between_tokens
 from .align_tokens_in_region_between_tokens_when_between_tokens_unless_between_tokens import (
@@ -153,6 +154,7 @@ from vsg.rules import generic_map
 from vsg.rules import ieee
 from vsg.rules import if_statement
 from vsg.rules import if_generate_statement
+from vsg.rules import index_constraint
 from vsg.rules import index_subtype_definition
 from vsg.rules import instantiation
 from vsg.rules import interface_incomplete_type_declaration

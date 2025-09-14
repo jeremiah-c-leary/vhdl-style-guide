@@ -15,6 +15,7 @@ Rules Enforcing Whitespace Rule Group
 * `architecture_031 <../architecture_rules.html#architecture-031>`_
 * `architecture_032 <../architecture_rules.html#architecture-032>`_
 * `architecture_033 <../architecture_rules.html#architecture-033>`_
+* `array_constraint_100 <../array_constraint_rules.html#array-constraint-100>`_
 * `assert_100 <../assert_rules.html#assert-100>`_
 * `assert_101 <../assert_rules.html#assert-101>`_
 * `assert_102 <../assert_rules.html#assert-102>`_
@@ -82,7 +83,12 @@ Rules Enforcing Whitespace Rule Group
 * `external_variable_name_102 <../external_variable_name_rules.html#external-variable-name-102>`_
 * `external_variable_name_103 <../external_variable_name_rules.html#external-variable-name-103>`_
 * `external_variable_name_104 <../external_variable_name_rules.html#external-variable-name-104>`_
+* `file_open_information_100 <../file_open_information_rules.html#file-open-information-100>`_
+* `file_open_information_101 <../file_open_information_rules.html#file-open-information-101>`_
+* `file_open_information_102 <../file_open_information_rules.html#file-open-information-102>`_
+* `file_open_information_103 <../file_open_information_rules.html#file-open-information-103>`_
 * `file_100 <../file_rules.html#file-100>`_
+* `file_101 <../file_rules.html#file-101>`_
 * `function_100 <../function_rules.html#function-100>`_
 * `function_101 <../function_rules.html#function-101>`_
 * `generate_002 <../generate_rules.html#generate-002>`_
@@ -101,6 +107,9 @@ Rules Enforcing Whitespace Rule Group
 * `if_004 <../if_rules.html#if-004>`_
 * `if_005 <../if_rules.html#if-005>`_
 * `if_015 <../if_rules.html#if-015>`_
+* `index_constraint_100 <../index_constraint_rules.html#index-constraint-100>`_
+* `index_subtype_definition_100 <../index_subtype_definition_rules.html#index-subtype-definition-100>`_
+* `index_subtype_definition_101 <../index_subtype_definition_rules.html#index-subtype-definition-101>`_
 * `instantiation_002 <../instantiation_rules.html#instantiation-002>`_
 * `instantiation_003 <../instantiation_rules.html#instantiation-003>`_
 * `instantiation_032 <../instantiation_rules.html#instantiation-032>`_
@@ -141,6 +150,8 @@ Rules Enforcing Whitespace Rule Group
 * `process_014 <../process_rules.html#process-014>`_
 * `process_024 <../process_rules.html#process-024>`_
 * `process_025 <../process_rules.html#process-025>`_
+* `range_constraint_100 <../range_constraint_rules.html#range-constraint-100>`_
+* `range_constraint_101 <../range_constraint_rules.html#range-constraint-101>`_
 * `record_type_definition_100 <../record_type_definition_rules.html#record-type-definition-100>`_
 * `record_type_definition_101 <../record_type_definition_rules.html#record-type-definition-101>`_
 * `report_statement_100 <../report_statement_rules.html#report-statement-100>`_
@@ -186,9 +197,10 @@ Rules Enforcing Whitespace Rule Group
 * `whitespace_005 <../whitespace_rules.html#whitespace-005>`_
 * `whitespace_006 <../whitespace_rules.html#whitespace-006>`_
 * `whitespace_007 <../whitespace_rules.html#whitespace-007>`_
-* `whitespace_008 <../whitespace_rules.html#whitespace-008>`_
 * `whitespace_010 <../whitespace_rules.html#whitespace-010>`_
 * `whitespace_011 <../whitespace_rules.html#whitespace-011>`_
 * `whitespace_013 <../whitespace_rules.html#whitespace-013>`_
 * `whitespace_100 <../whitespace_rules.html#whitespace-100>`_
 * `whitespace_101 <../whitespace_rules.html#whitespace-101>`_
+* `whitespace_102 <../whitespace_rules.html#whitespace-102>`_
+* `whitespace_103 <../whitespace_rules.html#whitespace-103>`_

@@ -163,7 +163,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
@@ -208,7 +208,7 @@
 <class 'vsg.token.interface_unknown_declaration.identifier'>
 <class 'vsg.token.interface_unknown_declaration.colon'>
 <class 'vsg.token.type_mark.name'>
-<class 'vsg.token.interface_unknown_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.interface_list.semicolon'>
 <class 'vsg.token.interface_unknown_declaration.identifier'>
@@ -418,7 +418,7 @@
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
@@ -503,7 +503,7 @@
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>
@@ -588,7 +588,7 @@
 <class 'vsg.token.direction.downto'>
 <class 'vsg.parser.todo'>
 <class 'vsg.token.index_constraint.close_parenthesis'>
-<class 'vsg.token.interface_signal_declaration.assignment'>
+<class 'vsg.token.simple_mode_indication.assignment'>
 <class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.choice.others_keyword'>
 <class 'vsg.token.element_association.assignment'>

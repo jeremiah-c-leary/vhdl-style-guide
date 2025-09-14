@@ -3,6 +3,7 @@
 from vsg import violation
 from vsg.rule_group import structure
 from vsg.token import mode, port_clause as token
+from vsg.token.mode_view_indication import view_keyword
 
 
 class rule_023(structure.Rule):
@@ -19,6 +20,7 @@ class rule_023(structure.Rule):
          WR_EN    : std_logic;
          RD_EN    : std_logic;
          OVERFLOW : std_logic;
+         V_TEST   : some_view;
          DATA     : inout std_logic
        );
 
@@ -30,13 +32,14 @@ class rule_023(structure.Rule):
          WR_EN    : in    std_logic;
          RD_EN    : in    std_logic;
          OVERFLOW : out   std_logic;
+         V_TEST   : view  some_view;
          DATA     : inout std_logic
        );
     """
 
     def __init__(self):
         super().__init__()
-        self.solution = "Add mode"
+        self.solution = "Add mode or view"
         self.fixable = False
         self.configuration_documentation_link = None
 
@@ -47,7 +50,7 @@ class rule_023(structure.Rule):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
             for oToken in lTokens:
-                if isinstance(oToken, mode.mode):
+                if isinstance(oToken, mode.mode) or isinstance(oToken, view_keyword):
                     break
             else:
                 self.add_violation(violation.New(oToi.get_line_number(), oToi, self.solution))

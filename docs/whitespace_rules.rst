@@ -91,7 +91,8 @@ whitespace_005
 This rule checks for spaces after an open parenthesis.
 
 .. NOTE::
-   Spaces before numbers are allowed.
+   Spaces before numbers are ignored.
+   This can be disabled by setting the *'ignore_spaces_before_numbers'* attribute to *'False'*.
 
 **Violation**
 
@@ -156,23 +157,7 @@ This rule checks for spaces after a comma.
 whitespace_008
 ##############
 
-|phase_2| |error| |whitespace|
-
-This rule checks for spaces after the **std_logic_vector** keyword.
-
-**Violation**
-
-.. code-block:: vhdl
-
-   signal data    : std_logic_vector (7 downto 0);
-   signal counter : std_logic_vector    (7 downto 0);
-
-**Fix**
-
-.. code-block:: vhdl
-
-   signal data    : std_logic_vector(7 downto 0);
-   signal counter : std_logic_vector(7 downto 0);
+This rule has been deprecated and replaced with rule `index_constraint_100 <index_constraint_rules.html#index_constraint-100>`_.
 
 whitespace_010
 ##############
@@ -198,7 +183,7 @@ whitespace_011
 
 |phase_2| |error| |whitespace|
 
-This rule checks for at least a single space before and after math operators +, -, /, * and \*\*.
+This rule checks for at least a single space before and after math operators +, -, /, * and **.
 
 **Violation**
 
@@ -289,6 +274,52 @@ This rule checks for at least a single space before and after logical operators.
 
   if (a = '1') sll (b = '0')
   if (a = '0') rol (b = '1')
+
+whitespace_102
+##############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space before direction keywords.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  x <= y(7     downto 0);
+  x <= y(0     to 7);
+
+**Fix**
+
+.. code-block:: vhdl
+
+  x <= y(7 downto 0);
+  x <= y(0 to 7);
+
+whitespace_103
+##############
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after direction keywords.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  x <= y(7 downto      0);
+  x <= y(0 to      7);
+
+**Fix**
+
+.. code-block:: vhdl
+
+  x <= y(7 downto 0);
+  x <= y(0 to 7);
 
 whitespace_200
 ##############

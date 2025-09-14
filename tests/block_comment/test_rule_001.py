@@ -16,7 +16,7 @@ lFile, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_001_te
 lFile_align_left, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_001_test_input.align_left.vhd"))
 
 
-class test_block_comment_rule(unittest.TestCase):
+class test_rule(unittest.TestCase):
     def setUp(self):
         self.oFile = vhdlFile.vhdlFile(lFile)
         self.assertIsNone(eError)

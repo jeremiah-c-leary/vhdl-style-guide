@@ -1,0 +1,157 @@
+--------------------------------------------------------------------------------
+0 |
+--------------------------------------------------------------------------------
+1 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+2 | package interfaces is
+<class 'vsg.token.package_declaration.package_keyword'>
+<class 'vsg.token.package_declaration.identifier'>
+<class 'vsg.token.package_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+3 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+4 |     view streaming of streaming_bus is
+<class 'vsg.token.mode_view_declaration.view_keyword'>
+<class 'vsg.token.mode_view_declaration.identifier'>
+<class 'vsg.token.mode_view_declaration.of_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.mode_view_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+5 |         valid, data : out;
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.record_element_list.comma'>
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.mode_view_element_definition.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.token.mode_view_element_definition.semicolon'>
+--------------------------------------------------------------------------------
+6 |         ack         : in;
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.mode_view_element_definition.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.mode_view_element_definition.semicolon'>
+--------------------------------------------------------------------------------
+7 |         nested      : view inner_streaming_bus;
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.mode_view_element_definition.colon'>
+<class 'vsg.token.element_record_mode_view_indication.view_keyword'>
+<class 'vsg.token.element_record_mode_view_indication.name'>
+<class 'vsg.token.mode_view_element_definition.semicolon'>
+--------------------------------------------------------------------------------
+8 |     end view streaming;
+<class 'vsg.token.mode_view_declaration.end_keyword'>
+<class 'vsg.token.mode_view_declaration.end_view_keyword'>
+<class 'vsg.token.mode_view_declaration.end_view_label'>
+<class 'vsg.token.mode_view_declaration.semicolon'>
+--------------------------------------------------------------------------------
+9 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+10 | end package;
+<class 'vsg.token.package_declaration.end_keyword'>
+<class 'vsg.token.package_declaration.end_package_keyword'>
+<class 'vsg.token.package_declaration.semicolon'>
+--------------------------------------------------------------------------------
+11 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+12 | architecture rtl of entity1 is
+<class 'vsg.token.architecture_body.architecture_keyword'>
+<class 'vsg.token.architecture_body.identifier'>
+<class 'vsg.token.architecture_body.of_keyword'>
+<class 'vsg.token.architecture_body.entity_name'>
+<class 'vsg.token.architecture_body.is_keyword'>
+--------------------------------------------------------------------------------
+13 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+14 |     view streaming of streaming_bus is
+<class 'vsg.token.mode_view_declaration.view_keyword'>
+<class 'vsg.token.mode_view_declaration.identifier'>
+<class 'vsg.token.mode_view_declaration.of_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.mode_view_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+15 |         valid, data : out;
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.record_element_list.comma'>
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.mode_view_element_definition.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.token.mode_view_element_definition.semicolon'>
+--------------------------------------------------------------------------------
+16 |         ack         : in;
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.mode_view_element_definition.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.mode_view_element_definition.semicolon'>
+--------------------------------------------------------------------------------
+17 |     end view;
+<class 'vsg.token.mode_view_declaration.end_keyword'>
+<class 'vsg.token.mode_view_declaration.end_view_keyword'>
+<class 'vsg.token.mode_view_declaration.semicolon'>
+--------------------------------------------------------------------------------
+18 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+19 |   begin
+<class 'vsg.token.architecture_body.begin_keyword'>
+--------------------------------------------------------------------------------
+20 |     b1 : block
+<class 'vsg.token.block_statement.block_label'>
+<class 'vsg.token.block_statement.label_colon'>
+<class 'vsg.token.block_statement.block_keyword'>
+--------------------------------------------------------------------------------
+21 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+22 |         view streaming of streaming_bus is
+<class 'vsg.token.mode_view_declaration.view_keyword'>
+<class 'vsg.token.mode_view_declaration.identifier'>
+<class 'vsg.token.mode_view_declaration.of_keyword'>
+<class 'vsg.token.type_mark.name'>
+<class 'vsg.token.mode_view_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+23 |             valid, data : out;
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.record_element_list.comma'>
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.mode_view_element_definition.colon'>
+<class 'vsg.token.mode.out_keyword'>
+<class 'vsg.token.mode_view_element_definition.semicolon'>
+--------------------------------------------------------------------------------
+24 |             ack         : in;
+<class 'vsg.token.record_element_list.simple_name'>
+<class 'vsg.token.mode_view_element_definition.colon'>
+<class 'vsg.token.mode.in_keyword'>
+<class 'vsg.token.mode_view_element_definition.semicolon'>
+--------------------------------------------------------------------------------
+25 |         end view;
+<class 'vsg.token.mode_view_declaration.end_keyword'>
+<class 'vsg.token.mode_view_declaration.end_view_keyword'>
+<class 'vsg.token.mode_view_declaration.semicolon'>
+--------------------------------------------------------------------------------
+26 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+27 |     begin
+<class 'vsg.token.block_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+28 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+29 |     end block;
+<class 'vsg.token.block_statement.end_keyword'>
+<class 'vsg.token.block_statement.end_block_keyword'>
+<class 'vsg.token.block_statement.semicolon'>
+--------------------------------------------------------------------------------
+30 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+31 | end architecture rtl;
+<class 'vsg.token.architecture_body.end_keyword'>
+<class 'vsg.token.architecture_body.end_architecture_keyword'>
+<class 'vsg.token.architecture_body.architecture_simple_name'>
+<class 'vsg.token.architecture_body.semicolon'>
