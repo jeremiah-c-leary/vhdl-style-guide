@@ -510,6 +510,67 @@ This rule checks the alignment of assignment keywords in signal declarations.
      others            => false
    );
 
+signal_402
+##########
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of multiline signal initializations that contain arrays.
+
+|configuring_multiline_indent_rules_link|
+
+.. NOTE:: The structure of multiline array signal initializations is handled by the rule `signal_403 <signal_rules.html#signal-403>`_.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal rom : romq_type :=
+   (
+            0,
+        65535,
+        32768
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal rom : romq_type :=
+   (
+     0,
+     65535,
+     32768
+   );
+
+signal_403
+##########
+
+|phase_5| |error| |structure|
+
+This rule checks the structure of multiline signal initializations that contain arrays.
+
+|configuring_array_multiline_structure_rules_link|
+
+.. NOTE:: The indenting of multiline array signal initializations is handled by the rule `signal_402 <signal_rules.html#signal-402>`_.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   signal rom : romq_type := (0, 65535, 32768);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   signal rom : romq_type :=
+   (
+     0,
+     65535,
+     32768
+   );
+
 signal_600
 ##########
 
