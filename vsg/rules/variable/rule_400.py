@@ -38,4 +38,3 @@ class rule_400(Rule):
         self.subphase = 3
         self.bIgnoreStartParen = True
         self.bConstraint = True
-        self.skip_array = False

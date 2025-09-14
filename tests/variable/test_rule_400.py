@@ -48,7 +48,7 @@ class test_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(5, 20))
-        lExpected.extend(range(22, 26))
+        # lExpected.extend(range(22, 26))
         lExpected.extend(range(28, 32))
         lExpected.extend(range(34, 36))
 
@@ -94,7 +94,7 @@ class test_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(4, 20))
-        lExpected.extend(range(22, 26))
+        # lExpected.extend(range(22, 26))
         lExpected.extend(range(28, 32))
         lExpected.extend(range(34, 36))
 
@@ -140,7 +140,7 @@ class test_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(4, 20))
-        lExpected.extend(range(22, 26))
+        # lExpected.extend(range(22, 26))
         lExpected.extend(range(28, 32))
         lExpected.extend(range(34, 36))
 
@@ -186,7 +186,7 @@ class test_rule(unittest.TestCase):
 
         lExpected = []
         lExpected.extend(range(5, 20))
-        lExpected.extend(range(22, 26))
+        # lExpected.extend(range(22, 26))
         lExpected.extend(range(28, 32))
         lExpected.extend(range(34, 36))
 
