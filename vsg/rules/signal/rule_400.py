@@ -2,13 +2,9 @@
 
 from vsg.rules import multiline_alignment_between_tokens as Rule
 from vsg.token import signal_declaration as token
-from vsg.vhdlFile import utils
 
-lTokenPairsIfNoAssignment = []
-lTokenPairsIfNoAssignment.append([token.signal_keyword, token.semicolon])
-
-lTokenPairsIfAssignment = []
-lTokenPairsIfAssignment.append([token.signal_keyword, token.assignment_operator])
+lTokenPairs = []
+lTokenPairs.append([token.signal_keyword, token.assignment_operator])
 
 
 class rule_400(Rule):
@@ -37,7 +33,7 @@ class rule_400(Rule):
     """
 
     def __init__(self):
-        super().__init__(lTokenPairsIfNoAssignment)
+        super().__init__(lTokenPairs)
         self.phase = 5
         self.subphase = 3
         self.bIgnoreStartParen = True
