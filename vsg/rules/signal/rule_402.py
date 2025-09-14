@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg.token import signal_declaration as token
 from vsg.rules import multiline_array_alignment as Rule
+from vsg.token import signal_declaration as token
 
 lTokenPairs = []
 lTokenPairs.append([token.assignment_operator, token.semicolon])

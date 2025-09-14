@@ -31,7 +31,6 @@ class test_rule(unittest.TestCase):
         lExpected = []
         lExpected.extend(range(5, 17))
 
-
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
