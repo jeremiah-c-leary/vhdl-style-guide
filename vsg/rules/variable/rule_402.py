@@ -10,7 +10,7 @@ lTokenPairs.append([token.assignment_operator, token.semicolon])
 
 class rule_402(Rule):
     """
-    This rule checks the alignment of multiline variables that contain arrays.
+    This rule checks the alignment of multiline variable initializations that contain arrays.
 
     |configuring_multiline_indent_rules_link|
 

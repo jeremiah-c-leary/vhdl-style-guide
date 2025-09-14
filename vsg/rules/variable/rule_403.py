@@ -9,7 +9,7 @@ lTokenPairs.append([token.variable_keyword, token.semicolon])
 
 class rule_403(Rule):
     """
-    This rule checks the structure of multiline variables that contain arrays.
+    This rule checks the structure of multiline variable initializations that contain arrays.
 
     |configuring_array_multiline_structure_rules_link|
 
