@@ -27,7 +27,7 @@ class rule_018(Rule):
        variable size    : integer :=
          1;
        variable width   : integer :=
-         32
+         32;
     """
 
     def __init__(self):

@@ -324,7 +324,7 @@ This rule checks the **:=** is on the same line as the **variable** keyword.
    variable size    : integer :=
      1;
    variable width   : integer :=
-     32
+     32;
 
 variable_100
 ############
