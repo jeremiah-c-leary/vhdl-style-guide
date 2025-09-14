@@ -8,15 +8,6 @@ from vsg.rules import option
 from vsg.rules.entity import rule_001
 from vsg.vhdlFile.extract import tokens
 
-# class command_line_args():
-#    ''' This is used as an input into the version command.'''
-#    def __init__(self, version=False):
-#        self.version = version
-#        self.style = 'indent_only'
-#        self.configuration = []
-#        self.debug = False
-#        self.fix_only = False
-
 
 class testRuleMethods(unittest.TestCase):
     def setUp(self):
