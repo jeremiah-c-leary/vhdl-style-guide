@@ -992,3 +992,4 @@ Rules Enforcing Keyword Alignment
 * `subprogram_body_400 <subprogram_body_rules.html#subprogram-body-400>`_
 * `subprogram_body_401 <subprogram_body_rules.html#subprogram-body-401>`_
 * `type_400 <type_rules.html#type-400>`_
+* `variable_400 <variable_rules.html#variable-400>`_
