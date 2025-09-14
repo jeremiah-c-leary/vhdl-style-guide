@@ -566,4 +566,5 @@ Rules Enforcing Array Multiline Structure Rules
 * `concurrent_012 <concurrent_rules.html#concurrent-012>`_
 * `constant_016 <constant_rules.html#constant-016>`_
 * `sequential_009 <sequential_rules.html#sequential-009>`_
+* `variable_403 <variable_rules.html#variable-403>`_
 * `variable_assignment_008 <variable_assignment_rules.html#variable-assignment-008>`_
