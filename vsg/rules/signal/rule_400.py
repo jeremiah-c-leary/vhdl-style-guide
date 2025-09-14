@@ -42,27 +42,3 @@ class rule_400(Rule):
         self.subphase = 3
         self.bIgnoreStartParen = True
         self.bConstraint = True
-        self.skip_array = False
-
-    def _get_tokens_of_interest_list(self, oFile):
-        lReturn = []
-
-        for lTokenPair in self.lTokenPairs:
-            aToi = self.get_tokens_within_bounds(lTokenPair, oFile)
-            if declaration_contains_assignment_operator(aToi):
-                aToi = self.get_tokens_within_bounds(lTokenPairsIfAssignment[0], oFile)
-
-            lReturn = utils.combine_two_token_class_lists(lReturn, aToi)
-
-        return lReturn
-
-    def get_tokens_within_bounds(self, lTokenPair, oFile):
-        return oFile.get_tokens_bounded_by(lTokenPair[0], lTokenPair[1], bExcludeLastToken=self.bExcludeLastToken)
-
-
-def declaration_contains_assignment_operator(aToi):
-    for oToi in aToi:
-        oAssignment = oToi.get_first_token_matching(token.assignment_operator)
-        if oAssignment is not None:
-            return True
-    return False
