@@ -567,4 +567,5 @@ Rules Enforcing Array Multiline Structure Rules
 * `constant_016 <constant_rules.html#constant-016>`_
 * `sequential_009 <sequential_rules.html#sequential-009>`_
 * `signal_403 <signal_rules.html#signal-403>`_
+* `variable_403 <variable_rules.html#variable-403>`_
 * `variable_assignment_008 <variable_assignment_rules.html#variable-assignment-008>`_

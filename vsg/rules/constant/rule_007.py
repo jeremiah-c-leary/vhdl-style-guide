@@ -9,7 +9,7 @@ lTokens.append(token.constant_declaration.assignment_operator)
 
 class rule_007(Rule):
     """
-    This rule checks the **:=** is on the same line at the **constant** keyword.
+    This rule checks the **:=** is on the same line as the **constant** keyword.
 
     **Violation**
 
@@ -27,7 +27,7 @@ class rule_007(Rule):
        constant size    : integer :=
          1;
        constant width   : integer :=
-         32
+         32;
     """
 
     def __init__(self):

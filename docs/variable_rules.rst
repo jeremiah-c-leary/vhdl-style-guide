@@ -301,6 +301,31 @@ This rule checks the structure of variable constraints.
        element2(3 downto 0)
      );
 
+variable_018
+############
+
+|phase_1| |error| |structure|
+
+This rule checks the **:=** is on the same line as the **variable** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable size : integer
+      := 1;
+   variable width : integer
+      := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable size    : integer :=
+     1;
+   variable width   : integer :=
+     32;
+
 variable_100
 ############
 
@@ -417,6 +442,96 @@ This rule checks alignment of multiline constraints in variable declarations.
        element1(7 downto 0),
        element2(3 downto 0)
      );
+
+variable_401
+############
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of assignment keywords in variable declarations.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable v_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data => true,
+     others => false
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable v_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data    => true,
+     others            => false
+   );
+
+variable_402
+############
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of multiline variable initializations that contain arrays.
+
+|configuring_multiline_indent_rules_link|
+
+.. NOTE:: The structure of multiline array variables is handled by the rule `variable_403 <variable_rules.html#variable-403>`_.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable rom : romq_type :=
+   (
+            0,
+        65535,
+        32768
+     );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable rom : romq_type :=
+   (
+     0,
+     65535,
+     32768
+   );
+
+variable_403
+############
+
+|phase_5| |error| |structure|
+
+This rule checks the structure of multiline variable initializations that contain arrays.
+
+|configuring_array_multiline_structure_rules_link|
+
+.. NOTE:: The indenting of multiline array variables is handled by the rule `variable_402 <variable_rules.html#variable-402>`_.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable rom : romq_type := (0, 65535, 32768);
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable rom : romq_type :=
+   (
+     0,
+     65535,
+     32768
+   );
 
 variable_500
 ############

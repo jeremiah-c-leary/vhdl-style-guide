@@ -129,5 +129,6 @@ Rules Enforcing Multiline Indent Rules
 * `signal_400 <signal_rules.html#signal-400>`_
 * `signal_402 <signal_rules.html#signal-402>`_
 * `variable_400 <signal_rules.html#variable-400>`_
+* `variable_402 <variable_rules.html#variable-402>`_
 * `variable_assignment_004 <variable_assignment_rules.html#variable-assignment-004>`_
 * `variable_assignment_401 <variable_assignment_rules.html#variable-assignment-401>`_

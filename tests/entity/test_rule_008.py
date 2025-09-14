@@ -653,21 +653,3 @@ class test_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
-
-
-#        lExpected = []
-#        lExpected.extend([2, 3, 4, 5])
-#        lExpected.extend([7, 8, 9, 10])
-#        lExpected.extend([12, 13, 14, 15])
-#        lExpected.extend([17, 18, 19, 20])
-#        lExpected.extend([22, 23, 24, 25])
-#        lExpected.extend([27, 28, 29, 30])
-#        lExpected.extend([32, 33, 34, 35])
-#        lExpected.extend([37, 38, 39, 40])
-#        lExpected.extend([42, 43, 44, 45])
-#        lExpected.extend([47, 48, 49, 50])
-#        lExpected.extend([52, 53, 54, 55])
-#        lExpected.extend([57, 58, 59, 60])
-#        lExpected.extend([62, 63, 64, 65])
-#        lExpected.extend([69, 70, 71, 72])
-#        lExpected.extend([74, 75, 76, 77])
