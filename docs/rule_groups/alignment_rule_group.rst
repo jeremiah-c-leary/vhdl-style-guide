@@ -79,6 +79,7 @@ Rules Enforcing Alignment Rule Group
 * `subprogram_body_401 <../subprogram_body_rules.html#subprogram-body-401>`_
 * `type_400 <../type_rules.html#type-400>`_
 * `variable_400 <../variable_rules.html#variable-400>`_
+* `variable_401 <../variable_rules.html#variable-401>`_
 * `variable_assignment_004 <../variable_assignment_rules.html#variable-assignment-004>`_
 * `variable_assignment_400 <../variable_assignment_rules.html#variable-assignment-400>`_
 * `variable_assignment_401 <../variable_assignment_rules.html#variable-assignment-401>`_

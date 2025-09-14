@@ -443,6 +443,35 @@ This rule checks alignment of multiline constraints in variable declarations.
        element2(3 downto 0)
      );
 
+variable_401
+############
+
+|phase_5| |error| |alignment|
+
+This rule checks the alignment of assignment keywords in variable declarations.
+
+|configuring_keyword_alignment_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable v_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data => true,
+     others => false
+   );
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable v_default_values : t_address_en := (
+     c_address_control => false,
+     c_address_data    => true,
+     others            => false
+   );
+
 variable_500
 ############
 
