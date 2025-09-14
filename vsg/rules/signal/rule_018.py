@@ -27,7 +27,7 @@ class rule_018(Rule):
        signal size    : integer :=
          1;
        signal width   : integer :=
-         32
+         32;
     """
 
     def __init__(self):

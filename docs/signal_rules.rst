@@ -357,7 +357,7 @@ This rule checks the **:=** is on the same line as the **signal** keyword.
    signal size    : integer :=
      1;
    signal width   : integer :=
-     32
+     32;
 
 signal_100
 ##########
