@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from vsg.token import variable_declaration as token
 from vsg.rules import multiline_structure as Rule
+from vsg.token import variable_declaration as token
 
 lTokenPairs = []
 lTokenPairs.append([token.variable_keyword, token.semicolon])
