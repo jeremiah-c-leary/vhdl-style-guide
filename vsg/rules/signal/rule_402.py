@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 
-from vsg import token
+from vsg.token import signal_declaration as token
 from vsg.rules import multiline_array_alignment as Rule
 
 lTokenPairs = []
-lTokenPairs.append([token.signal_declaration.assignment_operator, token.signal_declaration.semicolon])
+lTokenPairs.append([token.assignment_operator, token.semicolon])
 
 
 class rule_402(Rule):
@@ -41,4 +41,4 @@ class rule_402(Rule):
 
     def __init__(self):
         super().__init__(lTokenPairs)
-        self.assignment_operator = token.signal_declaration.assignment_operator
+        self.assignment_operator = token.assignment_operator
