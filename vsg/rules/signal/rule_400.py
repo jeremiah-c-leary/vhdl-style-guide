@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from vsg import token
 from vsg.rules import multiline_alignment_between_tokens as Rule
-from vsg.token import signal_declaration as token
 
 lTokenPairs = []
-lTokenPairs.append([token.signal_keyword, token.semicolon])
+lTokenPairs.append([token.signal_declaration.signal_keyword, token.signal_declaration.semicolon])
 
 
 class rule_400(Rule):
