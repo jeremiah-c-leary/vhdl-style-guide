@@ -9,7 +9,7 @@ lTokens.append(token.signal_declaration.assignment_operator)
 
 class rule_018(Rule):
     """
-    This rule checks the **:=** is on the same line at the **signal** keyword.
+    This rule checks the **:=** is on the same line as the **signal** keyword.
 
     **Violation**
 

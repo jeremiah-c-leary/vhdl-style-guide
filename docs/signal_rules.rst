@@ -339,7 +339,7 @@ signal_018
 
 |phase_1| |error| |structure|
 
-This rule checks the **:=** is on the same line at the **signal** keyword.
+This rule checks the **:=** is on the same line as the **signal** keyword.
 
 **Violation**
 
