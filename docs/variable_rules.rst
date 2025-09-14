@@ -301,6 +301,31 @@ This rule checks the structure of variable constraints.
        element2(3 downto 0)
      );
 
+variable_018
+############
+
+|phase_1| |error| |structure|
+
+This rule checks the **:=** is on the same line as the **variable** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   variable size : integer
+      := 1;
+   variable width : integer
+      := 32;
+
+**Fix**
+
+.. code-block:: vhdl
+
+   variable size    : integer :=
+     1;
+   variable width   : integer :=
+     32;
+
 variable_100
 ############
 
