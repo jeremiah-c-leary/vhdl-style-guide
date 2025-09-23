@@ -3,6 +3,52 @@
 Subprogram Kind Rules
 ---------------------
 
+subprogram_kind_300
+###################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the **procedure** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   library ieee;
+
+     procedure my_proc is new my_generic_proc
+
+**Fix**
+
+.. code-block:: vhdl
+
+   library ieee;
+
+   procedure my_proc is new my_generic_proc
+
+subprogram_kind_301
+###################
+
+|phase_4| |error| |indent|
+
+This rule checks the indent of the **function** keyword.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   library ieee;
+
+     function my_func is new my_generic_func
+
+**Fix**
+
+.. code-block:: vhdl
+
+   library ieee;
+
+   function my_func is new my_generic_func
+
 subprogram_kind_500
 ###################
 
