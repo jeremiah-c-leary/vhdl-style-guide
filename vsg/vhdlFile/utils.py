@@ -72,12 +72,23 @@ def assign_tokens_until_ignoring_paren(sToken, token, iToken, lObjects):
     return None
 
 
+def replace_token(lObjects, iToken, token, **kwargs):
+    """ Replace token ``lObjects[iToken]`` with specified token class or instance, ensuring the
+    original token value and attributes are preserved, and optionally updating specified attributes.
+    """
+    lObjects[iToken] = lObjects[iToken].convert_to(token)
+
+    # Update  attributes of new token with values specified in kwargs
+    if kwargs:  # test is for speed optimization
+        for key, value in kwargs.items():
+            setattr(lObjects[iToken], key, value)
+
 def assign_next_token(token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     try:
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        replace_token(lObjects, iCurrent, token)
     except TypeError:
-        lObjects[iCurrent] = token()
+        replace_token(lObjects, iCurrent, token())
     iCurrent += 1
     return iCurrent
 
@@ -85,16 +96,16 @@ def assign_next_token(token, iToken, lObjects):
 def assign_token(lObjects, iToken, token):
     iCurrent = find_next_token(iToken, lObjects)
     try:
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        replace_token(lObjects, iCurrent, token)
     except TypeError:
-        lObjects[iToken] = token()
+        replace_token(lObjects, iToken, token())
     return iToken + 1
 
 
 def assign_next_token_if(sToken, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     if object_value_is(lObjects, iCurrent, sToken):
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        replace_token(lObjects, iCurrent, token)
         iCurrent += 1
         return iCurrent
     return iToken
@@ -103,7 +114,7 @@ def assign_next_token_if(sToken, token, iToken, lObjects):
 def assign_next_token_if_not(sToken, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     if not object_value_is(lObjects, iCurrent, sToken):
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        replace_token(lObjects, iCurrent, token)
         iCurrent += 1
         return iCurrent
     return iToken
@@ -112,7 +123,7 @@ def assign_next_token_if_not(sToken, token, iToken, lObjects):
 def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     if lObjects[iCurrent].get_lower_value() not in lTokens:
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        replace_token(lObjects, iCurrent, token)
         iCurrent += 1
         return iCurrent
     return iToken
@@ -121,7 +132,7 @@ def assign_next_token_if_not_one_of(lTokens, token, iToken, lObjects):
 def assign_next_token_required(sToken, token, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
     if object_value_is(lObjects, iCurrent, sToken):
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        replace_token(lObjects, iCurrent, token)
         return iCurrent + 1
     else:
         print_error_message(sToken, token, iCurrent, lObjects)
@@ -136,7 +147,7 @@ def assign_tokens_until_matching_closing_paren(token, iToken, lObjects):
         iCounter = update_paren_counter(iCurrent, lObjects, iCounter)
         if token_is_close_parenthesis(iCurrent, lObjects) and iCounter == 0:
             return iCurrent
-        lObjects[iCurrent] = token(lObjects[iCurrent].get_value())
+        replace_token(lObjects, iCurrent, token)
 
 
 def assign_parenthesis_as_todo(iToken, lObjects):
