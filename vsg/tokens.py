@@ -216,7 +216,6 @@ def is_character_literal_candidate(iIndex, lQuotes, lChars):
     if (
         there_is_a_single_token_between_quotes(iIndex, lQuotes)
         and token_between_quotes_is_a_single_character(iQuote, lChars)
-        and token_is_not_a_parenthesis(iQuote, lChars)
     ):
         return True
     return False
@@ -234,21 +233,39 @@ def token_between_quotes_is_a_single_character(iQuote, lChars):
     return False
 
 
-def token_is_not_a_parenthesis(iQuote, lChars):
-    if lChars[iQuote + 1] == "(":
-        return False
-    return True
-
-
 def filter_character_literal_candidates(lLiterals):
     lReturn = []
-    for iIndex, lLiteral in enumerate(lLiterals[0:-1]):
-        lNextLiteral = lLiterals[iIndex + 1]
-        lPreviousLiteral = lLiterals[iIndex - 1]
-        if lLiteral[1] == lNextLiteral[0] and lLiteral[0] == lPreviousLiteral[1]:
-            continue
-        lReturn.append(lLiteral)
-    lReturn.append(lLiterals[-1])
+    lSequentialCandidates = []
+    for iIndex, lLiteral in enumerate(lLiterals):
+
+        # The algorithm is a bit more complex than one might expect because it needs to be able to handle sequences of
+        # character literals separated by a single character, e.g. `'1','0','a'`, as well as character literals inside
+        # qualified expressions, e.g. std_logic'('1'), both of which include "red herring" candidates.
+        # First, build up a sequence of sequential candidates, i.e. candidates that are separated by one character. Most
+        # of the time, this sequence will be one long.
+        lSequentialCandidates.append(lLiteral)
+
+        bCandidateIsLast = iIndex != len(lLiterals) - 1
+        if not bCandidateIsLast:
+            lNextLiteral = lLiterals[iIndex + 1]
+            bNextCandidateOverlapsWithCurrent = lLiteral[1] == lNextLiteral[0]
+            if not bNextCandidateOverlapsWithCurrent:
+
+                # At the end of a sequence, filter the candidates to find the character literals. Sequential candidates
+                # will alternate between valid and invalid candidates. For example, in `'1','0'`, the first candidate
+                # ('1') is valid, the second (',') is invalid, and the third ('0') is valid. The first in the sequence
+                # will always be valid unless a qualified expression is present. For example, in `std_logic'('1')`, the
+                # first candidate ('(') is invalid and the second candidate ('1') is valid. If there is a qualified
+                # expression, the number of candidates will be even; otherwise the number will be odd.
+                # Therefore, filter by selecting every second candidate, starting with 0 if the number of candidates is
+                # odd and starting with 1 if the number of candidates is even.
+                iSequenceStart = (len(lSequentialCandidates) + 1) % 2
+                lFilteredLiterals = [lSequentialCandidates[x] for x in range(iSequenceStart, len(lSequentialCandidates), 2)]
+                lReturn.extend(lFilteredLiterals)
+
+                # Clear the sequential candidates for the next sequence.
+                lSequentialCandidates = []
+
     return lReturn
 
 
