@@ -4,7 +4,7 @@ from vsg.rules import multiline_structure as Rule
 from vsg.token import variable_declaration as token
 
 lTokenPairs = []
-lTokenPairs.append([token.variable_keyword, token.semicolon])
+lTokenPairs.append([token.assignment_operator, token.semicolon])
 
 
 class rule_403(Rule):
