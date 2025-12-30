@@ -38,6 +38,9 @@ begin
     others       => 'X'
   );
 
+    variable v_result : string(1 to
+    2);
+
   begin
 
   end process;
