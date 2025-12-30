@@ -121,18 +121,15 @@ To configure the following example...
 
    rule:
      block_comment_001:
-       allow_indenting: true
        disable: false
        header_left:
        header_left_repeat: '-'
        header_string:
        header_right_repeat:
      block_comment_002:
-       allow_indenting: true
        disable: false
        comment_left:
      block_comment_003:
-       allow_indenting: true
        disable: false
        footer_left:
        footer_left_repeat: '-'
