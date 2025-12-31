@@ -2,7 +2,7 @@
 
 from vsg.token import association_element as token
 from vsg.vhdlFile import utils
-from vsg.vhdlFile.classify import formal_part
+from vsg.vhdlFile.classify import formal_part, expression
 
 
 def detect(iCurrent, lObjects):
@@ -43,9 +43,7 @@ def classify(iStart, iEnd, lObjects, sEnd):
         iCurrent = utils.assign_next_token_required("=>", token.assignment, iCurrent, lObjects)
 
     # Classify actual part
-    for iCurrent in range(iCurrent, iEnd):
-        if utils.is_item(lObjects, iCurrent):
-            utils.assign_special_tokens(lObjects, iCurrent, token.actual_part)
+    iCurrent = expression.classify_until([sEnd], iCurrent, lObjects, token.actual_part)
 
     return iCurrent
 

@@ -706,11 +706,11 @@
 <class 'vsg.token.association_list.comma'>
 <class 'vsg.parser.open_parenthesis'>
 <class 'vsg.token.association_element.actual_part'>
-<class 'vsg.parser.open_parenthesis'>
+<class 'vsg.token.aggregate.open_parenthesis'>
 <class 'vsg.token.association_element.actual_part'>
+<class 'vsg.parser.comma'>
 <class 'vsg.token.association_element.actual_part'>
-<class 'vsg.token.association_element.actual_part'>
-<class 'vsg.parser.close_parenthesis'>
+<class 'vsg.token.aggregate.close_parenthesis'>
 <class 'vsg.parser.close_parenthesis'>
 <class 'vsg.token.relational_operator.equal'>
 <class 'vsg.token.aggregate.open_parenthesis'>
