@@ -22,12 +22,14 @@ class New:
             return []
 
     def get_token_indexes_between_indexes(self, oToken, iStart, iEnd):
-        lReturn = []
         lIndexes = self.get_token_indexes(oToken)
-        for iIndex in lIndexes:
-            if iIndex > iStart and iIndex < iEnd:
-                lReturn.append(iIndex)
-        return lReturn
+        if not lIndexes:
+            return []
+        # Use a binary search to get the first index > the start.
+        iLowIndex = bisect.bisect_right(lIndexes, iStart)  # first index > iStart
+        # Use a binary search to get the last index < the end.
+        iHighIndex = bisect.bisect_left(lIndexes, iEnd)    # first index >= iEnd
+        return lIndexes[iLowIndex:iHighIndex]
 
     def get_line_number_of_index(self, iIndex):
         iLine = bisect.bisect_left(self.dMap["parser"]["carriage_return"], iIndex) + 1
