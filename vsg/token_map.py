@@ -246,12 +246,13 @@ def extract_pairs(lStartIndexes, lEndIndexes):
 
 
 def extract_closest_pair(iStart, lEndIndexes, lPair, iMin):
-    for iEnd in lEndIndexes:
-        if iStart > iEnd:
-            continue
-        if iEnd - iStart < iMin:
-            lPair = [iStart, iEnd]
-            iMin = iEnd - iStart
+    # The list of end indexes is assumed to be sorted. Get the first end >= start via binary search.
+    iPos = bisect.bisect_left(lEndIndexes, iStart)
+    if iPos == len(lEndIndexes):
+        return lPair
+    iEnd = lEndIndexes[iPos]
+    if iEnd - iStart < iMin:
+        lPair = [iStart, iEnd]
     return lPair
 
 
