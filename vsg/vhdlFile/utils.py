@@ -965,7 +965,6 @@ def assign_special_tokens(lObjects, iCurrent, oType):
         assign_token(lObjects, iCurrent, relational_operator.question_greater_than)
     elif sValue == "?>=":
         assign_token(lObjects, iCurrent, relational_operator.question_greater_than_or_equal)
-
     elif exponent_detected(lObjects, iCurrent):
         assign_token(lObjects, iCurrent, exponent.integer)
     else:
