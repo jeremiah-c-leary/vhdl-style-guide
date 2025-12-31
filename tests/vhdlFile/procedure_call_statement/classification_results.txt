@@ -68,22 +68,39 @@
 14 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-15 |     proc;
+15 |     proc(x"1", d"5", o"X");
 <class 'vsg.token.procedure_call.procedure_name'>
+<class 'vsg.token.procedure_call.open_parenthesis'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.association_list.comma'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
+<class 'vsg.token.procedure_call.close_parenthesis'>
 <class 'vsg.token.procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
 16 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-17 |   end process;
-<class 'vsg.token.process_statement.end_keyword'>
-<class 'vsg.token.process_statement.end_process_keyword'>
-<class 'vsg.token.process_statement.semicolon'>
+17 |     proc;
+<class 'vsg.token.procedure_call.procedure_name'>
+<class 'vsg.token.procedure_call_statement.semicolon'>
 --------------------------------------------------------------------------------
 18 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-19 | end architecture RTL;
+19 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+20 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+21 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
