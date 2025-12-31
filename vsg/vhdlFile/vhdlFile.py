@@ -132,9 +132,7 @@ class vhdlFile:
         for sLine in self.filecontent:
             self.dVars["line"] = sLine
             lTokens = tokens.create(sLine.rstrip("\n").rstrip("\r"))
-            lObjects = []
-            for sToken in lTokens:
-                lObjects.append(parser.item(sToken))
+            lObjects = [parser.item(sToken) for sToken in lTokens]
 
             blank.classify(lObjects, oOptions)
             whitespace.classify(lTokens, lObjects)
