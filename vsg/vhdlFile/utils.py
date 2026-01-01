@@ -775,10 +775,7 @@ def does_token_start_line(iToken, lTokens):
 
 
 def convert_token_list_to_string(lTokens):
-    sReturn = ""
-    for oToken in lTokens:
-        sReturn += oToken.get_value()
-    return sReturn
+    return ''.join([oToken.get_value() for oToken in lTokens])
 
 
 def fix_blank_lines(lTokens):
