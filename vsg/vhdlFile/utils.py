@@ -13,6 +13,9 @@ from vsg.token import (
     relational_operator,
 )
 
+# Cache parser.item for speed, since it is referenced so frequently.
+parser_item = parser.item
+
 
 def assign_tokens_until(sToken, token, iToken, lObjects):
     iCurrent = iToken
@@ -110,22 +113,16 @@ def assign_parenthesis_as_todo(iToken, lObjects):
 
 
 def object_value_is(lAllObjects, iToken, sString):
-    if lAllObjects[iToken].get_lower_value() == sString.lower():
-        return True
-    return False
+    return lAllObjects[iToken].get_lower_value() == sString.lower()
 
 
 def object_value_matches(lAllObjects, iToken, oRegex):
     sToken = lAllObjects[iToken].get_lower_value()
-    if oRegex.fullmatch(sToken) is not None:
-        return True
-    return False
+    return oRegex.fullmatch(sToken) is not None
 
 
 def is_item(lAllObjects, iToken):
-    if type(lAllObjects[iToken]) is parser.item:
-        return True
-    return False
+    return type(lAllObjects[iToken]) is parser_item
 
 
 def get_range(lObjects, iStart, sEnd):
@@ -279,8 +276,6 @@ def find_earliest_occurrence_not_in_paren(lEnd, iToken, lObjects):
 
 
 def find_next_token(iToken, lObjects):
-    # Cache parser.item for speed.
-    parser_item = parser.item
     iLenObjects = len(lObjects)
     iCurrent = iToken
     # Iterate through to avoid slicing and enumerate() for speed.
@@ -292,7 +287,7 @@ def find_next_token(iToken, lObjects):
 
 
 def rename_this_is_item_function(oToken):
-    return type(oToken) is parser.item
+    return type(oToken) is parser_item
 
 
 def find_next_non_whitespace_token(iToken, lObjects):
@@ -332,9 +327,7 @@ def has_label(iObject, lObjects):
     iCurrent = find_next_token(iObject, lObjects)
     iCurrent = increment_token_count(iCurrent)
     iCurrent = find_next_token(iCurrent, lObjects)
-    if object_value_is(lObjects, iCurrent, ":"):
-        return True
-    return False
+    return object_value_is(lObjects, iCurrent, ":")
 
 
 def tokenize_postponed(iObject, lObjects, token):
@@ -398,33 +391,23 @@ def print_lines(lObjects):
 
 
 def token_is_semicolon(iObject, lObjects):
-    if object_value_is(lObjects, iObject, ";"):
-        return True
-    return False
+    return object_value_is(lObjects, iObject, ";")
 
 
 def token_is_comma(iObject, lObjects):
-    if object_value_is(lObjects, iObject, ","):
-        return True
-    return False
+    return object_value_is(lObjects, iObject, ",")
 
 
 def token_is_open_parenthesis(iObject, lObjects):
-    if object_value_is(lObjects, iObject, "("):
-        return True
-    return False
+    return object_value_is(lObjects, iObject, "(")
 
 
 def token_is_close_parenthesis(iObject, lObjects):
-    if object_value_is(lObjects, iObject, ")"):
-        return True
-    return False
+    return object_value_is(lObjects, iObject, ")")
 
 
 def token_is_assignment_operator(iObject, lObjects):
-    if object_value_is(lObjects, iObject, "<="):
-        return True
-    return False
+    return object_value_is(lObjects, iObject, "<=")
 
 
 def increment_token_count(iToken):
@@ -433,23 +416,17 @@ def increment_token_count(iToken):
 
 def matches_next_token(oRegex, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if object_value_matches(lObjects, iCurrent, oRegex):
-        return True
-    return False
+    return object_value_matches(lObjects, iCurrent, oRegex)
 
 
 def is_next_token(sToken, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if object_value_is(lObjects, iCurrent, sToken):
-        return True
-    return False
+    return object_value_is(lObjects, iCurrent, sToken)
 
 
 def is_next_token_one_of(lTokens, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_lower_value() in lTokens:
-        return True
-    return False
+    return lObjects[iCurrent].get_lower_value() in lTokens
 
 
 def detect_subelement_until(sToken, element, iToken, lObjects):
@@ -525,20 +502,13 @@ def extract_module_name(token):
 
 def keyword_found(sKeyword, iToken, lObjects):
     if find_in_next_n_tokens(":", 2, iToken, lObjects):
-        if find_in_next_n_tokens(sKeyword, 3, iToken, lObjects):
-            return True
-        else:
-            return False
-    if is_next_token(sKeyword, iToken, lObjects):
-        return True
-    return False
+        return find_in_next_n_tokens(sKeyword, 3, iToken, lObjects)
+    return is_next_token(sKeyword, iToken, lObjects)
 
 
 def is_next_token_in_list(lUntils, iToken, lObjects):
     iCurrent = find_next_token(iToken, lObjects)
-    if lObjects[iCurrent].get_lower_value() in lUntils:
-        return True
-    return False
+    return lObjects[iCurrent].get_lower_value() in lUntils
 
 
 def combine_two_token_class_lists(lToi_a, lToi_b):
@@ -567,9 +537,7 @@ def does_length_of_tokens_exceed(lObjects, iLength):
     iTotalLength = 0
     for oObject in lObjects:
         iTotalLength += len(oObject.get_value())
-    if iTotalLength > iLength:
-        return True
-    return False
+    return iTotalLength > iLength
 
 
 def remove_carriage_returns_from_token_list(lTokens):
@@ -619,9 +587,7 @@ def remove_comment_at_end_of_token_list(lTokens):
 
 
 def does_token_type_match(oToken, oType):
-    if isinstance(oToken, oType):
-        return True
-    return False
+    return isinstance(oToken, oType)
 
 
 def remove_trailing_whitespace(lTokens):
@@ -670,42 +636,30 @@ def remove_all_trailing_whitespace(lTokens):
 
 
 def token_is_whitespace_or_comment(oToken):
-    if (
+    return (
         isinstance(oToken, parser.whitespace)
         or isinstance(oToken, parser.carriage_return)
         or isinstance(oToken, parser.comment)
         or isinstance(oToken, parser.blank_line)
         or isinstance(oToken, parser.preprocessor)
-    ):
-        return True
-    else:
-        return False
+    )
 
 
 def token_is_whitespace_token(oToken):
-    if isinstance(oToken, parser.whitespace):
-        return True
-    else:
-        return False
+    return isinstance(oToken, parser.whitespace)
 
 
 def token_is_whitespace(oToken):
-    if (
+    return (
         isinstance(oToken, parser.whitespace)
         or isinstance(oToken, parser.carriage_return)
         or isinstance(oToken, parser.blank_line)
         or isinstance(oToken, parser.preprocessor)
-    ):
-        return True
-    else:
-        return False
+    )
 
 
 def token_is_carriage_return(oToken):
-    if isinstance(oToken, parser.carriage_return):
-        return True
-    else:
-        return False
+    return isinstance(oToken, parser.carriage_return)
 
 
 def increment_line_number(iLine, oToken):
@@ -749,9 +703,7 @@ def count_token_types_in_list_of_tokens(oType, lTokens):
 
 
 def does_token_type_exist_in_list_of_tokens(oType, lTokens):
-    if count_token_types_in_list_of_tokens(oType, lTokens) == 0:
-        return False
-    return True
+    return count_token_types_in_list_of_tokens(oType, lTokens) == 0
 
 
 def get_toi_parameters(oToi):
@@ -769,13 +721,12 @@ def toi_is_array(oToi):
 def does_token_start_line(iToken, lTokens):
     if isinstance(lTokens[iToken - 1], parser.whitespace) and isinstance(lTokens[iToken - 2], parser.carriage_return):
         return True
-    if isinstance(lTokens[iToken - 1], parser.carriage_return):
-        return True
-    return False
+    else:
+        return isinstance(lTokens[iToken - 1], parser.carriage_return)
 
 
 def convert_token_list_to_string(lTokens):
-    return ''.join([oToken.get_value() for oToken in lTokens])
+    return "".join([oToken.get_value() for oToken in lTokens])
 
 
 def fix_blank_lines(lTokens):
@@ -819,17 +770,13 @@ def fix_trailing_whitespace(lTokens):
 
 
 def is_whitespace(oObject):
-    if isinstance(oObject, parser.carriage_return):
-        return True
-    if isinstance(oObject, parser.blank_line):
-        return True
-    if isinstance(oObject, parser.comment):
-        return True
-    if isinstance(oObject, parser.whitespace):
-        return True
-    if isinstance(oObject, parser.preprocessor):
-        return True
-    return False
+    return (
+        isinstance(oObject, parser.carriage_return)
+        or isinstance(oObject, parser.blank_line)
+        or isinstance(oObject, parser.comment)
+        or isinstance(oObject, parser.whitespace)
+        or isinstance(oObject, parser.preprocessor)
+    )
 
 
 def read_vhdlfile(sFileName, bIncludeEncoding=False):
@@ -865,15 +812,12 @@ def read_vhdlfile(sFileName, bIncludeEncoding=False):
 
 def is_token_at_end_of_line(iToken, lTokens):
     iMyToken = iToken + 1
-    if are_next_consecutive_token_types([parser.carriage_return], iMyToken, lTokens):
-        return True
-    if are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iMyToken, lTokens):
-        return True
-    if are_next_consecutive_token_types([parser.comment, parser.carriage_return], iMyToken, lTokens):
-        return True
-    if are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iMyToken, lTokens):
-        return True
-    return False
+    return (
+        are_next_consecutive_token_types([parser.carriage_return], iMyToken, lTokens)
+        or are_next_consecutive_token_types([parser.whitespace, parser.carriage_return], iMyToken, lTokens)
+        or are_next_consecutive_token_types([parser.comment, parser.carriage_return], iMyToken, lTokens)
+        or are_next_consecutive_token_types([parser.whitespace, parser.comment, parser.carriage_return], iMyToken, lTokens)
+    )
 
 
 def find_next_token_with_value(iToken, sValue, lTokens):
@@ -976,13 +920,11 @@ def assign_special_tokens(lObjects, iCurrent, oType):
 
 
 def exponent_detected(lObjects, iCurrent):
-    if isinstance(lObjects[iCurrent - 1], exponent.e_keyword):
-        return True
-    if isinstance(lObjects[iCurrent - 1], exponent.plus_sign):
-        return True
-    if isinstance(lObjects[iCurrent - 1], exponent.minus_sign):
-        return True
-    return False
+    return (
+        isinstance(lObjects[iCurrent - 1], exponent.e_keyword)
+        or isinstance(lObjects[iCurrent - 1], exponent.plus_sign)
+        or isinstance(lObjects[iCurrent - 1], exponent.minus_sign)
+    )
 
 
 def classify_predefined_types(lObjects, iCurrent):
