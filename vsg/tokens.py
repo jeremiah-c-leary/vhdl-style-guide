@@ -272,15 +272,11 @@ def append_to_list(bSymbol, lChars, sChar):
 
 
 def backslash_character_found(sChar):
-    if sChar == "\\":
-        return True
-    return False
+    return sChar == "\\"
 
 
 def stop_character_found(sChar, bLiteral):
-    if (sChar in lStopChars or " " in sChar) and bLiteral:
-        return True
-    return False
+    return (sChar in lStopChars or " " in sChar) and bLiteral
 
 
 def add_trailing_string(lReturn, sString):
