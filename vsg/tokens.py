@@ -91,18 +91,19 @@ class New:
 
     def combine_characters_into_words(self):
         lReturn = []
-        sTemp = ""
+        sWord = []
+
         for sChar in self.lChars:
             if character_is_part_of_word(sChar):
-                sTemp += sChar
+                sWord.append(sChar)
             else:
-                if sTemp != "":
-                    lReturn.append(sTemp)
+                if sWord:
+                    lReturn.append(''.join(sWord))
+                    sWord.clear()
                 lReturn.append(sChar)
-                sTemp = ""
 
-        if len(sTemp) != 0:
-            lReturn.append(sTemp)
+        if sWord:
+            lReturn.append(''.join(sWord))
 
         self.lChars = lReturn
 
