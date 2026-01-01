@@ -123,7 +123,7 @@ def object_value_matches(lAllObjects, iToken, oRegex):
 
 
 def is_item(lAllObjects, iToken):
-    if type(lAllObjects[iToken]) == parser.item:
+    if type(lAllObjects[iToken]) is parser.item:
         return True
     return False
 
@@ -279,14 +279,20 @@ def find_earliest_occurrence_not_in_paren(lEnd, iToken, lObjects):
 
 
 def find_next_token(iToken, lObjects):
-    for iCurrent, oToken in enumerate(lObjects[iToken::]):
-        if type(oToken) == parser.item:
-            return iCurrent + iToken
+    # Cache parser.item for speed.
+    parser_item = parser.item
+    iLenObjects = len(lObjects)
+    iCurrent = iToken
+    # Iterate through to avoid slicing and enumerate() for speed.
+    while iCurrent < iLenObjects:
+        if type(lObjects[iCurrent]) is parser_item:
+            return iCurrent
+        iCurrent += 1
     return iToken
 
 
 def rename_this_is_item_function(oToken):
-    return type(oToken) == parser.item
+    return type(oToken) is parser.item
 
 
 def find_next_non_whitespace_token(iToken, lObjects):
