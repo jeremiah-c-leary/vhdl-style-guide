@@ -278,7 +278,6 @@ def find_earliest_occurrence_not_in_paren(lEnd, iToken, lObjects):
 def find_next_token(iToken, lObjects):
     iLenObjects = len(lObjects)
     iCurrent = iToken
-    # Iterate through to avoid slicing and enumerate() for speed.
     while iCurrent < iLenObjects:
         if type(lObjects[iCurrent]) is parser_item:
             return iCurrent
