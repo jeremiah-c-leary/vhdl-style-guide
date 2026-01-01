@@ -240,7 +240,7 @@ def token_between_quotes_is_a_single_character(iQuote, lChars):
 
 
 def token_is_not_a_parenthesis(iQuote, lChars):
-    return lChars[iQuote + 1] == "("
+    return lChars[iQuote + 1] != "("
 
 
 def filter_character_literal_candidates(lLiterals):

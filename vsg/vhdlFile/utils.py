@@ -703,7 +703,7 @@ def count_token_types_in_list_of_tokens(oType, lTokens):
 
 
 def does_token_type_exist_in_list_of_tokens(oType, lTokens):
-    return oType in lTokens
+    return count_token_types_in_list_of_tokens(oType, lTokens) != 0
 
 
 def get_toi_parameters(oToi):
