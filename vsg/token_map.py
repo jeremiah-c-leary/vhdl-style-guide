@@ -26,9 +26,9 @@ class New:
         if not lIndexes:
             return []
         # Use a binary search to get the first index > the start.
-        iLowIndex = bisect.bisect_right(lIndexes, iStart)  # first index > iStart
+        iLowIndex = bisect.bisect_right(lIndexes, iStart)
         # Use a binary search to get the last index < the end.
-        iHighIndex = bisect.bisect_left(lIndexes, iEnd)    # first index >= iEnd
+        iHighIndex = bisect.bisect_left(lIndexes, iEnd)
         return lIndexes[iLowIndex:iHighIndex]
 
     def get_line_number_of_index(self, iIndex):
