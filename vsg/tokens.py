@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-lSingleCharacterSymbols = set([",", ":", "(", ")", "'", '"', "+", "&", "-", "*", "/", "<", ">", ";", "=", "[", "]", "?"])
-lTwoCharacterSymbols = set(["=>", "**", ":=", "/=", ">=", "<=", "<>", "??", "?=", "?<", "?>", "<<", ">>", "--", "/*", "*/"])
-lThreeCharacterSymbols = set(["?/=", "?<=", "?>="])
-lFourCharacterSymbols = set(["\\?=\\"])
+lSingleCharacterSymbols = {",", ":", "(", ")", "'", '"', "+", "&", "-", "*", "/", "<", ">", ";", "=", "[", "]", "?"}
+lTwoCharacterSymbols = {"=>", "**", ":=", "/=", ">=", "<=", "<>", "??", "?=", "?<", "?>", "<<", ">>", "--", "/*", "*/"}
+lThreeCharacterSymbols = {"?/=", "?<=", "?>="}
+lFourCharacterSymbols = {"\\?=\\"}
 
-lStopChars = set([" ", "(", ";"])
+lStopChars = {" ", "(", ";"}
 
 
 def create(sString):
