@@ -213,31 +213,23 @@ def find_character_literal_candidates(lQuotes, lChars):
 
 def is_character_literal_candidate(iIndex, lQuotes, lChars):
     iQuote = lQuotes[iIndex]
-    if (
+    return (
         there_is_a_single_token_between_quotes(iIndex, lQuotes)
         and token_between_quotes_is_a_single_character(iQuote, lChars)
         and token_is_not_a_parenthesis(iQuote, lChars)
-    ):
-        return True
-    return False
+    )
 
 
 def there_is_a_single_token_between_quotes(iIndex, lQuotes):
-    if lQuotes[iIndex] + 2 == lQuotes[iIndex + 1]:
-        return True
-    return False
+    return lQuotes[iIndex] + 2 == lQuotes[iIndex + 1]
 
 
 def token_between_quotes_is_a_single_character(iQuote, lChars):
-    if len(lChars[iQuote + 1]) == 1:
-        return True
-    return False
+    return len(lChars[iQuote + 1]) == 1
 
 
 def token_is_not_a_parenthesis(iQuote, lChars):
-    if lChars[iQuote + 1] == "(":
-        return False
-    return True
+    return lChars[iQuote + 1] == "("
 
 
 def filter_character_literal_candidates(lLiterals):
@@ -286,13 +278,11 @@ def add_trailing_string(lReturn, sString):
 
 
 def character_is_part_of_word(sChar):
-    if len(sChar) > 1:
-        return False
-    elif sChar.isspace():
-        return False
-    elif sChar in lSingleCharacterSymbols:
-        return False
-    return True
+    return (
+        len(sChar) == 1
+        and not sChar.isspace()
+        and sChar not in lSingleCharacterSymbols
+    )
 
 
 def find_indexes_of_double_quote_pairs(lTokens):
