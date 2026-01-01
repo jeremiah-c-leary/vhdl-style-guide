@@ -28,7 +28,7 @@ def create(sString):
 
 class New:
     def __init__(self, sLine):
-        self.lChars = convert_string_to_chars(sLine)
+        self.lChars = list(sLine)
 
     def combine_whitespace(self):
         lReturn = []
@@ -286,13 +286,6 @@ def stop_character_found(sChar, bLiteral):
 def add_trailing_string(lReturn, sString):
     if len(sString) > 0:
         lReturn.append(sString)
-    return lReturn
-
-
-def convert_string_to_chars(sString):
-    lReturn = []
-    for sChar in sString:
-        lReturn.append(sChar)
     return lReturn
 
 
