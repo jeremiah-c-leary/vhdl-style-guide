@@ -650,6 +650,23 @@ class testTokenMethod(unittest.TestCase):
 
         self.assertEqual(lTokens, lActual)
 
+    def test_parenthesis_character_literal(self):
+        sLine = "  my_char <= '(';"
+
+        lTokens = []
+
+        lTokens.append("  ")
+        lTokens.append("my_char")
+        lTokens.append(" ")
+        lTokens.append("<=")
+        lTokens.append(" ")
+        lTokens.append("'('")
+        lTokens.append(";")
+
+        lActual = tokens.create(sLine)
+
+        self.assertEqual(lTokens, lActual)
+
     def test_quotes_in_comments(self):
         sLine = '--! some text "other text'
 
@@ -861,6 +878,23 @@ class testTokenMethod(unittest.TestCase):
         lTokens.append("'c'")
         lTokens.append("|")
         lTokens.append("'d'")
+
+        lActual = tokens.create(sLine)
+
+        self.assertEqual(lTokens, lActual)
+
+    def test_multiple_character_literals_with_qualified_expression(self):
+        sLine = "std_logic'('1')|'1'|'0'"
+        lTokens = []
+        lTokens.append("std_logic")
+        lTokens.append("'")
+        lTokens.append("(")
+        lTokens.append("'1'")
+        lTokens.append(")")
+        lTokens.append("|")
+        lTokens.append("'1'")
+        lTokens.append("|")
+        lTokens.append("'0'")
 
         lActual = tokens.create(sLine)
 
