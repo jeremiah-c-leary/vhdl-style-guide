@@ -35,4 +35,4 @@ class rule_011(Rule):
 
     def __init__(self):
         super().__init__(lTokens, bInsertSpace=True)
-        self.solution = "Removed carraige returns after when keyword"
+        self.solution = "Removed carriage returns after when keyword"

@@ -103,7 +103,7 @@ def create_array_constraint_one_line_violation(oToi):
     iStart = oToi.get_meta_data("iStart")
     lTokens = oToi.get_tokens()
     oToi.set_meta_data("sSolution", "Move open parenthesis to next line and remove carriage returns in array constraint.")
-    oToi.set_meta_data("sAction", "add_new_line_and_remove_carraige_returns")
+    oToi.set_meta_data("sAction", "add_new_line_and_remove_carriage_returns")
     toi.adjust_start_index_based_on_whitespace(oToi, -1)
     oViolation = create_violation._create_violation(oToi)
     return oViolation
