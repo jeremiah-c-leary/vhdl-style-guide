@@ -385,4 +385,9 @@ begin
       io_inout
     );
 
+  with i_input select o_output <=
+    '0' when '1',
+    '1' when '0',
+    'x' when others;
+
 end architecture rtl;
