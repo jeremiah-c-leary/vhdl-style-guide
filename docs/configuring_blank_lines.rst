@@ -159,6 +159,7 @@ Rules Enforcing Blank Lines
 * `entity_202 <entity_rules.html#entity-202>`_
 * `entity_203 <entity_rules.html#entity-203>`_
 * `generate_003 <generate_rules.html#generate-003>`_
+* `generic_map_201 <generic_map_rules.html#generic-map-201>`_
 * `if_030 <if_rules.html#if-030>`_
 * `instantiation_019 <instantiation_rules.html#instantiation-019>`_
 * `loop_statement_201 <loop_statement_rules.html#loop-statement-201>`_
@@ -171,6 +172,7 @@ Rules Enforcing Blank Lines
 * `package_instantiation_201 <package_instantiation_rules.html#package-instantiation-201>`_
 * `port_001 <port_rules.html#port-001>`_
 * `port_map_200 <port_map_rules.html#port-map-200>`_
+* `port_map_201 <port_map_rules.html#port-map-201>`_
 * `pragma_401 <pragma_rules.html#pragma-401>`_
 * `pragma_403 <pragma_rules.html#pragma-403>`_
 * `process_011 <process_rules.html#process-011>`_
