@@ -10,8 +10,8 @@ def fix_violation(oViolation):
         add_new_line(oViolation)
     elif dAction["action"] == "remove_new_line":
         remove_new_line(oViolation)
-    elif dAction["action"] == "add_new_line_and_remove_carraige_returns":
-        add_new_line_and_remove_carraige_returns(oViolation)
+    elif dAction["action"] == "add_new_line_and_remove_carriage_returns":
+        add_new_line_and_remove_carriage_returns(oViolation)
 
 
 def add_new_line(oViolation):
@@ -34,7 +34,7 @@ def remove_new_line(oViolation):
     oViolation.set_tokens(lNewTokens)
 
 
-def add_new_line_and_remove_carraige_returns(oViolation):
+def add_new_line_and_remove_carriage_returns(oViolation):
     lTokens = oViolation.get_tokens()
     lTokens = utils.remove_carriage_returns_from_token_list(lTokens)
     rules_utils.remove_leading_whitespace_tokens(lTokens)
