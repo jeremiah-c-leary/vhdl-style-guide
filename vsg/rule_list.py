@@ -72,12 +72,10 @@ def load_rules():
     Returns:  (rule object list)
     """
     lRules = []
-    for name, oPackage in inspect.getmembers(importlib.import_module("vsg.rules")):
-        if inspect.ismodule(oPackage):
-            for name, oRule in inspect.getmembers(oPackage):
-                if inspect.isclass(oRule) and name.startswith("rule_"):
-                    lRules.append(oRule())
-
+    for _, oPackage in inspect.getmembers(importlib.import_module("vsg.rules"), inspect.ismodule):
+        for rule_name, oRule in inspect.getmembers(oPackage, inspect.isclass):
+            if rule_name.startswith("rule_"):
+                lRules.append(oRule())
     return lRules
 
 

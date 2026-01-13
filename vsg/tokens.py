@@ -1,11 +1,26 @@
 # -*- coding: utf-8 -*-
 
-lSingleCharacterSymbols = [",", ":", "(", ")", "'", '"', "+", "&", "-", "*", "/", "<", ">", ";", "=", "[", "]", "?"]
-lTwoCharacterSymbols = ["=>", "**", ":=", "/=", ">=", "<=", "<>", "??", "?=", "?<", "?>", "<<", ">>", "--", "/*", "*/"]
-lThreeCharacterSymbols = ["?/=", "?<=", "?>="]
-lFourCharacterSymbols = ["\\?=\\"]
+lSingleCharacterSymbols = {",", ":", "(", ")", "'", '"', "+", "&", "-", "*", "/", "<", ">", ";", "=", "[", "]", "?"}
+lTwoCharacterSymbols = {"=>", "**", ":=", "/=", ">=", "<=", "<>", "??", "?=", "?<", "?>", "<<", ">>", "--", "/*", "*/"}
+lThreeCharacterSymbols = {"?/=", "?<=", "?>="}
+lMultiCharacterSymbols = lTwoCharacterSymbols | lThreeCharacterSymbols
 
-lStopChars = [" ", "(", ";"]
+lStopChars = {" ", "(", ";"}
+
+
+def build_symbol_prefix_tree(lSymbols):
+    dPrefixTree = {}
+    for sSymbol in lSymbols:
+        dNode = dPrefixTree
+        for oChar in sSymbol:
+            # Return the branch of the prefix tree for this character, or create an empty branch if there isn't one.
+            dNode = dNode.setdefault(oChar, {})
+        # Use $ as the marker for the end of a branch.
+        dNode["$"] = sSymbol
+    return dPrefixTree
+
+
+dSymbolTree = build_symbol_prefix_tree(lMultiCharacterSymbols)
 
 
 def create(sString):
@@ -17,8 +32,7 @@ def create(sString):
     oLine.combine_whitespace()
     oLine.combine_string_literals()
     oLine.combine_backslash_characters_into_symbols()
-    oLine.combine_three_character_symbols()
-    oLine.combine_two_character_symbols()
+    oLine.combine_symbols_with_prefix_tree()
     oLine.combine_characters_into_words()
     oLine.combine_character_literals()
     oLine.split_natural_numbers()
@@ -28,7 +42,7 @@ def create(sString):
 
 class New:
     def __init__(self, sLine):
-        self.lChars = convert_string_to_chars(sLine)
+        self.lChars = list(sLine)
 
     def combine_whitespace(self):
         lReturn = []
@@ -46,6 +60,30 @@ class New:
 
         self.lChars = lReturn
 
+    def combine_symbols_with_prefix_tree(self):
+        lReturn = []
+        iStart = 0
+        iNumChars = len(self.lChars)
+        while iStart < iNumChars:
+            dNode = dSymbolTree
+            iEnd = iStart
+            oLastMatch = None
+            iPrevEnd = iStart
+            # Try to match as long a symbol as possible.
+            while iEnd < iNumChars and self.lChars[iEnd] in dNode:
+                dNode = dNode[self.lChars[iEnd]]
+                iEnd += 1
+                if "$" in dNode:
+                    oLastMatch = dNode["$"]
+                    iPrevEnd = iEnd
+            if oLastMatch:
+                lReturn.append(oLastMatch)
+                iStart = iPrevEnd
+            else:
+                lReturn.append(self.lChars[iStart])
+                iStart += 1
+        self.lChars = lReturn
+
     def combine_backslash_characters_into_symbols(self):
         lReturn = []
         sSymbol = ""
@@ -61,48 +99,21 @@ class New:
         lReturn = add_trailing_string(lReturn, sSymbol)
         self.lChars = lReturn
 
-    def combine_three_character_symbols(self):
-        lReturn = []
-        i = 0
-        while i < len(self.lChars):
-            sChars = "".join(self.lChars[i : i + 3])
-            if sChars in lThreeCharacterSymbols:
-                lReturn.append(sChars)
-                i += 3
-            else:
-                lReturn.append(self.lChars[i])
-                i += 1
-
-        self.lChars = lReturn
-
-    def combine_two_character_symbols(self):
-        lReturn = []
-        i = 0
-        while i < len(self.lChars):
-            sChars = "".join(self.lChars[i : i + 2])
-            if sChars in lTwoCharacterSymbols:
-                lReturn.append(sChars)
-                i += 2
-            else:
-                lReturn.append(self.lChars[i])
-                i += 1
-
-        self.lChars = lReturn
-
     def combine_characters_into_words(self):
         lReturn = []
-        sTemp = ""
+        sWord = []
+
         for sChar in self.lChars:
             if character_is_part_of_word(sChar):
-                sTemp += sChar
+                sWord.append(sChar)
             else:
-                if sTemp != "":
-                    lReturn.append(sTemp)
+                if sWord:
+                    lReturn.append("".join(sWord))
+                    sWord.clear()
                 lReturn.append(sChar)
-                sTemp = ""
 
-        if len(sTemp) != 0:
-            lReturn.append(sTemp)
+        if sWord:
+            lReturn.append("".join(sWord))
 
         self.lChars = lReturn
 
@@ -213,21 +224,15 @@ def find_character_literal_candidates(lQuotes, lChars):
 
 def is_character_literal_candidate(iIndex, lQuotes, lChars):
     iQuote = lQuotes[iIndex]
-    if there_is_a_single_token_between_quotes(iIndex, lQuotes) and token_between_quotes_is_a_single_character(iQuote, lChars):
-        return True
-    return False
+    return there_is_a_single_token_between_quotes(iIndex, lQuotes) and token_between_quotes_is_a_single_character(iQuote, lChars)
 
 
 def there_is_a_single_token_between_quotes(iIndex, lQuotes):
-    if lQuotes[iIndex] + 2 == lQuotes[iIndex + 1]:
-        return True
-    return False
+    return lQuotes[iIndex] + 2 == lQuotes[iIndex + 1]
 
 
 def token_between_quotes_is_a_single_character(iQuote, lChars):
-    if len(lChars[iQuote + 1]) == 1:
-        return True
-    return False
+    return len(lChars[iQuote + 1]) == 1
 
 
 def filter_character_literal_candidates(lCandidates):
@@ -287,15 +292,11 @@ def append_to_list(bSymbol, lChars, sChar):
 
 
 def backslash_character_found(sChar):
-    if sChar == "\\":
-        return True
-    return False
+    return sChar == "\\"
 
 
 def stop_character_found(sChar, bLiteral):
-    if (sChar in lStopChars or " " in sChar) and bLiteral:
-        return True
-    return False
+    return (sChar in lStopChars or " " in sChar) and bLiteral
 
 
 def add_trailing_string(lReturn, sString):
@@ -304,21 +305,8 @@ def add_trailing_string(lReturn, sString):
     return lReturn
 
 
-def convert_string_to_chars(sString):
-    lReturn = []
-    for sChar in sString:
-        lReturn.append(sChar)
-    return lReturn
-
-
 def character_is_part_of_word(sChar):
-    if len(sChar) > 1:
-        return False
-    elif sChar.isspace():
-        return False
-    elif sChar in lSingleCharacterSymbols:
-        return False
-    return True
+    return len(sChar) == 1 and not sChar.isspace() and sChar not in lSingleCharacterSymbols
 
 
 def find_indexes_of_double_quote_pairs(lTokens):
