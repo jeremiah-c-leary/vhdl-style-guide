@@ -39,7 +39,7 @@ The :code:`indent_style` option can be set globally for all rules and locally fo
 
 .. code-block:: yaml
 
-   rules:
+   rule:
       global:
          indent_style: 'smart_tabs'
          indent_size: 2
