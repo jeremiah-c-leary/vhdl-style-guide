@@ -27,7 +27,7 @@ def __is_valid_file(value: str) -> str:
     :param value: String path to analyze.
     :return:
     """
-    lFileNames = glob.glob(utils.expand_filename(value), recursive=True)
+    lFileNames = glob.glob(utils.expand_filename(value.strip()), recursive=True)
     if len(lFileNames) == 0:
         if "*" in value:
             raise argparse.ArgumentTypeError(f"The file glob {value} did not match any files.")
