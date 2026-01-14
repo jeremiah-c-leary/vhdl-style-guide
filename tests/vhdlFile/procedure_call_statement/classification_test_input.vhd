@@ -12,6 +12,8 @@ begin
 
     proc(a, b, c);
 
+    proc(x"1", d"5", o"X");
+
     proc;
 
   end process;

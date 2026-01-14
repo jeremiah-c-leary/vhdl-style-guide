@@ -31,7 +31,7 @@ def classify(iToken, lObjects):
 
     iCurrent = architecture_statement_part.classify_until(["end"], iCurrent, lObjects)
 
-    iCurrent = classify_closing_declaration(iToken, lObjects)
+    iCurrent = classify_closing_declaration(iCurrent, lObjects)
 
     return iCurrent
 
