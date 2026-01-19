@@ -383,6 +383,47 @@ This rule checks for a blank line below the open parenthesis in a port map.
     OVERFLOW => w_overflow
   );
 
+port_map_201
+############
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines in a port map.
+
+|configuring_blank_lines_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+  generic map (
+    G_GEN_1 => 3,
+    G_GEN_2 => 4,
+    G_GEN_3 => 5
+  )
+  port map (
+    PORT_1 => w_port_1,
+
+    PORT_2 => w_port_2,
+    PORT_3 => w_port_3
+  );
+
+**Fix**
+
+.. code-block:: vhdl
+
+  generic map (
+    G_GEN_1 => 3,
+    G_GEN_2 => 4,
+    G_GEN_3 => 5
+  )
+  port map (
+    PORT_1 => w_port_1,
+    PORT_2 => w_port_2,
+    PORT_3 => w_port_3
+  );
+
+
 port_map_300
 ############
 
