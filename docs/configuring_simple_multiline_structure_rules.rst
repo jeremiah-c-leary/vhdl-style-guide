@@ -43,7 +43,7 @@ There are several options to these rules:
 +-------------------------+-------------+---------------+-----------------------------------+
 | Method                  | Values      | Default       | Description                       |
 +=========================+=============+===============+===================================+
-| |new_line_after_assign| | |values1|   | |default_yes| | * |new_line_after_assign__yes|    |
+| |new_line_after_assign| | |values1|   | |default_no|  | * |new_line_after_assign__yes|    |
 |                         |             |               | * |new_line_after_assign__no|     |
 |                         |             |               | * |new_line_after_assign__ignore| |
 +-------------------------+-------------+---------------+-----------------------------------+
