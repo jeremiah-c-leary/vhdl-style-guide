@@ -20,7 +20,7 @@ The method of indenting can be configured using one of the following options:
    :code:`left`, :code:`report`
 
 .. |default_value| replace::
-   :code:`left`
+   :code:`report`
 
 .. |report| replace::
    :code:'report`
