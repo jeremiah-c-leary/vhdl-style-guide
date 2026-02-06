@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from vsg import token
-from vsg.rules.whitespace_between_token_pairs_bounded_by_tokens import Rule
+from vsg.rules.whitespace_after_tokens_in_between_tokens import Rule
 
 lTokens = []
-lTokens.append([token.association_element.assignment, token.association_element.actual_part])
+lTokens.append(token.association_element.assignment)
 
-lStart = token.port_map_aspect.open_parenthesis
-lEnd = token.port_map_aspect.close_parenthesis
+oStart = token.port_map_aspect.open_parenthesis
+oEnd = token.port_map_aspect.close_parenthesis
 
 
 class rule_007(Rule):
@@ -40,4 +40,4 @@ class rule_007(Rule):
     """
 
     def __init__(self):
-        super().__init__(lTokens, lStart, lEnd)
+        super().__init__(lTokens, oStart, oEnd)
