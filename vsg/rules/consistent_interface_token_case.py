@@ -17,6 +17,8 @@ lPairs.append([token.signal_declaration.colon, token.signal_declaration.semicolo
 lPairs.append([token.variable_declaration.colon, token.variable_declaration.semicolon])
 lPairs.append([token.process_statement.open_parenthesis, token.process_statement.close_parenthesis])
 lPairs.append([token.process_statement.begin_keyword, token.process_statement.end_keyword])
+lPairs.append([token.concurrent_selected_signal_assignment.with_keyword, token.concurrent_selected_signal_assignment.select_keyword])
+lPairs.append([token.concurrent_selected_signal_assignment.select_keyword, token.concurrent_selected_signal_assignment.assignment])
 
 oStartToken = token.architecture_body.entity_name
 oEndToken = token.architecture_body.end_keyword
