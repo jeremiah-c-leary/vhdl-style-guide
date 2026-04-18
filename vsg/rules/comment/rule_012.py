@@ -48,7 +48,7 @@ class rule_012(structure.Rule):
         sToken = oToi.get_tokens()[0].get_value()
         for sKeyword in self.keywords:
             # Match the keyword as a whole word only.
-            if re.search(rf"\\b{sKeyword}\\b", sToken):
+            if re.search(rf"\b{re.escape(sKeyword)}\b", sToken):
                 oToi.set_meta_data("keyword", sKeyword)
                 return True
         return False
