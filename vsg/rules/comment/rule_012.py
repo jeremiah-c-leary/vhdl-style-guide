@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import re
+
 from vsg import parser, severity, violation
 from vsg.rule_group import structure
 
@@ -45,7 +47,8 @@ class rule_012(structure.Rule):
     def comment_includes_keyword(self, oToi):
         sToken = oToi.get_tokens()[0].get_value()
         for sKeyword in self.keywords:
-            if sKeyword in sToken:
+            # Match the keyword as a whole word only.
+            if re.search(rf"\\b{sKeyword}\\b", sToken):
                 oToi.set_meta_data("keyword", sKeyword)
                 return True
         return False
