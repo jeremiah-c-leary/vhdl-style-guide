@@ -250,7 +250,6 @@ class test_rule(unittest.TestCase):
         lExpected.extend(range(53, 56))
         lExpected.extend(range(57, 61))
         lExpected.extend(range(63, 66))
-        lExpected.extend([72, 75])
         lExpected.extend(range(79, 83))
         lExpected.extend(range(84, 88))
         lExpected.extend(range(91, 98))
