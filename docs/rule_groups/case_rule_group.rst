@@ -33,8 +33,8 @@ Rules Enforcing Case Rule Group
 * `attribute_specification_501 <../attribute_specification_rules.html#attribute-specification-501>`_
 * `attribute_specification_502 <../attribute_specification_rules.html#attribute-specification-502>`_
 * `attribute_specification_503 <../attribute_specification_rules.html#attribute-specification-503>`_
-* `bit_string_literal_500 <bit_string_literal_rules.html#bit-string-literal-500>`_
-* `bit_string_literal_501 <bit_string_literal_rules.html#bit-string-literal-501>`_
+* `bit_string_literal_500 <../bit_string_literal_rules.html#bit-string-literal-500>`_
+* `bit_string_literal_501 <../bit_string_literal_rules.html#bit-string-literal-501>`_
 * `block_500 <../block_rules.html#block-500>`_
 * `block_501 <../block_rules.html#block-501>`_
 * `block_502 <../block_rules.html#block-502>`_

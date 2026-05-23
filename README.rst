@@ -22,28 +22,14 @@ VHDL Style Guide (VSG)
 Announcements
 -------------
 
-Update 01/01/2025
+Update 11/09/2025
 
-The regex definitions for camelCase and PascalCase are going to be changing for release 3.30.0 to better align with industry "standards".
+Where has Jeremy been?
 
-The current regex allows for an unlimited number of uppercase characters in a row:
+Just wanted to let everyone know that I have not abandoned this project.
+There was a family emergency I had to handle and now work is taking a significant amount of my time.
 
-.. code-block:: bash
-
-   myFIFO
-   MyFIFO
-
-A more strict version of camelCase and PascalCase will be implemented to limit the number of consecutive uppercase characters to 2.
-
-.. code-block:: bash
-
-  myFIfo
-  MyFIfo
-
-The original regex definition for camelCase will be moved to relaxedCamelCase.
-The original regex definition for PascalCase will be moved to RelaxedPascalCase.
-
-If you have a strong opinion on how the regex is defined, your feedback would be appreciated on issue #1202.
+I plan to start working on this again in December.
 
 Regards,
 
