@@ -23,11 +23,14 @@ def get_previous_library(oToi, lAllTokens, oTokenMap):
     iLineNumber = oTokenMap.get_line_number_of_index(iEndIndex)
     iStartIndex = oTokenMap.get_index_of_line(iLineNumber)
 
+    # Check for both possible clauses that could contain a library name: use clause and library clause (which includes
+    # the library name in logical_name_list).
     for oLibraryNameToken in [token.use_clause.library_name, token.logical_name_list.logical_name]:
         lTokenIndex = oTokenMap.get_token_indexes_between_indexes(oLibraryNameToken, iStartIndex, iEndIndex)
         if len(lTokenIndex) > 0:
             oToken = lAllTokens[lTokenIndex[0]]
             return oToken.get_lower_value()
+    # If no library name was found, return None.
     return None
 
 
