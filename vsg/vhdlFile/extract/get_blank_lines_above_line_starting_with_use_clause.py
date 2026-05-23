@@ -22,12 +22,13 @@ def get_previous_library(oToi, lAllTokens, oTokenMap):
     iEndIndex = oToi.get_start_index()
     iLineNumber = oTokenMap.get_line_number_of_index(iEndIndex)
     iStartIndex = oTokenMap.get_index_of_line(iLineNumber)
-    lTokenIndex = oTokenMap.get_token_indexes_between_indexes(token.use_clause.library_name, iStartIndex, iEndIndex)
-    if len(lTokenIndex) == 0:
-        return None
-    else:
-        oToken = lAllTokens[lTokenIndex[0]]
-        return oToken.get_lower_value()
+
+    for oLibraryNameToken in [token.use_clause.library_name, token.logical_name_list.logical_name]:
+        lTokenIndex = oTokenMap.get_token_indexes_between_indexes(oLibraryNameToken, iStartIndex, iEndIndex)
+        if len(lTokenIndex) > 0:
+            oToken = lAllTokens[lTokenIndex[0]]
+            return oToken.get_lower_value()
+    return None
 
 
 def get_current_library(oToi, lAllTokens, oTokenMap):
