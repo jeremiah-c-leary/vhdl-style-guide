@@ -9,31 +9,35 @@ def get_blank_lines_above_line_starting_with_use_clause(lTokens, lAllTokens, oTo
     lToi = utils.get_all_blank_lines_above_indexes(lIndexes, lAllTokens, oTokenMap)
     lToi = filter_design_unit(lToi, oTokenMap)
     for oToi in lToi:
-        update_previous_library(oToi, lAllTokens, oTokenMap)
-        update_current_library(oToi, lAllTokens, oTokenMap)
+
+        previous_library = get_previous_library(oToi, lAllTokens, oTokenMap)
+        current_library = get_current_library(oToi, lAllTokens, oTokenMap)
+        previous_library_is_different = (previous_library == current_library) or (previous_library is None)
+        oToi.set_meta_data("previous_library_is_different", previous_library_is_different)
+
     return lToi
 
 
-def update_previous_library(oToi, lAllTokens, oTokenMap):
+def get_previous_library(oToi, lAllTokens, oTokenMap):
     iEndIndex = oToi.get_start_index()
     iLineNumber = oTokenMap.get_line_number_of_index(iEndIndex)
     iStartIndex = oTokenMap.get_index_of_line(iLineNumber)
     lTokenIndex = oTokenMap.get_token_indexes_between_indexes(token.use_clause.library_name, iStartIndex, iEndIndex)
     if len(lTokenIndex) == 0:
-        oToi.set_meta_data("previous_library", None)
+        return None
     else:
         oToken = lAllTokens[lTokenIndex[0]]
-        oToi.set_meta_data("previous_library", oToken.get_lower_value())
+        return oToken.get_lower_value()
 
 
-def update_current_library(oToi, lAllTokens, oTokenMap):
+def get_current_library(oToi, lAllTokens, oTokenMap):
     iLineNumber = oToi.get_line_number()
     iStartIndex = oTokenMap.get_index_of_line(iLineNumber)
     iLineNumber += 1
     iEndIndex = oTokenMap.get_index_of_line(iLineNumber)
     lTokenIndex = oTokenMap.get_token_indexes_between_indexes(token.use_clause.library_name, iStartIndex, iEndIndex)
     oToken = lAllTokens[lTokenIndex[0]]
-    oToi.set_meta_data("current_library", oToken.get_lower_value())
+    return oToken.get_lower_value()
 
 
 def get_list_of_indexes(lTokens, oTokenMap):
