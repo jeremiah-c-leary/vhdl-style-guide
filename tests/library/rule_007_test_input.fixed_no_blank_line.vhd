@@ -1,4 +1,4 @@
-
+library ieee;
 use stdio.all;
 
 library ieee;
