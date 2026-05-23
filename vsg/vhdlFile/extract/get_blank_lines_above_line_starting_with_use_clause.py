@@ -9,7 +9,6 @@ def get_blank_lines_above_line_starting_with_use_clause(lTokens, lAllTokens, oTo
     lToi = utils.get_all_blank_lines_above_indexes(lIndexes, lAllTokens, oTokenMap)
     lToi = filter_design_unit(lToi, oTokenMap)
     for oToi in lToi:
-
         previous_library = get_previous_library(oToi, lAllTokens, oTokenMap)
         current_library = get_current_library(oToi, lAllTokens, oTokenMap)
         previous_library_is_different = (previous_library == current_library) or (previous_library is None)
