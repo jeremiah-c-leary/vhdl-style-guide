@@ -989,6 +989,7 @@ Rules Enforcing Keyword Alignment
 * `protected_type_body_401 <protected_type_body_rules.html#protected-type-body-401>`_
 * `protected_type_body_402 <protected_type_body_rules.html#protected-type-body-402>`_
 * `sequential_400 <sequential_rules.html#sequential-400>`_
+* `signal_401 <signal_rules.html#signal-401>`_
 * `subprogram_body_400 <subprogram_body_rules.html#subprogram-body-400>`_
 * `subprogram_body_401 <subprogram_body_rules.html#subprogram-body-401>`_
 * `type_400 <type_rules.html#type-400>`_

@@ -19,10 +19,10 @@ architecture rtl of fifo is
   );
 
   signal s : MY_TYPE := (
-    a => '0',
-    ddddd => (others => '0'),
-    ffff => (others => '0')
-  );
+                    a => '0',
+                                ddddd => (others => '0'),
+                            ffff => (others => '0')
+                );
 
   signal AxiMs : axi_ms_t (ar_id(IdRange_c), aw_id(IdRange_c),
     ar_addr(AddrRange_c), aw_addr(AddrRange_c),
