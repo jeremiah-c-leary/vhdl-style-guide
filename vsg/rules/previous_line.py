@@ -111,14 +111,7 @@ def _analyze_no_blank_line(self, lToi, lAllowTokens):
 
 def _analyze_no_blank_line_unless_different_library(self, lToi, lAllowTokens):
     for oToi in lToi:
-        if oToi.get_meta_data("previous_library") == oToi.get_meta_data("current_library"):
-            sSolution = "Remove blank lines"
-            oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
-            dAction = {}
-            dAction["action"] = "Remove"
-            oViolation.set_action(dAction)
-            self.add_violation(oViolation)
-        elif oToi.get_meta_data("previous_library") is None:
+        if oToi.get_meta_data("previous_library_is_different"):
             sSolution = "Remove blank lines"
             oViolation = violation.New(oToi.get_line_number(), oToi, sSolution)
             dAction = {}

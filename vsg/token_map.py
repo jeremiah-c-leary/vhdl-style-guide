@@ -146,7 +146,13 @@ class New:
         pp.pprint(self.dMap)
 
     def get_index_of_line(self, iLine):
-        return self.dMap["parser"]["carriage_return"][iLine - 2] + 1
+        # This function works by getting the carriage return from the previous line and adding 1 to make it the start of
+        # the next line. If the input is the first line, then there is not previous line, so there is a special case is
+        # required.
+        if iLine == 1:
+            return 0
+        else:
+            return self.dMap["parser"]["carriage_return"][iLine - 2] + 1
 
 
 def extract_unique_id(oToken):
