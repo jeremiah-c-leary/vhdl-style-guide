@@ -39,7 +39,7 @@ class testDocGen(unittest.TestCase):
         # Extract all _rules.rst entries from docs/rules.rst using regex
         lRulesFile = []
         utils.read_file(os.path.join("docs", "rules.rst"), lRulesFile)
-        lActual = set(re.findall(r'(\w+)_rules\.rst', '\n'.join(lRulesFile)))
+        lActual = set(re.findall(r"(\w+)_rules\.rst", "\n".join(lRulesFile)))
 
         self.assertEqual(lActual, lExpected)
 
