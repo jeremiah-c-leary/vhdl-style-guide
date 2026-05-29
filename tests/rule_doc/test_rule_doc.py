@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import glob
 import os
+import re
 import unittest
 from tempfile import TemporaryDirectory
 
@@ -26,6 +27,21 @@ class testDocGen(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls._tmpdir.cleanup()
+
+    def test_all_rule_sections_in_rules_index(self):
+        # Get all rule names from the system
+        oVhdlFile = vhdlFile.vhdlFile([""])
+        oRuleList = rule_list.rule_list(oVhdlFile, None, None)
+        lExpected = {oRule.name for oRule in oRuleList.rules}
+        # Special case: this page is not generated from a rule class
+        lExpected.add("unfixable")
+
+        # Extract all _rules.rst entries from docs/rules.rst using regex
+        lRulesFile = []
+        utils.read_file(os.path.join("docs", "rules.rst"), lRulesFile)
+        lActual = set(re.findall(r"(\w+)_rules\.rst", "\n".join(lRulesFile)))
+
+        self.assertEqual(lActual, lExpected)
 
     def test_documentation_links_in_docstrings(self):
         oVhdlFile = vhdlFile.vhdlFile([""])
