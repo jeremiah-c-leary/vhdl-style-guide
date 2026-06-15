@@ -71,3 +71,22 @@ class test_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+
+lFile_issue_1564, eError_issue_1564 = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_201_test_input.issue_1564.vhd"))
+
+
+class test_rule_issue_1564(unittest.TestCase):
+    def setUp(self):
+        self.oFile = vhdlFile.vhdlFile(lFile_issue_1564)
+        self.assertIsNone(eError_issue_1564)
+
+    def test_rule_201_does_not_flag_leading_comments(self):
+        # A block whose optional "is" keyword is omitted, in a file with no
+        # "is"/guard tokens at all, must not be misreported against the leading
+        # comment lines (issue #1564).
+        oRule = block.rule_201()
+        oRule.style = "require_blank_line"
+
+        oRule.analyze(self.oFile)
+        self.assertEqual([], utils.extract_violation_lines_from_violation_object(oRule.violations))
