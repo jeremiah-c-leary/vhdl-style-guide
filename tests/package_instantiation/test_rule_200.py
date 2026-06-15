@@ -23,7 +23,6 @@ class test_rule(unittest.TestCase):
 
     def test_rule_200(self):
         oRule = package_instantiation.rule_200()
-        oRule.allow_comments = True
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "package_instantiation")
         self.assertEqual(oRule.identifier, "200")
@@ -35,7 +34,6 @@ class test_rule(unittest.TestCase):
 
     def test_fix_rule_200(self):
         oRule = package_instantiation.rule_200()
-        oRule.allow_comments = True
 
         oRule.fix(self.oFile)
 

@@ -23,7 +23,6 @@ class test_rule(unittest.TestCase):
 
     def test_rule_003(self):
         oRule = component.rule_003()
-        oRule.allow_comments = True
 
         self.assertTrue(oRule)
         self.assertEqual(oRule.name, "component")
@@ -36,7 +35,6 @@ class test_rule(unittest.TestCase):
 
     def test_fix_rule_003(self):
         oRule = component.rule_003()
-        oRule.allow_comments = True
 
         oRule.fix(self.oFile)
 
