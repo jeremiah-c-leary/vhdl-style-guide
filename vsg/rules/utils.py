@@ -419,6 +419,8 @@ def is_next_token_ignoring_whitespace(oToken, iToken, lTokens):
 
 def array_detected_after_assignment_operator(assignment_operator, oToi):
     lTokens = oToi.get_tokens()
+    if get_index_of_token_in_list(assignment_operator, lTokens) is None:
+        return False
     if not open_paren_after_assignment_operator(assignment_operator, lTokens):
         return False
     if open_paren_after_assignment_operator_is_aggregate(assignment_operator, lTokens):

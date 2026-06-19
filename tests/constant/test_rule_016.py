@@ -14,6 +14,7 @@ lFileOthers, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_
 lFileAssignment, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_016_test_input_assignment.vhd"))
 lFileAssignOnSingleLine, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_016_test_input_assignment.vhd"))
 lFilePositional, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_016_test_input_positional.vhd"))
+lFileDeferredConstant, eError = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_016_test_input_deferred_constant.vhd"))
 
 lExpected_first_paren_new_line_true = []
 lExpected_first_paren_new_line_true.append("")
@@ -248,6 +249,15 @@ class test_rule(unittest.TestCase):
         lExpected.extend(range(84, 88))
 
         oRule.analyze(self.oFile)
+        self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+    def test_rule_016_multiline_deferred_constant(self):
+        oRule = constant.rule_016()
+
+        lExpected = []
+
+        oFile = vhdlFile.vhdlFile(lFileDeferredConstant)
+        oRule.analyze(oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
 
     def test_rule_016_assign_on_single_line(self):
