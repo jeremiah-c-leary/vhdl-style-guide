@@ -1,0 +1,22 @@
+rule:
+    global:
+        disable: True
+    block_comment_001:
+        disable: False
+        header_left: ['|', '|', '!']
+        header_left_repeat: ['-', '=', '-']
+        header_string: ['', '', '']
+        header_right_repeat: ['-', '=', '-']
+        header_alignment: ['center', 'center', 'center']
+        max_header_column: [79, 84, 79]
+    block_comment_002:
+        disable: False
+        comment_left: ['|', '|', '!']
+    block_comment_003:
+        disable: False
+        footer_left: ['|', '|', '!']
+        footer_left_repeat: ['-', '=', '-']
+        footer_string: ['', '', '']
+        footer_right_repeat: ['-', '=', '-']
+        footer_alignment: ['center', 'center', 'center']
+        max_footer_column: [79, 84, 79]
