@@ -36,6 +36,14 @@ begin
 
   end process;
 
+  -- Check bit string literal as choice
+
+  process begin
+    case x is
+      when x"1" => Out_1 <= 0;
+    end case;
+  end process;
+
   -- Check others
 
   process begin
