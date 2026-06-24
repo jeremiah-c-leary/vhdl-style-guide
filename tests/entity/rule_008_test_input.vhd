@@ -64,6 +64,16 @@ entity e_myFifO is end entity;
 entity myFifO_a is end entity;
 entity e_myFifO_a is end entity;
 
+-- Test relaxedCamelCase
+
+entity myFifo is end entity;
+entity myFIfo is end entity;
+entity myFIFo is end entity;
+entity myFIFO is end entity;
+entity myFiFo is end entity;
+entity myFifO is end entity;
+entity myFiFO is end entity;
+
 -- Test Pascal_Snake_Case
 
 entity MyFifo_GreenRed_Blue is end entity;
