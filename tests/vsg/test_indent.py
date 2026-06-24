@@ -223,6 +223,8 @@ class testMain(unittest.TestCase):
         lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        subprogram_instantiation_declaration:"))
         lExpected.append(mock.call("\n"))
+        lExpected.append(mock.call("        subprogram_kind:"))
+        lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        subtype_declaration:"))
         lExpected.append(mock.call("\n"))
         lExpected.append(mock.call("        use_clause:"))
