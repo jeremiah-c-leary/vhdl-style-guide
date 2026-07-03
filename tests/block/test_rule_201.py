@@ -19,6 +19,8 @@ lExpected_no_blank_line = []
 lExpected_no_blank_line.append("")
 utils.read_file(os.path.join(sTestDir, "rule_201_test_input.fixed_no_blank_line.vhd"), lExpected_no_blank_line, False)
 
+lFile_block_without_is, eError_block_without_is = vhdlFile.utils.read_vhdlfile(os.path.join(sTestDir, "rule_201_test_input.block_without_is.vhd"))
+
 
 class test_rule(unittest.TestCase):
     def setUp(self):
@@ -71,3 +73,21 @@ class test_rule(unittest.TestCase):
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])
+
+    def test_rule_201_block_without_is_keyword(self):
+        # Issue #1564: a block whose optional "is" keyword is omitted, in a
+        # file with no other is/guard tokens, was misreported against the
+        # leading comment (line 1) instead of the block line. Check both styles.
+        self.assertIsNone(eError_block_without_is)
+
+        oRule = block.rule_201()
+        oRule.style = "require_blank_line"
+        self.oFile = vhdlFile.vhdlFile(lFile_block_without_is)
+        oRule.analyze(self.oFile)
+        self.assertEqual([], utils.extract_violation_lines_from_violation_object(oRule.violations))
+
+        oRule = block.rule_201()
+        oRule.style = "no_blank_line"
+        self.oFile = vhdlFile.vhdlFile(lFile_block_without_is)
+        oRule.analyze(self.oFile)
+        self.assertEqual([9], utils.extract_violation_lines_from_violation_object(oRule.violations))
