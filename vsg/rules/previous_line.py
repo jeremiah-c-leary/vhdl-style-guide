@@ -175,7 +175,7 @@ def _analyze_require_comment(self, lToi, lAllowTokens):
             if isinstance(lTokens[0], parser.blank_line):
                 continue
         elif len(lTokens) == 2:
-            if token_is_whitespace(lTokens[0]) and token_is_comment(lTokens[1]) and self.allow_comment:
+            if token_is_whitespace(lTokens[0]) and token_is_comment(lTokens[1]):
                 continue
         oViolation = violation.New(oToi.get_line_number(), oToi, self.solution)
         dAction = {}
