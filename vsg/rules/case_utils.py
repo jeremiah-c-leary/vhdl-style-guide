@@ -5,7 +5,7 @@ import re
 from vsg import violation
 
 camelCase = re.compile("(?!.*[A-Z]{3})[a-z][a-zA-Z0-9]*")
-relaxedCamelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*([A-Z])?")
+relaxedCamelCase = re.compile("(?:[a-z])+(?:[a-z0-9])*((?:[A-Z])+(?:[a-z0-9])+)*([A-Z]+)?")
 PascalCase = re.compile("(?!.*[A-Z]{3})[A-Z][a-zA-Z0-9]*")
 RelaxedPascalCase = re.compile("((?:[A-Z])+(?:[a-z0-9])+)+([A-Z]*)?")
 PascalSnakeCase = re.compile("(?!.*[A-Z]{3})[A-Z][a-z0-9]*(?:_[A-Z0-9][a-z0-9]*)*")
