@@ -138,6 +138,11 @@ lExpected_align_left_yes = []
 lExpected_align_left_yes.append("")
 utils.read_file(os.path.join(sTestDir, "rule_009_test_input.fixed_align_left_yes.vhd"), lExpected_align_left_yes)
 
+# 20000
+lExpected_align_left_on_new_line_after_assign = []
+lExpected_align_left_on_new_line_after_assign.append("")
+utils.read_file(os.path.join(sTestDir, "rule_009_test_input.fixed_align_left_on_new_line_after_assign.vhd"), lExpected_align_left_on_new_line_after_assign)
+
 # 10001
 lExpected_align_left_yes_align_paren_no_align_when_no_wrap_at_when_no_align_else_yes = []
 lExpected_align_left_yes_align_paren_no_align_when_no_wrap_at_when_no_align_else_yes.append("")
@@ -553,6 +558,23 @@ class test_rule(unittest.TestCase):
         lActual = self.oFile.get_lines()
 
         self.assertEqual(lExpected_align_left_yes, lActual)
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(oRule.violations, [])
+
+    def test_fix_rule_009_align_left_on_new_line_after_assign(self):
+        oRule = concurrent.rule_009()
+        oRule.align_left = "on_new_line_after_assign"
+        oRule.wrap_at_when = "no"
+        oRule.align_when_keywords = "no"
+        oRule.align_else_keywords = "no"
+        oRule.align_paren = "no"
+
+        oRule.fix(self.oFile)
+
+        lActual = self.oFile.get_lines()
+
+        self.assertEqual(lExpected_align_left_on_new_line_after_assign, lActual)
 
         oRule.analyze(self.oFile)
         self.assertEqual(oRule.violations, [])

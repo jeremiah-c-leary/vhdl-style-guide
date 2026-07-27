@@ -98,7 +98,11 @@ class multiline_conditional_alignment(alignment.Rule):
             if iFirstLine == iLastLine:
                 continue
 
-            iFirstIndent = _find_first_indent(self.align_left, dActualIndent, self.indent_size, iAssignColumn)
+            align_left = self.align_left
+            if self.align_left == "on_new_line_after_assign":
+                align_left = utils.convert_boolean_to_yes_no(_is_new_line_after_assign(oToi))
+
+            iFirstIndent = _find_first_indent(align_left, dActualIndent, self.indent_size, iAssignColumn)
 
             dExpectedIndent, lStructure = _apply_align_left_option(
                 self.align_left,
@@ -650,6 +654,14 @@ def _update_structure(dExpectedIndent, dActualIndent, lStructure):
                     dStruct["column"] += iDeltaIndent
                 lReturn.append(dStruct)
     return lReturn
+
+
+def _is_new_line_after_assign(oToi):
+    _, lTokens = utils.get_toi_parameters(oToi)
+    iNextToken = utils.find_next_non_whitespace_token(1, lTokens)
+    iNumCarriageReturns = utils.count_carriage_returns(lTokens[:iNextToken])
+
+    return iNumCarriageReturns > 0
 
 
 def _find_first_indent(sConfig, dActualIndent, iIndentStep, iAssignColumn):

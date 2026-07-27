@@ -16,6 +16,9 @@ There are several options to these rules:
 .. |align_left__no| replace::
    :code:`no` = Lines will be aligned to assignment operator.
 
+.. |align_left__on_new_line_after_assign| replace::
+   :code:`on_new_line_after_assign` = Lines will be aligned aligned left if there is a carriage return (alias “new line”) after the assignment operator.
+
 .. |align_paren| replace::
    :code:`align_paren`
 
@@ -61,24 +64,28 @@ There are several options to these rules:
 .. |default_no| replace::
    :code:`no`
 
-+-----------------------+----------+---------------+------------------------------+
-| Option                | Values   | Default       | Description                  |
-+=======================+==========+===============+==============================+
-| |align_left|          | |values| | |default_no|  | * |align_left__yes|          |
-|                       |          |               | * |align_left__no|           |
-+-----------------------+----------+---------------+------------------------------+
-| |align_paren|         | |values| | |default_yes| | * |align_paren__yes|         |
-|                       |          |               | * |align_paren__no|          |
-+-----------------------+----------+---------------+------------------------------+
-| |align_when_keywords| | |values| | |default_no|  | * |align_when_keywords__yes| |
-|                       |          |               | * |align_when_keywords__no|  |
-+-----------------------+----------+---------------+------------------------------+
-| |wrap_at_when|        | |values| | |default_yes| | * |wrap_at_when__yes|        |
-|                       |          |               | * |wrap_at_when__no|         |
-+-----------------------+----------+---------------+------------------------------+
-| |align_else_keywords| | |values| | |default_no|  | * |align_else_keywords__yes| |
-|                       |          |               | * |align_else_keywords__no|  |
-+-----------------------+----------+---------------+------------------------------+
+.. |default_on_new_line_after_assign| replace::
+   :code:`on_new_line_after_assign`
+
++-----------------------+----------+---------------+--------------------------------------------+
+| Option                | Values   | Default       | Description                                |
++=======================+==========+===============+============================================+
+| |align_left|          | |values| | |default_no|  | * |align_left__yes|                        |
+|                       |          |               | * |align_left__no|                         |
+|                       |          |               | * |align_left__on_new_line_after_assign|   |
++-----------------------+----------+---------------+--------------------------------------------+
+| |align_paren|         | |values| | |default_yes| | * |align_paren__yes|                       |
+|                       |          |               | * |align_paren__no|                        |
++-----------------------+----------+---------------+--------------------------------------------+
+| |align_when_keywords| | |values| | |default_no|  | * |align_when_keywords__yes|               |
+|                       |          |               | * |align_when_keywords__no|                |
++-----------------------+----------+---------------+--------------------------------------------+
+| |wrap_at_when|        | |values| | |default_yes| | * |wrap_at_when__yes|                      |
+|                       |          |               | * |wrap_at_when__no|                       |
++-----------------------+----------+---------------+--------------------------------------------+
+| |align_else_keywords| | |values| | |default_no|  | * |align_else_keywords__yes|               |
+|                       |          |               | * |align_else_keywords__no|                |
++-----------------------+----------+---------------+--------------------------------------------+
 
 The options can be combined to format the conditional expression or conditional waveform.
 
@@ -94,7 +101,7 @@ This is an example of how to configure these options.
         wrap_at_when : 'no'
         align_else_keywords : 'no'
 
-The following code snippet is used for all examples and is formatted with the configuration above
+The following code snippet is used for all examples and is formatted with the configuration above.
 
 .. code-block:: vhdl
 
@@ -113,7 +120,7 @@ Example: |align_left| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1' when input = "0000" or (input = "1111" and
-         input2) = "0101" else
+         input2 = "0101") else
      sig_a or sig_b when input = "0001" and
        input = "1001" else
      sig_c and sig_d when input = "0010" else
@@ -125,7 +132,7 @@ Example: |align_paren| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1' when input = "0000" or (input = "1111" and
-                                          input2) = "0101" else
+                                          input2 = "0101") else
              sig_a or sig_b when input = "0001" and
                input = "1001" else
              sig_c and sig_d when input = "0010" else
@@ -137,7 +144,7 @@ Example: |align_when_keywords| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1'             when input = "0000" or (input = "1111" and
-                 input2) = "0101" else
+                 input2 = "0101") else
              sig_a or sig_b  when input = "0001" and
                input = "1001" else
              sig_c and sig_d when input = "0010" else
@@ -149,7 +156,7 @@ Example: |wrap_at_when| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1' when input = "0000" or (input = "1111" and
-                        input2) = "0101" else
+                        input2 = "0101") else
              sig_a or sig_b when input = "0001" and
                                  input = "1001" else
              sig_c and sig_d when input = "0010" else
@@ -161,7 +168,7 @@ Example: |align_else_keywords| set to |default_yes|
 .. code-block:: vhdl
 
    output <= '1' when input = "0000" or (input = "1111" and
-                 input2) = "0101"                else
+                 input2 = "0101")                else
              sig_a or sig_b when input = "0001" and
                input = "1001"                    else
              sig_c and sig_d when input = "0010" else
@@ -187,7 +194,7 @@ would result in the following formatting:
 .. code-block:: vhdl
 
   output <= '1' when input = "0000" or (input = "1111" and
-                                         input2) = "0101" else
+                                         input2 = "0101") else
             sig_a or sig_b when input = "0001" and
                                 input = "1001" else
             sig_c and sig_d when input = "0010" else
@@ -213,11 +220,50 @@ would result in the following formatting:
 .. code-block:: vhdl
 
    output <= '1'             when input = "0000" or (input = "1111" and
-                                                      input2) = "0101" else
+                                                      input2 = "0101") else
              sig_a or sig_b  when input = "0001" and
                                   input = "1001"                       else
              sig_c and sig_d when input = "0010"                       else
              '0';
+
+Example:  Setting all options to |default_yes| except |align_left| set to |default_on_new_line_after_assign|
+############################################################################################################
+
+This option is helpful if you are breaking long lines in order to not meet a maximum line length. The following is an example of how to use the option:
+
+.. code-block:: yaml
+
+   rule :
+     concurrent_009:
+        align_left : 'on_new_line_after_assign'
+        align_paren : 'yes'
+        align_when_keywords : 'yes'
+        wrap_at_when : 'yes'
+        align_else_keywords : 'yes'
+
+The following code snippet is used for this example and is formatted with the configuration above.
+
+.. code-block:: vhdl
+
+     output <=
+     '1' when input = "0000" or (input = "1111" and
+     input2 = "0101") else
+     sig_a or sig_b when input = "0001" and
+     input2 = "1001" else
+     sig_c and sig_d when input = "0010" else
+     '0';
+
+This would result in the following formatting:
+
+.. code-block:: vhdl
+
+   output <=
+     '1'             when input = "0000" or (input = "1111" and
+                                             input2 = "0101") else
+     sig_a or sig_b  when input = "0001" and
+                          input = "1001"                       else
+     sig_c and sig_d when input = "0010"                       else
+     '0';
 
 Rules Enforcing Conditional Expression Alignment
 ################################################
