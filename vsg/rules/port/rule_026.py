@@ -7,6 +7,7 @@ from vsg.rule_group import structure
 from vsg.token import (
     identifier_list,
     interface_list,
+    interface_signal_declaration,
     interface_unknown_declaration,
     port_clause as token,
 )
@@ -59,7 +60,7 @@ class rule_026(structure.Rule):
             lIdentifiers = []
             lIdentifierIndexes = []
             for iToken, oToken in enumerate(lTokens):
-                if isinstance(oToken, interface_unknown_declaration.identifier):
+                if isinstance(oToken, (interface_unknown_declaration.identifier, interface_signal_declaration.identifier)):
                     lIdentifiers.append(oToken.get_value())
                     lIdentifierIndexes.append(iToken)
 
