@@ -76,6 +76,7 @@ class token_prefix(naming.Rule):
             oViolation.set_tokens(lTokens)
 
     def generate_regexp_exceptions(self):
+        self.regexp_exceptions = []
         for exception in self.exceptions:
             regexp = re.compile(exception, re.IGNORECASE)
             self.regexp_exceptions.append(regexp)
