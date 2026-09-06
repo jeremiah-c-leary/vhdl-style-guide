@@ -52,7 +52,7 @@ Where:
 | header_string       | String  | None    | A string to place in the header                             |
 |                     | None    |         |                                                             |
 +---------------------+---------+---------+-------------------------------------------------------------+
-| header_right_repeat | String  | None    | A character to repeat after the header_string               |
+| header_right_repeat | String  | None    | A character to repeat after header_string               |
 |                     | None    |         |                                                             |
 +---------------------+---------+---------+-------------------------------------------------------------+
 | comment_left        | String  | None    | A string which should exist to the right of the --          |
