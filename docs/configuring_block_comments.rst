@@ -66,7 +66,7 @@ Where:
 | footer_string       | String  | None    | A string to place in the footer                             |
 |                     | None    |         |                                                             |
 +---------------------+---------+---------+-------------------------------------------------------------+
-| footer_right_repeat | String  | None    | A character to repeat after the footer_string               |
+| footer_right_repeat | String  | None    | A character to repeat after footer_string               |
 |                     | None    |         |                                                             |
 +---------------------+---------+---------+-------------------------------------------------------------+
 
