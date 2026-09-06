@@ -84,7 +84,7 @@ There are additional options for configuring block comments:
 +---------------------+----------+----------+------------------------------------------------------------------+
 | max_header_column   | Integer  | 120      | Sets the maximum length of the combined header                   |
 +---------------------+----------+----------+------------------------------------------------------------------+
-| footer_alignment    | "left"   |          | Sets horizontal position of the footer string                    |
+| footer_alignment    | "left"   |          | Sets horizontal position of footer_string                    |
 |                     | "center" | "center" |                                                                  |
 |                     | "right"  |          |                                                                  |
 +---------------------+----------+----------+------------------------------------------------------------------+
