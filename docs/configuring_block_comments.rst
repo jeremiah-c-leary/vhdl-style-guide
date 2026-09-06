@@ -78,7 +78,7 @@ There are additional options for configuring block comments:
 | min_height          | Integer  |    3     | Sets minimum number of consecutive comment lines before          |
 |                     |          |          | being considered a block comment                                 |
 +---------------------+----------+----------+------------------------------------------------------------------+
-| header_alignment    | "left"   |          | Sets horizontal position of the header string                    |
+| header_alignment    | "left"   |          | Sets horizontal position of header_string                    |
 |                     | "center" | "center" |                                                                  |
 |                     | "right"  |          |                                                                  |
 +---------------------+----------+----------+------------------------------------------------------------------+
