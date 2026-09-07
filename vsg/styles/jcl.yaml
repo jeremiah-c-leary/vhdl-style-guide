@@ -104,3 +104,7 @@ rule :
     interface_list_semicolon: 'remove_new_line'
     interface_element: 'add_new_line'
     ignore_single_line: 'yes'
+  port_map_201:
+    disable: True
+  generic_map_201:
+    disable: True

@@ -14,6 +14,7 @@ from .rule_011 import rule_011
 from .rule_100 import rule_100
 from .rule_101 import rule_101
 from .rule_200 import rule_200
+from .rule_201 import rule_201
 from .rule_300 import rule_300
 from .rule_301 import rule_301
 from .rule_302 import rule_302
