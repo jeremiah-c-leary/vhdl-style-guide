@@ -220,7 +220,7 @@
 38 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-39 |   -- Check others
+39 |   -- Check bit string literal as choice
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
 40 |
@@ -235,9 +235,10 @@
 <class 'vsg.parser.todo'>
 <class 'vsg.token.case_statement.is_keyword'>
 --------------------------------------------------------------------------------
-43 |       when others => Out_1 <= 0;
+43 |       when x"1" => Out_1 <= 0;
 <class 'vsg.token.case_statement_alternative.when_keyword'>
-<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.bit_string_literal.base_specifier'>
+<class 'vsg.token.bit_string_literal.bit_value_string'>
 <class 'vsg.token.case_statement_alternative.assignment'>
 <class 'vsg.token.simple_waveform_assignment.target'>
 <class 'vsg.token.simple_waveform_assignment.assignment'>
@@ -257,11 +258,48 @@
 46 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-47 |   process begin
+47 |   -- Check others
+<class 'vsg.parser.comment'>
+--------------------------------------------------------------------------------
+48 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+49 |   process begin
 <class 'vsg.token.process_statement.process_keyword'>
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-48 |     case foo(i) is
+50 |     case x is
+<class 'vsg.token.case_statement.case_keyword'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.case_statement.is_keyword'>
+--------------------------------------------------------------------------------
+51 |       when others => Out_1 <= 0;
+<class 'vsg.token.case_statement_alternative.when_keyword'>
+<class 'vsg.token.choice.others_keyword'>
+<class 'vsg.token.case_statement_alternative.assignment'>
+<class 'vsg.token.simple_waveform_assignment.target'>
+<class 'vsg.token.simple_waveform_assignment.assignment'>
+<class 'vsg.parser.todo'>
+<class 'vsg.token.simple_waveform_assignment.semicolon'>
+--------------------------------------------------------------------------------
+52 |     end case;
+<class 'vsg.token.case_statement.end_keyword'>
+<class 'vsg.token.case_statement.end_case_keyword'>
+<class 'vsg.token.case_statement.semicolon'>
+--------------------------------------------------------------------------------
+53 |   end process;
+<class 'vsg.token.process_statement.end_keyword'>
+<class 'vsg.token.process_statement.end_process_keyword'>
+<class 'vsg.token.process_statement.semicolon'>
+--------------------------------------------------------------------------------
+54 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+55 |   process begin
+<class 'vsg.token.process_statement.process_keyword'>
+<class 'vsg.token.process_statement.begin_keyword'>
+--------------------------------------------------------------------------------
+56 |     case foo(i) is
 <class 'vsg.token.case_statement.case_keyword'>
 <class 'vsg.token.todo.name'>
 <class 'vsg.token.todo.open_parenthesis'>
@@ -269,48 +307,48 @@
 <class 'vsg.token.todo.close_parenthesis'>
 <class 'vsg.token.case_statement.is_keyword'>
 --------------------------------------------------------------------------------
-49 |     end case;
+57 |     end case;
 <class 'vsg.token.case_statement.end_keyword'>
 <class 'vsg.token.case_statement.end_case_keyword'>
 <class 'vsg.token.case_statement.semicolon'>
 --------------------------------------------------------------------------------
-50 |   end process;
+58 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-51 |
+59 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-52 |   -- Testing combined case and ?
+60 |   -- Testing combined case and ?
 <class 'vsg.parser.comment'>
 --------------------------------------------------------------------------------
-53 |
+61 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-54 |   process begin
+62 |   process begin
 <class 'vsg.token.process_statement.process_keyword'>
 <class 'vsg.token.process_statement.begin_keyword'>
 --------------------------------------------------------------------------------
-55 |     case? is
+63 |     case? is
 <class 'vsg.token.case_statement.case_keyword'>
 <class 'vsg.token.case_statement.question_mark'>
 <class 'vsg.token.case_statement.is_keyword'>
 --------------------------------------------------------------------------------
-56 |     end case;
+64 |     end case;
 <class 'vsg.token.case_statement.end_keyword'>
 <class 'vsg.token.case_statement.end_case_keyword'>
 <class 'vsg.token.case_statement.semicolon'>
 --------------------------------------------------------------------------------
-57 |   end process;
+65 |   end process;
 <class 'vsg.token.process_statement.end_keyword'>
 <class 'vsg.token.process_statement.end_process_keyword'>
 <class 'vsg.token.process_statement.semicolon'>
 --------------------------------------------------------------------------------
-58 |
+66 |
 <class 'vsg.parser.blank_line'>
 --------------------------------------------------------------------------------
-59 | end architecture RTL;
+67 | end architecture RTL;
 <class 'vsg.token.architecture_body.end_keyword'>
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
