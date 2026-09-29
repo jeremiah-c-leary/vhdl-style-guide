@@ -53,7 +53,7 @@ Where:
 | header_string       | String  | None    | A string to place in the header.                            |
 |                     | None    |         |                                                             |
 +---------------------+---------+---------+-------------------------------------------------------------+
-| header_right_repeat | String  | None    | A character to repeat after the header-string               |
+| header_right_repeat | String  | None    | A character to repeat after header_string               |
 |                     | None    |         |                                                             |
 +---------------------+---------+---------+-------------------------------------------------------------+
 | comment_left        | String  | None    | A string which should exist to the right of the --          |
@@ -67,7 +67,7 @@ Where:
 | footer_string       | String  | None    | A string to place in the footer.                            |
 |                     | None    |         |                                                             |
 +---------------------+---------+---------+-------------------------------------------------------------+
-| footer_right_repeat | String  | None    | A character to repeat after the footer_string               |
+| footer_right_repeat | String  | None    | A character to repeat after footer_string               |
 |                     | None    |         |                                                             |
 +---------------------+---------+---------+-------------------------------------------------------------+
 
@@ -79,13 +79,13 @@ There are additional options for configuring block comments:
 | min_height          | Integer  |    3     | Sets minimum number of consecutive comment lines before          |
 |                     |          |          | being considered a block comment.                                |
 +---------------------+----------+----------+------------------------------------------------------------------+
-| header_alignment    | "left"   |          | Sets horizontal position of header string.                       |
+| header_alignment    | "left"   |          | Sets horizontal position of header_string                    |
 |                     | "center" | "center" |                                                                  |
 |                     | "right"  |          |                                                                  |
 +---------------------+----------+----------+------------------------------------------------------------------+
 | max_header_column   | Integer  |   120    | Sets the maximum length of the combined header.                  |
 +---------------------+----------+----------+------------------------------------------------------------------+
-| footer_alignment    | "left"   |          | Sets horizontal position of footer string.                       |
+| footer_alignment    | "left"   |          | Sets horizontal position of footer_string                    |
 |                     | "center" | "center" |                                                                  |
 |                     | "right"  |          |                                                                  |
 +---------------------+----------+----------+------------------------------------------------------------------+
@@ -95,7 +95,30 @@ There are additional options for configuring block comments:
 |                     | "no"     |          | only detect block comments starting at column 0.                 |
 +---------------------+----------+----------+------------------------------------------------------------------+
 
-With these options, a block comment can be validated by VSG.
+Multiple Block Comment Styles
+##############################
+
+Each block comment attribute may be configured as either:
+
+* a scalar value, which defines one block comment style
+* a list of values, which defines multiple allowed block comment styles
+
+When lists are used, VSG evaluates the block comment as a whole. The header, all middle comment lines, and the footer must all match the **same** style index.
+
+Within one rule:
+
+* all scalar values are broadcast to every style index
+* list-valued fields must have either 1 entry or ``N`` entries
+
+Across the three block comment rules:
+
+* ``block_comment_001`` determines the header style count
+* ``block_comment_002`` determines the body style count
+* ``block_comment_003`` determines the footer style count
+
+All three rules must resolve to the same number of styles. If the number of entries does not match, a configuration error is raised.
+
+It is recommended to use ``''`` for empty strings in YAML examples instead of ``null`` when an empty marker is intended.
 
 Examples
 ########
@@ -205,6 +228,53 @@ To configure a block comment for Doxygen...
        footer_left_repeat : '-'
        footer_string : ''
        footer_right_repeat : ''
+
+Multiple Styles
+^^^^^^^^^^^^^^^
+
+To allow two different block comment separator styles...
+
+.. code-block:: vhdl
+
+    --|-----------------------------------------------------------------------------
+    --| Comment
+    --|-----------------------------------------------------------------------------
+
+    --|==================================================================================
+    --| Comment
+    --|==================================================================================
+
+...the configuration would be:
+
+.. code-block:: yaml
+
+   rule:
+     block_comment_001:
+       disable : False
+       header_left : ['|', '|']
+       header_left_repeat : ['-', '=']
+       header_string : ['', '']
+       header_right_repeat : ['-', '=']
+       max_header_column : [80, 85]
+     block_comment_002:
+       disable : False
+       comment_left : ['|', '|']
+     block_comment_003:
+       disable : False
+       footer_left : ['|', '|']
+       footer_left_repeat : ['-', '=']
+       footer_string : ['', '']
+       footer_right_repeat : ['-', '=']
+       max_footer_column : [80, 85]
+
+Autofix Notes
+#############
+
+``block_comment_001`` and ``block_comment_003`` support autofix for separator-only headers and footers.
+
+For example, if a block comment header starts with ``--|-`` and the configured style requires an 80-column ``-`` separator, autofix can rebuild the full separator line to the configured width. The same applies to separator-only footers.
+
+Textual headers and footers continue to report violations normally when they do not match the configured style.
 
 Rules Enforcing Block Comments
 ##############################
