@@ -208,6 +208,32 @@ This rule checks for a single space between **new** keyword and the uninstantiat
 
    procedure my_proc is new my_generic_proc
 
+subprogram_instantiation_200
+############################
+
+|phase_3| |error| |blank_line|
+
+This rule checks for blank lines below the subprogram instantiation.
+
+|configuring_blank_lines_link|
+
+The default style is :code:`no_blank_line`.
+
+**Violation**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+
+     generic map (
+
+**Fix**
+
+.. code-block:: vhdl
+
+   procedure my_proc is new my_generic_proc
+     generic map (
+
 subprogram_instantiation_500
 ############################
 
