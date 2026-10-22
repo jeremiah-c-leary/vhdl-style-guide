@@ -151,25 +151,12 @@ This rule checks the block label exists in the closing of the block statement.
 block_100
 #########
 
-|phase_2| |error| |whitespace|
+This rule has been split into the following rules:
 
-This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guard close parenthesis, and **is** keywords.
-
-|configuring_whitespace_rules_link|
-
-**Violation**
-
-.. code-block:: vhdl
-
-   block_label    :    block    (guard_condition)   is
-   block_label  :   block    is
-
-**Fix**
-
-.. code-block:: vhdl
-
-   block_label : block (guard_condition) is
-   block_label : block is
+* :ref:`block_102`
+* :ref:`block_103`
+* :ref:`block_104`
+* :ref:`block_105`
 
 block_101
 #########
@@ -191,6 +178,92 @@ This rule checks for a single space between the **end** and **block** keywords a
 .. code-block:: vhdl
 
    end block block_label;
+
+block_102
+#########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the block label.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   block_label: block is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   block_label : block is
+
+block_103
+#########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the colon and before the **block** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   block_label :block is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   block_label : block is
+
+block_104
+#########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space after the **block** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   block_label : block    (guard_condition) is
+   block_label : block    is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   block_label : block (guard_condition) is
+   block_label : block is
+
+block_105
+#########
+
+|phase_2| |error| |whitespace|
+
+This rule checks for a single space between the guard close parenthesis and the **is** keyword.
+
+|configuring_whitespace_rules_link|
+
+**Violation**
+
+.. code-block:: vhdl
+
+   block_label : block (guard_condition)is
+
+**Fix**
+
+.. code-block:: vhdl
+
+   block_label : block (guard_condition) is
 
 block_200
 #########

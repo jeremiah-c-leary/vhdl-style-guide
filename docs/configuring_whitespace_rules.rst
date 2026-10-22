@@ -130,8 +130,11 @@ Rules Enforcing Whitespace
 * `attribute_declaration_101 <attribute_declaration_rules.html#attribute-declaration-101>`_
 * `attribute_specification_100 <attribute_specification_rules.html#attribute-specification-100>`_
 * `attribute_specification_101 <attribute_specification_rules.html#attribute-specification-101>`_
-* `block_100 <block_rules.html#block-100>`_
 * `block_101 <block_rules.html#block-101>`_
+* `block_102 <block_rules.html#block-102>`_
+* `block_103 <block_rules.html#block-103>`_
+* `block_104 <block_rules.html#block-104>`_
+* `block_105 <block_rules.html#block-105>`_
 * `case_002 <case_rules.html#case-002>`_
 * `case_003 <case_rules.html#case-003>`_
 * `case_004 <case_rules.html#case-004>`_
