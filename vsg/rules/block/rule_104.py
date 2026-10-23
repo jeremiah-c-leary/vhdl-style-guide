@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+
+from vsg import token
+from vsg.rules.whitespace_between_token_pairs import Rule
+
+lTokens = []
+lTokens.append([token.block_statement.block_keyword, token.block_statement.is_keyword])
+lTokens.append([token.block_statement.block_keyword, token.block_statement.guard_open_parenthesis])
+
+
+class rule_104(Rule):
+    """
+    This rule checks for a single space after the **block** keyword.
+
+    |configuring_whitespace_rules_link|
+
+    **Violation**
+
+    .. code-block:: vhdl
+
+       block_label : block    (guard_condition) is
+       block_label : block    is
+
+    **Fix**
+
+    .. code-block:: vhdl
+
+       block_label : block (guard_condition) is
+       block_label : block is
+    """
+
+    def __init__(self):
+        super().__init__(lTokens)
