@@ -20,6 +20,8 @@ begin
 
     next;
 
+    next loop_label when a <= b;
+
   end process;
 
 end architecture RTL;
