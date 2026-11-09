@@ -19,3 +19,11 @@ O_WR_FULL : out std_logic_vector(15 downto 0);
     O_RD_FULL : out std_logic_vector(15 downto 0);
 O_WR_FULL : out std_logic_vector(15 downto 0));
 end entity FIFO;
+
+entity FIFO is
+  port (
+    a : in std_logic;
+b : in std_logic;
+    signal c : out std_logic
+  );
+end entity FIFO;

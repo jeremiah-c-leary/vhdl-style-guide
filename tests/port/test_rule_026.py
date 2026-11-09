@@ -28,7 +28,7 @@ class test_rule(unittest.TestCase):
         self.assertEqual(oRule.identifier, "026")
         self.assertEqual(oRule.groups, ["structure"])
 
-        lExpected = [4, 7, 13, 14]
+        lExpected = [4, 7, 13, 14, 19]
 
         oRule.analyze(self.oFile)
         self.assertEqual(lExpected, utils.extract_violation_lines_from_violation_object(oRule.violations))
