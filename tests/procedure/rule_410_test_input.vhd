@@ -92,3 +92,17 @@ begin
   end process TEST_PROCESS;
 
 end architecture RTL;
+
+package FIFO_PKG is
+
+  procedure AVERAGE_SAMPLES (constant a : in integer;
+                             signal b   : in std_logic;
+                             file d     : text);
+
+  -- Violations below this line
+
+  procedure AVERAGE_SAMPLES (constant a : in integer;
+                             signal b : in std_logic;
+                             variable ccc : in std_logic);
+
+end package FIFO_PKG;
