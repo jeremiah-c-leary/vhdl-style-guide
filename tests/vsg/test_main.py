@@ -460,6 +460,22 @@ class testMain(unittest.TestCase):
 
         mock_stdout.write.assert_has_calls(lExpected)
 
+    def test_json_marks_a_file_that_failed_to_parse(self):
+        json_file = os.path.join(self._tmpdir.name, "deleteme.json")
+        sys.argv = ["vsg", "-f", "tests/vsg/parse_error/broken.vhd", "tests/vsg/entity1.vhd", "--json", json_file, "-p", "1"]
+
+        with contextlib.redirect_stdout(StringIO()):
+            try:
+                __main__.main()
+            except SystemExit:
+                pass
+
+        with open(json_file) as json_report:
+            dActual = yaml.full_load(json_report)
+        dEntries = {dEntry["file_path"]: dEntry for dEntry in dActual["files"]}
+        self.assertIn("Unexpected token", dEntries["tests/vsg/parse_error/broken.vhd"]["error"])
+        self.assertNotIn("error", dEntries["tests/vsg/entity1.vhd"])
+
     def test_json_parameter(self):
         self.maxDiff = None
 
