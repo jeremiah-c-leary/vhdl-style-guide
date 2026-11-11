@@ -52,4 +52,18 @@ begin
   aSlighltyLongerName <= d;
   b <= c;
 
+  a <= b;
+  gen : if a = '1' generate
+    anExtraLoooooooooooooooooooongName <= c;
+    anExtraLoooooongName <= c;
+  elsif b = '1' generate
+    anExtraLooooooooooooongName <= c;
+    anExtraLooongName <= c;
+  else generate
+    aName <= c;
+    aLongerName <= c;
+  end generate gen;
+  aSlighltyLongerName <= d;
+  b <= c;
+
 end architecture RTL;
