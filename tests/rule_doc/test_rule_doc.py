@@ -384,6 +384,11 @@ class testDocGen(unittest.TestCase):
 
         self.assertEqual(lExpected, lActual)
 
+    def test_interface_list_rules_doc(self):
+        lExpected, lActual = self.compare_files("interface_list")
+
+        self.assertEqual(lExpected, lActual)
+
     def test_iteration_scheme_doc(self):
         lExpected, lActual = self.compare_files("iteration_scheme")
 
