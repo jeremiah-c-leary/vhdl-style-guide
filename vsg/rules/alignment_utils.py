@@ -230,6 +230,8 @@ def generate_statement_detected(self, oToken):
         return True
     if case_generate_alternative_detected(oToken):
         return True
+    if if_generate_alternative_detected(oToken):
+        return True
     return False
 
 
@@ -253,6 +255,14 @@ def generate_semicolon_detected(oToken):
 
 def case_generate_alternative_detected(oToken):
     if isinstance(oToken, token.case_generate_alternative.when_keyword):
+        return True
+    return False
+
+
+def if_generate_alternative_detected(oToken):
+    if isinstance(oToken, token.if_generate_statement.elsif_keyword):
+        return True
+    if isinstance(oToken, token.if_generate_statement.else_keyword):
         return True
     return False
 
