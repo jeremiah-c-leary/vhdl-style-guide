@@ -17,6 +17,9 @@ There are several options to these rules:
 .. |align_left__no| replace::
    :code:`no` = Lines will be aligned to assignment operator
 
+.. |align_left__on_new_line_after_assign| replace::
+   :code:`on_new_line_after_assign` = Lines will be aligned aligned left if there is a carriage return (alias “new line”) after the assignment operator.
+
 .. |align_paren| replace::
    :code:`align_paren`
 
@@ -35,15 +38,17 @@ There are several options to these rules:
 .. |default_no| replace::
    :code:`no`
 
-+---------------+----------+---------------+----------------------+
-| Option        | Values   | Default       | Description          |
-+===============+==========+===============+======================+
-| |align_left|  | |values| | |default_no|  | * |align_left__yes|  |
-|               |          |               | * |align_left__no|   |
-+---------------+----------+---------------+----------------------+
-| |align_paren| | |values| | |default_yes| | * |align_paren__yes| |
-|               |          |               | * |align_paren__no|  |
-+---------------+----------+---------------+----------------------+
++---------------+----------+---------------+--------------------------------------------+
+| Option        | Values   | Default       | Description                                |
++===============+==========+===============+============================================+
+| |align_left|  | |values| | |default_no|  | * |align_left__yes|                        |
+|               |          |               | * |align_left__no|                         |
+|               |          |               | * |align_left__on_new_line_after_assign|   |
++---------------+----------+---------------+--------------------------------------------+
+| |align_paren| | |values| | |default_yes| | * |align_paren__yes|                       |
+|               |          |               | * |align_paren__no|                        |
++---------------+----------+---------------+--------------------------------------------+
+
 
 This is an example of how to configure the option.
 
