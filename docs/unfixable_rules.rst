@@ -15,9 +15,7 @@ Comments
 
 The existence and formatting of comments is left to the user as VSG can not have an opinion.
 
-* `block_comment_001 <block_comment_rules.html#block-001>`_
 * `block_comment_002 <block_comment_rules.html#block-002>`_
-* `block_comment_003 <block_comment_rules.html#block-003>`_
 * `comment_012 <comment_rules.html#comment-012>`_
 * `sequential_006 <sequential_rules.html#sequential-006>`_
 * `variable_assignment_006 <variable_assignment_rules.html#variable-assignment-006>`_
