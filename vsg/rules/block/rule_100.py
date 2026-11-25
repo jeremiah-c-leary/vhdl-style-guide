@@ -1,36 +1,22 @@
 # -*- coding: utf-8 -*-
 
-from vsg import token
-from vsg.rules.whitespace_between_token_pairs import Rule
-
-lTokens = []
-lTokens.append([token.block_statement.block_label, token.block_statement.label_colon])
-lTokens.append([token.block_statement.label_colon, token.block_statement.block_keyword])
-lTokens.append([token.block_statement.block_keyword, token.block_statement.is_keyword])
-lTokens.append([token.block_statement.block_keyword, token.block_statement.guard_open_parenthesis])
-lTokens.append([token.block_statement.guard_close_parenthesis, token.block_statement.is_keyword])
+from vsg import deprecated_rule
 
 
-class rule_100(Rule):
+class rule_100(deprecated_rule.Rule):
     """
-    This rule checks for a single space between the following block elements:  label, label colon, **block** keyword, guard open parenthesis, guard close parenthesis, and **is** keywords.
+    This rule has been split into the following rules:
 
-    |configuring_whitespace_rules_link|
-
-    **Violation**
-
-    .. code-block:: vhdl
-
-       block_label    :    block    (guard_condition)   is
-       block_label  :   block    is
-
-    **Fix**
-
-    .. code-block:: vhdl
-
-       block_label : block (guard_condition) is
-       block_label : block is
+    * :ref:`block_102`
+    * :ref:`block_103`
+    * :ref:`block_104`
+    * :ref:`block_105`
     """
 
     def __init__(self):
-        super().__init__(lTokens)
+        super().__init__()
+        self.message.append("Rule " + self.unique_id + " has been split into the following rules:")
+        self.message.append("  block_102")
+        self.message.append("  block_103")
+        self.message.append("  block_104")
+        self.message.append("  block_105")
