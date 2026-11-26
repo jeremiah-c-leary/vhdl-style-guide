@@ -87,6 +87,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         testCase = create_junit_testcase(sFileName, e)
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = []
+        dJsonEntry["error"] = e.message.strip()
         sOutputStd = ""
         sOutputErr = f"Error while processing {sFileName}: {e.message}"
         return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bKeepProcessingFiles
@@ -110,6 +111,7 @@ def apply_rules(commandLineArguments, oConfig, tIndexFileName):
         testCase = None
         dJsonEntry["file_path"] = sFileName
         dJsonEntry["violations"] = []
+        dJsonEntry["error"] = e.message.strip()
         sOutputStd = ""
         sOutputErr = f"Error while processing {sFileName}: {e.message}"
         return fExitStatus, testCase, dJsonEntry, sOutputStd, sOutputErr, bStopProcessingFiles
