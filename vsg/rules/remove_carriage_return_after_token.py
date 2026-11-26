@@ -38,6 +38,10 @@ class remove_carriage_return_after_token(structure.Rule):
     def _analyze(self, lToi):
         for oToi in lToi:
             lTokens = oToi.get_tokens()
+            # Do not merge lines when a comment is between the token and the tokens that follow,
+            # because the fix would pull the comment up onto the first line.
+            if utils.does_token_type_exist_in_list_of_tokens(parser.comment, lTokens):
+                continue
             for iToken, oToken in enumerate(lTokens[: len(lTokens)]):
                 if iToken < 3:
                     if isinstance(oToken, parser.carriage_return):
