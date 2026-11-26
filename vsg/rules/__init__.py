@@ -158,6 +158,7 @@ from vsg.rules import index_constraint
 from vsg.rules import index_subtype_definition
 from vsg.rules import instantiation
 from vsg.rules import interface_incomplete_type_declaration
+from vsg.rules import interface_list
 from vsg.rules import iteration_scheme
 from vsg.rules import length
 from vsg.rules import library
