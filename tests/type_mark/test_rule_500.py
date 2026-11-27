@@ -68,6 +68,28 @@ class test_rule(unittest.TestCase):
         oRule.analyze(self.oFile)
         self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
 
+    def test_rule_500_upper_with_regex_exceptions(self):
+        oRule = type_mark.rule_500()
+        oRule.case = "upper"
+        oRule.exceptions = ["t_.*"]
+
+        lExpected = []
+        lExpected.extend(range(5, 10))
+        lExpected.extend(range(12, 14))
+        lExpected.extend(range(15, 19))
+        lExpected.extend(range(29, 34))
+        lExpected.extend([35])
+        lExpected.extend(range(43, 47))
+        lExpected.extend(range(48, 50))
+        lExpected.extend([52])
+        lExpected.extend(range(54, 56))
+        lExpected.extend(range(61, 66))
+        lExpected.extend([68, 69])
+        lExpected.extend(range(71, 75))
+
+        oRule.analyze(self.oFile)
+        self.assertEqual(utils.extract_violation_lines_from_violation_object(oRule.violations), lExpected)
+
     def test_fix_rule_500_lower(self):
         oRule = type_mark.rule_500()
 
