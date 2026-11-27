@@ -30,3 +30,11 @@ begin
     );
 
 end architecture rtl;
+
+package test_package is
+
+  generic (
+    type t_enum is (<>)
+  );
+
+end package;
