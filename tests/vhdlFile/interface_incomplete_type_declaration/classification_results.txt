@@ -138,3 +138,38 @@
 <class 'vsg.token.architecture_body.end_architecture_keyword'>
 <class 'vsg.token.architecture_body.architecture_simple_name'>
 <class 'vsg.token.architecture_body.semicolon'>
+--------------------------------------------------------------------------------
+33 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+34 | package test_package is
+<class 'vsg.token.package_declaration.package_keyword'>
+<class 'vsg.token.package_declaration.identifier'>
+<class 'vsg.token.package_declaration.is_keyword'>
+--------------------------------------------------------------------------------
+35 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+36 |   generic (
+<class 'vsg.token.generic_clause.generic_keyword'>
+<class 'vsg.token.generic_clause.open_parenthesis'>
+--------------------------------------------------------------------------------
+37 |     type t_enum is (<>)
+<class 'vsg.token.interface_incomplete_type_declaration.type_keyword'>
+<class 'vsg.token.interface_incomplete_type_declaration.identifier'>
+<class 'vsg.token.interface_incomplete_type_declaration.is_keyword'>
+<class 'vsg.token.interface_incomplete_type_declaration.open_parenthesis'>
+<class 'vsg.token.interface_incomplete_type_declaration.undefined_range'>
+<class 'vsg.token.interface_incomplete_type_declaration.close_parenthesis'>
+--------------------------------------------------------------------------------
+38 |   );
+<class 'vsg.token.generic_clause.close_parenthesis'>
+<class 'vsg.token.generic_clause.semicolon'>
+--------------------------------------------------------------------------------
+39 |
+<class 'vsg.parser.blank_line'>
+--------------------------------------------------------------------------------
+40 | end package;
+<class 'vsg.token.package_declaration.end_keyword'>
+<class 'vsg.token.package_declaration.end_package_keyword'>
+<class 'vsg.token.package_declaration.semicolon'>
